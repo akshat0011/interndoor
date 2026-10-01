@@ -167,17 +167,44 @@ console.log('\n== the assembled post ==');
 const { text } = buildPost(row(), CFG, { hook: 'You would be on the payments backend writing Python services that real users hit.', tip: 'Put Python and Postgres in the top three lines of the resume.', hashtags: ['NoBroker', 'internship', 'python', 'hiring'] });
 
 ok('names the company', text.includes('NoBroker.com'));
-ok('names the role', text.includes('Software Engineering Intern'));
+ok('names the role', plainText(text).includes('Software Engineering Intern'));
 ok('carries the location', text.includes('Bengaluru, Karnataka, India'));
 ok('carries the batch', text.includes(String(Y + 1)));
 ok('links to the job page on the site', text.includes('https://interndoor.com/jobs/nobroker-com-software-engineering-intern-4449259269'));
 ok('links to the board', text.includes('https://interndoor.com/'));
 ok('names the source', text.includes('LinkedIn'));
-ok('carries the disclaimer', /Disclaimer/i.test(plainText(text)));
+ok('says it is not affiliated', /not affiliated with NoBroker\.com/.test(plainText(text)));
 ok('carries the hashtags', text.includes('#NoBroker'));
 ok('uses bold lettering', text !== plainText(text));
 ok('no stipend line when none was captured', !plainText(text).includes('Stipend:'));
 ok('under the LinkedIn limit', text.length <= MAX_POST_CHARS, `${text.length} chars`);
+
+/* THE OPENER, 1 Oct 2026: who is hiring, whom and where — not the job-spam
+   "🚨 … is Hiring … 💻🔥" every other account writes. */
+const firstLine = plainText(text).split('\n')[0];
+ok('the first line is "<company> is hiring interns: <role> in <city>"', firstLine === 'NoBroker.com is hiring interns: Software Engineering Intern in Bengaluru', firstLine);
+ok('no siren opener', !text.includes('🚨'));
+ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <= 5);
+{
+  const ft = buildPost(row({ employment_type: 'fulltime', title: 'Associate Software Engineer', job_id: '4470000010' }), CFG, null);
+  ok('a full-time role on the India board hires freshers', plainText(ft.text).split('\n')[0].startsWith('NoBroker.com is hiring freshers: Associate Software Engineer'));
+  const paid = buildPost(row({ stipend_min: 50000, stipend_max: 50000, stipend_currency: 'INR', stipend_period: 'month' }), CFG, null);
+  ok('a stated stipend is on the first line', plainText(paid.text).split('\n')[0].endsWith('— ₹50,000 / month'));
+  ok('no stated stipend, no money on the first line', !/[₹$]/.test(firstLine));
+}
+
+/* THE REFERRAL THREAD — the second comment. */
+{
+  const { composeReferral } = await import('../src/postgen.js');
+  const b = buildPost(row(), CFG, null);
+  ok('a referral comment comes with every post', b.referral === composeReferral(b.facts));
+  ok('it names the company and the role', b.referral.includes('NoBroker.com') && b.referral.includes('Software Engineering Intern'));
+  ok('it asks people at the company to reply', /Reply here if you can refer/.test(b.referral));
+  ok('it keeps contact details out of public comments', /keep phone numbers and emails out of public comments/.test(b.referral));
+  ok('it carries no link', !/https?:\/\//.test(b.referral));
+  ok('it fits a comment', b.referral.length <= MAX_COMMENT_CHARS);
+  ok('the post invites the referral', /Work at NoBroker\.com\? If you can refer for this role/.test(plainText(b.text)));
+}
 
 // LinkedIn cuts at ~210 characters, so the company and the role have to be in
 // front of the fold or the post is invisible in a feed.
@@ -278,9 +305,9 @@ console.log('\n== an entry-level role is not an internship, and the post says wh
     { hook: 'A backend role.', tip: 'Bring a resume.', hashtags: [] });
   const ftText = plainText(ft.text);
   ok('the facts carry the kind', ft.facts.fullTime === true && jobFacts(row(), CFG).fullTime === false);
-  ok('the urgency line names entry-level openings', ftText.includes('entry-level openings like this close within days'));
-  ok('and never internship openings', !ftText.includes('internship openings like this'));
-  ok('an internship still says internship', plainText(one.text).includes('internship openings like this close within days'));
+  ok('the urgency line names entry-level openings', ftText.includes('Entry-level openings like this close within days'));
+  ok('and never internship openings', !/internship openings like this/i.test(ftText));
+  ok('an internship still says internship', plainText(one.text).includes('Internship openings like this close within days'));
   ok('the follow line covers both kinds', plainText(one.text).includes('Every new internship and entry-level role, the minute it opens'));
   ok('the comment covers both kinds', one.comment.includes('Every live engineering internship and entry-level role, updated as they open'));
   const { composeCombined } = await import('../src/postgen.js');
@@ -309,6 +336,9 @@ const shown = unesc(page.match(/<pre class="post">([\s\S]*?)<\/pre>/)[1]);
 ok('the fold marker is drawn', page.includes('<i class="fold">'));
 ok('but contributes no text', shown === built.text, `${shown.length} vs ${built.text.length}`);
 ok('no replacement character at the fold', !shown.includes('\uFFFD'));
+/* The referral thread is the second comment, with its own copy button. */
+ok('the page carries the referral comment', unesc((page.match(/<pre class="referral" hidden>([\s\S]*?)<\/pre>/) ?? [])[1] ?? '') === built.referral);
+ok('and a button that copies it', page.includes('data-copy="referral"'));
 
 const plainShown = unesc(page.match(/<pre class="plain" hidden>([\s\S]*?)<\/pre>/)[1]);
 ok('the plain copy is the same post without the bold', plainShown === plainText(built.text));
