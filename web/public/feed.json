@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/river-graduate-engineering-trainee-electrical-electronics-4472906300",
+      "url": "https://interndoor.com/jobs/river-graduate-engineering-trainee-electrical-electronics-4472906300",
+      "title": "Electrical Engineering Graduate Trainee — River",
+      "content_text": "Company: River · Location: Bengaluru, Karnataka, India · Duration: 0 to 2 years\n• Support development of electrical peripherals like display clusters and battery systems\n• Work with pcb design tools and software like kicad and eclipse ide\n• Collaborate with vendors and manage sample submissions for manufacturing",
+      "date_published": "2026-10-01T07:52:30.419Z",
+      "authors": [
+        {
+          "name": "River"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/providence-india-cybersecurity-product-engineer-4474114807",
       "url": "https://interndoor.com/jobs/providence-india-cybersecurity-product-engineer-4474114807",
       "title": "Cybersecurity Engineer — Providence India",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Infosys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cardinal-health-analyst-data-engineering-4472193340",
-      "url": "https://interndoor.com/jobs/cardinal-health-analyst-data-engineering-4472193340",
-      "title": "Data Engineering Analyst — Cardinal Health",
-      "content_text": "Company: Cardinal Health · Location: Bengaluru East, Karnataka, India · Duration: 1-3 years\n• Support data platform operations and cloud-based engineering solutions\n• Work with Databricks, Spark, and DevOps tools like Harness and GitHub\n• Participate in rotational shifts covering global platform support",
-      "date_published": "2026-09-30T14:21:26.605Z",
-      "authors": [
-        {
-          "name": "Cardinal Health"
         }
       ]
     }
