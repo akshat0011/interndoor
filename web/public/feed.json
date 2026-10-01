@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/etraveli-group-solution-engineer-4474383716",
+      "url": "https://interndoor.com/jobs/etraveli-group-solution-engineer-4474383716",
+      "title": "Solution Engineer — Etraveli Group",
+      "content_text": "Company: Etraveli Group · Location: Mumbai, Maharashtra, India\n• Design, develop, and deploy system configurations, integrations, and custom scripts using Python, Go, or JavaScript\n• Manage Customer Services tech stack including Genesys, Zendesk, Teramind, and cloud platforms like AWS\n• Collaborate with cross-functional teams to ensure system stability, compliance, and operational efficiency",
+      "date_published": "2026-10-01T19:09:32.370Z",
+      "authors": [
+        {
+          "name": "Etraveli Group"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/amazon-applied-scientist-international-machine-learning-4455935268",
       "url": "https://interndoor.com/jobs/amazon-applied-scientist-international-machine-learning-4455935268",
       "title": "Machine Learning Scientist — Amazon",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Dyson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-lab126-sysdev-i-multimedia-amazon-devices-4455794424",
-      "url": "https://interndoor.com/jobs/amazon-lab126-sysdev-i-multimedia-amazon-devices-4455794424",
-      "title": "SysDev I - Multimedia, Amazon Devices — Amazon Lab126",
-      "content_text": "Company: Amazon Lab126 · Location: Chennai, Tamil Nadu, India\n• Design and develop multimedia features for FireOS and media players\n• Work with Linux, GStreamer, and Android to build streaming frameworks\n• Collaborate with product teams on next-gen devices like FireTV and Echo",
-      "date_published": "2026-10-01T15:14:35.414Z",
-      "authors": [
-        {
-          "name": "Amazon Lab126"
         }
       ]
     }
