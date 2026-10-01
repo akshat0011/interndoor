@@ -69,7 +69,7 @@ function wireDialog() {
   open.hidden = false;
 
   let lastFocus = null;
-  const focusable = () => [...modal.querySelectorAll('textarea, input, button')]
+  const focusable = () => [...modal.querySelectorAll('textarea, input, button, a[href]')]
     .filter((el) => !el.disabled && el.offsetParent !== null);
 
   function show() {
@@ -85,7 +85,9 @@ function wireDialog() {
        opened a feedback box and pressed Space would have shut it again. Caught
        by reading `document.activeElement` after a real click; nothing about the
        markup looked wrong. */
-    (modal.querySelector('.fb-t') ?? focusable()[0])?.focus();
+    /* The mail link since 1 Oct 2026 (the form is gone); the textarea while
+       a page still carries the old dialog. */
+    (modal.querySelector('.fb-t') ?? modal.querySelector('.fb-go') ?? focusable()[0])?.focus();
   }
 
   function hide() {
