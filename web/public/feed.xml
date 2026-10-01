@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 01 Oct 2026 07:52:30 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 07:59:30 GMT</lastBuildDate>
+  <item>
+    <title>Java Developer — Nippon Data Systems</title>
+    <link>https://interndoor.com/jobs/nippon-data-systems-java-developer-4472512887</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/nippon-data-systems-java-developer-4472512887</guid>
+    <pubDate>Thu, 01 Oct 2026 07:59:30 GMT</pubDate>
+    <description>Company: Nippon Data Systems · Location: Kollam, India
+• Develop and maintain java-based applications using j2ee and spring boot
+• Collaborate with cross-functional teams to design and ship new features
+• Implement restful apis and conduct code reviews for team feedback</description>
+  </item>
   <item>
     <title>Electrical Engineering Graduate Trainee — River</title>
     <link>https://interndoor.com/jobs/river-graduate-engineering-trainee-electrical-electronics-4472906300</link>
@@ -504,16 +514,6 @@
 • Build and maintain data pipelines for data processing and analysis
 • Use gcp tools like dataproc and bigquery for scalable data workflows
 • Work in agile teams to deploy data solutions into production</description>
-  </item>
-  <item>
-    <title>Python Gen AI — Infosys</title>
-    <link>https://interndoor.com/jobs/infosys-python-gen-ai-4445423382</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/infosys-python-gen-ai-4445423382</guid>
-    <pubDate>Wed, 30 Sep 2026 14:21:36 GMT</pubDate>
-    <description>Company: Infosys · Location: Bengaluru East, Karnataka, India
-• Design, develop, validate and support systems for client projects
-• Python and generative AI technologies are central to the work
-• Collaborate with leads and managers on project estimations and requirements</description>
   </item>
 </channel>
 </rss>
