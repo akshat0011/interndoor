@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ge-healthcare-trainee-engineer-4474392982",
+      "url": "https://interndoor.com/jobs/ge-healthcare-trainee-engineer-4474392982",
+      "title": "Trainee Engineer — GE HealthCare",
+      "content_text": "Company: GE HealthCare · Location: Bengaluru, Karnataka, India\n• Develop embedded software for X-ray generators using C and C++\n• Use MATLAB/Simulink for control application simulation\n• Work with MCUs/DSPs and RTOS in hardware integration",
+      "date_published": "2026-10-01T19:45:14.582Z",
+      "authors": [
+        {
+          "name": "GE HealthCare"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/etraveli-group-solution-engineer-4474383716",
       "url": "https://interndoor.com/jobs/etraveli-group-solution-engineer-4474383716",
       "title": "Solution Engineer — Etraveli Group",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dyson-platform-engineer-google-cloud-platform-4474330231",
-      "url": "https://interndoor.com/jobs/dyson-platform-engineer-google-cloud-platform-4474330231",
-      "title": "Cloud Platform Engineer — Dyson",
-      "content_text": "Company: Dyson · Location: Bengaluru, Karnataka, India\n• Design cloud infrastructure and shared platform services on gcp\n• Build ci/cd pipelines and automate deployment with terraform\n• Collaborate with security teams on compliance and governance\n• Support cloud networking and operational tooling",
-      "date_published": "2026-10-01T15:15:00.308Z",
-      "authors": [
-        {
-          "name": "Dyson"
         }
       ]
     }
