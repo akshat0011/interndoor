@@ -80,6 +80,13 @@ check('else what the employer\'s other roles state', range.facts[2], { label: 'S
 const ft = liCardModel({ facts: { ...facts, fullTime: true }, experience: '0–1 years' });
 check('freshers pill and a salary label', [ft.pill, ft.facts[2].label], ['Hiring freshers', 'Salary']);
 check('stated experience is shown', ft.facts.find((f) => f.label === 'Experience')?.value, '0–1 years');
+check('the site\'s clean title wins over the stored one', liCardModel({ facts: { ...facts, title: 'System Software Intern 2027 (Evergreen)' }, title: 'System Software Intern' }).title, 'System Software Intern');
+check('ATS underscores become spaces, the words stay', liCardModel({ facts: { ...facts, title: 'DX S2R_Full Stack Developer_FY27Q2' } }).title, 'DX S2R Full Stack Developer FY27Q2');
+check('a range from zero reads "Up to"', liCardModel({ facts: { ...facts, duration: '0–6 months' } }).facts[1].small, 'Up to 6 months');
+check('a range from one is left alone', liCardModel({ facts: { ...facts, duration: '1-6 months' } }).facts[1].small, '1-6 months');
+check('spaced and dotted skill names are one name each',
+  liCardModel({ facts: { ...facts, keySkills: ['React js', 'Next Js', 'Node.JS', 'AWS lambdas'] }, skills: '[]' }).skills,
+  ['React', 'Next.js', 'Node.js', 'AWS Lambda']);
 check('at most six facts', liCardModel({ facts: { ...facts, batch: '2027' }, experience: '0–1 years' }).facts.length <= 6, true);
 
 console.log('\n== the employer\'s pay range is honest ==');
@@ -127,6 +134,7 @@ check('the fallback is keyed on the company, not the job id',
   /logoOnDisk\(\s*[^)]*compan/i.test(logoLine), true);
 
 check('the caller passes the employer snapshot', /snapshot: companySnapshot\(row, employerRows\(row\), publishedJobs\(\)\.filter\(\(j\) => j\.company === row\.company\)\)/.test(qs), true);
+check('the caller hands over the site\'s title, not the stored one', /\n\s*title: publishedTitle\(row\),\n/.test(qs), true);
 check('and the post\'s facts, skills, experience and tip', /\n\s*facts,\n\s*skills: row\.skills,\n\s*experience: row\.experience,\n\s*tip: meta\?\.tip \?\? facts\.tipFallback,/.test(qs), true);
 check('the draft saves its tip for the card', /saveDraft\([^)]*tip: built\.ai\.tip \}\)/.test(qs), true);
 

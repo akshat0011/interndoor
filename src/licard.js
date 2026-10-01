@@ -33,18 +33,23 @@ const SKILL_CASE = new Map(Object.entries({
   vuejs: 'Vue.js', 'vue.js': 'Vue.js', expressjs: 'Express.js', 'express.js': 'Express.js', '.net': '.NET', 'c#': 'C#', 'c++': 'C++',
   ios: 'iOS', devops: 'DevOps', mlops: 'MLOps', pytorch: 'PyTorch', tensorflow: 'TensorFlow', numpy: 'NumPy', 'scikit-learn': 'scikit-learn',
   fastapi: 'FastAPI', jquery: 'jQuery', powerbi: 'Power BI', 'power bi': 'Power BI', jira: 'Jira', gitlab: 'GitLab', kotlin: 'Kotlin',
+  awslambda: 'AWS Lambda', awslambdas: 'AWS Lambda', typescript: 'TypeScript', javascript: 'JavaScript', mongodb: 'MongoDB', postgresql: 'PostgreSQL',
 }));
 function skillName(raw) {
   const s = String(raw ?? '').trim();
   if (!s) return '';
-  if (SKILL_CASE.has(s.toLowerCase())) return SKILL_CASE.get(s.toLowerCase());
+  /* "React js", "Next Js", "Node.JS" are one name each: look it up with the
+     spaces and dots squeezed out too. */
+  const key = s.toLowerCase();
+  const cased = SKILL_CASE.get(key) ?? SKILL_CASE.get(key.replace(/[\s.]+/g, ''));
+  if (cased) return cased;
   if (SKILL_UPPER.has(s.toLowerCase())) return s.toUpperCase();
   if (/[A-Z]/.test(s.slice(1))) return s;           // already cased: "PyTorch", "C++"
   /* The post's own casing table first (JavaScript, HTML5, Node.js, MongoDB…),
      then plain title case: "Html5" and "Javascript" read as typos on a card
      whose whole point is a list of skills. */
-  const cased = tidyTech(s);
-  if (cased !== s) return cased.replace(/^./, (c) => c.toUpperCase());
+  const tidied = tidyTech(s);
+  if (tidied !== s) return tidied.replace(/^./, (c) => c.toUpperCase());
   return s.replace(/(^|[\s/-])([a-z])/g, (m, sep, c) => sep + c.toUpperCase());
 }
 const parseList = (v) => {
@@ -55,6 +60,12 @@ const parseList = (v) => {
 /** "Bengaluru East, Karnataka, India" -> "Bengaluru": the city pages' own folding. */
 const cityOf = (loc) => canonicalCity(loc) || String(loc ?? '').split(/[;,]/)[0].trim();
 /** "Thu, 1 Oct, 8:36 am" -> "1 Oct": the day is what a reader weighs. */
+/* "0–6 months" is the posting saying "up to six months"; on a card it reads as
+   a typo. Only a range that starts at zero changes. */
+const durationText = (d) => String(d ?? '').replace(/^0\s*[–-]\s*/, 'Up to ');
+/* ATS titles join their parts with underscores ("DX S2R_Full Stack Developer_
+   FY27Q2"). The words stay; only the joins become spaces. */
+const cardTitle = (t) => String(t ?? '').replace(/_+/g, ' ').replace(/\s+/g, ' ').trim();
 const dayOf = (label) => (String(label ?? '').match(/\b(\d{1,2} [A-Z][a-z]{2})\b/) ?? [])[1] ?? '';
 
 /**
@@ -71,7 +82,7 @@ export function liCardModel(job) {
   const facts = [];
   const city = cityOf(f.location ?? job.location);
   if (city) facts.push({ label: 'Location', value: city, small: f.workplaceType ?? '' });
-  facts.push({ label: 'Type', value: fullTime ? 'Full-time' : 'Internship', small: fullTime ? 'Freshers' : (f.duration ?? '') });
+  facts.push({ label: 'Type', value: fullTime ? 'Full-time' : 'Internship', small: fullTime ? 'Freshers' : durationText(f.duration) });
   if (f.stipend) facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: f.stipend, pay: true });
   else if (snap?.payRange) facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: 'Not stated', small: `Other ${company} roles state ${snap.payRange.text}` });
   else facts.push({ label: fullTime ? 'Salary' : 'Stipend', value: 'Not disclosed' });
@@ -93,7 +104,9 @@ export function liCardModel(job) {
   return {
     company,
     pill: fullTime ? 'Hiring freshers' : 'Hiring interns',
-    title: f.title ?? job.title ?? '',
+    /* The caller's title is the site's own (publishedTitle: an owner edit, else
+       the clean title); the post's facts carry the stored original. */
+    title: cardTitle(job.title || f.title || ''),
     facts: facts.slice(0, 6),
     skillsHeading: 'Skills to have on your resume',
     skills,
