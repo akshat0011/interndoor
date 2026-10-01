@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 01 Oct 2026 10:30:37 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 10:32:51 GMT</lastBuildDate>
+  <item>
+    <title>AI Intern — Honasa Consumer Ltd.</title>
+    <link>https://interndoor.com/jobs/honasa-consumer-ltd-ai-intern-4472919251</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/honasa-consumer-ltd-ai-intern-4472919251</guid>
+    <pubDate>Thu, 01 Oct 2026 10:32:51 GMT</pubDate>
+    <description>Company: Honasa Consumer Ltd. · Location: Gurugram, Haryana, India
+• Build ai-powered automations and workflows to reduce manual tasks
+• Use python and sql to prepare and analyze data for ai applications
+• Work with apis and data pipelines to connect ai solutions to business processes</description>
+  </item>
   <item>
     <title>Data Engineer — Dentsu Global Services</title>
     <link>https://interndoor.com/jobs/dentsu-global-services-data-engineer-4472524934</link>
@@ -26,6 +36,16 @@
 • Build and maintain chatbots using AWS Lex
 • Integrate with backend systems via APIs
 • Use Jenkins and AWS for DevOps practices</description>
+  </item>
+  <item>
+    <title>High-Speed Serial Links Design Apprentice — Synopsys Inc</title>
+    <link>https://interndoor.com/jobs/synopsys-inc-high-speed-serial-links-design-and-verification-apprenticeship-4474144684</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/synopsys-inc-high-speed-serial-links-design-and-verification-apprenticeship-4474144684</guid>
+    <pubDate>Thu, 01 Oct 2026 10:22:13 GMT</pubDate>
+    <description>Company: Synopsys Inc · Location: Hyderabad, Telangana, India · Duration: 12 months
+• Design and verify high-speed serial links for data transfer in consumer and enterprise products
+• Use Verilog/SystemVerilog for digital/analog design in sub-micron fabrication
+• Collaborate on inter-chip and intra-chip communication systems with global teams</description>
   </item>
   <item>
     <title>TEST ENGINEER L2 — Wipro</title>
@@ -496,26 +516,6 @@
 • Design and maintain CI/CD pipelines using GitHub Actions and Azure DevOps
 • Build Terraform modules and Ansible content for cloud infrastructure
 • Operate Kubernetes platforms and support containerized applications</description>
-  </item>
-  <item>
-    <title>Technology Solution Engineer — Sanofi</title>
-    <link>https://interndoor.com/jobs/sanofi-technology-solution-engineer-4473931055</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/sanofi-technology-solution-engineer-4473931055</guid>
-    <pubDate>Wed, 30 Sep 2026 17:13:57 GMT</pubDate>
-    <description>Company: Sanofi · Location: Hyderabad, Telangana, India
-• Design and build cloud solutions using Azure, AWS, Terraform, and Ansible
-• Mentor junior engineers and lead cross-team technical delivery
-• Ensure operational readiness with monitoring, security, and compliance</description>
-  </item>
-  <item>
-    <title>Software Engineer — Broadridge India</title>
-    <link>https://interndoor.com/jobs/broadridge-india-p1066210-tdsep201-p2-software-engineering-4473928028</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/broadridge-india-p1066210-tdsep201-p2-software-engineering-4473928028</guid>
-    <pubDate>Wed, 30 Sep 2026 17:00:48 GMT</pubDate>
-    <description>Company: Broadridge India · Location: Hyderabad, Telangana, India
-• Develop and maintain software solutions using COBOL, JCL, DB2, VSAM, and CICS
-• Collaborate in agile environments to implement system improvements and troubleshoot issues
-• Work flexible UK shifts in a team focused on technology and business process optimization</description>
   </item>
 </channel>
 </rss>
