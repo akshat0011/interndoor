@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 02 Oct 2026 05:46:50 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 07:10:16 GMT</lastBuildDate>
+  <item>
+    <title>Specialist IT — Infineon Technologies</title>
+    <link>https://interndoor.com/jobs/infineon-technologies-specialist-it-4468222034</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/infineon-technologies-specialist-it-4468222034</guid>
+    <pubDate>Fri, 02 Oct 2026 07:10:16 GMT</pubDate>
+    <description>Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India
+• Monitor hpc clusters for reliability and uptime
+• Write automation scripts in python and bash
+• Work with prometheus and grafana for monitoring
+• Collaborate with senior engineers on hpc projects</description>
+  </item>
   <item>
     <title>TEST ENGINEER L2 — Wipro</title>
     <link>https://interndoor.com/jobs/wipro-test-engineer-l2-4474708037</link>
@@ -501,16 +512,6 @@
 • Write and test code using pega cssa certification
 • Participate in agile practices and team ceremonies
 • Maintain data models and metadata pipelines</description>
-  </item>
-  <item>
-    <title>Specialist Software Engineer — Societe Generale Global Solution Centre</title>
-    <link>https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-4474347220</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-4474347220</guid>
-    <pubDate>Thu, 01 Oct 2026 15:55:06 GMT</pubDate>
-    <description>Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India
-• Develop and test features for a product in a business chain
-• Work with full stack technologies and coding standards
-• Collaborate with global teams and follow Agile practices</description>
   </item>
 </channel>
 </rss>
