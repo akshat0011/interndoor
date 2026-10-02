@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/lam-research-engineering-intern-1-4473344903",
+      "url": "https://interndoor.com/jobs/lam-research-engineering-intern-1-4473344903",
+      "title": "Engineering Intern 1 — Lam Research",
+      "content_text": "Company: Lam Research · Location: Bengaluru, Karnataka, India\n• Design and develop electrical/electronic subsystems for semiconductor equipment\n• Simulate, test, and prototype circuits with cross-functional teams\n• Learn advanced CAD tools and understand product standards",
+      "date_published": "2026-10-02T15:55:42.411Z",
+      "authors": [
+        {
+          "name": "Lam Research"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ups-applications-developer-location-chennai-fullstack-angular-and-net-4248785240",
       "url": "https://interndoor.com/jobs/ups-applications-developer-location-chennai-fullstack-angular-and-net-4248785240",
       "title": "Fullstack Applications Developer — UPS",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Siemens Energy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-data-engineer-data-engineer-engineering-4446732408",
-      "url": "https://interndoor.com/jobs/exl-data-engineer-data-engineer-engineering-4446732408",
-      "title": "Data Engineer — EXL",
-      "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Build data pipelines and processing workflows\n• Optimize data storage and ensure accuracy\n• Collaborate with data scientists and analysts",
-      "date_published": "2026-10-02T11:22:08.473Z",
-      "authors": [
-        {
-          "name": "EXL"
         }
       ]
     }
