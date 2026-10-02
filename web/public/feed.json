@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4472859773",
+      "url": "https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4472859773",
+      "title": "Software Testing Intern — Siemens Gamesa",
+      "content_text": "Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India\n• Assist with programming tasks, testing software tools, and improving CI/CD pipelines\n• Work with MATLAB, Python, Git, Jira, and Artifactory\n• Collaborate on controller validation, documentation, and data analysis reports",
+      "date_published": "2026-10-02T05:12:27.064Z",
+      "authors": [
+        {
+          "name": "Siemens Gamesa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-energy-data-analyst-intern-real-estate-4472872328",
+      "url": "https://interndoor.com/jobs/siemens-energy-data-analyst-intern-real-estate-4472872328",
+      "title": "Data Analyst Intern — Siemens Energy",
+      "content_text": "Company: Siemens Energy · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Analyze real estate data to support strategic decisions across Asia-Pacific\n• Use power bi and microsoft tools to create reports and dashboards\n• Collaborate with senior leaders on global real estate projects",
+      "date_published": "2026-10-02T05:12:25.133Z",
+      "authors": [
+        {
+          "name": "Siemens Energy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-gamesa-intern-turbine-software-system-validation-4472859772",
+      "url": "https://interndoor.com/jobs/siemens-gamesa-intern-turbine-software-system-validation-4472859772",
+      "title": "Intern - Turbine Software System Validation — Siemens Gamesa",
+      "content_text": "Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Write automated test cases in python for real engineering projects\n• Use behave for bdd and work with selenium for functional testing\n• Collaborate with developers and senior testers on global teams",
+      "date_published": "2026-10-02T05:12:15.732Z",
+      "authors": [
+        {
+          "name": "Siemens Gamesa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-gamesa-automation-ai-intern-for-blade-structural-design-process-4472859771",
+      "url": "https://interndoor.com/jobs/siemens-gamesa-automation-ai-intern-for-blade-structural-design-process-4472859771",
+      "title": "AI Intern for Blade Design Automation — Siemens Gamesa",
+      "content_text": "Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India · Duration: 12 months\n• Develop automation tools for engineering risk assessment and compliance\n• Use python and ai to create dashboards and digital engineering solutions\n• Work on improving traceability across engineering workflows and risk management",
+      "date_published": "2026-10-02T05:11:56.697Z",
+      "authors": [
+        {
+          "name": "Siemens Gamesa"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/barclays-technical-test-automation-specialist-4472992912",
       "url": "https://interndoor.com/jobs/barclays-technical-test-automation-specialist-4472992912",
       "title": "Test Automation Specialist — Barclays",
@@ -551,54 +599,6 @@
       "title": "Software Engineer Specialist PEGA — Societe Generale Global Solution Centre",
       "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Write and test code using pega cssa certification\n• Participate in agile practices and team ceremonies\n• Maintain data models and metadata pipelines",
       "date_published": "2026-10-01T15:55:33.949Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-4474347220",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-4474347220",
-      "title": "Specialist Software Engineer — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Develop and test features for a product in a business chain\n• Work with full stack technologies and coding standards\n• Collaborate with global teams and follow Agile practices",
-      "date_published": "2026-10-01T15:55:06.056Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-dotnet-4474346198",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-dotnet-4474346198",
-      "title": "DotNet Software Engineer — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Build and maintain C#/.NET APIs and backend services for Dynamics CRM\n• Work with Git, Azure DevOps, and REST APIs in a CI/CD environment\n• Collaborate on CRM releases and integration flows with Dynamics Configurator",
-      "date_published": "2026-10-01T15:54:50.843Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-net-with-angular-4474329691",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-net-with-angular-4474329691",
-      "title": "Software Engineer .Net Angular — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Design and implement scalable .NET and Angular solutions\n• Collaborate with stakeholders and team on secure, compliant code\n• Contribute to CI/CD processes and code quality improvements",
-      "date_published": "2026-10-01T15:54:35.970Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-automation-dre-4474340312",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-automation-dre-4474340312",
-      "title": "Automation Software Engineer — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Automate workflows and systems using python and ansible\n• Build scalable automation in openstack and cloud-native tools\n• Collaborate on aioops and mlops pipelines for production systems",
-      "date_published": "2026-10-01T15:53:58.620Z",
       "authors": [
         {
           "name": "Societe Generale Global Solution Centre"
