@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 02 Oct 2026 09:09:20 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 09:18:56 GMT</lastBuildDate>
+  <item>
+    <title>Engineering Intern 1 — Lam Research</title>
+    <link>https://interndoor.com/jobs/lam-research-engineering-intern-1-4472890265</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/lam-research-engineering-intern-1-4472890265</guid>
+    <pubDate>Fri, 02 Oct 2026 09:18:56 GMT</pubDate>
+    <description>Company: Lam Research · Location: Bengaluru, Karnataka, India
+• Design and develop electrical/electronic subsystems for semiconductor equipment
+• Use CAD and simulation tools for schematics and circuit analysis
+• Collaborate with global teams on product upgrades and customer support</description>
+  </item>
   <item>
     <title>Full Stack Engineer — AstraZeneca</title>
     <link>https://interndoor.com/jobs/astrazeneca-full-stack-engineer-4464500442</link>
@@ -502,16 +512,6 @@
 • Review and validate risk models for credit, market, and operational risks
 • Use SAS and R for quantitative analysis and backtesting
 • Work on Basel and IFRS 9 compliant models with global regulatory teams</description>
-  </item>
-  <item>
-    <title>DevOps Engineer SSE — Societe Generale Global Solution Centre</title>
-    <link>https://interndoor.com/jobs/societe-generale-global-solution-centre-sse-devops-engineer-4474343236</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/societe-generale-global-solution-centre-sse-devops-engineer-4474343236</guid>
-    <pubDate>Thu, 01 Oct 2026 16:06:52 GMT</pubDate>
-    <description>Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India
-• Support cloud migration by building and maintaining Azure infrastructure with IaC tools
-• Automate deployments and operations using Azure DevOps and scripting languages
-• Ensure security and compliance in cloud environments with monitoring and governance</description>
   </item>
 </channel>
 </rss>
