@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/msd-assoc-spclst-platform-engineer-4475026775",
+      "url": "https://interndoor.com/jobs/msd-assoc-spclst-platform-engineer-4475026775",
+      "title": "Assoc. Spclst , Platform Engineer — MSD",
+      "content_text": "Company: MSD · Location: Hyderabad, Telangana, India\n• Maintain and improve DevXOps platforms like JFrog Artifactory and GitHub Actions\n• Work with senior engineers on cloud technologies, Kubernetes, and automation\n• Support on-call rotations and ensure platform reliability and security",
+      "date_published": "2026-10-02T21:19:50.670Z",
+      "authors": [
+        {
+          "name": "MSD"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-data-scientist-4473388555",
+      "url": "https://interndoor.com/jobs/cognizant-data-scientist-4473388555",
+      "title": "Data Scientist — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Build AI agents that plan, reason, and use tools\n• Work with Python, LLMs, APIs, and enterprise systems\n• Collaborate with data science and engineering teams",
+      "date_published": "2026-10-02T20:48:05.837Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cisco-software-engineer-4466066186",
       "url": "https://interndoor.com/jobs/cisco-software-engineer-4466066186",
       "title": "Software Engineer — Cisco",
@@ -575,30 +599,6 @@
       "title": "Data Scientist — EXL",
       "content_text": "Company: EXL · Location: Pune Division, Maharashtra, India\n• Build and deploy ai/ml models for complex data\n• Work with cross-functional teams on data governance\n• Optimize and evaluate machine learning solutions",
       "date_published": "2026-10-02T12:24:11.846Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-data-analyst-4446727273",
-      "url": "https://interndoor.com/jobs/exl-data-analyst-4446727273",
-      "title": "Data Analyst — EXL",
-      "content_text": "Company: EXL · Location: Gurugram, Haryana, India\n• Analyze data to find patterns and trends using excel\n• Require sql and excel skills\n• Work in evening shifts",
-      "date_published": "2026-10-02T12:23:01.141Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-qa-engineer-b1-paymentor-4446734157",
-      "url": "https://interndoor.com/jobs/exl-qa-engineer-b1-paymentor-4446734157",
-      "title": "QA Engineer Paymentor — EXL",
-      "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Execute test scenarios and automate test plans using latest tools\n• Generate metrics and reports to improve product quality and training\n• Test agile projects and contribute to qa strategy development",
-      "date_published": "2026-10-02T12:22:49.667Z",
       "authors": [
         {
           "name": "EXL"

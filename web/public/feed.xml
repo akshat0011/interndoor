@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 02 Oct 2026 18:48:17 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 21:19:50 GMT</lastBuildDate>
+  <item>
+    <title>Assoc. Spclst , Platform Engineer — MSD</title>
+    <link>https://interndoor.com/jobs/msd-assoc-spclst-platform-engineer-4475026775</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/msd-assoc-spclst-platform-engineer-4475026775</guid>
+    <pubDate>Fri, 02 Oct 2026 21:19:50 GMT</pubDate>
+    <description>Company: MSD · Location: Hyderabad, Telangana, India
+• Maintain and improve DevXOps platforms like JFrog Artifactory and GitHub Actions
+• Work with senior engineers on cloud technologies, Kubernetes, and automation
+• Support on-call rotations and ensure platform reliability and security</description>
+  </item>
+  <item>
+    <title>Data Scientist — Cognizant</title>
+    <link>https://interndoor.com/jobs/cognizant-data-scientist-4473388555</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-data-scientist-4473388555</guid>
+    <pubDate>Fri, 02 Oct 2026 20:48:05 GMT</pubDate>
+    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
+• Build AI agents that plan, reason, and use tools
+• Work with Python, LLMs, APIs, and enterprise systems
+• Collaborate with data science and engineering teams</description>
+  </item>
   <item>
     <title>Software Engineer — Cisco</title>
     <link>https://interndoor.com/jobs/cisco-software-engineer-4466066186</link>
@@ -489,26 +509,6 @@
 • Build and deploy ai/ml models for complex data
 • Work with cross-functional teams on data governance
 • Optimize and evaluate machine learning solutions</description>
-  </item>
-  <item>
-    <title>Data Analyst — EXL</title>
-    <link>https://interndoor.com/jobs/exl-data-analyst-4446727273</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-data-analyst-4446727273</guid>
-    <pubDate>Fri, 02 Oct 2026 12:23:01 GMT</pubDate>
-    <description>Company: EXL · Location: Gurugram, Haryana, India
-• Analyze data to find patterns and trends using excel
-• Require sql and excel skills
-• Work in evening shifts</description>
-  </item>
-  <item>
-    <title>QA Engineer Paymentor — EXL</title>
-    <link>https://interndoor.com/jobs/exl-qa-engineer-b1-paymentor-4446734157</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-qa-engineer-b1-paymentor-4446734157</guid>
-    <pubDate>Fri, 02 Oct 2026 12:22:49 GMT</pubDate>
-    <description>Company: EXL · Location: Noida, Uttar Pradesh, India
-• Execute test scenarios and automate test plans using latest tools
-• Generate metrics and reports to improve product quality and training
-• Test agile projects and contribute to qa strategy development</description>
   </item>
 </channel>
 </rss>
