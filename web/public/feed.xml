@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 02 Oct 2026 00:00:27 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 00:03:13 GMT</lastBuildDate>
+  <item>
+    <title>Business Intelligence Engineer — Amazon</title>
+    <link>https://interndoor.com/jobs/amazon-business-intelligence-engineer-worldwide-customer-service-finance-4474558227</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-business-intelligence-engineer-worldwide-customer-service-finance-4474558227</guid>
+    <pubDate>Fri, 02 Oct 2026 00:03:13 GMT</pubDate>
+    <description>Company: Amazon · Location: Hyderabad, Telangana, India
+• Design and maintain data pipelines for finance operations
+• Use sql, tableau, and redshift for reporting and analysis
+• Work with global teams to scale reporting tools</description>
+  </item>
+  <item>
+    <title>Network Engineer, Capacity Restoration — Amazon Web Services (AWS)</title>
+    <link>https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-capacity-restoration-team-4474558208</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-capacity-restoration-team-4474558208</guid>
+    <pubDate>Fri, 02 Oct 2026 00:00:49 GMT</pubDate>
+    <description>Company: Amazon Web Services (AWS) · Location: Hyderabad, Telangana, India
+• Build automation tools for network restoration across multiple fabrics
+• Use Python and scripting to improve operational metrics and tooling
+• Work on link testing and diagnostics with cross-functional teams</description>
+  </item>
   <item>
     <title>Data Analyst Intern — ByteDance</title>
     <link>https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4474558190</link>
@@ -490,26 +510,6 @@
 • Build and optimize ML models for retail decisions using Python
 • Collaborate with engineers to deploy models in production
 • Analyze and benchmark AI/ML outputs for business impact</description>
-  </item>
-  <item>
-    <title>SAP MM Tester P2P — TELUS Digital</title>
-    <link>https://interndoor.com/jobs/telus-digital-sap-mm-tester-p2p-4464523403</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/telus-digital-sap-mm-tester-p2p-4464523403</guid>
-    <pubDate>Thu, 01 Oct 2026 15:40:50 GMT</pubDate>
-    <description>Company: TELUS Digital · Location: Noida, Uttar Pradesh, India
-• Test full p2p cycle from pr to invoice verification
-• Validate sap mm/im integration with fi, wm, and external tools
-• Write test scripts and manage defects in hybrid office setup</description>
-  </item>
-  <item>
-    <title>Application Security Engineer — Autodesk</title>
-    <link>https://interndoor.com/jobs/autodesk-application-security-engineer-4472569896</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/autodesk-application-security-engineer-4472569896</guid>
-    <pubDate>Thu, 01 Oct 2026 15:34:02 GMT</pubDate>
-    <description>Company: Autodesk · Location: Bengaluru, Karnataka, India
-• Threat model AI systems and LLM-powered features for security risks
-• Develop automation and tooling for AI security reviews using Python/Go
-• Collaborate with cross-functional teams on secure AI product design</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/amazon-business-intelligence-engineer-worldwide-customer-service-finance-4474558227",
+      "url": "https://interndoor.com/jobs/amazon-business-intelligence-engineer-worldwide-customer-service-finance-4474558227",
+      "title": "Business Intelligence Engineer — Amazon",
+      "content_text": "Company: Amazon · Location: Hyderabad, Telangana, India\n• Design and maintain data pipelines for finance operations\n• Use sql, tableau, and redshift for reporting and analysis\n• Work with global teams to scale reporting tools",
+      "date_published": "2026-10-02T00:03:13.367Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-capacity-restoration-team-4474558208",
+      "url": "https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-capacity-restoration-team-4474558208",
+      "title": "Network Engineer, Capacity Restoration — Amazon Web Services (AWS)",
+      "content_text": "Company: Amazon Web Services (AWS) · Location: Hyderabad, Telangana, India\n• Build automation tools for network restoration across multiple fabrics\n• Use Python and scripting to improve operational metrics and tooling\n• Work on link testing and diagnostics with cross-functional teams",
+      "date_published": "2026-10-02T00:00:49.324Z",
+      "authors": [
+        {
+          "name": "Amazon Web Services (AWS)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4474558190",
       "url": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4474558190",
       "title": "Data Analyst Intern — ByteDance",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/telus-digital-sap-mm-tester-p2p-4464523403",
-      "url": "https://interndoor.com/jobs/telus-digital-sap-mm-tester-p2p-4464523403",
-      "title": "SAP MM Tester P2P — TELUS Digital",
-      "content_text": "Company: TELUS Digital · Location: Noida, Uttar Pradesh, India\n• Test full p2p cycle from pr to invoice verification\n• Validate sap mm/im integration with fi, wm, and external tools\n• Write test scripts and manage defects in hybrid office setup",
-      "date_published": "2026-10-01T15:40:50.040Z",
-      "authors": [
-        {
-          "name": "TELUS Digital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/autodesk-application-security-engineer-4472569896",
-      "url": "https://interndoor.com/jobs/autodesk-application-security-engineer-4472569896",
-      "title": "Application Security Engineer — Autodesk",
-      "content_text": "Company: Autodesk · Location: Bengaluru, Karnataka, India\n• Threat model AI systems and LLM-powered features for security risks\n• Develop automation and tooling for AI security reviews using Python/Go\n• Collaborate with cross-functional teams on secure AI product design",
-      "date_published": "2026-10-01T15:34:02.059Z",
-      "authors": [
-        {
-          "name": "Autodesk"
         }
       ]
     }
