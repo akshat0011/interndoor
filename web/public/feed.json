@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/astrazeneca-full-stack-engineer-4464500442",
+      "url": "https://interndoor.com/jobs/astrazeneca-full-stack-engineer-4464500442",
+      "title": "Full Stack Engineer — AstraZeneca",
+      "content_text": "Company: AstraZeneca · Location: Chennai, Tamil Nadu, India\n• Design and implement cloud-native applications for antibody discovery\n• Work with Java, Python, React, and databases in a global team\n• Contribute to scalable services and data products in production",
+      "date_published": "2026-10-02T09:09:20.127Z",
+      "authors": [
+        {
+          "name": "AstraZeneca"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/hitachi-vantara-specialist-c-developer-storage-networking-protocols-4426768761",
+      "url": "https://interndoor.com/jobs/hitachi-vantara-specialist-c-developer-storage-networking-protocols-4426768761",
+      "title": "Storage Protocols C++ Developer — Hitachi Vantara",
+      "content_text": "Company: Hitachi Vantara · Location: Pune Division, Maharashtra, India\n• Design and maintain storage interface and orchestration products\n• Strong C/C++ skills for high-performance data path software\n• Experience with networking protocols like NFS, SMB, and TCP/IP",
+      "date_published": "2026-10-02T09:06:26.627Z",
+      "authors": [
+        {
+          "name": "Hitachi Vantara"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/guardian-data-engineer-it-4473129275",
+      "url": "https://interndoor.com/jobs/guardian-data-engineer-it-4473129275",
+      "title": "Data Engineer — Guardian",
+      "content_text": "Company: Guardian · Location: Gurgaon, Haryana, India\n• Build and optimize data pipelines using PySpark and Databricks\n• Work with SQL and delta lake for data warehousing\n• Collaborate in agile teams on scalable data solutions",
+      "date_published": "2026-10-02T08:45:47.732Z",
+      "authors": [
+        {
+          "name": "Guardian"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/infineon-technologies-specialist-it-4468222034",
       "url": "https://interndoor.com/jobs/infineon-technologies-specialist-it-4468222034",
       "title": "Specialist IT — Infineon Technologies",
@@ -563,42 +599,6 @@
       "title": "DevOps Engineer SSE — Societe Generale Global Solution Centre",
       "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Support cloud migration by building and maintaining Azure infrastructure with IaC tools\n• Automate deployments and operations using Azure DevOps and scripting languages\n• Ensure security and compliance in cloud environments with monitoring and governance",
       "date_published": "2026-10-01T16:06:52.340Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-angular-4474347209",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-angular-4474347209",
-      "title": "Specialist Software Engineer - Angular — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Build and maintain responsive web apps with Angular 19\n• Collaborate with backend teams on Java and Node.js projects\n• Write unit and E2E tests using Karma and Playwright",
-      "date_published": "2026-10-01T16:06:52.300Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-data-scientist-data-wrangling-4474350032",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-data-scientist-data-wrangling-4474350032",
-      "title": "Data Scientist - Data Wrangling — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Build and maintain databases for credit risk models\n• Use sql, python, sas for data analysis and reporting\n• Collaborate on process improvements and team challenges",
-      "date_published": "2026-10-01T16:06:41.608Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-pega-4474332619",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-pega-4474332619",
-      "title": "Software Engineer Specialist PEGA — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Write and test code using pega cssa certification\n• Participate in agile practices and team ceremonies\n• Maintain data models and metadata pipelines",
-      "date_published": "2026-10-01T15:55:33.949Z",
       "authors": [
         {
           "name": "Societe Generale Global Solution Centre"
