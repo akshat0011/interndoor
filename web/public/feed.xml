@@ -6,7 +6,38 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 02 Oct 2026 00:59:18 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 03:38:38 GMT</lastBuildDate>
+  <item>
+    <title>Test Automation Specialist — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-technical-test-automation-specialist-4472992912</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-technical-test-automation-specialist-4472992912</guid>
+    <pubDate>Fri, 02 Oct 2026 03:38:38 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Write test scenarios, execute test cases, and track bugs in Gitlab
+• Use Python for BDD and automate test pipelines on Azure or AWS
+• Collaborate with developers to resolve defects and improve processes</description>
+  </item>
+  <item>
+    <title>Financial Analyst Powerbi — Gartner</title>
+    <link>https://interndoor.com/jobs/gartner-financial-data-analyst-advanced-powerbi-4472868110</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/gartner-financial-data-analyst-advanced-powerbi-4472868110</guid>
+    <pubDate>Fri, 02 Oct 2026 03:18:49 GMT</pubDate>
+    <description>Company: Gartner · Location: Gurgaon, Haryana, India
+• Analyze financial data to support business decisions
+• Use power bi, sql, and python for reporting and automation
+• Collaborate with leadership to improve financial processes</description>
+  </item>
+  <item>
+    <title>DATA SCIENCE SPECIALIST — Asian Paints</title>
+    <link>https://interndoor.com/jobs/asian-paints-specialist-data-science-4474588111</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/asian-paints-specialist-data-science-4474588111</guid>
+    <pubDate>Fri, 02 Oct 2026 03:18:22 GMT</pubDate>
+    <description>Company: Asian Paints · Location: Mumbai Metropolitan Region
+• Build ml and ai solutions using azure and agentic frameworks
+• Develop llm apps with prompt engineering and vector search
+• Collaborate with cross-functional teams through deployment
+• Monitor and optimize deployed models for performance</description>
+  </item>
   <item>
     <title>Network Engineer, Capacity Restoration — Amazon Web Services (AWS)</title>
     <link>https://interndoor.com/jobs/amazon-web-services-aws-network-development-engineer-capacity-restoration-team-4474562066</link>
@@ -480,36 +511,6 @@
 • Automate workflows and systems using python and ansible
 • Build scalable automation in openstack and cloud-native tools
 • Collaborate on aioops and mlops pipelines for production systems</description>
-  </item>
-  <item>
-    <title>Data Engineer I — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-data-engineer-i-smartcommerce-4456356753</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-data-engineer-i-smartcommerce-4456356753</guid>
-    <pubDate>Thu, 01 Oct 2026 15:53:46 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Build and maintain data solutions for SmartBiz, Amazon&#39;s e-commerce platform for Indian sellers
-• Use SQL, Python, and AWS tools like Redshift and Glue to process large datasets
-• Collaborate on code reviews and design discussions with a growing analytics team</description>
-  </item>
-  <item>
-    <title>Data Engineer I — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-data-engineer-i-ftc-payfort-4456354786</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-data-engineer-i-ftc-payfort-4456354786</guid>
-    <pubDate>Thu, 01 Oct 2026 15:52:22 GMT</pubDate>
-    <description>Company: Amazon · Location: Chennai, Tamil Nadu, India
-• Build and maintain data pipelines for payment systems
-• Work with SQL, Python, and big data tools like Spark
-• Collaborate with cross-functional teams on payment infrastructure</description>
-  </item>
-  <item>
-    <title>Business Research Analyst I — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-business-research-analyst-i-rbs-tech-4455921376</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-business-research-analyst-i-rbs-tech-4455921376</guid>
-    <pubDate>Thu, 01 Oct 2026 15:52:10 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Build and optimize ML models for retail decisions using Python
-• Collaborate with engineers to deploy models in production
-• Analyze and benchmark AI/ML outputs for business impact</description>
   </item>
 </channel>
 </rss>
