@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cadence-computational-aeroelasticity-developer-4446404629",
+      "url": "https://interndoor.com/jobs/cadence-computational-aeroelasticity-developer-4446404629",
+      "title": "Computational Aeroelasticity Developer — Cadence",
+      "content_text": "Company: Cadence · Location: Pune/Pimpri-Chinchwad Area · Duration: 0–5 years\n• Develop aeroelastic simulation tools for subsonic to hypersonic flight\n• Use C++ and Python for scientific software and HPC optimization\n• Collaborate with teams on multidisciplinary aerospace simulations",
+      "date_published": "2026-10-02T17:47:08.766Z",
+      "authors": [
+        {
+          "name": "Cadence"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/veradigm-contractor-4437844364",
+      "url": "https://interndoor.com/jobs/veradigm-contractor-4437844364",
+      "title": "Contractor — Veradigm®",
+      "content_text": "Company: Veradigm® · Location: Pune Division, Maharashtra, India · Duration: 1–3 years\n• Resolve client issues via phone or internet with troubleshooting and problem-solving\n• Track support requests and collaborate with product teams to improve design\n• Work in a hybrid or office-based environment with standard hours and night shifts",
+      "date_published": "2026-10-02T17:45:08.367Z",
+      "authors": [
+        {
+          "name": "Veradigm®"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/lam-research-engineering-intern-1-4473344903",
       "url": "https://interndoor.com/jobs/lam-research-engineering-intern-1-4473344903",
       "title": "Engineering Intern 1 — Lam Research",
@@ -71,6 +95,30 @@
       "title": "Intermediate Applications Developer — UPS",
       "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Designs and develops complex applications\n• Works with java, spring boot, and no sql databases\n• Supports emerging tech and integration builds",
       "date_published": "2026-10-02T14:49:16.281Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ups-intermediate-applications-developer-chennai-4248975087",
+      "url": "https://interndoor.com/jobs/ups-intermediate-applications-developer-chennai-4248975087",
+      "title": "Applications Developer Intermediate — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Configure workday security policies across modules\n• Develop integrations using eib and workday studio\n• Support workday releases and system optimizations",
+      "date_published": "2026-10-02T14:47:40.400Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ups-intermediate-software-quality-engineer-chennai-4248969954",
+      "url": "https://interndoor.com/jobs/ups-intermediate-software-quality-engineer-chennai-4248969954",
+      "title": "Software Quality Engineer Intermediate — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Reviews and improves testing processes for UPS systems\n• Uses agile and safe methodologies in project execution\n• Works on complex projects with cross-functional teams",
+      "date_published": "2026-10-02T14:47:30.481Z",
       "authors": [
         {
           "name": "UPS"
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-associate-data-engineer-data-management-and-analytics-database-warehou-4446736301",
-      "url": "https://interndoor.com/jobs/exl-associate-data-engineer-data-management-and-analytics-database-warehou-4446736301",
-      "title": "Associate - Data Engineer-Data Management and Analytics-Database Warehousing — EXL",
-      "content_text": "Company: EXL · Location: Bengaluru, Karnataka, India\n• Write and optimize SQL queries for data extraction, transformation, and reporting\n• Design dimensional data models and automate data workflows with stored procedures\n• Collaborate with BI teams to translate business needs into SQL-based solutions",
-      "date_published": "2026-10-02T12:20:06.415Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-gcp-data-engineer-4446732201",
-      "url": "https://interndoor.com/jobs/exl-gcp-data-engineer-4446732201",
-      "title": "Data Engineer GCP — EXL",
-      "content_text": "Company: EXL · Location: Gurugram, Haryana, India\n• Build and scale data platforms using GCP services like BigQuery\n• Develop data pipelines with Python and SQL for ingestion and transformation\n• Collaborate with cross-functional teams on data-driven solutions\n• Operationalize datasets for reporting and dashboards in Tableau/Power BI",
-      "date_published": "2026-10-02T12:20:00.200Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/it-co-rust-developer-4473128839",
-      "url": "https://interndoor.com/jobs/it-co-rust-developer-4473128839",
-      "title": "Rust Developer — IT Co.",
-      "content_text": "Company: IT Co. · Location: Mumbai, Maharashtra, India\n• Design and develop core engine components for order and risk systems\n• Optimize concurrency, performance, and reliability in transaction paths\n• Work on low-latency, high-throughput systems with strict safety standards",
-      "date_published": "2026-10-02T12:19:23.844Z",
-      "authors": [
-        {
-          "name": "IT Co."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-soc-engineer-l2-4444153300",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-soc-engineer-l2-4444153300",
-      "title": "SOC Engineer - L2 — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitors security alerts, investigates threats, and escalates incidents\n• Installs firewalls, antivirus, and encryption tools to protect systems\n• Conducts vulnerability assessments and helps remediate security issues",
-      "date_published": "2026-10-02T12:19:02.729Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
         }
       ]
     }
