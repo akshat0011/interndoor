@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790977498583,
+ "generatedAt": 1790977667448,
  "region": "IN",
  "regionName": "India",
- "count": 1042,
- "techCount": 1042,
+ "count": 1044,
+ "techCount": 1044,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -196,6 +196,7 @@
   "Linde@India",
   "LinkedIn",
   "Lowe's India",
+  "MSD",
   "MUFG",
   "Macquarie Group",
   "Magna International",
@@ -456,6 +457,116 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4475026775",
+   "title": "Assoc. Spclst , Platform Engineer",
+   "company": "MSD",
+   "matchedWatchlist": "MSD",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/msd.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "aws",
+    "kubernetes",
+    "terraform",
+    "ci/cd",
+    "linux",
+    "git"
+   ],
+   "summary": "This role involves maintaining and improving DevXOps platforms used across the organization. You'll work with senior engineers to ensure reliable, secure, and scalable services. The position offers hands-on experience with cloud technologies, automation, and platform operations in a global healthcare biopharma company.",
+   "bullets": [
+    "Maintain and improve DevXOps platforms like JFrog Artifactory and GitHub Actions",
+    "Work with senior engineers on cloud technologies, Kubernetes, and automation",
+    "Support on-call rotations and ensure platform reliability and security"
+   ],
+   "roleLabel": "Platform Engineering",
+   "degreeLevel": "UG",
+   "degreeText": "Computer Science/Information Technology/Engineering",
+   "keySkills": [
+    "bash",
+    "git",
+    "kubernetes",
+    "python",
+    "ansible"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "26 minutes ago",
+   "postedAt": 1790975990670,
+   "firstSeenAt": 1790977550677,
+   "lastSeenAt": 1790977550677,
+   "url": "https://www.linkedin.com/jobs/view/4475026775/",
+   "applyUrl": "https://jobs.msd.com/gb/en/job/MSD1GBR417255ENGB/Assoc-Spclst-Platform-Engineer?utm_source=linkedin&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "2a1741543f",
+   "cardFacts": [
+    "Hyderabad",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "devops",
+   "region": "IN"
+  },
+  {
+   "id": "4473388555",
+   "title": "Data Scientist",
+   "company": "Cognizant",
+   "matchedWatchlist": "Cognizant",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/cognizant.jpg",
+   "location": "Bangalore Urban, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "rag",
+    "microservices"
+   ],
+   "summary": "This role involves designing and deploying AI agents that can reason and use tools. You'll work with Python and large language models to build scalable systems. It suits students with strong coding skills and interest in AI development.",
+   "bullets": [
+    "Build AI agents that plan, reason, and use tools",
+    "Work with Python, LLMs, APIs, and enterprise systems",
+    "Collaborate with data science and engineering teams"
+   ],
+   "roleLabel": "AI system development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "llms",
+    "apis",
+    "microservices",
+    "rag"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "58 minutes ago",
+   "postedAt": 1790974085837,
+   "firstSeenAt": 1790977565839,
+   "lastSeenAt": 1790977565839,
+   "url": "https://www.linkedin.com/jobs/view/4473388555/",
+   "applyUrl": "https://careers.cognizant.com/global-en/jobs/00069951151/data-scientist/?source=JB-11500",
+   "description": null,
+   "roleFingerprint": "a94673e371",
+   "cardFacts": [
+    "Bangalore Urban",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "ai_ml",
+   "region": "IN"
+  },
   {
    "id": "4466066186",
    "title": "Software Engineer",
