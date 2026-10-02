@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 01 Oct 2026 22:33:03 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 00:00:27 GMT</lastBuildDate>
+  <item>
+    <title>Data Analyst Intern — ByteDance</title>
+    <link>https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4474558190</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4474558190</guid>
+    <pubDate>Fri, 02 Oct 2026 00:00:27 GMT</pubDate>
+    <description>Company: ByteDance · Location: Gurgaon, Haryana, India
+• Analyze data and create reports for operations teams
+• Use excel and statistical tools to support decision-making
+• Work on short-term projects with real-world impact</description>
+  </item>
   <item>
     <title>AI Agent Engineer Intern — Lexsi Labs</title>
     <link>https://interndoor.com/jobs/lexsi-labs-ai-agent-engineer-intern-4472821905</link>
@@ -500,16 +510,6 @@
 • Threat model AI systems and LLM-powered features for security risks
 • Develop automation and tooling for AI security reviews using Python/Go
 • Collaborate with cross-functional teams on secure AI product design</description>
-  </item>
-  <item>
-    <title>Applied Scientist Edge AI — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-applied-scientist-alexa-edge-ai-4455901373</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-applied-scientist-alexa-edge-ai-4455901373</guid>
-    <pubDate>Thu, 01 Oct 2026 15:30:37 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Build deep learning models for computer vision, audio, and multimodal understanding
-• Own full ml lifecycle from data strategy to deployment at scale
-• Shape team culture and technical practices as a founding member</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4474558190",
+      "url": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4474558190",
+      "title": "Data Analyst Intern — ByteDance",
+      "content_text": "Company: ByteDance · Location: Gurgaon, Haryana, India\n• Analyze data and create reports for operations teams\n• Use excel and statistical tools to support decision-making\n• Work on short-term projects with real-world impact",
+      "date_published": "2026-10-02T00:00:27.850Z",
+      "authors": [
+        {
+          "name": "ByteDance"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/lexsi-labs-ai-agent-engineer-intern-4472821905",
       "url": "https://interndoor.com/jobs/lexsi-labs-ai-agent-engineer-intern-4472821905",
       "title": "AI Agent Engineer Intern — Lexsi Labs",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Autodesk"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-applied-scientist-alexa-edge-ai-4455901373",
-      "url": "https://interndoor.com/jobs/amazon-applied-scientist-alexa-edge-ai-4455901373",
-      "title": "Applied Scientist Edge AI — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Build deep learning models for computer vision, audio, and multimodal understanding\n• Own full ml lifecycle from data strategy to deployment at scale\n• Shape team culture and technical practices as a founding member",
-      "date_published": "2026-10-01T15:30:37.085Z",
-      "authors": [
-        {
-          "name": "Amazon"
         }
       ]
     }
