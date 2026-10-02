@@ -6,6 +6,90 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/exl-data-engineer-data-engineer-engineering-4446732408",
+      "url": "https://interndoor.com/jobs/exl-data-engineer-data-engineer-engineering-4446732408",
+      "title": "Data Engineer — EXL",
+      "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Build data pipelines and processing workflows\n• Optimize data storage and ensure accuracy\n• Collaborate with data scientists and analysts",
+      "date_published": "2026-10-02T11:22:08.473Z",
+      "authors": [
+        {
+          "name": "EXL"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/exl-techno-functional-4446570859",
+      "url": "https://interndoor.com/jobs/exl-techno-functional-4446570859",
+      "title": "Techno Functional — EXL",
+      "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Validate financial data across tm1, anaplan, and other systems daily\n• Build dashboards for visual financial insights and kpis\n• Collaborate with finance and it teams on reporting needs",
+      "date_published": "2026-10-02T11:22:02.495Z",
+      "authors": [
+        {
+          "name": "EXL"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-java-api-developer-4464822100",
+      "url": "https://interndoor.com/jobs/birlasoft-java-api-developer-4464822100",
+      "title": "Java API Developer — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and build secure restful apis with spring boot and java\n• Implement api security with oauth2, jwt, and rate limiting\n• Collaborate in agile teams and own services end-to-end",
+      "date_published": "2026-10-02T11:19:29.838Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kumaran-systems-python-automation-engineer-4456460458",
+      "url": "https://interndoor.com/jobs/kumaran-systems-python-automation-engineer-4456460458",
+      "title": "Python Automation Engineer — Kumaran Systems",
+      "content_text": "Company: Kumaran Systems · Location: Greater Hyderabad Area\n• Write and maintain automated test scripts using python and robot framework\n• Integrate test suites into ci/cd pipelines for continuous testing\n• Perform web automation with selenium webdriver and page object model",
+      "date_published": "2026-10-02T10:48:21.803Z",
+      "authors": [
+        {
+          "name": "Kumaran Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kumaran-systems-java-fullstack-developer-4456460459",
+      "url": "https://interndoor.com/jobs/kumaran-systems-java-fullstack-developer-4456460459",
+      "title": "Java Fullstack Developer — Kumaran Systems",
+      "content_text": "Company: Kumaran Systems · Location: Greater Hyderabad Area\n• Build full-stack web apps with Java, Spring Boot, and modern front-end frameworks\n• Collaborate with architects, QA, and DevOps on agile projects\n• Write clean, testable code and support CI/CD pipelines",
+      "date_published": "2026-10-02T10:43:32.008Z",
+      "authors": [
+        {
+          "name": "Kumaran Systems"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-security-threat-intelligence-and-hunting-analyst-4463470240",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-security-threat-intelligence-and-hunting-analyst-4463470240",
+      "title": "Security Threat Intelligence Analyst — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Greater Hyderabad Area\n• Analyze network traffic and logs to detect cyber threats\n• Maintain threat intelligence databases and conduct incident response\n• Collaborate with executives to shape cybersecurity strategies",
+      "date_published": "2026-10-02T10:43:07.817Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-international-machine-learning-4473127630",
+      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-international-machine-learning-4473127630",
+      "title": "Machine Learning Scientist — Amazon Science",
+      "content_text": "Company: Amazon Science · Location: Gurugram, Haryana, India\n• Build and deploy ML models to optimize millions of transactions daily\n• Work with software teams to implement real-time machine learning solutions\n• Collaborate with business partners to identify and solve complex problems",
+      "date_published": "2026-10-02T10:29:59.586Z",
+      "authors": [
+        {
+          "name": "Amazon Science"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/newton-school-of-technology-placement-and-tech-intern-4472886626",
       "url": "https://interndoor.com/jobs/newton-school-of-technology-placement-and-tech-intern-4472886626",
       "title": "Placement tech Intern — Newton School of Technology",
@@ -515,90 +599,6 @@
       "title": "Control M Systems Engineer — Societe Generale Global Solution Centre",
       "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Manage control-m infrastructure and automate tasks with shell/python scripts\n• Support production environments 24/7 and resolve critical issues\n• Work with cross-functional teams on complex scheduling systems",
       "date_published": "2026-10-01T16:22:48.566Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-python-developer-4474335441",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-python-developer-4474335441",
-      "title": "Specialist Software Engineer - Python Developer — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Build and maintain high-performance backup solutions using IBM TSM, Cohesity, and EMC Networker\n• Develop REST APIs for backup-as-a-service and manage 24x7 support rotations\n• Collaborate with vendors and stakeholders to resolve critical outages and create SOPs",
-      "date_published": "2026-10-01T16:07:41.543Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-application-tester-4474338360",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-application-tester-4474338360",
-      "title": "Application Tester Software engineer — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Write and execute test cases for software applications\n• Use .NET 6+, C#, SQL, Playwright/Selenium, and Git\n• Work on security, performance, and usability testing",
-      "date_published": "2026-10-01T16:07:29.589Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-software-engineer-planisware-support-4474349075",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-software-engineer-planisware-support-4474349075",
-      "title": "Planisware Support Engineer — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Support Planisware production systems for IT Steering Team\n• Use V2 scripting, Unix, Oracle, and SQL Server\n• Collaborate with BAs and follow Agile practices",
-      "date_published": "2026-10-01T16:07:11.943Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-system-engineer-python-openstack-4474342297",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-system-engineer-python-openstack-4474342297",
-      "title": "System Engineer Python Openstack — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Develop and maintain cloud infrastructure using OpenStack and VMware\n• Implement CI/CD pipelines with Python and PowerShell\n• Collaborate on DevOps practices and software development",
-      "date_published": "2026-10-01T16:07:10.098Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-public-cloud-devops-4474349077",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-public-cloud-devops-4474349077",
-      "title": "Public Cloud DevOps Engineer — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Chennai, Tamil Nadu, India\n• Manage cloud infrastructure on AWS and Azure, including EC2, VPC, and reverse proxy setups\n• Write Terraform and Ansible scripts for IaC, and build CI/CD pipelines with Jenkins or GitHub Actions\n• Work on Linux systems and troubleshoot OS issues in production cloud environments",
-      "date_published": "2026-10-01T16:07:03.835Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-site-reliability-engineer-sre-linux-patching-and-vulnerability-managem-4474337427",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-site-reliability-engineer-sre-linux-patching-and-vulnerability-managem-4474337427",
-      "title": "Site Reliability Engineer (SRE) – Linux, Patching & Vulnerability Management (CI/CD Platforms) — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Patch tools like Jenkins, Ansible, Jira, and Docker across servers and clouds\n• Use Terraform and Bash for automation and compliance tracking\n• Work with DevOps teams on patch windows and ITIL processes",
-      "date_published": "2026-10-01T16:07:01.226Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-analyst-model-validation-4474348183",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-analyst-model-validation-4474348183",
-      "title": "Model Validation Analyst — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Review and validate risk models for credit, market, and operational risks\n• Use SAS and R for quantitative analysis and backtesting\n• Work on Basel and IFRS 9 compliant models with global regulatory teams",
-      "date_published": "2026-10-01T16:06:58.020Z",
       "authors": [
         {
           "name": "Societe Generale Global Solution Centre"
