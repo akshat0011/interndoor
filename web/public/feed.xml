@@ -6,7 +6,47 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 02 Oct 2026 17:47:08 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 18:48:17 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer — Cisco</title>
+    <link>https://interndoor.com/jobs/cisco-software-engineer-4466066186</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cisco-software-engineer-4466066186</guid>
+    <pubDate>Fri, 02 Oct 2026 18:48:17 GMT</pubDate>
+    <description>Company: Cisco · Location: Bengaluru, Karnataka, India
+• Design and maintain scalable PaaS solutions using API Gateways and Kafka
+• Build full-stack platforms with React, Angular, Python, and Go
+• Lead system design and mentor junior engineers on architectural standards</description>
+  </item>
+  <item>
+    <title>Data Engineering Expert — SAP</title>
+    <link>https://interndoor.com/jobs/sap-forward-deployed-data-engineering-expert-4464555055</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/sap-forward-deployed-data-engineering-expert-4464555055</guid>
+    <pubDate>Fri, 02 Oct 2026 18:47:45 GMT</pubDate>
+    <description>Company: SAP · Location: Bengaluru, Karnataka, India
+• Design and build scalable data pipelines for analytics and AI use cases
+• Work with Python, SQL, PySpark, and cloud data platforms
+• Collaborate with cross-functional teams on customer projects</description>
+  </item>
+  <item>
+    <title>Embedded C IRC296739 — GlobalLogic</title>
+    <link>https://interndoor.com/jobs/globallogic-embedded-c-irc296739-4428061323</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-embedded-c-irc296739-4428061323</guid>
+    <pubDate>Fri, 02 Oct 2026 18:46:54 GMT</pubDate>
+    <description>Company: GlobalLogic · Location: Chennai, Tamil Nadu, India
+• Develop software for Linux-based embedded systems
+• Work with C/C++ and Linux kernel tools
+• Collaborate in a global team on high-tech projects</description>
+  </item>
+  <item>
+    <title>Functional Specialist (Data Management) – Associate 2 — State Street</title>
+    <link>https://interndoor.com/jobs/state-street-functional-specialist-data-management-associate-2-4475006009</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/state-street-functional-specialist-data-management-associate-2-4475006009</guid>
+    <pubDate>Fri, 02 Oct 2026 17:48:36 GMT</pubDate>
+    <description>Company: State Street · Location: Bengaluru, Karnataka, India · Duration: 1-2 years
+• Maintain master data integrity across key systems and ensure data quality through process design
+• Collaborate with SMEs and business/IT to align data rules with application operations
+• Resolve data issues and manage revisions to meet internal and customer requirements</description>
+  </item>
   <item>
     <title>Computational Aeroelasticity Developer — Cadence</title>
     <link>https://interndoor.com/jobs/cadence-computational-aeroelasticity-developer-4446404629</link>
@@ -469,46 +509,6 @@
 • Execute test scenarios and automate test plans using latest tools
 • Generate metrics and reports to improve product quality and training
 • Test agile projects and contribute to qa strategy development</description>
-  </item>
-  <item>
-    <title>Application Engineer — EXL</title>
-    <link>https://interndoor.com/jobs/exl-application-engineer-4446730232</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-application-engineer-4446730232</guid>
-    <pubDate>Fri, 02 Oct 2026 12:20:54 GMT</pubDate>
-    <description>Company: EXL · Location: Bengaluru, Karnataka, India
-• Code and debug software applications
-• Work with developers and stakeholders
-• Ensure applications meet business needs</description>
-  </item>
-  <item>
-    <title>Python Automation Engineer — Kumaran Systems</title>
-    <link>https://interndoor.com/jobs/kumaran-systems-python-automation-engineer-4456478162</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/kumaran-systems-python-automation-engineer-4456478162</guid>
-    <pubDate>Fri, 02 Oct 2026 12:20:38 GMT</pubDate>
-    <description>Company: Kumaran Systems · Location: Greater Hyderabad Area
-• Write and maintain automated test scripts using python and robot framework
-• Integrate test suites into ci/cd pipelines for continuous testing
-• Perform web automation with selenium and collaborate on defect resolution</description>
-  </item>
-  <item>
-    <title>Data Engineer+Data Analyst — EXL</title>
-    <link>https://interndoor.com/jobs/exl-data-engineer-data-analyst-4446727270</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-data-engineer-data-analyst-4446727270</guid>
-    <pubDate>Fri, 02 Oct 2026 12:20:20 GMT</pubDate>
-    <description>Company: EXL · Location: Pune Division, Maharashtra, India
-• Build and maintain ETL/ELT pipelines for data ingestion and transformation
-• Use Spark/PySpark and SQL for large-scale data processing and optimization
-• Implement data governance and security across pipelines and datasets</description>
-  </item>
-  <item>
-    <title>Algorithm Research Associate — KLA</title>
-    <link>https://interndoor.com/jobs/kla-associate-specialist-algorithm-research-and-development-4435651629</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/kla-associate-specialist-algorithm-research-and-development-4435651629</guid>
-    <pubDate>Fri, 02 Oct 2026 12:20:19 GMT</pubDate>
-    <description>Company: KLA · Location: Chennai, Tamil Nadu, India
-• Design and develop complex ML/DL algorithms for defect detection in semiconductor manufacturing
-• Work with TensorFlow/PyTorch to prototype and deploy image processing solutions
-• Collaborate with global teams on high-volume inspection systems for advanced chip processes</description>
   </item>
 </channel>
 </rss>
