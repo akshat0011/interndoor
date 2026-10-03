@@ -6,16 +6,26 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 03 Oct 2026 15:14:45 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 03 Oct 2026 17:11:16 GMT</lastBuildDate>
+  <item>
+    <title>Associate Quality Assurance Engineer - Intern — Kaleris</title>
+    <link>https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465180542</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465180542</guid>
+    <pubDate>Sat, 03 Oct 2026 17:11:16 GMT</pubDate>
+    <description>Company: Kaleris · Location: Chennai, Tamil Nadu, India
+• Write and execute test cases for software features
+• Use tools like UFT, TestNG, and Selenium for automation
+• Work in agile teams with mentors to improve product quality</description>
+  </item>
   <item>
     <title>Software Engineer Intern — Kaleris</title>
-    <link>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465176566</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465176566</guid>
-    <pubDate>Sat, 03 Oct 2026 15:14:45 GMT</pubDate>
+    <link>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465195495</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465195495</guid>
+    <pubDate>Sat, 03 Oct 2026 16:36:28 GMT</pubDate>
     <description>Company: Kaleris · Location: Chennai, Tamil Nadu, India
 • Build software for marine logistics using Java and SQL
 • Work on full stack from frontend to backend
-• Collaborate with product managers and QA teams</description>
+• Collaborate with product and QA teams on global projects</description>
   </item>
   <item>
     <title>UI UX Intern — AppVersal</title>
@@ -497,16 +507,6 @@
 • Automate network device deployment using CDK, Python, and infrastructure as code
 • Design and maintain next-gen security/edge networks with AWS CloudWAN and Transit Gateway
 • Collaborate with automation teams to scale network infrastructure across 500+ offices</description>
-  </item>
-  <item>
-    <title>Full Stack Software Engineer — UPS</title>
-    <link>https://interndoor.com/jobs/ups-intermediate-software-engineer-full-stack-c-dotnet-mvc-angular-azure-c-4248969973</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ups-intermediate-software-engineer-full-stack-c-dotnet-mvc-angular-azure-c-4248969973</guid>
-    <pubDate>Fri, 02 Oct 2026 15:21:30 GMT</pubDate>
-    <description>Company: UPS · Location: Chennai, Tamil Nadu, India
-• Develop and maintain full-stack applications using C#, .NET, Angular, and Azure
-• Collaborate on system design, integration, and maintenance tasks
-• Work with SQL databases and REST APIs in a team environment</description>
   </item>
 </channel>
 </rss>

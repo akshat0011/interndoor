@@ -6,11 +6,23 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465176566",
-      "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465176566",
+      "id": "https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465180542",
+      "url": "https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465180542",
+      "title": "Associate Quality Assurance Engineer - Intern — Kaleris",
+      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Write and execute test cases for software features\n• Use tools like UFT, TestNG, and Selenium for automation\n• Work in agile teams with mentors to improve product quality",
+      "date_published": "2026-10-03T17:11:16.714Z",
+      "authors": [
+        {
+          "name": "Kaleris"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465195495",
+      "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465195495",
       "title": "Software Engineer Intern — Kaleris",
-      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Build software for marine logistics using Java and SQL\n• Work on full stack from frontend to backend\n• Collaborate with product managers and QA teams",
-      "date_published": "2026-10-03T15:14:45.783Z",
+      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Build software for marine logistics using Java and SQL\n• Work on full stack from frontend to backend\n• Collaborate with product and QA teams on global projects",
+      "date_published": "2026-10-03T16:36:28.096Z",
       "authors": [
         {
           "name": "Kaleris"
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-software-engineer-full-stack-c-dotnet-mvc-angular-azure-c-4248969973",
-      "url": "https://interndoor.com/jobs/ups-intermediate-software-engineer-full-stack-c-dotnet-mvc-angular-azure-c-4248969973",
-      "title": "Full Stack Software Engineer — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Develop and maintain full-stack applications using C#, .NET, Angular, and Azure\n• Collaborate on system design, integration, and maintenance tasks\n• Work with SQL databases and REST APIs in a team environment",
-      "date_published": "2026-10-02T15:21:30.752Z",
-      "authors": [
-        {
-          "name": "UPS"
         }
       ]
     }
