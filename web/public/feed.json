@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140",
+      "url": "https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140",
+      "title": "Data Scientist Reinsurance Solutions — Aon",
+      "content_text": "Company: Aon · Location: Bengaluru, Karnataka, India\n• Analyze natural peril data to assess risk for reinsurance clients\n• Use python, sql, and machine learning to build predictive models\n• Collaborate with global team on catastrophe modeling and research",
+      "date_published": "2026-10-03T11:44:13.914Z",
+      "authors": [
+        {
+          "name": "Aon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025",
+      "url": "https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025",
+      "title": "Graphics Software Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Build and maintain tools for GPU drivers and software development\n• Use Python, TypeScript, C++, and Git for automation and integration\n• Collaborate with cross-functional teams on AI and graphics systems",
+      "date_published": "2026-10-03T11:02:48.433Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-ai-and-dsp-applications-software-engineer-4359186378",
+      "url": "https://interndoor.com/jobs/qualcomm-ai-and-dsp-applications-software-engineer-4359186378",
+      "title": "AI and DSP Applications Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop frameworks for AI processing on Snapdragon processors\n• Work with Android, Linux, and embedded systems\n• Collaborate with teams to solve technical challenges",
+      "date_published": "2026-10-03T11:00:58.358Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/smowcode-pcb-design-intern-4473427783",
       "url": "https://interndoor.com/jobs/smowcode-pcb-design-intern-4473427783",
       "title": "PCB Design Intern — Smowcode",
@@ -563,42 +599,6 @@
       "title": "AI ML Engineer — EXL",
       "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Build AI applications with Python and FastAPI\n• Use GCP tools like Vertex AI and BigQuery\n• Work on LLM pipelines and vector stores",
       "date_published": "2026-10-02T13:18:26.974Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-associate-business-analyst-data-engineering-cloud-data-engineering-4446740301",
-      "url": "https://interndoor.com/jobs/exl-associate-business-analyst-data-engineering-cloud-data-engineering-4446740301",
-      "title": "Data Engineering Associate — EXL",
-      "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Build and optimize container images using Kubernetes and Docker\n• Develop solutions using Python and cloud platforms like Azure or GCP\n• Analyze and resolve complex technical issues efficiently",
-      "date_published": "2026-10-02T13:17:39.402Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-associate-business-analyst-application-development-backend-development-4446744290",
-      "url": "https://interndoor.com/jobs/exl-associate-business-analyst-application-development-backend-development-4446744290",
-      "title": "Associate - Business Analyst-Application Development-Backend Development — EXL",
-      "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Write code in C# and .NET to build software features and components\n• Use Visual Studio, Web API, and ASP.NET to develop and test applications\n• Collaborate with teams on version control and CI/CD pipeline deployments",
-      "date_published": "2026-10-02T13:16:48.627Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-qa-etl-test-engineer-4446746036",
-      "url": "https://interndoor.com/jobs/exl-qa-etl-test-engineer-4446746036",
-      "title": "ETL Test Engineer — EXL",
-      "content_text": "Company: EXL · Location: Noida, Uttar Pradesh, India\n• Test data pipelines for ETL processes\n• Use powerbi or tableau for data visualization\n• Work in agile teams with jira or azure devops",
-      "date_published": "2026-10-02T12:58:23.427Z",
       "authors": [
         {
           "name": "EXL"

@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 03 Oct 2026 10:46:38 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 03 Oct 2026 11:44:13 GMT</lastBuildDate>
+  <item>
+    <title>Data Scientist Reinsurance Solutions — Aon</title>
+    <link>https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140</guid>
+    <pubDate>Sat, 03 Oct 2026 11:44:13 GMT</pubDate>
+    <description>Company: Aon · Location: Bengaluru, Karnataka, India
+• Analyze natural peril data to assess risk for reinsurance clients
+• Use python, sql, and machine learning to build predictive models
+• Collaborate with global team on catastrophe modeling and research</description>
+  </item>
+  <item>
+    <title>Graphics Software Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025</guid>
+    <pubDate>Sat, 03 Oct 2026 11:02:48 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Bengaluru, Karnataka, India
+• Build and maintain tools for GPU drivers and software development
+• Use Python, TypeScript, C++, and Git for automation and integration
+• Collaborate with cross-functional teams on AI and graphics systems</description>
+  </item>
+  <item>
+    <title>AI and DSP Applications Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-ai-and-dsp-applications-software-engineer-4359186378</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-ai-and-dsp-applications-software-engineer-4359186378</guid>
+    <pubDate>Sat, 03 Oct 2026 11:00:58 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Greater Hyderabad Area
+• Develop frameworks for AI processing on Snapdragon processors
+• Work with Android, Linux, and embedded systems
+• Collaborate with teams to solve technical challenges</description>
+  </item>
   <item>
     <title>PCB Design Intern — Smowcode</title>
     <link>https://interndoor.com/jobs/smowcode-pcb-design-intern-4473427783</link>
@@ -478,36 +508,6 @@
 • Build AI applications with Python and FastAPI
 • Use GCP tools like Vertex AI and BigQuery
 • Work on LLM pipelines and vector stores</description>
-  </item>
-  <item>
-    <title>Data Engineering Associate — EXL</title>
-    <link>https://interndoor.com/jobs/exl-associate-business-analyst-data-engineering-cloud-data-engineering-4446740301</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-associate-business-analyst-data-engineering-cloud-data-engineering-4446740301</guid>
-    <pubDate>Fri, 02 Oct 2026 13:17:39 GMT</pubDate>
-    <description>Company: EXL · Location: Noida, Uttar Pradesh, India
-• Build and optimize container images using Kubernetes and Docker
-• Develop solutions using Python and cloud platforms like Azure or GCP
-• Analyze and resolve complex technical issues efficiently</description>
-  </item>
-  <item>
-    <title>Associate - Business Analyst-Application Development-Backend Development — EXL</title>
-    <link>https://interndoor.com/jobs/exl-associate-business-analyst-application-development-backend-development-4446744290</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-associate-business-analyst-application-development-backend-development-4446744290</guid>
-    <pubDate>Fri, 02 Oct 2026 13:16:48 GMT</pubDate>
-    <description>Company: EXL · Location: Noida, Uttar Pradesh, India
-• Write code in C# and .NET to build software features and components
-• Use Visual Studio, Web API, and ASP.NET to develop and test applications
-• Collaborate with teams on version control and CI/CD pipeline deployments</description>
-  </item>
-  <item>
-    <title>ETL Test Engineer — EXL</title>
-    <link>https://interndoor.com/jobs/exl-qa-etl-test-engineer-4446746036</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-qa-etl-test-engineer-4446746036</guid>
-    <pubDate>Fri, 02 Oct 2026 12:58:23 GMT</pubDate>
-    <description>Company: EXL · Location: Noida, Uttar Pradesh, India
-• Test data pipelines for ETL processes
-• Use powerbi or tableau for data visualization
-• Work in agile teams with jira or azure devops</description>
   </item>
 </channel>
 </rss>
