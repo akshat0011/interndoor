@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 03 Oct 2026 17:33:03 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 03 Oct 2026 17:45:24 GMT</lastBuildDate>
+  <item>
+    <title>Quality Assurance Engineer I — Amazon</title>
+    <link>https://interndoor.com/jobs/amazon-quality-assurance-engineer-i-amazon-payment-services-4466355509</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-quality-assurance-engineer-i-amazon-payment-services-4466355509</guid>
+    <pubDate>Sat, 03 Oct 2026 17:45:24 GMT</pubDate>
+    <description>Company: Amazon · Location: Chennai, Tamil Nadu, India
+• Test software products and applications with QA team
+• Use selenium and soapui for ui and api automation
+• Collaborate with pm and tpm to design test strategies</description>
+  </item>
+  <item>
+    <title>App Dev &amp; Support Engineer I — Conduent</title>
+    <link>https://interndoor.com/jobs/conduent-app-dev-and-support-engineer-i-4457526904</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/conduent-app-dev-and-support-engineer-i-4457526904</guid>
+    <pubDate>Sat, 03 Oct 2026 17:38:03 GMT</pubDate>
+    <description>Company: Conduent · Location: Noida, Uttar Pradesh, India
+• Build and maintain backend services and APIs using .NET Core and C#
+• Work with SQL Server, Dapper, and Entity Framework for data access
+• Write automated tests with Playwright and use Azure DevOps for CI/CD</description>
+  </item>
   <item>
     <title>Associate Quality Assurance Engineer - Intern — Kaleris</title>
     <link>https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465181550</link>
@@ -16,6 +36,16 @@
 • Write and maintain test automation frameworks using UFT, TestNG, and Selenium
 • Collaborate with product and architecture teams to improve product quality
 • Work in agile scrum teams with mentorship and contribute to test automation development</description>
+  </item>
+  <item>
+    <title>Data Scientist AI — Amazon</title>
+    <link>https://interndoor.com/jobs/amazon-data-scientist-alexa-ai-4466424199</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-data-scientist-alexa-ai-4466424199</guid>
+    <pubDate>Sat, 03 Oct 2026 16:49:43 GMT</pubDate>
+    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
+• Analyze speech and text data to improve language technologies
+• Work with large-scale computing resources and ML frameworks
+• Impact millions of customers through speech and language products</description>
   </item>
   <item>
     <title>Software Engineer Intern — Kaleris</title>
@@ -477,36 +507,6 @@
 • Develop aeroelastic simulation tools for subsonic to hypersonic flight
 • Use C++ and Python for scientific software and HPC optimization
 • Collaborate with teams on multidisciplinary aerospace simulations</description>
-  </item>
-  <item>
-    <title>Contractor — Veradigm®</title>
-    <link>https://interndoor.com/jobs/veradigm-contractor-4437844364</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/veradigm-contractor-4437844364</guid>
-    <pubDate>Fri, 02 Oct 2026 17:45:08 GMT</pubDate>
-    <description>Company: Veradigm® · Location: Pune Division, Maharashtra, India · Duration: 1–3 years
-• Resolve client issues via phone or internet with troubleshooting and problem-solving
-• Track support requests and collaborate with product teams to improve design
-• Work in a hybrid or office-based environment with standard hours and night shifts</description>
-  </item>
-  <item>
-    <title>Application Security Engineer — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-security-engineer-stores-application-security-4465842349</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-security-engineer-stores-application-security-4465842349</guid>
-    <pubDate>Fri, 02 Oct 2026 15:22:04 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Inspect code for security issues in Java, Python, and JavaScript
-• Build tools to automate secure development practices
-• Collaborate with software teams to improve application security</description>
-  </item>
-  <item>
-    <title>Network Engineer Core — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-network-development-engineer-corporate-network-engineering-core-4465844353</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-network-development-engineer-corporate-network-engineering-core-4465844353</guid>
-    <pubDate>Fri, 02 Oct 2026 15:21:54 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Automate network device deployment using CDK, Python, and infrastructure as code
-• Design and maintain next-gen security/edge networks with AWS CloudWAN and Transit Gateway
-• Collaborate with automation teams to scale network infrastructure across 500+ offices</description>
   </item>
 </channel>
 </rss>
