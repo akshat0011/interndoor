@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/exl-power-bi-developer-sofi-4446739127",
+      "url": "https://interndoor.com/jobs/exl-power-bi-developer-sofi-4446739127",
+      "title": "Power BI Developer — EXL",
+      "content_text": "Company: EXL · Location: Gurugram, Haryana, India\n• Build and maintain power bi dashboards for business users\n• Use power query for data extraction and transformation\n• Optimize report performance and automate reporting workflows",
+      "date_published": "2026-10-03T13:21:20.337Z",
+      "authors": [
+        {
+          "name": "EXL"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/mufg-cyber-security-analyst-4475313696",
       "url": "https://interndoor.com/jobs/mufg-cyber-security-analyst-4475313696",
       "title": "Cyber Security Analyst — MUFG",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-frontend-developer-power-apps-4446731371",
-      "url": "https://interndoor.com/jobs/exl-frontend-developer-power-apps-4446731371",
-      "title": "Frontend Developer Power Apps — EXL",
-      "content_text": "Company: EXL · Location: Bengaluru, Karnataka, India\n• Design and build web apps with power apps focusing on ux\n• Collaborate with architects to implement app patterns\n• Own front-end experience from user needs to implementation",
-      "date_published": "2026-10-02T13:22:40.116Z",
-      "authors": [
-        {
-          "name": "EXL"
         }
       ]
     }
