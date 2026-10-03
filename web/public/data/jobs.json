@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791020805696,
+ "generatedAt": 1791021439737,
  "region": "IN",
  "regionName": "India",
- "count": 1028,
- "techCount": 1028,
+ "count": 1032,
+ "techCount": 1032,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -171,6 +171,7 @@
   "Instawork",
   "Jacobs",
   "Johnson & Johnson Innovative Medicine",
+  "Johnson Controls",
   "Joveo",
   "Jump Trading",
   "JungleWorks",
@@ -451,6 +452,304 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4456001007",
+   "title": "Data Analyst - Revenue Operations",
+   "company": "Clearwater Analytics",
+   "matchedWatchlist": "Clearwater Analytics",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/clearwater-analytics.jpg",
+   "location": "Noida, Uttar Pradesh, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "173 applicants",
+   "easyApply": true,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves maintaining salesforce data integrity and supporting sales processes through pipeline tracking and forecasting. Ideal for someone with a master's in business or economics and experience in data or reporting. You'll work closely with senior analysts and gain hands-on experience with sales tools and ai-driven platforms.",
+   "bullets": [
+    "Maintain data quality in salesforce with focus on accounts and territories",
+    "Support sales processes with pipeline tracking and forecasting",
+    "Collaborate with senior analysts on territory routing and crm administration"
+   ],
+   "roleLabel": "Data analysis",
+   "degreeLevel": "PG",
+   "degreeText": null,
+   "keySkills": [
+    "salesforce",
+    "excel",
+    "crm systems",
+    "pivot tables",
+    "data cleansing"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "11 minutes ago",
+   "postedAt": 1791020313738,
+   "firstSeenAt": 1791020973743,
+   "lastSeenAt": 1791020973743,
+   "url": "https://www.linkedin.com/jobs/view/4456001007/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4456001007/",
+   "description": null,
+   "roleFingerprint": "1c178def8f",
+   "cardFacts": [
+    "Noida"
+   ],
+   "category": "software",
+   "family": "data_eng",
+   "region": "IN"
+  },
+  {
+   "id": "4473844790",
+   "title": "Engineering Intern 1",
+   "company": "Lam Research",
+   "matchedWatchlist": "Lam Research",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/lam-research.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This internship involves designing and testing electrical systems for semiconductor manufacturing equipment. Ideal for electronics engineering students with a strong foundation in circuit analysis and simulation. You'll work on real projects, collaborate with teams, and gain hands-on experience with industry-standard tools.",
+   "bullets": [
+    "Design and develop electrical/electronic subsystems for semiconductor equipment",
+    "Simulate, test, and prototype circuits with cross-functional teams",
+    "Learn advanced CAD tools and understand product standards"
+   ],
+   "roleLabel": "Electrical Design",
+   "degreeLevel": "UG",
+   "degreeText": "B.E./B.Tech",
+   "keySkills": [
+    "cad tools",
+    "circuit testing"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "31 minutes ago",
+   "postedAt": 1791019183328,
+   "firstSeenAt": 1791021043331,
+   "lastSeenAt": 1791021043331,
+   "url": "https://www.linkedin.com/jobs/view/4473844790/",
+   "applyUrl": "https://careers.lamresearch.com/careers/job/1099556134488?src=Eightfold",
+   "description": null,
+   "roleFingerprint": "529bdeabd5",
+   "cardFacts": [
+    "Bengaluru",
+    "Hybrid"
+   ],
+   "category": "misc",
+   "family": "core_eng",
+   "region": "IN"
+  },
+  {
+   "id": "4473846958",
+   "title": "Software Engineer 1",
+   "company": "Lam Research",
+   "matchedWatchlist": "Lam Research",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/lam-research.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "29 applicants",
+   "easyApply": false,
+   "skills": [
+    "i2c",
+    "spi",
+    "uart",
+    "oop"
+   ],
+   "summary": "As a software engineer at Lam Research, you'll design and develop software tools that support hardware integration and product innovation. You'll collaborate with cross-functional teams and may visit customer sites for support. This role suits graduates with a strong foundation in object-oriented programming and communication protocols.",
+   "bullets": [
+    "Design develop troubleshoot and debug software for new products",
+    "Work with cross-functional teams and customer sites with limited travel",
+    "Maintain code base and document solutions with flowcharts and structured code"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "object oriented programming",
+    "multithreading",
+    "design patterns"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "32 minutes ago",
+   "postedAt": 1791019174314,
+   "firstSeenAt": 1791021094317,
+   "lastSeenAt": 1791021094317,
+   "url": "https://www.linkedin.com/jobs/view/4473846958/",
+   "applyUrl": "https://careers.lamresearch.com/careers/job/1099555962023?src=Eightfold",
+   "description": null,
+   "roleFingerprint": "280d3138d3",
+   "cardFacts": [
+    "Bengaluru",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN"
+  },
+  {
+   "id": "4473854507",
+   "title": "Programmer Analyst",
+   "slugTitle": "Programmer/Analyst 1",
+   "company": "Lam Research",
+   "matchedWatchlist": "Lam Research",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/lam-research.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "As a programmer analyst, you will design and maintain enterprise systems that support global business operations. This role suits students with a strong foundation in coding and systems analysis, offering hands-on experience in a dynamic technical environment.",
+   "bullets": [
+    "Develop scalable enterprise applications and databases",
+    "Analyze existing systems and design new logic",
+    "Code test and debug to ensure system efficiency"
+   ],
+   "roleLabel": "Systems Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "coding",
+    "testing",
+    "debugging"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "33 minutes ago",
+   "postedAt": 1791019168374,
+   "firstSeenAt": 1791021148377,
+   "lastSeenAt": 1791021148377,
+   "url": "https://www.linkedin.com/jobs/view/4473854507/",
+   "applyUrl": "https://careers.lamresearch.com/careers/job/1099555979982?src=Eightfold",
+   "description": null,
+   "roleFingerprint": "a48445aaa3",
+   "cardFacts": [
+    "Bengaluru",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN"
+  },
+  {
+   "id": "4455686444",
+   "title": "Engineer, DDEG Design Methodology",
+   "company": "Micron Technology",
+   "matchedWatchlist": "Micron Technology",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/micron-technology.png",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "104 applicants",
+   "easyApply": false,
+   "skills": [
+    "verilog",
+    "design verification"
+   ],
+   "summary": "This role involves working on DRAM and emerging memory verification projects, using AI and simulation tools to develop test cases and improve coverage. It suits students with a strong interest in semiconductor design and verification, requiring skills in Verilog and SPICE simulations.",
+   "bullets": [
+    "Simulate, analyze, and debug pre-silicon designs for DRAM and emerging memory",
+    "Use AI tools, automation, and Verilog for test-case development and coverage analysis",
+    "Collaborate with global teams on verification flows for advanced memory products"
+   ],
+   "roleLabel": "DRAM Verification Engineer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "verilog",
+    "spice",
+    "ai tools",
+    "automation frameworks"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "43 minutes ago",
+   "postedAt": 1791018363017,
+   "firstSeenAt": 1791020943021,
+   "lastSeenAt": 1791020943021,
+   "url": "https://www.linkedin.com/jobs/view/4455686444/",
+   "applyUrl": "https://careers.micron.com/careers/job/43844267?utm_source=linkedin&domain=micron.com&src=LinkedInJobs",
+   "description": null,
+   "roleFingerprint": "feb89d2247",
+   "cardFacts": [
+    "Hyderabad",
+    "On-site"
+   ],
+   "category": "hardware",
+   "family": "hardware",
+   "region": "IN"
+  },
+  {
+   "id": "4454138605",
+   "title": "Compliance Data Analytics, Monitoring, and AI Co-ordinator",
+   "company": "Johnson Controls",
+   "matchedWatchlist": "Johnson Controls",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/johnson-controls.jpg",
+   "location": "Pune/Pimpri-Chinchwad Area",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "88 applicants",
+   "easyApply": false,
+   "skills": [
+    "power bi"
+   ],
+   "summary": "This role involves developing data analytics tools to detect fraud and analyze compliance risks, building dashboards for risk insights, and designing ai agents to support compliance topics and automate tasks. It suits someone with experience in data analytics and ai, looking to work on ethical compliance programs in a global company.",
+   "bullets": [
+    "Develop analytics tools to detect fraud and analyze compliance risks",
+    "Build and maintain power bi dashboards for risk insights",
+    "Design ai agents to support compliance topics and automate tasks"
+   ],
+   "roleLabel": "Compliance data analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "power bi",
+    "copilot studio",
+    "sap",
+    "oracle",
+    "snowflake"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "44 minutes ago",
+   "postedAt": 1791018284539,
+   "firstSeenAt": 1791020924541,
+   "lastSeenAt": 1791020924541,
+   "url": "https://www.linkedin.com/jobs/view/4454138605/",
+   "applyUrl": "https://click.appcast.io/t/7iME1o93m_CozXh6ifFdQtDuiY3b-PGP6fBF30afzLbRT23Le6svivRZUVA8yFsW?source=appcast_LinkedIn",
+   "description": null,
+   "roleFingerprint": "828311c4c8",
+   "cardFacts": [
+    "Pune/Pimpri-Chinchwad Area",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "ai_ml",
+   "region": "IN"
+  },
   {
    "id": "4473819425",
    "title": "DEVELOPER L2",
@@ -1003,54 +1302,6 @@
    ],
    "category": "software",
    "family": "other",
-   "region": "IN"
-  },
-  {
-   "id": "4473344903",
-   "title": "Engineering Intern 1",
-   "company": "Lam Research",
-   "matchedWatchlist": "Lam Research",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/lam-research.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "stipend": null,
-   "duration": null,
-   "applicants": "29 applicants",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This internship involves designing and testing electrical systems for semiconductor manufacturing equipment. Ideal for electronics engineering students with a strong foundation in circuit analysis and design. You'll work on real projects, collaborate with teams, and gain hands-on experience with industry-standard tools.",
-   "bullets": [
-    "Design and develop electrical/electronic subsystems for semiconductor equipment",
-    "Simulate, test, and prototype circuits with cross-functional teams",
-    "Learn advanced CAD tools and understand product standards"
-   ],
-   "roleLabel": "Electrical Design",
-   "degreeLevel": "UG",
-   "degreeText": "B.E./B.Tech",
-   "experience": "Graduating 2026",
-   "keySkills": [
-    "digital circuit analysis",
-    "cad tools",
-    "circuit testing"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "21 minutes ago",
-   "postedAt": 1790956542411,
-   "firstSeenAt": 1790957802421,
-   "lastSeenAt": 1790966866466,
-   "url": "https://www.linkedin.com/jobs/view/4473344903/",
-   "applyUrl": "https://careers.lamresearch.com/careers/job/1099556124903?src=Eightfold",
-   "description": null,
-   "roleFingerprint": "72c5ff24ea",
-   "cardFacts": [
-    "Bengaluru",
-    "Hybrid"
-   ],
-   "category": "misc",
-   "family": "core_eng",
    "region": "IN"
   },
   {
@@ -4622,7 +4873,7 @@
    "postedText": "41 minutes ago",
    "postedAt": 1790912318419,
    "firstSeenAt": 1790914778426,
-   "lastSeenAt": 1790929079895,
+   "lastSeenAt": 1791020964365,
    "url": "https://www.linkedin.com/jobs/view/4472992912/",
    "applyUrl": "https://search.jobs.barclays/job/-/-/13015/97732941696?src=JB-12860",
    "description": null,
@@ -31940,57 +32191,6 @@
    ],
    "category": "software",
    "family": "swe",
-   "region": "IN"
-  },
-  {
-   "id": "4461947819",
-   "title": "Engineer, DDEG Design Methodology",
-   "company": "Micron Technology",
-   "matchedWatchlist": "Micron Technology",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/micron-technology.png",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "43 applicants",
-   "easyApply": false,
-   "skills": [
-    "verilog",
-    "design verification"
-   ],
-   "summary": "This role involves working on DRAM and emerging memory verification projects, using AI and simulation tools to develop test cases and improve coverage. It suits students with a strong interest in semiconductor design and verification, requiring skills in Verilog and SPICE simulations.",
-   "bullets": [
-    "Simulate, analyze, and debug pre-silicon designs for DRAM and emerging memory",
-    "Use AI tools, automation, and Verilog for test-case development and coverage analysis",
-    "Collaborate with global teams on verification flows for advanced memory products"
-   ],
-   "roleLabel": "DRAM Verification",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "verilog",
-    "spice",
-    "ai tools",
-    "automation frameworks"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "12 minutes ago",
-   "postedAt": 1790413680602,
-   "firstSeenAt": 1790414400608,
-   "lastSeenAt": 1790421669624,
-   "url": "https://www.linkedin.com/jobs/view/4461947819/",
-   "applyUrl": "https://careers.micron.com/careers/job/42799877?utm_source=linkedin&domain=micron.com&src=LinkedInJobs",
-   "description": null,
-   "roleFingerprint": "feb89d2247",
-   "cardFacts": [
-    "Hyderabad",
-    "On-site"
-   ],
-   "category": "hardware",
-   "family": "hardware",
    "region": "IN"
   },
   {
