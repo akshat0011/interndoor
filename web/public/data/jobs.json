@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791071198157,
+ "generatedAt": 1791071309022,
  "region": "IN",
  "regionName": "India",
- "count": 1058,
- "techCount": 1058,
+ "count": 1059,
+ "techCount": 1059,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -455,6 +455,64 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4473450584",
+   "title": "Big Data Analytics Analyst",
+   "slugTitle": "Analyst, Big Data Analytics & Engineering",
+   "company": "Mastercard",
+   "matchedWatchlist": "Mastercard",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/mastercard.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "machine learning",
+    "algorithms",
+    "tableau",
+    "power bi",
+    "excel"
+   ],
+   "summary": "Mastercard powers economies and empowers people in 200+ countries and territories worldwide. Together with our customers, we’re helping build a sustainable economy where everyone can prosper. We support a wide range of digital payments choices, making transactions secure, simple, smart and accessible. Our technology and innovation, partnerships and networks combine to deliver a unique set of products and services that help people, businesses and governments realize their greatest potential.",
+   "bullets": [
+    "Develop tools to quantify service value for pre-sales, using SQL and AI",
+    "Create dashboards with Tableau/Power BI for data-driven business insights",
+    "Collaborate with Sales, Marketing, and Product teams on tool deployment"
+   ],
+   "roleLabel": "Business Analytics",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "sql",
+    "tableau",
+    "power bi",
+    "python",
+    "excel"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "55 minutes ago",
+   "postedAt": 1791067954333,
+   "firstSeenAt": 1791071254343,
+   "lastSeenAt": 1791071254343,
+   "url": "https://www.linkedin.com/jobs/view/4473450584/",
+   "applyUrl": "https://careers.mastercard.com/us/en/job/MASRUSR289988EXTERNALENUS/Analyst-Big-Data-Analytics-Engineering?utm_source=linkedin&utm_medium=phenom-feeds&source=LINKEDIN",
+   "description": null,
+   "roleFingerprint": "546d4d3d90",
+   "cardFacts": [
+    "Pune Division",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "data_eng",
+   "region": "IN"
+  },
   {
    "id": "4456629532",
    "title": "Net Full stack developer",
@@ -38015,7 +38073,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1791049754257,
+   "lastSeenAt": 1791071266146,
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
    "applyUrl": "https://jobs.siemens.com/externaljobs/JobDetail/496914?source=LinkedIn&sourceType=PREMIUM_POST_SITE",
    "description": null,
