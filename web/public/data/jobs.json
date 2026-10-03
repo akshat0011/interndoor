@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791053200656,
+ "generatedAt": 1791053372425,
  "region": "IN",
  "regionName": "India",
- "count": 1056,
- "techCount": 1056,
+ "count": 1057,
+ "techCount": 1057,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -456,6 +456,58 @@
  ],
  "jobs": [
   {
+   "id": "4465157183",
+   "title": "EBIP Engineer",
+   "company": "Cognizant",
+   "matchedWatchlist": "Cognizant",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/cognizant.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "74 applicants",
+   "easyApply": false,
+   "skills": [
+    "sql",
+    "data structures"
+   ],
+   "summary": "This role involves designing and optimizing etl workflows to support business analytics and data integration. The candidate will work on complex data pipelines, collaborate with analysts, and mentor junior developers. It suits those with advanced informatica and sql skills looking to contribute to enterprise data solutions.",
+   "bullets": [
+    "Design and implement complex etl workflows using informatica powercenter and powerexchange",
+    "Optimize pl sql and sql queries for performance and scalability across enterprise data platforms",
+    "Collaborate with business analysts to translate requirements into technical etl designs",
+    "Mentor junior developers through code reviews and knowledge sharing sessions"
+   ],
+   "roleLabel": "Etl developer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "informatica powercenter",
+    "pl sql",
+    "sql",
+    "unix shell scripting"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "35 minutes ago",
+   "postedAt": 1791051194417,
+   "firstSeenAt": 1791053294427,
+   "lastSeenAt": 1791053294427,
+   "url": "https://www.linkedin.com/jobs/view/4465157183/",
+   "applyUrl": "https://careers.cognizant.com/global-en/jobs/00070223241/ebip-engineer/?source=JB-11500",
+   "description": null,
+   "roleFingerprint": "36a63ea6dc",
+   "cardFacts": [
+    "Hyderabad",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "generic",
+   "region": "IN"
+  },
+  {
    "id": "4465150000",
    "title": "Software Engineer Intern",
    "slugTitle": "Associate Software Engineer - Intern",
@@ -548,7 +600,7 @@
    "postedText": "3 minutes ago",
    "postedAt": 1791049524029,
    "firstSeenAt": 1791049704036,
-   "lastSeenAt": 1791049704036,
+   "lastSeenAt": 1791053255350,
    "url": "https://www.linkedin.com/jobs/view/4466355509/",
    "applyUrl": "https://www.amazon.jobs/jobs/10537192/quality-assurance-engineer-i-amazon-payment-services?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
    "description": null,
@@ -608,7 +660,7 @@
    "postedText": "10 minutes ago",
    "postedAt": 1791049083737,
    "firstSeenAt": 1791049683746,
-   "lastSeenAt": 1791049683746,
+   "lastSeenAt": 1791053248690,
    "url": "https://www.linkedin.com/jobs/view/4457526904/",
    "applyUrl": "https://click.appcast.io/t/5KzGRJ7dz8mxjeP8MRDsrDcAfZNSMpnO69y6Xe-OQNfCuYwpkjSLOtAo_PF6cfhY",
    "description": null,
@@ -662,7 +714,7 @@
    "postedText": "13 minutes ago",
    "postedAt": 1791048783279,
    "firstSeenAt": 1791049563289,
-   "lastSeenAt": 1791053192665,
+   "lastSeenAt": 1791053248690,
    "url": "https://www.linkedin.com/jobs/view/4465181550/",
    "applyUrl": "https://kaleris.wd501.myworkdayjobs.com/kaleris_careers/job/Chennai/Associate-Quality-Assurance-Engineer---Intern_R-100638?source=LinkedIn",
    "description": null,
