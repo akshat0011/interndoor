@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 03 Oct 2026 17:56:27 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 03 Oct 2026 18:13:14 GMT</lastBuildDate>
+  <item>
+    <title>EBIP Engineer — Cognizant</title>
+    <link>https://interndoor.com/jobs/cognizant-ebip-engineer-4465157183</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-ebip-engineer-4465157183</guid>
+    <pubDate>Sat, 03 Oct 2026 18:13:14 GMT</pubDate>
+    <description>Company: Cognizant · Location: Hyderabad, Telangana, India
+• Design and implement complex etl workflows using informatica powercenter and powerexchange
+• Optimize pl sql and sql queries for performance and scalability across enterprise data platforms
+• Collaborate with business analysts to translate requirements into technical etl designs
+• Mentor junior developers through code reviews and knowledge sharing sessions</description>
+  </item>
   <item>
     <title>Software Engineer Intern — Kaleris</title>
     <link>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465150000</link>
@@ -497,16 +508,6 @@
 • Maintain master data integrity across key systems and ensure data quality through process design
 • Collaborate with SMEs and business/IT to align data rules with application operations
 • Resolve data issues and manage revisions to meet internal and customer requirements</description>
-  </item>
-  <item>
-    <title>Computational Aeroelasticity Developer — Cadence</title>
-    <link>https://interndoor.com/jobs/cadence-computational-aeroelasticity-developer-4446404629</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cadence-computational-aeroelasticity-developer-4446404629</guid>
-    <pubDate>Fri, 02 Oct 2026 17:47:08 GMT</pubDate>
-    <description>Company: Cadence · Location: Pune/Pimpri-Chinchwad Area · Duration: 0–5 years
-• Develop aeroelastic simulation tools for subsonic to hypersonic flight
-• Use C++ and Python for scientific software and HPC optimization
-• Collaborate with teams on multidisciplinary aerospace simulations</description>
   </item>
 </channel>
 </rss>

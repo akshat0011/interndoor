@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cognizant-ebip-engineer-4465157183",
+      "url": "https://interndoor.com/jobs/cognizant-ebip-engineer-4465157183",
+      "title": "EBIP Engineer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Hyderabad, Telangana, India\n• Design and implement complex etl workflows using informatica powercenter and powerexchange\n• Optimize pl sql and sql queries for performance and scalability across enterprise data platforms\n• Collaborate with business analysts to translate requirements into technical etl designs\n• Mentor junior developers through code reviews and knowledge sharing sessions",
+      "date_published": "2026-10-03T18:13:14.417Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465150000",
       "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465150000",
       "title": "Software Engineer Intern — Kaleris",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "State Street"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cadence-computational-aeroelasticity-developer-4446404629",
-      "url": "https://interndoor.com/jobs/cadence-computational-aeroelasticity-developer-4446404629",
-      "title": "Computational Aeroelasticity Developer — Cadence",
-      "content_text": "Company: Cadence · Location: Pune/Pimpri-Chinchwad Area · Duration: 0–5 years\n• Develop aeroelastic simulation tools for subsonic to hypersonic flight\n• Use C++ and Python for scientific software and HPC optimization\n• Collaborate with teams on multidisciplinary aerospace simulations",
-      "date_published": "2026-10-02T17:47:08.766Z",
-      "authors": [
-        {
-          "name": "Cadence"
         }
       ]
     }
