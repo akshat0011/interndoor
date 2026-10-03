@@ -6,7 +6,68 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 03 Oct 2026 09:38:33 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 03 Oct 2026 10:46:38 GMT</lastBuildDate>
+  <item>
+    <title>PCB Design Intern — Smowcode</title>
+    <link>https://interndoor.com/jobs/smowcode-pcb-design-intern-4473427783</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/smowcode-pcb-design-intern-4473427783</guid>
+    <pubDate>Sat, 03 Oct 2026 10:46:38 GMT</pubDate>
+    <description>Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months
+• Design and test PCBs for microcontroller-based IoT and automation projects
+• Use UART, SPI, I2C, HTTP, and MQTT for hardware communication
+• Work in a startup with potential full-time offers after 6 months</description>
+  </item>
+  <item>
+    <title>XR Software Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-xr-software-engineer-all-levels-multiple-positions-4464887148</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-xr-software-engineer-all-levels-multiple-positions-4464887148</guid>
+    <pubDate>Sat, 03 Oct 2026 10:40:44 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Bengaluru, Karnataka, India · Duration: 2 to 10 years
+• Design and develop embedded and cloud edge software for AR/VR/XR platforms
+• Work with cross-functional teams on computer vision and hardware-software integration
+• Implement and validate state-of-the-art algorithms for commercial XR products</description>
+  </item>
+  <item>
+    <title>Jr GIS Cartographer — SiteRecon</title>
+    <link>https://interndoor.com/jobs/siterecon-jr-gis-cartographers-immediate-joiners-4473430732</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/siterecon-jr-gis-cartographers-immediate-joiners-4473430732</guid>
+    <pubDate>Sat, 03 Oct 2026 10:37:43 GMT</pubDate>
+    <description>Company: SiteRecon · Location: Noida, Uttar Pradesh, India · Duration: 0–1 years
+• Digitize geographic features from satellite imagery and aerial photography
+• Use qgis to create, edit, and update digital maps
+• Maintain geodatabases for efficient data handling
+• Work in a fast-paced startup environment</description>
+  </item>
+  <item>
+    <title>Linker Developer Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-engineer-linker-developer-4437070006</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-engineer-linker-developer-4437070006</guid>
+    <pubDate>Sat, 03 Oct 2026 10:32:31 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Greater Hyderabad Area · Duration: 1-3 years
+• Optimize and enhance open-source linker for embedded platforms
+• Work with compiler and runtime teams on high-performance toolchains
+• Contribute to open-source projects and global developer community</description>
+  </item>
+  <item>
+    <title>Kafka Engineer — Fractal</title>
+    <link>https://interndoor.com/jobs/fractal-kafka-engineer-4235870576</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/fractal-kafka-engineer-4235870576</guid>
+    <pubDate>Sat, 03 Oct 2026 10:08:11 GMT</pubDate>
+    <description>Company: Fractal · Location: Bengaluru, Karnataka, India
+• Design and manage Kafka and Confluent infrastructure for real-time data pipelines
+• Deploy and scale Kafka clusters on-prem and in cloud environments
+• Collaborate with data engineers and backend teams on streaming integration</description>
+  </item>
+  <item>
+    <title>Database Testing — Dentsu Global Services</title>
+    <link>https://interndoor.com/jobs/dentsu-global-services-database-etl-testing-4464898652</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/dentsu-global-services-database-etl-testing-4464898652</guid>
+    <pubDate>Sat, 03 Oct 2026 10:02:25 GMT</pubDate>
+    <description>Company: Dentsu Global Services · Location: Pune/Pimpri-Chinchwad Area
+• Write test plans, design test cases, and develop SQL scripts for database testing
+• Perform functional, regression, and load testing across data warehouses
+• Track defects in JIRA and validate fixes across test cycles</description>
+  </item>
   <item>
     <title>Data Analyst - Revenue Operations — Clearwater Analytics</title>
     <link>https://interndoor.com/jobs/clearwater-analytics-data-analyst-revenue-operations-4456001007</link>
@@ -447,66 +508,6 @@
 • Test data pipelines for ETL processes
 • Use powerbi or tableau for data visualization
 • Work in agile teams with jira or azure devops</description>
-  </item>
-  <item>
-    <title>Data Scientist — EXL</title>
-    <link>https://interndoor.com/jobs/exl-data-scientist-data-science-data-scientist-4446725483</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-data-scientist-data-science-data-scientist-4446725483</guid>
-    <pubDate>Fri, 02 Oct 2026 12:55:34 GMT</pubDate>
-    <description>Company: EXL · Location: Gurugram, Haryana, India
-• Build statistical models and analyze large datasets
-• Collaborate with data professionals to solve complex problems
-• Present findings to stakeholders to improve business outcomes</description>
-  </item>
-  <item>
-    <title>Data Scientist Gen AI — EXL</title>
-    <link>https://interndoor.com/jobs/exl-data-scientist-gen-ai-offshore-4446571705</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-data-scientist-gen-ai-offshore-4446571705</guid>
-    <pubDate>Fri, 02 Oct 2026 12:55:10 GMT</pubDate>
-    <description>Company: EXL · Location: Gurugram, Haryana, India
-• Build GenAI solutions using LLMs for customer service and document automation
-• Use LangChain, Hugging Face, and FAISS for prompt engineering and vector search
-• Collaborate with product and MLOps teams to deploy AI APIs in regulated industries</description>
-  </item>
-  <item>
-    <title>Java Full Stack Developer — EXL</title>
-    <link>https://interndoor.com/jobs/exl-java-full-stack-developer-4446734156</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-java-full-stack-developer-4446734156</guid>
-    <pubDate>Fri, 02 Oct 2026 12:49:25 GMT</pubDate>
-    <description>Company: EXL · Location: Bengaluru, Karnataka, India
-• Build and maintain web apps from scratch using java and frontend frameworks
-• Work with cross-functional teams on scalable solutions and architectural decisions
-• Contribute to end-to-end development lifecycle in a fast-paced environment</description>
-  </item>
-  <item>
-    <title>Cat Modeler — EXL</title>
-    <link>https://interndoor.com/jobs/exl-cat-modeler-4446743056</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-cat-modeler-4446743056</guid>
-    <pubDate>Fri, 02 Oct 2026 12:48:44 GMT</pubDate>
-    <description>Company: EXL · Location: Gurugram, Haryana, India
-• Write and debug code for software applications
-• Work with developers and stakeholders on features
-• Solve technical problems in production systems</description>
-  </item>
-  <item>
-    <title>Full Stack Web Developer — EXL</title>
-    <link>https://interndoor.com/jobs/exl-full-stack-web-developer-react-node-js-4446577561</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-full-stack-web-developer-react-node-js-4446577561</guid>
-    <pubDate>Fri, 02 Oct 2026 12:45:56 GMT</pubDate>
-    <description>Company: EXL · Location: Gurugram, Haryana, India
-• Build invoice and receipt reports with React and Node.js
-• Work with Db2 stored procedures and Metabase
-• Create pixel-perfect layouts for enterprise users</description>
-  </item>
-  <item>
-    <title>QA Automation Engineer — EXL</title>
-    <link>https://interndoor.com/jobs/exl-automation-qa-engineer-4446737097</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-automation-qa-engineer-4446737097</guid>
-    <pubDate>Fri, 02 Oct 2026 12:41:52 GMT</pubDate>
-    <description>Company: EXL · Location: Pune Division, Maharashtra, India
-• Write automated tests in Java using Selenium and AI tools
-• Work with TestNG/JUnit and CI/CD tools like Jenkins
-• Collaborate with developers and product teams on test frameworks</description>
   </item>
 </channel>
 </rss>
