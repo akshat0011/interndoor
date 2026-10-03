@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/amazon-quality-assurance-engineer-i-amazon-payment-services-4466355509",
+      "url": "https://interndoor.com/jobs/amazon-quality-assurance-engineer-i-amazon-payment-services-4466355509",
+      "title": "Quality Assurance Engineer I — Amazon",
+      "content_text": "Company: Amazon · Location: Chennai, Tamil Nadu, India\n• Test software products and applications with QA team\n• Use selenium and soapui for ui and api automation\n• Collaborate with pm and tpm to design test strategies",
+      "date_published": "2026-10-03T17:45:24.029Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/conduent-app-dev-and-support-engineer-i-4457526904",
+      "url": "https://interndoor.com/jobs/conduent-app-dev-and-support-engineer-i-4457526904",
+      "title": "App Dev & Support Engineer I — Conduent",
+      "content_text": "Company: Conduent · Location: Noida, Uttar Pradesh, India\n• Build and maintain backend services and APIs using .NET Core and C#\n• Work with SQL Server, Dapper, and Entity Framework for data access\n• Write automated tests with Playwright and use Azure DevOps for CI/CD",
+      "date_published": "2026-10-03T17:38:03.737Z",
+      "authors": [
+        {
+          "name": "Conduent"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465181550",
       "url": "https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465181550",
       "title": "Associate Quality Assurance Engineer - Intern — Kaleris",
@@ -14,6 +38,18 @@
       "authors": [
         {
           "name": "Kaleris"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-data-scientist-alexa-ai-4466424199",
+      "url": "https://interndoor.com/jobs/amazon-data-scientist-alexa-ai-4466424199",
+      "title": "Data Scientist AI — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Analyze speech and text data to improve language technologies\n• Work with large-scale computing resources and ML frameworks\n• Impact millions of customers through speech and language products",
+      "date_published": "2026-10-03T16:49:43.738Z",
+      "authors": [
+        {
+          "name": "Amazon"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Cadence"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/veradigm-contractor-4437844364",
-      "url": "https://interndoor.com/jobs/veradigm-contractor-4437844364",
-      "title": "Contractor — Veradigm®",
-      "content_text": "Company: Veradigm® · Location: Pune Division, Maharashtra, India · Duration: 1–3 years\n• Resolve client issues via phone or internet with troubleshooting and problem-solving\n• Track support requests and collaborate with product teams to improve design\n• Work in a hybrid or office-based environment with standard hours and night shifts",
-      "date_published": "2026-10-02T17:45:08.367Z",
-      "authors": [
-        {
-          "name": "Veradigm®"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-security-engineer-stores-application-security-4465842349",
-      "url": "https://interndoor.com/jobs/amazon-security-engineer-stores-application-security-4465842349",
-      "title": "Application Security Engineer — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Inspect code for security issues in Java, Python, and JavaScript\n• Build tools to automate secure development practices\n• Collaborate with software teams to improve application security",
-      "date_published": "2026-10-02T15:22:04.191Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-network-development-engineer-corporate-network-engineering-core-4465844353",
-      "url": "https://interndoor.com/jobs/amazon-network-development-engineer-corporate-network-engineering-core-4465844353",
-      "title": "Network Engineer Core — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Automate network device deployment using CDK, Python, and infrastructure as code\n• Design and maintain next-gen security/edge networks with AWS CloudWAN and Transit Gateway\n• Collaborate with automation teams to scale network infrastructure across 500+ offices",
-      "date_published": "2026-10-02T15:21:54.386Z",
-      "authors": [
-        {
-          "name": "Amazon"
         }
       ]
     }

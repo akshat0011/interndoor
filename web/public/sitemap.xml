@@ -41,7 +41,7 @@
   <url><loc>https://interndoor.com/skills/tensorflow</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/deep-learning</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/kafka</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/postgresql</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/tableau</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
@@ -62,8 +62,8 @@
   <url><loc>https://interndoor.com/skills/perl</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/spi</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/i2c</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/oop</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pcb</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/ruby</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/verilog</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
@@ -117,8 +117,8 @@
   <url><loc>https://interndoor.com/roles/qa-testing-in-bengaluru</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-chennai</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-hyderabad</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-gurugram</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/qa-testing-in-chennai</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-gurugram</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/backend-development-in-bengaluru</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-pune</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/core-engineering-in-bengaluru</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
@@ -127,7 +127,10 @@
   <url><loc>https://interndoor.com/roles/full-stack-development-in-bengaluru</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-pune</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development-in-chennai</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/amazon-quality-assurance-engineer-i-amazon-payment-services-4466355509</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/conduent-app-dev-and-support-engineer-i-4457526904</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/kaleris-associate-quality-assurance-engineer-intern-4465181550</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/amazon-data-scientist-alexa-ai-4466424199</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465195495</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/appversal-ui-ux-intern-4473870271</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/amazon-playback-ops-sys-dev-engineer-playback-operations-systems-group-4466421218</loc><lastmod>2026-10-03</lastmod><priority>0.8</priority></url>
@@ -1173,9 +1176,10 @@
   <url><loc>https://interndoor.com/jobs/hevo-data-ux-design-intern-ats-lever-hevodata-433ffdef-3125-48ed-a131-52c697c321ee</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/eclerx-intern-ats-oraclecloud-fa-ewji-saasfaprod1-fa-ocs-oraclecloud-com-81650</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/amazon</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/conduent</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/kaleris</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/appversal</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/amazon</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/eclerx</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/fedex</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/idfc-first-bank</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
