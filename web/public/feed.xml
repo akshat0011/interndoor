@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 03 Oct 2026 22:52:34 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 00:52:49 GMT</lastBuildDate>
+  <item>
+    <title>DEVELOPER L2 — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-developer-l2-4475346775</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-developer-l2-4475346775</guid>
+    <pubDate>Sun, 04 Oct 2026 00:52:49 GMT</pubDate>
+    <description>Company: Wipro · Location: Bengaluru, Karnataka, India · Duration: 1-3 years
+• Write and test code for client projects
+• Use aws emr for configuration tasks
+• Collaborate with teams on project needs</description>
+  </item>
+  <item>
+    <title>CYBER SECURITY ANALYST L2 — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-cyber-security-analyst-l2-4475344774</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-cyber-security-analyst-l2-4475344774</guid>
+    <pubDate>Sun, 04 Oct 2026 00:48:26 GMT</pubDate>
+    <description>Company: Wipro · Location: Chennai, Tamil Nadu, India · Duration: 1-3 years
+• Review logs to detect malware and unauthorized access
+• Triage security incidents and document findings
+• Support vulnerability assessments and data collection</description>
+  </item>
   <item>
     <title>Big Data Analytics Analyst — Mastercard</title>
     <link>https://interndoor.com/jobs/mastercard-analyst-big-data-analytics-and-engineering-4473450584</link>
@@ -488,26 +508,6 @@
 • Build AI agents that plan, reason, and use tools
 • Work with Python, LLMs, APIs, and enterprise systems
 • Collaborate with data science and engineering teams</description>
-  </item>
-  <item>
-    <title>Software Engineer — Cisco</title>
-    <link>https://interndoor.com/jobs/cisco-software-engineer-4466066186</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cisco-software-engineer-4466066186</guid>
-    <pubDate>Fri, 02 Oct 2026 18:48:17 GMT</pubDate>
-    <description>Company: Cisco · Location: Bengaluru, Karnataka, India
-• Design and maintain scalable PaaS solutions using API Gateways and Kafka
-• Build full-stack platforms with React, Angular, Python, and Go
-• Lead system design and mentor junior engineers on architectural standards</description>
-  </item>
-  <item>
-    <title>Data Engineering Expert — SAP</title>
-    <link>https://interndoor.com/jobs/sap-forward-deployed-data-engineering-expert-4464555055</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/sap-forward-deployed-data-engineering-expert-4464555055</guid>
-    <pubDate>Fri, 02 Oct 2026 18:47:45 GMT</pubDate>
-    <description>Company: SAP · Location: Bengaluru, Karnataka, India
-• Design and build scalable data pipelines for analytics and AI use cases
-• Work with Python, SQL, PySpark, and cloud data platforms
-• Collaborate with cross-functional teams on customer projects</description>
   </item>
 </channel>
 </rss>
