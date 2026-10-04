@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wipro-developer-l2-4475346775",
+      "url": "https://interndoor.com/jobs/wipro-developer-l2-4475346775",
+      "title": "DEVELOPER L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Bengaluru, Karnataka, India · Duration: 1-3 years\n• Write and test code for client projects\n• Use aws emr for configuration tasks\n• Collaborate with teams on project needs",
+      "date_published": "2026-10-04T00:52:49.077Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wipro-cyber-security-analyst-l2-4475344774",
+      "url": "https://interndoor.com/jobs/wipro-cyber-security-analyst-l2-4475344774",
+      "title": "CYBER SECURITY ANALYST L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Chennai, Tamil Nadu, India · Duration: 1-3 years\n• Review logs to detect malware and unauthorized access\n• Triage security incidents and document findings\n• Support vulnerability assessments and data collection",
+      "date_published": "2026-10-04T00:48:26.926Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/mastercard-analyst-big-data-analytics-and-engineering-4473450584",
       "url": "https://interndoor.com/jobs/mastercard-analyst-big-data-analytics-and-engineering-4473450584",
       "title": "Big Data Analytics Analyst — Mastercard",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cisco-software-engineer-4466066186",
-      "url": "https://interndoor.com/jobs/cisco-software-engineer-4466066186",
-      "title": "Software Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Design and maintain scalable PaaS solutions using API Gateways and Kafka\n• Build full-stack platforms with React, Angular, Python, and Go\n• Lead system design and mentor junior engineers on architectural standards",
-      "date_published": "2026-10-02T18:48:17.324Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sap-forward-deployed-data-engineering-expert-4464555055",
-      "url": "https://interndoor.com/jobs/sap-forward-deployed-data-engineering-expert-4464555055",
-      "title": "Data Engineering Expert — SAP",
-      "content_text": "Company: SAP · Location: Bengaluru, Karnataka, India\n• Design and build scalable data pipelines for analytics and AI use cases\n• Work with Python, SQL, PySpark, and cloud data platforms\n• Collaborate with cross-functional teams on customer projects",
-      "date_published": "2026-10-02T18:47:45.778Z",
-      "authors": [
-        {
-          "name": "SAP"
         }
       ]
     }
