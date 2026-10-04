@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498",
+      "title": "Autonomous Infrastructure Research Intern — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Design autonomous systems for datacenter platforms using telemetry and observability\n• Work with C/C++, Python, and open network OS like SONiC\n• Collaborate with senior researchers on AI-driven infrastructure projects",
+      "date_published": "2026-10-04T15:36:42.731Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-4473497099",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-4473497099",
+      "title": "AI Research Intern PhD — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Simulate AI networks at scale using tools like Astra-Sim and Chakra\n• Analyze congestion and protocol performance with real hardware insights\n• Work on research with potential for publication and product impact",
+      "date_published": "2026-10-04T15:36:32.723Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/atidan-technologies-software-trainee-4463794839",
       "url": "https://interndoor.com/jobs/atidan-technologies-software-trainee-4463794839",
       "title": "Software Trainee — Atidan Technologies",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-ai-and-dsp-applications-software-engineer-4359186378",
-      "url": "https://interndoor.com/jobs/qualcomm-ai-and-dsp-applications-software-engineer-4359186378",
-      "title": "AI and DSP Applications Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop frameworks for AI processing on Snapdragon processors\n• Work with Android, Linux, and embedded systems\n• Collaborate with teams to solve technical challenges",
-      "date_published": "2026-10-03T11:00:58.358Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/smowcode-pcb-design-intern-4473427783",
-      "url": "https://interndoor.com/jobs/smowcode-pcb-design-intern-4473427783",
-      "title": "PCB Design Intern — Smowcode",
-      "content_text": "Company: Smowcode · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Design and test PCBs for microcontroller-based IoT and automation projects\n• Use UART, SPI, I2C, HTTP, and MQTT for hardware communication\n• Work in a startup with potential full-time offers after 6 months",
-      "date_published": "2026-10-03T10:46:38.481Z",
-      "authors": [
-        {
-          "name": "Smowcode"
         }
       ]
     }
