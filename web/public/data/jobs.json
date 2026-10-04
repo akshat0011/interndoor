@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791146843967,
+ "generatedAt": 1791146979062,
  "region": "IN",
  "regionName": "India",
- "count": 1071,
- "techCount": 1071,
+ "count": 1073,
+ "techCount": 1073,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -349,6 +349,7 @@
   "eClerx",
   "eSec Forte® Technologies",
   "ixigo",
+  "onsemi",
   "osto",
   "pharma&",
   "project44",
@@ -459,6 +460,110 @@
  ],
  "jobs": [
   {
+   "id": "4464740375",
+   "title": "Algorithm Design Engineer",
+   "company": "onsemi",
+   "matchedWatchlist": "onsemi",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/onsemi.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "algorithms"
+   ],
+   "summary": "This role involves designing image processing algorithms for semiconductor applications, focusing on technology, power, and area constraints. Candidates will develop new solutions using data-mining and physical modeling, build testing tools, and contribute to validation processes. Ideal for those with strong programming and math skills looking to work on cutting-edge semiconductor technologies.",
+   "bullets": [
+    "Design image processing algorithms for technology, power and area constraints",
+    "Use data-mining and physical modeling to develop new solutions",
+    "Build regression databases and calibration tools for testing",
+    "Work with team on semiconductor applications"
+   ],
+   "roleLabel": "Algorithm design",
+   "degreeLevel": "UG",
+   "degreeText": "B.Tech",
+   "keySkills": [
+    "image processing",
+    "data-mining"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791143310690,
+   "firstSeenAt": 1791146910694,
+   "lastSeenAt": 1791146910694,
+   "url": "https://www.linkedin.com/jobs/view/4464740375/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4464740375/",
+   "description": null,
+   "roleFingerprint": "905b393371",
+   "cardFacts": [
+    "Bengaluru"
+   ],
+   "category": "misc",
+   "family": "core_eng",
+   "region": "IN"
+  },
+  {
+   "id": "4429045470",
+   "title": "Threat Detection Engineer",
+   "company": "Millennium",
+   "matchedWatchlist": "Millennium Management",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/millennium.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "linux"
+   ],
+   "summary": "This role involves identifying and responding to security threats by analyzing data from networks and endpoints. You'll build automated detection tools and work with cross-functional teams to enforce security policies. Ideal for someone with a background in cybersecurity and experience with security tools and scripting.",
+   "bullets": [
+    "Analyze network and endpoint data to identify and respond to threats",
+    "Build and automate detection workflows using KQL, SQL, and PowerShell",
+    "Collaborate with business and tech teams to enforce security policies"
+   ],
+   "roleLabel": "Threat Detection",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "kql",
+    "sql",
+    "powershell",
+    "python",
+    "active directory",
+    "entra",
+    "intune",
+    "microsoft 365"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791143298585,
+   "firstSeenAt": 1791146898591,
+   "lastSeenAt": 1791146898591,
+   "url": "https://www.linkedin.com/jobs/view/4429045470/",
+   "applyUrl": "https://mlp.eightfold.ai/careers/job/755955794650?domain=mlp.com&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "bee8f6d063",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "security",
+   "region": "IN"
+  },
+  {
    "id": "4474207939",
    "title": "Security Analyst I",
    "company": "Levi Strauss & Co.",
@@ -484,7 +589,7 @@
    "postedText": "35 minutes ago",
    "postedAt": 1791141209357,
    "firstSeenAt": 1791143309360,
-   "lastSeenAt": 1791146822792,
+   "lastSeenAt": 1791146925726,
    "url": "https://www.linkedin.com/jobs/view/4474207939/",
    "applyUrl": "https://levistraussandco.wd5.myworkdayjobs.com/External/job/GCC-Office--ITC-Green-Center-Bengaluru-Karnataka-India/Security-Analyst-I_R-0157595?source=LinkedIn",
    "description": null,

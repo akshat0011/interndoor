@@ -99,7 +99,7 @@
   <url><loc>https://interndoor.com/roles/cybersecurity</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/backend-development</loc><lastmod>2026-10-02</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/roles/core-engineering</loc><lastmod>2026-10-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/roles/core-engineering</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/it-support</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/sap-salesforce</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/embedded-systems</loc><lastmod>2026-10-02</lastmod><priority>0.7</priority></url>
@@ -121,12 +121,14 @@
   <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-gurugram</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-pune</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/backend-development-in-bengaluru</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/core-engineering-in-bengaluru</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/cybersecurity-in-bengaluru</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/devops-cloud-in-hyderabad</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/roles/core-engineering-in-bengaluru</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/roles/cybersecurity-in-bengaluru</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development-in-bengaluru</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-pune</loc><lastmod>2026-10-03</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development-in-chennai</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/millennium-threat-detection-engineer-4429045470</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-4473490413</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
@@ -1190,6 +1192,8 @@
   <url><loc>https://interndoor.com/jobs/hevo-data-ux-design-intern-ats-lever-hevodata-433ffdef-3125-48ed-a131-52c697c321ee</loc><lastmod>2026-07-08</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/eclerx-intern-ats-oraclecloud-fa-ewji-saasfaprod1-fa-ocs-oraclecloud-com-81650</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/onsemi</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/millennium</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/marvell-technology</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/zensar-technologies</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/atidan-technologies</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
@@ -1260,7 +1264,6 @@
   <url><loc>https://interndoor.com/companies/aditya-birla-capital</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/american-express</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/united-airlines-india-knowledge-center</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/millennium</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/fis</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ericsson</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/nvidia</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
