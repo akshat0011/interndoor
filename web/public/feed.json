@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/esec-forte-technologies-it-engineer-4439989272",
+      "url": "https://interndoor.com/jobs/esec-forte-technologies-it-engineer-4439989272",
+      "title": "IT Engineer — eSec Forte® Technologies",
+      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India · Duration: 1–2 years\n• Troubleshoot and maintain IT hardware including workstations, PCs, and printers\n• Install and configure Windows and Linux systems with associated software\n• Support end-user IT infrastructure in corporate or government environments",
+      "date_published": "2026-10-04T06:44:27.625Z",
+      "authors": [
+        {
+          "name": "eSec Forte® Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/google-lite1-salesforce-developer-4473896257",
       "url": "https://interndoor.com/jobs/google-lite1-salesforce-developer-4473896257",
       "title": "Salesforce Developer — Google lite1",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Amazon Science"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/msd-assoc-spclst-platform-engineer-4475026775",
-      "url": "https://interndoor.com/jobs/msd-assoc-spclst-platform-engineer-4475026775",
-      "title": "Assoc. Spclst , Platform Engineer — MSD",
-      "content_text": "Company: MSD · Location: Hyderabad, Telangana, India\n• Maintain and improve DevXOps platforms like JFrog Artifactory and GitHub Actions\n• Work with senior engineers on cloud technologies, Kubernetes, and automation\n• Support on-call rotations and ensure platform reliability and security",
-      "date_published": "2026-10-02T21:19:50.670Z",
-      "authors": [
-        {
-          "name": "MSD"
         }
       ]
     }
