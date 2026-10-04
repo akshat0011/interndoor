@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791107231758,
+ "generatedAt": 1791107398774,
  "region": "IN",
  "regionName": "India",
- "count": 1059,
- "techCount": 1059,
+ "count": 1060,
+ "techCount": 1060,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -224,6 +224,7 @@
   "NatWest Group",
   "National Technology Centre for Ports, Waterways and Coasts (NTCPWC)",
   "Nationwide",
+  "NetApp",
   "NewSpace Research and Technologies",
   "Newton School",
   "Newton School of Technology",
@@ -455,6 +456,62 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4473476449",
+   "title": "Software Engineer (C/C++ Developer)",
+   "company": "NetApp",
+   "matchedWatchlist": "NetApp",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/netapp.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "53 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "aws",
+    "azure",
+    "kubernetes",
+    "excel"
+   ],
+   "summary": "This role involves resolving complex ONTAP issues by analyzing logs and debugging systems. Ideal for students with strong C/C++ skills and experience in distributed systems. You'll work closely with cross-functional teams to improve product reliability and supportability.",
+   "bullets": [
+    "Investigate and resolve complex ONTAP subsystem issues",
+    "Use logs, traces, packet captures, and debugging to find defects",
+    "Collaborate with Support, QA, and Product Management teams"
+   ],
+   "roleLabel": "Storage Systems Debugging",
+   "degreeLevel": "UG/PG",
+   "degreeText": null,
+   "keySkills": [
+    "c/c++",
+    "python",
+    "distributed systems",
+    "debugging",
+    "automation"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791103698283,
+   "firstSeenAt": 1791107298293,
+   "lastSeenAt": 1791107298293,
+   "url": "https://www.linkedin.com/jobs/view/4473476449/",
+   "applyUrl": "https://dsp.prng.co/Ys7btlb?target=linkedin&utm_source=linkedin&jobPipeline=LinkedInJobPostings",
+   "description": null,
+   "roleFingerprint": "0f27c2491c",
+   "cardFacts": [
+    "Bengaluru",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN"
+  },
   {
    "id": "4439989272",
    "title": "IT Engineer",

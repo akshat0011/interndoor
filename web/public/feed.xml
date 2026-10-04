@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 04 Oct 2026 06:44:27 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 08:48:18 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer (C/C++ Developer) — NetApp</title>
+    <link>https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4473476449</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4473476449</guid>
+    <pubDate>Sun, 04 Oct 2026 08:48:18 GMT</pubDate>
+    <description>Company: NetApp · Location: Bengaluru, Karnataka, India
+• Investigate and resolve complex ONTAP subsystem issues
+• Use logs, traces, packet captures, and debugging to find defects
+• Collaborate with Support, QA, and Product Management teams</description>
+  </item>
   <item>
     <title>IT Engineer — eSec Forte® Technologies</title>
     <link>https://interndoor.com/jobs/esec-forte-technologies-it-engineer-4439989272</link>
@@ -498,16 +508,6 @@
 • Write code and test units per standards, collaborate with teams
 • Use quality tools, follow delivery timelines, maintain docs
 • Work with cross-functional teams, align with client needs</description>
-  </item>
-  <item>
-    <title>Ads Trust Science Applied Scientist — Amazon Science</title>
-    <link>https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4473196362</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4473196362</guid>
-    <pubDate>Fri, 02 Oct 2026 22:28:09 GMT</pubDate>
-    <description>Company: Amazon Science · Location: Bengaluru, Karnataka, India
-• Build ml models that flag or clear ads across languages and cultures
-• Own systems that moderate millions of ads daily with production impact
-• Work on multimodal content understanding with vision and language models</description>
   </item>
 </channel>
 </rss>
