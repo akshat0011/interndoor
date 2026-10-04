@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 04 Oct 2026 00:52:49 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 04:09:28 GMT</lastBuildDate>
+  <item>
+    <title>Salesforce Developer — Google lite1</title>
+    <link>https://interndoor.com/jobs/google-lite1-salesforce-developer-4473896257</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/google-lite1-salesforce-developer-4473896257</guid>
+    <pubDate>Sun, 04 Oct 2026 04:09:28 GMT</pubDate>
+    <description>Company: Google lite1 · Location: Jaipur, Rajasthan, India
+• Design and deploy custom solutions on salesforce using visualforce and lightning web components
+• Integrate salesforce with other systems and maintain existing applications
+• Collaborate with cross-functional teams and participate in code reviews</description>
+  </item>
   <item>
     <title>DEVELOPER L2 — Wipro</title>
     <link>https://interndoor.com/jobs/wipro-developer-l2-4475346775</link>
@@ -498,16 +508,6 @@
 • Maintain and improve DevXOps platforms like JFrog Artifactory and GitHub Actions
 • Work with senior engineers on cloud technologies, Kubernetes, and automation
 • Support on-call rotations and ensure platform reliability and security</description>
-  </item>
-  <item>
-    <title>Data Scientist — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-data-scientist-4473388555</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-data-scientist-4473388555</guid>
-    <pubDate>Fri, 02 Oct 2026 20:48:05 GMT</pubDate>
-    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
-• Build AI agents that plan, reason, and use tools
-• Work with Python, LLMs, APIs, and enterprise systems
-• Collaborate with data science and engineering teams</description>
   </item>
 </channel>
 </rss>

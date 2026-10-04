@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/google-lite1-salesforce-developer-4473896257",
+      "url": "https://interndoor.com/jobs/google-lite1-salesforce-developer-4473896257",
+      "title": "Salesforce Developer — Google lite1",
+      "content_text": "Company: Google lite1 · Location: Jaipur, Rajasthan, India\n• Design and deploy custom solutions on salesforce using visualforce and lightning web components\n• Integrate salesforce with other systems and maintain existing applications\n• Collaborate with cross-functional teams and participate in code reviews",
+      "date_published": "2026-10-04T04:09:28.333Z",
+      "authors": [
+        {
+          "name": "Google lite1"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wipro-developer-l2-4475346775",
       "url": "https://interndoor.com/jobs/wipro-developer-l2-4475346775",
       "title": "DEVELOPER L2 — Wipro",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "MSD"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-data-scientist-4473388555",
-      "url": "https://interndoor.com/jobs/cognizant-data-scientist-4473388555",
-      "title": "Data Scientist — Cognizant",
-      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Build AI agents that plan, reason, and use tools\n• Work with Python, LLMs, APIs, and enterprise systems\n• Collaborate with data science and engineering teams",
-      "date_published": "2026-10-02T20:48:05.837Z",
-      "authors": [
-        {
-          "name": "Cognizant"
         }
       ]
     }
