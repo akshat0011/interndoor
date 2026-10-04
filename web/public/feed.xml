@@ -6,7 +6,14 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 04 Oct 2026 15:36:57 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 19:13:29 GMT</lastBuildDate>
+  <item>
+    <title>Security Analyst I — Levi Strauss &amp; Co.</title>
+    <link>https://interndoor.com/jobs/levi-strauss-and-co-security-analyst-i-4474207939</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/levi-strauss-and-co-security-analyst-i-4474207939</guid>
+    <pubDate>Sun, 04 Oct 2026 19:13:29 GMT</pubDate>
+    <description>Company: Levi Strauss &amp; Co. · Location: Bengaluru, Karnataka, India</description>
+  </item>
   <item>
     <title>FPGA Prototyping Research Intern — Marvell Technology</title>
     <link>https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054</link>
@@ -499,16 +506,6 @@
 • Build and deploy ai/ml models for complex data
 • Work with cross-functional teams on data projects
 • Ensure compliance with data governance standards</description>
-  </item>
-  <item>
-    <title>Cloud Data Engineer AI — EXL</title>
-    <link>https://interndoor.com/jobs/exl-cloud-ai-data-engineer-4446731186</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-cloud-ai-data-engineer-4446731186</guid>
-    <pubDate>Sat, 03 Oct 2026 11:54:47 GMT</pubDate>
-    <description>Company: EXL · Location: Noida, Uttar Pradesh, India
-• Build and optimize ai-ready data pipelines on gcp and snowflake
-• Work with data science and engineering teams on data integration
-• Create synthetic datasets and support scalable ai solutions</description>
   </item>
 </channel>
 </rss>
