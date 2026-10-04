@@ -6,7 +6,28 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 04 Oct 2026 19:13:29 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 19:48:30 GMT</lastBuildDate>
+  <item>
+    <title>Algorithm Design Engineer — onsemi</title>
+    <link>https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375</guid>
+    <pubDate>Sun, 04 Oct 2026 19:48:30 GMT</pubDate>
+    <description>Company: onsemi · Location: Bengaluru, Karnataka, India
+• Design image processing algorithms for technology, power and area constraints
+• Use data-mining and physical modeling to develop new solutions
+• Build regression databases and calibration tools for testing
+• Work with team on semiconductor applications</description>
+  </item>
+  <item>
+    <title>Threat Detection Engineer — Millennium</title>
+    <link>https://interndoor.com/jobs/millennium-threat-detection-engineer-4429045470</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/millennium-threat-detection-engineer-4429045470</guid>
+    <pubDate>Sun, 04 Oct 2026 19:48:18 GMT</pubDate>
+    <description>Company: Millennium · Location: Bengaluru, Karnataka, India
+• Analyze network and endpoint data to identify and respond to threats
+• Build and automate detection workflows using KQL, SQL, and PowerShell
+• Collaborate with business and tech teams to enforce security policies</description>
+  </item>
   <item>
     <title>Security Analyst I — Levi Strauss &amp; Co.</title>
     <link>https://interndoor.com/jobs/levi-strauss-and-co-security-analyst-i-4474207939</link>
@@ -486,26 +507,6 @@
 • Build data pipelines and dashboards for service assurance analytics
 • Use snowflake cortex, power bi, and ai tools like claude for reporting
 • Write sql and python scripts for data extraction and analysis</description>
-  </item>
-  <item>
-    <title>Data Scientist — EXL</title>
-    <link>https://interndoor.com/jobs/exl-data-scientist-4446725290</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-data-scientist-4446725290</guid>
-    <pubDate>Sat, 03 Oct 2026 11:55:30 GMT</pubDate>
-    <description>Company: EXL · Location: Haryana, India
-• Debug and fix application issues
-• Code and test software features
-• Work with developers and stakeholders</description>
-  </item>
-  <item>
-    <title>Data Scientist — EXL</title>
-    <link>https://interndoor.com/jobs/exl-data-scientist-4446741090</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-data-scientist-4446741090</guid>
-    <pubDate>Sat, 03 Oct 2026 11:55:06 GMT</pubDate>
-    <description>Company: EXL · Location: Pune Division, Maharashtra, India
-• Build and deploy ai/ml models for complex data
-• Work with cross-functional teams on data projects
-• Ensure compliance with data governance standards</description>
   </item>
 </channel>
 </rss>

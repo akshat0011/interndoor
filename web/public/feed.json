@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375",
+      "url": "https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375",
+      "title": "Algorithm Design Engineer — onsemi",
+      "content_text": "Company: onsemi · Location: Bengaluru, Karnataka, India\n• Design image processing algorithms for technology, power and area constraints\n• Use data-mining and physical modeling to develop new solutions\n• Build regression databases and calibration tools for testing\n• Work with team on semiconductor applications",
+      "date_published": "2026-10-04T19:48:30.690Z",
+      "authors": [
+        {
+          "name": "onsemi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-threat-detection-engineer-4429045470",
+      "url": "https://interndoor.com/jobs/millennium-threat-detection-engineer-4429045470",
+      "title": "Threat Detection Engineer — Millennium",
+      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Analyze network and endpoint data to identify and respond to threats\n• Build and automate detection workflows using KQL, SQL, and PowerShell\n• Collaborate with business and tech teams to enforce security policies",
+      "date_published": "2026-10-04T19:48:18.585Z",
+      "authors": [
+        {
+          "name": "Millennium"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/levi-strauss-and-co-security-analyst-i-4474207939",
       "url": "https://interndoor.com/jobs/levi-strauss-and-co-security-analyst-i-4474207939",
       "title": "Security Analyst I — Levi Strauss & Co.",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-data-scientist-4446725290",
-      "url": "https://interndoor.com/jobs/exl-data-scientist-4446725290",
-      "title": "Data Scientist — EXL",
-      "content_text": "Company: EXL · Location: Haryana, India\n• Debug and fix application issues\n• Code and test software features\n• Work with developers and stakeholders",
-      "date_published": "2026-10-03T11:55:30.429Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-data-scientist-4446741090",
-      "url": "https://interndoor.com/jobs/exl-data-scientist-4446741090",
-      "title": "Data Scientist — EXL",
-      "content_text": "Company: EXL · Location: Pune Division, Maharashtra, India\n• Build and deploy ai/ml models for complex data\n• Work with cross-functional teams on data projects\n• Ensure compliance with data governance standards",
-      "date_published": "2026-10-03T11:55:06.057Z",
-      "authors": [
-        {
-          "name": "EXL"
         }
       ]
     }
