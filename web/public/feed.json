@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/accenture-services-pvt-ltd-infra-tech-support-practitioner-4474207473",
+      "url": "https://interndoor.com/jobs/accenture-services-pvt-ltd-infra-tech-support-practitioner-4474207473",
+      "title": "Infra Tech Support Practitioner — Accenture services Pvt Ltd",
+      "content_text": "Company: Accenture services Pvt Ltd · Location: Gurugram, Haryana, India\n• Support infrastructure, systems, and applications in production and development environments\n• Use Dynatrace, Terraform, PowerShell, and Azure DevOps for monitoring and automation\n• Work on cloud-based monitoring solutions with Azure and CI/CD pipelines",
+      "date_published": "2026-10-04T09:50:47.439Z",
+      "authors": [
+        {
+          "name": "Accenture services Pvt Ltd"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4473476449",
       "url": "https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4473476449",
       "title": "Software Engineer (C/C++ Developer) — NetApp",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Johnson Controls"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/wipro-developer-l2-4473819425",
-      "url": "https://interndoor.com/jobs/wipro-developer-l2-4473819425",
-      "title": "DEVELOPER L2 — Wipro",
-      "content_text": "Company: Wipro · Location: Hyderabad, Telangana, India · Duration: 1-3 years\n• Write code and test units per standards, collaborate with teams\n• Use quality tools, follow delivery timelines, maintain docs\n• Work with cross-functional teams, align with client needs",
-      "date_published": "2026-10-03T00:17:19.967Z",
-      "authors": [
-        {
-          "name": "Wipro"
         }
       ]
     }
