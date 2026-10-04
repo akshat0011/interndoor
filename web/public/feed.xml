@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 04 Oct 2026 15:36:42 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 04 Oct 2026 15:36:57 GMT</lastBuildDate>
+  <item>
+    <title>FPGA Prototyping Research Intern — Marvell Technology</title>
+    <link>https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054</guid>
+    <pubDate>Sun, 04 Oct 2026 15:36:57 GMT</pubDate>
+    <description>Company: Marvell Technology · Location: Hyderabad, Telangana, India
+• Design and test digital hardware on FPGA for next-gen protocols and features
+• Work with senior architects to refine and optimize designs
+• Translate FPGA prototypes into silicon products</description>
+  </item>
   <item>
     <title>Autonomous Infrastructure Research Intern — Marvell Technology</title>
     <link>https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498</link>
@@ -18,6 +28,16 @@
 • Collaborate with senior researchers on AI-driven infrastructure projects</description>
   </item>
   <item>
+    <title>Storage Systems Research Intern — Marvell Technology</title>
+    <link>https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-4473490413</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-4473490413</guid>
+    <pubDate>Sun, 04 Oct 2026 15:36:39 GMT</pubDate>
+    <description>Company: Marvell Technology · Location: Hyderabad, Telangana, India
+• Design storage systems for AI workloads using NVMe and SPDK
+• Work with memory tiering and disaggregation for large-scale systems
+• Prototype and evaluate storage architectures for performance and efficiency</description>
+  </item>
+  <item>
     <title>AI Research Intern PhD — Marvell Technology</title>
     <link>https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-4473497099</link>
     <guid isPermaLink="true">https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-4473497099</guid>
@@ -26,6 +46,16 @@
 • Simulate AI networks at scale using tools like Astra-Sim and Chakra
 • Analyze congestion and protocol performance with real hardware insights
 • Work on research with potential for publication and product impact</description>
+  </item>
+  <item>
+    <title>AES - DE - FS - DOTNET Full-Stack Microservices — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760</guid>
+    <pubDate>Sun, 04 Oct 2026 14:51:01 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Develop public-facing REST APIs and system integrations in Azure
+• Write automated test cases using Reqnroll and integrate into CI/CD
+• Collaborate with architecture team to modernize legacy platforms</description>
   </item>
   <item>
     <title>Software Trainee — Atidan Technologies</title>
@@ -479,36 +509,6 @@
 • Build and optimize ai-ready data pipelines on gcp and snowflake
 • Work with data science and engineering teams on data integration
 • Create synthetic datasets and support scalable ai solutions</description>
-  </item>
-  <item>
-    <title>Data Quality Engineer Azure Data Platform Testing — EXL</title>
-    <link>https://interndoor.com/jobs/exl-data-quality-engineer-azure-data-platform-testing-4446568848</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/exl-data-quality-engineer-azure-data-platform-testing-4446568848</guid>
-    <pubDate>Sat, 03 Oct 2026 11:54:21 GMT</pubDate>
-    <description>Company: EXL · Location: Gurugram, Haryana, India
-• Test azure data pipelines and validate data movement across cloud platforms
-• Develop automated scripts in sql python and pyspark for data validation
-• Work on large-scale data modernization projects with medallion architecture</description>
-  </item>
-  <item>
-    <title>Data Scientist Reinsurance Solutions — Aon</title>
-    <link>https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140</guid>
-    <pubDate>Sat, 03 Oct 2026 11:44:13 GMT</pubDate>
-    <description>Company: Aon · Location: Bengaluru, Karnataka, India
-• Analyze natural peril data to assess risk for reinsurance clients
-• Use python, sql, and machine learning to build predictive models
-• Collaborate with global team on catastrophe modeling and research</description>
-  </item>
-  <item>
-    <title>Graphics Software Engineer — Qualcomm</title>
-    <link>https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025</guid>
-    <pubDate>Sat, 03 Oct 2026 11:02:48 GMT</pubDate>
-    <description>Company: Qualcomm · Location: Bengaluru, Karnataka, India
-• Build and maintain tools for GPU drivers and software development
-• Use Python, TypeScript, C++, and Git for automation and integration
-• Collaborate with cross-functional teams on AI and graphics systems</description>
   </item>
 </channel>
 </rss>
