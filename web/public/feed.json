@@ -6,11 +6,35 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054",
+      "title": "FPGA Prototyping Research Intern — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Design and test digital hardware on FPGA for next-gen protocols and features\n• Work with senior architects to refine and optimize designs\n• Translate FPGA prototypes into silicon products",
+      "date_published": "2026-10-04T15:36:57.360Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498",
       "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498",
       "title": "Autonomous Infrastructure Research Intern — Marvell Technology",
       "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Design autonomous systems for datacenter platforms using telemetry and observability\n• Work with C/C++, Python, and open network OS like SONiC\n• Collaborate with senior researchers on AI-driven infrastructure projects",
       "date_published": "2026-10-04T15:36:42.731Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-4473490413",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-4473490413",
+      "title": "Storage Systems Research Intern — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Design storage systems for AI workloads using NVMe and SPDK\n• Work with memory tiering and disaggregation for large-scale systems\n• Prototype and evaluate storage architectures for performance and efficiency",
+      "date_published": "2026-10-04T15:36:39.626Z",
       "authors": [
         {
           "name": "Marvell Technology"
@@ -26,6 +50,18 @@
       "authors": [
         {
           "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760",
+      "url": "https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760",
+      "title": "AES - DE - FS - DOTNET Full-Stack Microservices — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Develop public-facing REST APIs and system integrations in Azure\n• Write automated test cases using Reqnroll and integrate into CI/CD\n• Collaborate with architecture team to modernize legacy platforms",
+      "date_published": "2026-10-04T14:51:01.737Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exl-data-quality-engineer-azure-data-platform-testing-4446568848",
-      "url": "https://interndoor.com/jobs/exl-data-quality-engineer-azure-data-platform-testing-4446568848",
-      "title": "Data Quality Engineer Azure Data Platform Testing — EXL",
-      "content_text": "Company: EXL · Location: Gurugram, Haryana, India\n• Test azure data pipelines and validate data movement across cloud platforms\n• Develop automated scripts in sql python and pyspark for data validation\n• Work on large-scale data modernization projects with medallion architecture",
-      "date_published": "2026-10-03T11:54:21.772Z",
-      "authors": [
-        {
-          "name": "EXL"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140",
-      "url": "https://interndoor.com/jobs/aon-data-scientist-reinsurance-solutions-4475319140",
-      "title": "Data Scientist Reinsurance Solutions — Aon",
-      "content_text": "Company: Aon · Location: Bengaluru, Karnataka, India\n• Analyze natural peril data to assess risk for reinsurance clients\n• Use python, sql, and machine learning to build predictive models\n• Collaborate with global team on catastrophe modeling and research",
-      "date_published": "2026-10-03T11:44:13.914Z",
-      "authors": [
-        {
-          "name": "Aon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025",
-      "url": "https://interndoor.com/jobs/qualcomm-graphics-software-infrastructure-engineer-4465103025",
-      "title": "Graphics Software Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Build and maintain tools for GPU drivers and software development\n• Use Python, TypeScript, C++, and Git for automation and integration\n• Collaborate with cross-functional teams on AI and graphics systems",
-      "date_published": "2026-10-03T11:02:48.433Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }

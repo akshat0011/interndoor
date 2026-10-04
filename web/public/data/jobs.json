@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791128923724,
+ "generatedAt": 1791129199165,
  "region": "IN",
  "regionName": "India",
- "count": 1068,
- "techCount": 1068,
+ "count": 1071,
+ "techCount": 1071,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -458,6 +458,64 @@
  ],
  "jobs": [
   {
+   "id": "4473499054",
+   "title": "FPGA Prototyping Research Intern",
+   "slugTitle": "Research Intern (PhD), FPGA & Silicon Prototyping",
+   "company": "Marvell Technology",
+   "matchedWatchlist": "Marvell Technology",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/marvell-technology.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "fpga",
+    "asic"
+   ],
+   "summary": "This PhD internship focuses on digital design and FPGA prototyping for next-generation hardware. You'll work on real silicon and large-scale infrastructure, contributing to research with potential for publication and product impact. Ideal for students with strong digital design skills and FPGA experience.",
+   "bullets": [
+    "Design and test digital hardware on FPGA for next-gen protocols and features",
+    "Work with senior architects to refine and optimize designs",
+    "Translate FPGA prototypes into silicon products"
+   ],
+   "roleLabel": "FPGA Prototyping",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "verilog",
+    "systemverilog",
+    "vhdl",
+    "c",
+    "python"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "15 minutes ago",
+   "postedAt": 1791128217360,
+   "firstSeenAt": 1791129117370,
+   "lastSeenAt": 1791129117370,
+   "url": "https://www.linkedin.com/jobs/view/4473499054/",
+   "applyUrl": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Hyderabad/Research-Intern--PhD----FPGA---Silicon-Prototyping_2604254?src=SNS-102&source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "192436a0fd",
+   "cardFacts": [
+    "Hyderabad",
+    "On-site"
+   ],
+   "category": "hardware",
+   "family": "hardware",
+   "region": "IN"
+  },
+  {
    "id": "4473487498",
    "title": "Autonomous Infrastructure Research Intern",
    "slugTitle": "Research Intern (PhD), Autonomous Infrastructure and Telemetry",
@@ -497,7 +555,7 @@
    "postedText": "11 minutes ago",
    "postedAt": 1791128202731,
    "firstSeenAt": 1791128862734,
-   "lastSeenAt": 1791128862734,
+   "lastSeenAt": 1791129106773,
    "url": "https://www.linkedin.com/jobs/view/4473487498/",
    "applyUrl": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Hyderabad/Research-Intern--PhD---Autonomous-Infrastructure-and-Telemetry_2604257?src=SNS-102&source=LinkedIn",
    "description": null,
@@ -508,6 +566,59 @@
    ],
    "category": "software",
    "family": "devops",
+   "region": "IN"
+  },
+  {
+   "id": "4473490413",
+   "title": "Storage Systems Research Intern",
+   "slugTitle": "Research Intern (PhD), Storage Systems for AI",
+   "company": "Marvell Technology",
+   "matchedWatchlist": "Marvell Technology",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/marvell-technology.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++"
+   ],
+   "summary": "Marvell’s semiconductor solutions are the essential building blocks of the data infrastructure that connects our world. Across enterprise, cloud and AI, and carrier architectures, our innovative technology is enabling new possibilities. Engage with open research problems at the frontier of AI systems — challenges that require access to real silicon, large-scale infrastructure, and production data With competitive compensation and great benefits, you will enjoy our workstyle within an environment of shared collaboration, transparency, and inclusivity.",
+   "bullets": [
+    "Design storage systems for AI workloads using NVMe and SPDK",
+    "Work with memory tiering and disaggregation for large-scale systems",
+    "Prototype and evaluate storage architectures for performance and efficiency"
+   ],
+   "roleLabel": "Storage Systems Research",
+   "degreeLevel": null,
+   "degreeText": "PhD/MTech by Research",
+   "keySkills": [
+    "c/c++",
+    "python",
+    "nvme",
+    "spdk",
+    "storage systems"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "14 minutes ago",
+   "postedAt": 1791128199626,
+   "firstSeenAt": 1791129039635,
+   "lastSeenAt": 1791129039635,
+   "url": "https://www.linkedin.com/jobs/view/4473490413/",
+   "applyUrl": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Hyderabad/Research-Intern--PhD---Storage-Systems-for-AI_2604256?src=SNS-102&source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "fca86daf1a",
+   "cardFacts": [
+    "Hyderabad",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -551,7 +662,7 @@
    "postedText": "11 minutes ago",
    "postedAt": 1791128192723,
    "firstSeenAt": 1791128852738,
-   "lastSeenAt": 1791128852738,
+   "lastSeenAt": 1791129042248,
    "url": "https://www.linkedin.com/jobs/view/4473497099/",
    "applyUrl": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers/job/Hyderabad/Research-Intern--PhD---AI-Scale-Protocols---Simulation_2604255?src=SNS-102&source=LinkedIn",
    "description": null,
@@ -562,6 +673,62 @@
    ],
    "category": "software",
    "family": "ai_ml",
+   "region": "IN"
+  },
+  {
+   "id": "4454780760",
+   "title": "AES - DE - FS - DOTNET Full-Stack Microservices",
+   "company": "Zensar Technologies",
+   "matchedWatchlist": "Zensar Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/zensar-technologies.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "c#",
+    "sql",
+    ".net",
+    "aws",
+    "azure",
+    "ci/cd",
+    "elasticsearch"
+   ],
+   "summary": "This role involves building and modernizing cloud-based APIs and integrations using Azure and .NET. You'll work on automating testing processes and collaborating with teams to improve system performance and security. Ideal for someone with C# and Azure experience looking to contribute to scalable cloud solutions.",
+   "bullets": [
+    "Develop public-facing REST APIs and system integrations in Azure",
+    "Write automated test cases using Reqnroll and integrate into CI/CD",
+    "Collaborate with architecture team to modernize legacy platforms"
+   ],
+   "roleLabel": "Azure API Development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "c#",
+    "azure",
+    "reqnroll",
+    "xunit"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791125461737,
+   "firstSeenAt": 1791129061742,
+   "lastSeenAt": 1791129061742,
+   "url": "https://www.linkedin.com/jobs/view/4454780760/",
+   "applyUrl": "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/149608/?utm_medium=jobboard&utm_source=linkedIn",
+   "description": null,
+   "roleFingerprint": "f310471bf3",
+   "cardFacts": [
+    "Pune Division",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "fullstack",
    "region": "IN"
   },
   {
@@ -7810,7 +7977,7 @@
    "postedText": "41 minutes ago",
    "postedAt": 1790912318419,
    "firstSeenAt": 1790914778426,
-   "lastSeenAt": 1791125318631,
+   "lastSeenAt": 1791129095036,
    "url": "https://www.linkedin.com/jobs/view/4472992912/",
    "applyUrl": "https://search.jobs.barclays/job/-/-/13015/97732941696?src=JB-12860",
    "description": null,
