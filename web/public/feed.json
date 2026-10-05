@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/siemens-gamesa-intern-turbine-software-system-validation-4474257793",
+      "url": "https://interndoor.com/jobs/siemens-gamesa-intern-turbine-software-system-validation-4474257793",
+      "title": "Intern - Turbine Software System Validation — Siemens Gamesa",
+      "content_text": "Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Write automated test cases using python and behave for bdd\n• Work on real-world projects with dev and senior test engineers\n• Debug and resolve software defects in a global devops team",
+      "date_published": "2026-10-05T10:59:01.152Z",
+      "authors": [
+        {
+          "name": "Siemens Gamesa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4474271196",
+      "url": "https://interndoor.com/jobs/siemens-gamesa-intern-software-development-and-testing-4474271196",
+      "title": "Software Testing Intern — Siemens Gamesa",
+      "content_text": "Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India\n• Assist with programming tasks, testing software tools, and improving CI/CD pipelines\n• Work with MATLAB, Python, Git, Jira, and Artifactory\n• Collaborate on controller validation and documentation for wind turbine systems",
+      "date_published": "2026-10-05T10:58:49.600Z",
+      "authors": [
+        {
+          "name": "Siemens Gamesa"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-gamesa-automation-ai-intern-for-blade-structural-design-process-4474260732",
+      "url": "https://interndoor.com/jobs/siemens-gamesa-automation-ai-intern-for-blade-structural-design-process-4474260732",
+      "title": "AI Intern for Blade Design Automation — Siemens Gamesa",
+      "content_text": "Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India · Duration: 12 months\n• Develop automation tools for engineering risk assessment and compliance workflows\n• Build dashboards and digital tools using python and ai technologies\n• Improve traceability across requirements and verification activities",
+      "date_published": "2026-10-05T10:58:33.991Z",
+      "authors": [
+        {
+          "name": "Siemens Gamesa"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/volvo-group-graduate-apprentice-trainee-system-engineering-4475547854",
       "url": "https://interndoor.com/jobs/volvo-group-graduate-apprentice-trainee-system-engineering-4475547854",
       "title": "System Engineering Graduate Apprentice — Volvo Group",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Mastercard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-net-full-stack-developer-react-js-4456629532",
-      "url": "https://interndoor.com/jobs/cognizant-net-full-stack-developer-react-js-4456629532",
-      "title": "Net Full stack developer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Greater Kolkata Area\n• Build secure scalable applications for consumer lending using .net react and azure\n• Work on credit decision and loan servicing solutions with cross functional teams\n• Develop responsive user interfaces and optimize sql server data models",
-      "date_published": "2026-10-03T18:47:31.554Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-ebip-engineer-4465157183",
-      "url": "https://interndoor.com/jobs/cognizant-ebip-engineer-4465157183",
-      "title": "EBIP Engineer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Hyderabad, Telangana, India\n• Design and implement complex etl workflows using informatica powercenter and powerexchange\n• Optimize pl sql and sql queries for performance and scalability across enterprise data platforms\n• Collaborate with business analysts to translate requirements into technical etl designs\n• Mentor junior developers through code reviews and knowledge sharing sessions",
-      "date_published": "2026-10-03T18:13:14.417Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465150000",
-      "url": "https://interndoor.com/jobs/kaleris-associate-software-engineer-intern-4465150000",
-      "title": "Software Engineer Intern — Kaleris",
-      "content_text": "Company: Kaleris · Location: Chennai, Tamil Nadu, India\n• Build software for marine logistics using Java and SQL\n• Work on full stack from frontend to backend\n• Collaborate with product managers and QA teams",
-      "date_published": "2026-10-03T17:56:27.844Z",
-      "authors": [
-        {
-          "name": "Kaleris"
         }
       ]
     }
