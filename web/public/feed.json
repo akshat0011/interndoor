@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/slb-quality-assurance-engineer-4473604579",
+      "url": "https://interndoor.com/jobs/slb-quality-assurance-engineer-4473604579",
+      "title": "Quality Assurance Engineer — SLB",
+      "content_text": "Company: SLB · Location: Pune Division, Maharashtra, India\n• Validate software products to ensure user workflows function without failure\n• Design and execute test strategies with development teams\n• Analyze technical issues and escalate project risks\n• Document and report test results using defect tracking systems",
+      "date_published": "2026-10-05T04:35:50.085Z",
+      "authors": [
+        {
+          "name": "SLB"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312",
       "url": "https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312",
       "title": "IT Intern — Thermo Fisher Scientific",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Uber"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4447137369",
-      "url": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4447137369",
-      "title": "Software Engineer PhD Early Career — Google",
-      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India\n• Design and implement scalable distributed systems for hybrid cloud networking\n• Collaborate with product management and SRE teams on critical GCP services\n• Ensure system reliability and on-call support for production services",
-      "date_published": "2026-10-03T12:13:11.597Z",
-      "authors": [
-        {
-          "name": "Google"
         }
       ]
     }

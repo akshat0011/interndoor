@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 05 Oct 2026 04:14:56 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 05 Oct 2026 04:35:50 GMT</lastBuildDate>
+  <item>
+    <title>Quality Assurance Engineer — SLB</title>
+    <link>https://interndoor.com/jobs/slb-quality-assurance-engineer-4473604579</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/slb-quality-assurance-engineer-4473604579</guid>
+    <pubDate>Mon, 05 Oct 2026 04:35:50 GMT</pubDate>
+    <description>Company: SLB · Location: Pune Division, Maharashtra, India
+• Validate software products to ensure user workflows function without failure
+• Design and execute test strategies with development teams
+• Analyze technical issues and escalate project risks
+• Document and report test results using defect tracking systems</description>
+  </item>
   <item>
     <title>IT Intern — Thermo Fisher Scientific</title>
     <link>https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312</link>
@@ -497,16 +508,6 @@
 • Design and maintain complex Oracle Payroll Fast Formulas for earnings, taxes, and benefits
 • Collaborate with Payroll teams to optimize formula performance and accuracy
 • Support full lifecycle development from design to production deployment</description>
-  </item>
-  <item>
-    <title>Software Engineer PhD Early Career — Google</title>
-    <link>https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4447137369</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4447137369</guid>
-    <pubDate>Sat, 03 Oct 2026 12:13:11 GMT</pubDate>
-    <description>Company: Google · Location: Bengaluru, Karnataka, India
-• Design and implement scalable distributed systems for hybrid cloud networking
-• Collaborate with product management and SRE teams on critical GCP services
-• Ensure system reliability and on-call support for production services</description>
   </item>
 </channel>
 </rss>
