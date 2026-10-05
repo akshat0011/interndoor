@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4474603572",
+      "url": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4474603572",
+      "title": "DE&A - IPA - Power Platform — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Design and implement rpa solutions using power automate\n• Develop bots to optimize business processes with power automate\n• Work with python, java, .net, and sql databases",
+      "date_published": "2026-10-05T17:12:49.611Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/calix-india-site-reliability-engineer-4444958928",
+      "url": "https://interndoor.com/jobs/calix-india-site-reliability-engineer-4444958928",
+      "title": "Site Reliability Engineer — Calix India",
+      "content_text": "Company: Calix India · Location: Bengaluru, Karnataka, India\n• Deploy and manage containerized apps with ArgoCD\n• Troubleshoot network and OS issues on GKE\n• Use Grafana and AIOps tools for incident response",
+      "date_published": "2026-10-05T17:09:55.376Z",
+      "authors": [
+        {
+          "name": "Calix India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-c-desktop-application-development-engineer-4474612105",
+      "url": "https://interndoor.com/jobs/quest-global-c-desktop-application-development-engineer-4474612105",
+      "title": "C# Desktop Application Engineer — Quest Global",
+      "content_text": "Company: Quest Global · Location: Thiruvananthapuram, Kerala, India\n• Develop and deploy Windows desktop applications using C# and WPF\n• Write clean, reusable code and create technical documentation\n• Analyze requirements and perform unit testing and validation",
+      "date_published": "2026-10-05T17:04:00.481Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marsh-software-developer-i-4475818756",
+      "url": "https://interndoor.com/jobs/marsh-software-developer-i-4475818756",
+      "title": "Software Developer - I — Marsh",
+      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Test data pipelines and ETL processes for validation\n• Use SQL, Java/Python, and TestNG for automation\n• Work with AWS tools like Redshift and Glue\n• Collaborate with teams on hybrid office setup",
+      "date_published": "2026-10-05T17:03:19.975Z",
+      "authors": [
+        {
+          "name": "Marsh"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/volvo-construction-equipment-graduate-apprentice-trainee-4475816470",
       "url": "https://interndoor.com/jobs/volvo-construction-equipment-graduate-apprentice-trainee-4475816470",
       "title": "Graduate Apprentice Trainee — Volvo Construction Equipment",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "PwC Acceleration Center India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cisco-software-qa-engineer-4475548694",
-      "url": "https://interndoor.com/jobs/cisco-software-qa-engineer-4475548694",
-      "title": "Software QA Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Validate switching platforms and software features through testing and automation\n• Use Python, REST APIs, and Git in a CI/CD environment\n• Collaborate with engineers and product teams on quality assurance",
-      "date_published": "2026-10-05T10:05:15.931Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cisco-embedded-software-engineer-4475559310",
-      "url": "https://interndoor.com/jobs/cisco-embedded-software-engineer-4475559310",
-      "title": "Embedded Software Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Develop and test device drivers for FPGA and networking hardware\n• Work with Linux kernel and user space for hardware bring-up\n• Collaborate on cross-functional teams to debug and validate software",
-      "date_published": "2026-10-05T10:04:52.279Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4474254730",
-      "url": "https://interndoor.com/jobs/deloitte-applied-ai-sre-engineer-4474254730",
-      "title": "Applied AI SRE Engineer — Deloitte",
-      "content_text": "Company: Deloitte · Location: Hyderabad, Telangana, India\n• Operate and maintain high-visibility AI and cloud platforms with focus on reliability and cost efficiency\n• Use Python, Go, Kubernetes, and observability tools like Prometheus and Grafana\n• Collaborate with cross-functional teams to define SLOs and ensure system resilience",
-      "date_published": "2026-10-05T10:01:29.614Z",
-      "authors": [
-        {
-          "name": "Deloitte"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-software-engineer-4473622418",
-      "url": "https://interndoor.com/jobs/ibm-software-engineer-4473622418",
-      "title": "Software Engineer — IBM",
-      "content_text": "Company: IBM · Location: Pune Division, Maharashtra, India\n• Develop and test IBM Systems products across OS, firmware, storage, and cloud software\n• Work with Agile teams on open source and closed source projects\n• Contribute to hybrid cloud and AI solutions for enterprise customers",
-      "date_published": "2026-10-05T09:27:45.092Z",
-      "authors": [
-        {
-          "name": "IBM"
         }
       ]
     }
