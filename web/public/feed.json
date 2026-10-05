@@ -6,6 +6,126 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ust-ml-engineer-i-4473650732",
+      "url": "https://interndoor.com/jobs/ust-ml-engineer-i-4473650732",
+      "title": "ML Engineer I — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India · Duration: 6 to 7 years\n• Build and deploy generative AI applications on AWS using Bedrock and cloud-native tools\n• Develop intelligent agents and workflows with LangGraph, LangChain, and Python\n• Collaborate with DevOps and cloud teams to implement secure, scalable AI solutions",
+      "date_published": "2026-10-05T14:29:17.747Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ups-intermediate-servicenow-application-developer-hrsd-and-itsm-4326674094",
+      "url": "https://interndoor.com/jobs/ups-intermediate-servicenow-application-developer-hrsd-and-itsm-4326674094",
+      "title": "ServiceNow Application Developer Intermediate — UPS",
+      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Design and develop serviceNow apps for hr and it processes\n• Use javascript glideScript and integration tools\n• Work on hr cases, slas, and itsm workflows",
+      "date_published": "2026-10-05T14:06:45.600Z",
+      "authors": [
+        {
+          "name": "UPS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/openai-applied-ai-engineer-4456868548",
+      "url": "https://interndoor.com/jobs/openai-applied-ai-engineer-4456868548",
+      "title": "Applied AI Engineer — OpenAI",
+      "content_text": "Company: OpenAI · Location: Mumbai Metropolitan Region\n• Design and deploy AI systems for enterprise customers with measurable business impact\n• Work hands-on in code with Python, debugging, and production engineering\n• Collaborate with cross-functional teams on security, governance, and system reliability",
+      "date_published": "2026-10-05T13:43:08.219Z",
+      "authors": [
+        {
+          "name": "OpenAI"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fedex-gcs-full-stack-developer-i-4400797207",
+      "url": "https://interndoor.com/jobs/fedex-gcs-full-stack-developer-i-4400797207",
+      "title": "Full Stack Developer I — FedEx GCS",
+      "content_text": "Company: FedEx GCS · Location: Hyderabad, Telangana, India\n• Write scalable, secure, and high-performing code for microservices\n• Lead code reviews and mentor junior developers\n• Collaborate with advisors on solution designs and cross-team communication",
+      "date_published": "2026-10-05T13:38:53.841Z",
+      "authors": [
+        {
+          "name": "FedEx GCS"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-data-ingestion-engineer-4473646615",
+      "url": "https://interndoor.com/jobs/siemens-data-ingestion-engineer-4473646615",
+      "title": "Data Ingestion Engineer — Siemens",
+      "content_text": "Company: Siemens · Location: Pune Division, Maharashtra, India\n• Build and maintain data pipelines between SAP and Snowflake\n• Use dbt for transformation models and CI/CD tools for deployment\n• Collaborate with global data teams on scalable data solutions",
+      "date_published": "2026-10-05T13:37:01.477Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tata-consultancy-services-full-stack-engineer-4463247176",
+      "url": "https://interndoor.com/jobs/tata-consultancy-services-full-stack-engineer-4463247176",
+      "title": "Full Stack Engineer — Tata Consultancy Services",
+      "content_text": "Company: Tata Consultancy Services · Location: Hyderabad, Telangana, India\n• Build web apps with .net and aws services\n• .net core, webapi, microservices, auth\n• Work on cloud infrastructure and monitoring",
+      "date_published": "2026-10-05T13:30:28.494Z",
+      "authors": [
+        {
+          "name": "Tata Consultancy Services"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siemens-tcms-test-engineer-4473644690",
+      "url": "https://interndoor.com/jobs/siemens-tcms-test-engineer-4473644690",
+      "title": "TCMS Test Engineer — Siemens",
+      "content_text": "Company: Siemens · Location: Bangalore Urban, Karnataka, India\n• Execute functional and regression tests on simulators and hardware\n• Develop python scripts for automated testing and analysis\n• Report defects and track progress with test leads",
+      "date_published": "2026-10-05T13:29:26.101Z",
+      "authors": [
+        {
+          "name": "Siemens"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/salesforce-software-engineering-mts-backend-4475577987",
+      "url": "https://interndoor.com/jobs/salesforce-software-engineering-mts-backend-4475577987",
+      "title": "Backend Software Engineer — Salesforce",
+      "content_text": "Company: Salesforce · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Develop scalable data services using Spark, Trino, Airflow, and Kafka\n• Work on distributed systems managing thousands of compute nodes\n• Join on-call rotation for critical service reliability",
+      "date_published": "2026-10-05T13:27:37.742Z",
+      "authors": [
+        {
+          "name": "Salesforce"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/larsen-and-toubro-it-trainer-4475587007",
+      "url": "https://interndoor.com/jobs/larsen-and-toubro-it-trainer-4475587007",
+      "title": "IT Trainer — Larsen & Toubro",
+      "content_text": "Company: Larsen & Toubro · Location: Greater Chennai Area\n• Design and deliver AI/ML training sessions with hands-on labs and projects\n• Develop curriculum, assessments, and rubrics using Python, SQL, and TensorFlow\n• Mentor students and support faculty with technical guidance and enablement",
+      "date_published": "2026-10-05T13:25:40.209Z",
+      "authors": [
+        {
+          "name": "Larsen & Toubro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wipro-developer-l2-4475572717",
+      "url": "https://interndoor.com/jobs/wipro-developer-l2-4475572717",
+      "title": "DEVELOPER L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Chennai, Tamil Nadu, India · Duration: 1-3 years\n• Code and test applications following quality standards and client specs\n• .net and web app development with collaboration across teams\n• Work on projects with clear documentation and operational procedures",
+      "date_published": "2026-10-05T13:24:58.147Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374",
       "url": "https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374",
       "title": "Frontend Intern- Web+Mobile — EMotorad",
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "Electronic Arts (EA)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/valeo-intern-software-ats-workday-valeo-wd3-valeo-jobs-req2026070899",
-      "url": "https://interndoor.com/jobs/valeo-intern-software-ats-workday-valeo-wd3-valeo-jobs-req2026070899",
-      "title": "Software Intern — Valeo",
-      "content_text": "Company: Valeo · Location: Chennai · Duration: 6 to 9 months\n• Develop software in MATLAB/Simulink for power components\n• Generate embedded C code using Embedded Coder and AutoSAR\n• Conduct MIL and SIL testing for software validation\n• Document design, tests, and validation results",
-      "date_published": "2026-10-05T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Valeo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dentsu-associate-software-engineer-ats-workday-dentsuaegis-wd3-dan-global-r1132487",
-      "url": "https://interndoor.com/jobs/dentsu-associate-software-engineer-ats-workday-dentsuaegis-wd3-dan-global-r1132487",
-      "title": "Associate Software Engineer — dentsu",
-      "content_text": "Company: dentsu · Location: DGS India - Mumbai - Thane Ashar IT Park\n• Monitor and debug automation jobs in SQL Server\n• Write SQL scripts for data analysis and extraction\n• Maintain data mart processes and ETL flows",
-      "date_published": "2026-10-05T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "dentsu"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375",
-      "url": "https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375",
-      "title": "Algorithm Design Engineer — onsemi",
-      "content_text": "Company: onsemi · Location: Bengaluru, Karnataka, India\n• Design image processing algorithms for technology, power and area constraints\n• Use data-mining and physical modeling to develop new solutions\n• Build regression databases and calibration tools for testing\n• Work with team on semiconductor applications",
-      "date_published": "2026-10-04T19:48:30.690Z",
-      "authors": [
-        {
-          "name": "onsemi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/millennium-threat-detection-engineer-4429045470",
-      "url": "https://interndoor.com/jobs/millennium-threat-detection-engineer-4429045470",
-      "title": "Threat Detection Engineer — Millennium",
-      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Analyze network and endpoint data to identify and respond to threats\n• Build and automate detection workflows using KQL, SQL, and PowerShell\n• Collaborate with business and tech teams to enforce security policies",
-      "date_published": "2026-10-04T19:48:18.585Z",
-      "authors": [
-        {
-          "name": "Millennium"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/levi-strauss-and-co-security-analyst-i-4474207939",
-      "url": "https://interndoor.com/jobs/levi-strauss-and-co-security-analyst-i-4474207939",
-      "title": "Security Analyst I — Levi Strauss & Co.",
-      "content_text": "Company: Levi Strauss & Co. · Location: Bengaluru, Karnataka, India",
-      "date_published": "2026-10-04T19:13:29.357Z",
-      "authors": [
-        {
-          "name": "Levi Strauss & Co."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760",
-      "url": "https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760",
-      "title": "AES - DE - FS - DOTNET Full-Stack Microservices — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Develop public-facing REST APIs and system integrations in Azure\n• Write automated test cases using Reqnroll and integrate into CI/CD\n• Collaborate with architecture team to modernize legacy platforms",
-      "date_published": "2026-10-04T14:51:01.737Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/atidan-technologies-software-trainee-4463794839",
-      "url": "https://interndoor.com/jobs/atidan-technologies-software-trainee-4463794839",
-      "title": "Software Trainee — Atidan Technologies",
-      "content_text": "Company: Atidan Technologies · Location: Mumbai, Maharashtra, India\n• Develop and support custom applications, modify code, and document using standard procedures\n• Work on user interfaces, back-end processes, and testing with technical teams\n• Based in Mumbai, with opportunities to learn new technologies and contribute to client projects",
-      "date_published": "2026-10-04T12:36:13.367Z",
-      "authors": [
-        {
-          "name": "Atidan Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/eclerx-analyst-4309013617",
-      "url": "https://interndoor.com/jobs/eclerx-analyst-4309013617",
-      "title": "Analyst — eClerx",
-      "content_text": "Company: eClerx · Location: Chandigarh, Chandigarh, India\n• Troubleshoot technical issues over phone with customers\n• Use tools and resources to resolve problems efficiently\n• Document interactions and escalate unresolved cases",
-      "date_published": "2026-10-04T12:35:11.303Z",
-      "authors": [
-        {
-          "name": "eClerx"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/google-software-engineer-persistent-disk-phd-early-career-2026-4388950665",
-      "url": "https://interndoor.com/jobs/google-software-engineer-persistent-disk-phd-early-career-2026-4388950665",
-      "title": "Software Engineer PhD Early Career — Google",
-      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India\n• Design and implement storage systems for backup and replication\n• Work with C, C++, Python, Java, or Golang\n• Collaborate with stakeholders to improve customer outcomes",
-      "date_published": "2026-10-04T12:26:10.311Z",
-      "authors": [
-        {
-          "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-technical-specialist-linux-6-4409294047",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-technical-specialist-linux-6-4409294047",
-      "title": "MS Technical Specialist - Linux-6 — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor and resolve client incidents across cloud, security, networking, and applications\n• Use ticketing tools and ITIL processes to manage service level agreements\n• Collaborate with automation and vendor teams to optimize support workflows",
-      "date_published": "2026-10-04T12:03:21.256Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
         }
       ]
     }
