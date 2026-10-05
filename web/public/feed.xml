@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 05 Oct 2026 21:03:51 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 05 Oct 2026 22:04:44 GMT</lastBuildDate>
+  <item>
+    <title>Application Developer Intermediate — Citi</title>
+    <link>https://interndoor.com/jobs/citi-application-developer-intermediate-programmer-analyst-4474633457</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/citi-application-developer-intermediate-programmer-analyst-4474633457</guid>
+    <pubDate>Mon, 05 Oct 2026 22:04:44 GMT</pubDate>
+    <description>Company: Citi · Location: Chennai, Tamil Nadu, India
+• Develop and maintain front-office applications for FX, MM, and FI systems
+• Work with Oracle databases and UNIX platforms, using SQL and performance tuning
+• Collaborate with business analysts and support teams on project requirements</description>
+  </item>
+  <item>
+    <title>Cloud Platform Software Engineer — PayPal</title>
+    <link>https://interndoor.com/jobs/paypal-cloud-platform-software-engineer-4475868953</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/paypal-cloud-platform-software-engineer-4475868953</guid>
+    <pubDate>Mon, 05 Oct 2026 21:34:52 GMT</pubDate>
+    <description>Company: PayPal · Location: Bengaluru, Karnataka, India
+• Build and maintain cloud infrastructure for global payment systems
+• Use Kubernetes, Terraform, and Golang in a multi-cloud environment
+• Work 24/7 on-call rotation for production support and incident resolution</description>
+  </item>
   <item>
     <title>S&amp;C Global Network - AI - Hi Tech - Data Science Associate 3 — Accenture in India</title>
     <link>https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-hi-tech-data-science-associate-3-4475876565</link>
@@ -489,27 +509,6 @@
 • Monitor client infrastructure and identify issues before they occur
 • Investigate incidents, provide support, and ensure SLA compliance
 • Contribute to process improvements and automation opportunities</description>
-  </item>
-  <item>
-    <title>Technical Specialist-Data Engg — Birlasoft</title>
-    <link>https://interndoor.com/jobs/birlasoft-technical-specialist-data-engg-4474268226</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-technical-specialist-data-engg-4474268226</guid>
-    <pubDate>Mon, 05 Oct 2026 11:06:09 GMT</pubDate>
-    <description>Company: Birlasoft · Location: Greater Hyderabad Area
-• Build data pipelines using aws glue and datapipeline
-• Develop data models and governance frameworks
-• Work with python and pyspark on cloud platforms
-• Collaborate on data engineering projects with cross-functional teams</description>
-  </item>
-  <item>
-    <title>Intern - Turbine Software System Validation — Siemens Gamesa</title>
-    <link>https://interndoor.com/jobs/siemens-gamesa-intern-turbine-software-system-validation-4474257793</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/siemens-gamesa-intern-turbine-software-system-validation-4474257793</guid>
-    <pubDate>Mon, 05 Oct 2026 10:59:01 GMT</pubDate>
-    <description>Company: Siemens Gamesa · Location: Bengaluru, Karnataka, India · Duration: 6 months
-• Write automated test cases using python and behave for bdd
-• Work on real-world projects with dev and senior test engineers
-• Debug and resolve software defects in a global devops team</description>
   </item>
 </channel>
 </rss>
