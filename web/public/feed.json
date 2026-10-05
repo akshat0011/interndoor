@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312",
+      "url": "https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312",
+      "title": "IT Intern — Thermo Fisher Scientific",
+      "content_text": "Company: Thermo Fisher Scientific · Location: Bengaluru East, Karnataka, India\n• Work with data using Python and SQL for analysis and transformation\n• Build automation solutions and Generative AI prototypes with LLMs\n• Collaborate on data pipelines and cloud technologies in cross-functional teams",
+      "date_published": "2026-10-05T04:14:56.780Z",
+      "authors": [
+        {
+          "name": "Thermo Fisher Scientific"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/barclays-full-stack-developer-4473606498",
       "url": "https://interndoor.com/jobs/barclays-full-stack-developer-4473606498",
       "title": "Full Stack Developer — Barclays",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/verizon-princ-engr-ai-science-4457386417",
-      "url": "https://interndoor.com/jobs/verizon-princ-engr-ai-science-4457386417",
-      "title": "Princ Engr-AI Science — Verizon",
-      "content_text": "Company: Verizon · Location: Chennai, Tamil Nadu, India\n• Design and deploy AI solutions from data pipelines to model optimization\n• Lead teams in building generative and agentic systems with Python and ML frameworks\n• Collaborate with cross-functional teams to align AI with business goals",
-      "date_published": "2026-10-03T12:10:25.277Z",
-      "authors": [
-        {
-          "name": "Verizon"
         }
       ]
     }
