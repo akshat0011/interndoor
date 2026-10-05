@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 04 Oct 2026 19:48:30 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 05 Oct 2026 02:16:18 GMT</lastBuildDate>
+  <item>
+    <title>AI Software Engineer Intern — Electronic Arts (EA)</title>
+    <link>https://interndoor.com/jobs/electronic-arts-ea-ai-software-engineer-intern-4473609138</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/electronic-arts-ea-ai-software-engineer-intern-4473609138</guid>
+    <pubDate>Mon, 05 Oct 2026 02:16:18 GMT</pubDate>
+    <description>Company: Electronic Arts (EA) · Location: Hyderabad, Telangana, India
+• Write and maintain automation scripts for game testing
+• Work with QA teams on AI-assisted test generation
+• Collaborate on international projects with remote teams</description>
+  </item>
   <item>
     <title>Algorithm Design Engineer — onsemi</title>
     <link>https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375</link>
@@ -497,16 +507,6 @@
 • Design and deploy AI solutions from data pipelines to model optimization
 • Lead teams in building generative and agentic systems with real-world impact
 • Collaborate with cross-functional teams to align AI with business goals</description>
-  </item>
-  <item>
-    <title>Data Engineer — Birlasoft</title>
-    <link>https://interndoor.com/jobs/birlasoft-data-engineering-python-4464879408</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-data-engineering-python-4464879408</guid>
-    <pubDate>Sat, 03 Oct 2026 12:01:27 GMT</pubDate>
-    <description>Company: Birlasoft · Location: Pune/Pimpri-Chinchwad Area
-• Build data pipelines and dashboards for service assurance analytics
-• Use snowflake cortex, power bi, and ai tools like claude for reporting
-• Write sql and python scripts for data extraction and analysis</description>
   </item>
 </channel>
 </rss>
