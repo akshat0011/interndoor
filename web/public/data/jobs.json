@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791231818938,
+ "generatedAt": 1791232107616,
  "region": "IN",
  "regionName": "India",
- "count": 1121,
- "techCount": 1121,
+ "count": 1123,
+ "techCount": 1123,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -471,6 +471,109 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4475867460",
+   "title": "Data Eng, Mgmt & Governance New Assoc",
+   "company": "Accenture in India",
+   "matchedWatchlist": "Accenture",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/accenture-in-india.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "0 to 1 years",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves collecting financial data reports and reconciling transactions while building master data solutions across platforms. It suits students with a background in data management and a keen interest in financial operations. The work is structured with clear guidance and team support.",
+   "bullets": [
+    "Collect operational data reports and reconcile transactions",
+    "Architect master data solutions across platforms",
+    "Work in rotational shifts with narrow team scope"
+   ],
+   "roleLabel": "Data Management",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "master data management"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "18 minutes ago",
+   "postedAt": 1791230894516,
+   "firstSeenAt": 1791231974522,
+   "lastSeenAt": 1791231974522,
+   "url": "https://www.linkedin.com/jobs/view/4475867460/",
+   "applyUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=AIOC-S01668842_en",
+   "description": null,
+   "roleFingerprint": "f9af6b9334",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "data_eng",
+   "region": "IN"
+  },
+  {
+   "id": "4475840778",
+   "title": "Software Engineering PMTS",
+   "company": "Salesforce",
+   "matchedWatchlist": "Salesforce",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/salesforce.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": "12 months",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "aws",
+    "gcp",
+    "kubernetes",
+    "terraform",
+    "kafka"
+   ],
+   "summary": "This role involves building and maintaining observability systems for Salesforce's cloud infrastructure. You will work with big data tools and open-source technologies to ensure system reliability and performance. The position offers mentorship opportunities and the chance to lead global systems. Ideal for someone with experience in data pipelines and cloud technologies.",
+   "bullets": [
+    "Build and maintain observability stack with open source and cloud managed services",
+    "Run data pipelines using big data tools and ensure system health",
+    "Mentor engineers and own global cloud services from start to finish"
+   ],
+   "roleLabel": "Observability Systems Engineer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "kafka",
+    "flink",
+    "druid",
+    "terraform",
+    "aws"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791228321309,
+   "firstSeenAt": 1791231921318,
+   "lastSeenAt": 1791231921318,
+   "url": "https://www.linkedin.com/jobs/view/4475840778/",
+   "applyUrl": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site/job/India---Hyderabad/Software-Engineering-PMTS_JR359744?source=LinkedIn_Jobs",
+   "description": null,
+   "roleFingerprint": "71be6631c0",
+   "cardFacts": [
+    "Hyderabad",
+    "Hybrid",
+    "12 months"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN"
+  },
   {
    "id": "4474603572",
    "title": "DE&A - IPA - Power Platform",
