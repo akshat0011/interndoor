@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 05 Oct 2026 12:12:20 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 05 Oct 2026 12:35:08 GMT</lastBuildDate>
+  <item>
+    <title>Frontend Intern- Web+Mobile — EMotorad</title>
+    <link>https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374</guid>
+    <pubDate>Mon, 05 Oct 2026 12:35:08 GMT</pubDate>
+    <description>Company: EMotorad · Location: Gurugram, Haryana, India · Duration: 6 months
+• Build and enhance frontend features using next.js / react
+• Contribute to mobile apps with flutter and internal tools
+• Work on live d2c storefront, cms, and om systems
+• Collaborate with teams using git and ai-powered tools</description>
+  </item>
   <item>
     <title>Platform Engineer — TELUS Digital</title>
     <link>https://interndoor.com/jobs/telus-digital-platform-engineer-4474271432</link>
@@ -498,16 +509,6 @@
 • Design and maintain CI/CD pipelines using Bamboo and GitLab
 • Collaborate with teams to resolve complex technical challenges
 • Document systems and processes according to company standards</description>
-  </item>
-  <item>
-    <title>SOC Engineer - L2 — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-soc-engineer-l2-4409278476</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-soc-engineer-l2-4409278476</guid>
-    <pubDate>Sun, 04 Oct 2026 11:48:18 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
-• Monitors security alerts, investigates threats, and escalates incidents
-• Installs firewalls, antivirus, and encryption tools to protect systems
-• Conducts vulnerability assessments and helps remediate security issues</description>
   </item>
 </channel>
 </rss>
