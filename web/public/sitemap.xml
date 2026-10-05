@@ -41,8 +41,8 @@
   <url><loc>https://interndoor.com/skills/tensorflow</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/net</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/typescript</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/kafka</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/deep-learning</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/kafka</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/nlp</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/tableau</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/postgresql</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
@@ -110,9 +110,9 @@
   <url><loc>https://interndoor.com/roles/software-engineering-in-hyderabad</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-bengaluru</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-gurugram</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/roles/devops-cloud-in-bengaluru</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering-in-chennai</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware-in-bengaluru</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/devops-cloud-in-bengaluru</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering-in-pune</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/qa-testing-in-bengaluru</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-hyderabad</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
@@ -192,6 +192,7 @@
   <url><loc>https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/barclays-full-stack-developer-4473606498</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/electronic-arts-ea-ai-software-engineer-intern-4473609138</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/emerson-r-and-d-test-development-intern-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26011712</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/valeo-intern-software-ats-workday-valeo-wd3-valeo-jobs-req2026070899</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/dentsu-associate-software-engineer-ats-workday-dentsuaegis-wd3-dan-global-r1132487</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
@@ -565,7 +566,6 @@
   <url><loc>https://interndoor.com/jobs/smowcode-embedded-systems-intern-4472123836</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/tata-consultancy-services-automation-test-analyst-4472134064</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/greedygame-fullstack-developer-internship-4473724223</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4472106987</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/icon-infoline-pvt-ltd-support-engineer-windows-macos-and-ubuntu-linux-4472115312</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/poshmark-machine-learning-engineer-4473706775</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4473706553</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
@@ -1284,6 +1284,7 @@
   <url><loc>https://interndoor.com/companies/thermo-fisher-scientific</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/barclays</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/electronic-arts-ea</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/emerson</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/valeo</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/dentsu</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/onsemi</loc><lastmod>2026-10-04</lastmod><priority>0.6</priority></url>
@@ -1373,7 +1374,6 @@
   <url><loc>https://interndoor.com/companies/providence-india</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/happiest-minds-technologies</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/flex</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/emerson</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/hewlett-packard-enterprise</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/lowe-s-india</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/northern-trust</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
@@ -1401,7 +1401,6 @@
   <url><loc>https://interndoor.com/companies/trane-technologies</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/joveo</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/tata-consultancy-services</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/bt-group</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/icon-infoline-pvt-ltd</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/poshmark</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/adfluence-hub</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
@@ -1597,6 +1596,7 @@
   <url><loc>https://interndoor.com/companies/glance</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/synopsys-inc</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/pwc-india</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/bt-group</loc><lastmod>2026-09-30</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/s-and-p-global</loc><lastmod>2026-09-29</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/eli-lilly-and-company</loc><lastmod>2026-09-29</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/pearson</loc><lastmod>2026-09-23</lastmod><priority>0.6</priority></url>
