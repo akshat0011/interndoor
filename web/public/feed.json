@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/barclays-full-stack-engineer-4473688572",
+      "url": "https://interndoor.com/jobs/barclays-full-stack-engineer-4473688572",
+      "title": "Full Stack Engineer — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Build and manage secure, scalable APIs using Java, Spring, and cloud platforms\n• Collaborate with cross-functional teams to align technical solutions with business goals\n• Contribute to code reviews, testing, and documentation for high-quality software",
+      "date_published": "2026-10-05T22:25:38.533Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-test-automation-4475884515",
+      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-test-automation-4475884515",
+      "title": "Test Automation Engineer — Societe Generale Global Solution Centre",
+      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Test SEPA payments and PSD3 compliance APIs with mock data\n• Use MockaX and JMeter for automation and load testing\n• Collaborate with developers to fix defects in banking systems",
+      "date_published": "2026-10-05T22:24:24.484Z",
+      "authors": [
+        {
+          "name": "Societe Generale Global Solution Centre"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/barclays-data-analyst-4473687634",
+      "url": "https://interndoor.com/jobs/barclays-data-analyst-4473687634",
+      "title": "Data Analyst — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Analyze data to uncover trends and drive operational improvements\n• Build dashboards and reports using tools like Python and SQL\n• Collaborate with cross-functional teams to define analytical needs",
+      "date_published": "2026-10-05T22:24:12.136Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4475887279",
+      "url": "https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4475887279",
+      "title": "Software Engineer (C/C++ Developer) — NetApp",
+      "content_text": "Company: NetApp · Location: Bengaluru, Karnataka, India\n• Debug complex ontap issues using logs, traces, and debugging\n• Develop code fixes and automation for troubleshooting\n• Collaborate with support and product teams on root-cause analysis",
+      "date_published": "2026-10-05T22:23:50.742Z",
+      "authors": [
+        {
+          "name": "NetApp"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/citi-application-developer-intermediate-programmer-analyst-4474633457",
       "url": "https://interndoor.com/jobs/citi-application-developer-intermediate-programmer-analyst-4474633457",
       "title": "Application Developer Intermediate — Citi",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Nuvama Wealth"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/state-street-software-engineering-and-development-associate-2-4475557718",
-      "url": "https://interndoor.com/jobs/state-street-software-engineering-and-development-associate-2-4475557718",
-      "title": "Software Engineering & Development, Associate 2 — State Street",
-      "content_text": "Company: State Street · Location: Hyderabad, Telangana, India · Duration: 1-2 years\n• Design and modify dataflows using Snowflake and Oracle PL/SQL\n• Tune database performance and manage production releases monthly\n• Collaborate in Agile teams on cloud and data warehousing projects",
-      "date_published": "2026-10-05T11:18:05.714Z",
-      "authors": [
-        {
-          "name": "State Street"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-de-and-a-core-advanced-visualization-and-cloud-reporting-azure-analysi-4474278041",
-      "url": "https://interndoor.com/jobs/zensar-technologies-de-and-a-core-advanced-visualization-and-cloud-reporting-azure-analysi-4474278041",
-      "title": "DE&A - Core - Advanced Visualization & Cloud Reporting - Azure Analysis Services — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Bengaluru, Karnataka, India\n• Build and maintain data models using Azure Analysis Services\n• Work with MSFabric and Power BI for cloud reporting\n• Collaborate with cross-functional teams on enterprise projects",
-      "date_published": "2026-10-05T11:13:19.906Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/abb-associate-project-engineer-4475571132",
-      "url": "https://interndoor.com/jobs/abb-associate-project-engineer-4475571132",
-      "title": "Associate Project Engineer — ABB",
-      "content_text": "Company: ABB · Location: Bengaluru East, Karnataka, India\n• Design and implement cybersecurity solutions for industrial control systems\n• Work with firewalls, network tools, and SIEM platforms like Splunk\n• Collaborate with sales to create technical proposals and support business development",
-      "date_published": "2026-10-05T11:11:49.625Z",
-      "authors": [
-        {
-          "name": "ABB"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-edr-analyst-l1-4409281477",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-edr-analyst-l1-4409281477",
-      "title": "EDR Analyst - L1 — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor client infrastructure and identify issues before they occur\n• Investigate incidents, provide support, and ensure SLA compliance\n• Contribute to process improvements and automation opportunities",
-      "date_published": "2026-10-05T11:07:22.413Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
         }
       ]
     }
