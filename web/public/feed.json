@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/electronic-arts-ea-ai-software-engineer-intern-4473609138",
+      "url": "https://interndoor.com/jobs/electronic-arts-ea-ai-software-engineer-intern-4473609138",
+      "title": "AI Software Engineer Intern — Electronic Arts (EA)",
+      "content_text": "Company: Electronic Arts (EA) · Location: Hyderabad, Telangana, India\n• Write and maintain automation scripts for game testing\n• Work with QA teams on AI-assisted test generation\n• Collaborate on international projects with remote teams",
+      "date_published": "2026-10-05T02:16:18.241Z",
+      "authors": [
+        {
+          "name": "Electronic Arts (EA)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375",
       "url": "https://interndoor.com/jobs/onsemi-algorithm-design-engineer-4464740375",
       "title": "Algorithm Design Engineer — onsemi",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Verizon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-data-engineering-python-4464879408",
-      "url": "https://interndoor.com/jobs/birlasoft-data-engineering-python-4464879408",
-      "title": "Data Engineer — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Pune/Pimpri-Chinchwad Area\n• Build data pipelines and dashboards for service assurance analytics\n• Use snowflake cortex, power bi, and ai tools like claude for reporting\n• Write sql and python scripts for data extraction and analysis",
-      "date_published": "2026-10-03T12:01:27.746Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
         }
       ]
     }
