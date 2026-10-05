@@ -54,54 +54,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054",
-      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-4473499054",
-      "title": "FPGA Prototyping Research Intern — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Design and test digital hardware on FPGA for next-gen protocols and features\n• Work with senior architects to refine and optimize designs\n• Translate FPGA prototypes into silicon products",
-      "date_published": "2026-10-04T15:36:57.360Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498",
-      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-4473487498",
-      "title": "Autonomous Infrastructure Research Intern — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Design autonomous systems for datacenter platforms using telemetry and observability\n• Work with C/C++, Python, and open network OS like SONiC\n• Collaborate with senior researchers on AI-driven infrastructure projects",
-      "date_published": "2026-10-04T15:36:42.731Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-4473490413",
-      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-4473490413",
-      "title": "Storage Systems Research Intern — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Design storage systems for AI workloads using NVMe and SPDK\n• Work with memory tiering and disaggregation for large-scale systems\n• Prototype and evaluate storage architectures for performance and efficiency",
-      "date_published": "2026-10-04T15:36:39.626Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-4473497099",
-      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-4473497099",
-      "title": "AI Research Intern PhD — Marvell Technology",
-      "content_text": "Company: Marvell Technology · Location: Hyderabad, Telangana, India\n• Simulate AI networks at scale using tools like Astra-Sim and Chakra\n• Analyze congestion and protocol performance with real hardware insights\n• Work on research with potential for publication and product impact",
-      "date_published": "2026-10-04T15:36:32.723Z",
-      "authors": [
-        {
-          "name": "Marvell Technology"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760",
       "url": "https://interndoor.com/jobs/zensar-technologies-aes-de-fs-dotnet-full-stack-microservices-4454780760",
       "title": "AES - DE - FS - DOTNET Full-Stack Microservices — Zensar Technologies",
@@ -314,6 +266,54 @@
       "authors": [
         {
           "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-ats-workday-marvell-wd1-marvellcareers-2604255",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-ai-scale-protocols-and-simulation-ats-workday-marvell-wd1-marvellcareers-2604255",
+      "title": "AI Research Intern PhD — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad\n• Simulate AI-scale networks and evaluate protocol performance under real workloads\n• Work with tools like Astra-Sim, Chakra, and htsim for large-scale modeling\n• Collaborate with senior researchers on cutting-edge silicon and infrastructure projects",
+      "date_published": "2026-10-04T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-ats-workday-marvell-wd1-marvellcareers-2604256",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-storage-systems-for-ai-ats-workday-marvell-wd1-marvellcareers-2604256",
+      "title": "Storage Systems Research Intern — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad\n• Design storage systems for AI workloads using NVMe and SPDK\n• Work with memory tiering and disaggregation for large-scale systems\n• Prototype and evaluate storage architectures for performance and efficiency",
+      "date_published": "2026-10-04T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-ats-workday-marvell-wd1-marvellcareers-2604257",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-autonomous-infrastructure-and-telemetry-ats-workday-marvell-wd1-marvellcareers-2604257",
+      "title": "Research Intern PhD Autonomous Infrastructure — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad\n• Explore agentic AI for autonomous datacenter operations using telemetry and observability\n• Work with senior researchers on real silicon and production data\n• Prototype next-gen protocols like MRC and UAL across network fabrics",
+      "date_published": "2026-10-04T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-ats-workday-marvell-wd1-marvellcareers-2604254",
+      "url": "https://interndoor.com/jobs/marvell-technology-research-intern-phd-fpga-and-silicon-prototyping-ats-workday-marvell-wd1-marvellcareers-2604254",
+      "title": "Research Intern FPGA Prototyping — Marvell Technology",
+      "content_text": "Company: Marvell Technology · Location: Hyderabad\n• Design and test digital hardware on FPGA for next-gen protocols and features\n• Work with senior architects to refine and optimize designs for silicon\n• Translate FPGA prototypes into real products with production impact",
+      "date_published": "2026-10-04T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Marvell Technology"
         }
       ]
     },
