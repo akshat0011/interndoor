@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/otis-elevator-co-apprentice-4474282302",
+      "url": "https://interndoor.com/jobs/otis-elevator-co-apprentice-4474282302",
+      "title": "Apprentice — Otis Elevator Co.",
+      "content_text": "Company: Otis Elevator Co. · Location: Mumbai Metropolitan Region\n• Learn elevator systems, safety devices, and preventive maintenance\n• Use IoT tools and work with mechanical/electronic components\n• Receive training, a company phone, and a professional diploma",
+      "date_published": "2026-10-05T13:15:43.895Z",
+      "authors": [
+        {
+          "name": "Otis Elevator Co."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374",
       "url": "https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374",
       "title": "Frontend Intern- Web+Mobile — EMotorad",
@@ -486,6 +498,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/valeo-intern-software-ats-workday-valeo-wd3-valeo-jobs-req2026070899",
+      "url": "https://interndoor.com/jobs/valeo-intern-software-ats-workday-valeo-wd3-valeo-jobs-req2026070899",
+      "title": "Software Intern — Valeo",
+      "content_text": "Company: Valeo · Location: Chennai · Duration: 6 to 9 months\n• Develop software in MATLAB/Simulink for power components\n• Generate embedded C code using Embedded Coder and AutoSAR\n• Conduct MIL and SIL testing for software validation\n• Document design, tests, and validation results",
+      "date_published": "2026-10-05T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Valeo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/dentsu-associate-software-engineer-ats-workday-dentsuaegis-wd3-dan-global-r1132487",
       "url": "https://interndoor.com/jobs/dentsu-associate-software-engineer-ats-workday-dentsuaegis-wd3-dan-global-r1132487",
       "title": "Associate Software Engineer — dentsu",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-technical-specialist-linux-6-4409294047",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-technical-specialist-linux-6-4409294047",
-      "title": "MS Technical Specialist - Linux-6 — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor and resolve client incidents across cloud, security, networking, and applications\n• Use ticketing tools and ITIL processes to manage service level agreements\n• Collaborate with automation and vendor teams to optimize support workflows",
-      "date_published": "2026-10-04T12:03:21.256Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-software-development-specialist-4447529418",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-software-development-specialist-4447529418",
-      "title": "Software Development Specialist — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India\n• Troubleshoot production issues and implement fixes for critical systems\n• Design and maintain CI/CD pipelines using Bamboo and GitLab\n• Collaborate with teams to resolve complex technical challenges\n• Document systems and processes according to company standards",
-      "date_published": "2026-10-04T11:49:44.825Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
