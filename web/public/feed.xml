@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 05 Oct 2026 03:38:11 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 05 Oct 2026 04:14:56 GMT</lastBuildDate>
+  <item>
+    <title>IT Intern — Thermo Fisher Scientific</title>
+    <link>https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/thermo-fisher-scientific-intern-it-4473610312</guid>
+    <pubDate>Mon, 05 Oct 2026 04:14:56 GMT</pubDate>
+    <description>Company: Thermo Fisher Scientific · Location: Bengaluru East, Karnataka, India
+• Work with data using Python and SQL for analysis and transformation
+• Build automation solutions and Generative AI prototypes with LLMs
+• Collaborate on data pipelines and cloud technologies in cross-functional teams</description>
+  </item>
   <item>
     <title>Full Stack Developer — Barclays</title>
     <link>https://interndoor.com/jobs/barclays-full-stack-developer-4473606498</link>
@@ -497,16 +507,6 @@
 • Design and implement scalable distributed systems for hybrid cloud networking
 • Collaborate with product management and SRE teams on critical GCP services
 • Ensure system reliability and on-call support for production services</description>
-  </item>
-  <item>
-    <title>Princ Engr-AI Science — Verizon</title>
-    <link>https://interndoor.com/jobs/verizon-princ-engr-ai-science-4457386417</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/verizon-princ-engr-ai-science-4457386417</guid>
-    <pubDate>Sat, 03 Oct 2026 12:10:25 GMT</pubDate>
-    <description>Company: Verizon · Location: Chennai, Tamil Nadu, India
-• Design and deploy AI solutions from data pipelines to model optimization
-• Lead teams in building generative and agentic systems with Python and ML frameworks
-• Collaborate with cross-functional teams to align AI with business goals</description>
   </item>
 </channel>
 </rss>
