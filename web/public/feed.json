@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/linde-data-scientist-ai-hub-4467751452",
+      "url": "https://interndoor.com/jobs/linde-data-scientist-ai-hub-4467751452",
+      "title": "Data Scientist AI — Linde",
+      "content_text": "Company: Linde · Location: Bengaluru, Karnataka, India\n• Develop and manage AI products using machine and deep learning\n• Work with diverse data sources and structures for actionable insights\n• Collaborate with business teams to identify impactful opportunities",
+      "date_published": "2026-10-06T15:35:58.691Z",
+      "authors": [
+        {
+          "name": "Linde"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-software-and-platform-gen-ai-analyst-7-4473796139",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-software-and-platform-gen-ai-analyst-7-4473796139",
+      "title": "S&C Global Network - AI - Software & Platform - Gen AI - Analyst 7 — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop and test ai algorithms for business problems\n• Manage large databases and conduct data analytics\n• Collaborate with internal and external teams on projects\n• Build data pipelines for efficient information flow",
+      "date_published": "2026-10-06T15:33:13.806Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/deel-database-administrator-4456514007",
       "url": "https://interndoor.com/jobs/deel-database-administrator-4456514007",
       "title": "Database Administrator — Deel",
@@ -14,6 +38,18 @@
       "authors": [
         {
           "name": "Deel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualys-associate-cloud-security-analyst-4474975280",
+      "url": "https://interndoor.com/jobs/qualys-associate-cloud-security-analyst-4474975280",
+      "title": "Cloud Security Analyst Associate — Qualys",
+      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India\n• Review cloud environments for security risks and suggest fixes\n• Use Python, PowerShell, and SQL to analyze and document security policies\n• Work with AWS, Azure, and Google Cloud platforms daily\n• Collaborate with internal teams to improve security practices",
+      "date_published": "2026-10-06T15:20:23.602Z",
+      "authors": [
+        {
+          "name": "Qualys"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Elastic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-ai-engineer-4474699604",
-      "url": "https://interndoor.com/jobs/zensar-technologies-ai-engineer-4474699604",
-      "title": "AI Engineer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and operate multi-agent workflow for ReaderSight with Claude LLM integration\n• Develop automated report generation and alert systems for business consumers\n• Implement rule-based triggers and exception workflows in secure enterprise environment",
-      "date_published": "2026-10-06T11:21:50.029Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/standard-chartered-india-development-engineer-4474697630",
-      "url": "https://interndoor.com/jobs/standard-chartered-india-development-engineer-4474697630",
-      "title": "Development Engineer — Standard Chartered India",
-      "content_text": "Company: Standard Chartered India · Location: Chennai, Tamil Nadu, India · Duration: 20 weeks\n• Design and build tools that redefine banking through technology\n• Work with Java, Microservices, Angular, and React\n• Collaborate in Agile teams to improve client experiences",
-      "date_published": "2026-10-06T11:21:27.003Z",
-      "authors": [
-        {
-          "name": "Standard Chartered India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hilton-it-coordinator-4476178195",
-      "url": "https://interndoor.com/jobs/hilton-it-coordinator-4476178195",
-      "title": "IT Coordinator — Hilton",
-      "content_text": "Company: Hilton · Location: Delhi, Delhi, India\n• Maintain and manage technology equipment, hardware, and software inventory\n• Install and configure A/V, networking, and IT systems in guest areas\n• Provide technical support and training for end-users\n• Process guest billing for tech services and resolve concerns",
-      "date_published": "2026-10-06T10:32:28.337Z",
-      "authors": [
-        {
-          "name": "Hilton"
         }
       ]
     }
