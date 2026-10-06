@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-api-developer-platform-engineering-4474685069",
+      "url": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-api-developer-platform-engineering-4474685069",
+      "title": "API Developer Software Engineer — Nationwide",
+      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Build secure APIs for AI systems using Java Spring Boot or Python\n• Deploy services on Kubernetes with cloud-native tools and security practices\n• Collaborate with AI engineers on secure integration patterns and documentation",
+      "date_published": "2026-10-06T06:11:46.262Z",
+      "authors": [
+        {
+          "name": "Nationwide"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-agentic-ai-engineering-4474669618",
+      "url": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-agentic-ai-engineering-4474669618",
+      "title": "Agentic AI Software Engineer — Nationwide",
+      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Build and deploy agentic AI solutions using AWS Bedrock and Python\n• Implement CI/CD with GitHub Actions and Harness for agent deployments\n• Design secure agent workflows with approved tools and MCP servers",
+      "date_published": "2026-10-06T06:11:26.253Z",
+      "authors": [
+        {
+          "name": "Nationwide"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/t-v-s-d-quality-assurance-intern-4474032231",
+      "url": "https://interndoor.com/jobs/t-v-s-d-quality-assurance-intern-4474032231",
+      "title": "Quality Assurance Intern — TÜV SÜD",
+      "content_text": "Company: TÜV SÜD · Location: Vadodara, Gujarat, India\n• Test web, mobile, and low-code applications\n• Tools include manual and automation testing\n• Team works on software development fundamentals",
+      "date_published": "2026-10-06T06:08:34.981Z",
+      "authors": [
+        {
+          "name": "TÜV SÜD"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4474018861",
       "url": "https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4474018861",
       "title": "Software Tester Intern — Volody",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/worldquant-quantitative-researcher-4430735821",
-      "url": "https://interndoor.com/jobs/worldquant-quantitative-researcher-4430735821",
-      "title": "Quantitative Researcher — WorldQuant",
-      "content_text": "Company: WorldQuant · Location: Mumbai Metropolitan Region\n• Analyze financial data to identify predictive market signals\n• Use python and statistical tools to build quantitative models\n• Work on global investment strategies with a research-driven team",
-      "date_published": "2026-10-05T11:48:53.489Z",
-      "authors": [
-        {
-          "name": "WorldQuant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105",
-      "title": "Security Managed Services Engineer (L1) — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor client infrastructure, identify issues, and resolve incidents\n• Support clients via phone or chat, schedule maintenance, and follow handover procedures\n• Contribute to process improvements and may work on disaster recovery tasks",
-      "date_published": "2026-10-05T11:38:19.326Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-data-engineer-4409287250",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-data-engineer-4409287250",
-      "title": "Data Engineer — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India\n• Build data models and ETL pipelines for business analytics\n• Work with Azure Data Factory, SAP, and SQL databases\n• Collaborate with cross-functional teams on data migrations",
-      "date_published": "2026-10-05T11:37:34.381Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
         }
       ]
     }
