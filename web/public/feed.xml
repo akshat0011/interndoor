@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 06 Oct 2026 17:26:24 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 18:40:44 GMT</lastBuildDate>
+  <item>
+    <title>Site Reliability Engineer — Millennium</title>
+    <link>https://interndoor.com/jobs/millennium-platform-site-reliability-engineer-4448290508</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/millennium-platform-site-reliability-engineer-4448290508</guid>
+    <pubDate>Tue, 06 Oct 2026 18:40:44 GMT</pubDate>
+    <description>Company: Millennium · Location: Bengaluru, Karnataka, India
+• Build and maintain platforms for equity derivatives teams
+• Use Python, Docker, Kubernetes, and cloud platforms
+• Work on high-performance systems with AI-driven tools</description>
+  </item>
+  <item>
+    <title>Data Analyst I — HCA Healthcare - India</title>
+    <link>https://interndoor.com/jobs/hca-healthcare-india-analyst-i-data-analytics-4474990665</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/hca-healthcare-india-analyst-i-data-analytics-4474990665</guid>
+    <pubDate>Tue, 06 Oct 2026 18:23:40 GMT</pubDate>
+    <description>Company: HCA Healthcare - India · Location: Hyderabad, Telangana, India
+• Develop complex analytical datasets and reports using SQL, Python, and HR data
+• Collaborate with HR leaders and technical teams to deliver data-driven insights
+• Mentor junior analysts and ensure quality, security, and compliance standards</description>
+  </item>
   <item>
     <title>The Core Engineering-L2-Bengaluru-Analyst-Quantitative Engineering — Goldman Sachs</title>
     <link>https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-analyst-quantitative-engineering-4466132773</link>
@@ -489,26 +509,6 @@
 • Monitor and resolve client incidents across cloud, security, networking, and applications
 • Use ticketing tools and ITIL processes to manage service level agreements
 • Collaborate with teams and vendors to support cross-technology infrastructure</description>
-  </item>
-  <item>
-    <title>Security Managed Services Engineer (L1) — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409286302</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409286302</guid>
-    <pubDate>Tue, 06 Oct 2026 11:28:22 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
-• Monitor client infrastructure, identify issues, and resolve incidents
-• Support clients via phone or chat, schedule maintenance, and follow handover procedures
-• Contribute to process improvements and may work on disaster recovery projects</description>
-  </item>
-  <item>
-    <title>MS Security Engineer — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-ms-security-engineer-4409281482</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-ms-security-engineer-4409281482</guid>
-    <pubDate>Tue, 06 Oct 2026 11:27:10 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
-• Monitor client infrastructure and resolve low-complexity security incidents
-• Support clients via phone or chat and schedule maintenance windows
-• Maintain SLA compliance and document incident solutions</description>
   </item>
 </channel>
 </rss>
