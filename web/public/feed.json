@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/sap-associate-data-scientist-1-to-2-years-of-experience-4475117592",
+      "url": "https://interndoor.com/jobs/sap-associate-data-scientist-1-to-2-years-of-experience-4475117592",
+      "title": "Associate Data Scientist — SAP",
+      "content_text": "Company: SAP · Location: Bengaluru, Karnataka, India · Duration: 1 to 2 years\n• Build semantic models for AI agents using enterprise data and business processes\n• Work with graph databases, SPARQL, and RDF systems to structure knowledge\n• Develop AI solutions using Python, SQL, and ML frameworks in cloud environments",
+      "date_published": "2026-10-06T21:21:14.261Z",
+      "authors": [
+        {
+          "name": "SAP"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-systems-engineering-specialist-advisor-4476369248",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-systems-engineering-specialist-advisor-4476369248",
+      "title": "Systems Engineering Advisor — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Support Microsoft Copilot adoption and governance across client environments\n• Work with stakeholders to drive AI and productivity transformation initiatives\n• Develop training materials and communication plans for user adoption",
+      "date_published": "2026-10-06T19:22:56.272Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/larsen-and-toubro-embedded-developer-4467170870",
+      "url": "https://interndoor.com/jobs/larsen-and-toubro-embedded-developer-4467170870",
+      "title": "Embedded Developer — Larsen & Toubro",
+      "content_text": "Company: Larsen & Toubro · Location: Kurla, Maharashtra, India\n• Design and develop firmware for embedded systems using C\n• Create pcb schematics and layouts for hardware projects\n• Collaborate with vendors on hardware design and testing",
+      "date_published": "2026-10-06T19:22:46.126Z",
+      "authors": [
+        {
+          "name": "Larsen & Toubro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/millennium-platform-site-reliability-engineer-4448290508",
       "url": "https://interndoor.com/jobs/millennium-platform-site-reliability-engineer-4448290508",
       "title": "Site Reliability Engineer — Millennium",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/eclerx-analyst-4403175957",
-      "url": "https://interndoor.com/jobs/eclerx-analyst-4403175957",
-      "title": "Analyst — eClerx",
-      "content_text": "Company: eClerx · Location: Mumbai, Maharashtra, India\n• Analyze customer feedback and behavior across digital and offline channels\n• Use power bi and tableau to create dashboards and reports\n• Collaborate with product and marketing teams to improve customer experience",
-      "date_published": "2026-10-06T11:29:51.046Z",
-      "authors": [
-        {
-          "name": "eClerx"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-l2-middleware-4409274707",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-l2-middleware-4409274707",
-      "title": "MS Engineer L2, Middleware — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor and resolve client incidents across cloud, security, networking, and applications\n• Use ticketing tools and ITIL processes to manage service level agreements\n• Collaborate with automation and vendor teams to optimize support workflows",
-      "date_published": "2026-10-06T11:29:41.062Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-tcom-network-support-analyst-4467088522",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-tcom-network-support-analyst-4467088522",
-      "title": "Network Support Analyst — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Resolve UC and VC issues, perform root cause analysis, and implement fixes\n• Administer Cisco platforms, SIP trunks, and video endpoints\n• Monitor systems, generate reports, and collaborate with vendors",
-      "date_published": "2026-10-06T11:29:37.630Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
