@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-android-xr-mcu-bring-up-4474670470",
+      "url": "https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-android-xr-mcu-bring-up-4474670470",
+      "title": "Embedded Firmware Engineer — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Bring up and debug firmware for MCUs and peripherals using C/C++\n• Collaborate with Android teams to integrate MCU functionality\n• Develop and validate communication protocols and low-power modes",
+      "date_published": "2026-10-06T05:07:44.639Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wipro-developer-l2-4475896896",
       "url": "https://interndoor.com/jobs/wipro-developer-l2-4475896896",
       "title": "DEVELOPER L2 — Wipro",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Rippling"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105",
-      "title": "Security Managed Services Engineer (L1) — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor client infrastructure, identify issues, and resolve incidents\n• Support clients via phone or chat, schedule maintenance, and follow handover procedures\n• Contribute to process improvements and may work on disaster recovery tasks",
-      "date_published": "2026-10-05T11:38:19.326Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
         }
       ]
     }

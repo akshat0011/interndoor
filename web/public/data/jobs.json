@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791264496055,
+ "generatedAt": 1791264856886,
  "region": "IN",
  "regionName": "India",
- "count": 1135,
- "techCount": 1135,
+ "count": 1136,
+ "techCount": 1136,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -473,6 +473,63 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4474670470",
+   "title": "Embedded Firmware Engineer",
+   "slugTitle": "Embedded Firmware Engineer – Android XR MCU Bring-Up",
+   "company": "Quest Global",
+   "matchedWatchlist": "Quest Global",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/quest-global.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "linux",
+    "rtos",
+    "embedded c",
+    "spi",
+    "uart"
+   ],
+   "summary": "This role involves bringing up and debugging firmware for MCUs and peripherals, working closely with Android teams to integrate MCU functionality into XR systems. It suits students with strong embedded programming skills and interest in hardware-software integration.",
+   "bullets": [
+    "Bring up and debug firmware for MCUs and peripherals using C/C++",
+    "Collaborate with Android teams to integrate MCU functionality",
+    "Develop and validate communication protocols and low-power modes"
+   ],
+   "roleLabel": "MCU Firmware Development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "embedded c",
+    "cortex-m",
+    "freeRTOS",
+    "spi"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "22 minutes ago",
+   "postedAt": 1791263264639,
+   "firstSeenAt": 1791264584646,
+   "lastSeenAt": 1791264584646,
+   "url": "https://www.linkedin.com/jobs/view/4474670470/",
+   "applyUrl": "https://careers.quest-global.com/global/en/job/QGRQGAGLOBALP123328EXTERNALENGLOBAL/Embedded-Firmware-Engineer-Android-XR-MCU-Bring-Up?utm_source=linkedin&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "4871bae17c",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "mobile",
+   "region": "IN"
+  },
   {
    "id": "4475896896",
    "title": "DEVELOPER L2",
@@ -43008,7 +43065,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1791246240010,
+   "lastSeenAt": 1791264625834,
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
    "applyUrl": "https://jobs.siemens.com/externaljobs/JobDetail/496914?source=LinkedIn&sourceType=PREMIUM_POST_SITE",
    "description": null,

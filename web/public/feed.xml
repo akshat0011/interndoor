@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 06 Oct 2026 00:31:09 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 05:07:44 GMT</lastBuildDate>
+  <item>
+    <title>Embedded Firmware Engineer — Quest Global</title>
+    <link>https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-android-xr-mcu-bring-up-4474670470</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-android-xr-mcu-bring-up-4474670470</guid>
+    <pubDate>Tue, 06 Oct 2026 05:07:44 GMT</pubDate>
+    <description>Company: Quest Global · Location: Bengaluru, Karnataka, India
+• Bring up and debug firmware for MCUs and peripherals using C/C++
+• Collaborate with Android teams to integrate MCU functionality
+• Develop and validate communication protocols and low-power modes</description>
+  </item>
   <item>
     <title>DEVELOPER L2 — Wipro</title>
     <link>https://interndoor.com/jobs/wipro-developer-l2-4475896896</link>
@@ -499,16 +509,6 @@
 • Build and optimize products used by millions of users globally
 • Work with Python and Go to create core libraries for scalability
 • Design and execute large-scale database migrations with zero downtime</description>
-  </item>
-  <item>
-    <title>Security Managed Services Engineer (L1) — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105</guid>
-    <pubDate>Mon, 05 Oct 2026 11:38:19 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
-• Monitor client infrastructure, identify issues, and resolve incidents
-• Support clients via phone or chat, schedule maintenance, and follow handover procedures
-• Contribute to process improvements and may work on disaster recovery tasks</description>
   </item>
 </channel>
 </rss>
