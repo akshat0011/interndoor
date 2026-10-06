@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/salesforce-ad-software-engineering-pmts-4476166405",
+      "url": "https://interndoor.com/jobs/salesforce-ad-software-engineering-pmts-4476166405",
+      "title": "Software Engineering PMTS — SalesForce-ad",
+      "content_text": "Company: SalesForce-ad · Location: Hyderabad, Telangana, India\n• Build and maintain observability stack with open source and cloud managed services\n• Run data pipelines using big data tools and ensure system health\n• Mentor engineers and own services from start to finish",
+      "date_published": "2026-10-06T09:18:03.829Z",
+      "authors": [
+        {
+          "name": "SalesForce-ad"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-net-react-js-developer-irc305357-4474906028",
+      "url": "https://interndoor.com/jobs/globallogic-net-react-js-developer-irc305357-4474906028",
+      "title": ".Net React JS Developer IRC305357 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Noida, Uttar Pradesh, India\n• Build and maintain full-stack applications using .NET, React, and SQL Server\n• Work with Azure services like Data Factory and Logic Apps for integration\n• Collaborate in a global team on high-tech and healthcare projects",
+      "date_published": "2026-10-06T09:14:21.830Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-python-aws-developer-irc301400-4474905097",
+      "url": "https://interndoor.com/jobs/globallogic-python-aws-developer-irc301400-4474905097",
+      "title": "Python developer AWS — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Noida, Uttar Pradesh, India\n• Build and deploy REST APIs using Python and AWS\n• Work with Git and CI/CD pipelines for deployment\n• Collaborate on data pipelines and cloud infrastructure",
+      "date_published": "2026-10-06T09:13:44.867Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/capgemini-engineering-c-and-qt-qml-developer-4476169189",
+      "url": "https://interndoor.com/jobs/capgemini-engineering-c-and-qt-qml-developer-4476169189",
+      "title": "QT QML C++ Developer — Capgemini Engineering",
+      "content_text": "Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India\n• Develop cross-platform applications using c++ and qt frameworks\n• Work on complex software design and development projects\n• Collaborate with teams to deliver scalable and efficient solutions",
+      "date_published": "2026-10-06T09:08:00.048Z",
+      "authors": [
+        {
+          "name": "Capgemini Engineering"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/capgemini-engineering-python-qa-4476154796",
+      "url": "https://interndoor.com/jobs/capgemini-engineering-python-qa-4476154796",
+      "title": "Python QA — Capgemini Engineering",
+      "content_text": "Company: Capgemini Engineering · Location: Hyderabad, Telangana, India\n• Write automated tests for Python applications using pytest and AI tools\n• Validate API and database interactions with PostgreSQL or MySQL\n• Maintain test pipelines in GitLab CI or GitHub Actions",
+      "date_published": "2026-10-06T09:03:24.106Z",
+      "authors": [
+        {
+          "name": "Capgemini Engineering"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/guardian-t3-reporting-and-analytics-im-4474046346",
+      "url": "https://interndoor.com/jobs/guardian-t3-reporting-and-analytics-im-4474046346",
+      "title": "T3 - Reporting & Analytics IM — Guardian",
+      "content_text": "Company: Guardian · Location: Chennai, Tamil Nadu, India\n• Analyze data and build reports using tableau, sql, and excel\n• Collaborate with remote teams on process improvements\n• Work on database architecture and data visualization",
+      "date_published": "2026-10-06T08:45:45.448Z",
+      "authors": [
+        {
+          "name": "Guardian"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ibm-software-developer-4474028876",
       "url": "https://interndoor.com/jobs/ibm-software-developer-4474028876",
       "title": "Software Developer — IBM",
@@ -306,18 +378,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/salesforce-software-engineering-pmts-4475840778",
-      "url": "https://interndoor.com/jobs/salesforce-software-engineering-pmts-4475840778",
-      "title": "Software Engineering PMTS — Salesforce",
-      "content_text": "Company: Salesforce · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Build and maintain observability stack with open source and cloud managed services\n• Run data pipelines using big data tools and ensure system health\n• Mentor engineers and own global cloud services from start to finish",
-      "date_published": "2026-10-05T19:25:21.309Z",
-      "authors": [
-        {
-          "name": "Salesforce"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4474603572",
       "url": "https://interndoor.com/jobs/zensar-technologies-de-and-a-ipa-power-platform-4474603572",
       "title": "DE&A - IPA - Power Platform — Zensar Technologies",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "FedEx GCS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siemens-data-ingestion-engineer-4473646615",
-      "url": "https://interndoor.com/jobs/siemens-data-ingestion-engineer-4473646615",
-      "title": "Data Ingestion Engineer — Siemens",
-      "content_text": "Company: Siemens · Location: Pune Division, Maharashtra, India\n• Build and maintain data pipelines between SAP and Snowflake\n• Use dbt for transformation models and CI/CD tools for deployment\n• Collaborate with global data teams on scalable data solutions",
-      "date_published": "2026-10-05T13:37:01.477Z",
-      "authors": [
-        {
-          "name": "Siemens"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siemens-tcms-test-engineer-4473644690",
-      "url": "https://interndoor.com/jobs/siemens-tcms-test-engineer-4473644690",
-      "title": "TCMS Test Engineer — Siemens",
-      "content_text": "Company: Siemens · Location: Bangalore Urban, Karnataka, India\n• Execute functional and regression tests on simulators and hardware\n• Develop python scripts for automated testing and analysis\n• Report defects and track progress with test leads",
-      "date_published": "2026-10-05T13:29:26.101Z",
-      "authors": [
-        {
-          "name": "Siemens"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/salesforce-software-engineering-mts-backend-4475577987",
-      "url": "https://interndoor.com/jobs/salesforce-software-engineering-mts-backend-4475577987",
-      "title": "Backend Software Engineer — Salesforce",
-      "content_text": "Company: Salesforce · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Develop scalable data services using Spark, Trino, Airflow, and Kafka\n• Work on distributed systems managing thousands of compute nodes\n• Join on-call rotation for critical service reliability",
-      "date_published": "2026-10-05T13:27:37.742Z",
-      "authors": [
-        {
-          "name": "Salesforce"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-it-trainer-4475587007",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-it-trainer-4475587007",
-      "title": "IT Trainer — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Greater Chennai Area\n• Design and deliver AI/ML training sessions with hands-on labs and projects\n• Develop curriculum, assessments, and rubrics using Python, SQL, and TensorFlow\n• Mentor students and support faculty with technical guidance and enablement",
-      "date_published": "2026-10-05T13:25:40.209Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/wipro-developer-l2-4475572717",
-      "url": "https://interndoor.com/jobs/wipro-developer-l2-4475572717",
-      "title": "DEVELOPER L2 — Wipro",
-      "content_text": "Company: Wipro · Location: Chennai, Tamil Nadu, India · Duration: 1-3 years\n• Code and test applications following quality standards and client specs\n• .net and web app development with collaboration across teams\n• Work on projects with clear documentation and operational procedures",
-      "date_published": "2026-10-05T13:24:58.147Z",
-      "authors": [
-        {
-          "name": "Wipro"
         }
       ]
     }
