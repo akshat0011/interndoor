@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791294960062,
+ "generatedAt": 1791295111364,
  "region": "IN",
  "regionName": "India",
  "count": 1160,
@@ -638,59 +638,6 @@
    ],
    "category": "misc",
    "family": "core_eng",
-   "region": "IN"
-  },
-  {
-   "id": "4474946647",
-   "title": "3D Unity Developer Intern",
-   "slugTitle": "3D Unity Developer - Intern",
-   "company": "National Technology Centre for Ports, Waterways and Coasts (NTCPWC)",
-   "matchedWatchlist": "National Technology Centre for Ports, Waterways and Coasts",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/national-technology-centre-for-ports-waterways-and-coasts-nt.jpg",
-   "location": "Kanchipuram, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "1–3 years",
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": true,
-   "skills": [
-    "c#",
-    "git"
-   ],
-   "summary": "This role involves creating 3D simulations and visualizations for maritime and industrial applications using Unity. The candidate will develop interactive environments, integrate 3D models, and optimize performance for real-time use. It suits students with experience in Unity and C# looking to work on applied research projects in the port and maritime sectors.",
-   "bullets": [
-    "Develop interactive 3D applications and simulations using Unity",
-    "Work with 3D models, animations, physics, and real-time visualization",
-    "Collaborate with designers and engineers on maritime and industrial projects"
-   ],
-   "roleLabel": "3D Unity Developer",
-   "degreeLevel": "UG",
-   "degreeText": "B.Tech / B.Sc",
-   "experience": "1–3 years",
-   "keySkills": [
-    "unity",
-    "c#",
-    "performance optimization",
-    "git"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 minute ago",
-   "postedAt": 1791289613034,
-   "firstSeenAt": 1791289673038,
-   "lastSeenAt": 1791294567827,
-   "url": "https://www.linkedin.com/jobs/view/4474946647/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4474946647/",
-   "description": null,
-   "roleFingerprint": "3d9139386c",
-   "cardFacts": [
-    "Kanchipuram",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "game_graphics",
    "region": "IN"
   },
   {
@@ -48147,6 +48094,57 @@
    ],
    "category": "software",
    "family": "ai_ml",
+   "region": "IN"
+  },
+  {
+   "id": "4471454732",
+   "title": "3D Unity Developer Intern",
+   "company": "National Technology Centre for Ports, Waterways and Coasts (NTCPWC)",
+   "matchedWatchlist": "National Technology Centre for Ports, Waterways and Coasts",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/national-technology-centre-for-ports-waterways-and-coasts-nt.jpg",
+   "location": "Kanchipuram, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "0 applicants",
+   "easyApply": true,
+   "skills": [
+    "c#",
+    "git"
+   ],
+   "summary": "This internship involves creating 3d simulations and interactive environments using unity. You'll collaborate with designers and engineers to build real-time visualizations for maritime applications. Ideal for students with experience in unity and 3d tools, this role offers hands-on development and exposure to simulation workflows.",
+   "bullets": [
+    "Develop 3d applications and simulations using unity and c#",
+    "Work with 3d artists, designers, and engineers on real-time projects",
+    "Optimize scenes, debug issues, and maintain project documentation"
+   ],
+   "roleLabel": "3d application development",
+   "degreeLevel": "UG",
+   "degreeText": "B.Tech/B.Sc",
+   "keySkills": [
+    "unity",
+    "c#",
+    "git",
+    "blender"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "14 minutes ago",
+   "postedAt": 1790251194400,
+   "firstSeenAt": 1790252034405,
+   "lastSeenAt": 1790252034405,
+   "url": "https://www.linkedin.com/jobs/view/4471454732/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4471454732/",
+   "description": null,
+   "roleFingerprint": "71c5da4b4e",
+   "cardFacts": [
+    "Kanchipuram",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "game_graphics",
    "region": "IN"
   },
   {
