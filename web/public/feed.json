@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/harman-india-intern-4474080733",
+      "url": "https://interndoor.com/jobs/harman-india-intern-4474080733",
+      "title": "Intern — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Write test cases for AUTOSAR applications on actual hardware\n• Use AI tools for coding, debugging, and documentation\n• Collaborate with engineers on test framework development",
+      "date_published": "2026-10-06T16:40:26.868Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/linde-data-scientist-ai-hub-4467751452",
       "url": "https://interndoor.com/jobs/linde-data-scientist-ai-hub-4467751452",
       "title": "Data Scientist AI — Linde",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Myntra"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/elastic-agentic-ai-engineer-4476180167",
-      "url": "https://interndoor.com/jobs/elastic-agentic-ai-engineer-4476180167",
-      "title": "Agentic AI Engineer — Elastic",
-      "content_text": "Company: Elastic · Location: Bengaluru, Karnataka, India · Duration: 16 weeks\n• Build agent-to-agent systems that automate complex business processes\n• Integrate large language models with enterprise tools and APIs\n• Design secure, scalable cloud infrastructure for AI workflows",
-      "date_published": "2026-10-06T11:22:44.742Z",
-      "authors": [
-        {
-          "name": "Elastic"
         }
       ]
     }

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 06 Oct 2026 15:35:58 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 16:40:26 GMT</lastBuildDate>
+  <item>
+    <title>Intern — HARMAN India</title>
+    <link>https://interndoor.com/jobs/harman-india-intern-4474080733</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/harman-india-intern-4474080733</guid>
+    <pubDate>Tue, 06 Oct 2026 16:40:26 GMT</pubDate>
+    <description>Company: HARMAN India · Location: Bengaluru, Karnataka, India
+• Write test cases for AUTOSAR applications on actual hardware
+• Use AI tools for coding, debugging, and documentation
+• Collaborate with engineers on test framework development</description>
+  </item>
   <item>
     <title>Data Scientist AI — Linde</title>
     <link>https://interndoor.com/jobs/linde-data-scientist-ai-hub-4467751452</link>
@@ -499,16 +509,6 @@
 • Analyze data and create insights to support business decisions
 • Use python and sql to build models and automate processes
 • Collaborate with teams to solve inventory and operational challenges</description>
-  </item>
-  <item>
-    <title>Agentic AI Engineer — Elastic</title>
-    <link>https://interndoor.com/jobs/elastic-agentic-ai-engineer-4476180167</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/elastic-agentic-ai-engineer-4476180167</guid>
-    <pubDate>Tue, 06 Oct 2026 11:22:44 GMT</pubDate>
-    <description>Company: Elastic · Location: Bengaluru, Karnataka, India · Duration: 16 weeks
-• Build agent-to-agent systems that automate complex business processes
-• Integrate large language models with enterprise tools and APIs
-• Design secure, scalable cloud infrastructure for AI workflows</description>
   </item>
 </channel>
 </rss>
