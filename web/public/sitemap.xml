@@ -28,8 +28,8 @@
   <url><loc>https://interndoor.com/skills/react</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/generative-ai</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/data-structures</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/excel</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/microservices</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/excel</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/jenkins</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rag</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/spring-boot</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
@@ -80,7 +80,7 @@
   <url><loc>https://interndoor.com/skills/autosar</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/kotlin</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/bengaluru</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/chennai</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
@@ -92,7 +92,7 @@
   <url><loc>https://interndoor.com/roles</loc><lastmod>2026-10-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering</loc><lastmod>2026-10-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/roles/data-engineering-analytics</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/roles/data-engineering-analytics</loc><lastmod>2026-10-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/qa-testing</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/devops-cloud</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
@@ -127,11 +127,13 @@
   <url><loc>https://interndoor.com/roles/full-stack-development-in-bengaluru</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-mumbai</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-pune</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-hyderabad</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development-in-chennai</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development-in-pune</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering-in-mumbai</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/jobs/wipro-developer-l2-4475896896</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/wipro-developer-l2-4476114072</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/state-street-apprentice-data-analysis-ats-workday-statestreet-wd1-global-r-797532</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/state-street-ai-support-analyst-associate-2-4475894566</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/barclays-full-stack-engineer-4473688572</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/societe-generale-global-solution-centre-specialist-software-engineer-test-automation-4475884515</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
@@ -1257,7 +1259,7 @@
   <url><loc>https://interndoor.com/jobs/eclerx-intern-ats-oraclecloud-fa-ewji-saasfaprod1-fa-ocs-oraclecloud-com-81650</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/companies/wipro</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/state-street</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/state-street</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/barclays</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/societe-generale-global-solution-centre</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/netapp</loc><lastmod>2026-10-05</lastmod><priority>0.6</priority></url>
