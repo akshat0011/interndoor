@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4474018861",
+      "url": "https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4474018861",
+      "title": "Software Tester Intern — Volody",
+      "content_text": "Company: Volody · Location: Mumbai, Maharashtra, India\n• Execute test cases, identify defects, verify fixes in CLM software\n• Use bug tracking tools, maintain test documentation, collaborate with developers\n• Based in mumbai, full-time on-site role with product team",
+      "date_published": "2026-10-06T05:59:52.068Z",
+      "authors": [
+        {
+          "name": "Volody"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-android-xr-mcu-bring-up-4474670470",
       "url": "https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-android-xr-mcu-bring-up-4474670470",
       "title": "Embedded Firmware Engineer — Quest Global",
@@ -98,18 +110,6 @@
       "authors": [
         {
           "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4475887279",
-      "url": "https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4475887279",
-      "title": "Software Engineer (C/C++ Developer) — NetApp",
-      "content_text": "Company: NetApp · Location: Bengaluru, Karnataka, India\n• Debug complex ontap issues using logs, traces, and debugging\n• Develop code fixes and automation for troubleshooting\n• Collaborate with support and product teams on root-cause analysis",
-      "date_published": "2026-10-05T22:23:50.742Z",
-      "authors": [
-        {
-          "name": "NetApp"
         }
       ]
     },
@@ -242,18 +242,6 @@
       "authors": [
         {
           "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/marsh-software-developer-i-4475818756",
-      "url": "https://interndoor.com/jobs/marsh-software-developer-i-4475818756",
-      "title": "Software Developer - I — Marsh",
-      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Test data pipelines and ETL processes for validation\n• Use SQL, Java/Python, and TestNG for automation\n• Work with AWS tools like Redshift and Glue\n• Collaborate with teams on hybrid office setup",
-      "date_published": "2026-10-05T17:03:19.975Z",
-      "authors": [
-        {
-          "name": "Marsh"
         }
       ]
     },
@@ -594,14 +582,26 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/rippling-copy-of-software-engineer-i-integration-platform-4475574169",
-      "url": "https://interndoor.com/jobs/rippling-copy-of-software-engineer-i-integration-platform-4475574169",
-      "title": "Software Engineer I Integration Platform — Rippling",
-      "content_text": "Company: Rippling · Location: Bengaluru, Karnataka, India · Duration: 1-2 years\n• Build and optimize products used by millions of users globally\n• Work with Python and Go to create core libraries for scalability\n• Design and execute large-scale database migrations with zero downtime",
-      "date_published": "2026-10-05T11:40:01.413Z",
+      "id": "https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105",
+      "title": "Security Managed Services Engineer (L1) — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor client infrastructure, identify issues, and resolve incidents\n• Support clients via phone or chat, schedule maintenance, and follow handover procedures\n• Contribute to process improvements and may work on disaster recovery tasks",
+      "date_published": "2026-10-05T11:38:19.326Z",
       "authors": [
         {
-          "name": "Rippling"
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-data-engineer-4409287250",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-data-engineer-4409287250",
+      "title": "Data Engineer — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India\n• Build data models and ETL pipelines for business analytics\n• Work with Azure Data Factory, SAP, and SQL databases\n• Collaborate with cross-functional teams on data migrations",
+      "date_published": "2026-10-05T11:37:34.381Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
         }
       ]
     }

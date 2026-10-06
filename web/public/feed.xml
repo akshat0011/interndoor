@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 06 Oct 2026 05:07:44 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 05:59:52 GMT</lastBuildDate>
+  <item>
+    <title>Software Tester Intern — Volody</title>
+    <link>https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4474018861</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4474018861</guid>
+    <pubDate>Tue, 06 Oct 2026 05:59:52 GMT</pubDate>
+    <description>Company: Volody · Location: Mumbai, Maharashtra, India
+• Execute test cases, identify defects, verify fixes in CLM software
+• Use bug tracking tools, maintain test documentation, collaborate with developers
+• Based in mumbai, full-time on-site role with product team</description>
+  </item>
   <item>
     <title>Embedded Firmware Engineer — Quest Global</title>
     <link>https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-android-xr-mcu-bring-up-4474670470</link>
@@ -86,16 +96,6 @@
 • Analyze data to uncover trends and drive operational improvements
 • Build dashboards and reports using tools like Python and SQL
 • Collaborate with cross-functional teams to define analytical needs</description>
-  </item>
-  <item>
-    <title>Software Engineer (C/C++ Developer) — NetApp</title>
-    <link>https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4475887279</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/netapp-software-engineer-c-c-developer-4475887279</guid>
-    <pubDate>Mon, 05 Oct 2026 22:23:50 GMT</pubDate>
-    <description>Company: NetApp · Location: Bengaluru, Karnataka, India
-• Debug complex ontap issues using logs, traces, and debugging
-• Develop code fixes and automation for troubleshooting
-• Collaborate with support and product teams on root-cause analysis</description>
   </item>
   <item>
     <title>Application Developer Intermediate — Citi</title>
@@ -207,17 +207,6 @@
 • Develop and deploy Windows desktop applications using C# and WPF
 • Write clean, reusable code and create technical documentation
 • Analyze requirements and perform unit testing and validation</description>
-  </item>
-  <item>
-    <title>Software Developer - I — Marsh</title>
-    <link>https://interndoor.com/jobs/marsh-software-developer-i-4475818756</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/marsh-software-developer-i-4475818756</guid>
-    <pubDate>Mon, 05 Oct 2026 17:03:19 GMT</pubDate>
-    <description>Company: Marsh · Location: Gurugram, Haryana, India
-• Test data pipelines and ETL processes for validation
-• Use SQL, Java/Python, and TestNG for automation
-• Work with AWS tools like Redshift and Glue
-• Collaborate with teams on hybrid office setup</description>
   </item>
   <item>
     <title>Graduate Apprentice Trainee — Volvo Construction Equipment</title>
@@ -501,14 +490,24 @@
 • Work on global investment strategies with a research-driven team</description>
   </item>
   <item>
-    <title>Software Engineer I Integration Platform — Rippling</title>
-    <link>https://interndoor.com/jobs/rippling-copy-of-software-engineer-i-integration-platform-4475574169</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/rippling-copy-of-software-engineer-i-integration-platform-4475574169</guid>
-    <pubDate>Mon, 05 Oct 2026 11:40:01 GMT</pubDate>
-    <description>Company: Rippling · Location: Bengaluru, Karnataka, India · Duration: 1-2 years
-• Build and optimize products used by millions of users globally
-• Work with Python and Go to create core libraries for scalability
-• Design and execute large-scale database migrations with zero downtime</description>
+    <title>Security Managed Services Engineer (L1) — NTT DATA, Inc.</title>
+    <link>https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-security-managed-services-engineer-l1-4409291105</guid>
+    <pubDate>Mon, 05 Oct 2026 11:38:19 GMT</pubDate>
+    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
+• Monitor client infrastructure, identify issues, and resolve incidents
+• Support clients via phone or chat, schedule maintenance, and follow handover procedures
+• Contribute to process improvements and may work on disaster recovery tasks</description>
+  </item>
+  <item>
+    <title>Data Engineer — NTT DATA, Inc.</title>
+    <link>https://interndoor.com/jobs/ntt-data-inc-data-engineer-4409287250</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-data-engineer-4409287250</guid>
+    <pubDate>Mon, 05 Oct 2026 11:37:34 GMT</pubDate>
+    <description>Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India
+• Build data models and ETL pipelines for business analytics
+• Work with Azure Data Factory, SAP, and SQL databases
+• Collaborate with cross-functional teams on data migrations</description>
   </item>
 </channel>
 </rss>
