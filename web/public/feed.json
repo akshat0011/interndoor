@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ibm-software-developer-4474028876",
+      "url": "https://interndoor.com/jobs/ibm-software-developer-4474028876",
+      "title": "Software Developer — IBM",
+      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Build and maintain full-stack applications using Python, Java, Go, React, and Node.js\n• Work on automation and AI projects with tools like LangChain, FastAPI, and Ansible\n• Contribute to DevOps and CI/CD pipelines for cloud-based solutions",
+      "date_published": "2026-10-06T08:21:14.668Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ibm-software-developer-4474041388",
+      "url": "https://interndoor.com/jobs/ibm-software-developer-4474041388",
+      "title": "Software Developer — IBM",
+      "content_text": "Company: IBM · Location: Kochi, Kerala, India\n• Build and maintain full-stack applications using Python, Java, Go, React, and Node.js\n• Work on automation and AI projects with tools like LangChain, FastAPI, and Ansible\n• Contribute to DevOps and CI/CD pipelines for improved software quality",
+      "date_published": "2026-10-06T08:21:04.935Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/electronic-arts-ea-ai-software-engineer-intern-4474047135",
       "url": "https://interndoor.com/jobs/electronic-arts-ea-ai-software-engineer-intern-4474047135",
       "title": "AI Software Engineer Intern — Electronic Arts (EA)",
@@ -14,6 +38,42 @@
       "authors": [
         {
           "name": "Electronic Arts (EA)"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-software-development-specialist-4476147735",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-software-development-specialist-4476147735",
+      "title": "Software Development Specialist — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Write and execute test scripts for UI and API automation\n• Use selenium, playwright, rest assured, jira, and xray\n• Work on enterprise-scale software with global clients",
+      "date_published": "2026-10-06T07:30:55.423Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/volody-php-developer-mumbai-based-only-4474026686",
+      "url": "https://interndoor.com/jobs/volody-php-developer-mumbai-based-only-4474026686",
+      "title": "PHP Developer (Mumbai based only) — Volody",
+      "content_text": "Company: Volody · Location: Goregaon, Maharashtra, India\n• Write clean php code for backend systems\n• Work with mysql and restful apis\n• Collaborate with product and qa teams in mumbai",
+      "date_published": "2026-10-06T07:25:04.294Z",
+      "authors": [
+        {
+          "name": "Volody"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/okta-site-reliability-engineer-4474020938",
+      "url": "https://interndoor.com/jobs/okta-site-reliability-engineer-4474020938",
+      "title": "Site Reliability Engineer — Okta",
+      "content_text": "Company: Okta · Location: Bengaluru, Karnataka, India\n• Operate large-scale cloud infrastructure and production services\n• Use Go, Python, Terraform, and GitOps for automation and deployment\n• Participate in on-call rotations and incident response for customer systems",
+      "date_published": "2026-10-06T07:20:29.416Z",
+      "authors": [
+        {
+          "name": "Okta"
         }
       ]
     },
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Wipro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374",
-      "url": "https://interndoor.com/jobs/emotorad-frontend-intern-web-mobile-4475580374",
-      "title": "Frontend Intern- Web+Mobile — EMotorad",
-      "content_text": "Company: EMotorad · Location: Gurugram, Haryana, India · Duration: 6 months\n• Build and enhance frontend features using next.js / react\n• Contribute to mobile apps with flutter and internal tools\n• Work on live d2c storefront, cms, and om systems\n• Collaborate with teams using git and ai-powered tools",
-      "date_published": "2026-10-05T12:35:08.510Z",
-      "authors": [
-        {
-          "name": "EMotorad"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/telus-digital-platform-engineer-4474271432",
-      "url": "https://interndoor.com/jobs/telus-digital-platform-engineer-4474271432",
-      "title": "Platform Engineer — TELUS Digital",
-      "content_text": "Company: TELUS Digital · Location: Hyderabad, Telangana, India\n• Build and maintain scalable cloud infrastructure using AWS services\n• Write automation scripts and tools with Python for DevOps workflows\n• Monitor and optimize cloud costs and system performance in production",
-      "date_published": "2026-10-05T12:12:20.513Z",
-      "authors": [
-        {
-          "name": "TELUS Digital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/telus-digital-platform-engineer-4474273395",
-      "url": "https://interndoor.com/jobs/telus-digital-platform-engineer-4474273395",
-      "title": "Platform Engineer — TELUS Digital",
-      "content_text": "Company: TELUS Digital · Location: Bengaluru, Karnataka, India\n• Build and maintain scalable cloud infrastructure using AWS services\n• Write automation scripts and tools with Python for DevOps workflows\n• Monitor and optimize cloud costs and production systems at scale",
-      "date_published": "2026-10-05T12:11:42.923Z",
-      "authors": [
-        {
-          "name": "TELUS Digital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/telus-digital-platform-engineer-4474282058",
-      "url": "https://interndoor.com/jobs/telus-digital-platform-engineer-4474282058",
-      "title": "Platform Engineer — TELUS Digital",
-      "content_text": "Company: TELUS Digital · Location: Noida, Uttar Pradesh, India\n• Build and maintain scalable cloud infrastructure using AWS services\n• Write automation scripts and tools with Python for DevOps workflows\n• Monitor and optimize cloud costs and production systems in global environments",
-      "date_published": "2026-10-05T12:11:39.432Z",
-      "authors": [
-        {
-          "name": "TELUS Digital"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-security-4409272946",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-security-4409272946",
-      "title": "MS Engineer - Security — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Chennai, Tamil Nadu, India\n• Monitor client infrastructure and resolve technical issues\n• Support with network devices and security tools like Palo Alto, Fortinet\n• Work on disaster recovery and automation projects",
-      "date_published": "2026-10-05T12:09:14.017Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
         }
       ]
     }
