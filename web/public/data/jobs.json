@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791249841922,
+ "generatedAt": 1791250358781,
  "region": "IN",
  "regionName": "India",
- "count": 1133,
- "techCount": 1133,
+ "count": 1134,
+ "techCount": 1134,
  "otherCount": 0,
  "companies": [
   "ABB",
@@ -473,6 +473,98 @@
  ],
  "jobs": [
   {
+   "id": "4475896896",
+   "title": "DEVELOPER L2",
+   "company": "Wipro",
+   "matchedWatchlist": "Wipro",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/wipro.jpg",
+   "location": "Mumbai Metropolitan Region",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "1-3 years",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves writing code and performing unit tests using flutter 2. You'll work with teams to ensure client requirements are met and maintain project documentation. Suitable for someone with 1-3 years of experience in software development.",
+   "bullets": [
+    "Write code and test units per standards, work with teams to meet client needs",
+    "Use flutter 2 for development, maintain docs and knowledge bases",
+    "1-3 years experience required, based in mumbai metropolitan region"
+   ],
+   "roleLabel": "Software development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "flutter"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791246669792,
+   "firstSeenAt": 1791250269796,
+   "lastSeenAt": 1791250269796,
+   "url": "https://www.linkedin.com/jobs/view/4475896896/",
+   "applyUrl": "https://wipro-limited.contactrh.com/jobs/12/44485601/en_US",
+   "description": null,
+   "roleFingerprint": "e5487cba8c",
+   "cardFacts": [
+    "Mumbai Metropolitan Region",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN"
+  },
+  {
+   "id": "4476114072",
+   "title": "DEVELOPER L2",
+   "company": "Wipro",
+   "matchedWatchlist": "Wipro",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/wipro.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "1-3 years",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "java"
+   ],
+   "summary": "This full-time role involves coding and testing software for client projects using Java-J2EE. Ideal for someone with 1-3 years of experience looking to work on real-world development tasks in a collaborative environment.",
+   "bullets": [
+    "Write code and perform unit testing for client projects",
+    "Use Java-J2EE and follow quality standards",
+    "Collaborate with teams to meet client requirements"
+   ],
+   "roleLabel": "Software Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "java-j2ee"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791246383862,
+   "firstSeenAt": 1791249983867,
+   "lastSeenAt": 1791249983867,
+   "url": "https://www.linkedin.com/jobs/view/4476114072/",
+   "applyUrl": "https://wipro-limited.contactrh.com/jobs/12/44485613/en_US",
+   "description": null,
+   "roleFingerprint": "cd8f0b4a8a",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN"
+  },
+  {
    "id": "4475894566",
    "title": "AI Support Analyst, Associate 2",
    "company": "State Street",
@@ -511,7 +603,7 @@
    "postedText": "43 minutes ago",
    "postedAt": 1791243652016,
    "firstSeenAt": 1791246232025,
-   "lastSeenAt": 1791246232025,
+   "lastSeenAt": 1791249916657,
    "url": "https://www.linkedin.com/jobs/view/4475894566/",
    "applyUrl": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Bangalore-India/AI-Support-Analyst--Associate-2_R-795689?source=APPLICANT_SOURCE-LINKEDIN",
    "description": null,
@@ -1806,52 +1898,6 @@
    "roleFingerprint": "1f4b5321db",
    "cardFacts": [
     "Bangalore Urban",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "swe",
-   "region": "IN"
-  },
-  {
-   "id": "4475595983",
-   "title": "DEVELOPER L2",
-   "company": "Wipro",
-   "matchedWatchlist": "Wipro",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/wipro.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": "1-3 years",
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves coding and testing software while working with teams to meet client needs. It suits those with automotive experience and 1-3 years of coding background. The work focuses on quality and delivery standards in a collaborative environment.",
-   "bullets": [
-    "Write code and test units per standards while working with teams",
-    "Use automotive tools and follow quality and delivery guidelines",
-    "Maintain docs and update knowledge bases for projects"
-   ],
-   "roleLabel": "Software Development",
-   "degreeLevel": null,
-   "degreeText": null,
-   "experience": "1–3 years",
-   "keySkills": [
-    "automotive"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1791214509041,
-   "firstSeenAt": 1791218109043,
-   "lastSeenAt": 1791228323340,
-   "url": "https://www.linkedin.com/jobs/view/4475595983/",
-   "applyUrl": "https://wipro-limited.contactrh.com/jobs/12/44485079/en_US",
-   "description": null,
-   "roleFingerprint": "4adf4bf920",
-   "cardFacts": [
-    "Bengaluru",
     "On-site"
    ],
    "category": "software",
