@@ -6,7 +6,38 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 07 Oct 2026 16:55:28 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 07 Oct 2026 18:00:11 GMT</lastBuildDate>
+  <item>
+    <title>ITAO – Application Owner, AS — Deutsche Bank</title>
+    <link>https://interndoor.com/jobs/deutsche-bank-itao-application-owner-as-4476795445</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deutsche-bank-itao-application-owner-as-4476795445</guid>
+    <pubDate>Wed, 07 Oct 2026 18:00:11 GMT</pubDate>
+    <description>Company: Deutsche Bank · Location: Pune Division, Maharashtra, India
+• Manage application audits, risk compliance, and security incidents
+• Coordinate with stakeholders and vendors for infrastructure upgrades
+• Monitor application performance and user access
+• Maintain disaster recovery plans and execute drills</description>
+  </item>
+  <item>
+    <title>Application Engineer — Applied Materials India</title>
+    <link>https://interndoor.com/jobs/applied-materials-india-application-engineer-4465944170</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/applied-materials-india-application-engineer-4465944170</guid>
+    <pubDate>Wed, 07 Oct 2026 17:37:29 GMT</pubDate>
+    <description>Company: Applied Materials India · Location: Bengaluru, Karnataka, India
+• Analyze nanometer-scale defects using advanced imaging and image processing algorithms
+• Collaborate with semiconductor manufacturers to optimize defect metrology products
+• Travel 75% of time to overseas chip fabrication facilities</description>
+  </item>
+  <item>
+    <title>Python full stack + AWS (ETL) — Broadridge India</title>
+    <link>https://interndoor.com/jobs/broadridge-india-python-full-stack-aws-etl-4458792777</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/broadridge-india-python-full-stack-aws-etl-4458792777</guid>
+    <pubDate>Wed, 07 Oct 2026 17:23:45 GMT</pubDate>
+    <description>Company: Broadridge India · Location: Greater Bengaluru Area
+• Builds and maintains web applications using python and aws
+• Works on etl pipelines and data processing systems
+• Collaborates with cross-functional teams in agile environments</description>
+  </item>
   <item>
     <title>Business Intelligence Analyst — Applied Materials India</title>
     <link>https://interndoor.com/jobs/applied-materials-india-business-intelligence-analyst-4474459652</link>
@@ -480,36 +511,6 @@
 • Evaluate AI tools, support adoption, and document findings for stakeholders
 • Coordinate enablement activities and maintain clear communication across teams
 • Stay updated on AI trends and share insights through workshops and training</description>
-  </item>
-  <item>
-    <title>Applied Scientist FinAuto — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-applied-scientist-finauto-4476715268</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-applied-scientist-finauto-4476715268</guid>
-    <pubDate>Wed, 07 Oct 2026 12:18:04 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Build systems to detect fraud, theft, and wasteful transactions across Amazon&#39;s financial operations
-• Use machine learning and statistical methods to analyze billions of transactions daily
-• Collaborate with engineering teams to deploy models in production environments</description>
-  </item>
-  <item>
-    <title>Quality Assurance Technician, Amazon Pay India — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-quality-assurance-technician-amazon-pay-india-4476710613</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-quality-assurance-technician-amazon-pay-india-4476710613</guid>
-    <pubDate>Wed, 07 Oct 2026 12:17:36 GMT</pubDate>
-    <description>Company: Amazon · Location: Hyderabad, Telangana, India
-• Test end-to-end functionality across multiple services and architectures
-• Write automated tests and debug systems using logs and scripts
-• Collaborate with engineers and stakeholders to shape quality strategies</description>
-  </item>
-  <item>
-    <title>AI Engineer — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-4440927559</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-4440927559</guid>
-    <pubDate>Wed, 07 Oct 2026 11:55:49 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Gurgaon, Haryana, India
-• Develop AI agents for complex workflows using Python and enterprise systems
-• Integrate MCP servers and build LLM applications with agentic frameworks
-• Create secure AI workflows with RAG, vector databases, and prompt engineering</description>
   </item>
 </channel>
 </rss>
