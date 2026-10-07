@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/pw-physicswallah-ai-engineer-intern-4476597084",
+      "url": "https://interndoor.com/jobs/pw-physicswallah-ai-engineer-intern-4476597084",
+      "title": "AI Engineer Intern — PW (PhysicsWallah)",
+      "content_text": "Company: PW (PhysicsWallah) · Location: Noida, Uttar Pradesh, India\n• Build ai agents and automate internal workflows with python and react\n• Integrate llm apis with tools and data sources\n• Create no-code automations and track impact on time/cost",
+      "date_published": "2026-10-07T09:30:38.775Z",
+      "authors": [
+        {
+          "name": "PW (PhysicsWallah)"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cognizant-performance-analyst-4475198469",
       "url": "https://interndoor.com/jobs/cognizant-performance-analyst-4475198469",
       "title": "Performance Analyst — Cognizant",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/netapp-certinia-formerly-financialforce-salesforce-developer-and-administrato-4474069709",
-      "url": "https://interndoor.com/jobs/netapp-certinia-formerly-financialforce-salesforce-developer-and-administrato-4474069709",
-      "title": "Salesforce Developer Administrator — NetApp",
-      "content_text": "Company: NetApp · Location: Bengaluru, Karnataka, India\n• Configure and develop Certinia modules for PSA and Financial Management\n• Integrate Certinia with ERP, HRIS, and CRM systems using APIs\n• Support go-live and ongoing administration with user management and security",
-      "date_published": "2026-10-06T14:26:52.304Z",
-      "authors": [
-        {
-          "name": "NetApp"
         }
       ]
     }
