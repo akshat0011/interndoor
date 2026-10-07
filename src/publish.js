@@ -7,6 +7,7 @@ import { log } from './logger.js';
 import { formatStipend, safeBaseSalary } from './extract.js';
 import { matchCompany, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
+import { ensureInsights } from './insights.js';
 import { writeSite, cardFacts, jobSlug, deadlinePassed } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
@@ -439,6 +440,21 @@ export function dedupePostings(jobs, superseded = null) {
  * the site stamps dates by, so "measured on 28 August" means the 28th where the
  * reader is rather than wherever the server thinks it is.
  */
+/**
+ * The frozen monthly reports (/insights), per region. Compiled once per month
+ * and stored by src/insights.js; this only asks for them. A failure costs the
+ * reports, never the publish.
+ */
+function monthlyInsights(store, cfg, regions, now = Date.now()) {
+  const out = new Map();
+  for (const region of regions) {
+    try { out.set(region.code, ensureInsights(store, cfg, region.code, now, log)); } catch (err) {
+      log.warn(`Could not build the monthly reports for ${region.code}: ${err.message}`);
+    }
+  }
+  return out;
+}
+
 function dailyStats(store, regions, now = Date.now()) {
   const out = new Map();
   for (const region of regions) {
@@ -846,7 +862,8 @@ export async function writeJobsFile(store, cfg) {
      region's. */
   const channelsByRegion = new Map(regions.map((r) => [r.code, channelsFor(r.code, cfg)]));
   const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions,
-    { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions), redirectsByRegion, closableByRegion });
+    { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions),
+      insightsByRegion: monthlyInsights(store, cfg, regions), redirectsByRegion, closableByRegion });
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;
@@ -982,6 +999,8 @@ export function publishedPaths() {
     /* /about — the same single root page as /contact, and the same trap: not
        listed here it is written every run and pushed never. */
     'web/public/about.html',
+    /* /insights — the frozen monthly reports. Same root-level trap. */
+    'web/public/insights',
     /* The daily digest's masthead radar. Email cannot render the site's inline
        SVG (src/digestmail.js), so the mark is a PNG served from here — and
        every subscriber's client fetches it from the live domain. Missing from
