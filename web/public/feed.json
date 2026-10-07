@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-cross-technology-managed-services-engineer-l1-4474459916",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-cross-technology-managed-services-engineer-l1-4474459916",
+      "title": "Cross Technology Managed Services Engineer (L1) — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Haryana, India\n• Monitor and resolve client IT issues across cloud, security, networking, and applications\n• Use ITSM tools and knowledge articles to support ticket resolution\n• Work in a hybrid environment with global teams and client-facing responsibilities",
+      "date_published": "2026-10-07T18:25:46.011Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-geospatial-analyst-map-4466884257",
+      "url": "https://interndoor.com/jobs/cognizant-geospatial-analyst-map-4466884257",
+      "title": "GeoSpatial Analyst MAP — Cognizant",
+      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Manage dynatrace alerts dashboards and dql queries for operational visibility\n• Support oneagent activegate and open telemetry on azure and kubernetes\n• Troubleshoot dynatrace issues and data gaps across windows linux and akS",
+      "date_published": "2026-10-07T18:11:49.565Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/deutsche-bank-itao-application-owner-as-4476795445",
       "url": "https://interndoor.com/jobs/deutsche-bank-itao-application-owner-as-4476795445",
       "title": "ITAO – Application Owner, AS — Deutsche Bank",
@@ -14,6 +38,18 @@
       "authors": [
         {
           "name": "Deutsche Bank"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/veradigm-contractor-4459012061",
+      "url": "https://interndoor.com/jobs/veradigm-contractor-4459012061",
+      "title": "Contractor — Veradigm®",
+      "content_text": "Company: Veradigm® · Location: Pune Division, Maharashtra, India\n• Answer customer calls about product issues\n• Monitor systems and fix technical problems\n• Work with team to solve customer challenges",
+      "date_published": "2026-10-07T17:53:37.960Z",
+      "authors": [
+        {
+          "name": "Veradigm®"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Larsen & Toubro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mufg-incident-reponse-analyst-4476724222",
-      "url": "https://interndoor.com/jobs/mufg-incident-reponse-analyst-4476724222",
-      "title": "Incident Reponse - Analyst — MUFG",
-      "content_text": "Company: MUFG · Location: Greater Bengaluru Area\n• Investigate cyber threats and analyze digital evidence to trace attacks\n• Respond to security incidents and support forensic investigations\n• Collaborate with teams to improve threat detection and response processes",
-      "date_published": "2026-10-07T12:39:00.249Z",
-      "authors": [
-        {
-          "name": "MUFG"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/teachmint-full-stack-developer-intern-ats-keka-teachmint-143815",
-      "url": "https://interndoor.com/jobs/teachmint-full-stack-developer-intern-ats-keka-teachmint-143815",
-      "title": "Full Stack Developer Intern — Teachmint",
-      "content_text": "Company: Teachmint · Location: Bangalore, KA, India · Duration: 6 months\n• Build and maintain responsive web apps with frontend and backend\n• Work with react, node.js, mongodb, and rest apis\n• Debug across layers and contribute to agile teams",
-      "date_published": "2026-10-07T12:38:51.050Z",
-      "authors": [
-        {
-          "name": "Teachmint"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/general-mills-associate-d-and-t-analyst-ai-and-automation-4475424736",
-      "url": "https://interndoor.com/jobs/general-mills-associate-d-and-t-analyst-ai-and-automation-4475424736",
-      "title": "Associate D&T Analyst – AI & Automation — General Mills",
-      "content_text": "Company: General Mills · Location: Mumbai Metropolitan Region\n• Evaluate AI tools, support adoption, and document findings for stakeholders\n• Coordinate enablement activities and maintain clear communication across teams\n• Stay updated on AI trends and share insights through workshops and training",
-      "date_published": "2026-10-07T12:37:51.426Z",
-      "authors": [
-        {
-          "name": "General Mills"
         }
       ]
     }
