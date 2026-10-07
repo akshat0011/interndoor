@@ -989,6 +989,29 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
   font-family: var(--mono); font-size: 10px; font-weight: 500;
   color: var(--ink-3); letter-spacing: .04em;
 }
+/* A chip that links is the whole chip, not underlined words inside a pill
+   (the skill, city and role pages read as a wall of underlines). A chip with
+   no page behind it reads quieter, so the two never look alike. */
+.cp-chips li { position: relative; }
+.cp-chips li > a { text-decoration: none; color: inherit; }
+.cp-chips li > a::after { content: ""; position: absolute; inset: -1px; border-radius: 999px; }
+.cp-chips li > span { color: var(--ink-2); }
+.cp-chips li:has(> span) { border-color: var(--rule); }
+@media (hover: hover) and (pointer: fine) {
+  .cp-chips li:has(> a:hover) { border-color: var(--live); background: var(--card-2); }
+}
+.cp-chips li > a:focus-visible { outline: none; }
+.cp-chips li:has(> a:focus-visible) { outline: 2px solid var(--live); outline-offset: 2px; }
+
+/* ---------- skill, city and role pages (7 Oct 2026) ----------
+   These pages used the board's .feed list: one full-width column with no top
+   margin, so the first role sat against the last chip and a phone showed three
+   screens of chips before any role. They use .tiles now, the roles come
+   straight after the summary, and the heading no longer touches the summary
+   box or leaves one word on its own line. */
+.page.facet h1 { margin: 0 0 18px; text-wrap: balance; }
+.page.facet .dim { margin-top: 12px; }
+.page.facet .tiles + .dim { margin-top: 16px; }
 
 /* Same row treatment as .facts on the job page, but auto-fitting, because a
    hub has between four and eight of these rather than a fixed rail. */

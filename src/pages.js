@@ -4754,7 +4754,7 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
     indexable: FACETS_INDEXABLE,
     region,
   })}
-<main class="page">
+<main class="page facet">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span>
@@ -4765,17 +4765,27 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
     <p class="summary">${esc(lede)} Every listing links to the original posting.</p>
     ${ins.payLine ? `<p class="dim">${esc(ins.payLine)}</p>` : ''}
 
+    <section class="strip">
+      <div class="strip-head"><h2>Newest roles</h2></div>
+      <div class="tiles">
+      ${shown.map((j) => tile(j, { region })).join('\n      ')}
+      </div>
+      ${rows.length > shown.length
+        ? `<p class="dim">Showing the ${shown.length} most recent of ${rows.length}. <a href="${regionHref('/', region)}">See them all on the board</a>.</p>`
+        : ''}
+    </section>
+
     ${ins.employers.length ? `<section class="strip">
       <div class="strip-head"><h2>Who is hiring</h2></div>
       <ul class="cp-chips">
-        ${ins.employers.map((e) => `<li><a href="${regionHref(`/companies/${e.slug}`, region)}">${esc(e.name)} · ${e.n}</a></li>`).join('\n        ')}
+        ${ins.employers.map((e) => `<li><a href="${regionHref(`/companies/${e.slug}`, region)}">${esc(e.name)} <b>${e.n}</b></a></li>`).join('\n        ')}
       </ul>
     </section>` : ''}
 
     ${roleLinks.length ? `<section class="strip">
       <div class="strip-head"><h2>By role</h2></div>
       <ul class="cp-chips">
-        ${roleLinks.map((r) => `<li><a href="${regionHref(r.href, region)}">${esc(r.label)} · ${r.n}</a></li>`).join('\n        ')}
+        ${roleLinks.map((r) => `<li><a href="${regionHref(r.href, region)}">${esc(r.label)} <b>${r.n}</b></a></li>`).join('\n        ')}
       </ul>
     </section>` : ''}
 
@@ -4783,17 +4793,10 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
       <div class="strip-head"><h2>${kind === 'skill' ? 'Where these roles are' : 'Skills these roles ask for'}</h2></div>
       <ul class="cp-chips">
         ${ins.other.map((o) => `<li>${otherPages.has(o.slug)
-          ? `<a href="${regionHref(`/${otherDir}/${o.slug}`, region)}">${esc(o.name)} · ${o.n}</a>`
-          : `<span>${esc(o.name)} · ${o.n}</span>`}</li>`).join('\n        ')}
+          ? `<a href="${regionHref(`/${otherDir}/${o.slug}`, region)}">${esc(o.name)} <b>${o.n}</b></a>`
+          : `<span>${esc(o.name)} <b>${o.n}</b></span>`}</li>`).join('\n        ')}
       </ul>
     </section>` : ''}
-
-    <ul class="feed">
-      ${shown.map((j) => `<li>${tile(j, { region })}</li>`).join('\n      ')}
-    </ul>
-    ${rows.length > shown.length
-      ? `<p class="dim">Showing the ${shown.length} most recent of ${rows.length}. <a href="${regionHref('/', region)}">See them all on the board</a>.</p>`
-      : ''}
 
     ${also.length ? `<section class="strip">
       <div class="strip-head"><h2>${esc(k.siblings)}</h2></div>
@@ -4936,7 +4939,7 @@ function roleTiles(rows, region) {
   });
   return {
     total: one.length,
-    html: one.slice(0, ROLE_TILES).map((j) => `<li>${tile(j, { region, locations: count.get(roleKey(j)) ?? 1 })}</li>`).join('\n      '),
+    html: one.slice(0, ROLE_TILES).map((j) => tile(j, { region, locations: count.get(roleKey(j)) ?? 1 })).join('\n      '),
     shown: Math.min(one.length, ROLE_TILES),
   };
 }
@@ -4946,7 +4949,7 @@ function chipList(items, href) {
   return `<ul class="cp-chips">
         ${items.map((e) => {
           const h = href(e);
-          return `<li>${h ? `<a href="${h}">${esc(e.name)} · ${e.n}</a>` : `<span>${esc(e.name)} · ${e.n}</span>`}</li>`;
+          return `<li>${h ? `<a href="${h}">${esc(e.name)} <b>${e.n}</b></a>` : `<span>${esc(e.name)} <b>${e.n}</b></span>`}</li>`;
         }).join('\n        ')}
       </ul>`;
 }
@@ -5008,13 +5011,13 @@ function roleBody({ rows, ins, def, region, where, heading, crumbs, lede, cityHr
   ].filter(Boolean);
   const list = (label, t) => (t.total ? `<section class="strip">
       <div class="strip-head"><h2>${esc(label)}</h2></div>
-      <ul class="feed">
+      <div class="tiles">
       ${t.html}
-      </ul>
+      </div>
       ${t.total > t.shown ? `<p class="dim">Showing the ${t.shown} newest of ${t.total}. <a href="${regionHref('/', region)}">See every live role on the board</a>.</p>` : ''}
     </section>` : '');
 
-  return `<main class="page">
+  return `<main class="page facet">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       ${crumbs}
@@ -5028,6 +5031,9 @@ function roleBody({ rows, ins, def, region, where, heading, crumbs, lede, cityHr
       <div class="strip-head"><h2>What the work is</h2></div>
       <p class="cp-note">${esc(def.about)}</p>
     </section>
+
+    ${list('Internships', internTiles)}
+    ${list(`${entryWordCap(region)} jobs`, fullTiles)}
 
     ${ins.employers.length ? `<section class="strip">
       <div class="strip-head"><h2>Who is hiring</h2></div>
@@ -5048,9 +5054,6 @@ function roleBody({ rows, ins, def, region, where, heading, crumbs, lede, cityHr
       <div class="strip-head"><h2>Common job titles</h2></div>
       ${chipList(ins.titles, () => '')}
     </section>` : ''}
-
-    ${list('Internships', internTiles)}
-    ${list(`${entryWordCap(region)} jobs`, fullTiles)}
 
     ${roleQa(def, ins, region, where, { byCity })}
 
