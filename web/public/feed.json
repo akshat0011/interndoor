@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/gartner-specialist-data-engineer-pyhton-sql-databricks-ai-llm-agentic-ai-4475481934",
+      "url": "https://interndoor.com/jobs/gartner-specialist-data-engineer-pyhton-sql-databricks-ai-llm-agentic-ai-4475481934",
+      "title": "Data Engineer Specialist — Gartner",
+      "content_text": "Company: Gartner · Location: Gurgaon, Haryana, India · Duration: 0-2 years\n• Build and deploy scalable data pipelines and AI-ready data products\n• Use Python, SQL, Databricks, and cloud platforms for data integration\n• Collaborate with data science and research teams on productionizing models",
+      "date_published": "2026-10-07T20:49:02.723Z",
+      "authors": [
+        {
+          "name": "Gartner"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/caterpillar-inc-software-engineer-business-system-analyst-4476933146",
+      "url": "https://interndoor.com/jobs/caterpillar-inc-software-engineer-business-system-analyst-4476933146",
+      "title": "Business System Analyst Software Engineer — Caterpillar Inc.",
+      "content_text": "Company: Caterpillar Inc. · Location: Bengaluru East, Karnataka, India\n• Design and implement software solutions for business systems using .NET and Azure DevOps\n• Collaborate with cross-functional teams to align IT strategies with business needs\n• Automate workflows and optimize processes through code and testing tools",
+      "date_published": "2026-10-07T20:33:40.515Z",
+      "authors": [
+        {
+          "name": "Caterpillar Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/caterpillar-inc-software-engineer-4476920628",
+      "url": "https://interndoor.com/jobs/caterpillar-inc-software-engineer-4476920628",
+      "title": "Software Engineer — Caterpillar Inc.",
+      "content_text": "Company: Caterpillar Inc. · Location: Bengaluru East, Karnataka, India\n• Design and develop software applications using .NET, Angular, and SQL\n• Collaborate with cross-functional teams on business and technical strategies\n• Implement agile practices and automated testing in a global product environment",
+      "date_published": "2026-10-07T20:33:33.029Z",
+      "authors": [
+        {
+          "name": "Caterpillar Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4476912328",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4476912328",
+      "title": "Systems Integration Specialist — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design and maintain data pipelines using PySpark and Delta Lake\n• Work with Azure Databricks, ADF, and multiple data sources\n• Build reusable frameworks and ensure data quality across pipelines",
+      "date_published": "2026-10-07T19:56:30.267Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-full-stack-developer-4476797986",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-full-stack-developer-4476797986",
+      "title": "Python Full Stack Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Build web apps with python, django, flask, react, and databases\n• Design scalable rest apis for data processing and enterprise apps\n• Create automation tools for excel, data validation, and reporting",
+      "date_published": "2026-10-07T19:56:19.411Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4476797991",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4476797991",
+      "title": "Python Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Write scripts for GitLab, Artifactory, and Vault automation\n• Collaborate with DevOps and development teams on platform tools\n• Refactor Python code for performance and quality",
+      "date_published": "2026-10-07T19:54:13.763Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ntt-data-inc-cross-technology-managed-services-engineer-l1-4474459916",
       "url": "https://interndoor.com/jobs/ntt-data-inc-cross-technology-managed-services-engineer-l1-4474459916",
       "title": "Cross Technology Managed Services Engineer (L1) — NTT DATA, Inc.",
@@ -527,78 +599,6 @@
       "title": "System Engineer — Larsen & Toubro",
       "content_text": "Company: Larsen & Toubro · Location: Bengaluru, Karnataka, India\n• Integrate telecom systems including LTE/5G and network management solutions\n• Design secure IP networks with routing protocols and network security policies\n• Support military qualification testing and customer collaboration during projects",
       "date_published": "2026-10-07T12:47:32.100Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-application-engineer-4476713782",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-application-engineer-4476713782",
-      "title": "Application Engineer — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Bengaluru, Karnataka, India\n• Develop and maintain Embedded Linux BSPs for ARM platforms\n• Configure 4G/5G modems and network protocols like IPv4/IPv6\n• Manage virtualized environments and high availability clusters",
-      "date_published": "2026-10-07T12:47:07.937Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4466840697",
-      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4466840697",
-      "title": "App Development Technical Specialist — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Develop and maintain microservices using spring boot and java\n• Design system architecture and implement rest apis\n• Write unit tests with junit and work with mysql and hibernate",
-      "date_published": "2026-10-07T12:45:21.828Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-apply-now-india-campus-team-4475421669",
-      "url": "https://interndoor.com/jobs/micron-technology-apply-now-india-campus-team-4475421669",
-      "title": "Apply Now! India Campus Team — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Bengaluru, Karnataka, India\n• Design and develop next-generation memory technologies for AI and cloud computing\n• Work on semiconductor design, verification, and product engineering\n• Collaborate with global teams on advanced memory solutions and manufacturing",
-      "date_published": "2026-10-07T12:43:55.623Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/micron-technology-apply-now-india-campus-team-4475416980",
-      "url": "https://interndoor.com/jobs/micron-technology-apply-now-india-campus-team-4475416980",
-      "title": "Apply Now! India Campus Team — Micron Technology",
-      "content_text": "Company: Micron Technology · Location: Hyderabad, Telangana, India\n• Design and develop next-generation memory technologies for AI and cloud applications\n• Work on semiconductor design, verification, and product engineering across global teams\n• Collaborate on advanced packaging and data analytics for high-performance storage solutions",
-      "date_published": "2026-10-07T12:43:43.401Z",
-      "authors": [
-        {
-          "name": "Micron Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/macquarie-group-workspace-and-applications-sre-4465985195",
-      "url": "https://interndoor.com/jobs/macquarie-group-workspace-and-applications-sre-4465985195",
-      "title": "Workspace Applications SRE — Macquarie Group",
-      "content_text": "Company: Macquarie Group · Location: Hyderabad, Telangana, India · Duration: 26 weeks\n• Manage windows environments with entra id and modern endpoint tools\n• Lead incident resolution and drive innovation in secure user experiences\n• Work on global financial services tech with hybrid flexibility",
-      "date_published": "2026-10-07T12:42:54.531Z",
-      "authors": [
-        {
-          "name": "Macquarie Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-software-engineer-d-and-dc-land-systems-4476723278",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-software-engineer-d-and-dc-land-systems-4476723278",
-      "title": "Software Engineer D&DC Land Systems — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Chorasi, Gujarat, India\n• Develop and debug complex software systems for distributed architectures\n• Work with Linux, Jira, and inter-process communication tools\n• Collaborate on system scalability and root cause analysis",
-      "date_published": "2026-10-07T12:39:43.804Z",
       "authors": [
         {
           "name": "Larsen & Toubro"
