@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-finauto-4474472997",
+      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-finauto-4474472997",
+      "title": "Applied Scientist FinAuto — Amazon Science",
+      "content_text": "Company: Amazon Science · Location: Bengaluru, Karnataka, India\n• Analyze financial data to detect fraud and optimize processes\n• Develop machine learning models for scalable transaction analysis\n• Collaborate with engineering teams to deploy models in production",
+      "date_published": "2026-10-07T22:28:06.669Z",
+      "authors": [
+        {
+          "name": "Amazon Science"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-4476941238",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-4476941238",
+      "title": "Software Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Develop and test software for Cisco IOS XE platforms used in enterprise networking\n• Work on control and data plane software for routers, switches, and wireless products\n• Collaborate with experts to design systems and innovate in networking technologies",
+      "date_published": "2026-10-07T22:05:31.027Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/barclays-ai-developer-4474492133",
       "url": "https://interndoor.com/jobs/barclays-ai-developer-4474492133",
       "title": "AI Developer — Barclays",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Echo Initiative by Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4476726500",
-      "url": "https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4476726500",
-      "title": "Back End Developer — Echo Initiative by Joveo",
-      "content_text": "Company: Echo Initiative by Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Work with react, next.js, node.js, express, and databases\n• Collaborate with leadership from first week",
-      "date_published": "2026-10-07T12:51:09.115Z",
-      "authors": [
-        {
-          "name": "Echo Initiative by Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-embedded-developer-4476717531",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-embedded-developer-4476717531",
-      "title": "Embedded Developer — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Kurla, Maharashtra, India\n• Design firmware for embedded systems using C\n• Work on pcb schematic and layout with vendors\n• Test and validate hardware for video applications",
-      "date_published": "2026-10-07T12:47:46.315Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
         }
       ]
     }
