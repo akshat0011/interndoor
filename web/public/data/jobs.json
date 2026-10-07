@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791332349007,
+ "generatedAt": 1791332594213,
  "region": "IN",
  "regionName": "India",
- "count": 1191,
- "techCount": 1191,
+ "count": 1192,
+ "techCount": 1192,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -524,7 +524,7 @@
    "postedText": "11 minutes ago",
    "postedAt": 1791331618327,
    "firstSeenAt": 1791332278333,
-   "lastSeenAt": 1791332278333,
+   "lastSeenAt": 1791332489083,
    "url": "https://www.linkedin.com/jobs/view/4476503740/",
    "applyUrl": "https://internshala.com/internship/detail/embedded-electronics-iot-pcb-design-internship-in-howrah-at-metnmat-research1791274985/?utm_campaign=linkedin_d2002&utm_source=Linkedin_Partnership",
    "description": null,
@@ -535,6 +535,61 @@
    ],
    "category": "hardware",
    "family": "embedded",
+   "region": "IN"
+  },
+  {
+   "id": "4476508524",
+   "title": "Applied Scientist, SSG Science",
+   "company": "Amazon",
+   "matchedWatchlist": "Amazon",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/amazon.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    "machine learning",
+    "deep learning",
+    "algorithms"
+   ],
+   "summary": "This role involves optimizing generative AI models for edge devices and working with cross-functional teams to develop cutting-edge machine learning solutions. Ideal for a graduate with a strong background in computer science or related fields and experience with AI research.",
+   "bullets": [
+    "Optimize Gen AI models for edge platforms using quantization and distillation",
+    "Collaborate with hardware and product teams to build ML-centric solutions",
+    "Publish research and present at top ML conferences like NeurIPS and ICLR"
+   ],
+   "roleLabel": "Applied Science",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "c++",
+    "python",
+    "information theory"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "21 minutes ago",
+   "postedAt": 1791331279638,
+   "firstSeenAt": 1791332539645,
+   "lastSeenAt": 1791332539645,
+   "url": "https://www.linkedin.com/jobs/view/4476508524/",
+   "applyUrl": "https://www.amazon.jobs/jobs/10570717/applied-scientist-ssg-science?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
+   "description": null,
+   "roleFingerprint": "f3ad8fc7b3",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "ai_ml",
    "region": "IN"
   },
   {
@@ -3720,7 +3775,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791285917450,
    "firstSeenAt": 1791289517452,
-   "lastSeenAt": 1791296267795,
+   "lastSeenAt": 1791332476282,
    "url": "https://www.linkedin.com/jobs/view/4474908214/",
    "applyUrl": "https://dentsuaegis.wd3.myworkdayjobs.com/DAN_GLOBAL/job/Bangalore/Data-Engineer_R1132526?source=LinkedIn",
    "description": null,
