@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/meta-asic-engineer-intern-design-4474440358",
+      "url": "https://interndoor.com/jobs/meta-asic-engineer-intern-design-4474440358",
+      "title": "ASIC Design Engineer Intern — Meta",
+      "content_text": "Company: Meta · Location: Bengaluru, Karnataka, India\n• Design and develop rtl or hls code for advanced ips\n• Analyze and optimize power performance area of designs\n• Support verification infrastructure and post-silicon validation",
+      "date_published": "2026-10-07T03:32:12.839Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/meta-asic-engineer-intern-infra-silicon-enablement-4474445140",
+      "url": "https://interndoor.com/jobs/meta-asic-engineer-intern-infra-silicon-enablement-4474445140",
+      "title": "Infra Silicon Enablement ASIC Engineer Intern — Meta",
+      "content_text": "Company: Meta · Location: Bengaluru, Karnataka, India\n• Debug silicon issues across product lifecycle\n• Develop validation tools for data center silicon\n• Work on silicon bring-up and post-silicon characterization",
+      "date_published": "2026-10-07T03:31:23.163Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/metnmat-research-and-innovations-embedded-electronics-iot-and-pcb-design-internship-in-howrah-4476503740",
       "url": "https://interndoor.com/jobs/metnmat-research-and-innovations-embedded-electronics-iot-and-pcb-design-internship-in-howrah-4476503740",
       "title": "Embedded Electronics Intern — METNMAT Research & Innovations",
@@ -575,30 +599,6 @@
       "title": "Database administrator Oracle — NTT DATA, Inc.",
       "content_text": "Company: NTT DATA, Inc. · Location: Chennai, Tamil Nadu, India\n• Maintain database security, integrity and performance across complex systems\n• Work with Oracle and SQL Server, creating and managing data models\n• Collaborate with teams to design, document and optimize database solutions",
       "date_published": "2026-10-06T11:31:05.381Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-cloud-managed-services-engineer-l3-4409284397",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-cloud-managed-services-engineer-l3-4409284397",
-      "title": "Cloud Managed Services Engineer (L3) — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Greater Hyderabad Area\n• Monitor cloud infrastructure, resolve complex incidents, and ensure SLA compliance\n• Work with VMware, AWS, and GCP, manage disaster recovery, and automate workflows\n• Collaborate with global teams, support enterprise data centers, and mentor junior engineers",
-      "date_published": "2026-10-06T11:30:39.415Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-automation-engineer-4455869336",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-automation-engineer-4455869336",
-      "title": "Automation Engineer — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Greater Hyderabad Area\n• Build and maintain automated systems to reduce manual tasks and improve efficiency\n• Use Python, Java, and CI/CD tools like Jenkins for development and integration\n• Work in a hybrid team on enterprise-scale AI and automation projects",
-      "date_published": "2026-10-06T11:30:25.362Z",
       "authors": [
         {
           "name": "NTT DATA, Inc."

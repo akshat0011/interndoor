@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 07 Oct 2026 00:06:58 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 07 Oct 2026 03:32:12 GMT</lastBuildDate>
+  <item>
+    <title>ASIC Design Engineer Intern — Meta</title>
+    <link>https://interndoor.com/jobs/meta-asic-engineer-intern-design-4474440358</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/meta-asic-engineer-intern-design-4474440358</guid>
+    <pubDate>Wed, 07 Oct 2026 03:32:12 GMT</pubDate>
+    <description>Company: Meta · Location: Bengaluru, Karnataka, India
+• Design and develop rtl or hls code for advanced ips
+• Analyze and optimize power performance area of designs
+• Support verification infrastructure and post-silicon validation</description>
+  </item>
+  <item>
+    <title>Infra Silicon Enablement ASIC Engineer Intern — Meta</title>
+    <link>https://interndoor.com/jobs/meta-asic-engineer-intern-infra-silicon-enablement-4474445140</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/meta-asic-engineer-intern-infra-silicon-enablement-4474445140</guid>
+    <pubDate>Wed, 07 Oct 2026 03:31:23 GMT</pubDate>
+    <description>Company: Meta · Location: Bengaluru, Karnataka, India
+• Debug silicon issues across product lifecycle
+• Develop validation tools for data center silicon
+• Work on silicon bring-up and post-silicon characterization</description>
+  </item>
   <item>
     <title>Embedded Electronics Intern — METNMAT Research &amp; Innovations</title>
     <link>https://interndoor.com/jobs/metnmat-research-and-innovations-embedded-electronics-iot-and-pcb-design-internship-in-howrah-4476503740</link>
@@ -489,26 +509,6 @@
 • Maintain database security, integrity and performance across complex systems
 • Work with Oracle and SQL Server, creating and managing data models
 • Collaborate with teams to design, document and optimize database solutions</description>
-  </item>
-  <item>
-    <title>Cloud Managed Services Engineer (L3) — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-cloud-managed-services-engineer-l3-4409284397</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-cloud-managed-services-engineer-l3-4409284397</guid>
-    <pubDate>Tue, 06 Oct 2026 11:30:39 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Greater Hyderabad Area
-• Monitor cloud infrastructure, resolve complex incidents, and ensure SLA compliance
-• Work with VMware, AWS, and GCP, manage disaster recovery, and automate workflows
-• Collaborate with global teams, support enterprise data centers, and mentor junior engineers</description>
-  </item>
-  <item>
-    <title>Automation Engineer — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-automation-engineer-4455869336</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-automation-engineer-4455869336</guid>
-    <pubDate>Tue, 06 Oct 2026 11:30:25 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Greater Hyderabad Area
-• Build and maintain automated systems to reduce manual tasks and improve efficiency
-• Use Python, Java, and CI/CD tools like Jenkins for development and integration
-• Work in a hybrid team on enterprise-scale AI and automation projects</description>
   </item>
 </channel>
 </rss>
