@@ -306,18 +306,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/qualcomm-memory-cad-software-engineer-4475443379",
-      "url": "https://interndoor.com/jobs/qualcomm-memory-cad-software-engineer-4475443379",
-      "title": "Memory Software Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Develop and modify software for SRAM Memory deliverables\n• Work with Unix, Shell, C/C++, Python, and Java\n• Collaborate in a large matrixed organization",
-      "date_published": "2026-10-07T14:04:38.343Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/project44-it-automation-engineer-4456941589",
       "url": "https://interndoor.com/jobs/project44-it-automation-engineer-4456941589",
       "title": "IT Automation Engineer — project44",
@@ -338,18 +326,6 @@
       "authors": [
         {
           "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/exxonmobil-india-careers-software-developer-high-performance-computing-4411650911",
-      "url": "https://interndoor.com/jobs/exxonmobil-india-careers-software-developer-high-performance-computing-4411650911",
-      "title": "High Performance Computing Developer — ExxonMobil India Careers",
-      "content_text": "Company: ExxonMobil India Careers · Location: Bengaluru, Karnataka, India\n• Develop and optimize seismic imaging applications for oil and gas exploration\n• Work with HPC systems and geoscientists on hardware and system upgrades\n• Collaborate on Agile teams to deploy and support production-ready code",
-      "date_published": "2026-10-07T13:48:22.250Z",
-      "authors": [
-        {
-          "name": "ExxonMobil India Careers"
         }
       ]
     },
@@ -398,18 +374,6 @@
       "authors": [
         {
           "name": "Eli Lilly and Company"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/rockwell-automation-ifs-cloud-developer-4458197277",
-      "url": "https://interndoor.com/jobs/rockwell-automation-ifs-cloud-developer-4458197277",
-      "title": "IFS Cloud Developer — Rockwell Automation",
-      "content_text": "Company: Rockwell Automation · Location: Pune District, Maharashtra, India · Duration: 1–2 years\n• Develop custom solutions in IFS Cloud ERP using Aurena, REST APIs, and extensions\n• Collaborate with product owners and stakeholders on AI-driven insights and integrations\n• Support IFS Cloud upgrades, security, and governance in a regulated manufacturing environment",
-      "date_published": "2026-10-07T13:06:36.298Z",
-      "authors": [
-        {
-          "name": "Rockwell Automation"
         }
       ]
     },
@@ -594,11 +558,47 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-android-4466519288",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-android-4466519288",
-      "title": "Engineer- Android — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Work on Linux product integration for embedded systems\n• Maintain and improve CI systems for hardware testing\n• Collaborate with software and test teams on deployment processes",
-      "date_published": "2026-10-07T11:58:21.621Z",
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-4440927559",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-4440927559",
+      "title": "AI Engineer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Gurgaon, Haryana, India\n• Develop AI agents for complex workflows using Python and enterprise systems\n• Integrate MCP servers and build LLM applications with agentic frameworks\n• Create secure AI workflows with RAG, vector databases, and prompt engineering",
+      "date_published": "2026-10-07T11:55:49.704Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459144222",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459144222",
+      "title": "Data Migration Engineer (Fall 2026) — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Nim ka Thana, Rajasthan, India · Duration: Fall 2026\n• Translate informatica workflows into python el and dbt models\n• Build pipelines for billion-row data using sqlalchemy and oracle data pump\n• Develop airflow dags to orchestrate end-to-end data workflows\n• Contribute to gitlab ci/cd and technical documentation",
+      "date_published": "2026-10-07T11:50:32.766Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-cloud-managed-services-engineer-l2-4465539449",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-cloud-managed-services-engineer-l2-4465539449",
+      "title": "Cloud Managed Services Engineer (L2) — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor and resolve cloud incidents, update tickets, and ensure SLA compliance\n• Support clients with technical issues, collaborate with teams, and manage change processes\n• Analyze incident data, produce reports, and optimize support workflows",
+      "date_published": "2026-10-07T11:44:42.721Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-engineer-linux-kernel-development-4390994161",
+      "url": "https://interndoor.com/jobs/qualcomm-engineer-linux-kernel-development-4390994161",
+      "title": "Linux Kernel Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area · Duration: 1-3 years\n• Develop and support Linux kernel features for Android on Snapdragon chipsets\n• Work with ARMv9 CPUs and optimize performance with debugging tools\n• Collaborate with cross-functional teams on kernel subsystems and driver models",
+      "date_published": "2026-10-07T11:43:37.951Z",
       "authors": [
         {
           "name": "Qualcomm"
