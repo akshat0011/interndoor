@@ -20,7 +20,7 @@ import { readFileSync } from 'node:fs';
 import { admitEntryLevel } from '../src/employment.js';
 import {
   parseGuestCards, guestCards, buildGuestSearchUrl, fetchGuestPage, guestRequestCap,
-  fetchGuestPageRetrying, retryAfterMsOf, GUEST_BLOCK_WAITS_MS, splitKeywords, rereadPlan, REREAD_TAIL_PAGES, MAX_WALK_PASSES,
+  fetchGuestPageRetrying, retryAfterMsOf, GUEST_BLOCK_WAITS_MS, GUEST_SERVER_ERROR_WAITS_MS, splitKeywords, rereadPlan, REREAD_TAIL_PAGES, MAX_WALK_PASSES,
   parsePublicPosting, fetchPublicPosting, publicPostingUrl, linkedinCompanyUrl,
   searchSourceFor, decodeEntities, GUEST_SEARCH_URL, GUEST_PAGE_SIZE, GUEST_RESULT_CEILING,
 } from '../src/guestsearch.js';
@@ -249,6 +249,38 @@ console.log('\n== a 429 is waited out, minutes at a time, and the same page aske
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
   check('an ordinary answer costs no wait', [r.retries, r.waitedMs, slept.length], [0, 0, 0]);
 
+  // A 5xx is one request failing, not a limit: asked again after seconds.
+  check('a 5xx is asked again after 5 then 20 seconds', GUEST_SERVER_ERROR_WAITS_MS, [5_000, 20_000]);
+  s = seq([[500, ''], [200, PAGE_OK]]);
+  r = await fetchGuestPageRetrying('https://x/p?start=60', { fetchImpl: s.impl, sleep });
+  check('a 500 then an answer: the cards', r.cards?.length, 3);
+  check('the SAME page, after 5 seconds', [s.asked, slept.splice(0)], [['https://x/p?start=60', 'https://x/p?start=60'], [5_000]]);
+  check('counted as a server retry, never as being limited', [r.serverRetries, r.retries], [1, 0]);
+  s = seq([[503, ''], [502, ''], [200, PAGE_OK]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('two 5xx in a row are both waited out', [r.cards?.length, r.serverRetries, slept.splice(0)], [3, 2, [5_000, 20_000]]);
+  s = seq([[500, '']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('a 500 that outlasts both waits is still a failure', [r.failed, r.status, r.serverRetries, s.asked.length, slept.splice(0)], [true, 500, 2, 3, [5_000, 20_000]]);
+  s = seq([[404, '']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('a 404 is never asked again', [r.failed, r.serverRetries, s.asked.length, slept.splice(0)], [true, 0, 1, []]);
+  s = seq([[500, '']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 4_000 });
+  check('a server wait the run cannot afford is not started', [r.failed, r.serverRetries, slept.splice(0)], [true, 0, []]);
+  s = seq([[429, ''], [500, ''], [200, PAGE_OK]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
+  check('a 429 then a 500 then an answer: each waited out by its own rule', [r.cards?.length, r.retries, r.serverRetries, slept.splice(0)], [3, 1, 1, [120_000, 5_000]]);
+  const toldServer = [];
+  s = seq([[500, ''], [200, PAGE_OK]]);
+  await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, onServerError: (w) => toldServer.push(w), onWait: () => toldServer.push('limited') });
+  slept.splice(0);
+  check('a 5xx retry is announced as one, never as a block', toldServer, [{ status: 500, attempt: 1, of: 2, waitMs: 5_000 }]);
+  s = seq([[500, ''], [200, '<html><body>job</body></html>']]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, parse: 'posting' });
+  slept.splice(0);
+  check('a public posting page gets the same retry', [r.status, r.serverRetries], [200, 1]);
+
   check('Retry-After in seconds', retryAfterMsOf('120'), 120_000);
   check('Retry-After as a date', retryAfterMsOf('Sat, 26 Sep 2026 00:05:00 GMT', Date.parse('2026-09-26T00:00:00Z')), 300_000);
   check('no Retry-After', [retryAfterMsOf(''), retryAfterMsOf(null), retryAfterMsOf('soon')], [null, null, null]);
@@ -452,7 +484,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /if \(pageIndex === firstPage && passNo === 0\) log\.warn\(`\$\{region\}: the public search returned no results at all/.test(src), true);
   check('held, refused-before and opened cards all count toward the tail',
     /store\.hasJob\(card\.jobId\)\) \{\s*counters\.skippedKnown\+\+;\s*relevantOnPage\+\+;/.test(src)
-      && /if \(refusedBefore\) \{\s*counters\.skippedKnown\+\+;\s*relevantOnPage\+\+;/.test(src)
+      && /if \(refusalBinds\(refusedBefore, search\.employment\)\) \{\s*counters\.skippedKnown\+\+;\s*relevantOnPage\+\+;/.test(src)
       && /openedThisWalk\.add\(card\.key\);\s*relevantOnPage\+\+;/.test(src), true);
   check('what every re-read bought is logged',
     /if \(passNo > 0\) \{\s*const saved = counters\.newJobs - reread\.newJobsAtStart;\s*log\.info\(`Re-read of the capped window/.test(src), true);

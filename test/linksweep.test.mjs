@@ -55,6 +55,24 @@ console.log('\n== checkLink never throws, and only 404/410 is dead ==');
   ok('no url → not dead, no request', (await checkLink('', { fetchImpl: net.fetchImpl })).status === null);
 }
 
+console.log('\n== the body is released, and the sweep process ends itself ==');
+{
+  let cancelled = 0;
+  const withBody = (status) => async () => ({ status, ok: status === 200, redirected: false, url: 'https://a/x',
+    body: { cancel: () => { cancelled++; return Promise.resolve(); } } });
+  await checkLink('https://a/x', { fetchImpl: withBody(200) });
+  await checkLink('https://a/x', { fetchImpl: withBody(404) });
+  ok('every response body is released once its status is read', cancelled === 2);
+  const r = await checkLink('https://a/x', { fetchImpl: async () => ({ status: 200, ok: true, url: 'https://a/x',
+    body: { cancel: () => Promise.reject(new Error('locked')) } }) });
+  ok('a body that refuses to cancel costs nothing', r.dead === false && r.status === 200);
+  const r2 = await checkLink('https://a/x', { fetchImpl: async () => ({ status: 200, ok: true, url: 'https://a/x' }) });
+  ok('a response with no body still answers', r2.status === 200);
+  const bin = readFileSync(new URL('../bin/link-sweep.js', import.meta.url), 'utf8');
+  ok('bin/link-sweep.js exits after its summary rather than waiting on sockets',
+    /log\.ok\(`Link sweep: checked[\s\S]*?store\.close\(\);\s*(\/\*[\s\S]*?\*\/\s*)?process\.exit\(0\);\s*$/.test(bin));
+}
+
 console.log('\n== the sweep confirms before closing, and paces per host ==');
 {
   const rows = [

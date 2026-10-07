@@ -62,3 +62,7 @@ log.ok(`Link sweep: checked ${result.checked} of ${rows.length} (least recently 
 
 if (!DRY_RUN && DAILY) store.setSetting(KEY, String(Date.now()));
 store.close();
+/* Exit, rather than wait for every socket the sweep touched to close: the
+   summary above is the whole result, and bin/run.sh runs the digest and the
+   rest of the scheduled steps only after this process ends. */
+process.exit(0);

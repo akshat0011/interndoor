@@ -1,4 +1,4 @@
-import { employmentType, isSeniorTitle, experienceFloor, admitEntryLevel, ENTRY_MAX_YEARS, schemaEmploymentType, isInternshipTag, fullTimeWording, INTERN, FULL_TIME, entryLevelTitleRefusal, titleMinYears } from '../src/employment.js';
+import { employmentType, isSeniorTitle, experienceFloor, admitEntryLevel, ENTRY_MAX_YEARS, schemaEmploymentType, isInternshipTag, fullTimeWording, INTERN, FULL_TIME, entryLevelTitleRefusal, titleMinYears, refusalBinds, internWalkTagRefusal } from '../src/employment.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -284,6 +284,28 @@ console.log('\n== years stated in the TITLE (1 Oct 2026) ==');
   check('nor a version or a decimal', titleMinYears('Engineer for Python 3.12 years-long project'), null);
   check('the smallest stated figure decides', titleMinYears('Engineer (8-14 Years), 2+ years Go'), 2);
   check('admitEntryLevel refuses it before anything else is read', admitEntryLevel({ title: 'Software Engineer - Backend (4 to 8 Yrs)', employmentTag: 'Full-time', description: '' }).reason, 'entry-level: asks 4+ years in the title');
+}
+
+console.log('\n== a refusal remembered by one walk binds the other only when it is about the posting ==');
+{
+  const ftTag = internWalkTagRefusal('Full-time');
+  check('the internship walk writes this exact reason for a Full-time tag', ftTag, 'title lacks intern and LinkedIn tags it Full-time');
+  check('an absent tag reads "nothing"', internWalkTagRefusal(undefined), 'title lacks intern and LinkedIn tags it nothing');
+  check('no remembered refusal binds nobody', [refusalBinds(null, FULL_TIME), refusalBinds(null, undefined)], [false, false]);
+  check('the internship walk is still bound by its own Full-time refusal', refusalBinds(ftTag, undefined), true);
+  check('...and so is an explicit intern walk', refusalBinds(ftTag, INTERN), true);
+  check('the entry-level walk is NOT bound by it — Full-time is what it collects', refusalBinds(ftTag, FULL_TIME), false);
+  check('a Part-time tag still binds the entry-level walk', refusalBinds(internWalkTagRefusal('Part-time'), FULL_TIME), true);
+  check('a contract tag too', refusalBinds(internWalkTagRefusal('Contract'), FULL_TIME), true);
+  check('a fact about the posting binds both walks', [refusalBinds('entry-level: asks 3+ years', FULL_TIME), refusalBinds('entry-level: asks 3+ years', INTERN)], [true, true]);
+  check('an employer off the list binds both', refusalBinds('company not on watchlist', FULL_TIME), true);
+  // The wiring: the check reads it, the writer builds its reason through it.
+  const idx = readFileSync(join(ROOT, 'src/index.js'), 'utf8');
+  check('index.js asks refusalBinds with the walk\'s employment before skipping',
+    /const refusedBefore = card\.jobId \? store\.refusedAfterOpen\(card\.jobId\) : null;[\s\S]{0,300}?if \(refusalBinds\(refusedBefore, search\.employment\)\) \{/.test(idx), true);
+  check('and the internship walk writes its reason through internWalkTagRefusal',
+    /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}\$\{internWalkTagRefusal\(detail\.employmentTag\)\}`/.test(idx), true);
+  check('no hand-typed copy of the reason is left in index.js', /`[^`]*title lacks intern and LinkedIn tags it \$\{/.test(idx), false);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
