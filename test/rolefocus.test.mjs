@@ -305,5 +305,30 @@ console.log('\n== the board ==');
     /\.seg-cat \{[^}]*width: max-content;[^}]*max-width: 100%;[^}]*overflow-x: auto;/.test(css), true);
 }
 
+console.log('\n== 7 Oct 2026: the three he named, and their class, are misc ==');
+// His words: "these roles etc are not software or the ones we are interested
+// in, move them to misc". Real titles off the live India board.
+check('Rockwell "IFS Cloud Developer" (ERP, not DevOps)', shelf('IFS Cloud Developer', 'IFS Cloud Developer'), 'misc');
+check('Macquarie "Workspace and Applications SRE" (endpoint IT)', shelf('Workspace and Applications SRE', 'Windows Endpoint Management'), 'misc');
+check('MUFG "Incident Reponse - Analyst" (typo and all)', shelf('Incident Reponse - Analyst', 'Cybersecurity Analyst'), 'misc');
+check('MUFG "Cyber Security – Analyst" (en dash)', shelf('Cyber Security – Analyst', 'Cyber Strategy Analyst'), 'misc');
+check('Northern Trust "Analyst - Vulnerability Management…"', shelf('Analyst - Vulnerability Management, Qualys VMDR/Wiz/Aqua', 'Vulnerability Management'), 'misc');
+check('Gruve "SOC Analyst (Trainee)"', shelf('SOC Analyst (Trainee)', 'Security Monitoring'), 'misc');
+check('UPS "Information Security GRC Analyst"', shelf('Information Security GRC Analyst', 'Security Analyst'), 'misc');
+check('Zensar "MDM-INTUNE"', shelf('MDM-INTUNE', 'Device Management'), 'misc');
+check('the family is secops', roleFamily('Incident Reponse - Analyst'), 'secops');
+console.log('\n== …and the security, enterprise and cloud work that stays software ==');
+check('"Application Security Engineer"', shelf('Application Security Engineer'), 'software');
+check('"Threat Detection Engineer"', shelf('Threat Detection Engineer'), 'software');
+check('"Security Engineer SOC Linux Kubernetes"', shelf('Security Engineer SOC Linux Kubernetes'), 'software');
+check('"Cybersecurity Developer"', shelf('Cybersecurity Developer'), 'software');
+check('"Security Engineer Intern"', shelf('Security Engineer Intern'), 'software');
+check('a title saying software engineer is software ("…- PEGA")', shelf('Specialist Software Engineer - PEGA', 'Software Development'), 'software');
+check('Eaton "IT ERP, SAP AI & DEVSECOPS" stays where 30 Sep put it', shelf('Apprentice - IT ERP, SAP AI & DEVSECOPS', 'Ai erp devsecops support'), 'software');
+check('"Google Workspace Software Engineer" is software', shelf('Software Engineer, Google Workspace'), 'software');
+check('a real cloud role is still DevOps', shelf('Cloud Engineer Intern'), 'software');
+check('"Site Reliability Engineer" is still software', shelf('Site Reliability Engineer'), 'software');
+check('no misc row is announced', announceable('misc'), false);
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

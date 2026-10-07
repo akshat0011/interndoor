@@ -41,7 +41,26 @@
 export const ROLE_FAMILIES = [
   ['ai_training', 'AI training-data gigs', /coding expert|scientific coding|ai trainer|ai quality analyst|annotat|data label|\brater\b|ai tutor|writing expert|prompt engineer/],
   ['qa', 'QA / testing / SDET', /\bqa\b|quality assurance|\bsdet\b|engineer in test|software test|test automation|automation test|testing|software quality|\btester\b|test engineer|\btest\b|systest|quality automation/],
+  /* SECURITY OPERATIONS IS NOT SECURITY ENGINEERING (7 Oct 2026, his call on
+     MUFG's "Incident Reponse - Analyst": "not software or the ones we are
+     interested in"). Incident response, SOC monitoring, threat-intel and GRC
+     analysts are Misc; `security` below keeps engineers, developers,
+     architects, appsec and pen testing. The analyst arm is a security-themed
+     title whose role is "analyst" and that names no engineer — measured on the
+     live India board: 9 roles moved, every one an analyst. */
+  ['secops', 'Security operations / GRC', /\bincident\b|security operations|\bsiem\b|forensic|\bgrc\b|governance,? risk|^(?!.*\b(?:engineer|engineering|developer|architect)\b)(?=.*(?:cyber|security|infosec|vulnerab|threat|\bsoc\b)).*\banalyst/],
   ['security', 'Cybersecurity', /cyber|security|infosec|penetration|appsec|threat|vulnerab|identity & access|\biam\b|soc analyst/],
+  /* ABOVE devops, because "IFS Cloud Developer" (Rockwell) read as DevOps on
+     the bare word "cloud" while the model rightly called it ERP. Guarded so a
+     title that says software engineer/developer stays Software (his standing
+     rule — SocGen's "Software Engineer - PEGA"), and so Eaton's "IT ERP, SAP AI
+     & DEVSECOPS" apprenticeship, kept on Software on 30 Sep, stays there. */
+  ['enterprise', 'SAP / Salesforce / ServiceNow', /^(?!.*(?:software (?:engineer|developer|development)|devsecops|\bai\b|\bml\b)).*(?:\bifs\b|\bsap\b|salesforce|servicenow|workday|dynamics 365|guidewire|\bpega\b|oracle (?:fusion|ebs|erp|hcm|scm|apps|apex|cx))/],
+  /* END-USER COMPUTING IS IT SUPPORT, whatever the title calls it: Macquarie's
+     "Workspace and Applications SRE" is Windows endpoint management (its own
+     label), Zensar's "MDM-INTUNE" is device management. Above devops for the
+     same reason as the line above. Rescuable by label like any IT title. */
+  ['it_support', 'IT support / networking', /^(?!.*\bsoftware (?:engineer|developer)).*(?:\bworkspace\b|end[\s-]?user|endpoint|digital workplace|\beuc\b|intune|\bvdi\b|citrix|\bm365\b|office 365|active directory)/],
   ['devops', 'DevOps / cloud / SRE', /devops|dev ops|\bsre\b|site reliability|\bcloud\b|platform engineer|infrastructure|kubernetes|\bk8s\b|terraform|release engineer|build engineer/],
   ['ai_ml', 'AI / ML / data science', /machine learning|deep learning|\bml\b|\bai\b|artificial intelligence|gen ?ai|generative|\bllm|\bnlp\b|computer vision|perception|data scien|applied scien|mlops|reinforcement|agentic/],
   // A title that SAYS software engineer/developer is software, whatever else it
