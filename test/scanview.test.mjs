@@ -132,13 +132,13 @@ console.log('\n== the wiring ==');
   // The guard: checked before any open, after the stored-id check, and
   // written at all three places a card is refused AFTER being opened.
   check('a posting refused after opening is not opened again',
-    /const refusedBefore = card\.jobId \? store\.refusedAfterOpen\(card\.jobId\) : null;\s*if \(refusedBefore\) \{[\s\S]{0,260}?continue;\s*\}\s*let known = /.test(src), true);
+    /const refusedBefore = card\.jobId \? store\.refusedAfterOpen\(card\.jobId\) : null;\s*(\/\*[\s\S]*?\*\/\s*)?if \(refusalBinds\(refusedBefore, search\.employment\)\) \{[\s\S]{0,260}?continue;\s*\}\s*let known = /.test(src), true);
   check('recorded where the pane names an employer off the list',
     /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}\$\{gate\.reason\}`/.test(src), true);
   check('recorded where the entry-level gate refuses',
     /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}\$\{verdict\.reason\}`/.test(src), true);
   check('recorded where LinkedIn\'s tag is not an internship',
-    /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}title lacks intern and LinkedIn tags it/.test(src), true);
+    /store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}\$\{internWalkTagRefusal\(detail\.employmentTag\)\}`/.test(src), true);
   check('the three recordings sit beside their refusals',
     (src.match(/store\.noteSkippedCard\(jobId, `\$\{REFUSED_AFTER_OPEN\}/g) || []).length, 3);
   /* A refusal is remembered only when it rests on a REAL read. 5 of 10 US opens

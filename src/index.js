@@ -4,7 +4,7 @@
  * Invoked by launchd every 30 minutes, or by hand via `npm run`.
  */
 import { loadConfig, matchCompany, matchTitle, resolveWindowHours, isSearchDue, isBlockedCompany, employerRoleAllowed } from './config.js';
-import { isInternshipTag, entryLevelTitleRefusal, admitEntryLevel, INTERN } from './employment.js';
+import { isInternshipTag, entryLevelTitleRefusal, admitEntryLevel, INTERN, internWalkTagRefusal, refusalBinds } from './employment.js';
 import { join, dirname } from 'node:path';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
@@ -961,6 +961,9 @@ async function main() {
               sawBlocked = true;
               log.warn(`LinkedIn's public job search rate-limited us (HTTP 429) on "${label}" page ${pageIndex + 1} — waiting ${Math.round(waitMs / 60_000)} min and asking again (${attempt} of ${of}).`);
             },
+            onServerError: ({ status, attempt, of, waitMs }) => {
+              log.warn(`Public search answered HTTP ${status} for "${label}" page ${pageIndex + 1} — asking again in ${Math.round(waitMs / 1000)}s (${attempt} of ${of}).`);
+            },
           });
           if (res.retries && (res.cards || res.end)) {
             guestPace = Math.min(guestPace * 2, GUEST_MAX_SLOWDOWN);
@@ -1176,7 +1179,9 @@ async function main() {
              was read off the posting itself and does not change between walks,
              so a second open is a page load on the account for nothing. */
           const refusedBefore = card.jobId ? store.refusedAfterOpen(card.jobId) : null;
-          if (refusedBefore) {
+          /* ...unless the refusal was about the OTHER walk: the internship
+             walk's "tags it Full-time" is what the entry-level walk is for. */
+          if (refusalBinds(refusedBefore, search.employment)) {
             counters.skippedKnown++;
             relevantOnPage++;
             log.debug(`"${card.title}" at ${card.company} was opened and refused before (${refusedBefore}) — not opening it again.`);
@@ -1522,6 +1527,9 @@ async function main() {
                 sawBlocked = true;
                 log.warn(`LinkedIn's public posting page rate-limited us (HTTP 429) — waiting ${Math.round(waitMs / 60_000)} min and asking again (${attempt} of ${of}).`);
               },
+              onServerError: ({ status, attempt, of, waitMs }) => {
+                log.warn(`  The public page for ${card.jobId} answered HTTP ${status} — asking again in ${Math.round(waitMs / 1000)}s (${attempt} of ${of}).`);
+              },
             });
             await pause(guestPacing());
             if (pub.detail) {
@@ -1639,11 +1647,11 @@ async function main() {
             counters.nearMisses++;
             store.noteSkippedCard(
               card.identity,
-              `title lacks intern and LinkedIn tags it ${detail.employmentTag ?? 'nothing'}`,
+              internWalkTagRefusal(detail.employmentTag),
               card.company,
               card.title,
             );
-            if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}title lacks intern and LinkedIn tags it ${detail.employmentTag ?? 'nothing'}`, card.company, card.title);
+            if (readOk) store.noteSkippedCard(jobId, `${REFUSED_AFTER_OPEN}${internWalkTagRefusal(detail.employmentTag)}`, card.company, card.title);
             if (detail.viaPublicPage) counters.publicRefused++;
             continue;
           }

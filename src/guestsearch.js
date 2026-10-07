@@ -257,6 +257,17 @@ export const GUEST_BLOCK_WAITS_MS = [120_000, 300_000, 600_000];
 const MAX_BLOCK_WAIT_MS = 15 * 60_000;
 
 /**
+ * A 5xx is LinkedIn's server failing ONE request, not a limit, so it is asked
+ * again after seconds rather than minutes. MEASURED 26 Sep-7 Oct 2026: six
+ * walks were ended by a single 500/503 (2 Oct 21:51 IST stopped the full-time
+ * walk at page 7 of ~32; the next walk read the same window cleanly 26 minutes
+ * later, with UPS's three Chennai roles in it), and two public posting pages
+ * answered 500 and fell back to an account open. It does not slow the pace or
+ * count as a block: nothing about it says we asked too often.
+ */
+export const GUEST_SERVER_ERROR_WAITS_MS = [5_000, 20_000];
+
+/**
  * fetchGuestPage, waiting out a 429 (GUEST_BLOCK_WAITS_MS) and asking for the
  * SAME page again, so a walk resumes where it was refused instead of being
  * abandoned.
@@ -266,8 +277,10 @@ const MAX_BLOCK_WAIT_MS = 15 * 60_000;
  *  - A wait the run cannot afford (`budgetMs`) is not started: the block is
  *    returned and the caller stops discovery, exactly as before.
  *  - A Retry-After longer than the planned wait is honoured, up to 15 minutes.
+ *  - A 5xx is asked again after GUEST_SERVER_ERROR_WAITS_MS (seconds), counted
+ *    in `serverRetries`, never in `retries` — `retries` means "we were limited".
  *
- * Returns fetchGuestPage's answer plus `retries` and `waitedMs`.
+ * Returns fetchGuestPage's answer plus `retries`, `serverRetries`, `waitedMs`.
  */
 export async function fetchGuestPageRetrying(url, {
   fetchImpl = globalThis.fetch,
@@ -275,21 +288,33 @@ export async function fetchGuestPageRetrying(url, {
   sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
   budgetMs = Infinity,
   onWait = () => {},
+  serverWaits = GUEST_SERVER_ERROR_WAITS_MS,
+  onServerError = () => {},
   parse = 'cards',
 } = {}) {
   let res = await fetchGuestPage(url, { fetchImpl, parse });
   let retries = 0;
   let waitedMs = 0;
-  while (res.blocked && res.status === 429 && retries < waits.length) {
-    const ms = Math.min(MAX_BLOCK_WAIT_MS, Math.max(waits[retries], res.retryAfterMs ?? 0));
-    if (waitedMs + ms > budgetMs) break;
-    onWait({ attempt: retries + 1, of: waits.length, waitMs: ms });
-    await sleep(ms);
-    waitedMs += ms;
-    retries++;
+  let serverRetries = 0;
+  for (;;) {
+    if (res.blocked && res.status === 429 && retries < waits.length) {
+      const ms = Math.min(MAX_BLOCK_WAIT_MS, Math.max(waits[retries], res.retryAfterMs ?? 0));
+      if (waitedMs + ms > budgetMs) break;
+      onWait({ attempt: retries + 1, of: waits.length, waitMs: ms });
+      await sleep(ms);
+      waitedMs += ms;
+      retries++;
+    } else if (res.failed && res.status >= 500 && serverRetries < serverWaits.length) {
+      const ms = serverWaits[serverRetries];
+      if (waitedMs + ms > budgetMs) break;
+      onServerError({ status: res.status, attempt: serverRetries + 1, of: serverWaits.length, waitMs: ms });
+      await sleep(ms);
+      waitedMs += ms;
+      serverRetries++;
+    } else break;
     res = await fetchGuestPage(url, { fetchImpl, parse });
   }
-  return { ...res, retries, waitedMs };
+  return { ...res, retries, waitedMs, serverRetries };
 }
 
 /**

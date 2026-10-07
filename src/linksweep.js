@@ -122,6 +122,11 @@ export async function checkLink(url, { fetchImpl = fetch, timeoutMs = TIMEOUT_MS
       signal: AbortSignal.timeout(timeoutMs),
       headers: { 'user-agent': UA },
     });
+    /* Only the status and the final URL are read. An unread body holds its
+       socket open, and on 5 Oct 2026 (network failing, 697 of 800 links
+       unverified) the sweep printed its summary and then held bin/run.sh for
+       five hours with nothing in any log. Released, never awaited. */
+    try { res.body?.cancel?.()?.catch?.(() => {}); } catch { /* already released */ }
     const away = Boolean(res.redirected) && redirectedAway(String(url), res.url);
     if (away) {
       let where = '';

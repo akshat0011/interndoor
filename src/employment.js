@@ -110,6 +110,30 @@ export function isInternshipTag(tag) {
   return /^intern(ship)?$/i.test(String(tag ?? '').trim());
 }
 
+/**
+ * The reason the INTERNSHIP walk writes when it opens a card whose title names
+ * no internship and LinkedIn tags it something else. One builder, used by the
+ * writer in src/index.js and by refusalBinds below, so the two cannot drift.
+ */
+export function internWalkTagRefusal(tag) {
+  return `title lacks intern and LinkedIn tags it ${tag ?? 'nothing'}`;
+}
+
+/**
+ * Does a remembered "refused after opening" reason stop THIS walk opening the
+ * posting again? The memory is shared by both India walks and nearly every
+ * reason in it is a fact about the posting (years asked, a senior grade, an
+ * employer off the list), so it binds both. One is a verdict about the walk:
+ * the internship walk refusing a posting LinkedIn tags Full-time is the very
+ * posting the entry-level walk exists to collect. Measured 7 Oct 2026: 58
+ * postings in 12 days (Microsoft, Adobe, Amazon, Lam Research, Honeywell…)
+ * reached the entry-level walk and were skipped unopened on that reason alone.
+ */
+export function refusalBinds(reason, employment) {
+  if (!reason) return false;
+  return !(employment === FULL_TIME && reason === internWalkTagRefusal('Full-time'));
+}
+
 export function employmentType(title, isIntern) {
   const t = String(title ?? '');
   // Intern wins outright. "Summer 2027 Intern - New Grad Program" is an
