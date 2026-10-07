@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/barclays-ai-developer-4474492133",
+      "url": "https://interndoor.com/jobs/barclays-ai-developer-4474492133",
+      "title": "AI Developer — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Develop and maintain AI models using Python, R, Java, and C++\n• Refactor legacy code to cloud-native standards and optimize performance\n• Automate test case generation and data validation processes",
+      "date_published": "2026-10-07T21:38:23.637Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/barclays-recon-developer-4474409504",
+      "url": "https://interndoor.com/jobs/barclays-recon-developer-4474409504",
+      "title": "Recon Developer — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Develop and maintain reconciliation systems using SQL Server and financial platforms\n• Collaborate with cross-functional teams to design scalable software solutions\n• Based in Pune, with leadership responsibilities and code review expectations",
+      "date_published": "2026-10-07T21:38:16.389Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/gartner-specialist-data-engineer-pyhton-sql-databricks-ai-llm-agentic-ai-4475481934",
       "url": "https://interndoor.com/jobs/gartner-specialist-data-engineer-pyhton-sql-databricks-ai-llm-agentic-ai-4475481934",
       "title": "Data Engineer Specialist — Gartner",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Echo Initiative by Joveo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-embedded-developer-4476717531",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-embedded-developer-4476717531",
-      "title": "Embedded Developer — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Kurla, Maharashtra, India\n• Design firmware for embedded systems using C\n• Work on pcb schematic and layout with vendors\n• Test and validate hardware for video applications",
-      "date_published": "2026-10-07T12:47:46.315Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/larsen-and-toubro-system-engineer-4476722296",
-      "url": "https://interndoor.com/jobs/larsen-and-toubro-system-engineer-4476722296",
-      "title": "System Engineer — Larsen & Toubro",
-      "content_text": "Company: Larsen & Toubro · Location: Bengaluru, Karnataka, India\n• Integrate telecom systems including LTE/5G and network management solutions\n• Design secure IP networks with routing protocols and network security policies\n• Support military qualification testing and customer collaboration during projects",
-      "date_published": "2026-10-07T12:47:32.100Z",
-      "authors": [
-        {
-          "name": "Larsen & Toubro"
         }
       ]
     }
