@@ -6,7 +6,7 @@
  *   node bin/link-sweep.js             check now (still at most PER_RUN links)
  *   node bin/link-sweep.js --dry-run   report what would close, change nothing
  *
- * Reads the live, published-region tech postings with an EMPLOYER apply link
+ * Two passes. FIRST the live, published-region tech postings with an EMPLOYER apply link
  * (never LinkedIn — src/store.js applyLinksToCheck), checks each, and on a
  * confirmed 404/410 marks it closed: off the board, its URL a closed-role stub
  * to the employer's hub, still counted in the hub's record (src/publish.js).
@@ -18,7 +18,8 @@
  */
 import { Store } from '../src/store.js';
 import { log } from '../src/logger.js';
-import { sweepApplyLinks, sweepCandidates, PER_RUN } from '../src/linksweep.js';
+import { sweepApplyLinks, sweepCandidates, PER_RUN, linkedinPostingsToCheck, sweepLinkedinPostings, checkPosting, POSTING_PER_RUN } from '../src/linksweep.js';
+import { parsePublicPosting } from '../src/guestsearch.js';
 import { loadConfig } from '../src/config.js';
 import { resolveRowRegion, publishedRegions } from '../src/regions.js';
 
@@ -41,17 +42,11 @@ if (DAILY && Date.now() - Number(store.getSetting(KEY) ?? 0) < DAY_MS) {
 const rows = sweepCandidates(
   store.applyLinksToCheck(Date.now() - WINDOW_DAYS * DAY_MS, { limit: 1_000_000 }),
   publishedRegions(loadConfig()).map((r) => r.code), resolveRowRegion, PER_RUN);
-if (!rows.length) {
-  if (!DRY_RUN && DAILY) store.setSetting(KEY, String(Date.now()));
-  store.close();
-  process.exit(0);
-}
-
 const result = await sweepApplyLinks(rows, {
   log,
   /* Stamped whatever the verdict, so the next run moves on to the rows this
      one did not reach. Skipped on a dry run, which writes nothing. */
-  onChecked: DRY_RUN ? undefined : (row) => store.markLinkChecked([row.job_id]),
+  onChecked: DRY_RUN ? undefined : (row, { alive } = {}) => store.markLinkChecked([row.job_id], Date.now(), { ok: !!alive }),
   onClose: DRY_RUN
     ? (row, note) => log.info(`[dry-run] would close ${row.company} — "${row.title}" (${note}).`)
     : (row, note) => store.markClosed(row.job_id, `apply link dead: ${note} (${new Date().toISOString().slice(0, 10)})`),
@@ -59,6 +54,26 @@ const result = await sweepApplyLinks(rows, {
 
 log.ok(`Link sweep: checked ${result.checked} of ${rows.length} (least recently checked first), ${result.alive} alive, ${result.unknown} unverified, `
   + `${result.closed} closed${result.held ? `, ${result.held} held (per-host cap)` : ''}${DRY_RUN ? ' (dry run — nothing written)' : ' — the next publish stubs them'}.`);
+
+/* SECOND PASS — postings whose Apply is LinkedIn's own (src/linksweep.js
+   sweepLinkedinPostings): read off the PUBLIC posting page, a few a day,
+   stopping at the first 429. Published boards only, like the first pass. */
+const liveCodes = new Set(publishedRegions(loadConfig()).map((r) => r.code));
+/* Filtered BEFORE the cap — the first pass's own lesson: capped first, the
+   unpublished boards' old rows spend the day's checks. */
+const postings = linkedinPostingsToCheck(store.db, { limit: 1_000_000 })
+  .filter((r) => liveCodes.has(resolveRowRegion(r))).slice(0, POSTING_PER_RUN);
+if (postings.length) {
+  const res = await sweepLinkedinPostings(postings, {
+    log,
+    check: (id) => checkPosting(id, { parse: parsePublicPosting }),
+    onChecked: DRY_RUN ? undefined : (row, { alive } = {}) => store.markLinkChecked([row.job_id], Date.now(), { ok: !!alive }),
+    onClose: DRY_RUN
+      ? (row, note) => log.info(`[dry-run] would close ${row.company} — "${row.title}" (${note}).`)
+      : (row, note) => store.markClosed(row.job_id, `${note} (${new Date().toISOString().slice(0, 10)})`),
+  });
+  log.ok(`LinkedIn posting sweep: checked ${res.checked} of ${postings.length}, ${res.open} still accepting, ${res.unknown} unverified, ${res.closed} closed${res.blocked ? ' — stopped at a rate limit' : ''}${DRY_RUN ? ' (dry run — nothing written)' : ''}.`);
+}
 
 if (!DRY_RUN && DAILY) store.setSetting(KEY, String(Date.now()));
 store.close();

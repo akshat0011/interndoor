@@ -383,6 +383,13 @@ export class Store {
        * all 115 links a full manual pass found dead were outside that window,
        * so the scheduled sweep would have found NONE of them. */
       ['link_checked_at', 'INTEGER'],
+      /* When a check last came back POSITIVE: the employer's application page
+       * answered 200, or LinkedIn's public posting page still offered an apply
+       * button. `link_checked_at` is stamped on every outcome — a 403, a
+       * timeout — so it orders the sweep but proves nothing. This is the
+       * evidence the job page's "open" claim and its indexability rest on
+       * (pages.js checkedAt / verifiedOpen), added 7 Oct 2026. */
+      ['link_ok_at', 'INTEGER'],
       /* THE APPLICATION DEADLINE AND THE EXPERIENCE ASKED FOR — only ever what
        * the posting states (groundFacts in src/ollama.js), NULL otherwise.
        * `deadline` is an ISO day, "2026-10-16"; `experience` a short phrase,
@@ -1625,12 +1632,17 @@ export class Store {
   /** Record that the sweep looked at these rows, whatever the verdict. Called
    *  for every row checked — a row only marked when it CLOSES would be
    *  re-checked for ever, which is the bug this column exists to fix. */
-  markLinkChecked(jobIds, at = Date.now()) {
+  markLinkChecked(jobIds, at = Date.now(), { ok = false } = {}) {
     const ids = (Array.isArray(jobIds) ? jobIds : [jobIds]).filter(Boolean);
     if (!ids.length) return 0;
-    const stmt = this.db.prepare('UPDATE jobs SET link_checked_at = ? WHERE job_id = ?');
+    /* `ok` also records the positive check (link_ok_at). An outcome that is
+       not evidence — a 403, a 5xx, a timeout — stamps only link_checked_at and
+       leaves the last positive check where it was. */
+    const stmt = ok
+      ? this.db.prepare('UPDATE jobs SET link_checked_at = ?, link_ok_at = ? WHERE job_id = ?')
+      : this.db.prepare('UPDATE jobs SET link_checked_at = ? WHERE job_id = ?');
     let n = 0;
-    for (const id of ids) n += stmt.run(at, id).changes;
+    for (const id of ids) n += (ok ? stmt.run(at, at, id) : stmt.run(at, id)).changes;
     return n;
   }
 

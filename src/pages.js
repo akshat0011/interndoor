@@ -24,7 +24,7 @@
 import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
-import { schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
+import { ENTRY_MAX_YEARS, schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
 import { facetGroups, facetSlug, canonicalCity } from './facets.js';
 import { roleGroups, rolePageOf, stableRank, roleCitySlug } from './rolepages.js';
 
@@ -373,6 +373,34 @@ export function experienceMonths(text) {
   return Number.isFinite(years) && years <= 10 ? years * 12 : null;
 }
 
+/**
+ * A posting that STATES it wants ENTRY_MAX_YEARS (2) or more years of
+ * experience is not an internship or an entry-level role, whatever its tag
+ * says. The entry-level walk refuses such prose before it stores a posting, but
+ * `experience` is read from the posting AFTER it is stored (readPostingFacts,
+ * the last thing a scan does), so on 7 Oct 2026 50 live India rows sat on the
+ * board asking for 2+ years — EXL "AI Data Engineer, 4–6 years", Mu Sigma
+ * "Apprentice Leader, 5–7 years", Jump Trading's "HPC Systems Engineer, 5+
+ * years" filed as an internship. Only the grounded `experience` field decides
+ * (groundFacts keeps a figure only if the posting says it, and never a
+ * preferred one), so an unknown is never refused.
+ */
+export function asksExperience(job) {
+  const months = experienceMonths(job?.experience);
+  return months != null && months >= ENTRY_MAX_YEARS * 12;
+}
+
+/**
+ * A posting that is not a job: a talent community, a talent pool, a general
+ * application. AlphaSense's "Join AlphaSense India Talent Community" was live on
+ * 7 Oct 2026. There is nothing to apply FOR, so a page for it is a page Google's
+ * job guidelines call out by name.
+ */
+const NOT_A_JOB = /\btalent (?:community|pool|network)\b|\bgeneral application\b|\bexpression of interest\b/i;
+export function notAJob(job) {
+  return NOT_A_JOB.test(String(job?.title ?? ''));
+}
+
 function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VALID_DAYS) {
   /* Past its own stated deadline a posting has expired, and marking up an
      expired posting is the manual-action case. publish already drops such a
@@ -678,6 +706,41 @@ export function verifiedAt(job) {
 }
 
 /**
+ * WHEN WE LAST CONFIRMED A NON-CAREERS-BOARD POSTING'S APPLICATION ROUTE — 7 Oct
+ * 2026. bin/link-sweep.js checks every live row's application route on a
+ * rotation: the employer's own application page (it answered 200 and did not
+ * bounce to a listing), or, where the Apply button is LinkedIn's own, LinkedIn's
+ * public posting page (it still offers to take applications). `checkedAt` on the
+ * projection is the time of the last POSITIVE check (store `link_ok_at`) — a 403
+ * or a timeout is not one. Older than CHECK_MAX_AGE_MS it proves nothing.
+ */
+export const CHECK_MAX_AGE_MS = 7 * 86_400_000;
+export function checkedAt(job, now = Date.now()) {
+  if (String(job?.id ?? '').startsWith('ats:')) return null;
+  const at = Number(job?.checkedAt);
+  return Number.isFinite(at) && at > 0 && now - at <= CHECK_MAX_AGE_MS ? at : null;
+}
+
+/**
+ * IS THERE EVIDENCE THIS POSTING IS STILL OPEN? The index decision rests on it
+ * (jobPageIndexable): an UNKNOWN state is never treated as open (Google's job
+ * guidelines; the 7 Oct audit found 3 of 7 old LinkedIn-apply rows closed at the
+ * source while still live here). Evidence is one of:
+ *  - a careers-board row — it is only live while its board still lists it
+ *    (publish's atsWindow), so being live IS the evidence;
+ *  - a positive check of its application route within CHECK_MAX_AGE_MS;
+ *  - being first seen within LISTED_FRESH_MS — it was in the search results
+ *    that recently, and the sweep only starts on rows two days old.
+ */
+export const LISTED_FRESH_MS = 3 * 86_400_000;
+export function verifiedOpen(job, now = Date.now()) {
+  if (String(job?.id ?? '').startsWith('ats:')) return true;
+  if (checkedAt(job, now) != null) return true;
+  const first = Number(job?.firstSeenAt);
+  return Number.isFinite(first) && first > 0 && now - first <= LISTED_FRESH_MS;
+}
+
+/**
  * "Software Engineer – 2027 Internship Program (June Start)" -> "Jun 2027".
  *
  * A start date is one of the two facts a student weighs hardest and it is not
@@ -857,9 +920,18 @@ export function placesOf(location, region = DEFAULT_REGION) {
  */
 function openState(job) {
   const at = verifiedAt(job);
-  return at
-    ? { tier: 'verified', label: 'Open now', at }
-    : { tier: 'likely', label: 'Likely open', at: null };
+  if (at) return { tier: 'verified', label: 'Open now', at, how: 'board' };
+  /* A checked application route (checkedAt). LinkedIn's posting page saying it
+     still takes applications is the same claim a careers board makes; an
+     employer's application page answering 200 is weaker — it says the page is
+     there, not that the role is open — and is labelled as exactly that. */
+  const checked = checkedAt(job);
+  if (checked) {
+    return job.checkedVia === 'linkedin'
+      ? { tier: 'verified', label: 'Open now', at: checked, how: 'linkedin' }
+      : { tier: 'verified', label: 'Application page live', at: checked, how: 'link' };
+  }
+  return { tier: 'likely', label: 'Likely open', at: null };
 }
 
 /**
@@ -891,10 +963,14 @@ function stillListed(job, company, region = DEFAULT_REGION) {
      relative label counted from midnight ("checked 23 hours ago" on a role
      confirmed four minutes earlier), which understates the very freshness
      this line exists to prove. The hub does the same, for the same reason. */
-  const detail = st.tier === 'verified'
-    ? `Confirmed on ${esc(company)}&rsquo;s own careers page &middot; checked `
-      + `<time datetime="${isoDay(st.at)}">${esc(dayLabel(st.at, region))}</time>`
-    : 'We list a role only while we believe it is still open. Confirm on the posting before you apply.';
+  const when = st.at ? `<time datetime="${isoDay(st.at)}">${esc(dayLabel(st.at, region))}</time>` : '';
+  const detail = st.how === 'board'
+    ? `Confirmed on ${esc(company)}&rsquo;s own careers page &middot; checked ${when}`
+    : st.how === 'linkedin'
+      ? `The posting was still taking applications when we checked it &middot; ${when}`
+      : st.how === 'link'
+        ? `The application page answered when we checked it &middot; ${when}. Confirm the role is open there before you apply.`
+        : 'We list a role only while we believe it is still open. Confirm on the posting before you apply.';
   return `<p class="jp-open is-${st.tier}">`
     + `<span class="jp-open-b"><i aria-hidden="true"></i>${st.label}</span>`
     + `<span class="jp-open-d">${detail}</span></p>`;
@@ -2408,10 +2484,19 @@ function hubLive(jobs) {
  * to ignore. Counted off the SHAPED lists (`hubLive`/`hubHistory`), never the
  * raw rows: what makes a hub thin is how many distinct roles it can show, not
  * how many times the employer reposted one title.
+ *
+ * TWO DISTINCT ROLES, LIVE OR PAST — 7 Oct 2026. It used to be "anything live,
+ * or two past roles", so an employer with ONE live posting and nothing else ever
+ * got an indexable hub that restated that one job page: 155 of 396 indexable
+ * India hubs on the 7 Oct audit, the thin near-duplicate Google's guidelines
+ * name. Those hubs are still written and linked (a reader clicking the employer
+ * from a job page should land somewhere) — they are noindex and out of the
+ * sitemap until the employer posts a second role.
  */
 function hubIndexable(jobs, past) {
   const live = hubLive(jobs);
-  return live.length > 0 || hubHistory(live, past).length >= 2;
+  const liveTitles = new Set(live.map((j) => String(j.title ?? '').toLowerCase()).filter(Boolean)).size;
+  return liveTitles + hubHistory(live, past).length >= 2;
 }
 
 /** The past roles a hub actually shows: newest first, one per title, capped. */
@@ -2798,7 +2883,6 @@ export function eligibilityCounts(live) {
  */
 function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = new Set(), logo = '' } = {}) {
   const posted = job.postedAt ?? job.firstSeenAt;
-  const verified = verifiedAt(job);
   const money = stipendText(job);
   const places = placesOf(job.location, region);
   const start = startDate(job);
@@ -2810,10 +2894,10 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
      it says so. */
   const st = openState(job);
   const vfy = st.tier === 'verified'
-    /* No data-ago: `verified` is lastSeenAt, which moves every poll, so shipping
+    /* No data-ago: the check time moves on every poll or sweep, so shipping
        it exact rewrote every hub on every publish. The <time> beside it was
        already day-granular and stable. */
-    ? `<span class="vfy is-verified"><i aria-hidden="true"></i>Open, confirmed <time datetime="${isoDay(verified)}">${esc(dayLabel(verified, region))}</time></span>`
+    ? `<span class="vfy is-verified"><i aria-hidden="true"></i>${st.how === 'link' ? 'Application page live, checked' : 'Open, confirmed'} <time datetime="${isoDay(st.at)}">${esc(dayLabel(st.at, region))}</time></span>`
     : `<span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span>`;
 
   /* A cell is WITHHELD, never guessed. This employer states no pay, no length
@@ -4837,9 +4921,18 @@ export const FACETS_INDEXABLE = true;
    putting a board back is a deliberate act rather than a drift. */
 export const NOINDEX_JOB_BOARDS = new Set();
 
-/** Whether a job page may be indexed: the quality bar AND the board's switch. */
+/**
+ * Whether a job page may be indexed: the quality bar, EVIDENCE THAT IT IS STILL
+ * OPEN, and the board's switch. The evidence is `verified`, set on every row by
+ * publish (verifiedOpen) — 7 Oct 2026: a page whose posting we cannot show to
+ * be open is written and linked for readers but is noindex, out of the sitemap
+ * and out of the Indexing API until a check confirms it. `verified` absent
+ * (test fixtures, never a published row — test/verifiedopen.test.mjs pins that
+ * publish sets it) leaves the old rule.
+ */
 export function jobPageIndexable(job, region = DEFAULT_REGION) {
-  return isIndexable(job) && !NOINDEX_JOB_BOARDS.has(String(region?.code ?? '').toUpperCase());
+  return isIndexable(job) && job?.verified !== false
+    && !NOINDEX_JOB_BOARDS.has(String(region?.code ?? '').toUpperCase());
 }
 
 const FACET_KINDS = {
@@ -6155,7 +6248,7 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
     // THE BAR IS `hubIndexable`, THE SAME FUNCTION THE PAGE ITSELF CALLS, and
     // it is shared rather than restated because the restatement drifted. This
     // filter used to read `(pastByCompany.get(company) ?? []).length >= 2`
-    // against a page that asks `hubHistory(live, past).length >= 2`, and
+    // against a page that counted the SHAPED history (hubHistory), and
     // `hubHistory` drops a past posting whose title is already live and then
     // keeps ONE PER TITLE. So an employer who posted the same title twice
     // counted 2 here and rendered 1 there: the page went out `noindex` and the
