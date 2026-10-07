@@ -1544,7 +1544,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
          renderContactPage — so a root-relative href is what resolves from
          /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
          /us/contact, which is not written and never will be. -->
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/insights', region)}">Monthly reports</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
     ${preferredSourceLink()}
   </div>
 </footer>
@@ -3748,6 +3748,171 @@ ${foot({
   })}`;
 }
 
+/**
+ * The monthly reports — /insights and /insights/<YYYY-MM> (7 Oct 2026).
+ *
+ * The figures are compiled ONCE per month by src/insights.js and stored, so
+ * these renderers are pure functions of a frozen snapshot: two publishes
+ * produce byte-identical pages, and a figure somebody has quoted is still on
+ * the page when their reader clicks through. That is the point of the page —
+ * see the header of src/insights.js. Like /report, the methodology names no
+ * listing source.
+ *
+ * Bars are SVG with a width ATTRIBUTE, never a style: the production CSP
+ * refuses inline styles, and an attribute needs no hash. With no CSS at all
+ * (page.css carries no ?v=, so a stale copy is possible for a day) the table
+ * still reads, and the bar is a full-width track at currentColor.
+ */
+export function insightLede(snap) {
+  return `In ${snap.label} we recorded ${snap.rows.toLocaleString('en-IN')} engineering internships in India from ${snap.employers} employers.${snap.stated != null ? ` Only ${snap.stated} of the ${snap.rows} stated a stipend.` : ''}`;
+}
+
+function insightBars(section) {
+  return `<table class="ins-t" aria-labelledby="ins-${esc(section.id)}">
+        <tbody>
+          ${section.bars.map((b) => `<tr><th scope="row">${esc(b.label)}</th><td class="ins-b"><svg viewBox="0 0 100 8" preserveAspectRatio="none" width="100%" height="8" aria-hidden="true" focusable="false"><rect class="ins-track" width="100" height="8" fill="none"/><rect class="ins-fill" width="${(b.share * 100).toFixed(1)}" height="8" fill="currentColor"/></svg></td><td class="ins-v">${esc(b.value)}</td></tr>`).join('\n          ')}
+        </tbody>
+      </table>`;
+}
+
+export function renderInsightPage(snap, { region = DEFAULT_REGION, newer = null, older = null } = {}) {
+  const path = `/insights/${snap.month}`;
+  const url = regionUrl(path, region);
+  const lede = insightLede(snap);
+  const compiled = new Date(snap.compiledAt).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone: region.timeZone,
+  });
+  const iso = new Date(snap.compiledAt).toISOString();
+  const last = new Date(snap.end - 1).toLocaleDateString('en-CA', { timeZone: region.timeZone });
+  const first = new Date(snap.start).toLocaleDateString('en-CA', { timeZone: region.timeZone });
+  const name = `Engineering internships ${region.inName}: ${snap.label}`;
+  const ld = [{
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: name,
+    description: lede,
+    datePublished: iso,
+    dateModified: iso,
+    isAccessibleForFree: true,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    author: { '@type': 'Organization', name: 'InternDoor', url: `${SITE}/` },
+    publisher: { '@type': 'Organization', name: 'InternDoor', url: `${SITE}/`, logo: { '@type': 'ImageObject', url: `${SITE}/logo-512.png` } },
+  }, {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name,
+    description: `${lede} Counts of engineering internship postings by employer, stated stipend, applicant count at first sighting, city, work mode, skills named and weekday posted.`,
+    url,
+    temporalCoverage: `${first}/${last}`,
+    spatialCoverage: { '@type': 'Place', name: region.name },
+    isAccessibleForFree: true,
+    creator: { '@type': 'Organization', name: 'InternDoor', url: `${SITE}/` },
+  }, {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: regionUrl('/', region) },
+      { '@type': 'ListItem', position: 2, name: 'Monthly reports', item: regionUrl('/insights', region) },
+      { '@type': 'ListItem', position: 3, name: snap.label },
+    ],
+  }];
+
+  return `${head({
+    title: buildTitle([`Engineering Internships ${region.inName}: ${snap.label}`]),
+    description: clampWords(lede, 158),
+    canonical: url,
+    indexable: true,
+    region,
+    extraLd: ld.map((o) => `<script type="application/ld+json">${jsonLd(o)}</script>\n`).join(''),
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
+      <a href="${regionHref('/insights', region)}">Monthly reports</a> <i aria-hidden="true">›</i>
+      <span>${esc(snap.label)}</span>
+    </nav>
+
+    <header class="dir-hero">
+      <h1>Engineering internships ${esc(region.inName)}: ${esc(snap.label)}</h1>
+      <p class="hub-lede">${esc(lede)}</p>
+      <p class="rp-stamp">${esc(snap.label)} · <strong>${snap.rows}</strong> postings · <strong>${snap.employers}</strong> employers · compiled on <strong>${esc(compiled)}</strong>. These figures will not change.</p>
+    </header>
+
+    ${snap.sections.map((s) => `<section class="ins-sec">
+      <h2 id="ins-${esc(s.id)}">${esc(s.heading)}</h2>
+      <p class="ins-find">${esc(s.finding)}</p>
+      <p class="ins-d">${esc(s.detail)}</p>
+      ${insightBars(s)}
+    </section>`).join('\n\n    ')}
+
+    <section class="rp-note">
+      <h2>How this was measured</h2>
+      <p>We track engineering internships as they are published on public job boards and on companies' own careers pages, and record each one the first time we see it. This report counts every <strong>internship</strong> we first recorded ${esc(region.inName)} between ${esc(monthDay(snap.start, region))} and ${esc(monthDay(snap.end - 1, region))}; ${esc(entryWord(region))} full-time roles are not counted.</p>
+      <p>A posting only reaches the board if its employer is on a list we keep of companies we believe are real and actually pay interns. The list grows as we add employers, so a bigger total from one month to the next can mean a bigger list rather than a bigger market. Employers are counted as they stood on that list when this report was compiled.</p>
+
+      <h2>What these numbers are not</h2>
+      <ul>
+        <li><strong>Not a census of every internship ${esc(region.inName)}.</strong> It covers the employers that pass the gate above.</li>
+        <li><strong>&ldquo;Did not state a stipend&rdquo; does not mean unpaid.</strong> It means the posting carried no figure we could read.</li>
+        <li><strong>Applicant counts are the posting's own figure at the moment we found it</strong>, not a final count.</li>
+        <li><strong>Skills, city and work mode are read from the posting text</strong>, so something the posting does not mention is missing rather than absent.</li>
+      </ul>
+
+      <h2>Citing this report</h2>
+      <p>Free to quote with a link to this page. Suggested citation: <em>InternDoor, &ldquo;${esc(name)}&rdquo;, ${esc(url)}</em>. Questions about the figures: <a href="/contact">contact us</a>.</p>
+    </section>
+
+    <nav class="ins-nav" aria-label="Other months">
+      ${older ? `<a href="${regionHref(`/insights/${older.month}`, region)}">← ${esc(older.label)}</a>` : ''}
+      <a href="${regionHref('/insights', region)}">All monthly reports</a>
+      ${newer ? `<a href="${regionHref(`/insights/${newer.month}`, region)}">${esc(newer.label)} →</a>` : ''}
+    </nav>
+  </div>
+</main>
+${foot({
+    headline: 'See the roles that are open now',
+    sub: 'Every live engineering internship on the board, newest first.',
+    region,
+  })}`;
+}
+
+function insightDay(snap, region) {
+  return new Date(snap.compiledAt).toLocaleDateString('en-CA', { timeZone: region.timeZone });
+}
+
+function monthDay(ms, region) {
+  return new Date(ms).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: region.timeZone });
+}
+
+export function renderInsightsIndex(snaps = [], { region = DEFAULT_REGION } = {}) {
+  const lede = `A report for every month since we began tracking: how many engineering internships were posted ${region.inName}, who posted them, how many stated pay, and how fast the applicant queue formed. Free to cite.`;
+  return `${head({
+    title: buildTitle([`Engineering Internship Reports ${region.inName}`]),
+    description: clampWords(lede, 158),
+    canonical: regionUrl('/insights', region),
+    indexable: snaps.length > 0,
+    region,
+  })}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
+      <span>Monthly reports</span>
+    </nav>
+    <header class="dir-hero">
+      <h1>Engineering internships ${esc(region.inName)}: monthly reports</h1>
+      <p class="hub-lede">${esc(lede)}</p>
+    </header>
+    <ol class="ins-list">
+      ${snaps.map((s) => `<li><a href="${regionHref(`/insights/${s.month}`, region)}"><b>${esc(s.label)}</b><span>${esc(insightLede(s))}</span></a></li>`).join('\n      ')}
+    </ol>
+    <p class="rp-stamp">For the last 30 days, updated daily, see <a href="${regionHref('/report', region)}">the numbers</a>.</p>
+  </div>
+</main>
+${foot({ headline: 'See the roles that are open now', sub: 'Every live engineering internship on the board, newest first.', region })}`;
+}
+
 export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alternates = null } = {}) {
   const url = regionUrl('/alerts', region);
   const where = region.inName.replace(/^in /, '');
@@ -4506,9 +4671,14 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   const cityLine = (browse.cities ?? []).length
     ? `<p class="dim home-hubs"><b>By city:</b> ${browse.cities.map((c) => `<a href="${regionHref(`/locations/${c.slug}`, region)}">${esc(c.label)}</a>&nbsp;·`).join(' ')} <a href="${regionHref('/locations/', region)}">All&nbsp;cities&nbsp;→</a></p>`
     : '';
+  /* The monthly reports — the homepage is the page Google crawls daily, so
+     it is the fastest way for a new month's report to be found. */
+  const reportLine = (browse.insights ?? []).length
+    ? `<p class="dim home-hubs"><b>Monthly reports:</b> ${browse.insights.slice(0, 6).map((r) => `<a href="${regionHref(`/insights/${r.month}`, region)}">${esc(r.label)}</a>&nbsp;·`).join(' ')} <a href="${regionHref('/insights', region)}">All&nbsp;reports&nbsp;→</a></p>`
+    : '';
   html = fillMarker(html, 'HUBS', `<p class="dim home-hubs">${hubs.length
     ? `<b>Hiring now:</b> ${hubs.map((h) => `<a href="${regionHref(`/companies/${h.slug}`, region)}">${esc(h.name)}</a>&nbsp;·`).join(' ')} `
-    : ''}<a href="/companies">All&nbsp;companies&nbsp;→</a></p>${roleLine}${cityLine}`) ?? html;
+    : ''}<a href="/companies">All&nbsp;companies&nbsp;→</a></p>${roleLine}${cityLine}${reportLine}`) ?? html;
   // The region markers are optional so a half-migrated index.html still
   // publishes India correctly rather than failing the whole run.
   html = fillMarker(html, 'REGION:HEAD', homeHead(region, alternates, channels, jobs)) ?? html;
@@ -5426,7 +5596,7 @@ function groupByCanonicalCompany(rows, display) {
   return out;
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [], closable = [] } = {}) {
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [], closable = [], insights = [] } = {}) {
   // Before any renderer runs: foot(), the job page and the board fills read
   // the region's channels from here (followLink / whatsappUrl).
   registerChannels(region.code, channels);
@@ -5657,6 +5827,21 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     renderReportPage(stats.facts ?? [], { region, alternates, asOf: stats.asOf ?? Date.now(), days: stats.days ?? 30 })),
     '/report');
 
+  /* /insights — the frozen monthly reports (src/insights.js). Each month is
+     rendered from its stored snapshot, so a publish rewrites nothing here
+     unless a new month was compiled. Files are never deleted: a month, once
+     published, is a citation target for good. */
+  if (insights.length) {
+    const dir = join(root, 'insights');
+    mkdirSync(dir, { recursive: true });
+    insights.forEach((snap, i) => {
+      track(writeIfChanged(join(dir, `${snap.month}.html`),
+        renderInsightPage(snap, { region, newer: insights[i - 1] ?? null, older: insights[i + 1] ?? null })),
+      `/insights/${snap.month}`);
+    });
+    track(writeIfChanged(join(dir, 'index.html'), renderInsightsIndex(insights, { region })), '/insights');
+  }
+
   /* /applications — the reader's own tracker. Written for every published
      region so the masthead and footer resolve to the board they came from,
      though the list itself spans every board.
@@ -5780,9 +5965,9 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      so a page cannot be announced to Google that the sitemap does not also
      list. Kept beside the count above rather than recomputed by the caller. */
   const indexUrls = jobs.filter((j) => jobPageIndexable(j, region)).map((j) => regionUrl(`/jobs/${jobSlug(j)}`, region));
-  writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS, facets, roles: roleSet });
+  writeSitemap(jobs, byCompany, root, pastByCompany, region, { report: (stats.facts ?? []).length >= REPORT_MIN_FACTS, facets, roles: roleSet, insights });
   const feedItems = writeFeeds(jobs, root, region);
-  const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels, { roles: roleSet.roles, cities: facets.cities });
+  const homeLinks = writeHomePage(jobs, publicDir, region, alternates, channels, { roles: roleSet.roles, cities: facets.cities, insights });
 
   return {
     jobPages: jobs.length, companyPages: allCompanies.size, indexable, removed, feedItems, homeLinks,
@@ -5804,7 +5989,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
  * @param {Map<string, object[]>} historyByRegion region code -> past postings
  * @param {object[]} regions                      published regions, in order
  */
-export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map(), redirectsByRegion = new Map(), closableByRegion = new Map() } = {}) {
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map(), redirectsByRegion = new Map(), closableByRegion = new Map(), insightsByRegion = new Map() } = {}) {
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
@@ -5842,7 +6027,8 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
       { region, alternates, foreign, validDays, channels: channelsByRegion.get(region.code) ?? [],
         stats: statsByRegion.get(region.code) ?? {},
         redirects: redirectsByRegion.get(region.code) ?? [],
-        closable: closableByRegion.get(region.code) ?? [] },
+        closable: closableByRegion.get(region.code) ?? [],
+        insights: insightsByRegion.get(region.code) ?? [] },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     indexUrls.push(...result.indexUrls);
@@ -5886,7 +6072,7 @@ function removeUnpublishedRegions(publicDir, regions) {
 }
 
 /** Only indexable URLs go in the sitemap — submitting pages you tell Google to ignore is noise. */
-function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false, facets = { skills: [], cities: [] }, roles = { roles: [], combos: [] } } = {}) {
+function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), region = DEFAULT_REGION, { report = false, facets = { skills: [], cities: [] }, roles = { roles: [], combos: [] }, insights = [] } = {}) {
   /* LASTMOD IS A CONTENT DATE, NEVER THE CLOCK, and it is day-granular.
    *
    * It was `new Date().toISOString()` for the board, /companies, /alerts,
@@ -5931,6 +6117,11 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
        reason — and omitted entirely when it is noindex, because submitting a
        page you have told Google to ignore is noise. */
     ...(report ? [{ loc: regionUrl('/report', region), priority: '0.7', lastmod: boardDay }] : []),
+    /* The monthly reports. lastmod is the day each was COMPILED, which never
+       moves, so these entries are byte-stable between publishes; the index
+       takes the newest report's day. */
+    ...(insights.length ? [{ loc: regionUrl('/insights', region), priority: '0.6', lastmod: insightDay(insights[0], region) }] : []),
+    ...insights.map((snap) => ({ loc: regionUrl(`/insights/${snap.month}`, region), priority: '0.6', lastmod: insightDay(snap, region) })),
     /* Facet indexes and pages. Listed above the job pages because they do not
        expire: a job page is deleted at 30 days, while /skills/python is a URL
        that can accumulate authority for as long as the board keeps running. */

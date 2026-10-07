@@ -1342,6 +1342,55 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 
 /* ============================================================
+   /insights — the frozen monthly reports (src/insights.js).
+   `ins-` prefixed; checked against styles.css, page.css, app.js and page.js
+   first. Same single 720px measure as /report. The bars are SVG whose width
+   is an ATTRIBUTE (the CSP refuses style=), filled with currentColor, so the
+   colour is set here by `color` on the cell. */
+.ins-sec { margin-top: 34px; max-width: 720px; }
+.ins-sec h2 {
+  margin: 0; font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+}
+.ins-find {
+  margin: 8px 0 0; font-family: var(--display); font-weight: 800;
+  font-size: 21px; line-height: 1.25; letter-spacing: -.02em; color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.ins-d { margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+.ins-t { width: 100%; margin-top: 14px; border-collapse: collapse; font-size: 14px; }
+.ins-t th, .ins-t td { padding: 5px 0; vertical-align: middle; }
+.ins-t th { width: 34%; padding-right: 12px; text-align: left; font-weight: 500; color: var(--ink); overflow-wrap: anywhere; }
+.ins-b { color: var(--live); }
+.ins-b svg { display: block; width: 100%; height: 8px; }
+.ins-track { fill: var(--rule); }
+.ins-v {
+  width: 3.5em; padding-left: 12px !important; text-align: right;
+  font-family: var(--mono); font-size: 13px; color: var(--ink-2);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.ins-nav {
+  display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 36px;
+  max-width: 720px; font-size: 14px;
+}
+.ins-list { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 12px; max-width: 720px; }
+.ins-list a {
+  display: block; padding: 18px 20px; background: var(--card);
+  border: 1px solid var(--rule); border-radius: var(--r-2); text-decoration: none;
+}
+.ins-list a:hover { border-color: var(--live); }
+.ins-list b {
+  display: block; font-family: var(--display); font-weight: 800; font-size: 19px;
+  letter-spacing: -.02em; color: var(--ink);
+}
+.ins-list span { display: block; margin-top: 6px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+@media (max-width: 600px) {
+  .ins-find { font-size: 18px; }
+  .ins-d { font-size: 14.5px; }
+  .ins-t th { width: 40%; }
+}
+
+/* ============================================================
    /applications — the tracker dashboard.
 
    page.css only: the board never renders this table. The shared
