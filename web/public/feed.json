@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cognizant-performance-analyst-4475198469",
+      "url": "https://interndoor.com/jobs/cognizant-performance-analyst-4475198469",
+      "title": "Performance Analyst — Cognizant",
+      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Design and execute performance tests for enterprise applications using JMeter and LoadRunner\n• Analyze system bottlenecks and optimize performance with Python and Docker\n• Collaborate with developers and ops to improve system reliability and security",
+      "date_published": "2026-10-07T08:35:16.256Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/enterpret-backend-onsite-software-engineering-intern-4476581378",
       "url": "https://interndoor.com/jobs/enterpret-backend-onsite-software-engineering-intern-4476581378",
       "title": "Software Engineering Intern — Enterpret",
@@ -14,6 +26,18 @@
       "authors": [
         {
           "name": "Enterpret"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zimmer-biomet-web-developer-java-4476567894",
+      "url": "https://interndoor.com/jobs/zimmer-biomet-web-developer-java-4476567894",
+      "title": "Java Web Developer — Zimmer Biomet",
+      "content_text": "Company: Zimmer Biomet · Location: Bengaluru, Karnataka, India\n• Code, test, and troubleshoot Java web apps for sales and ops teams\n• Work with developers and support on app development and fixes\n• Hybrid role with 3 days in-office in Bangalore",
+      "date_published": "2026-10-07T08:30:32.911Z",
+      "authors": [
+        {
+          "name": "Zimmer Biomet"
         }
       ]
     },
@@ -38,6 +62,30 @@
       "authors": [
         {
           "name": "Red Hat"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-cirt-analyst-4476583201",
+      "url": "https://interndoor.com/jobs/accenture-in-india-cirt-analyst-4476583201",
+      "title": "CIRT Analyst — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Examine digital devices and files to trace security breaches\n• Work with legal and HR teams on internal investigations\n• Analyze technical evidence to determine incident severity",
+      "date_published": "2026-10-07T08:08:11.004Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wolters-kluwer-associate-software-quality-assurance-analyst-4476555922",
+      "url": "https://interndoor.com/jobs/wolters-kluwer-associate-software-quality-assurance-analyst-4476555922",
+      "title": "Software Quality Assurance Associate — Wolters Kluwer",
+      "content_text": "Company: Wolters Kluwer · Location: Chennai, Tamil Nadu, India\n• Execute test cases, document results, report bugs\n• Use jira or bugzilla, work with developers\n• Maintain qa environment, prepare test data",
+      "date_published": "2026-10-07T07:45:05.933Z",
+      "authors": [
+        {
+          "name": "Wolters Kluwer"
         }
       ]
     },
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "NetApp"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/esec-forte-technologies-ai-security-expert-4463468078",
-      "url": "https://interndoor.com/jobs/esec-forte-technologies-ai-security-expert-4463468078",
-      "title": "AI Security Expert — eSec Forte® Technologies",
-      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India · Duration: 1-3 years\n• Analyze AI/ML vulnerabilities and secure model lifecycles\n• Work with cloud security tools like AWS and Azure\n• Eligible for certification reimbursement and learning allowances",
-      "date_published": "2026-10-06T14:16:19.594Z",
-      "authors": [
-        {
-          "name": "eSec Forte® Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ups-intermediate-servicenow-application-developer-hrsd-and-itsm-4326547118",
-      "url": "https://interndoor.com/jobs/ups-intermediate-servicenow-application-developer-hrsd-and-itsm-4326547118",
-      "title": "ServiceNow Application Developer Intermediate — UPS",
-      "content_text": "Company: UPS · Location: Chennai, Tamil Nadu, India\n• Design and develop serviceNow apps for hr and it processes\n• Script in javascript and glidescript with integrationhub\n• Support platform upgrades and performance optimization",
-      "date_published": "2026-10-06T13:52:53.246Z",
-      "authors": [
-        {
-          "name": "UPS"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/chainalysis-deployment-strategist-crypto-investigations-4467735652",
-      "url": "https://interndoor.com/jobs/chainalysis-deployment-strategist-crypto-investigations-4467735652",
-      "title": "Crypto Investigations Strategist — Chainalysis",
-      "content_text": "Company: Chainalysis · Location: India\n• Design and maintain custom data models and dashboards for customer investigations\n• Collaborate with customers to solve complex compliance and intelligence challenges\n• Build and deliver technical solutions using Python, SQL, and Chainalysis tools",
-      "date_published": "2026-10-06T13:47:21.655Z",
-      "authors": [
-        {
-          "name": "Chainalysis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-specialist-advisor-4476307241",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-systems-integration-specialist-advisor-4476307241",
-      "title": "Systems Integration Specialist Advisor — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Pune/Pimpri-Chinchwad Area\n• Analyze business requirements and translate into functional specs and test cases\n• Collaborate with teams to design and implement risk management solutions\n• Support UAT and train end users on new systems and processes",
-      "date_published": "2026-10-06T13:35:07.019Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
