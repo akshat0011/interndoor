@@ -8,7 +8,7 @@ import { formatStipend, safeBaseSalary } from './extract.js';
 import { matchCompany, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { ensureInsights } from './insights.js';
-import { writeSite, cardFacts, jobSlug, deadlinePassed } from './pages.js';
+import { writeSite, cardFacts, jobSlug, deadlinePassed, asksExperience, notAJob, verifiedOpen } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
@@ -122,6 +122,11 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     // The last poll that saw this on its board. Drives validThrough in the
     // JSON-LD: a role still being listed must not advertise a date in the past.
     lastSeenAt: row.last_seen_at,
+    /* The last POSITIVE check of this posting's application route (store
+       link_ok_at, bin/link-sweep.js) and what was checked: LinkedIn's own
+       posting page where its Apply is LinkedIn's, else the employer's page.
+       Absent until a check succeeds. */
+    ...(row.link_ok_at ? { checkedAt: row.link_ok_at, checkedVia: /linkedin\.com/i.test(row.apply_url || '') || !row.apply_url ? 'linkedin' : 'link' } : {}),
     url: row.job_url,
     applyUrl: row.apply_url || row.job_url,
     // Only carried when explicitly enabled; the tailor endpoint works fine
@@ -539,6 +544,8 @@ export async function writeJobsFile(store, cfg) {
   let droppedClosed = 0;
   let droppedSuppressed = 0;
   let droppedDeadline = 0;
+  let droppedExperience = 0;
+  let droppedNotAJob = 0;
   const droppedByRegion = {};
   /* His corrections from the owner controls (src/owner.js), laid over the rows
      before ANY gate runs — so a corrected location moves the posting to the
@@ -642,6 +649,21 @@ export async function writeJobsFile(store, cfg) {
       droppedDeadline++;
       return false;
     })
+    /* ASKS FOR 2+ YEARS — not an internship or an entry-level role, whatever
+       its tag says (asksExperience). Held back exactly like a passed deadline:
+       the URL becomes a closed-role stub onto the hub and the posting stays in
+       the hub's record. 50 live India rows on 7 Oct 2026. */
+    .filter(({ row }) => {
+      if (!asksExperience(row)) return true;
+      droppedExperience++;
+      return false;
+    })
+    /* NOT A JOB at all — a talent community or pool (notAJob). */
+    .filter(({ row }) => {
+      if (!notAJob(row)) return true;
+      droppedNotAJob++;
+      return false;
+    })
     .map(({ row, matchedNow, region }) => ({ row, matchedNow, region }));
 
   const supersededPairs = [];
@@ -684,6 +706,10 @@ export async function writeJobsFile(store, cfg) {
   /* One role, one shelf: city copies labelled differently must not put the
      same card under two tabs (settleShelves). */
   const publicJobs = settleShelves(shelved)
+    /* EVIDENCE IT IS STILL OPEN (pages.js verifiedOpen) — set on EVERY row,
+       true or false, never left absent: jobPageIndexable reads `false` as
+       "noindex, out of the sitemap and the Indexing API". 7 Oct 2026. */
+    .map((j) => ({ ...j, verified: verifiedOpen(j) }))
     .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
   /* Superseded URLs -> the page that replaced them, per region.
@@ -734,6 +760,12 @@ export async function writeJobsFile(store, cfg) {
 
   if (droppedClosed) {
     log.info(`Held back ${droppedClosed} closed posting${droppedClosed === 1 ? '' : 's'} — application withdrawn, page redirected to the hub, still in the record.`);
+  }
+  if (droppedExperience) {
+    log.info(`Held back ${droppedExperience} posting${droppedExperience === 1 ? '' : 's'} that state${droppedExperience === 1 ? "s" : ""} 2+ years of experience — not entry-level; page redirected to the hub, still in the record.`);
+  }
+  if (droppedNotAJob) {
+    log.info(`Held back ${droppedNotAJob} posting${droppedNotAJob === 1 ? '' : 's'} that ${droppedNotAJob === 1 ? 'is' : 'are'} not a job (talent community or pool).`);
   }
   if (droppedDeadline) {
     log.info(`Held back ${droppedDeadline} posting${droppedDeadline === 1 ? '' : 's'} whose stated application deadline has passed — page redirected to the hub, still in the record.`);

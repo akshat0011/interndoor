@@ -141,6 +141,22 @@ console.log('\n== a thin hub whose past repeats one title is noindex AND unliste
     firstSeenAt: Date.now() - 3 * 86400000, applyUrl: 'https://example.com/a',
     bullets: ['Ship a service behind a feature flag.', 'Write the tests that gate it.'],
     skills: ['python', 'sql'], summary: 'Backend work on the pricing service, with a mentor.',
+  }, {
+    /* Kepler's SECOND distinct role — since 7 Oct 2026 a hub needs two
+       distinct roles, live or past, to be indexable (hubIndexable). */
+    id: '900002', company: 'Kepler Systems', title: 'Data Engineer Intern',
+    location: 'Bengaluru, Karnataka, India', postedAt: Date.now() - 2 * 86400000,
+    firstSeenAt: Date.now() - 2 * 86400000, applyUrl: 'https://example.com/b',
+    bullets: ['Build the nightly pipeline.', 'Own its alerting.'],
+    skills: ['python', 'airflow'], summary: 'Data platform work on the nightly loads.',
+  }, {
+    /* ONE live role and nothing else ever — the 155-hub shape the 7 Oct audit
+       found. Its hub restates its one job page: written, noindex, unlisted. */
+    id: '900003', company: 'Lyra Labs', title: 'Frontend Developer Intern',
+    location: 'Pune, Maharashtra, India', postedAt: Date.now() - 2 * 86400000,
+    firstSeenAt: Date.now() - 2 * 86400000, applyUrl: 'https://example.com/c',
+    bullets: ['Build the dashboard in React.', 'Write its component tests.'],
+    skills: ['react', 'typescript'], summary: 'Frontend work on the customer dashboard.',
   }];
   // The employer under test: reposted ONE title, nothing live.
   const posted = Date.now() - 20 * 86400000;
@@ -173,7 +189,11 @@ console.log('\n== a thin hub whose past repeats one title is noindex AND unliste
   check('the thin hub is NOT in the sitemap', xml.includes('/companies/vega-instruments'), false);
   // The control: an employer with a live role must still be listed, or a rule
   // that drops every hub would pass the line above.
-  check('a hub with a live role IS in the sitemap', xml.includes('/companies/kepler-systems'), true);
+  check('a hub with two live roles IS in the sitemap', xml.includes('/companies/kepler-systems'), true);
+  check('a hub with ONE live role and no history is NOT', xml.includes('/companies/lyra-labs'), false);
+  const lyra = join(dir, 'companies', 'lyra-labs.html');
+  check('…but it is still written', existsSync(lyra), true);
+  check('…and noindex', existsSync(lyra) && NOINDEX.test(readFileSync(lyra, 'utf8')), true);
 
   // And history alone is enough: two distinct past titles, nothing live.
   const orion = join(dir, 'companies', 'orion-metrology.html');
@@ -251,7 +271,7 @@ console.log('\n== the hub bar is stated once ==');
 const src = readFileSync(new URL('../src/pages.js', import.meta.url), 'utf8');
 check('hubIndexable is defined once', (src.match(/^function hubIndexable\(/gm) ?? []).length, 1);
 const body = src.slice(src.indexOf('function hubIndexable('));
-const bar = /\.length > 0 \|\|[^;\n]*\.length >= 2/g;
+const bar = /hubHistory\([^)]*\)\.length >= 2/g;
 check('the bar appears once in the whole file', (src.match(bar) ?? []).length, 1);
 check('and that one occurrence is inside hubIndexable',
   (body.slice(0, body.indexOf('\n}')).match(bar) ?? []).length, 1);

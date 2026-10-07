@@ -23,7 +23,12 @@ const job = (company, skills, extra = {}) => ({
 
 const build = (spec) => {
   const by = new Map();
-  for (const [company, skills] of Object.entries(spec)) by.set(company, [job(company, skills)]);
+  /* Two distinct roles each: since 7 Oct 2026 a hub needs two to be
+     indexable (hubIndexable), and employerIndex only takes indexable hubs.
+     Same skills on both, so nothing the IDF reads changes. */
+  for (const [company, skills] of Object.entries(spec)) {
+    by.set(company, [job(company, skills), job(company, skills, { id: `${company}-second`, title: `Second role ${skills[0]}` })]);
+  }
   return employerIndex(by, new Map());
 };
 

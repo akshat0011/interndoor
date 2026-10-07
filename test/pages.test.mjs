@@ -872,6 +872,9 @@ const smJobs = [
   smJob({ id: '1', company: 'Adobe', title: 'A', postedAt: Date.UTC(2026, 7, 20) }),
   smJob({ id: '2', company: 'Adobe', title: 'B', postedAt: Date.UTC(2026, 7, 28) }),
   smJob({ id: '3', company: 'Zoho', title: 'C', postedAt: Date.UTC(2026, 7, 11) }),
+  // Zoho's second distinct role, older still, so its hub is indexable (two
+  // distinct roles, 7 Oct 2026) and its date stays the 11th.
+  smJob({ id: '4', company: 'Zoho', title: 'D', postedAt: Date.UTC(2026, 7, 9) }),
 ];
 writePages(smJobs, smDir, [], {});
 const sm = readFileSync(join(smDir, 'sitemap.xml'), 'utf8');

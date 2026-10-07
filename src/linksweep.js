@@ -22,7 +22,9 @@
  * when TWO checks a moment apart agree — a CDN can 404 a page for one request
  * and serve it the next.
  *
- * LINKEDIN IS NEVER CHECKED. A LinkedIn apply URL says "no longer accepting"
+ * LINKEDIN APPLY URLS ARE NEVER CHECKED HERE — see sweepLinkedinPostings below for
+ * how a posting whose Apply goes to LinkedIn is checked instead.
+ * (Original note:) A LinkedIn apply URL says "no longer accepting"
  * only in JS the fetch cannot run, and we do not add load to the account that
  * gets throttled. store.applyLinksToCheck already excludes them; this only ever
  * sees employer / ATS links.
@@ -201,7 +203,7 @@ export async function sweepApplyLinks(rows, {
     checked += 1;
     /* Recorded per row, not once at the end: a run killed half way through
        must not re-check the same rows tomorrow and stall the rotation. */
-    onChecked(row);
+    onChecked(row, { alive: dead === 0 && lastNote.startsWith('HTTP 200') });
 
     if (dead >= Math.max(1, confirm)) {
       const n = closedByHost.get(host) ?? 0;
@@ -227,4 +229,105 @@ export async function sweepApplyLinks(rows, {
     }
   }
   return { checked, closed, alive, unknown, held, closures };
+}
+
+
+/* ------------------------------------------------- LinkedIn's own postings */
+
+/**
+ * THE POSTINGS WHOSE APPLY BUTTON IS LINKEDIN'S OWN — 7 Oct 2026.
+ *
+ * The employer-link sweep above never sees them (no employer link to check),
+ * so until now nothing could tell when one closed: it stayed on the board for
+ * its full 30 days. Measured on the live India board: 272 of 1,222 live rows
+ * apply on LinkedIn, and of a sample of 7 such rows aged 12-22 days, THREE were
+ * closed or gone at the source ("No longer accepting applications", a 404) —
+ * against 0 of 13 employer-apply rows of the same age, which this sweep's
+ * sibling already checks.
+ *
+ * Read off LinkedIn's PUBLIC posting page (jobs-guest/jobs/api/jobPosting/<id>),
+ * signed out — the same page discovery reads (src/guestsearch.js), never the
+ * account. It is the per-IP public surface the scans also use, so this is
+ * deliberately small and timid: `POSTING_PER_RUN` a day, `POSTING_GAP_MS`
+ * apart, and the FIRST 429 or 999 ends the pass with nothing more asked —
+ * the next scan's discovery matters more than this check.
+ *
+ * WHAT CLOSES A ROW: the page saying "No longer accepting applications"
+ * (parsePublicPosting's `closed`), or a 404/410 seen TWICE a moment apart (the
+ * employer sweep's rule). Anything else — a 5xx, a page whose markup we cannot
+ * read, a network error — is "not known" and closes nothing.
+ */
+export const POSTING_PER_RUN = 120;
+export const POSTING_GAP_MS = 6_000;
+export const POSTING_MIN_AGE_MS = 2 * 86_400_000;
+
+/** The live LinkedIn-apply rows to check, least recently checked first, then
+ *  OLDEST first (the oldest are likeliest closed). Rows younger than
+ *  POSTING_MIN_AGE_MS are skipped: they were in LinkedIn's search days ago. */
+export function linkedinPostingsToCheck(db, { now = Date.now(), sinceMs = now - 30 * 86_400_000, limit = POSTING_PER_RUN } = {}) {
+  return db.prepare(`
+    SELECT job_id, company, title, apply_url, location, region FROM jobs
+    WHERE is_tech = 1 AND suppressed_reason IS NULL AND closed_at IS NULL
+      AND job_id NOT LIKE 'ats:%'
+      AND first_seen_at >= ? AND first_seen_at <= ?
+      AND (apply_url IS NULL OR apply_url = '' OR apply_url LIKE '%linkedin.com%')
+    ORDER BY link_checked_at IS NOT NULL, link_checked_at ASC, first_seen_at ASC
+    LIMIT ?
+  `).all(sinceMs, now - POSTING_MIN_AGE_MS, limit);
+}
+
+/** One public posting page's verdict: 'open' | 'closed' | 'gone' | 'blocked' | 'unknown'. */
+export async function checkPosting(jobId, { fetchImpl = fetch, parse, timeoutMs = TIMEOUT_MS } = {}) {
+  const url = `https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/${encodeURIComponent(String(jobId))}`;
+  let res;
+  try {
+    res = await fetchImpl(url, { headers: { 'user-agent': UA, 'accept-language': 'en-US' }, signal: AbortSignal.timeout(timeoutMs) });
+  } catch (err) {
+    return { verdict: 'unknown', note: `network: ${err?.message ?? err}` };
+  }
+  const status = res.status;
+  if (status === 429 || status === 999) { try { await res.body?.cancel?.(); } catch {} return { verdict: 'blocked', note: `HTTP ${status}` }; }
+  if (deadFromStatus(status)) { try { await res.body?.cancel?.(); } catch {} return { verdict: 'gone', note: `HTTP ${status}` }; }
+  if (status !== 200) { try { await res.body?.cancel?.(); } catch {} return { verdict: 'unknown', note: `HTTP ${status}` }; }
+  const body = await res.text();
+  const d = parse(body, jobId);
+  if (!d) return { verdict: 'unknown', note: 'markup not read' };
+  return d.closed ? { verdict: 'closed', note: 'no longer accepting applications' } : { verdict: 'open', note: 'accepting applications' };
+}
+
+export async function sweepLinkedinPostings(rows, {
+  check,
+  onClose = () => {},
+  onChecked = () => {},
+  sleep = (ms) => new Promise((r) => setTimeout(r, ms)),
+  gapMs = POSTING_GAP_MS,
+  confirmGapMs = CONFIRM_GAP_MS,
+  perRun = POSTING_PER_RUN,
+  log = null,
+} = {}) {
+  const list = (rows ?? []).slice(0, perRun);
+  let checked = 0, open = 0, closed = 0, unknown = 0, blocked = false;
+  for (const [i, row] of list.entries()) {
+    if (i > 0) await sleep(gapMs);
+    let r = await check(row.job_id);
+    if (r.verdict === 'gone') {           // a 404 must be seen twice
+      await sleep(confirmGapMs);
+      const again = await check(row.job_id);
+      if (again.verdict !== 'gone') r = again;   // open, closed, blocked or unknown: the second answer stands
+    }
+    if (r.verdict === 'blocked') {
+      blocked = true;
+      log?.warn?.(`LinkedIn posting sweep: LinkedIn answered ${r.note} — stopping after ${checked} rather than add to the scans' rate limit.`);
+      break;
+    }
+    checked += 1;
+    onChecked(row, { alive: r.verdict === 'open' });
+    if (r.verdict === 'closed' || r.verdict === 'gone') {
+      closed += 1;
+      onClose(row, `LinkedIn: ${r.note}`);
+      log?.info?.(`LinkedIn posting sweep: ${row.company} — "${row.title}" closed (${r.note}).`);
+    } else if (r.verdict === 'open') open += 1;
+    else unknown += 1;
+  }
+  return { checked, open, closed, unknown, blocked };
 }
