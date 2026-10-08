@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 08 Oct 2026 00:58:57 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 04:48:06 GMT</lastBuildDate>
+  <item>
+    <title>Network Support Apprentice — F5</title>
+    <link>https://interndoor.com/jobs/f5-network-support-apprenticeship-4476992835</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/f5-network-support-apprenticeship-4476992835</guid>
+    <pubDate>Thu, 08 Oct 2026 04:48:06 GMT</pubDate>
+    <description>Company: F5 · Location: Bangalore Rural District, Karnataka, India
+• Troubleshoot and resolve network issues using Linux, Wireshark, and VMware
+• Work with virtual environments and set up VLANs in real-world scenarios
+• Learn F5 solutions and gain hands-on experience with network protocols and security</description>
+  </item>
   <item>
     <title>Digital Associate, Ring Data Engineering Services — Amazon</title>
     <link>https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4476958315</link>
@@ -501,16 +511,6 @@
 • Build and maintain production ML/AI services with minimal supervision
 • Use Docker, Kubernetes, and Prefect for deployment and orchestration
 • Design CI/CD pipelines and support model monitoring and retraining</description>
-  </item>
-  <item>
-    <title>Frontend Developer — Echo Initiative by Joveo</title>
-    <link>https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4476717871</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4476717871</guid>
-    <pubDate>Wed, 07 Oct 2026 12:51:20 GMT</pubDate>
-    <description>Company: Echo Initiative by Joveo · Location: Bengaluru, Karnataka, India
-• Build greenfield ai products from whiteboard to prototype
-• Ship full stack with react, next.js, node.js, and express
-• Collaborate with leadership from first week</description>
   </item>
 </channel>
 </rss>
