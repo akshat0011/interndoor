@@ -6,7 +6,38 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 08 Oct 2026 17:51:25 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 18:16:25 GMT</lastBuildDate>
+  <item>
+    <title>Drilling Data Analyst — SLB</title>
+    <link>https://interndoor.com/jobs/slb-drilling-data-analyst-4401618300</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/slb-drilling-data-analyst-4401618300</guid>
+    <pubDate>Thu, 08 Oct 2026 18:16:25 GMT</pubDate>
+    <description>Company: SLB · Location: Dehradun, Uttarakhand, India
+• Capture and report wellsite data daily using reporting tools
+• Monitor data quality and resolve issues in real-time
+• Work with service providers and clients on data collection
+• Rotate on land sites with team and project leads</description>
+  </item>
+  <item>
+    <title>Technology Specialist — Broadridge India</title>
+    <link>https://interndoor.com/jobs/broadridge-india-technology-specialist-4028615754</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/broadridge-india-technology-specialist-4028615754</guid>
+    <pubDate>Thu, 08 Oct 2026 18:03:48 GMT</pubDate>
+    <description>Company: Broadridge India · Location: Hyderabad, Telangana, India
+• Develop and maintain Java-based applications using Spring and Hibernate
+• Work with AWS, Lambda, and NoSQL databases like DynamoDB
+• Collaborate in Agile teams on microservices and RESTful APIs</description>
+  </item>
+  <item>
+    <title>B&amp;I Engineer — HARMAN India</title>
+    <link>https://interndoor.com/jobs/harman-india-b-and-i-engineer-4466288739</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/harman-india-b-and-i-engineer-4466288739</guid>
+    <pubDate>Thu, 08 Oct 2026 17:58:08 GMT</pubDate>
+    <description>Company: HARMAN India · Location: Bengaluru, Karnataka, India
+• Automate software build, testing, and deployment using Jenkins and Docker
+• Manage Git repositories and code quality with Gerrit and Sonar
+• Collaborate with teams to ensure software readiness and release traceability</description>
+  </item>
   <item>
     <title>Data Engineer I — Amazon</title>
     <link>https://interndoor.com/jobs/amazon-data-engineer-i-dsp-analytics-4468618558</link>
@@ -482,38 +513,6 @@
 • Develop secure, cross-platform C++ code for endpoint protection solutions
 • Collaborate with global teams on Windows internals and AI-driven security tools
 • Design scalable software architecture using object-oriented principles</description>
-  </item>
-  <item>
-    <title>Data Migration Engineer (Fall 2026) — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213</guid>
-    <pubDate>Thu, 08 Oct 2026 11:25:39 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Nim ka Thana, Rajasthan, India · Duration: Fall 2026
-• Translate informatica workflows into python el and dbt models
-• Build pipelines for billion-row data with sqlalchemy and oracle data pump
-• Design dbt transformations with macros and incremental strategies
-• Orchestrate scripts with airflow and contribute to ci/cd pipelines</description>
-  </item>
-  <item>
-    <title>MES Machine Integrator — Birlasoft</title>
-    <link>https://interndoor.com/jobs/birlasoft-apriso-mes-machine-integrator-4466892026</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-apriso-mes-machine-integrator-4466892026</guid>
-    <pubDate>Thu, 08 Oct 2026 11:21:22 GMT</pubDate>
-    <description>Company: Birlasoft · Location: Pune/Pimpri-Chinchwad Area
-• Integrate machines, PLCs, and systems with Apriso MES
-• Use OPC UA, MQTT, REST, and industrial protocols
-• Work with SAP, Oracle, and Dynamics ERP systems
-• Collaborate with engineers and stakeholders on deployments</description>
-  </item>
-  <item>
-    <title>Full Stack Developer — Zensar Technologies</title>
-    <link>https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4475790794</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4475790794</guid>
-    <pubDate>Thu, 08 Oct 2026 11:13:11 GMT</pubDate>
-    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
-• Build and maintain full-stack Java applications
-• Work with Angular, Spring/Hibernate, and REST APIs
-• Collaborate in Agile teams using Git and Maven</description>
   </item>
 </channel>
 </rss>
