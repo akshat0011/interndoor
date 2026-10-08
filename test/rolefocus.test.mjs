@@ -252,7 +252,7 @@ console.log('\n== the wiring ==');
   check('the scan refuses a manager title before the open',
     /const titleRefusal = entryLevelTitleRefusal\(card\.title\);\s*if \(titleRefusal\) \{/.test(idx), true);
   check('WhatsApp checks the shelf before it queues a listing',
-    /if \(!announceable\(pub\.category\)\) \{ misc\+\+; return; \}\s*mine\.push\(/.test(wa), true);
+    /if \(!announceable\(pub\.category\)\) \{ misc\+\+; return; \}\s*const why = channelRefusal\(pub\);[\s\S]{0,200}?mine\.push\(/.test(wa), true);
   check('...for the backlog and for new rows alike',
     /for \(const id of readPending\(store, code\)\) take\(indexFor\(code\)\.get\(String\(id\)\), code, String\(id\)\);/.test(wa)
       && /const id = String\(row\.job_id \?\? row\.id\);\s*take\(indexFor\(code\)\.get\(id\), code, id\);/.test(wa), true);
