@@ -129,7 +129,7 @@ console.log('\n== wired where it counts ==');
   check('and carries the original as slugTitle whenever they differ',
     (pub.match(/\.\.\.\(publishedTitle\(row\) !== row\.title \? \{ slugTitle: row\.title \} : \{\}\)/g) ?? []).length, 2);
   check('a Misc move happens only behind titles.moveToMisc',
-    /cfg\.titles\?\.moveToMisc \? shelfMove\(rc\.category, row\.discipline, row\.title\) : null/.test(pub), true);
+    /cfg\.titles\?\.moveToMisc \? shelfMove\(rc\.category, row\.discipline, row\.title, \{[\s\S]{0,400}?\}\) : null/.test(pub), true);
   const idx = strip('../src/index.js');
   const at = (s) => idx.indexOf(s);
   check('each scan reads titles after enrichment and before the publish',
@@ -167,6 +167,14 @@ console.log('\n== every link built from a published row keeps the ORIGINAL title
   check('publish redirects every clean-title slug to the real page',
     /for \(const job of publicJobs\) \{\s*if \(!job\.slugTitle\) continue;[\s\S]{0,200}slug = jobSlug\(\{ \.\.\.job, slugTitle: undefined \}\); target = jobSlug\(job\);[\s\S]{0,200}redirectsByRegion\.get\(job\.region\)\.push\(\{ slug, target \}\)/.test(pubSrc), true);
 }
+
+console.log('\n== 8 Oct 2026: an open title moves only when discipline AND label both say misc ==');
+check('eClerx "Analyst" — business discipline, insights label', shelfMove('software', 'business_sales_marketing_ops', 'Analyst', { open: true, labelMisc: true }), 'misc');
+check('Otis "Apprentice" — core discipline, mechanic label', shelfMove('software', 'core_engineering', 'Apprentice', { open: true, labelMisc: true }), 'misc');
+check('an open title with a misc discipline but no misc label STAYS', shelfMove('software', 'business_sales_marketing_ops', 'Intern', { open: true, labelMisc: false }), null);
+check('a misc label but a software discipline STAYS', shelfMove('software', 'software_development', 'Intern', { open: true, labelMisc: true }), null);
+check('a NAMED title is not moved by the label rule', shelfMove('software', 'business_sales_marketing_ops', 'Platform Engineer', { open: false, labelMisc: true }), null);
+check('a software word in the title still wins', shelfMove('software', 'business_sales_marketing_ops', 'Developer Intern', { open: true, labelMisc: true }), null);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

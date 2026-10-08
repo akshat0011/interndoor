@@ -60,8 +60,18 @@ console.log('\n== AN EXPIRED PAGE BECOMES A POINTER TO THE HUB, NOT A 404 ==');
   check('it is reported for the indexing queue', r.redirectUrls.some((u) => u.endsWith('/jobs/acme-corp-expiring-intern-1')), true);
 
   const html = readFileSync(STUB, 'utf8');
-  check('it points at the company hub', html.includes('/us/companies/acme-corp'), true);
-  check('with a zero-second refresh', /http-equiv="refresh" content="0;/.test(html), true);
+  /* 8 OCT 2026: A PAGE THAT SAYS SO, NOT AN INSTANT REDIRECT. Readers from his
+     LinkedIn posts landed on the employer's hub with nothing telling them the
+     role had closed. The page now says it, names the role, offers the channel
+     and shows what is open. */
+  check('it links the company hub', html.includes('href="/us/companies/acme-corp"'), true);
+  check('it does NOT redirect away', /http-equiv="refresh"/.test(html), false);
+  check('it says the role has closed', /This role has closed/.test(html), true);
+  check('it names the role that closed', html.includes('Expiring Intern'), true);
+  check('it carries its close date', /data-closed-on="\d{4}-\d{2}-\d{2}"/.test(html), true);
+  check('it offers the channel — never miss one again', /Never miss one again/.test(html), true);
+  check('it shows the employer\'s other open role', /Open now at Acme Corp/.test(html) && html.includes('surviving-intern-2'), true);
+  check('and the client-filled "Just landed" strip', /id="fresh"/.test(html), true);
 
   /* THE JOB MARKUP MUST BE GONE. The role no longer exists, so the page must
      stop describing one — that is Google's own documented remedy, and the
@@ -69,12 +79,11 @@ console.log('\n== AN EXPIRED PAGE BECOMES A POINTER TO THE HUB, NOT A 404 ==');
   check('NO JobPosting markup survives', /JobPosting/.test(html), false);
   check('no baseSalary either', /baseSalary/.test(html), false);
 
-  /* NO rel=canonical, and this is the difference from renderJobRedirect. A
-     reposted role IS the same posting, so pointing its canonical at the winner
-     is honest. A closed role and a company hub are DIFFERENT content. */
-  check('NO canonical is claimed', /rel="canonical"/.test(html), false);
-  /* noindex would stop Google following the hint at all, which defeats it. */
-  check('and it is not noindexed', /noindex/.test(html), false);
+  /* NOINDEX,FOLLOW AND A SELF CANONICAL (8 Oct 2026). A page about a role that
+     no longer exists must not be indexed — hundreds of them would be the thin
+     profile the 7 Oct audit removed — and `follow` keeps its links counting. */
+  check('it canonicalises to itself', /rel="canonical" href="https:\/\/interndoor\.com\/us\/jobs\/acme-corp-expiring-intern-1"/.test(html), true);
+  check('and it is noindex,follow', /name="robots" content="noindex,follow"/.test(html), true);
 
   check('the surviving page is untouched', /JobPosting/.test(readFileSync(LIVE, 'utf8')), true);
 }
@@ -91,6 +100,25 @@ console.log('\n== IT SURVIVES THE NEXT PUBLISH, AND DOES NOT CHURN ==');
   /* §10: two publishes of the same input must be byte-identical. Rewriting the
      stamp every run would rewrite every closed page 48 times a day. */
   check('byte-identical — no churn', readFileSync(STUB, 'utf8') === before, true);
+}
+
+console.log('\n== AN OLD REDIRECT STUB BECOMES THE NEW PAGE, KEEPING ITS DATE ==');
+{
+  reset();
+  /* The ~800 stubs on disk before 8 Oct 2026 were the bare redirect. Each is
+     re-rendered as the new page on the next publish, with the date it closed
+     — not today's. */
+  const stamp = new Date(Date.now() - 10 * 86_400_000).toISOString().slice(0, 10);
+  mkdirSync(`${DIR}/us/jobs`, { recursive: true });
+  writeFileSync(STUB, `<!doctype html><html lang="en" data-closed-on="${stamp}" data-hub="https://interndoor.com/us/companies/acme-corp"><head><meta http-equiv="refresh" content="0; url=https://interndoor.com/us/companies/acme-corp"></head><body></body></html>`);
+  writePages([job(2, 'Surviving Intern')], DIR, HISTORY, { region: R });
+  const html = existsSync(STUB) ? readFileSync(STUB, 'utf8') : '';
+  check('the old stub is now the new page', /This role has closed/.test(html) && !/http-equiv="refresh"/.test(html), true);
+  check('it keeps the date it closed', html.includes(`data-closed-on="${stamp}"`), true);
+  check('and says so in words', html.includes(`datetime="${stamp}"`), true);
+  const before = html;
+  writePages([job(2, 'Surviving Intern')], DIR, HISTORY, { region: R });
+  check('a second publish leaves it byte-identical', existsSync(STUB) && readFileSync(STUB, 'utf8') === before, true);
 }
 
 console.log('\n== IT IS BOUNDED, OR IT IS A DOORWAY FARM ==');
@@ -203,10 +231,7 @@ console.log('\n== THE CLOSED STUB IS ALLOWED BY THE PRODUCTION CSP ==');
   /* The target has to survive somewhere the script can reach without being
      interpolated into it, or the constant-bytes trick silently redirects
      nowhere. Both stubs must name their own hub. */
-  check('the hub is carried in the markup for the script to read',
-    /data-hub="https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(a), true);
-  check('and the meta refresh still names it too',
-    /http-equiv="refresh" content="0; url=https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(a), true);
+  check('each names its own hub', /href="\/us\/companies\/acme-corp"/.test(a), true);
 }
 
 /* ============================================================================
@@ -235,7 +260,7 @@ const demotedRow = { company: 'Acme Corp', id: '9', title: 'Product Manager Inte
      already failed the line above, and a bare readFileSync would THROW — which
      stops the whole `npm test` chain rather than failing one file (§1). */
   const html = existsSync(DEMOTED) ? readFileSync(DEMOTED, 'utf8') : '';
-  check('it points at the employer hub', /data-hub="https:\/\/interndoor\.com\/us\/companies\/acme-corp"/.test(html), true);
+  check('it links the employer hub', /href="\/us\/companies\/acme-corp"/.test(html), true);
   check('it names the employer, not the slug', html.includes('Acme Corp'), true);
   check('NO JobPosting markup', /JobPosting/.test(html), false);
   check('it is not counted as removed', r.removed, 0);

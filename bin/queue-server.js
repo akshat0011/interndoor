@@ -59,6 +59,7 @@ import { publishedTitle } from '../src/titles.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { watchJob, postWatchTick } from '../src/postwatch.js';
 
 const cfg = loadConfig();
 const PORT = queuePort(cfg);
@@ -952,7 +953,28 @@ function autoSweep() {
   if (freed) log.info(`Reels: released ${freed} posting${freed === 1 ? '' : 's'} left rendering by a previous run — they are candidates again.`);
 }
 
+/* THE POSTED-JOB WATCH (src/postwatch.js): every job put in the post queue
+   is re-checked every three hours for a week, and closed — then published —
+   the moment its LinkedIn posting or its application page says it has gone.
+   Jobs already in the queue when this process starts are watched too. */
+for (const { job_id: id } of store.db.prepare('SELECT job_id FROM post_queue').all()) watchJob(store, id);
+let watching = false;
+async function watchTick() {
+  if (watching) return;
+  watching = true;
+  try {
+    const r = await postWatchTick(store);
+    if (r.closed) {
+      log.info(`Posted-job watch: ${r.company} — "${r.title}" has closed (${r.note}); publishing.`);
+      schedulePublish();
+    } else if (r.state === 'blocked') {
+      log.warn(`Posted-job watch: LinkedIn answered ${r.note} — pausing for 30 minutes.`);
+    }
+  } finally { watching = false; }
+}
+
 setInterval(() => {
+  watchTick().catch((e) => log.warn(`Posted-job watch: ${e.message}`));
   try { prunePosts(); } catch (e) { log.warn(`Post queue prune: ${e.message}`); }
   try { autoSweep(); } catch (e) { log.warn(`Reel auto-sweep: ${e.message}`); }
   drainReels().catch((e) => log.warn(`Reel drain: ${e.message}`));
@@ -1034,6 +1056,14 @@ function ownerRow(body) {
   if (!id && body?.path) {
     const slug = slugFromPath(body.path);
     if (slug) id = publishedJobs().find((j) => { try { return jobSlug(j) === slug; } catch { return false; } })?.id ?? null;
+    /* A CLOSED posting is no longer published, but its page still stands and
+       its owner bar must still find it, or Reopen could never be pressed.
+       The slug is built from the stored title, exactly as publish built it. */
+    if (slug && !id) {
+      const since = Date.now() - 90 * 86_400_000;
+      id = store.db.prepare('SELECT job_id, company, title FROM jobs WHERE closed_at IS NOT NULL AND closed_at > ?').all(since)
+        .find((r) => { try { return jobSlug({ company: r.company, title: r.title, slugTitle: r.title, id: r.job_id }) === slug; } catch { return false; } })?.job_id ?? null;
+    }
   }
   if (!id) return null;
   return store.db.prepare('SELECT * FROM jobs WHERE job_id = ?').get(id) ?? null;
@@ -1053,6 +1083,8 @@ function ownerView(row) {
     page,
     hidden: row.is_tech === 0 && !!row.suppressed_reason,
     suppressedReason: row.suppressed_reason ?? null,
+    closed: row.closed_at != null,
+    closedReason: row.closed_reason ?? null,
     postable: postableRegion(cfg, row.region),
     original: {
       title: row.title,
@@ -1128,6 +1160,7 @@ const server = createServer(async (req, res) => {
       }
       if (running && !running.finishedAt) return json(res, 409, { error: 'a batch of posts is already being written — try again when it finishes' });
       store.queueAdd(row.job_id);
+      watchJob(store, row.job_id);
       generate([row.job_id]);
       log.info(`Owner: writing a LinkedIn post for ${row.company} — ${row.title}`);
       return json(res, 202, { started: true, postsUrl: `http://127.0.0.1:${PORT}/posts/latest` });
@@ -1150,6 +1183,26 @@ const server = createServer(async (req, res) => {
       log.info(`Owner: hid ${row.company} — ${row.title}`);
       schedulePublish();
       return json(res, 200, { hidden: true, publish: publishState });
+    }
+
+    /* CLOSE BY HAND (8 Oct 2026, his ask: "if i see that a job is closed i
+       can update manually"). The CLOSED state, not a hide: the posting leaves
+       the board, its page says it has closed and offers the channel and more
+       roles, and it stays in the employer's record. Reopen undoes it. */
+    if (path === '/api/owner/close') {
+      const n = store.markClosed(row.job_id, `closed by hand on ${new Date().toISOString().slice(0, 10)}`);
+      if (!n) return json(res, 409, { error: row.closed_at != null ? 'already closed' : 'only a live engineering posting can be closed' });
+      log.info(`Owner: closed ${row.company} — ${row.title}`);
+      schedulePublish();
+      return json(res, 200, { closed: true, publish: publishState });
+    }
+
+    if (path === '/api/owner/reopen') {
+      const n = store.reopenJob(row.job_id);
+      if (!n) return json(res, 409, { error: 'this posting is not closed' });
+      log.info(`Owner: reopened ${row.company} — ${row.title}`);
+      schedulePublish();
+      return json(res, 200, { reopened: true, publish: publishState });
     }
 
     if (path === '/api/owner/block') {
@@ -1204,7 +1257,7 @@ const server = createServer(async (req, res) => {
       }
     }
     if (body.action === 'remove') store.queueRemove(id);
-    else store.queueAdd(id);
+    else { store.queueAdd(id); watchJob(store, id); }
     return json(res, 200, { ids: store.queuedIds(), ...store.queueCounts() });
   }
 
