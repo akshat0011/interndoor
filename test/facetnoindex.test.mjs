@@ -115,8 +115,15 @@ else {
   check('and every such link resolves', [...new Set(deadCity)], []);
 
   const jobLocs = locs.filter((l) => l.includes('/jobs/')).length;
-  check('every indexable job page is in the sitemap', jobLocs, jobs.filter(isIndexable).length);
-  check('and offered to the Indexing API', (res.indexUrls ?? []).length, jobs.filter(isIndexable).length);
+  /* jobPageIndexable, not isIndexable: since 7 Oct 2026 a job page also needs
+     evidence it is still open (`verified`, set by publish), and this reads the
+     LIVE jobs.json. Counted with the bare quality bar it compared the sitemap
+     against a different rule — 932 against 1,176 the first morning. */
+  const indexableJobs = jobs.filter((j) => jobPageIndexable(j, region)).length;
+  check('every indexable job page is in the sitemap', jobLocs, indexableJobs);
+  check('and offered to the Indexing API', (res.indexUrls ?? []).length, indexableJobs);
+  check('…and the evidence rule really is in force on the live data',
+    jobs.some((j) => j.verified === false) ? indexableJobs < jobs.filter(isIndexable).length : true, true);
 }
 
 console.log('\n== the per-board switch still exists, and is deliberately empty ==');

@@ -8,7 +8,7 @@ import { formatStipend, safeBaseSalary } from './extract.js';
 import { matchCompany, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { ensureInsights } from './insights.js';
-import { writeSite, cardFacts, jobSlug, deadlinePassed, asksExperience, notAJob, verifiedOpen } from './pages.js';
+import { writeSite, cardFacts, jobSlug, deadlinePassed, asksExperience, notAJob, verifiedOpen, durationText } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
@@ -96,7 +96,13 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
     // consumers and served to every visitor, so it should not carry a field
     // that is empty three times out of four.
     ...(pay ? { pay } : {}),
-    duration: row.duration || null,
+    /* CLEANED HERE, ONCE, for every reader of jobs.json (8 Oct 2026). The
+       column often holds an EXPERIENCE range — "1-2 years", "0 to 3 years" —
+       and the board printed it under "Duration": 175 live rows that day.
+       durationText is the rule the generated pages already used; the board,
+       the channels and the cards now get the same answer. What the posting
+       asks in experience is `experience`, below. */
+    duration: durationText(row) || null,
     applicants: row.applicants || null,
     easyApply: !!row.easy_apply,
     skills: row.skills || [],
@@ -837,7 +843,7 @@ export async function writeJobsFile(store, cfg) {
       employmentType: row.employment_type || 'intern',
       location: row.location || null,
       workplaceType: row.workplace_type || null,
-      duration: row.duration || null,
+      duration: durationText(row) || null,   // the same cleaning as the live projection
       applicants: row.applicants || null,
       degreeLevel: row.degree_level || null,
       skills: row.skills || [],
