@@ -6,7 +6,48 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 08 Oct 2026 18:55:22 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 19:57:17 GMT</lastBuildDate>
+  <item>
+    <title>Data Quality Analyst — AstraZeneca</title>
+    <link>https://interndoor.com/jobs/astrazeneca-analyst-data-quality-4476204329</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/astrazeneca-analyst-data-quality-4476204329</guid>
+    <pubDate>Thu, 08 Oct 2026 19:57:17 GMT</pubDate>
+    <description>Company: AstraZeneca · Location: Chennai, Tamil Nadu, India
+• Diagnose data issues across systems and pipelines, working with engineers to fix root causes
+• Build Power BI dashboards and scorecards to track data health and SLA compliance
+• Automate quality checks with SQL and Python to improve dashboard performance and reporting</description>
+  </item>
+  <item>
+    <title>Salesforce Commerce Cloud Developer — NTT DATA North America</title>
+    <link>https://interndoor.com/jobs/ntt-data-north-america-salesforce-commerce-cloud-developer-4477436959</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-salesforce-commerce-cloud-developer-4477436959</guid>
+    <pubDate>Thu, 08 Oct 2026 19:51:54 GMT</pubDate>
+    <description>Company: NTT DATA North America · Location: Bengaluru, Karnataka, India
+• Support Salesforce Commerce Cloud with ticket resolution, maintenance, and defect fixes
+• Use SFRA, ISML, Algolia, JavaScript, and Git for development and deployment
+• Work in hybrid model with 2 pm to 11 pm IST shift</description>
+  </item>
+  <item>
+    <title>Systems Integration Specialist — NTT DATA North America</title>
+    <link>https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4477440880</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4477440880</guid>
+    <pubDate>Thu, 08 Oct 2026 19:49:32 GMT</pubDate>
+    <description>Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India
+• Design and maintain data pipelines using PySpark and Delta Lake
+• Ingest data from Oracle, Netezza, MongoDB, and Azure Data Lake
+• Build reusable frameworks for data transformation and quality
+• Own CI/CD and environment promotion through Azure DevOps</description>
+  </item>
+  <item>
+    <title>Agentic AI Integration Engineer — NTT DATA North America</title>
+    <link>https://interndoor.com/jobs/ntt-data-north-america-mulesoft-and-agentic-ai-integration-engineer-4477440875</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-mulesoft-and-agentic-ai-integration-engineer-4477440875</guid>
+    <pubDate>Thu, 08 Oct 2026 19:48:28 GMT</pubDate>
+    <description>Company: NTT DATA North America · Location: Bengaluru, Karnataka, India
+• Design and build MuleSoft APIs for order processing pipelines
+• Develop AI agents to extract and classify order data from PDFs
+• Implement business rules for automatic account routing and validation</description>
+  </item>
   <item>
     <title>Python Software Engineer — Glencore</title>
     <link>https://interndoor.com/jobs/glencore-python-software-engineer-4476204074</link>
@@ -473,46 +514,6 @@
 • Monitor, investigate, and resolve technical incidents across IT infrastructure
 • Use ticketing tools like ServiceNow and follow ITIL processes for support
 • Collaborate with teams and clients for second-level problem resolution</description>
-  </item>
-  <item>
-    <title>ZETA Experience Program — ZETA</title>
-    <link>https://interndoor.com/jobs/zeta-zeta-experience-program-4477153806</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/zeta-zeta-experience-program-4477153806</guid>
-    <pubDate>Thu, 08 Oct 2026 12:15:46 GMT</pubDate>
-    <description>Company: ZETA · Location: Bengaluru, Karnataka, India · Duration: 3 months
-• Support engineering projects from planning to execution in biopharmaceutical settings
-• Learn gmp standards, automation, and digital engineering tools
-• 3-month structured training in bangalore with mentorship and visa support</description>
-  </item>
-  <item>
-    <title>Data Science Intern — Philips</title>
-    <link>https://interndoor.com/jobs/philips-intern-data-science-and-ai-engineering-4475935846</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/philips-intern-data-science-and-ai-engineering-4475935846</guid>
-    <pubDate>Thu, 08 Oct 2026 12:15:40 GMT</pubDate>
-    <description>Company: Philips · Location: Bengaluru, Karnataka, India
-• Analyze data to improve healthcare solutions
-• Use python and machine learning tools
-• Work with cross-functional teams on real projects</description>
-  </item>
-  <item>
-    <title>Data Infrastructure Software Engineer I — Rippling</title>
-    <link>https://interndoor.com/jobs/rippling-software-engineer-i-data-infrastructure-4475939615</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/rippling-software-engineer-i-data-infrastructure-4475939615</guid>
-    <pubDate>Thu, 08 Oct 2026 12:15:23 GMT</pubDate>
-    <description>Company: Rippling · Location: Bengaluru, Karnataka, India
-• Build and optimize products used by millions of users globally
-• Work with Python and Go to create core libraries for scalability
-• Manage large-scale database migrations with zero downtime</description>
-  </item>
-  <item>
-    <title>Software Development Associate — Trellix</title>
-    <link>https://interndoor.com/jobs/trellix-associate-software-development-engineer-4475946205</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/trellix-associate-software-development-engineer-4475946205</guid>
-    <pubDate>Thu, 08 Oct 2026 12:11:36 GMT</pubDate>
-    <description>Company: Trellix · Location: Bengaluru, Karnataka, India
-• Develop secure, cross-platform C++ code for endpoint protection solutions
-• Collaborate with global teams on Windows internals and AI-driven security tools
-• Design scalable software architecture using object-oriented principles</description>
   </item>
 </channel>
 </rss>
