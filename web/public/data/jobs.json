@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791474429062,
+ "generatedAt": 1791475414856,
  "region": "IN",
  "regionName": "India",
- "count": 1214,
- "techCount": 1214,
+ "count": 1213,
+ "techCount": 1213,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -122,6 +122,7 @@
   "FedEx GCS",
   "Festo",
   "Festo India",
+  "Fiserv",
   "Flam",
   "Flex",
   "Forrester",
@@ -197,6 +198,7 @@
   "LeadSquared",
   "Levi Strauss & Co.",
   "Lexsi Labs",
+  "Linde",
   "Linde@India",
   "Lowe's India",
   "METNMAT Research & Innovations",
@@ -466,6 +468,162 @@
  ],
  "jobs": [
   {
+   "id": "4477400879",
+   "title": "Security Engineer",
+   "company": "Cisco",
+   "matchedWatchlist": "Cisco",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/cisco.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "kubernetes",
+    "ci/cd"
+   ],
+   "summary": "This role involves designing and implementing security monitoring systems for cloud and SaaS applications using AI and automation. The engineer will integrate security tools, build dashboards, and automate workflows to track and mitigate risks. It suits someone with experience in security engineering, cloud security, and automation tools.",
+   "bullets": [
+    "Build security observability for SaaS, cloud, and endpoints using AI and automation",
+    "Integrate tools like Axonius, Wiz, Splunk, and ServiceNow for monitoring and remediation",
+    "Design dashboards and automate workflows to track vulnerabilities and risks"
+   ],
+   "roleLabel": "Security Observability Engineer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "Python",
+    "Splunk",
+    "Axonius",
+    "Wiz",
+    "ServiceNow"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "6 minutes ago",
+   "postedAt": 1791474693162,
+   "firstSeenAt": 1791475053171,
+   "lastSeenAt": 1791475053171,
+   "url": "https://www.linkedin.com/jobs/view/4477400879/",
+   "applyUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2025487EXTERNALENGLOBAL/Security-Engineer?utm_source=linkedin&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "c9f3e277e9",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "security",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4475964590",
+   "title": "Data Scientist Professional I",
+   "slugTitle": "Data Scientist - Professional I",
+   "company": "Fiserv",
+   "matchedWatchlist": "Fiserv",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/fiserv.jpg",
+   "location": "Thane, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "47 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves analyzing financial data to enhance payment systems using python and sql. It suits students interested in data science and global finance. The work impacts millions of transactions daily, offering real-world experience in a dynamic environment.",
+   "bullets": [
+    "Analyze financial data to improve payment systems",
+    "Use python and sql to build predictive models",
+    "Work with cross-functional teams on global projects"
+   ],
+   "roleLabel": "Data Science",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": "37 minutes ago",
+   "postedAt": 1791472807076,
+   "firstSeenAt": 1791475027084,
+   "lastSeenAt": 1791475027084,
+   "url": "https://www.linkedin.com/jobs/view/4475964590/",
+   "applyUrl": "https://careers.fiserv.com/us/en/job/FFFYJUSR10399649EXTERNALENUS/Data-Scientist-Professional-I?utm_source=linkedin&utm_medium=phenom-feeds&source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "23c0646fc0",
+   "cardFacts": [
+    "Thane",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "ai_ml",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4468647570",
+   "title": "Software Engineer AI Hub",
+   "slugTitle": "Software Engineer - AI Hub",
+   "company": "Linde",
+   "matchedWatchlist": "Linde",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/linde.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "azure",
+    "docker",
+    "kubernetes",
+    "ci/cd"
+   ],
+   "summary": "This role involves building cloud-based applications and tools for internal customers, working with customer data to develop backend and frontend systems. You'll implement CI/CD pipelines and ensure reliable software delivery. Ideal for someone with experience in cloud-native development and automation.",
+   "bullets": [
+    "Develop cloud-based applications for internal customers",
+    "Work with customer data and build backend/frontend systems",
+    "Implement CI/CD tools for reliable software delivery"
+   ],
+   "roleLabel": "Software Developer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "docker",
+    "kubernetes",
+    "azure",
+    "helm"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "48 minutes ago",
+   "postedAt": 1791472070110,
+   "firstSeenAt": 1791474950117,
+   "lastSeenAt": 1791474950117,
+   "url": "https://www.linkedin.com/jobs/view/4468647570/",
+   "applyUrl": "https://linde.csod.com/ux/ats/careersite/25/home/requisition/33184?c=linde&source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "0eb102b521",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "ai_ml",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4291061886",
    "title": "Specialist - AppTech - GDC",
    "company": "PwC India",
@@ -498,7 +656,7 @@
    "postedText": "4 minutes ago",
    "postedAt": 1791471362390,
    "firstSeenAt": 1791471602395,
-   "lastSeenAt": 1791471602395,
+   "lastSeenAt": 1791474929848,
    "url": "https://www.linkedin.com/jobs/view/4291061886/",
    "applyUrl": "https://pwc.wd3.myworkdayjobs.com/Global_Experienced_Careers/job/Kolkata/Specialist---AppTech---GDC_344158WD?source=LinkedIn",
    "description": null,
@@ -555,7 +713,7 @@
    "postedText": "9 minutes ago",
    "postedAt": 1791470909059,
    "firstSeenAt": 1791471449064,
-   "lastSeenAt": 1791471449064,
+   "lastSeenAt": 1791474850688,
    "url": "https://www.linkedin.com/jobs/view/4475949953/",
    "applyUrl": "https://careers.cognizant.com/global-en/jobs/00070847661/site-reliability-engineer-sre-ems-production-observability/?source=JB-11500",
    "description": null,
@@ -606,7 +764,7 @@
    "postedText": "8 minutes ago",
    "postedAt": 1791470908049,
    "firstSeenAt": 1791471388051,
-   "lastSeenAt": 1791471388051,
+   "lastSeenAt": 1791474822846,
    "url": "https://www.linkedin.com/jobs/view/4475953830/",
    "applyUrl": "https://careers.cognizant.com/global-en/jobs/00070649801/ai-augmented-sdet-in-airlines-pss/?source=JB-11500",
    "description": null,
@@ -662,7 +820,7 @@
    "postedText": "13 minutes ago",
    "postedAt": 1791470899002,
    "firstSeenAt": 1791471679003,
-   "lastSeenAt": 1791471679003,
+   "lastSeenAt": 1791474967296,
    "url": "https://www.linkedin.com/jobs/view/4475968344/",
    "applyUrl": "https://careers.cognizant.com/global-en/jobs/00070648142/network-cloud-engineer-aws-azure-terraform-palo-alto/?source=JB-11500",
    "description": null,
@@ -714,7 +872,7 @@
    "postedText": "18 minutes ago",
    "postedAt": 1791470589465,
    "firstSeenAt": 1791471669467,
-   "lastSeenAt": 1791471669467,
+   "lastSeenAt": 1791474967291,
    "url": "https://www.linkedin.com/jobs/view/4448573130/",
    "applyUrl": "https://careers.idfcfirst.bank.in/in/en/job/IFBAINP177270ENIN?utm_source=linkedin&utm_medium=jobboard",
    "description": null,
@@ -770,7 +928,7 @@
    "postedText": "16 minutes ago",
    "postedAt": 1791470522083,
    "firstSeenAt": 1791471482087,
-   "lastSeenAt": 1791471482087,
+   "lastSeenAt": 1791474860748,
    "url": "https://www.linkedin.com/jobs/view/4474835013/",
    "applyUrl": "https://usource.ripplehire.com/candidate/?token=8YxWjpwDhdL62DFYUIcQ&lang=en&source=USTLINKEDIN&ref=USTLINKEDIN#detail/job/66321",
    "description": null,
@@ -828,7 +986,7 @@
    "postedText": "15 minutes ago",
    "postedAt": 1791470387240,
    "firstSeenAt": 1791471287249,
-   "lastSeenAt": 1791471287249,
+   "lastSeenAt": 1791474771404,
    "url": "https://www.linkedin.com/jobs/view/4474832206/",
    "applyUrl": "https://dsp.prng.co/bzhbd2b?target=linkedin&utm_source=linkedin&jobPipeline=LinkedInJobPostings",
    "description": null,
@@ -894,7 +1052,7 @@
    "postedText": "18 minutes ago",
    "postedAt": 1791470188686,
    "firstSeenAt": 1791471268692,
-   "lastSeenAt": 1791474387255,
+   "lastSeenAt": 1791474763487,
    "url": "https://www.linkedin.com/jobs/view/4474815837/",
    "applyUrl": "https://ibmglobal.avature.net/en_US/careers/JobDetail?jobId=136065&source=SN_LinkedIn",
    "description": null,
@@ -955,7 +1113,7 @@
    "postedText": "22 minutes ago",
    "postedAt": 1791470034077,
    "firstSeenAt": 1791471354085,
-   "lastSeenAt": 1791471354085,
+   "lastSeenAt": 1791474810380,
    "url": "https://www.linkedin.com/jobs/view/4477187730/",
    "applyUrl": "https://careers.caterpillar.com/en/jobs/r0000398499/data-engineer-data-scientist/?source=LinkedIn",
    "description": null,
@@ -1007,7 +1165,7 @@
    "postedText": "29 minutes ago",
    "postedAt": 1791469965408,
    "firstSeenAt": 1791471705410,
-   "lastSeenAt": 1791471705410,
+   "lastSeenAt": 1791474975526,
    "url": "https://www.linkedin.com/jobs/view/4474821519/",
    "applyUrl": "https://eaton.eightfold.ai/careers/job/687239536116?utm_source=linkedin&domain=eaton.com",
    "description": null,
@@ -1016,51 +1174,8 @@
     "Puducherry",
     "On-site"
    ],
-   "category": "software",
-   "family": "data_eng",
-   "region": "IN",
-   "verified": true
-  },
-  {
-   "id": "4475946243",
-   "title": "Post Doctoral Fellow Materials",
-   "company": "GE Vernova",
-   "matchedWatchlist": "GE Vernova",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/ge-vernova.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves validating material concepts through scientific and technical testing. You will work within established operational procedures to support material development and application. The position requires technical expertise and the ability to solve problems independently while contributing to team projects.",
-   "bullets": [
-    "Conduct technical validation of material concepts through testing and analysis",
-    "Work with standard operational procedures in materials science and engineering",
-    "Contribute to team projects with autonomy and problem-solving skills"
-   ],
-   "roleLabel": "Materials Validation",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1791468325019,
-   "firstSeenAt": 1791471925022,
-   "lastSeenAt": 1791471925022,
-   "url": "https://www.linkedin.com/jobs/view/4475946243/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4475946243/",
-   "description": null,
-   "roleFingerprint": "96344453e8",
-   "cardFacts": [
-    "Bengaluru"
-   ],
-   "category": "hardware",
-   "family": "hardware",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -1109,7 +1224,7 @@
    "postedText": "2 minutes ago",
    "postedAt": 1791468083050,
    "firstSeenAt": 1791468203053,
-   "lastSeenAt": 1791471243840,
+   "lastSeenAt": 1791474753885,
    "url": "https://www.linkedin.com/jobs/view/4475963167/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4475963167/",
    "description": null,
@@ -1157,7 +1272,7 @@
    "postedText": "24 minutes ago",
    "postedAt": 1791466640226,
    "firstSeenAt": 1791468080231,
-   "lastSeenAt": 1791471186652,
+   "lastSeenAt": 1791474642567,
    "url": "https://www.linkedin.com/jobs/view/4468266250/",
    "applyUrl": "https://job-boards.greenhouse.io/addepar1/jobs/8743688002?gh_src=31a4a9852",
    "description": null,
@@ -1167,7 +1282,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "generic",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -1224,7 +1339,7 @@
    "postedText": "34 minutes ago",
    "postedAt": 1791466072289,
    "firstSeenAt": 1791468112292,
-   "lastSeenAt": 1791471195234,
+   "lastSeenAt": 1791474715743,
    "url": "https://www.linkedin.com/jobs/view/4474830024/",
    "applyUrl": "https://jobs.bt.com/job/Software-Engineering-Specialist/61953-en_GB?src=JB-12000",
    "description": null,
@@ -1280,7 +1395,7 @@
    "postedText": "35 minutes ago",
    "postedAt": 1791466022998,
    "firstSeenAt": 1791468123004,
-   "lastSeenAt": 1791471195235,
+   "lastSeenAt": 1791474715746,
    "url": "https://www.linkedin.com/jobs/view/4474824176/",
    "applyUrl": "https://jobs.bt.com/job/SRE-Professional/61834-en_GB?src=JB-12000",
    "description": null,
@@ -1330,7 +1445,7 @@
    "postedText": "50 minutes ago",
    "postedAt": 1791464880247,
    "firstSeenAt": 1791467880254,
-   "lastSeenAt": 1791471020390,
+   "lastSeenAt": 1791474551628,
    "url": "https://www.linkedin.com/jobs/view/4466884362/",
    "applyUrl": "https://jobs.tatacommunications.com/jobs/1026945285?channel=TGlua2VkSW4%3D",
    "description": null,
@@ -1386,7 +1501,7 @@
    "postedText": "19 minutes ago",
    "postedAt": 1791464025777,
    "firstSeenAt": 1791465165779,
-   "lastSeenAt": 1791470961574,
+   "lastSeenAt": 1791474489732,
    "url": "https://www.linkedin.com/jobs/view/4457496135/",
    "applyUrl": "https://jobs.tatacommunications.com/jobs/7268005314?channel=TGlua2VkSW4%3D",
    "description": null,
@@ -1440,7 +1555,7 @@
    "postedText": "15 minutes ago",
    "postedAt": 1791463957876,
    "firstSeenAt": 1791464857886,
-   "lastSeenAt": 1791471108948,
+   "lastSeenAt": 1791474633513,
    "url": "https://www.linkedin.com/jobs/view/4475938879/",
    "applyUrl": "https://vecmocon.keka.com/careers/jobdetails/162869?source=linkedin",
    "description": null,
@@ -1496,7 +1611,7 @@
    "postedText": "27 minutes ago",
    "postedAt": 1791463676410,
    "firstSeenAt": 1791465296412,
-   "lastSeenAt": 1791471023446,
+   "lastSeenAt": 1791474553796,
    "url": "https://www.linkedin.com/jobs/view/4477160824/",
    "applyUrl": "https://larsentoubrocareers.peoplestrong.com/portal/job/detail/LNT_I-L_1885579?reference=LINKEDIN",
    "description": null,
@@ -1613,7 +1728,7 @@
    "postedText": "33 minutes ago",
    "postedAt": 1791463139842,
    "firstSeenAt": 1791465119845,
-   "lastSeenAt": 1791470948576,
+   "lastSeenAt": 1791474477986,
    "url": "https://www.linkedin.com/jobs/view/4475939799/",
    "applyUrl": "https://careers.blackrock.com/job/-/-/45831/91936971120?source=LinkedIn",
    "description": null,
@@ -1659,7 +1774,7 @@
    "postedText": "54 minutes ago",
    "postedAt": 1791462402334,
    "firstSeenAt": 1791465642336,
-   "lastSeenAt": 1791471158233,
+   "lastSeenAt": 1791474679762,
    "url": "https://www.linkedin.com/jobs/view/4477175112/",
    "applyUrl": "https://fa-ewji-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/85329/?utm_medium=jobboard&utm_source=linkedin",
    "description": null,
@@ -1668,7 +1783,7 @@
     "Chandigarh",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -1704,7 +1819,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791462013018,
    "firstSeenAt": 1791465613022,
-   "lastSeenAt": 1791471149497,
+   "lastSeenAt": 1791474671164,
    "url": "https://www.linkedin.com/jobs/view/4475932407/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4475932407/",
    "description": null,
@@ -1756,7 +1871,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791462003259,
    "firstSeenAt": 1791465603259,
-   "lastSeenAt": 1791471142684,
+   "lastSeenAt": 1791474665517,
    "url": "https://www.linkedin.com/jobs/view/4447368599/",
    "applyUrl": "https://careers.cyient.com/#!/job-view/cluster-validation-bengaluru-india-2026073012010482?source=linkedin",
    "description": null,
@@ -1806,7 +1921,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791461962983,
    "firstSeenAt": 1791465562988,
-   "lastSeenAt": 1791471125592,
+   "lastSeenAt": 1791474647746,
    "url": "https://www.linkedin.com/jobs/view/4446642314/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4446642314/",
    "description": null,
@@ -1967,7 +2082,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791461916897,
    "firstSeenAt": 1791465516901,
-   "lastSeenAt": 1791471112449,
+   "lastSeenAt": 1791474636238,
    "url": "https://www.linkedin.com/jobs/view/4410132369/",
    "applyUrl": "https://careers.nttdata.com/global/en/job/NTT1GLOBALR144895EXTERNALENGLOBAL/MS-Engineer-L2-Linux?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
@@ -1977,8 +2092,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -2020,7 +2135,7 @@
    "postedText": "54 minutes ago",
    "postedAt": 1791461894227,
    "firstSeenAt": 1791465134230,
-   "lastSeenAt": 1791470950961,
+   "lastSeenAt": 1791474481310,
    "url": "https://www.linkedin.com/jobs/view/4477152903/",
    "applyUrl": "https://www.amazon.jobs/jobs/10572929/software-dev-engineer-i-l?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
    "description": null,
@@ -2076,7 +2191,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791461875180,
    "firstSeenAt": 1791465475182,
-   "lastSeenAt": 1791471099532,
+   "lastSeenAt": 1791474624513,
    "url": "https://www.linkedin.com/jobs/view/4477165341/",
    "applyUrl": "https://www.amazon.jobs/jobs/10572900/applied-scientist-ssg-science?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
    "description": null,
@@ -2123,7 +2238,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791461789812,
    "firstSeenAt": 1791465389816,
-   "lastSeenAt": 1791471073726,
+   "lastSeenAt": 1791474602968,
    "url": "https://www.linkedin.com/jobs/view/4466202925/",
    "applyUrl": "https://careers.nttdata.com/global/en/job/NTT1GLOBALR149283EXTERNALENGLOBAL/MS-Engineer-L2-DBA-MySQL-Postgress?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
@@ -2132,8 +2247,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -2174,7 +2289,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791461746208,
    "firstSeenAt": 1791465346213,
-   "lastSeenAt": 1791471047843,
+   "lastSeenAt": 1791474578775,
    "url": "https://www.linkedin.com/jobs/view/4477153806/",
    "applyUrl": "https://zeta.onlyfy.jobs/job/rpj1ee0spdeaum1cwb502qymj3udp8",
    "description": null,
@@ -2184,8 +2299,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -2280,7 +2395,7 @@
    "postedText": "56 minutes ago",
    "postedAt": 1791461723138,
    "firstSeenAt": 1791465083144,
-   "lastSeenAt": 1791470938478,
+   "lastSeenAt": 1791474469845,
    "url": "https://www.linkedin.com/jobs/view/4475939615/",
    "applyUrl": "https://ats.rippling.com/rippling/jobs/28e76743-13cf-4e30-94f2-bbaa021a2d9b?jobSite=LinkedIn",
    "description": null,
@@ -2337,7 +2452,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791461620452,
    "firstSeenAt": 1791465220455,
-   "lastSeenAt": 1791470977952,
+   "lastSeenAt": 1791474505749,
    "url": "https://www.linkedin.com/jobs/view/4466877952/",
    "applyUrl": "https://jobs.birlasoft.com/job/Hyderabad-Technical-Specialist-App-Development-INDI/59831544/",
    "description": null,
@@ -2389,7 +2504,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791461496694,
    "firstSeenAt": 1791465096701,
-   "lastSeenAt": 1791470941955,
+   "lastSeenAt": 1791474472576,
    "url": "https://www.linkedin.com/jobs/view/4475946205/",
    "applyUrl": "https://trellix.wd1.myworkdayjobs.com/EnterpriseCareers/job/India-Bangalore/Associate-Software-Development-Engineer_JR0038028?source=LinkedIn",
    "description": null,
@@ -2444,7 +2559,7 @@
    "postedText": "1 minute ago",
    "postedAt": 1791458739139,
    "firstSeenAt": 1791458799144,
-   "lastSeenAt": 1791470954387,
+   "lastSeenAt": 1791474484346,
    "url": "https://www.linkedin.com/jobs/view/4459142213/",
    "applyUrl": "https://careers.nttdata.com/global/en/job/NTT1GLOBAL386500EXTERNALENGLOBAL/Data-Migration-Engineer-Fall-2026?utm_source=linkedin&utm_medium=phenom-feeds",
    "description": null,
@@ -2497,7 +2612,7 @@
    "postedText": "2 minutes ago",
    "postedAt": 1791458482605,
    "firstSeenAt": 1791458602606,
-   "lastSeenAt": 1791471101994,
+   "lastSeenAt": 1791474627990,
    "url": "https://www.linkedin.com/jobs/view/4466892026/",
    "applyUrl": "https://jobs.birlasoft.com/job/Pune-Apriso-MES-Machine-Integrator-INDI/59824344/",
    "description": null,
@@ -2724,7 +2839,7 @@
    "postedText": "10 minutes ago",
    "postedAt": 1791457229286,
    "firstSeenAt": 1791457829290,
-   "lastSeenAt": 1791470961578,
+   "lastSeenAt": 1791474489734,
    "url": "https://www.linkedin.com/jobs/view/4475903266/",
    "applyUrl": "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/151953/?utm_medium=jobboard&utm_source=linkedIn",
    "description": null,
@@ -2961,6 +3076,8 @@
    "postedAt": 1791456062224,
    "firstSeenAt": 1791456482226,
    "lastSeenAt": 1791463086307,
+   "checkedAt": 1791474825146,
+   "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4477153255/",
    "applyUrl": "https://jobsearch.harman.com/careers/searchjobs/R-56145-2026?source=LinkedIn",
    "description": null,
@@ -3179,7 +3296,7 @@
    "postedText": "1 minute ago",
    "postedAt": 1791453871999,
    "firstSeenAt": 1791453932003,
-   "lastSeenAt": 1791471388053,
+   "lastSeenAt": 1791474822847,
    "url": "https://www.linkedin.com/jobs/view/4477148429/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4477148429/",
    "description": null,
@@ -3290,6 +3407,8 @@
    "postedAt": 1791453735744,
    "firstSeenAt": 1791453855746,
    "lastSeenAt": 1791461672561,
+   "checkedAt": 1791474585140,
+   "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4475778857/",
    "applyUrl": "https://www.airarabiagroupcareers.com/gb/en/job/18123/Software-Engineer-iOS?src=LinkedIn",
    "description": null,
@@ -3529,6 +3648,8 @@
    "postedAt": 1791453028494,
    "firstSeenAt": 1791453628495,
    "lastSeenAt": 1791461476510,
+   "checkedAt": 1791474645139,
+   "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4475795191/",
    "applyUrl": "https://www.airarabiagroupcareers.com/gb/en/job/18122/Software-Engineer-Sitecore?src=LinkedIn",
    "description": null,
@@ -3764,56 +3885,6 @@
    "roleFingerprint": "985ae192ee",
    "cardFacts": [
     "Hyderabad",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "swe",
-   "region": "IN",
-   "verified": true
-  },
-  {
-   "id": "4477143329",
-   "title": "Software Engineering AMTS",
-   "company": "SalesForce-ad",
-   "matchedWatchlist": "Salesforce",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/salesforce-ad.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "117 applicants",
-   "easyApply": false,
-   "skills": [],
-   "summary": "This role involves designing and building scalable software products while working closely with cross-functional teams. It suits students with a strong foundation in computer science and a passion for creating impactful technology solutions.",
-   "bullets": [
-    "Design and implement scalable products with a focus on performance and stability",
-    "Collaborate with engineers, product managers, and UX experts on feature development",
-    "Develop test strategies and automation frameworks to improve code quality"
-   ],
-   "roleLabel": "Software Engineering",
-   "degreeLevel": "UG",
-   "degreeText": "B.E/B.Tech",
-   "experience": "Graduating 2026",
-   "keySkills": [
-    "test strategies",
-    "automation frameworks",
-    "unit/functional tests",
-    "code coverage"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "42 minutes ago",
-   "postedAt": 1791451096806,
-   "firstSeenAt": 1791453616809,
-   "lastSeenAt": 1791453616809,
-   "url": "https://www.linkedin.com/jobs/view/4477143329/",
-   "applyUrl": "https://www.salesforce.com/company/careers/jobs/JR307116/software-engineering-amts/",
-   "description": null,
-   "roleFingerprint": "1cce0a94cd",
-   "cardFacts": [
-    "Bengaluru",
     "On-site"
    ],
    "category": "software",
@@ -4695,8 +4766,8 @@
     "Noida",
     "4-6 months"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "ux",
    "region": "IN",
    "verified": true
   },
@@ -5078,6 +5149,8 @@
    "postedAt": 1791405213029,
    "firstSeenAt": 1791406473031,
    "lastSeenAt": 1791410007267,
+   "checkedAt": 1791474705141,
+   "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4476920628/",
    "applyUrl": "https://careers.caterpillar.com/en/jobs/r0000373272/software-engineer/?source=LinkedIn",
    "description": null,
@@ -5313,7 +5386,7 @@
     "Hybrid"
    ],
    "category": "misc",
-   "family": "generic",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -5365,8 +5438,8 @@
     "Chennai",
     "Hybrid"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -5423,8 +5496,8 @@
     "Pune Division",
     "Hybrid"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -5469,7 +5542,7 @@
     "Pune Division",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "other",
    "region": "IN",
    "verified": true
@@ -5625,64 +5698,6 @@
    ],
    "category": "misc",
    "family": "analytics",
-   "region": "IN",
-   "verified": true
-  },
-  {
-   "id": "4459040791",
-   "title": "Software Engineer AI Hub",
-   "slugTitle": "Software Engineer - AI Hub",
-   "company": "Linde@India",
-   "matchedWatchlist": "Linde",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/linde-india.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 200 applicants",
-   "easyApply": false,
-   "skills": [
-    "javascript",
-    "typescript",
-    "react",
-    "angular",
-    "azure"
-   ],
-   "summary": "This role involves designing and building scalable business applications using Microsoft Azure and modern technologies. You'll work closely with product teams to shape digital platforms and deliver solutions that create measurable value. Ideal for someone with experience in cloud-native development and a passion for solving complex technical challenges.",
-   "bullets": [
-    "Design and develop scalable business applications with Microsoft Azure",
-    "Collaborate with product owners and architects on digital platform evolution",
-    "Build secure, reliable solutions across UI, server-side, and databases"
-   ],
-   "roleLabel": "Software Engineer",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "azure",
-    "c sharp",
-    "react",
-    "angular"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "32 minutes ago",
-   "postedAt": 1791390350936,
-   "firstSeenAt": 1791392270948,
-   "lastSeenAt": 1791402800610,
-   "checkedAt": 1791446173838,
-   "checkedVia": "link",
-   "url": "https://www.linkedin.com/jobs/view/4459040791/",
-   "applyUrl": "https://linde.csod.com/ux/ats/careersite/25/home/requisition/32733?c=linde&cfdd%5B0%5D%5Bid%5D=251&cfdd%5B0%5D%5Boptions%5D%5B0%5D=1375&cfdd%5B0%5D%5Boptions%5D%5B1%5D=1131&cfdd%5B0%5D%5Boptions%5D%5B2%5D=1132&country=in&source=LinkedIn",
-   "description": null,
-   "roleFingerprint": "18dedbc226",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "ai_ml",
    "region": "IN",
    "verified": true
   },
@@ -6260,7 +6275,7 @@
     "Mumbai",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -6977,7 +6992,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "other",
+   "family": "enterprise",
    "region": "IN",
    "verified": true
   },
@@ -7307,8 +7322,8 @@
    "cardFacts": [
     "Bengaluru"
    ],
-   "category": "hardware",
-   "family": "hardware",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -8094,8 +8109,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -8271,7 +8286,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "devops",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -8641,7 +8656,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "generic",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -8691,8 +8706,8 @@
     "Chennai",
     "On-site"
    ],
-   "category": "software",
-   "family": "security",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -9521,8 +9536,8 @@
     "₹2,75,000 / year",
     "Chennai"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -9860,8 +9875,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "secops",
    "region": "IN",
    "verified": true
   },
@@ -9962,7 +9977,7 @@
    "postedText": "Just now",
    "postedAt": 1791355592784,
    "firstSeenAt": 1791355592789,
-   "lastSeenAt": 1791471080845,
+   "lastSeenAt": 1791474608570,
    "checkedAt": 1791447222499,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4475176632/",
@@ -10024,7 +10039,7 @@
     "Coimbatore South",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -10123,7 +10138,7 @@
    "postedText": "4 minutes ago",
    "postedAt": 1791354860971,
    "firstSeenAt": 1791355100977,
-   "lastSeenAt": 1791471023448,
+   "lastSeenAt": 1791474553798,
    "checkedAt": 1791447223832,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4475189090/",
@@ -10184,7 +10199,7 @@
    "postedText": "4 minutes ago",
    "postedAt": 1791354840680,
    "firstSeenAt": 1791355080686,
-   "lastSeenAt": 1791471005595,
+   "lastSeenAt": 1791474535748,
    "checkedAt": 1791447225174,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4475185204/",
@@ -11232,8 +11247,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -11709,8 +11724,8 @@
     "India",
     "Remote"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -12265,8 +12280,8 @@
     "India",
     "Remote"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -13223,7 +13238,7 @@
     "Mumbai",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -13279,8 +13294,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -13382,8 +13397,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "security",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -13433,8 +13448,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "security",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -13771,8 +13786,8 @@
     "Delhi",
     "On-site"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -16038,8 +16053,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -16815,8 +16830,8 @@
     "Greater Chennai Area",
     "On-site"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -17179,8 +17194,8 @@
     "Chennai",
     "On-site"
    ],
-   "category": "software",
-   "family": "security",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -17662,8 +17677,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "secops",
    "region": "IN",
    "verified": true
   },
@@ -19121,8 +19136,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -19337,8 +19352,8 @@
     "Mumbai Metropolitan Region",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -19443,7 +19458,7 @@
     "Pune/Pimpri-Chinchwad Area",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -20151,7 +20166,7 @@
     "On-site"
    ],
    "category": "software",
-   "family": "generic",
+   "family": "backend",
    "region": "IN",
    "verified": false
   },
@@ -22254,8 +22269,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "data_eng",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -23876,7 +23891,7 @@
     "Gurugram"
    ],
    "category": "software",
-   "family": "other",
+   "family": "swe",
    "region": "IN",
    "verified": false
   },
@@ -25193,8 +25208,8 @@
    "cardFacts": [
     "Sonipat"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": false
   },
@@ -26046,8 +26061,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -26098,8 +26113,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -26769,8 +26784,8 @@
     "Noida",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -26997,8 +27012,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "systems",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -28648,8 +28663,8 @@
     "Pune Division",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "enterprise",
    "region": "IN",
    "verified": true
   },
@@ -29593,7 +29608,7 @@
     "Noida"
    ],
    "category": "misc",
-   "family": "product",
+   "family": "business",
    "region": "IN",
    "verified": false
   },
@@ -30147,7 +30162,7 @@
     "Greater Hyderabad Area",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -30205,8 +30220,8 @@
     "Hybrid",
     "12 months"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -30486,8 +30501,8 @@
     "Pune/Pimpri-Chinchwad Area",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "enterprise",
    "region": "IN",
    "verified": true
   },
@@ -31044,7 +31059,7 @@
     "Bengaluru"
    ],
    "category": "misc",
-   "family": "analytics",
+   "family": "it_support",
    "region": "IN",
    "verified": false
   },
@@ -31156,7 +31171,7 @@
     "Pune/Pimpri-Chinchwad Area",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -32320,7 +32335,7 @@
     "Bengaluru"
    ],
    "category": "misc",
-   "family": "product",
+   "family": "business",
    "region": "IN",
    "verified": false
   },
@@ -33427,8 +33442,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -33813,57 +33828,6 @@
    ],
    "category": "software",
    "family": "qa",
-   "region": "IN",
-   "verified": false
-  },
-  {
-   "id": "4456193567",
-   "title": "Post Doc Researcher",
-   "company": "Microsoft",
-   "matchedWatchlist": "Microsoft",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/microsoft.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": null,
-   "applicants": "Over 200 applicants",
-   "easyApply": false,
-   "skills": [
-    "llm"
-   ],
-   "summary": "The Future of Scalable Software Engineering (FoSSE) team in CoreAI, Microsoft, invites applications for postdoctoral researcher positions. FoSSE is an applied research team focused on solving real-world software engineering (SE) problems for large codebases, including code migration, code translation, and static analysis, using AI and formal methods. Our postdoc program provides an opportunity to work on practical research problems while collaborating closely with Microsoft researchers and product groups. Postdocs spend 1-2 years with us and receive ongoing guidance and mentoring from experienced colleagues.",
-   "bullets": [
-    "Design and implement tools for analyzing and transforming large codebases",
-    "Collaborate with Microsoft researchers and product teams on AI and formal methods",
-    "Work on real-world software engineering challenges with high-quality outcomes"
-   ],
-   "roleLabel": "Research engineering",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "formal methods",
-    "ai",
-    "static analysis",
-    "compilers",
-    "llm post-training"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "13 minutes ago",
-   "postedAt": 1790788768483,
-   "firstSeenAt": 1790789548489,
-   "lastSeenAt": 1790796761215,
-   "url": "https://www.linkedin.com/jobs/view/4456193567/",
-   "applyUrl": "https://www.linkedin.com/jobs/view/4456193567/",
-   "description": null,
-   "roleFingerprint": "7cca609e04",
-   "cardFacts": [
-    "Bengaluru"
-   ],
-   "category": "misc",
-   "family": "research",
    "region": "IN",
    "verified": false
   },
@@ -34858,8 +34822,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": false
   },
@@ -35017,7 +34981,7 @@
     "Pune Division",
     "Hybrid"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "other",
    "region": "IN",
    "verified": false
@@ -35645,8 +35609,8 @@
     "Gurgaon",
     "Hybrid"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": false
   },
@@ -37907,8 +37871,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -39582,8 +39546,8 @@
     "Mumbai",
     "On-site"
    ],
-   "category": "software",
-   "family": "devops",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -39808,7 +39772,7 @@
     "Bengaluru",
     "Hybrid"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": false
@@ -40105,7 +40069,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "generic",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -40168,7 +40132,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "generic",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -40435,8 +40399,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -41589,8 +41553,8 @@
     "Gurugram",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -41880,7 +41844,7 @@
    "postedText": "16 minutes ago",
    "postedAt": 1790630667163,
    "firstSeenAt": 1790631627172,
-   "lastSeenAt": 1790634423584,
+   "lastSeenAt": 1791475119740,
    "checkedAt": 1791447187183,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4380254435/",
@@ -45268,8 +45232,8 @@
    "cardFacts": [
     "Hyderabad"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": false
   },
@@ -45383,7 +45347,7 @@
     "Mumbai"
    ],
    "category": "misc",
-   "family": "research",
+   "family": "business",
    "region": "IN",
    "verified": false
   },
@@ -46991,8 +46955,8 @@
    "cardFacts": [
     "Wester Region - 9th Floor"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -49161,8 +49125,8 @@
     "Mumbai Metropolitan Region",
     "Hybrid"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": false
   },
@@ -49831,8 +49795,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -50458,7 +50422,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "generic",
+   "family": "it_support",
    "region": "IN",
    "verified": false
   },
@@ -52738,8 +52702,8 @@
     "Chennai",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -54604,8 +54568,8 @@
     "Gurugram",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -54654,8 +54618,8 @@
     "Gurugram",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -54717,8 +54681,8 @@
     "Gurugram",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -55718,8 +55682,8 @@
     "Vadodara",
     "On-site"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -55961,8 +55925,8 @@
     "Hybrid",
     "26 weeks"
    ],
-   "category": "software",
-   "family": "data_eng",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -56012,7 +55976,7 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -56302,8 +56266,8 @@
     "Greater Vadodara Area",
     "On-site"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -56462,8 +56426,8 @@
     "Pune/Pimpri-Chinchwad Area",
     "Hybrid"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -56514,8 +56478,8 @@
     "Bengaluru",
     "Hybrid"
    ],
-   "category": "software",
-   "family": "other",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -57206,8 +57170,8 @@
     "Gurugram",
     "On-site"
    ],
-   "category": "software",
-   "family": "ai_ml",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -58498,8 +58462,8 @@
     "Pune City",
     "On-site"
    ],
-   "category": "software",
-   "family": "game_graphics",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -60142,7 +60106,7 @@
     "On-site"
    ],
    "category": "misc",
-   "family": "product",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -60474,7 +60438,7 @@
     "Noida",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -61148,7 +61112,7 @@
     "Bengaluru"
    ],
    "category": "misc",
-   "family": "core_eng",
+   "family": "generic",
    "region": "IN",
    "verified": true
   },
@@ -63640,7 +63604,7 @@
     "26 weeks"
    ],
    "category": "misc",
-   "family": "generic",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -63796,8 +63760,8 @@
     "Mumbai Metropolitan Region",
     "Hybrid"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -63976,7 +63940,7 @@
     "Gurugram",
     "Hybrid"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -65085,7 +65049,7 @@
    "postedText": "10 minutes ago",
    "postedAt": 1789563699920,
    "firstSeenAt": 1789564299922,
-   "lastSeenAt": 1791471314765,
+   "lastSeenAt": 1791474475277,
    "checkedAt": 1791446283842,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4448882727/",
@@ -65662,7 +65626,7 @@
     "Pune/Pimpri-Chinchwad Area",
     "Hybrid"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -65716,7 +65680,7 @@
     "On-site"
    ],
    "category": "software",
-   "family": "generic",
+   "family": "swe",
    "region": "IN",
    "verified": true
   },
@@ -65930,7 +65894,7 @@
     "Savli",
     "On-site"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -67067,8 +67031,8 @@
    "cardFacts": [
     "Kochi"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "it_support",
    "region": "IN",
    "verified": true
   },
@@ -67295,8 +67259,8 @@
     "Bengaluru",
     "On-site"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "core_eng",
    "region": "IN",
    "verified": true
   },
@@ -67869,8 +67833,8 @@
     "Mumbai Metropolitan Region",
     "Remote"
    ],
-   "category": "software",
-   "family": "generic",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -67918,8 +67882,8 @@
     "India",
     "Remote"
    ],
-   "category": "software",
-   "family": "swe",
+   "category": "misc",
+   "family": "business",
    "region": "IN",
    "verified": true
   },
@@ -67972,7 +67936,7 @@
    "cardFacts": [
     "Gift City"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
@@ -68678,7 +68642,7 @@
    "cardFacts": [
     "Mumbai"
    ],
-   "category": "software",
+   "category": "misc",
    "family": "generic",
    "region": "IN",
    "verified": true
