@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/philips-apprentice-trainee-software-developer-level-1-4475947323",
+      "url": "https://interndoor.com/jobs/philips-apprentice-trainee-software-developer-level-1-4475947323",
+      "title": "Software Developer Apprentice Trainee — Philips",
+      "content_text": "Company: Philips · Location: Bengaluru, Karnataka, India\n• Develop and maintain software applications using c++ and java\n• Work with cross-functional teams on product development\n• Based in bengaluru, full-time presence required",
+      "date_published": "2026-10-08T12:17:59.180Z",
+      "authors": [
+        {
+          "name": "Philips"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/philips-intern-data-science-and-ai-engineering-4475935846",
+      "url": "https://interndoor.com/jobs/philips-intern-data-science-and-ai-engineering-4475935846",
+      "title": "Data Science Intern — Philips",
+      "content_text": "Company: Philips · Location: Bengaluru, Karnataka, India\n• Analyze data to improve healthcare solutions\n• Use python and machine learning tools\n• Work with cross-functional teams on real projects",
+      "date_published": "2026-10-08T12:15:40.804Z",
+      "authors": [
+        {
+          "name": "Philips"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213",
       "url": "https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213",
       "title": "Data Migration Engineer (Fall 2026) — NTT DATA North America",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Caterpillar Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4476912328",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4476912328",
-      "title": "Systems Integration Specialist — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design and maintain data pipelines using PySpark and Delta Lake\n• Work with Azure Databricks, ADF, and multiple data sources\n• Build reusable frameworks and ensure data quality across pipelines",
-      "date_published": "2026-10-07T19:56:30.267Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-full-stack-developer-4476797986",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-z2-python-full-stack-developer-4476797986",
-      "title": "Python Full Stack Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Build web apps with python, django, flask, react, and databases\n• Design scalable rest apis for data processing and enterprise apps\n• Create automation tools for excel, data validation, and reporting",
-      "date_published": "2026-10-07T19:56:19.411Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
