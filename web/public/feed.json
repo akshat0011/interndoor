@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/f5-network-support-apprenticeship-4476992835",
+      "url": "https://interndoor.com/jobs/f5-network-support-apprenticeship-4476992835",
+      "title": "Network Support Apprentice — F5",
+      "content_text": "Company: F5 · Location: Bangalore Rural District, Karnataka, India\n• Troubleshoot and resolve network issues using Linux, Wireshark, and VMware\n• Work with virtual environments and set up VLANs in real-world scenarios\n• Learn F5 solutions and gain hands-on experience with network protocols and security",
+      "date_published": "2026-10-08T04:48:06.807Z",
+      "authors": [
+        {
+          "name": "F5"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4476958315",
       "url": "https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4476958315",
       "title": "Digital Associate, Ring Data Engineering Services — Amazon",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Eli Lilly and Company"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4476717871",
-      "url": "https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4476717871",
-      "title": "Frontend Developer — Echo Initiative by Joveo",
-      "content_text": "Company: Echo Initiative by Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Ship full stack with react, next.js, node.js, and express\n• Collaborate with leadership from first week",
-      "date_published": "2026-10-07T12:51:20.497Z",
-      "authors": [
-        {
-          "name": "Echo Initiative by Joveo"
         }
       ]
     }
