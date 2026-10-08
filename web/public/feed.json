@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4475970908",
+      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4475970908",
+      "title": "App Development Technical Specialist — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Develop and support enterprise J2EE web apps using React JS and Spring Boot\n• Troubleshoot and debug B2B systems with client communication and data analysis\n• Lead teams and manage projects with emphasis on quality and customer satisfaction",
+      "date_published": "2026-10-08T16:53:24.104Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-product-sppt-tech-advisor-4475974675",
+      "url": "https://interndoor.com/jobs/iqvia-product-sppt-tech-advisor-4475974675",
+      "title": "Product Sppt Tech Advisor — IQVIA",
+      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Analyze data from multiple sources to support business decisions\n• Work with snowflake, oracle, and azure for data processing\n• Collaborate with teams to deliver accurate analytical outputs",
+      "date_published": "2026-10-08T16:53:02.699Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-data-engineer-i-ftc-payfort-4459016323",
+      "url": "https://interndoor.com/jobs/amazon-data-engineer-i-ftc-payfort-4459016323",
+      "title": "Data Engineer I — Amazon",
+      "content_text": "Company: Amazon · Location: Chennai, Tamil Nadu, India\n• Build and maintain data pipelines for global payment systems\n• Work with SQL, Python, and big data tools like Spark and Hadoop\n• Collaborate with cross-functional teams on high-scale infrastructure",
+      "date_published": "2026-10-08T16:30:41.873Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-india-data-engineer-4468650415",
+      "url": "https://interndoor.com/jobs/linde-india-data-engineer-4468650415",
+      "title": "Data Engineer — Linde@India",
+      "content_text": "Company: Linde@India · Location: Bengaluru, Karnataka, India\n• Build scalable data pipelines across sap systems and cloud platforms\n• Work with delta lake, spark, and semantic layers for data integration\n• Design data models and services for analytics and ai applications\n• Ensure data quality and governance across enterprise data landscapes",
+      "date_published": "2026-10-08T16:30:18.135Z",
+      "authors": [
+        {
+          "name": "Linde@India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-quality-assurance-engineer-1-qre-4459174695",
+      "url": "https://interndoor.com/jobs/amazon-quality-assurance-engineer-1-qre-4459174695",
+      "title": "Quality Assurance Engineer — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India\n• Write and execute test plans for large-scale grocery apps\n• Use Python/Java for automation and AI agents in testing\n• Work on high-impact projects with global brand customers",
+      "date_published": "2026-10-08T16:03:09.553Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cisco-security-engineer-4477400879",
       "url": "https://interndoor.com/jobs/cisco-security-engineer-4477400879",
       "title": "Security Engineer — Cisco",
@@ -438,18 +498,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4466877952",
-      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4466877952",
-      "title": "Technical Specialist-App Development — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Support and optimize generative AI models on Azure and AWS\n• Use Splunk and New Relic to monitor cloud infrastructure\n• Collaborate with Spring Boot teams on AI integration\n• Maintain and scale AI models in production environments",
-      "date_published": "2026-10-08T12:13:40.452Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/trellix-associate-software-development-engineer-4475946205",
       "url": "https://interndoor.com/jobs/trellix-associate-software-development-engineer-4475946205",
       "title": "Software Development Associate — Trellix",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "IQVIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/philips-full-stack-ai-application-engineer-people-analytics-4466847728",
-      "url": "https://interndoor.com/jobs/philips-full-stack-ai-application-engineer-people-analytics-4466847728",
-      "title": "AI Application Engineer - People Analytics — Philips",
-      "content_text": "Company: Philips · Location: Bengaluru, Karnataka, India\n• Build internal apps, APIs, and deployment tools for People Analytics\n• Use Python, FastAPI, Streamlit, and cloud services for scalable solutions\n• Collaborate with data scientists and IT on secure, enterprise-grade products",
-      "date_published": "2026-10-08T10:45:27.301Z",
-      "authors": [
-        {
-          "name": "Philips"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/harman-india-students-trainees-4477153255",
-      "url": "https://interndoor.com/jobs/harman-india-students-trainees-4477153255",
-      "title": "Students / Trainees — HARMAN India",
-      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Develop software systems using C/C++, Linux, and Android\n• Work on multi-layered software stacks with niche technical skills\n• Collaborate in a fast-paced team on disruptive automotive technologies",
-      "date_published": "2026-10-08T10:41:02.224Z",
-      "authors": [
-        {
-          "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dentsu-global-services-associate-software-engineer-4475786803",
-      "url": "https://interndoor.com/jobs/dentsu-global-services-associate-software-engineer-4475786803",
-      "title": "Associate Software Engineer — Dentsu Global Services",
-      "content_text": "Company: Dentsu Global Services · Location: Mumbai Metropolitan Region\n• Write quality code for customer needs and configurations\n• Use sql, python/java, powerbi, ai/ml tools\n• Work with senior team on projects and release processes",
-      "date_published": "2026-10-08T10:39:43.099Z",
-      "authors": [
-        {
-          "name": "Dentsu Global Services"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/esec-forte-technologies-network-engineer-trainee-4475792471",
-      "url": "https://interndoor.com/jobs/esec-forte-technologies-network-engineer-trainee-4475792471",
-      "title": "Network Engineer Trainee — eSec Forte® Technologies",
-      "content_text": "Company: eSec Forte® Technologies · Location: Gurugram, Haryana, India\n• Monitor cisco devices, troubleshoot tcp/ip issues, and maintain network security\n• Work with cisco ios, tcp/ip, and tenable for vulnerability scans\n• Based in gurugram, collaborate on security projects with senior engineers",
-      "date_published": "2026-10-08T10:20:30.703Z",
-      "authors": [
-        {
-          "name": "eSec Forte® Technologies"
         }
       ]
     }
