@@ -860,6 +860,9 @@ export async function writeJobsFile(store, cfg) {
       duration: durationText(row) || null,   // the same cleaning as the live projection
       applicants: row.applicants || null,
       degreeLevel: row.degree_level || null,
+      /* The grounded experience line ("Graduating 2026 · 0–1 years"), so a
+         closed role's page can still say who it was for (8 Oct 2026). */
+      experience: row.experience || null,
       skills: row.skills || [],
       keySkills: parseJsonArray(row.key_skills),
       stipend: formatStipend({

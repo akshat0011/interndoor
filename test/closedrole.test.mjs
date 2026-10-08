@@ -341,5 +341,85 @@ console.log('\n== closable reaches writePages THROUGH writeSite ==');
     /closableByRegion \}\);/.test(src), true);
 }
 
+/* ============================================================================
+   THE CLOSED PAGE, DESIGN A — his pick of three mockups, 8 Oct 2026.
+   A Closed pill (orange, never the green "open" one), the title in sentence
+   case, a notice that counts what is open, a sidebar record counted the way
+   the hub counts it, the role's own facts behind "Show details", and tiles
+   with skills — on this page only, so no other page is rewritten.
+   ============================================================================ */
+console.log('\n== THE CLOSED PAGE, DESIGN A ==');
+{
+  reset();
+  const RICH = [
+    { ...HISTORY[0], location: 'San Diego, CA', workplaceType: 'Hybrid', employmentType: 'intern',
+      experience: 'Graduating 2027', applicants: '42 applicants', postedAt: Date.parse('2026-08-01'),
+      firstSeenAt: Date.parse('2026-07-20'), skills: ['python', 'sql'] },
+    HISTORY[1],
+  ];
+  /* A third live role, so the live job page carries a tile of its own — the
+     "live tiles are untouched" check below is vacuous on a page with none. */
+  const third = job(3, 'Another Intern');
+  writePages([job(1, 'Expiring Intern'), job(2, 'Surviving Intern'), third], DIR, RICH, { region: R });
+  writePages([job(2, 'Surviving Intern'), third], DIR, RICH, { region: R });
+  const html = existsSync(STUB) ? readFileSync(STUB, 'utf8') : '';
+  const live = existsSync(LIVE) ? readFileSync(LIVE, 'utf8') : '';
+
+  check('a Closed pill, never the green open one', /class="cr-closed"/.test(html) && !/jp-open is-likely/.test(html), true);
+  check('it says the day it was taken down', /taken down <time datetime="\d{4}-\d{2}-\d{2}">/.test(html), true);
+  check('the title is the sentence-case heading', html.includes('<h1 class="cr-h1">Expiring Intern</h1>'), true);
+  check('the notice counts what is open — 2 open, 0 similar', html.includes('<b>2 roles like it are open right now</b>'), true);
+  check('the facts line carries mode, kind and experience',
+    ['<li>Hybrid</li>', '<li>Internship</li>', '<li>Graduating 2027</li>'].every((x) => html.includes(x)), true);
+
+  /* THE RECORD IS THE HUB'S OWN COUNT: employerRows over live + past, deduped
+     by id. Two rows (1 and 2), one of them live. */
+  check('roles tracked, counted like the hub', html.includes('<dt>Roles tracked</dt><dd>3</dd>'), true);
+  check('open now is the employer\'s LIVE count', html.includes('<dt>Open now</dt><dd>2</dd>'), true);
+  check('tracked since the earliest first sighting', html.includes('<dt>Tracked since</dt><dd>Jul 2026</dd>'), true);
+  check('where they hire', html.includes('<dt>Hires in</dt><dd>San Diego</dd>'), true);
+
+  check('the original posting sits behind Show details', /<details class="cr-orig">/.test(html), true);
+  check('…with its experience', html.includes('<dt>Experience</dt><dd>Graduating 2027</dd>'), true);
+  check('…and the applicant count labelled as a snapshot', html.includes('<dt>Applicants when we listed it</dt><dd>42 applicants</dd>'), true);
+  check('…and the skills it asked for', /<ul class="cr-chips"><li>Python<\/li><li>SQL<\/li><\/ul>/.test(html), true);
+  check('the button says Hide once open (CSS only, no script)', /cr-show">Show details<\/span><span class="cr-hide">Hide details/.test(html), true);
+
+  /* page.css IS VERSIONED ON THIS PAGE ONLY. The stylesheet is cached for a
+     day; without the query a reader with yesterday's copy gets this layout
+     unstyled. Every other page keeps the bare URL, so nothing else rewrites. */
+  check('the closed page asks for page.css?v=', /href="\/page\.css\?v=\d+"/.test(html), true);
+  check('a live job page keeps the bare page.css', live.includes('href="/page.css"') && !/page\.css\?v=/.test(live), true);
+
+  check('its tiles carry skills and an arrow', /class="tile cr-tile"/.test(html) && /class="cr-go"/.test(html)
+    && html.includes('<span class="cr-chips"><span>Python</span></span>'), true);
+  check('the live page has tiles to compare', /class="tile"/.test(live), true);
+  check('a live page\'s tiles do NOT', /cr-tile|cr-go|cr-chips/.test(live), false);
+  check('the phone band leads to alerts on a board with no channel', /class="cr-band" href="\/us\/alerts"/.test(html), true);
+  check('no style attribute (the CSP refuses them)', / style="/.test(html), false);
+}
+{
+  /* A ROLE WE KNOW NOTHING ABOUT (title only) SHOWS NO EMPTY DETAILS BOX. */
+  reset();
+  writePages([job(1, 'Expiring Intern'), job(2, 'Surviving Intern')], DIR, HISTORY, { region: R });
+  writePages([job(2, 'Surviving Intern')], DIR, HISTORY, { region: R });
+  const bare = existsSync(STUB) ? readFileSync(STUB, 'utf8') : '';
+  check('a bare record renders no details box', /cr-orig/.test(bare), false);
+  check('and no empty facts line', /<ul class="cr-facts">/.test(bare), false);
+}
+{
+  const pub = readFileSync(new URL('../src/publish.js', import.meta.url), 'utf8');
+  check('the history projection carries the experience line', /experience: row\.experience \|\| null,/.test(pub), true);
+  const pages = readFileSync(new URL('../src/pages.js', import.meta.url), 'utf8');
+  /* The chips must share the role-label line: on a line of their own they print
+     an empty whitespace line into every tile on the site, and the first draft
+     rewrote 2,173 files that way. */
+  check('the tile chips add no line to an ordinary tile',
+    /\$\{job\.roleLabel && !showCompany \? `<span class="tile-co">\$\{esc\(job\.roleLabel\)\}<\/span>` : ''\}\$\{asked\.length/.test(pages), true);
+  const css = readFileSync(new URL('../web/public/page.css', import.meta.url), 'utf8');
+  check('the light theme darkens the orange (measured 3.56 → 5.03)', /:root\[data-theme="light"\] \.cr-closed, :root\[data-theme="light"\] \.cr-alert b/.test(css), true);
+  check('the Show/Hide swap is CSS', /\.cr-orig\[open\] \.cr-show, \.cr-orig:not\(\[open\]\) \.cr-hide \{ display: none; \}/.test(css), true);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

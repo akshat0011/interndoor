@@ -1226,7 +1226,7 @@ function statusPills(job) {
  * strip page.js builds from jobs.json, and the company hub's live list — so a
  * reader meets one shape everywhere and page.js has one markup to mirror.
  */
-function tile(job, { showCompany = true, region = DEFAULT_REGION, locations = 1 } = {}) {
+function tile(job, { showCompany = true, region = DEFAULT_REGION, locations = 1, skills = false } = {}) {
   const posted = job.postedAt ?? job.firstSeenAt;
   /* The tile carries no clock-derived class either — not on the <a> wrapper and
      not on the age span. `dressAges` sets both from data-ago, so the only thing
@@ -1246,11 +1246,16 @@ function tile(job, { showCompany = true, region = DEFAULT_REGION, locations = 1 
     modeText(job) ? esc(modeText(job)) : '',
   ].filter(Boolean).join('<span aria-hidden="true">·</span>');
 
-  return `<a class="tile" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
+  /* `skills` is the closed page's tile only (8 Oct 2026, his pick of design
+     A): up to four skills and an arrow, so a reader who arrived at a closed
+     role sees at a glance which open one fits. Off everywhere else, so no
+     other page is rewritten. */
+  const asked = skills ? crSkills(job, 4) : [];
+  return `<a class="tile${skills ? ' cr-tile' : ''}" href="${regionHref(`/jobs/${jobSlug(job)}`, region)}">
         ${showCompany ? `<span class="tile-top">${crest(job.company, job.logo, { cls: 'tile-crest' })}<span class="tile-co">${esc(job.company)}</span></span>` : ''}
         <span class="tile-role">${esc(job.title)}</span>
-        ${job.roleLabel && !showCompany ? `<span class="tile-co">${esc(job.roleLabel)}</span>` : ''}
-        <span class="tile-meta">${meta}</span>
+        ${job.roleLabel && !showCompany ? `<span class="tile-co">${esc(job.roleLabel)}</span>` : ''}${asked.length ? `\n        <span class="cr-chips">${asked.map((x) => `<span>${esc(x)}</span>`).join('')}</span>` : ''}
+        <span class="tile-meta">${meta}</span>${skills ? `\n        <i class="cr-go" aria-hidden="true">${CR_ARROW}</i>` : ''}
       </a>`;
 }
 
@@ -5612,9 +5617,20 @@ const CLOSED_MARK = 'data-closed-on="';
  * on each publish KEEPING its original stamp (writeIfChanged writes only when
  * its lists moved), which is also how the pre-8-Oct stubs become this page.
  */
-const CLOSED_VERSION = '2';
+const CLOSED_VERSION = '3';
 
-function renderClosedRole({ company, hubSlug, region, closedOn, past = null, open = [], similar = [], role = null }) {
+/* The closed page's own icons, drawn as attributes (the CSP refuses style=). */
+const CR_PIN = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+const CR_BAN = '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>';
+const CR_ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+/** Up to `n` display skills off a posting: the extracted short terms first, the model's phrases after. */
+function crSkills(job, n) {
+  const raw = (job?.skills?.length ? job.skills : job?.keySkills) ?? [];
+  return [...new Set(raw.map((s) => titleCaseSkill(s)).filter(Boolean))].slice(0, n);
+}
+
+function renderClosedRole({ company, hubSlug, region, closedOn, past = null, open = [], similar = [], role = null, logo = '', record = null }) {
   const hub = regionHref(`/companies/${hubSlug}`, region);
   const title = past?.title ? String(past.title) : '';
   const slug = past ? jobSlug({ company: past.company, title: past.title, slugTitle: past.slugTitle, id: past.id ?? past.job_id }) : null;
@@ -5623,15 +5639,51 @@ function renderClosedRole({ company, hubSlug, region, closedOn, past = null, ope
   const postedMs = Number(past?.postedAt ?? past?.firstSeenAt) || null;
   const lead = leadChannel(region);
   const what = title ? `${title} at ${company}` : `This ${company} role`;
+  const nLike = open.length + similar.length;
+  const closedTime = Number.isFinite(closedMs) ? `<time datetime="${esc(closedOn)}">${esc(dayLabel(closedMs, region))}</time>` : '';
+
+  /* The facts line under the company, and the record behind "Show details".
+     Only what the posting stated — a closable-only row carries a title and
+     nothing else, and then both simply shrink. */
+  const city = past?.location ? cityOf(past.location, region) : '';
+  const kind = past ? (isFullTimeRole(past) ? `${entryWordCap(region)} · full-time` : 'Internship') : '';
+  const line = [
+    city ? `${CR_PIN}${esc(city)}` : '',
+    past && modeText(past) ? esc(modeText(past)) : '',
+    past?.employmentType ? esc(kind) : '',
+    past?.experience ? esc(past.experience) : '',
+  ].filter(Boolean);
+  const facts = past ? [
+    past.location ? ['Location', past.location] : null,
+    modeText(past) ? ['Mode', modeText(past)] : null,
+    past.employmentType ? ['Type', kind] : null,
+    durationText(past) ? ['Duration', durationText(past)] : null,
+    stipendText(past) ? ['Pay', stipendText(past)] : null,
+    past.experience ? ['Experience', past.experience] : null,
+    postedMs ? ['Posted', dayLabel(postedMs, region)] : null,
+    applicantsText(past) ? ['Applicants when we listed it', applicantsText(past)] : null,
+  ].filter(Boolean) : [];
+  const asked = crSkills(past, 8);
+
+  const leadUrl = lead ? lead.url : regionHref('/alerts', region);
+  const leadAttrs = lead ? ' target="_blank" rel="noopener noreferrer"' : '';
+  const leadIcon = lead ? `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${CHANNEL_ICON[lead.kind]}</svg>` : '';
+  const leadWhere = lead ? `on ${esc(lead.name)}` : 'by email';
+
   const page = head({
     title: buildTitle([`Closed: ${title || 'role'} at ${company}`]),
     description: clampWords(`${what} has closed. See ${company}'s open roles and similar ${offerPhrase(region)} ${region.inName}.`, 155),
     canonical,
     indexable: false,
     region,
-  });
+  })
+    /* Its own query string on page.css, on this page only: the stylesheet is
+       cached for a day (max-age 600 + stale-while-revalidate), and a reader
+       holding yesterday's copy would get this layout unstyled. Every other
+       page keeps the bare URL, so nothing else is rewritten. */
+    .replace('href="/page.css"', `href="/page.css?v=${CLOSED_VERSION}"`);
   return page.replace('<html ', `<html ${CLOSED_MARK}${esc(closedOn)}" data-closed-v="${CLOSED_VERSION}" `) + `
-<main class="page">
+<main class="page cr">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
@@ -5639,39 +5691,72 @@ function renderClosedRole({ company, hubSlug, region, closedOn, past = null, ope
       <span>${esc(title || 'Closed role')}</span>
     </nav>
 
-    <header class="dir-hero">
-      <p class="jp-open is-likely"><span class="jp-open-b"><i aria-hidden="true"></i>This role has closed</span><span class="jp-open-d">${esc(company)} has stopped taking applications${Number.isFinite(closedMs) ? ` &middot; we took it down on <time datetime="${esc(closedOn)}">${esc(dayLabel(closedMs, region))}</time>` : ''}.</span></p>
-      <h1>${esc(title || `${company} role`)}</h1>
-      <p class="hub-lede">${esc(what)}${postedMs ? `, posted on ${esc(dayLabel(postedMs, region))},` : ''} is no longer open. Roles like this one often close within a day or two of going up — ${open.length ? `${esc(company)} has ${open.length === 1 ? 'another role' : `${open.length} other roles`} open right now, below.` : 'here is what is open right now.'}</p>
-    </header>
+    <div class="cr-grid">
+      <div class="cr-main">
+        <p class="cr-status"><span class="cr-closed"><i aria-hidden="true"></i>Closed</span><span>${postedMs ? `Posted ${esc(dayLabel(postedMs, region))} · ` : ''}${closedTime ? `taken down ${closedTime}` : 'taken down'}</span></p>
+        <h1 class="cr-h1">${esc(title || `${company} role`)}</h1>
+        <div class="cr-co">
+          ${crest(company, logo, { cls: 'jp-crest cr-crest', href: hub })}
+          <div class="cr-co-t">
+            <a class="cr-coname" href="${hub}">${esc(company)}</a>
+            ${line.length ? `<ul class="cr-facts">${line.map((f) => `<li>${f}</li>`).join('')}</ul>` : ''}
+          </div>
+        </div>
 
-    ${lead ? `<a class="jp-sub" href="${esc(lead.url)}" target="_blank" rel="noopener noreferrer">
-      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${CHANNEL_ICON[lead.kind]}</svg>
-      <span class="jp-sub-t">
-        <strong>Never miss one again — join the ${esc(lead.name)} channel</strong>
-        <em>Every new ${esc(offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' }))} ${esc(region.inName)}, the minute it is posted. Free, no signup.</em>
-      </span>
-      <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
-    </a>` : `<a class="jp-sub" href="${regionHref('/alerts', region)}">
-      <span class="jp-sub-t"><strong>Never miss one again</strong><em>Get new roles the minute they are posted.</em></span>
-      <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
-    </a>`}
+        <div class="cr-alert">
+          <span class="cr-alert-ic">${CR_BAN}</span>
+          <div>
+            <strong>This role has closed</strong>
+            <p>${esc(company)} has stopped taking applications${closedTime ? ` — we took this page down on ${closedTime}` : ''}. ${nLike
+              ? `<b>${nLike} ${nLike === 1 ? 'role like it is' : 'roles like it are'} open right now</b> — pick one below.`
+              : `<a href="${regionHref('/', region)}">See every role open right now →</a>`}</p>
+          </div>
+        </div>
+        <a class="cr-band" href="${esc(leadUrl)}"${leadAttrs}>${leadIcon}<span><strong>Never miss one again.</strong> Get every new role ${leadWhere} the minute it is posted.</span>${CR_ARROW}</a>
 
-    ${open.length ? `<section class="strip">
-      <div class="strip-head">
-        <h2>Open now at ${esc(company)}</h2>
-        <a class="strip-more" href="${hub}">All ${esc(company)} roles →</a>
+        ${open.length ? `<section class="strip cr-strip">
+          <div class="strip-head">
+            <h2>Open now at ${esc(company)}</h2>
+            <a class="strip-more" href="${hub}">All ${esc(company)} roles →</a>
+          </div>
+          <div class="tiles">${open.map((j) => tile(j, { showCompany: false, region, skills: true })).join('')}</div>
+        </section>` : ''}
+
+        ${similar.length ? `<section class="strip cr-strip">
+          <div class="strip-head">
+            <h2>Similar roles at other companies (${similar.length})</h2>
+            ${role ? `<a class="strip-more" href="${regionHref(`/roles/${role.slug}`, region)}">All ${esc(lcFirst(role.name))} roles →</a>` : ''}
+          </div>
+          <div class="tiles cr-tiles">${similar.map((j) => tile(j, { region, skills: true })).join('')}</div>
+        </section>` : ''}
+
+        ${facts.length || asked.length ? `<details class="cr-orig">
+          <summary><span><strong>The original posting, for reference</strong><em>What this role asked for before it closed.</em></span><b><span class="cr-show">Show details</span><span class="cr-hide">Hide details</span></b></summary>
+          ${facts.length ? `<dl class="cr-dl">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
+          ${asked.length ? `<p class="cr-lbl">Skills it asked for</p><ul class="cr-chips">${asked.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>` : ''}
+        </details>` : ''}
       </div>
-      <div class="tiles">${open.map((j) => tile(j, { showCompany: false, region })).join('')}</div>
-    </section>` : ''}
 
-    ${similar.length ? `<section class="strip">
-      <div class="strip-head">
-        <h2>Similar roles at other companies</h2>
-        ${role ? `<a class="strip-more" href="${regionHref(`/roles/${role.slug}`, region)}">All ${esc(lcFirst(role.name))} roles →</a>` : ''}
-      </div>
-      <div class="tiles">${similar.map((j) => tile(j, { region })).join('')}</div>
-    </section>` : ''}
+      <aside class="cr-side">
+        ${record ? `<div class="cr-card">
+          <p class="cr-lbl">${esc(company)} on InternDoor</p>
+          <div class="cr-cohead">${crest(company, logo, { cls: 'jp-crest cr-crest' })}<strong>${esc(company)}</strong></div>
+          <dl class="cr-stats">
+            <div><dt>Roles tracked</dt><dd>${record.n}</dd></div>
+            <div><dt>Open now</dt><dd>${record.open}</dd></div>
+            ${record.cities.length ? `<div><dt>Hires in</dt><dd>${esc(record.cities.join(', '))}</dd></div>` : ''}
+            ${record.since ? `<div><dt>Tracked since</dt><dd>${esc(monthLabel(record.since, region))}</dd></div>` : ''}
+          </dl>
+          <a class="cr-more" href="${hub}">View company page →</a>
+        </div>` : ''}
+        <a class="cr-lead" href="${esc(leadUrl)}"${leadAttrs}>
+          ${leadIcon ? `<span class="cr-lead-ic">${leadIcon}</span>` : ''}
+          <strong>Never miss one again</strong>
+          <em>Every new ${esc(offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' }))} ${esc(region.inName)}, ${leadWhere} the minute it is posted. Free${lead ? ', no signup' : ''}.</em>
+          <span class="cr-lead-go">${lead ? `Join the ${esc(lead.name)} channel` : 'Get alerts'} ${CR_ARROW}</span>
+        </a>
+      </aside>
+    </div>
 
     <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
       <div class="strip-head">
@@ -5684,7 +5769,6 @@ function renderClosedRole({ company, hubSlug, region, closedOn, past = null, ope
 </main>
 ${foot({ headline: 'See every role that is open now', sub: 'New internships and entry-level jobs, the minute they are posted.', region })}`;
 }
-
 
 /**
  * The date a closed stub was written, or null when the file is not one.
@@ -6091,13 +6175,29 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
     if (!liveByHub.has(k)) liveByHub.set(k, []);
     liveByHub.get(k).push(j);
   }
+  /* The sidebar's record, counted exactly as the hub counts it — employerRows
+     over the live and past rows — but grouped by SLUG, so a spelling the hub
+     merged (NVIDIA / Nvidia) is merged here too. */
+  const pastByHub = new Map();
+  for (const h of history ?? []) {
+    const k = companySlug(h.company ?? '');
+    if (!pastByHub.has(k)) pastByHub.set(k, []);
+    pastByHub.get(k).push(h);
+  }
+  const recordOf = (hub) => {
+    const live = liveByHub.get(hub) ?? [];
+    const rows = employerRows(live, pastByHub.get(hub) ?? []);
+    if (!rows.length) return null;
+    const since = rows.reduce((min, j) => (j.firstSeenAt && (!min || j.firstSeenAt < min) ? j.firstSeenAt : min), null);
+    return { n: rows.length, open: live.length, cities: companyProfile(rows, region).cities.slice(0, 3).map((c) => c.value), since };
+  };
   const closedPage = (slug, hub, company, stamp) => {
     const past = pastForSlug.get(slug) ?? null;
     const open = (liveByHub.get(hub) ?? []).slice(0, 4);
     const def = past ? rolePageOf(past) : null;
     const role = def && rolePageBySlug.has(def.slug) ? { slug: def.slug, name: def.name } : null;
     const similar = past && def ? similarRoles(past, rolePool.get(def.slug) ?? []) : [];
-    return renderClosedRole({ company, hubSlug: hub, region, closedOn: stamp, past, open, similar, role });
+    return renderClosedRole({ company, hubSlug: hub, region, closedOn: stamp, past, open, similar, role, logo: logos.get(company) ?? '', record: recordOf(hub) });
   };
 
   for (const dir of [jobsDir, compDir, ...facetDirs.map(([d]) => d)]) {
