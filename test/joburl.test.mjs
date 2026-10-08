@@ -1,4 +1,4 @@
-import { parseAmazonPage, resolveJobUrl } from '../src/joburl.js';
+import { parseAmazonPage, resolveJobUrl, parsePhenomPage } from '../src/joburl.js';
 import { resolveRegion } from '../src/regions.js';
 
 let pass = 0, fail = 0;
@@ -91,6 +91,38 @@ const junk = await resolveJobUrl('https://careers.example.com/jobs/1');
 ok('an unknown careers site is refused', junk.error === 'unrecognised careers site');
 ok('and says what it does know', /amazon\.jobs/.test(junk.hint ?? '') && /greenhouse/.test(junk.hint ?? ''));
 ok('a non-URL is refused', (await resolveJobUrl('not a url')).error === 'not a URL');
+
+console.log('\n== Phenom career sites (Cisco), read off the page — 8 Oct 2026 ==');
+{
+  const url = 'https://careers.cisco.com/global/en/job/CISCISGLOBAL2014481EXTERNALENGLOBAL/Software-Engineer-Trainee-Technical-Graduate-Apprentice-India-UHR?src=x';
+  /* The real shape: `phApp.ddo = {...}` with the posting under jobDetail.data.job,
+     and a description that carries braces and escaped quotes — the brace
+     matcher must not stop inside a string. The lone `27"` matters: paired
+     quotes flip the in-string state back before any brace, so only an odd
+     one followed by a brace shows a matcher that ignores escapes. */
+  const job = {
+    title: 'Software Engineer Trainee_Technical Graduate Apprentice - India UHR', jobId: '2014481',
+    jobSeqNo: 'CISCISGLOBAL2014481EXTERNALENGLOBAL', cityStateCountry: 'Bangalore, India', location: 'Bangalore, India',
+    multi_location: [{ cityStateCountry: 'Bangalore, India' }, { cityStateCountry: 'Hyderabad, India' }],
+    postedDate: '2026-09-11T00:00:00.000+0000', category: 'Internships, Apprenticeships, and Co-Ops',
+    companyName: 'Cisco', description: '<p>Meet the Team {"not": "json"} and a \\"quote\\" }}} on a 27" monitor } </p><ul><li>Programming languages</li></ul>',
+  };
+  const html = `<html><script>var phApp = phApp || {}; phApp.ddo = ${JSON.stringify({ siteConfig: { a: '}' }, jobDetail: { status: 200, data: { job } } })}; phApp.other = {};</script></html>`;
+  const r = parsePhenomPage(html, url);
+  ok('reads the posting', r && r.job.id === '2014481' && r.job.title === job.title);
+  ok('provider phenom, token is the host', r.provider === 'phenom' && r.token === 'careers.cisco.com');
+  ok('the company from the page', r.company === 'Cisco');
+  ok('the location, and the other cities as alternates', r.job.location === 'Bangalore, India' && r.job.locationAlt.join() === 'Hyderabad, India');
+  ok('places in India', resolveRegion(r.job.location) === 'IN');
+  ok('the posted date', new Date(r.job.postedAt).toISOString().slice(0, 10) === '2026-09-11');
+  ok('the whole description, as text, braces and quotes intact', /Meet the Team \{"not": "json"\}/.test(r.job.description) && /Programming languages/.test(r.job.description) && !/<li>/.test(r.job.description));
+  ok('the URL without its query', r.job.url === url.split('?')[0]);
+  ok('a page that is not Phenom is null, not a throw', parsePhenomPage('<html>no ddo here</html>', url) === null);
+  ok('a Phenom page with no job is null', parsePhenomPage('<script>phApp.ddo = {"siteConfig":{}};</script>', url) === null);
+  let threw = '';
+  try { parsePhenomPage(`<script>phApp.ddo = ${JSON.stringify({ jobDetail: { data: { job: { ...job, description: '' } } } })};</script>`, url); } catch (e) { threw = e.message; }
+  ok('a Phenom job with no description throws (say it, do not store an empty row)', /no description/.test(threw), threw);
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

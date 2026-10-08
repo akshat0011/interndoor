@@ -146,6 +146,85 @@ export async function fetchAmazonJob(url) {
   return parseAmazonPage(await fetchText(url), url);
 }
 
+/* ---------------------------------------------------------------- phenom */
+
+/**
+ * PHENOM CAREER SITES — Cisco (careers.cisco.com), and on the 6 Sep sample GE
+ * Aerospace, UPS and Quest Global — read one posting off its own page. 8 Oct
+ * 2026: Cisco's "Software Engineer Trainee_Technical Graduate Apprentice - India
+ * UHR" (req 2014481, Bangalore) is live and externally visible, yet absent from
+ * Cisco's own search: its index carried 280 India jobs and no trainee, intern
+ * or apprentice role among them, and 49 internships worldwide, none in India.
+ * So a board adapter on Phenom's search (`/widgets`, ddoKey `refineSearch`,
+ * with the page's `csrfToken` and cookies — it works) would not have found it,
+ * and found no India early-career role at all; it was measured and not built,
+ * the Darwinbox call. The page itself carries the whole posting.
+ *
+ * THE PAGE, NOT THE HOST, SAYS IT IS PHENOM. Every tenant has its own vanity
+ * host, so a URL with a `/job/<id>` path that ats.js does not recognise is
+ * fetched and accepted only if it embeds `phApp.ddo` with a `jobDetail` job.
+ */
+const PHENOM_PATH = /\/job\/[A-Za-z0-9_-]{3,}/;
+
+/** The JSON object literal that starts at `from` (string-aware brace match), or null. */
+function jsonObjectAt(text, from) {
+  const start = text.indexOf('{', from);
+  if (start < 0) return null;
+  let depth = 0;
+  for (let i = start; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') {
+      for (i++; i < text.length && text[i] !== '"'; i++) if (text[i] === '\\') i++;
+      continue;
+    }
+    if (c === '{') depth++;
+    else if (c === '}' && --depth === 0) {
+      try { return JSON.parse(text.slice(start, i + 1)); } catch { return null; }
+    }
+  }
+  return null;
+}
+
+/**
+ * Read one Phenom posting out of its page. Null when the page is not a Phenom
+ * job page (so the caller can say "unrecognised"); throws when it is one but
+ * the posting cannot be read.
+ */
+export function parsePhenomPage(html, url) {
+  const at = String(html ?? '').indexOf('phApp.ddo');
+  if (at < 0) return null;
+  const ddo = jsonObjectAt(html, at);
+  const p = ddo?.jobDetail?.data?.job;
+  if (!p) return null;
+  if (!p.jobId || !p.title) throw new Error('the page has no job id or title — the layout has changed');
+  if (!p.description) throw new Error('the page carries no description — the layout has changed');
+  let host = '';
+  try { host = new URL(url).host.toLowerCase(); } catch { /* checked by the caller */ }
+  const places = (Array.isArray(p.multi_location) ? p.multi_location : [])
+    .map((l) => l?.cityStateCountry || l?.location).filter(Boolean);
+  return {
+    provider: 'phenom',
+    // The host is the tenant: there is no board token to read, and the host is
+    // what a second posting from the same site will share.
+    token: host,
+    company: String(p.companyName || p.company || '').trim() || null,
+    job: normalisePosting({
+      id: p.jobId,
+      title: p.title,
+      location: p.cityStateCountry || p.location || places[0] || null,
+      locationAlt: places.filter((l) => l !== (p.cityStateCountry || p.location)),
+      url: String(url).split('?')[0],
+      postedAt: p.postedDate || null,
+      department: p.category || null,
+      description: p.description,
+    }),
+  };
+}
+
+export async function fetchPhenomJob(url) {
+  return parsePhenomPage(await fetchText(url), url);
+}
+
 /* ------------------------------------------------------------------- ats */
 
 /**
@@ -200,10 +279,18 @@ export async function resolveJobUrl(url, { company = null } = {}) {
   }
 
   const board = parseAtsLink(href);
+  if (!board && PHENOM_PATH.test(href)) {
+    try {
+      const found = await fetchPhenomJob(href);
+      if (found) return company ? { ...found, company } : found;
+    } catch (err) {
+      return { error: `could not read the Phenom page (${err.message})` };
+    }
+  }
   if (!board) {
     return {
       error: 'unrecognised careers site',
-      hint: `Known: amazon.jobs and ${Object.keys(PROVIDERS).filter((p) => p !== 'amazon' && p !== 'microsoft').join(', ')}.`,
+      hint: `Known: amazon.jobs, Phenom career sites (a /job/ page) and ${Object.keys(PROVIDERS).filter((p) => p !== 'amazon' && p !== 'microsoft').join(', ')}.`,
     };
   }
 
