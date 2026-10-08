@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/amazon-data-engineer-i-dsp-analytics-4468618558",
+      "url": "https://interndoor.com/jobs/amazon-data-engineer-i-dsp-analytics-4468618558",
+      "title": "Data Engineer I — Amazon",
+      "content_text": "Company: Amazon · Location: Hyderabad, Telangana, India\n• Build and maintain data pipelines for real-time and batch processing of customer data\n• Use SQL, Python, and AWS tools like Redshift and Glue to design scalable data solutions\n• Collaborate with data scientists and analysts to support AI-driven insights and product development",
+      "date_published": "2026-10-08T17:51:25.230Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-hi-tech-data-science-associate-2-4475876202",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-hi-tech-data-science-associate-2-4475876202",
+      "title": "S&C Global Network - AI - Hi Tech - Data Science Associate 2 — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop generative AI applications using Python, APIs, and LLM frameworks\n• Work with Azure/AWS cloud services for AI deployment and security\n• Contribute to RAG solutions and conversational AI testing",
+      "date_published": "2026-10-08T17:32:03.958Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-hi-tech-data-science-associate-4475869358",
+      "url": "https://interndoor.com/jobs/accenture-in-india-s-and-c-global-network-ai-hi-tech-data-science-associate-4475869358",
+      "title": "Data Science Associate — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop generative AI applications using Python, APIs, and LLM frameworks\n• Work with Azure/AWS cloud services for AI deployment and security\n• Contribute to RAG solutions and conversational AI testing",
+      "date_published": "2026-10-08T17:31:52.045Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/slb-drilling-data-analyst-4401615328",
+      "url": "https://interndoor.com/jobs/slb-drilling-data-analyst-4401615328",
+      "title": "Drilling Data Analyst — SLB",
+      "content_text": "Company: SLB · Location: Dehradun, Uttarakhand, India\n• Capture and report wellsite data daily using reporting tools\n• Maintain data quality and troubleshoot operational issues\n• Collaborate with teams across service providers and clients",
+      "date_published": "2026-10-08T17:21:23.730Z",
+      "authors": [
+        {
+          "name": "SLB"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-software-engineer-4475980619",
+      "url": "https://interndoor.com/jobs/millennium-software-engineer-4475980619",
+      "title": "Software Engineer — Millennium",
+      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Develop Python microservices with FastAPI or Django for risk analytics\n• Build and manage cloud apps on AWS using EC2, S3, and Redshift\n• Transform data with pandas and polars for multi-asset analysis\n• Collaborate with quants and risk managers across global offices",
+      "date_published": "2026-10-08T17:14:14.792Z",
+      "authors": [
+        {
+          "name": "Millennium"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sanofi-integration-platform-engineer-4477413712",
+      "url": "https://interndoor.com/jobs/sanofi-integration-platform-engineer-4477413712",
+      "title": "Integration Platform Engineer — Sanofi",
+      "content_text": "Company: Sanofi · Location: Hyderabad, Telangana, India · Duration: 14 weeks\n• Build integrations between enterprise systems like SAP and Salesforce using MuleSoft and Azure\n• Operate event-driven systems with Kafka and Solace for real-time data flow\n• Design secure, scalable interfaces with tools like HashiCorp Vault and Datadog",
+      "date_published": "2026-10-08T17:11:45.620Z",
+      "authors": [
+        {
+          "name": "Sanofi"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4475970908",
       "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4475970908",
       "title": "App Development Technical Specialist — Birlasoft",
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4475790794",
-      "url": "https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4475790794",
-      "title": "Full Stack Developer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and maintain full-stack Java applications\n• Work with Angular, Spring/Hibernate, and REST APIs\n• Collaborate in Agile teams using Git and Maven",
-      "date_published": "2026-10-08T11:13:11.018Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nomura-global-markets-securitized-products-asset-management-analyst-4477162050",
-      "url": "https://interndoor.com/jobs/nomura-global-markets-securitized-products-asset-management-analyst-4477162050",
-      "title": "Securitized Products Analyst — Nomura",
-      "content_text": "Company: Nomura · Location: Mumbai, Maharashtra, India\n• Setup and maintain collateral structures in ProMerit for ABS/RMBS/CMBS\n• Analyze and normalize data for downstream reporting and pricing\n• Collaborate with IT and Asset Management on system enhancements",
-      "date_published": "2026-10-08T11:05:09.684Z",
-      "authors": [
-        {
-          "name": "Nomura"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-c-wpf-software-engineer-4475787891",
-      "url": "https://interndoor.com/jobs/quest-global-c-wpf-software-engineer-4475787891",
-      "title": "C# Software Engineer — Quest Global",
-      "content_text": "Company: Quest Global · Location: Thiruvananthapuram, Kerala, India\n• Code windows desktop apps using c# and wpf\n• Write reusable code and perform unit testing\n• Work independently and learn new technologies",
-      "date_published": "2026-10-08T11:03:56.024Z",
-      "authors": [
-        {
-          "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-ai-engineer-4475903266",
-      "url": "https://interndoor.com/jobs/zensar-technologies-ai-engineer-4475903266",
-      "title": "AI Engineer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build AI applications using enterprise stack, LLMs, and multi-agent systems\n• Work with LangGraph, vector stores, and RAG architectures\n• Collaborate on CI/CD pipelines and observability for AI solutions",
-      "date_published": "2026-10-08T11:00:29.286Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-ibm-mainframe-technical-specialist-app-development-4475790746",
-      "url": "https://interndoor.com/jobs/birlasoft-ibm-mainframe-technical-specialist-app-development-4475790746",
-      "title": "Mainframe App Development Specialist — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Pune/Pimpri-Chinchwad Area\n• Write and test mainframe applications using COBOL, DB2, and CICS\n• Support batch jobs, debug abends, and maintain system documentation\n• Collaborate with clients and contribute to project documentation",
-      "date_published": "2026-10-08T10:54:17.286Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/iqvia-software-development-engineer-1-4477158177",
-      "url": "https://interndoor.com/jobs/iqvia-software-development-engineer-1-4477158177",
-      "title": "Software Development Engineer — IQVIA",
-      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Develop and maintain full-stack applications using C#/.NET and ReactJS\n• Work with Azure cloud services and SQL Server databases\n• Collaborate with cross-functional teams in Agile ceremonies",
-      "date_published": "2026-10-08T10:49:34.279Z",
-      "authors": [
-        {
-          "name": "IQVIA"
         }
       ]
     }
