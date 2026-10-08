@@ -8,7 +8,7 @@ import { formatStipend, safeBaseSalary } from './extract.js';
 import { matchCompany, isBlockedCompany, employerRoleAllowed } from './config.js';
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { ensureInsights } from './insights.js';
-import { writeSite, cardFacts, jobSlug, deadlinePassed, asksExperience, notAJob, verifiedOpen, durationText } from './pages.js';
+import { writeSite, cardFacts, jobSlug, deadlinePassed, asksExperience, notAJob, isPostdoc, verifiedOpen, durationText } from './pages.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
@@ -16,7 +16,7 @@ import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS, regionOf } from './regions.js';
 import { applyJobEdits } from './owner.js';
 import { fullTimeWording, FULL_TIME } from './employment.js';
-import { roleCategory, settleShelves } from './rolefocus.js';
+import { roleCategory, settleShelves, OPEN_FAMILIES } from './rolefocus.js';
 import { shelfMove, publishedTitle } from './titles.js';
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
@@ -552,6 +552,7 @@ export async function writeJobsFile(store, cfg) {
   let droppedDeadline = 0;
   let droppedExperience = 0;
   let droppedNotAJob = 0;
+  let droppedPostdoc = 0;
   const droppedByRegion = {};
   /* His corrections from the owner controls (src/owner.js), laid over the rows
      before ANY gate runs — so a corrected location moves the posting to the
@@ -670,6 +671,12 @@ export async function writeJobsFile(store, cfg) {
       droppedNotAJob++;
       return false;
     })
+    /* A POSTDOC — needs a PhD, not a student or fresher role (isPostdoc). */
+    .filter(({ row }) => {
+      if (!isPostdoc(row)) return true;
+      droppedPostdoc++;
+      return false;
+    })
     .map(({ row, matchedNow, region }) => ({ row, matchedNow, region }));
 
   const supersededPairs = [];
@@ -700,7 +707,11 @@ export async function writeJobsFile(store, cfg) {
         /* A Software-shelf role the model reads as non-software work, AND whose
            title names such a discipline, moves to Misc (shelfMove — two signals,
            never Software from Misc). */
-        category: (cfg.titles?.moveToMisc ? shelfMove(rc.category, row.discipline, row.title) : null) ?? rc.category,
+        category: (cfg.titles?.moveToMisc ? shelfMove(rc.category, row.discipline, row.title, {
+          open: OPEN_FAMILIES.has(rc.family),
+          /* The label read as a title on its own: a misc family, not an open one. */
+          labelMisc: !!row.role_label && roleCategory({ title: row.role_label }, cfg.roleFocus).category === 'misc',
+        }) : null) ?? rc.category,
         /* THE ROLE FAMILY, from the same call that decides the shelf, so the
            role pages (src/rolepages.js) and the shelves cannot disagree about
            what a posting is. Decided once here, like the shelf, and read by
@@ -769,6 +780,9 @@ export async function writeJobsFile(store, cfg) {
   }
   if (droppedExperience) {
     log.info(`Held back ${droppedExperience} posting${droppedExperience === 1 ? '' : 's'} that state${droppedExperience === 1 ? "s" : ""} 2+ years of experience — not entry-level; page redirected to the hub, still in the record.`);
+  }
+  if (droppedPostdoc) {
+    log.info(`Held back ${droppedPostdoc} postdoc posting${droppedPostdoc === 1 ? '' : 's'} — a PhD role, not a student or fresher one.`);
   }
   if (droppedNotAJob) {
     log.info(`Held back ${droppedNotAJob} posting${droppedNotAJob === 1 ? '' : 's'} that ${droppedNotAJob === 1 ? 'is' : 'are'} not a job (talent community or pool).`);

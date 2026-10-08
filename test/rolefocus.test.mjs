@@ -242,7 +242,7 @@ console.log('\n== the wiring ==');
      move to Misc behind titles.moveToMisc (src/titles.js shelfMove). */
   check('publish writes the shelf onto every row',
     /const rc = roleCategory\(\{ title: row\.title, roleLabel: row\.role_label \}, cfg\.roleFocus\);/.test(pub)
-      && /category: \(cfg\.titles\?\.moveToMisc \? shelfMove\(rc\.category, row\.discipline, row\.title\) : null\) \?\? rc\.category,/.test(pub), true);
+      && /category: \(cfg\.titles\?\.moveToMisc \? shelfMove\(rc\.category, row\.discipline, row\.title, \{[\s\S]{0,400}?\}\) : null\) \?\? rc\.category,/.test(pub), true);
   /* The role pages (src/rolepages.js) read the family decided in the SAME call. */
   check('and the family, from the same roleCategory call', /family: rc\.family,/.test(pub), true);
   check('publish settles one shelf per role before anything reads it',
@@ -341,6 +341,53 @@ check('a data analyst in markets stays software (his "keep data analyst")', shel
 check('"Software Engineer - Risk Management" stays software', shelf('Software Engineer - Risk Management'), 'software');
 check('"MES Software Developer" stays software', shelf('MES Software Developer'), 'software');
 check('"Messaging Engineer" is not MES', shelf('Messaging Engineer'), 'software');
+
+console.log('\n== 8 Oct 2026: the audit of every Software-shelf role ==');
+// Real titles off the live board, each read and judged by hand.
+for (const [t, l] of [
+  ['S&C Global Network - AI - Software & Platform - Gen AI - Analyst', 'AI Analyst'],
+  ['#ACN GN-Industry-Public Servies -Gen AI- Analyst', 'Gen AI Consultant'],
+  ['AI Solutions Analyst - Banking Market Intelligence', 'Market Intelligence Analyst'],
+  ['Deployment Strategist - Crypto Investigations', 'Deployment Strategist'],
+  ['Product Specialist', 'Product Specialist'],
+  ['Analyst, Customer Insights', 'Market Insights Analyst'],
+  ['Program Intern – MDC Programs, AI & Automation', 'Program Management'],
+  ['Developer Relationship - Intern', 'Developer relations'],
+  ['Placement & tech Intern', 'Student support'],
+  ['MS Engineer L2, Linux', 'IT Support Engineer'],
+  ['MS Security Engineer', 'Security Support Engineer'],
+  ['Cross Technology Managed Services Middleware Engineer (L2)', 'IT Support Engineer'],
+  ['IT Coordinator', 'IT Support'],
+  ['Alarm Monitoring Engineer', 'Network Operations'],
+  ['Database Support Engineer - APAC', 'Database Support Engineer'],
+  ['Apprentice Engineer - Highways', 'Highway Design'],
+  ['Turbine - System Integrator', 'Engineering Design'],
+  ['Intern - Structures', 'UAV Design'],
+  ['Trainee 3D Design Engineer', '3d design'],
+  ['Visual Design Intern', 'Hardware Graphics Design'],
+  ['CIRT Analyst', 'Cyber incident analyst'],
+  ['EDR Analyst - L1', 'Security Support Engineer'],
+  ['Infor XA Technical', 'Infor XA Development'],
+  ['MSD -Technical', 'Dynamics Admin'],
+]) check(`misc: "${t}"`, shelf(t, l), 'misc');
+// …and the near misses that must STAY, each one a real title too.
+for (const [t, l] of [
+  ['2027 Technology Program Intern', 'Policy Review'],                         // his own example
+  ['Apprentice Hiring for 2026- 2027', 'Engineering Support'],                  // his own example
+  ['Associate - Business Analyst-Application Development-Backend Development', 'Software Development'],
+  ['Associate - Data Engineer-Data Management and Analytics-Database Warehouse', 'Data Warehouse Developer'],
+  ['Intern - Turbine Software System Validation', 'Software Test Automation'],
+  ['Business Analyst-Data Analytics', 'Data Analytics'],                        // "keep data analyst"
+  ['Platform Engineer', 'Cloud Infrastructure Engineer'],
+  ['Android Developer Intern', 'Android development'],
+  ['Software Engineer - Planisware Support', 'Planisware Support'],
+]) check(`stays: "${t}"`, shelf(t, l), 'software');
+
+console.log('\n== a label never rescues a misc title into HARDWARE ==');
+check('GE Vernova "Post Doctoral Fellow Materials" (label "Materials Validation")', shelf('Post Doctoral Fellow Materials', 'Materials Validation'), 'misc');
+check('GE HealthCare "Electrical Intern" (label "Electronics Support")', shelf('Electrical Intern', 'Electronics Support'), 'misc');
+check('…but a label still rescues one onto Software', shelf('Research Intern', 'Machine Learning Development'), 'software');
+check('…and an OPEN title still goes to hardware by its label', shelf('Graduate Engineer Trainee', 'VLSI design verification'), 'hardware');
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

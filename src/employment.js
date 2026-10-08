@@ -233,12 +233,19 @@ const EXPERIENCE_WORD = /\b(?:experienced|distinguished)\b/i;
  * on, so here the word refuses — bar the one title that is a graduate role by
  * name.
  */
+/** "Post Doctoral Fellow", "Postdoc Researcher", "Post-Doctoral Associate", "Postdoctoral …". */
+export const POSTDOC_TITLE = /\bpost[\s-]?doc(?:toral)?\b|\bpostdoctoral\b/i;
+
 export function entryLevelTitleRefusal(title) {
   // An underscore is a WORD character to \b, so "IN_Senior Associate_…" (how
   // PwC India titles every role) and "Engineer II_Engineering" hid their grade
   // from every rule below. Read it as the space it stands for.
   const t = String(title ?? '').replace(/_/g, ' ');
   if (isSeniorTitle(t)) return 'entry-level: senior title';
+  /* A POSTDOC NEEDS A PhD (8 Oct 2026, his call on GE Vernova's "Post Doctoral
+     Fellow Materials"): not a role for the students and freshers this board is
+     for. Refused before the open, so it costs the account nothing. */
+  if (POSTDOC_TITLE.test(t)) return 'entry-level: postdoc title';
   if (MANAGER_TITLE.test(t) && !/\bassociate\s+product\s+manager\b/i.test(t)) return 'entry-level: manager title';
   if (LEVEL_TITLE.test(t) && !NEW_GRAD_PROGRAM.test(t)) return 'entry-level: level II+ title';
   if (EXPERIENCED_GRADE.test(t) && !GRADUATE_WORD.test(t)) return 'entry-level: consultant or architect title';

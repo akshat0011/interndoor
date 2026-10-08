@@ -24,7 +24,7 @@
 import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
-import { ENTRY_MAX_YEARS, schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
+import { ENTRY_MAX_YEARS, POSTDOC_TITLE, schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
 import { facetGroups, facetSlug, canonicalCity } from './facets.js';
 import { roleGroups, rolePageOf, stableRank, roleCitySlug } from './rolepages.js';
 
@@ -399,6 +399,16 @@ export function asksExperience(job) {
 const NOT_A_JOB = /\btalent (?:community|pool|network)\b|\bgeneral application\b|\bexpression of interest\b/i;
 export function notAJob(job) {
   return NOT_A_JOB.test(String(job?.title ?? ''));
+}
+
+/**
+ * A postdoc needs a PhD — not a role for this board's students and freshers
+ * (8 Oct 2026, his call on GE Vernova's "Post Doctoral Fellow Materials", which
+ * went to the WhatsApp channel). Held back at publish like `notAJob`; the
+ * entry-level search refuses the title before it opens it (employment.js).
+ */
+export function isPostdoc(job) {
+  return POSTDOC_TITLE.test(String(job?.title ?? ''));
 }
 
 function jobPostingLd(job, url, region = DEFAULT_REGION, validDays = DEFAULT_VALID_DAYS) {
@@ -5579,24 +5589,102 @@ const CLOSED_MARK = 'data-closed-on="';
  * there to carry `location.search` across, so an old Telegram or reel link's
  * UTM tags reach the hub instead of being dropped (§12).
  */
-function renderClosedRole(company, hubSlug, region, closedOn) {
-  const url = regionUrl(`/companies/${hubSlug}`, region);
-  return `<!doctype html>
-<html lang="${esc(region.lang ?? 'en')}" ${CLOSED_MARK}${esc(closedOn)}" data-hub="${esc(url)}">
-<head>
-<meta charset="utf-8">
-<title>This role has closed — ${esc(company)} — InternDoor</title>
-<meta http-equiv="refresh" content="0; url=${esc(url)}">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<script>var h=document.documentElement.dataset.hub;if(h)location.replace(h+location.search);</script>
-</head>
-<body>
-<p>This ${esc(company)} posting has closed.
-<a href="${esc(url)}">See what ${esc(company)} has open now</a>.</p>
-</body>
-</html>
-`;
+/* ---- THE CLOSED PAGE, AS A PAGE — 8 Oct 2026 ----
+ *
+ * His ask: readers arrive from his LinkedIn posts, the role has closed, and an
+ * instant redirect to the employer's hub left them on a page that never said
+ * so. Now the URL itself SAYS the role has closed, says when, offers the
+ * channel ("never miss one again"), and shows what is open: the employer's
+ * other live roles and similar roles elsewhere, both server-rendered in the
+ * job page's own strips and order (stableRank, so a closed page does not
+ * churn on every arrival), plus the job page's client-filled "Just landed"
+ * strip, which costs the file nothing.
+ *
+ * `noindex,follow` and a self canonical, where the stub had neither: a page
+ * describing a role that no longer exists must not be indexed (hundreds of
+ * them would be the thin-page profile the 7 Oct audit removed), and `follow`
+ * keeps every link on it working for Google. Still NO JobPosting markup — the
+ * whole safety argument above is unchanged. No inline script of its own: the
+ * page uses head()/foot(), whose scripts are already allowlisted.
+ *
+ * `data-closed-on` stays on <html>, so the sweep still ages these by their
+ * stamp; `data-closed-v` marks the template. Every closed page is re-rendered
+ * on each publish KEEPING its original stamp (writeIfChanged writes only when
+ * its lists moved), which is also how the pre-8-Oct stubs become this page.
+ */
+const CLOSED_VERSION = '2';
+
+function renderClosedRole({ company, hubSlug, region, closedOn, past = null, open = [], similar = [], role = null }) {
+  const hub = regionHref(`/companies/${hubSlug}`, region);
+  const title = past?.title ? String(past.title) : '';
+  const slug = past ? jobSlug({ company: past.company, title: past.title, slugTitle: past.slugTitle, id: past.id ?? past.job_id }) : null;
+  const canonical = slug ? regionUrl(`/jobs/${slug}`, region) : regionUrl(`/companies/${hubSlug}`, region);
+  const closedMs = Date.parse(`${closedOn}T00:00:00Z`);
+  const postedMs = Number(past?.postedAt ?? past?.firstSeenAt) || null;
+  const lead = leadChannel(region);
+  const what = title ? `${title} at ${company}` : `This ${company} role`;
+  const page = head({
+    title: buildTitle([`Closed: ${title || 'role'} at ${company}`]),
+    description: clampWords(`${what} has closed. See ${company}'s open roles and similar ${offerPhrase(region)} ${region.inName}.`, 155),
+    canonical,
+    indexable: false,
+    region,
+  });
+  return page.replace('<html ', `<html ${CLOSED_MARK}${esc(closedOn)}" data-closed-v="${CLOSED_VERSION}" `) + `
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Home</a> <i aria-hidden="true">›</i>
+      <a href="${hub}">${esc(company)}</a> <i aria-hidden="true">›</i>
+      <span>${esc(title || 'Closed role')}</span>
+    </nav>
+
+    <header class="dir-hero">
+      <p class="jp-open is-likely"><span class="jp-open-b"><i aria-hidden="true"></i>This role has closed</span><span class="jp-open-d">${esc(company)} has stopped taking applications${Number.isFinite(closedMs) ? ` &middot; we took it down on <time datetime="${esc(closedOn)}">${esc(dayLabel(closedMs, region))}</time>` : ''}.</span></p>
+      <h1>${esc(title || `${company} role`)}</h1>
+      <p class="hub-lede">${esc(what)}${postedMs ? `, posted on ${esc(dayLabel(postedMs, region))},` : ''} is no longer open. Roles like this one often close within a day or two of going up — ${open.length ? `${esc(company)} has ${open.length === 1 ? 'another role' : `${open.length} other roles`} open right now, below.` : 'here is what is open right now.'}</p>
+    </header>
+
+    ${lead ? `<a class="jp-sub" href="${esc(lead.url)}" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${CHANNEL_ICON[lead.kind]}</svg>
+      <span class="jp-sub-t">
+        <strong>Never miss one again — join the ${esc(lead.name)} channel</strong>
+        <em>Every new ${esc(offerPhrase(region, { singular: true, noun: 'roles', joiner: 'or' }))} ${esc(region.inName)}, the minute it is posted. Free, no signup.</em>
+      </span>
+      <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
+    </a>` : `<a class="jp-sub" href="${regionHref('/alerts', region)}">
+      <span class="jp-sub-t"><strong>Never miss one again</strong><em>Get new roles the minute they are posted.</em></span>
+      <i class="jp-sub-go" aria-hidden="true">&rarr;</i>
+    </a>`}
+
+    ${open.length ? `<section class="strip">
+      <div class="strip-head">
+        <h2>Open now at ${esc(company)}</h2>
+        <a class="strip-more" href="${hub}">All ${esc(company)} roles →</a>
+      </div>
+      <div class="tiles">${open.map((j) => tile(j, { showCompany: false, region })).join('')}</div>
+    </section>` : ''}
+
+    ${similar.length ? `<section class="strip">
+      <div class="strip-head">
+        <h2>Similar roles at other companies</h2>
+        ${role ? `<a class="strip-more" href="${regionHref(`/roles/${role.slug}`, region)}">All ${esc(lcFirst(role.name))} roles →</a>` : ''}
+      </div>
+      <div class="tiles">${similar.map((j) => tile(j, { region })).join('')}</div>
+    </section>` : ''}
+
+    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
+      <div class="strip-head">
+        <h2>Just landed on InternDoor</h2>
+        <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
+      </div>
+      <div class="tiles" id="fresh-list"></div>
+    </section>
+  </div>
+</main>
+${foot({ headline: 'See every role that is open now', sub: 'New internships and entry-level jobs, the minute they are posted.', region })}`;
 }
+
 
 /**
  * The date a closed stub was written, or null when the file is not one.
@@ -5983,13 +6071,34 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
      hubs and change which hubs are indexable. Two inputs, one map, and only
      this map — the one that decides where a dead URL points. */
   const hubForSlug = new Map();
+  /* …and the posting itself, so the closed page can name the role it was. */
+  const pastForSlug = new Map();
   for (const past of [...(history ?? []), ...(closable ?? [])]) {
     if (!past?.company || !(past.id ?? past.job_id)) continue;
     let slug;
     try { slug = jobSlug({ company: past.company, title: past.title, slugTitle: past.slugTitle, id: past.id ?? past.job_id }); } catch { continue; }
     hubForSlug.set(slug, companySlug(past.company));
+    if (!pastForSlug.has(slug)) pastForSlug.set(slug, past);
   }
   const closedOn = new Date().toISOString().slice(0, 10);
+  /* The closed page's lists: the employer's live roles (newest first, as its
+     hub shows them, capped) and similar roles on the posting's own role page
+     (similarRoles — stableRank, never newest-first, so these pages do not
+     rewrite themselves on every new posting). */
+  const liveByHub = new Map();
+  for (const j of jobs) {
+    const k = companySlug(j.company ?? '');
+    if (!liveByHub.has(k)) liveByHub.set(k, []);
+    liveByHub.get(k).push(j);
+  }
+  const closedPage = (slug, hub, company, stamp) => {
+    const past = pastForSlug.get(slug) ?? null;
+    const open = (liveByHub.get(hub) ?? []).slice(0, 4);
+    const def = past ? rolePageOf(past) : null;
+    const role = def && rolePageBySlug.has(def.slug) ? { slug: def.slug, name: def.name } : null;
+    const similar = past && def ? similarRoles(past, rolePool.get(def.slug) ?? []) : [];
+    return renderClosedRole({ company, hubSlug: hub, region, closedOn: stamp, past, open, similar, role });
+  };
 
   for (const dir of [jobsDir, compDir, ...facetDirs.map(([d]) => d)]) {
     if (!existsSync(dir)) continue;
@@ -6010,6 +6119,15 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
         if (stamp) {
           const ageDays = (Date.parse(`${closedOn}T00:00:00Z`) - Date.parse(`${stamp}T00:00:00Z`)) / 86_400_000;
           if (Number.isFinite(ageDays) && ageDays <= CLOSED_ROLE_DAYS) {
+            /* RE-RENDERED, KEEPING ITS STAMP: a pre-8-Oct stub becomes the new
+               page once, and a current one refreshes its lists. writeIfChanged
+               writes only when they moved. Only while the hub still exists —
+               otherwise the old file is left exactly as it was. */
+            const hub = hubForSlug.get(slug);
+            if (hub && wanted.has(join(compDir, `${hub}.html`))) {
+              const company = (history ?? []).find((h) => companySlug(h.company ?? '') === hub)?.company ?? hub;
+              writeIfChanged(full, closedPage(slug, hub, company, stamp));
+            }
             /* THE `continue` IS THE PRESERVATION — it skips the rmSync at the
                foot of the loop. `wanted` plays no part: it is read once at the
                top of each iteration and never again, so adding to it here does
@@ -6037,7 +6155,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
              confirmed no test could tell the difference; §1 says that is
              surface, not coverage. */
           const company = (history ?? []).find((h) => companySlug(h.company ?? '') === hub)?.company ?? hub;
-          writeFileSync(full, renderClosedRole(company, hub, region, closedOn));
+          writeFileSync(full, closedPage(slug, hub, company, closedOn));
           /* Treated like a dedupe stub by the indexing queue, NOT as a
              deletion: the URL still answers 200, it just no longer carries
              JobPosting markup, so anything owed on it must be forgotten rather

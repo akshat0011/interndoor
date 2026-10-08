@@ -153,12 +153,22 @@ const MISC_TITLE_WORD = /\b(strategy|strategic|advisory|consult(?:ing|ant)?|supp
  * 'misc' when a Software-shelf role should move to Misc, else null.
  * Two independent signals, and only ever Software -> Misc.
  */
-export function shelfMove(category, discipline, rawTitle) {
+export function shelfMove(category, discipline, rawTitle, { open = false, labelMisc = false } = {}) {
   if (category !== 'software') return null;
   if (!MISC_DISCIPLINES.has(discipline)) return null;
   if (SOFTWARE_WORD.test(String(rawTitle ?? ''))) return null;
-  if (!MISC_TITLE_WORD.test(String(rawTitle ?? ''))) return null;
-  return 'misc';
+  if (MISC_TITLE_WORD.test(String(rawTitle ?? ''))) return 'misc';
+  /* A title that NAMES NO DISCIPLINE ("Analyst", "Intern", "Apprentice",
+     "Contractor") stays Software by his standing rule — unless the model's
+     discipline AND its role label both name misc work (8 Oct 2026 audit:
+     eClerx's "Analyst" labelled "Customer Insights Analyst", Otis's
+     "Apprentice" labelled "Elevator Mechanic Apprentice", Veradigm's
+     "Contractor" labelled "Customer Support"). Still two signals: the
+     discipline alone moved a bare "Intern" once, and his Deutsche Bank and
+     Wells Fargo examples carry labels ("Engineering Support", "Policy Review")
+     that name no misc family, so they stay. */
+  if (open && labelMisc) return 'misc';
+  return null;
 }
 
 /**

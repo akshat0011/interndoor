@@ -223,7 +223,7 @@
     bar.appendChild(state);
 
     call('/api/owner/job', ref).then(function (view) {
-      state.textContent = view.hidden ? 'hidden from the site' : view.edit ? 'corrected' : '';
+      state.textContent = view.hidden ? 'hidden from the site' : view.closed ? 'closed' : view.edit ? 'corrected' : '';
 
       var post = button(bar, 'LinkedIn post', function () {
         call('/api/owner/post', { jobId: view.id }).then(followPost, function (err) { toast(explain(err)); });
@@ -232,6 +232,30 @@
       if (!view.postable) { post.disabled = true; post.title = 'This board has no LinkedIn account to post from.'; }
 
       button(bar, 'Edit', function () { editDialog(ref, view); });
+
+      /* Close by hand: the page then says the role has closed and points at
+         the channel and more roles. Reopen is there for a mistake. */
+      if (!view.hidden && !view.closed) {
+        button(bar, 'Close job', function () {
+          if (!window.confirm('Mark "' + (view.original.title || 'this posting') + '" as closed?\n\nIt comes off the board and its page says the role has closed.')) return;
+          var started = Date.now();
+          toast('Closing…');
+          call('/api/owner/close', { jobId: view.id }).then(function () {
+            state.textContent = 'closed';
+            followPublish(started);
+          }, function (err) { toast(explain(err)); });
+        }, 'owner-warn');
+      }
+      if (view.closed) {
+        button(bar, 'Reopen', function () {
+          var started = Date.now();
+          toast('Reopening…');
+          call('/api/owner/reopen', { jobId: view.id }).then(function () {
+            state.textContent = 'reopened';
+            followPublish(started);
+          }, function (err) { toast(explain(err)); });
+        });
+      }
 
       if (!view.hidden) {
         button(bar, 'Hide', function () {

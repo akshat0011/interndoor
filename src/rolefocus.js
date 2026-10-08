@@ -40,7 +40,41 @@
 
 export const ROLE_FAMILIES = [
   ['ai_training', 'AI training-data gigs', /coding expert|scientific coding|ai trainer|ai quality analyst|annotat|data label|\brater\b|ai tutor|writing expert|prompt engineer/],
-  ['qa', 'QA / testing / SDET', /\bqa\b|quality assurance|\bsdet\b|engineer in test|software test|test automation|automation test|testing|software quality|\btester\b|test engineer|\btest\b|systest|quality automation/],
+  /* THE 8 OCT 2026 AUDIT OF EVERY SOFTWARE-SHELF ROLE (his "check every
+     software role … whichever arent software, move them to misc and make sure
+     new roles of that category go to misc"). Each family below names work that
+     was sitting on Software, read off the live board role by role. ABOVE the
+     software families, because most of these titles also carry a software
+     word ("AI", "platform", "security", "data"). A title that says software
+     engineer / developer, or data analyst / engineer / scientist, keeps its own
+     family — his standing rules.
+
+     Business, consulting and programme work: Accenture's "S&C Global Network -
+     AI - … - Analyst" (strategy & consulting), McKinsey's "AI Solutions Analyst
+     - Banking Market Intelligence", General Mills' "D&T Analyst – AI &
+     Automation", Komodo's "AI Solutions Specialist - Implementations", DeHaat's
+     "Program Intern", Chainalysis' "Deployment Strategist", Rockwell's and
+     Arcesium's "Product Specialist", customer-insights and commercial analysts,
+     developer relations, placement, trainers. */
+  ['business', 'Business / consulting / programmes', /^(?!.*\b(?:software (?:engineer|developer|development)|developer(?! relation)|application development|backend|frontend|full ?stack|data analy\w*|data engineer\w*|data scien\w*)\b).*(?:s&c global network|global network|#acn|\bgn-|strategist|product specialist|customer insights|commercial analyst|business operations|business analyst|developer relation\w*|\bdevrel\b|\bdevre\b|placement|\btrainer\b|tech(?:nical)? enablement|market intelligence|\bprogrammes?\b.*\bintern|\bprograms\b|account research|solutions specialist|implementations?\b|\bd&t analyst)/],
+  /* Managed-services and operations support, named by the title: NTT DATA's
+     "MS Engineer L2, Linux", "MS Security Engineer", "Cross Technology Managed
+     Services Middleware Engineer (L2)", Hilton's "IT Coordinator", Ericsson's
+     "Alarm Monitoring Engineer", "Database Support Engineer", "Product Sppt
+     Trainee". Above `security`, which "MS Security Engineer" would otherwise
+     hit first. */
+  ['it_support', 'IT support / networking', /^(?!.*\bsoftware (?:engineer|developer)\b).*(?:managed services|\bms (?:engineer|security engineer|technical specialist)\b|\bms engineer\b|support (?:engineer|analyst)|production support|product (?:support|sppt)|\bsppt\b|customer support|it coordinator|alarm monitoring|monitoring engineer|control[- ]m\b|application owner|\bitao\b|data capture)/],
+  /* Design, civil, mechanical and plant work the core families did not name:
+     Jacobs' "Apprentice Engineer - Highways" and "- Telecom" (infrastructure
+     design), GE Vernova's "Turbine - System Integrator", Otis's elevator
+     mechanic, NewSpace's "Intern - Structures", Oceaneering's "Integrity
+     Engineer" (oil & gas), EXL's "Cat Modeler" (insurance catastrophe models),
+     Cognizant's "GeoSpatial Analyst", Cyncly's "3D Design Engineer" (CAD),
+     Eaton's product-data steward. */
+  ['core_eng', 'Core engineering (mech / elec / civil / mfg)', /^(?!.*\b(?:software|developer|data engineer\w*|data analy\w*|data scien\w*)\b).*(?:\bhighways?\b|apprentice engineer - telecom|\bturbine\b|\belevator\b|\bmechanic\b|\bstructures\b|integrity engineer|geo ?spatial|cat model\w*|3d design|data management|product data|technical assistant|biopharma\w*|pharmaceutical)/],
+  /* Visual and UI design, which the UX family's words did not reach. */
+  ['ux', 'UX / product design', /^(?!.*\b(?:developer|engineer)\b).*(?:visual design|graphic design|\bui design)/],
+  ['qa', 'QA / testing / SDET',/\bqa\b|quality assurance|\bsdet\b|engineer in test|software test|test automation|automation test|testing|software quality|\btester\b|test engineer|\btest\b|systest|quality automation/],
   /* SECURITY OPERATIONS IS NOT SECURITY ENGINEERING (7 Oct 2026, his call on
      MUFG's "Incident Reponse - Analyst": "not software or the ones we are
      interested in"). Incident response, SOC monitoring, threat-intel and GRC
@@ -48,7 +82,7 @@ export const ROLE_FAMILIES = [
      architects, appsec and pen testing. The analyst arm is a security-themed
      title whose role is "analyst" and that names no engineer — measured on the
      live India board: 9 roles moved, every one an analyst. */
-  ['secops', 'Security operations / GRC', /\bincident\b|security operations|\bsiem\b|forensic|\bgrc\b|governance,? risk|^(?!.*\b(?:engineer|engineering|developer|architect)\b)(?=.*(?:cyber|security|infosec|vulnerab|threat|\bsoc\b)).*\banalyst/],
+  ['secops', 'Security operations / GRC', /\bincident\b|\bc?sirt\b|\bcirt\b|\bedr analyst|security operations|\bsiem\b|forensic|\bgrc\b|governance,? risk|^(?!.*\b(?:engineer|engineering|developer|architect)\b)(?=.*(?:cyber|security|infosec|vulnerab|threat|\bsoc\b)).*\banalyst/],
   /* FINANCE AND MARKETS WORK IS NOT SOFTWARE (8 Oct 2026, his call on
      Nomura's "Global Markets – Securitized Products - Asset Management -
      Analyst", which read as generic on "Analyst" and so as Software).
@@ -65,7 +99,7 @@ export const ROLE_FAMILIES = [
      title that says software engineer/developer stays Software (his standing
      rule — SocGen's "Software Engineer - PEGA"), and so Eaton's "IT ERP, SAP AI
      & DEVSECOPS" apprenticeship, kept on Software on 30 Sep, stays there. */
-  ['enterprise', 'SAP / Salesforce / ServiceNow', /^(?!.*(?:software (?:engineer|developer|development)|devsecops|\bai\b|\bml\b)).*(?:\bifs\b|\bsap\b|salesforce|servicenow|workday|dynamics 365|guidewire|\bpega\b|oracle (?:fusion|ebs|erp|hcm|scm|apps|apex|cx))/],
+  ['enterprise', 'SAP / Salesforce / ServiceNow', /^(?!.*(?:software (?:engineer|developer|development)|devsecops|\bai\b|\bml\b)).*(?:\bifs\b|\bsap\b|salesforce|servicenow|workday|dynamics 365|guidewire|\bpega\b|\binfor\b|\bmsd\b|dynamics|oracle (?:fusion|ebs|erp|hcm|scm|apps|apex|cx))/],
   /* END-USER COMPUTING IS IT SUPPORT, whatever the title calls it: Macquarie's
      "Workspace and Applications SRE" is Windows endpoint management (its own
      label), Zensar's "MDM-INTUNE" is device management. Above devops for the
@@ -127,7 +161,12 @@ export const RESCUABLE_FAMILIES = new Set(['research', 'product', 'it_support', 
    and they read as QA and data engineering. Measured on the live boards before
    this was added: they were most of what a label rescued out of core
    engineering. */
-const NO_RESCUE_INTO = new Set(['qa', 'data_eng']);
+/* …NOR INTO HARDWARE (8 Oct 2026): GE Vernova's "Post Doctoral Fellow
+   Materials" is core engineering by its title, and its label "Materials
+   Validation" read as hardware on "validation" — so it was filed Hardware and
+   posted to the WhatsApp channel. A loosely named misc title is rescued only
+   onto Software now. */
+const NO_RESCUE_INTO = new Set(['qa', 'data_eng', 'hardware']);
 
 const GENERIC = /engineer|intern|co-?op|trainee|apprentice|graduate|technolog|technical|associate|analyst/;
 
