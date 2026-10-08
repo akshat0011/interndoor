@@ -27,6 +27,7 @@ import { log } from './logger.js';
 import { releaseProfileLock } from './browser.js';
 import { entryWord } from './employment.js';
 import { announceable } from './rolefocus.js';
+import { channelRefusal } from './channelgate.js';
 import { renderCards } from './ogcard.js';
 
 /** Under the photo CAPTION's cap, which is what every post now is: measured
@@ -952,13 +953,22 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
      and the board cannot disagree about which shelf a role is on — and a
      backlogged id whose role has since been filed Misc drops out the same way
      a role that left the board does. */
+  /* AND NOTHING BELOW THE CHANNEL'S BAR (his ask, 8 Oct 2026: "no trash or
+     niche or non software role"): support and admin work, niche-product
+     configuration, senior grades, PhD-only roles, hardware, titles that name
+     no software job — src/channelgate.js. The role stays on the site; it is
+     only not pushed to every follower's phone. A held id is dropped from the
+     backlog like a misc one, so it never comes back on a later run. */
   const mine = [];
   const seen = new Set();
   let misc = 0;
+  const held = new Map();
   const take = (pub, code, id) => {
     if (!pub || seen.has(id)) return;
     seen.add(id);
     if (!announceable(pub.category)) { misc++; return; }
+    const why = channelRefusal(pub);
+    if (why) { const k = why.replace(/:.*/, ''); held.set(k, (held.get(k) ?? 0) + 1); return; }
     mine.push({ job: pub, code, id });
   };
   for (const code of regions) {
@@ -971,6 +981,8 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
     take(indexFor(code).get(id), code, id);
   }
   if (misc) log.info(`WhatsApp: ${misc} misc listing${misc === 1 ? '' : 's'} left to the site, not the channel.`);
+  const below = [...held.values()].reduce((a, b) => a + b, 0);
+  if (below) log.info(`WhatsApp: ${below} listing${below === 1 ? '' : 's'} below the channel's bar left to the site (${[...held].map(([k, n]) => `${k} ${n}`).join(', ')}).`);
   if (!mine.length) return { sent: 0, reason: 'nothing on these boards' };
 
   /* ONE SCAN'S WORTH, and the rest wait for the next — the same call the reel
