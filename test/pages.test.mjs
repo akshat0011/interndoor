@@ -1234,7 +1234,7 @@ console.log('\n== every surface names both kinds — internships & entry-level j
   check('the city facet too', /<h1>Internships and entry-level jobs in Bengaluru<\/h1>/.test(renderFacetPage('city', { slug: 'bengaluru', label: 'Bengaluru', jobs: [rich, ft] }, [], { region: IN })), true);
   check('the facet crumb says Jobs', /<a href="\/">Jobs<\/a> <span aria-hidden="true">\/<\/span>/.test(facetBoth), true);
   const facetIndex = renderFacetIndex('skill', [{ slug: 'python', label: 'python', jobs: [rich] }], { region: US });
-  check('the facet index names both kinds', /<h1>Internships and entry-level jobs in the US by skill<\/h1>/.test(facetIndex), true);
+  check('the facet index names both kinds', /<h1 class="sk-h1">Internships &amp; Entry-Level Jobs in the US by Skill<\/h1>/.test(facetIndex), true);
   check('in its title too', titleOf(facetIndex).startsWith('Internships & Entry-Level Jobs by Skill'), true);
 
   /* ALERTS, TRACKER, CONTACT, REPORT. */

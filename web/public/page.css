@@ -1876,3 +1876,64 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
    3.56 (pill) and 4.58 (notice) in the light theme. Darkened there only, to
    the value the tailor dialog's error already uses. */
 :root[data-theme="light"] .cr-closed, :root[data-theme="light"] .cr-alert b, :root[data-theme="light"] .cr-alert-ic { color: #9a3412; }
+
+/* ============================================================
+   /skills (redesigned 8 Oct 2026)
+   A row of the six skills with the most open roles, then every
+   skill with its mark and an arrow. Brand logos sit on a white
+   plate like the company crests (most are drawn for white); a
+   skill with no logo gets a drawn glyph on a lime-tinted plate,
+   so a concept never passes for a brand. The search box is the
+   company directory's .filter, revealed by page.js.
+   ============================================================ */
+.sk-hero { padding-bottom: 8px; }
+.page h1.sk-h1 { text-transform: none; letter-spacing: -.03em; word-spacing: 0; font-size: clamp(28px, 3.8vw, 44px); }
+.sk-lede { margin: 12px 0 0; max-width: 72ch; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+.sk .filter { max-width: 640px; }
+.sk-strip { padding-top: 36px; }
+.sk-meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.sk-logo {
+  width: 40px; height: 40px; flex: none; display: grid; place-items: center;
+  border-radius: var(--r-2); background: #fff; border: 1px solid var(--rule); overflow: hidden;
+}
+.sk-logo img { width: 26px; height: 26px; object-fit: contain; }
+.sk-logo.is-glyph {
+  background: color-mix(in oklab, var(--live) 9%, var(--card-2));
+  border-color: color-mix(in oklab, var(--live) 26%, transparent); color: var(--live);
+}
+.sk-logo.is-initials { font-family: var(--display); font-weight: 800; font-size: 13px; }
+.sk-go {
+  width: 28px; height: 28px; flex: none; display: grid; place-items: center; border-radius: 50%;
+  border: 1px solid var(--rule-2); color: var(--ink-2); font-style: normal;
+  transition: color .16s, border-color .16s, transform .18s var(--snap);
+}
+.sk-pop { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sk-pop-card {
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px; text-decoration: none;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2);
+  transition: border-color .16s, background .16s, transform var(--d-press) var(--snap);
+}
+.sk-pop-card .sk-logo { width: 46px; height: 46px; }
+.sk-pop-card .sk-logo img { width: 30px; height: 30px; }
+.sk-pop-card .dir-name { font-size: 15.5px; }
+.sk-pop-card:active, .sk-card:active { transform: scale(.985); }
+.sk-card { padding: 12px 14px; }
+@media (hover: hover) and (pointer: fine) {
+  .sk-pop-card:hover { border-color: var(--rule-2); background: var(--card-2); }
+  .sk-pop-card:hover .dir-name { color: var(--live); }
+  .sk-pop-card:hover .sk-go, .sk-card:hover .sk-go { color: var(--live); border-color: var(--live); transform: translateX(2px); }
+}
+@media (max-width: 640px) {
+  .sk-pop { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .sk-pop-card { padding: 12px; gap: 10px; }
+  .sk-pop-card .sk-logo { width: 38px; height: 38px; }
+  .sk-pop-card .sk-logo img { width: 24px; height: 24px; }
+  .sk-pop-card .sk-go { display: none; }
+  .sk-meta { display: none; }
+  /* Two across, not one: 74 single-column cards was seven screens of scroll. */
+  .sk-all { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .sk-card { padding: 10px; gap: 10px; }
+  .sk-card .sk-logo { width: 34px; height: 34px; }
+  .sk-card .sk-logo img { width: 22px; height: 22px; }
+  .sk-card .sk-go { display: none; }
+}

@@ -2701,10 +2701,26 @@ export function companyProfile(all, region = DEFAULT_REGION) {
  * already carrying capitals or digits alone — "SQL", "C++", "AWS" and "Node.js"
  * are all wrong after a naive capitalise, and so is "OOPS" if it is lowercased.
  */
-const SKILL_UPPER = new Set(['sql', 'aws', 'gcp', 'api', 'apis', 'css', 'html', 'ml', 'ai', 'nlp', 'ui', 'ux', 'oops', 'orm', 'jvm', 'cad', 'iot', 'rtl', 'fpga', 'vlsi', 'etl', 'llm', 'llms', 'ci/cd', 'saas', 'rest', 'crm', 'erp', 'qa', 'os', 'db', 'ds']);
+const SKILL_UPPER = new Set(['sql', 'aws', 'gcp', 'api', 'css', 'html', 'ml', 'ai', 'nlp', 'ui', 'ux', 'oops', 'oop', 'orm', 'jvm', 'cad', 'iot', 'rtl', 'fpga', 'vlsi', 'etl', 'llm', 'ci/cd', 'saas', 'rest', 'crm', 'erp', 'qa', 'os', 'db', 'ds',
+  'rag', 'rtos', 'spi', 'i2c', 'uart', 'pcb', 'asic', 'autosar', 'php', 'tcl', 'itil', 'sas', 'cuda', 'uvm', 'db2', 'ospf', 'vhdl', 'dax', 'bgp', 'mqtt', 'jcl', 'css3', 'r']);
+/* The product's own spelling, word by word (8 Oct 2026). Upper-casing the
+   first letter turned the store's lowercase into "Javascript", "Pytorch",
+   "Mysql" and "Power Bi" on every chip and every skill page; measured over the
+   live board, ~50 of the commonest skill names came out wrong. Acronyms go in
+   SKILL_UPPER; anything with inner capitals goes here. */
+const SKILL_WORDS = {
+  javascript: 'JavaScript', typescript: 'TypeScript', pytorch: 'PyTorch', tensorflow: 'TensorFlow',
+  postgresql: 'PostgreSQL', mysql: 'MySQL', mongodb: 'MongoDB', fastapi: 'FastAPI', graphql: 'GraphQL',
+  numpy: 'NumPy', pyspark: 'PySpark', langchain: 'LangChain', powershell: 'PowerShell',
+  github: 'GitHub', gitlab: 'GitLab', bigquery: 'BigQuery', servicenow: 'ServiceNow', autocad: 'AutoCAD',
+  opencv: 'OpenCV', junit: 'JUnit', devops: 'DevOps', matlab: 'MATLAB', '.net': '.NET',
+  apis: 'APIs', llms: 'LLMs', restful: 'RESTful', powerbi: 'Power BI', springboot: 'Spring Boot',
+  dbt: 'dbt', 'ai/ml': 'AI/ML', 'c/c++': 'C/C++', bi: 'BI', js: 'JS',
+};
 function titleCaseSkill(raw) {
   return String(raw ?? '').trim().split(/\s+/).map((w) => {
     const low = w.toLowerCase();
+    if (Object.hasOwn(SKILL_WORDS, low)) return SKILL_WORDS[low];
     if (SKILL_UPPER.has(low)) return low.toUpperCase();
     // Anything carrying capitals, digits or punctuation after the first letter
     // keeps its own shape — Node.js, PyTorch, S3, C++ — but the FIRST letter is
@@ -5087,10 +5103,135 @@ export function renderFacetPage(kind, facet, siblings = [], { region = DEFAULT_R
 ${foot({ headline: 'Get these as they open', sub: `New ${kind === 'skill' ? titleCaseSkill(facet.label) : facet.label} ${both ? 'roles' : 'internships'}, the day they are listed.`, region })}`;
 }
 
+/* ------------------------------------------------------------- skill marks
+   /skills, redesigned 8 Oct 2026 (his ask: "redesign it too … and can we add
+   a logo to each skill"). A skill that is a product gets its logo: Devicon's
+   SVGs (MIT; see web/public/skill-logos/LICENSE.txt for the commit), served
+   from our own origin, so the CSP's img-src 'self' holds and no third party
+   sees a request. Each logo stays its owner's trademark and only labels the
+   skill it names. A skill with no logo of its own — a concept like Agile or
+   RAG, or a brand Devicon does not carry (Excel, Power BI, Tableau) — gets a
+   drawn glyph for its kind, NEVER an invented logo. A skill in neither list
+   (a new one) falls back to its initials, like a company crest. */
+const SKILL_LOGOS = new Set([
+  'angular', 'aws', 'azure', 'c-plus-plus', 'c-sharp', 'django', 'docker', 'embedded-c',
+  'express', 'fastapi', 'flask', 'gcp', 'git', 'golang', 'graphql', 'java',
+  'javascript', 'jenkins', 'kafka', 'kotlin', 'kubernetes', 'linux', 'matlab', 'mongodb',
+  'mysql', 'net', 'next-js', 'node-js', 'numpy', 'pandas', 'perl', 'postgresql',
+  'python', 'pytorch', 'react', 'redis', 'ruby', 'scala', 'scikit-learn', 'spring-boot',
+  'swift', 'tensorflow', 'terraform', 'typescript', 'vue',
+]);
+const SKILL_GLYPH = {
+  agile: 'cycle', 'ci-cd': 'cycle',
+  algorithms: 'tree', 'data-structures': 'tree',
+  asic: 'chip', fpga: 'chip', pcb: 'chip', 'physical-design': 'chip', verilog: 'chip',
+  i2c: 'bus', spi: 'bus', uart: 'bus',
+  rtos: 'gear', autosar: 'gear',
+  'machine-learning': 'spark', 'deep-learning': 'spark', 'generative-ai': 'spark', llm: 'spark', nlp: 'spark', rag: 'spark',
+  'computer-vision': 'eye',
+  sql: 'db',
+  excel: 'chart', 'power-bi': 'chart', tableau: 'chart',
+  microservices: 'boxes', 'system-design': 'layers',
+  'rest-api': 'braces', oop: 'cube',
+};
+const GLYPH_PATHS = {
+  chip: '<rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v3M12 3v3M15 3v3M9 18v3M12 18v3M15 18v3M3 9h3M3 12h3M3 15h3M18 9h3M18 12h3M18 15h3"/>',
+  bus: '<path d="M2 12h4l2-6 4 12 2-6h8"/>',
+  gear: '<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>',
+  spark: '<path d="M11 3.5l1.9 5.1 5.1 1.9-5.1 1.9L11 17.5l-1.9-5.1L4 10.5l5.1-1.9z"/><path d="M18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>',
+  eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  db: '<ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>',
+  chart: '<path d="M4 20h16"/><rect x="6" y="11" width="3" height="7" rx=".5"/><rect x="11" y="7" width="3" height="11" rx=".5"/><rect x="16" y="4" width="3" height="14" rx=".5"/>',
+  cycle: '<path d="M20 11a8 8 0 0 0-14.3-4.9L4 8M4 4v4h4M4 13a8 8 0 0 0 14.3 4.9L20 16M20 20v-4h-4"/>',
+  boxes: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+  layers: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5"/><path d="M3 16.5l9 5 9-5"/>',
+  braces: '<path d="M8 4C6 4 5 5 5 7v2c0 1.5-1 3-2 3 1 0 2 1.5 2 3v2c0 2 1 3 3 3M16 4c2 0 3 1 3 3v2c0 1.5 1 3 2 3-1 0-2 1.5-2 3v2c0 2-1 3-3 3"/>',
+  tree: '<circle cx="12" cy="5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><circle cx="18" cy="18.5" r="2.2"/><path d="M11 7l-4 9.5M13 7l4 9.5"/>',
+  cube: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>',
+};
+
+/** The mark beside a skill: its logo, else a glyph for its kind, else its initials. */
+export function skillMark(slug, label) {
+  if (SKILL_LOGOS.has(slug)) {
+    return `<span class="sk-logo"><img src="/skill-logos/${esc(slug)}.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></span>`;
+  }
+  const glyph = GLYPH_PATHS[SKILL_GLYPH[slug]];
+  if (glyph) {
+    return `<span class="sk-logo is-glyph"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${glyph}</svg></span>`;
+  }
+  return `<span class="sk-logo is-glyph is-initials" aria-hidden="true">${esc(initials(label))}</span>`;
+}
+
+/* Its own query on page.css, this page only — the closed page's reason: the
+   stylesheet is cached a day, and a reader with yesterday's copy would get
+   the new layout unstyled. */
+const SKILLS_INDEX_VERSION = 's1';
+const SK_ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+/**
+ * /skills. A "Most open roles" row and the full grid, every skill with its
+ * mark. The search box is the company directory's (page.js reveals #filter
+ * and filters .dir-card by data-name), so no new script ships. The popular
+ * row carries no .dir-card on purpose: it stays put while the grid filters,
+ * rather than showing every match twice.
+ */
+function renderSkillIndex(facets, region) {
+  const k = FACET_KINDS.skill;
+  const total = facets.reduce((n, f) => n + f.jobs.length, 0);
+  const ranked = [...facets].sort((a, b) => b.jobs.length - a.jobs.length || a.label.localeCompare(b.label));
+  const name = (f) => titleCaseSkill(f.label);
+  const roles = (n) => `${n} open role${n === 1 ? '' : 's'}`;
+  const top = ranked.slice(0, 5).map(name);
+  const lede = `Browse live ${offerPhrase(region, { adjective: '' })} ${region.inName} by the skill they ask for${top.length ? ` — ${top.join(', ')}${ranked.length > top.length ? ` and ${ranked.length - top.length} more` : ''}` : ''}. Updated every 30 minutes.`;
+  const href = (f) => regionHref(`/${k.dir}/${f.slug}`, region);
+
+  return `${head({
+    title: buildTitle([`Internships & ${entryWordTitle(region)} Jobs by Skill`, region.inName]),
+    description: clampWords(`Browse live ${offerPhrase(region, { adjective: '' })} ${region.inName} by the skill they ask for. ${facets.length} skills across ${total} listings, updated every 30 minutes.`, 155),
+    canonical: regionUrl(`/${k.dir}/`, region),
+    indexable: FACETS_INDEXABLE && facets.length >= 3,
+    region,
+  }).replace('href="/page.css"', `href="/page.css?v=${SKILLS_INDEX_VERSION}"`)}
+<main class="page sk">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span> <span>Skills</span>
+    </nav>
+    <header class="sk-hero">
+      <h1 class="sk-h1">Internships &amp; ${esc(entryWordTitle(region))} Jobs ${esc(region.inName)} by Skill</h1>
+      <p class="sk-lede">${esc(lede)}</p>
+      <div class="filter" id="filter">
+        <label>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+          <input type="search" id="filter-input" placeholder="Search ${facets.length} skills — try “React”" aria-label="Search skills">
+        </label>
+      </div>
+    </header>
+
+    ${ranked.length >= 6 ? `<section class="strip sk-strip">
+      <div class="strip-head"><h2>Most open roles</h2><span class="sk-meta">Ranked by live openings right now</span></div>
+      <div class="sk-pop">
+        ${ranked.slice(0, 6).map((f) => `<a class="sk-pop-card" href="${href(f)}">${skillMark(f.slug, f.label)}<span class="dir-t"><span class="dir-name">${esc(name(f))}</span><span class="dir-n">${roles(f.jobs.length)}</span></span><i class="sk-go" aria-hidden="true">${SK_ARROW}</i></a>`).join('\n        ')}
+      </div>
+    </section>` : ''}
+
+    <p class="dir-none" id="dir-none">No skill matches that. Try a shorter word.</p>
+    <section class="strip sk-strip" data-group>
+      <div class="strip-head"><h2>All skills</h2><span class="sk-meta">${facets.length} skills · most open roles first</span></div>
+      <div class="dir sk-all">
+        ${ranked.map((f) => `<a class="dir-card sk-card" data-name="${esc(name(f).toLowerCase())}" href="${href(f)}">${skillMark(f.slug, f.label)}<span class="dir-t"><span class="dir-name">${esc(name(f))}</span><span class="dir-n">${roles(f.jobs.length)}</span></span><i class="sk-go" aria-hidden="true">${SK_ARROW}</i></a>`).join('\n        ')}
+      </div>
+    </section>
+  </div>
+</main>
+${foot({ headline: 'Get new roles as they open', sub: 'One email when something matching lands.', region })}`;
+}
+
 /** The index at /skills/ or /locations/ — the crawl path to every facet page. */
 export function renderFacetIndex(kind, facets = [], { region = DEFAULT_REGION } = {}) {
   const k = FACET_KINDS[kind];
   if (!k) throw new Error(`renderFacetIndex: unknown kind ${kind}`);
+  if (kind === 'skill') return renderSkillIndex(facets, region);
   const noun = kind === 'skill' ? 'Skills' : 'Locations';
   const total = facets.reduce((n, f) => n + f.jobs.length, 0);
   const lede = kind === 'skill'
