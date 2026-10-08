@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791420699045,
+ "generatedAt": 1791420869380,
  "region": "IN",
  "regionName": "India",
  "count": 1170,
@@ -462,6 +462,57 @@
  ],
  "jobs": [
   {
+   "id": "4476947791",
+   "title": "Digital Associate, Ring Data Engineering Services",
+   "company": "Amazon",
+   "matchedWatchlist": "Amazon",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/amazon.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "excel"
+   ],
+   "summary": "This role involves labeling audio, video, and image data with accurate text descriptions. Ideal for students with strong English skills and attention to detail. Work with internal tools to ensure quality and meet daily targets.",
+   "bullets": [
+    "Annotate audio/video/images with precise text labels",
+    "Use internal tools for data labeling and quality checks",
+    "Track tasks and report progress daily"
+   ],
+   "roleLabel": "Data Labeling",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "english",
+    "word",
+    "excel",
+    "firefox"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "52 minutes ago",
+   "postedAt": 1791417690835,
+   "firstSeenAt": 1791420810836,
+   "lastSeenAt": 1791420810836,
+   "url": "https://www.linkedin.com/jobs/view/4476947791/",
+   "applyUrl": "https://www.amazon.jobs/jobs/10572108/digital-associate-ring-data-engineering-services?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
+   "description": null,
+   "roleFingerprint": "4390cfb579",
+   "cardFacts": [
+    "Chennai",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "data_eng",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4474472997",
    "title": "Applied Scientist FinAuto",
    "slugTitle": "Applied Scientist, FinAuto",
@@ -504,7 +555,7 @@
    "postedText": "26 minutes ago",
    "postedAt": 1791412086669,
    "firstSeenAt": 1791413646676,
-   "lastSeenAt": 1791417188888,
+   "lastSeenAt": 1791420736859,
    "url": "https://www.linkedin.com/jobs/view/4474472997/",
    "applyUrl": "https://www.amazon.jobs/jobs/10571470/applied-scientist-finauto?cmpid=bsp-amazon-science",
    "description": null,
@@ -29500,54 +29551,6 @@
    "verified": true
   },
   {
-   "id": "4473974946",
-   "title": "Digital Associate, Ring Data Engineering Services",
-   "company": "Amazon",
-   "matchedWatchlist": "Amazon",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/amazon.jpg",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "excel"
-   ],
-   "summary": "This role involves labeling audio, video, and image files with accurate text descriptions. Ideal for students with strong English skills and attention to detail. Work with internal tools to ensure data quality and meet daily targets.",
-   "bullets": [
-    "Annotate audio/video/image files with precise text labels",
-    "Use internal tools for data labeling and quality checks",
-    "Track tasks and report progress daily to team"
-   ],
-   "roleLabel": "Data Labeling",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "english language"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "7 minutes ago",
-   "postedAt": 1790814844121,
-   "firstSeenAt": 1790815264125,
-   "lastSeenAt": 1790822186751,
-   "url": "https://www.linkedin.com/jobs/view/4473974946/",
-   "applyUrl": "https://www.amazon.jobs/jobs/10554182/digital-associate-ring-data-engineering-services?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "062bb58974",
-   "cardFacts": [
-    "Chennai",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "data_eng",
-   "region": "IN",
-   "verified": false
-  },
-  {
    "id": "4472363950",
    "title": "Associate Software Engineer",
    "company": "Flex",
@@ -50109,7 +50112,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1791417208323,
+   "lastSeenAt": 1791420753585,
    "checkedAt": 1791389158802,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
