@@ -6,7 +6,69 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 08 Oct 2026 10:54:17 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 11:25:39 GMT</lastBuildDate>
+  <item>
+    <title>Data Migration Engineer (Fall 2026) — NTT DATA North America</title>
+    <link>https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213</guid>
+    <pubDate>Thu, 08 Oct 2026 11:25:39 GMT</pubDate>
+    <description>Company: NTT DATA North America · Location: Nim ka Thana, Rajasthan, India · Duration: Fall 2026
+• Translate informatica workflows into python el and dbt models
+• Build pipelines for billion-row data with sqlalchemy and oracle data pump
+• Design dbt transformations with macros and incremental strategies
+• Orchestrate scripts with airflow and contribute to ci/cd pipelines</description>
+  </item>
+  <item>
+    <title>MES Machine Integrator — Birlasoft</title>
+    <link>https://interndoor.com/jobs/birlasoft-apriso-mes-machine-integrator-4466892026</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-apriso-mes-machine-integrator-4466892026</guid>
+    <pubDate>Thu, 08 Oct 2026 11:21:22 GMT</pubDate>
+    <description>Company: Birlasoft · Location: Pune/Pimpri-Chinchwad Area
+• Integrate machines, PLCs, and systems with Apriso MES
+• Use OPC UA, MQTT, REST, and industrial protocols
+• Work with SAP, Oracle, and Dynamics ERP systems
+• Collaborate with engineers and stakeholders on deployments</description>
+  </item>
+  <item>
+    <title>Full Stack Developer — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4475790794</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-full-stack-developer-4475790794</guid>
+    <pubDate>Thu, 08 Oct 2026 11:13:11 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Build and maintain full-stack Java applications
+• Work with Angular, Spring/Hibernate, and REST APIs
+• Collaborate in Agile teams using Git and Maven</description>
+  </item>
+  <item>
+    <title>Securitized Products Analyst — Nomura</title>
+    <link>https://interndoor.com/jobs/nomura-global-markets-securitized-products-asset-management-analyst-4477162050</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/nomura-global-markets-securitized-products-asset-management-analyst-4477162050</guid>
+    <pubDate>Thu, 08 Oct 2026 11:05:09 GMT</pubDate>
+    <description>Company: Nomura · Location: Mumbai, Maharashtra, India · Duration: 0-1 years
+• Setup and maintain collateral structures in ProMerit for ABS/RMBS/CMBS
+• Analyze and normalize data for downstream reporting and pricing
+• Collaborate with IT and Asset Management on system enhancements</description>
+  </item>
+  <item>
+    <title>C#/WPF Software Engineer — Quest Global</title>
+    <link>https://interndoor.com/jobs/quest-global-c-wpf-software-engineer-4475787891</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/quest-global-c-wpf-software-engineer-4475787891</guid>
+    <pubDate>Thu, 08 Oct 2026 11:03:56 GMT</pubDate>
+    <description>Company: Quest Global · Location: Thiruvananthapuram, Kerala, India · Duration: 1 to 2 years
+• Code windows desktop apps using c# and wpf
+• Write reusable code and perform unit testing
+• Work independently and learn new technologies</description>
+  </item>
+  <item>
+    <title>AI Engineer — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-ai-engineer-4475903266</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-ai-engineer-4475903266</guid>
+    <pubDate>Thu, 08 Oct 2026 11:00:29 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Build AI applications using enterprise stack, LLMs, and multi-agent systems
+• Work with LangGraph, vector stores, and RAG architectures
+• Collaborate on CI/CD pipelines and observability for AI solutions</description>
+  </item>
   <item>
     <title>Mainframe App Development Specialist — Birlasoft</title>
     <link>https://interndoor.com/jobs/birlasoft-ibm-mainframe-technical-specialist-app-development-4475790746</link>
@@ -56,6 +118,16 @@
 • Write quality code for customer needs and configurations
 • Use sql, python/java, powerbi, ai/ml tools
 • Work with senior team on projects and release processes</description>
+  </item>
+  <item>
+    <title>Applied Scientist, SSG Science — Amazon Science</title>
+    <link>https://interndoor.com/jobs/amazon-science-applied-scientist-ssg-science-4475785832</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-science-applied-scientist-ssg-science-4475785832</guid>
+    <pubDate>Thu, 08 Oct 2026 10:28:28 GMT</pubDate>
+    <description>Company: Amazon Science · Location: Bengaluru, Karnataka, India
+• Optimize gen ai models for edge platforms
+• Collaborate with hardware and product teams
+• Publish research at top ml conferences</description>
   </item>
   <item>
     <title>Network Engineer Trainee — eSec Forte® Technologies</title>
@@ -439,77 +511,6 @@
 • Build web apps with python, django, flask, react, and databases
 • Design scalable rest apis for data processing and enterprise apps
 • Create automation tools for excel, data validation, and reporting</description>
-  </item>
-  <item>
-    <title>Python Developer — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4476797991</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-z2-python-developer-4476797991</guid>
-    <pubDate>Wed, 07 Oct 2026 19:54:13 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India
-• Write scripts for GitLab, Artifactory, and Vault automation
-• Collaborate with DevOps and development teams on platform tools
-• Refactor Python code for performance and quality</description>
-  </item>
-  <item>
-    <title>Cross Technology Managed Services Engineer (L1) — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-cross-technology-managed-services-engineer-l1-4474459916</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-cross-technology-managed-services-engineer-l1-4474459916</guid>
-    <pubDate>Wed, 07 Oct 2026 18:25:46 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Haryana, India
-• Monitor and resolve client IT issues across cloud, security, networking, and applications
-• Use ITSM tools and knowledge articles to support ticket resolution
-• Work in a hybrid environment with global teams and client-facing responsibilities</description>
-  </item>
-  <item>
-    <title>GeoSpatial Analyst MAP — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-geospatial-analyst-map-4466884257</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-geospatial-analyst-map-4466884257</guid>
-    <pubDate>Wed, 07 Oct 2026 18:11:49 GMT</pubDate>
-    <description>Company: Cognizant · Location: Chennai, Tamil Nadu, India
-• Manage dynatrace alerts dashboards and dql queries for operational visibility
-• Support oneagent activegate and open telemetry on azure and kubernetes
-• Troubleshoot dynatrace issues and data gaps across windows linux and akS</description>
-  </item>
-  <item>
-    <title>ITAO – Application Owner, AS — Deutsche Bank</title>
-    <link>https://interndoor.com/jobs/deutsche-bank-itao-application-owner-as-4476795445</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/deutsche-bank-itao-application-owner-as-4476795445</guid>
-    <pubDate>Wed, 07 Oct 2026 18:00:11 GMT</pubDate>
-    <description>Company: Deutsche Bank · Location: Pune Division, Maharashtra, India
-• Manage application audits, risk compliance, and security incidents
-• Coordinate with stakeholders and vendors for infrastructure upgrades
-• Monitor application performance and user access
-• Maintain disaster recovery plans and execute drills</description>
-  </item>
-  <item>
-    <title>Contractor — Veradigm®</title>
-    <link>https://interndoor.com/jobs/veradigm-contractor-4459012061</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/veradigm-contractor-4459012061</guid>
-    <pubDate>Wed, 07 Oct 2026 17:53:37 GMT</pubDate>
-    <description>Company: Veradigm® · Location: Pune Division, Maharashtra, India
-• Answer customer calls about product issues
-• Monitor systems and fix technical problems
-• Work with team to solve customer challenges</description>
-  </item>
-  <item>
-    <title>Application Engineer — Applied Materials India</title>
-    <link>https://interndoor.com/jobs/applied-materials-india-application-engineer-4465944170</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/applied-materials-india-application-engineer-4465944170</guid>
-    <pubDate>Wed, 07 Oct 2026 17:37:29 GMT</pubDate>
-    <description>Company: Applied Materials India · Location: Bengaluru, Karnataka, India
-• Analyze nanometer-scale defects using advanced imaging and image processing algorithms
-• Collaborate with semiconductor manufacturers to optimize defect metrology products
-• Travel 75% of time to overseas chip fabrication facilities</description>
-  </item>
-  <item>
-    <title>Python full stack + AWS (ETL) — Broadridge India</title>
-    <link>https://interndoor.com/jobs/broadridge-india-python-full-stack-aws-etl-4458792777</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/broadridge-india-python-full-stack-aws-etl-4458792777</guid>
-    <pubDate>Wed, 07 Oct 2026 17:23:45 GMT</pubDate>
-    <description>Company: Broadridge India · Location: Greater Bengaluru Area
-• Builds and maintains web applications using python and aws
-• Works on etl pipelines and data processing systems
-• Collaborates with cross-functional teams in agile environments</description>
   </item>
 </channel>
 </rss>
