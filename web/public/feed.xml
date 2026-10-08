@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 08 Oct 2026 18:03:48 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 18:55:22 GMT</lastBuildDate>
+  <item>
+    <title>Python Software Engineer — Glencore</title>
+    <link>https://interndoor.com/jobs/glencore-python-software-engineer-4476204074</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/glencore-python-software-engineer-4476204074</guid>
+    <pubDate>Thu, 08 Oct 2026 18:55:22 GMT</pubDate>
+    <description>Company: Glencore · Location: Chennai, Tamil Nadu, India
+• Develop and maintain Python applications for enterprise automation and digital transformation
+• Migrate RPA workflows to Python with focus on scalability and performance
+• Collaborate with global teams and stakeholders to deliver technical solutions
+• Support production systems and resolve critical issues in enterprise environments</description>
+  </item>
   <item>
     <title>Technology Specialist — Broadridge India</title>
     <link>https://interndoor.com/jobs/broadridge-india-technology-specialist-4028615754</link>
@@ -502,17 +513,6 @@
 • Develop secure, cross-platform C++ code for endpoint protection solutions
 • Collaborate with global teams on Windows internals and AI-driven security tools
 • Design scalable software architecture using object-oriented principles</description>
-  </item>
-  <item>
-    <title>Data Migration Engineer (Fall 2026) — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213</guid>
-    <pubDate>Thu, 08 Oct 2026 11:25:39 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Nim ka Thana, Rajasthan, India · Duration: Fall 2026
-• Translate informatica workflows into python el and dbt models
-• Build pipelines for billion-row data with sqlalchemy and oracle data pump
-• Design dbt transformations with macros and incremental strategies
-• Orchestrate scripts with airflow and contribute to ci/cd pipelines</description>
   </item>
 </channel>
 </rss>

@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/glencore-python-software-engineer-4476204074",
+      "url": "https://interndoor.com/jobs/glencore-python-software-engineer-4476204074",
+      "title": "Python Software Engineer — Glencore",
+      "content_text": "Company: Glencore · Location: Chennai, Tamil Nadu, India\n• Develop and maintain Python applications for enterprise automation and digital transformation\n• Migrate RPA workflows to Python with focus on scalability and performance\n• Collaborate with global teams and stakeholders to deliver technical solutions\n• Support production systems and resolve critical issues in enterprise environments",
+      "date_published": "2026-10-08T18:55:22.897Z",
+      "authors": [
+        {
+          "name": "Glencore"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/broadridge-india-technology-specialist-4028615754",
       "url": "https://interndoor.com/jobs/broadridge-india-technology-specialist-4028615754",
       "title": "Technology Specialist — Broadridge India",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Trellix"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-data-migration-engineer-fall-2026-4459142213",
-      "title": "Data Migration Engineer (Fall 2026) — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Nim ka Thana, Rajasthan, India · Duration: Fall 2026\n• Translate informatica workflows into python el and dbt models\n• Build pipelines for billion-row data with sqlalchemy and oracle data pump\n• Design dbt transformations with macros and incremental strategies\n• Orchestrate scripts with airflow and contribute to ci/cd pipelines",
-      "date_published": "2026-10-08T11:25:39.139Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
