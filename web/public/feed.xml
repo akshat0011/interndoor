@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 08 Oct 2026 04:48:06 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 07:40:09 GMT</lastBuildDate>
+  <item>
+    <title>Visual Design Intern — Vecmocon</title>
+    <link>https://interndoor.com/jobs/vecmocon-visual-design-intern-ats-keka-vecmocon-163388</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/vecmocon-visual-design-intern-ats-keka-vecmocon-163388</guid>
+    <pubDate>Thu, 08 Oct 2026 07:40:09 GMT</pubDate>
+    <description>Company: Vecmocon · Location: Noida, UP, India · Duration: 4-6 months
+• Design decals and safety labels for physical EV hardware using illustrator
+• Create 3d visualizations with blender for product rendering
+• Contribute to mobile and desktop app ui graphics and motion design</description>
+  </item>
   <item>
     <title>Network Support Apprentice — F5</title>
     <link>https://interndoor.com/jobs/f5-network-support-apprenticeship-4476992835</link>
@@ -501,16 +511,6 @@
 • Clean and analyze datasets to find trends
 • Create dashboards and reports using tableau
 • Work with global teams across time zones</description>
-  </item>
-  <item>
-    <title>Machine Learning Engineer — Eli Lilly and Company</title>
-    <link>https://interndoor.com/jobs/eli-lilly-and-company-machine-learning-engineer-4465648106</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/eli-lilly-and-company-machine-learning-engineer-4465648106</guid>
-    <pubDate>Wed, 07 Oct 2026 13:11:46 GMT</pubDate>
-    <description>Company: Eli Lilly and Company · Location: Bengaluru East, Karnataka, India · Duration: 0–4 years
-• Build and maintain production ML/AI services with minimal supervision
-• Use Docker, Kubernetes, and Prefect for deployment and orchestration
-• Design CI/CD pipelines and support model monitoring and retraining</description>
   </item>
 </channel>
 </rss>
