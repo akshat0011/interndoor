@@ -1761,3 +1761,118 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .ap-msg { font-size: 14px; margin: 0; min-height: 1.3em; color: var(--ink-2); }
 .ap-msg.is-good { color: var(--live); }
 .ap-msg.is-bad { color: var(--warn, #e8c169); }
+
+/* ============================================================
+   THE CLOSED ROLE PAGE (design A, his pick, 8 Oct 2026)
+   A reader from a LinkedIn post or an old link lands on a role
+   that has gone. The page says so plainly (an orange notice, not
+   the green "open" pill), keeps the role's facts behind "Show
+   details", and leads them to what is open: the employer's other
+   roles, similar roles with their skills, and the channel. The
+   company record in the sidebar is OUR count of what we tracked,
+   never a claim about the employer we do not hold.
+   page.css carries a ?v= on this page only, so these rules arrive
+   with the markup; every other page keeps the bare URL.
+   ============================================================ */
+.cr-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start; margin-top: 6px; }
+.cr-main { min-width: 0; }
+.cr-status { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 6px 0 14px; font-size: 13px; color: var(--ink-2); }
+.cr-closed {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-weight: 700; font-size: 13px; color: var(--hot);
+  background: color-mix(in oklab, var(--hot) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--hot) 40%, transparent);
+  padding: 4px 11px 4px 9px; border-radius: var(--r-pill);
+}
+.cr-closed i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+/* Sentence case, not the job page's uppercase shout: this page is about a
+   role that has gone, and the loudest thing on it should be the notice. */
+.page h1.cr-h1 { text-transform: none; letter-spacing: -.03em; word-spacing: 0; font-size: clamp(28px, 3.6vw, 42px); }
+.cr-co { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+.cr-co-t { min-width: 0; }
+.cr-crest { width: 46px; height: 46px; font-size: 15px; }
+.cr-coname { color: var(--ink); font-weight: 650; font-size: 16px; text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { .cr-coname:hover { color: var(--live); } }
+.cr-facts { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 4px 0 0; padding: 0; font-size: 13.5px; color: var(--ink-2); }
+.cr-facts li { display: inline-flex; align-items: center; gap: 5px; }
+.cr-alert {
+  display: flex; gap: 14px; align-items: flex-start; margin-top: 22px;
+  padding: 16px 18px; border-radius: var(--r-2);
+  background: color-mix(in oklab, var(--hot) 9%, var(--card));
+  border: 1px solid color-mix(in oklab, var(--hot) 38%, transparent);
+}
+.cr-alert-ic { color: var(--hot); flex: none; line-height: 0; margin-top: 1px; }
+.cr-alert strong { display: block; font-size: 16px; color: var(--ink); }
+.cr-alert p { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.cr-alert b { color: var(--hot); font-weight: 650; }
+.cr-alert a { color: var(--live); font-weight: 600; }
+.cr-strip { padding-top: 34px; }
+.cr-tiles { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.cr-tile .tile-top, .cr-tile > .tile-role:first-child { padding-right: 36px; }
+.cr-chips { display: flex; flex-wrap: wrap; gap: 5px; list-style: none; margin: 0; padding: 0; }
+.cr-chips span, .cr-chips li {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--ink-15); background: var(--card-2); border: 1px solid var(--rule);
+  border-radius: var(--r); padding: 3px 7px;
+}
+.cr-go {
+  position: absolute; right: 14px; top: 14px; width: 28px; height: 28px;
+  border-radius: 50%; border: 1px solid var(--rule-2); display: grid; place-items: center;
+  color: var(--ink-2); font-style: normal; transition: color .16s, border-color .16s;
+}
+@media (hover: hover) and (pointer: fine) { .cr-tile:hover .cr-go { color: var(--live); border-color: var(--live); } }
+.cr-orig { margin-top: 34px; border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); padding: 0 18px; }
+.cr-orig summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; justify-content: space-between; padding: 15px 0; }
+.cr-orig summary::-webkit-details-marker { display: none; }
+.cr-orig summary span { display: grid; gap: 2px; }
+.cr-orig summary strong { font-size: 14.5px; color: var(--ink); }
+.cr-orig summary em { font-style: normal; font-size: 12.5px; color: var(--ink-2); }
+.cr-orig summary b { font-size: 12.5px; font-weight: 600; color: var(--ink); white-space: nowrap; border: 1px solid var(--rule-2); border-radius: var(--r-pill); padding: 6px 12px; }
+.cr-orig[open] { padding-bottom: 18px; }
+.cr-orig[open] summary b { border-color: var(--live); }
+.cr-orig[open] .cr-show, .cr-orig:not([open]) .cr-hide { display: none; }
+.cr-dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--r-2); overflow: hidden; margin: 0 0 18px; }
+.cr-dl > div { background: var(--bg); padding: 11px 14px; display: grid; gap: 3px; }
+.cr-dl dt { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.cr-dl dd { margin: 0; font-size: 14px; color: var(--ink); overflow-wrap: anywhere; }
+.cr-lbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 10px; }
+.cr-side { position: sticky; top: 84px; display: grid; gap: 14px; margin-top: 6px; }
+.cr-card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2); padding: 18px; }
+.cr-cohead { display: flex; align-items: center; gap: 12px; }
+.cr-cohead strong { font-size: 16px; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+.cr-stats { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 12px; margin: 16px 0; padding: 14px 0 0; border-top: 1px solid var(--rule); }
+.cr-stats dt { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.cr-stats dd { margin: 3px 0 0; font-size: 14px; color: var(--ink); font-weight: 600; }
+.cr-more { font-size: 13px; font-weight: 600; color: var(--live); text-decoration: none; }
+.cr-lead {
+  display: grid; gap: 6px; padding: 18px; border-radius: var(--r-2); text-decoration: none;
+  background: color-mix(in oklab, var(--live) 8%, var(--card));
+  border: 1px solid color-mix(in oklab, var(--live) 30%, transparent);
+}
+.cr-lead-ic { color: var(--live); line-height: 0; }
+.cr-lead strong { color: var(--ink); font-size: 15px; }
+.cr-lead em { font-style: normal; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
+.cr-lead-go {
+  justify-self: start; margin-top: 6px; display: inline-flex; align-items: center; gap: 6px;
+  background: var(--live); color: var(--live-ink); font-weight: 700; font-size: 13px;
+  padding: 8px 14px; border-radius: var(--r-pill);
+}
+/* On a phone the sidebar falls below every list, so the channel ask moves up
+   under the notice as a band, and the sidebar's copy of it hides. */
+.cr-band { display: none; }
+@media (max-width: 960px) {
+  .cr-grid { grid-template-columns: minmax(0, 1fr); }
+  .cr-side { position: static; }
+  .cr-side .cr-lead { display: none; }
+  .cr-band {
+    display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 14px 16px;
+    border-radius: var(--r-2); text-decoration: none; color: var(--live-ink); background: var(--live);
+    font-size: 13.5px; line-height: 1.4;
+  }
+  .cr-band span { flex: 1; }
+  .cr-band svg { flex: none; }
+}
+/* MEASURED, the accent-on-its-own-tint trap again: --hot on its own tint read
+   3.56 (pill) and 4.58 (notice) in the light theme. Darkened there only, to
+   the value the tailor dialog's error already uses. */
+:root[data-theme="light"] .cr-closed, :root[data-theme="light"] .cr-alert b, :root[data-theme="light"] .cr-alert-ic { color: #9a3412; }
