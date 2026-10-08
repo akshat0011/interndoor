@@ -330,5 +330,17 @@ check('a real cloud role is still DevOps', shelf('Cloud Engineer Intern'), 'soft
 check('"Site Reliability Engineer" is still software', shelf('Site Reliability Engineer'), 'software');
 check('no misc row is announced', announceable('misc'), false);
 
+console.log('\n== 8 Oct 2026: markets finance and MES are misc ==');
+check('Nomura "Global Markets – Securitized Products - Asset Management - Analyst"', shelf('Global Markets – Securitized Products - Asset Management - Analyst', 'Data Analysis'), 'misc');
+check('Birlasoft "Apriso MES Machine Integrator"', shelf('Apriso MES Machine Integrator', 'MES Integration'), 'misc');
+check('L&T "Jr.Engineer - IT MES"', shelf('Jr.Engineer - IT MES', 'Mes system support'), 'misc');
+check('"Risk Management Analyst"', shelf('Risk Management Analyst'), 'misc');
+check('the family is finance', roleFamily('Global Markets – Securitized Products - Asset Management - Analyst'), 'finance');
+check('a trading-systems DEVELOPER stays software', shelf('Trading Systems Developer'), 'software');
+check('a data analyst in markets stays software (his "keep data analyst")', shelf('Data Analyst - Global Markets'), 'software');
+check('"Software Engineer - Risk Management" stays software', shelf('Software Engineer - Risk Management'), 'software');
+check('"MES Software Developer" stays software', shelf('MES Software Developer'), 'software');
+check('"Messaging Engineer" is not MES', shelf('Messaging Engineer'), 'software');
+
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);
