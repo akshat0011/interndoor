@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/vecmocon-visual-design-intern-ats-keka-vecmocon-163388",
+      "url": "https://interndoor.com/jobs/vecmocon-visual-design-intern-ats-keka-vecmocon-163388",
+      "title": "Visual Design Intern — Vecmocon",
+      "content_text": "Company: Vecmocon · Location: Noida, UP, India · Duration: 4-6 months\n• Design decals and safety labels for physical EV hardware using illustrator\n• Create 3d visualizations with blender for product rendering\n• Contribute to mobile and desktop app ui graphics and motion design",
+      "date_published": "2026-10-08T07:40:09.660Z",
+      "authors": [
+        {
+          "name": "Vecmocon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/f5-network-support-apprenticeship-4476992835",
       "url": "https://interndoor.com/jobs/f5-network-support-apprenticeship-4476992835",
       "title": "Network Support Apprentice — F5",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GE HealthCare"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/eli-lilly-and-company-machine-learning-engineer-4465648106",
-      "url": "https://interndoor.com/jobs/eli-lilly-and-company-machine-learning-engineer-4465648106",
-      "title": "Machine Learning Engineer — Eli Lilly and Company",
-      "content_text": "Company: Eli Lilly and Company · Location: Bengaluru East, Karnataka, India · Duration: 0–4 years\n• Build and maintain production ML/AI services with minimal supervision\n• Use Docker, Kubernetes, and Prefect for deployment and orchestration\n• Design CI/CD pipelines and support model monitoring and retraining",
-      "date_published": "2026-10-07T13:11:46.123Z",
-      "authors": [
-        {
-          "name": "Eli Lilly and Company"
         }
       ]
     }
