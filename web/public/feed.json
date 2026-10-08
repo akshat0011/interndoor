@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cisco-security-engineer-4477400879",
+      "url": "https://interndoor.com/jobs/cisco-security-engineer-4477400879",
+      "title": "Security Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Build security observability for SaaS, cloud, and endpoints using AI and automation\n• Integrate tools like Axonius, Wiz, Splunk, and ServiceNow for monitoring and remediation\n• Design dashboards and automate workflows to track vulnerabilities and risks",
+      "date_published": "2026-10-08T15:51:33.162Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/fiserv-data-scientist-professional-i-4475964590",
+      "url": "https://interndoor.com/jobs/fiserv-data-scientist-professional-i-4475964590",
+      "title": "Data Scientist Professional I — Fiserv",
+      "content_text": "Company: Fiserv · Location: Thane, Maharashtra, India\n• Analyze financial data to improve payment systems\n• Use python and sql to build predictive models\n• Work with cross-functional teams on global projects",
+      "date_published": "2026-10-08T15:20:07.076Z",
+      "authors": [
+        {
+          "name": "Fiserv"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4468647570",
+      "url": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4468647570",
+      "title": "Software Engineer AI Hub — Linde",
+      "content_text": "Company: Linde · Location: Bengaluru, Karnataka, India\n• Develop cloud-based applications for internal customers\n• Work with customer data and build backend/frontend systems\n• Implement CI/CD tools for reliable software delivery",
+      "date_published": "2026-10-08T15:07:50.110Z",
+      "authors": [
+        {
+          "name": "Linde"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/pwc-india-specialist-apptech-gdc-4291061886",
       "url": "https://interndoor.com/jobs/pwc-india-specialist-apptech-gdc-4291061886",
       "title": "Specialist - AppTech - GDC — PwC India",
@@ -122,18 +158,6 @@
       "authors": [
         {
           "name": "Eaton"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-post-doctoral-fellow-materials-4475946243",
-      "url": "https://interndoor.com/jobs/ge-vernova-post-doctoral-fellow-materials-4475946243",
-      "title": "Post Doctoral Fellow Materials — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Bengaluru, Karnataka, India\n• Conduct technical validation of material concepts through testing and analysis\n• Work with standard operational procedures in materials science and engineering\n• Contribute to team projects with autonomy and problem-solving skills",
-      "date_published": "2026-10-08T14:05:25.019Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "eSec Forte® Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sonata-software-automation-test-engineer-4477153086",
-      "url": "https://interndoor.com/jobs/sonata-software-automation-test-engineer-4477153086",
-      "title": "Automation Test Engineer — Sonata Software",
-      "content_text": "Company: Sonata Software · Location: Bengaluru, Karnataka, India\n• Test AI models and agents for accuracy, context retention, and hallucination reduction\n• Build Python automation frameworks for CI/CD pipelines and AI evaluation\n• Collaborate with developers and data scientists on AI quality benchmarks",
-      "date_published": "2026-10-08T10:12:12.070Z",
-      "authors": [
-        {
-          "name": "Sonata Software"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cummins-india-business-intelligence-analyst-4477148429",
-      "url": "https://interndoor.com/jobs/cummins-india-business-intelligence-analyst-4477148429",
-      "title": "Business Intelligence Analyst — Cummins India",
-      "content_text": "Company: Cummins India · Location: Pune District, Maharashtra, India\n• Develop reports and dashboards using power bi and sql\n• Work with snowflake, databricks, and ssas models\n• Collaborate with cross-functional teams on data projects",
-      "date_published": "2026-10-08T10:04:31.999Z",
-      "authors": [
-        {
-          "name": "Cummins India"
         }
       ]
     }
