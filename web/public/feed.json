@@ -246,18 +246,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/qualcomm-integration-engineer-4457953435",
-      "url": "https://interndoor.com/jobs/qualcomm-integration-engineer-4457953435",
-      "title": "Integration Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Chennai, Tamil Nadu, India\n• Develop and maintain automation solutions using Python\n• Work with Git, GitHub, and Linux shell scripting\n• Collaborate with cross-functional teams on software integration",
-      "date_published": "2026-10-08T12:13:02.344Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/trellix-associate-software-development-engineer-4475946205",
       "url": "https://interndoor.com/jobs/trellix-associate-software-development-engineer-4475946205",
       "title": "Software Development Associate — Trellix",
@@ -602,6 +590,18 @@
       "authors": [
         {
           "name": "Zycus"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-z2-open-text-cloud-developer-4477125185",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-z2-open-text-cloud-developer-4477125185",
+      "title": "Open Text Cloud Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Deploy OpenText Cloud services on Kubernetes with Helm charts and CI/CD pipelines\n• Design cloud archives with compliance, search, and retention policies\n• Ensure security, observability, and resilience in cloud environments",
+      "date_published": "2026-10-08T08:04:59.549Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
         }
       ]
     }
