@@ -49,6 +49,16 @@ export const ROLE_FAMILIES = [
      title whose role is "analyst" and that names no engineer — measured on the
      live India board: 9 roles moved, every one an analyst. */
   ['secops', 'Security operations / GRC', /\bincident\b|security operations|\bsiem\b|forensic|\bgrc\b|governance,? risk|^(?!.*\b(?:engineer|engineering|developer|architect)\b)(?=.*(?:cyber|security|infosec|vulnerab|threat|\bsoc\b)).*\banalyst/],
+  /* FINANCE AND MARKETS WORK IS NOT SOFTWARE (8 Oct 2026, his call on
+     Nomura's "Global Markets – Securitized Products - Asset Management -
+     Analyst", which read as generic on "Analyst" and so as Software).
+     Guarded: a title naming software, a developer or engineer, or a data
+     analyst / engineer / scientist keeps its own family ("keep data analyst"). */
+  ['finance', 'Finance / markets / risk', /^(?!.*\b(?:software|developer|engineer|engineering|programmer|data analy\w*|data engineer|data scien\w*)\b).*(?:global markets|securiti[sz]ed|\bsecurities\b|fixed income|equity research|investment banking|asset management|wealth management|private equity|credit risk|market risk|risk management|\btreasury\b|\btrading\b|derivatives|fund accounting|\bvaluation\b|financial analyst|finance analyst)/],
+  /* MES — MANUFACTURING EXECUTION SYSTEMS — IS PLANT WORK (8 Oct 2026, his call
+     on Birlasoft's "Apriso MES Machine Integrator", which named no family and
+     so stayed Software). Filed with core engineering. */
+  ['core_eng', 'Core engineering (mech / elec / civil / mfg)', /^(?!.*\bsoftware (?:engineer|developer)\b).*(?:\bmes\b|apriso|manufacturing execution)/],
   ['security', 'Cybersecurity', /cyber|security|infosec|penetration|appsec|threat|vulnerab|identity & access|\biam\b|soc analyst/],
   /* ABOVE devops, because "IFS Cloud Developer" (Rockwell) read as DevOps on
      the bare word "cloud" while the model rightly called it ERP. Guarded so a
