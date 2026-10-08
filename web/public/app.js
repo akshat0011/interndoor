@@ -263,6 +263,14 @@ function shortAge(ms) {
   return `${Math.round(hrs / 24)}d`;
 }
 
+/* "1–2 years" -> "1–2 yrs exp"; "Graduating 2027 · 0–1 years" -> "0–1 yrs exp";
+   a graduation year alone -> ''. The years asked, labelled as experience, for
+   the card's one-line facts. */
+function expShort(job) {
+  const m = String(job?.experience ?? '').match(/(\d{1,2}\s*(?:[–-]\s*\d{1,2})?\s*\+?)\s*years?/i);
+  return m ? `${m[1].replace(/\s+/g, '')} yrs exp` : '';
+}
+
 function relTime(ms) {
   if (!ms) return '';
   const mins = Math.round((Date.now() - ms) / 60000);
@@ -1211,7 +1219,12 @@ function jobCard(job, index, group = [job], seen = false) {
     if (job.location) meta.append(el('span', null, job.location));
     if (job.workplaceType) meta.append(el('span', null, job.workplaceType));
   }
+  /* `duration` is cleaned by publish (durationText): an experience range is
+     never a duration. What the posting asks in experience is its own field,
+     and says so — "1–2 yrs exp", never a bare "1–2 years" a reader could take
+     for the length of the role (8 Oct 2026). */
   if (job.duration) meta.append(el('span', null, job.duration));
+  else if (expShort(job)) meta.append(el('span', null, expShort(job)));
   if (meta.children.length) mid.append(meta);
 
   /* Fit, when a resume is loaded. Under the facts rather than beside the role:
@@ -1771,7 +1784,8 @@ function renderDetail(job) {
     facts.append(f);
   };
   addFact('mode', job.workplaceType || '\u2014');
-  addFact('duration', job.duration || '\u2014');
+  if (job.duration || !job.experience) addFact('duration', job.duration || '\u2014');
+  if (job.experience) addFact('experience', job.experience);
   // Computed from the timestamp, NOT from postedText. postedText is the string
   // LinkedIn showed at the moment the scraper opened the posting — "4 minutes
   // ago" — and it never ages. Preferring it meant the detail pane still read

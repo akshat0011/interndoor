@@ -1,0 +1,49 @@
+/**
+ * "1-2 years" is experience, never a duration — 8 Oct 2026.
+ *
+ * The `duration` column often holds an experience range ("1-2 years", "0 to 3
+ * years"), and the board printed it under DURATION (his screenshot: Air
+ * Arabia, "Software Engineer Sitecore", Duration 1-2 years, while the posting's
+ * own experience field read "1–2 years"). 175 live rows that day. publish now
+ * cleans `duration` with durationText for every reader of jobs.json, and the
+ * board shows the experience asked under its own label.
+ */
+import { readFileSync } from 'node:fs';
+import { durationText } from '../src/pages.js';
+
+let pass = 0, fail = 0;
+const ok = (label, cond, extra = '') => {
+  if (cond) { pass += 1; console.log(`  ok    ${label}`); }
+  else { fail += 1; console.log(`  FAIL  ${label}${extra ? ' — ' + extra : ''}`); }
+};
+const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+
+console.log('\n== the rule ==');
+ok('"1-2 years" is not a duration', durationText({ duration: '1-2 years' }) === '');
+ok('"0 to 3 years" is not', durationText({ duration: '0 to 3 years' }) === '');
+ok('"6 months" is', durationText({ duration: '6 months' }) === '6 months');
+ok('"26 weeks" is', durationText({ duration: '26 weeks' }) === '26 weeks');
+
+console.log('\n== publish cleans it for every reader of jobs.json ==');
+const pub = read('src/publish.js');
+ok('the live projection runs durationText', /\n    duration: durationText\(row\) \|\| null,/.test(pub));
+ok('the history projection does too', /\n      duration: durationText\(row\) \|\| null,/.test(pub));
+ok('no projection passes the raw column through', !/duration: row\.duration \|\| null/.test(pub));
+
+console.log('\n== the board labels experience as experience ==');
+const app = read('web/public/app.js');
+const src = app.slice(app.indexOf('function expShort('), app.indexOf('\n}', app.indexOf('function expShort(')) + 2);
+const expShort = new Function(`${src}; return expShort;`)();
+ok('"1–2 years" -> "1–2 yrs exp"', expShort({ experience: '1–2 years' }) === '1–2 yrs exp', expShort({ experience: '1–2 years' }));
+ok('a graduation year and a range -> the range', expShort({ experience: 'Graduating 2027 · 0–1 years' }) === '0–1 yrs exp', expShort({ experience: 'Graduating 2027 · 0–1 years' }));
+ok('"2+ years" -> "2+ yrs exp"', expShort({ experience: '2+ years' }) === '2+ yrs exp', expShort({ experience: '2+ years' }));
+ok('a graduation year alone -> nothing (it is not experience)', expShort({ experience: 'Graduating 2027' }) === '');
+ok('nothing stated -> nothing', expShort({}) === '');
+ok('the card shows the duration, else the labelled experience',
+  /if \(job\.duration\) meta\.append\(el\('span', null, job\.duration\)\);\s*else if \(expShort\(job\)\) meta\.append\(el\('span', null, expShort\(job\)\)\);/.test(app));
+ok('the pane has an "experience" fact', /if \(job\.experience\) addFact\('experience', job\.experience\);/.test(app));
+ok('…and drops the empty "duration" dash when it has one',
+  /if \(job\.duration \|\| !job\.experience\) addFact\('duration', job\.duration \|\| '\\u2014'\);/.test(app));
+
+console.log(`\n${pass} passed, ${fail} failed`);
+process.exit(fail ? 1 : 0);
