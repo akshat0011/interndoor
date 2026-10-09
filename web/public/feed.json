@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/texas-instruments-india-career-accelerator-program-digital-ic-design-engineer-4476845653",
+      "url": "https://interndoor.com/jobs/texas-instruments-india-career-accelerator-program-digital-ic-design-engineer-4476845653",
+      "title": "Career Accelerator Program - Digital IC Design Engineer — Texas Instruments India",
+      "content_text": "Company: Texas Instruments India · Location: Bengaluru, Karnataka, India\n• Design and verify digital circuits for high-performance products\n• Work on 64-bit DSP processors and multicore memory systems\n• Collaborate with teams to define chip architecture and performance specs",
+      "date_published": "2026-10-09T20:24:55.400Z",
+      "authors": [
+        {
+          "name": "Texas Instruments India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/aptiv-cybersecurity-developer-internal-4477871210",
+      "url": "https://interndoor.com/jobs/aptiv-cybersecurity-developer-internal-4477871210",
+      "title": "Cybersecurity Developer — Aptiv",
+      "content_text": "Company: Aptiv · Location: Bengaluru East, Karnataka, India\n• Implement secure boot, flashing, diagnostics, and crypto services\n• Use C/C++, RTOS/Linux, and AUTOSAR for embedded systems\n• Work on cybersecurity plans and traceability in development",
+      "date_published": "2026-10-09T20:24:26.080Z",
+      "authors": [
+        {
+          "name": "Aptiv"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ge-healthcare-intern-4477846585",
       "url": "https://interndoor.com/jobs/ge-healthcare-intern-4477846585",
       "title": "Intern — GE HealthCare",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Applied Intuition"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/siterecon-gis-cartographers-immediate-joiners-4475221616",
-      "url": "https://interndoor.com/jobs/siterecon-gis-cartographers-immediate-joiners-4475221616",
-      "title": "GIS Cartographers (Immediate Joiners) — SiteRecon",
-      "content_text": "Company: SiteRecon · Location: Noida, Uttar Pradesh, India\n• Create and update digital maps using QGIS and ArcGIS\n• Digitize geographic features from satellite and aerial data\n• Collaborate on geospatial projects with team members",
-      "date_published": "2026-10-09T13:53:52.212Z",
-      "authors": [
-        {
-          "name": "SiteRecon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineers-advisor-4477692864",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineers-advisor-4477692864",
-      "title": "AI Engineer Advisor — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Develop AI applications using LLMs, RAG, and agentic workflows\n• Integrate AI with enterprise systems and build secure APIs\n• Collaborate with architects and teams on technical design and documentation",
-      "date_published": "2026-10-09T13:51:27.416Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
