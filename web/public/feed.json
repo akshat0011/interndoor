@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/marmon-technologies-india-pvt-ltd-graduate-engineer-trainee-4477678564",
+      "url": "https://interndoor.com/jobs/marmon-technologies-india-pvt-ltd-graduate-engineer-trainee-4477678564",
+      "title": "Graduate Engineer Trainee — Marmon Technologies India Pvt Ltd",
+      "content_text": "Company: Marmon Technologies India Pvt Ltd · Location: Karnataka, India\n• Support engineering projects with design data, calculations, and test reports\n• Use CAD tools like Solidworks and Ansys for analysis and design\n• Collaborate across global teams and adapt to changing priorities",
+      "date_published": "2026-10-09T12:45:42.880Z",
+      "authors": [
+        {
+          "name": "Marmon Technologies India Pvt Ltd"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/siemens-healthineers-software-engineer-4476296165",
       "url": "https://interndoor.com/jobs/siemens-healthineers-software-engineer-4476296165",
       "title": "Software Engineer — Siemens Healthineers",
@@ -587,18 +599,6 @@
       "title": "Systems Integration Specialist — NTT DATA North America",
       "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design and maintain data pipelines using PySpark and Delta Lake\n• Ingest data from Oracle, Netezza, MongoDB, and Azure Data Lake\n• Build reusable frameworks for data transformation and quality\n• Own CI/CD and environment promotion through Azure DevOps",
       "date_published": "2026-10-08T19:49:32.537Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-mulesoft-and-agentic-ai-integration-engineer-4477440875",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-mulesoft-and-agentic-ai-integration-engineer-4477440875",
-      "title": "Agentic AI Integration Engineer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India\n• Design and build MuleSoft APIs for order processing pipelines\n• Develop AI agents to extract and classify order data from PDFs\n• Implement business rules for automatic account routing and validation",
-      "date_published": "2026-10-08T19:48:28.549Z",
       "authors": [
         {
           "name": "NTT DATA North America"
