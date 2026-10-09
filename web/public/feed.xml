@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 09 Oct 2026 20:24:55 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 09 Oct 2026 22:05:20 GMT</lastBuildDate>
+  <item>
+    <title>PKI Engineer C# Expert — Citi</title>
+    <link>https://interndoor.com/jobs/citi-pki-engineer-c-expert-4476859445</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/citi-pki-engineer-c-expert-4476859445</guid>
+    <pubDate>Fri, 09 Oct 2026 22:05:20 GMT</pubDate>
+    <description>Company: Citi · Location: Chennai, Tamil Nadu, India
+• Develop cryptographic systems and PKI solutions using C# and Python
+• Work on certificate automation for Citi infrastructure and platforms
+• Collaborate with teams to integrate security technologies into mission critical systems</description>
+  </item>
+  <item>
+    <title>PKI Engineer Java Cloud Expert — Citi</title>
+    <link>https://interndoor.com/jobs/citi-pki-engineer-java-cloud-expert-4476865281</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/citi-pki-engineer-java-cloud-expert-4476865281</guid>
+    <pubDate>Fri, 09 Oct 2026 22:04:56 GMT</pubDate>
+    <description>Company: Citi · Location: Chennai, Tamil Nadu, India
+• Develop cryptographic systems and PKI solutions for enterprise security
+• Work with Java, cloud platforms, and advanced encryption algorithms
+• Collaborate with teams to integrate security tools across Citi infrastructure</description>
+  </item>
+  <item>
+    <title>Data Analyst — Citi</title>
+    <link>https://interndoor.com/jobs/citi-data-analyst-4476856495</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/citi-data-analyst-4476856495</guid>
+    <pubDate>Fri, 09 Oct 2026 22:04:46 GMT</pubDate>
+    <description>Company: Citi · Location: Pune Division, Maharashtra, India
+• Administer databases, prepare reports, and maintain data quality
+• Use unix, python, pyspark, and sas for analysis
+• Work closely with vendors and partners in a structured environment</description>
+  </item>
   <item>
     <title>Career Accelerator Program - Digital IC Design Engineer — Texas Instruments India</title>
     <link>https://interndoor.com/jobs/texas-instruments-india-career-accelerator-program-digital-ic-design-engineer-4476845653</link>
@@ -477,36 +507,6 @@
 • Design and develop embedded and cloud edge software
 • Collaborate with hardware and systems teams
 • Work on next-generation product solutions</description>
-  </item>
-  <item>
-    <title>Computer Hardware &amp; Networking — ALLEN Career Institute PVT LTD</title>
-    <link>https://interndoor.com/jobs/allen-career-institute-pvt-ltd-computer-hardware-and-networking-4477644378</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/allen-career-institute-pvt-ltd-computer-hardware-and-networking-4477644378</guid>
-    <pubDate>Fri, 09 Oct 2026 14:17:52 GMT</pubDate>
-    <description>Company: ALLEN Career Institute PVT LTD · Location: Dehradun, Uttarakhand, India
-• Install, configure, and maintain computer hardware and networking equipment
-• Diagnose hardware issues, troubleshoot network problems, and ensure stable connectivity
-• Work on-site in Dehradun, supporting staff and students with technical assistance</description>
-  </item>
-  <item>
-    <title>Annotation Quality Analyst — TELUS Digital</title>
-    <link>https://interndoor.com/jobs/telus-digital-annotation-quality-analyst-4477801630</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/telus-digital-annotation-quality-analyst-4477801630</guid>
-    <pubDate>Fri, 09 Oct 2026 14:12:23 GMT</pubDate>
-    <description>Company: TELUS Digital · Location: Bengaluru, Karnataka, India
-• Review and validate annotations for LiDAR and image datasets
-• Work with project teams to improve annotation quality
-• Maintain reports and track quality metrics</description>
-  </item>
-  <item>
-    <title>Firmware Engineer — Applied Intuition</title>
-    <link>https://interndoor.com/jobs/applied-intuition-firmware-engineer-4458617819</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/applied-intuition-firmware-engineer-4458617819</guid>
-    <pubDate>Fri, 09 Oct 2026 13:57:10 GMT</pubDate>
-    <description>Company: Applied Intuition · Location: Bengaluru, Karnataka, India
-• Develop and debug bootloaders for microcontrollers and infotainment SoCs
-• Bring up FreeRTOS, QNX, Linux, and Android on new hardware platforms
-• Optimize boot time and power behavior for production-ready systems</description>
   </item>
 </channel>
 </rss>
