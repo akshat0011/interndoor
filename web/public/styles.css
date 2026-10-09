@@ -74,10 +74,36 @@
   --d-press: .14s;   /* button press feedback: 100-160ms */
   --d-ui:    .2s;    /* dropdowns, chips */
   --d-sheet: .3s;    /* the detail sheet */
+  /* Motion a reader watches rather than motion that answers them (9 Oct 2026,
+     after hiregram.ai): a block arriving as it scrolls into view, the theme
+     sweep. Slower than the 300ms ceiling on purpose — that ceiling is for UI
+     response, and --snap still owns it. --ease-out is an expo-out: most of the
+     travel early, a long soft landing. */
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --d-reveal: .7s;
+  /* A button coming back up after a press: overshoots ~1.5% and settles. The
+     cubic-bezier is the fallback; the @supports block below swaps in a real
+     damped spring where linear() is understood. An unsupported linear() would
+     drop the WHOLE transition declaration, hence the fallback first. */
+  --spring: cubic-bezier(.34,1.3,.64,1);
+  /* Read by app.js and page.js before they hide anything or start a view
+     transition: it proves THIS stylesheet is the one loaded. CSS is cached up
+     to a day behind the scripts (max-age=600 + a day of
+     stale-while-revalidate), and a stale copy lacks the rules the motion
+     needs — without this the sweep would run with the browser's default
+     cross-fade underneath it and flash. Missing means: skip the motion. */
+  --fx: 1;
 
   --bar-h:   62px;
   /* Replaced at runtime by syncStickyOffset(); this is only the first paint. */
   --stack-h: 152px;
+}
+/* A damped spring (damping 0.8), sampled at 41 points: 1.5% overshoot at 55%
+   of the duration, settled by the end. */
+@supports (transition-timing-function: linear(0, 1)) {
+  :root {
+    --spring: linear(0, 0.0243, 0.0858, 0.1698, 0.2656, 0.365, 0.4623, 0.5538, 0.637, 0.7108, 0.7747, 0.8289, 0.874, 0.9107, 0.94, 0.9629, 0.9803, 0.9931, 1.0023, 1.0084, 1.0123, 1.0144, 1.0151, 1.015, 1.0142, 1.013, 1.0116, 1.0101, 1.0086, 1.0071, 1.0058, 1.0047, 1.0037, 1.0028, 1.0021, 1.0015, 1.001, 1.0007, 1.0004, 1.0002, 1);
+  }
 }
 
 /* THE LIGHT THEME HAD NO DEFINITION, and it was not a readability problem —
@@ -344,9 +370,31 @@ a, button, summary, label, [role="button"], .row {
   transition: color .16s, border-color .16s, background .16s;
 }
 .ghost-btn:hover { color: var(--live); border-color: var(--live); }
-.i-moon { display: none; }
-:root:not([data-theme="light"]) .i-sun { display: none; }
-:root:not([data-theme="light"]) .i-moon { display: block; }
+/* The switch's two marks share one grid cell and trade places with a quarter
+   turn (9 Oct 2026). They were display:none/block, which cannot animate. The
+   mark shown is the theme the page is IN — moon on dark, sun on light. The
+   label sits in the second column, so the row reads exactly as before. */
+#theme-toggle { display: grid; grid-template-columns: 17px auto; column-gap: 9px; justify-content: start; }
+#theme-toggle svg { grid-area: 1 / 1; transition: transform .5s var(--spring), opacity .22s ease; }
+#theme-toggle span { grid-area: 1 / 2; }
+:root:not([data-theme="light"]) .i-sun { opacity: 0; transform: rotate(-90deg) scale(.5); }
+:root[data-theme="light"] .i-moon { opacity: 0; transform: rotate(90deg) scale(.5); }
+
+/* ---------- the theme sweep (9 Oct 2026, after hiregram.ai) ----------
+   switchTheme() in app.js and page.js changes the theme inside a view
+   transition and grows the new theme as a circle from the switch. The
+   browser's own cross-fade is switched off on both snapshots, so the old
+   theme stays solid outside the circle and the new one is solid inside it.
+   Every transition on the page is held off while it runs, or the new snapshot
+   — which is live — would show each colour fading in under the circle. The
+   switch's own marks are the one exception: the circle starts on them, so
+   their turn is the first thing the new theme shows. */
+:root[data-theme-switching]::view-transition-old(root),
+:root[data-theme-switching]::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+:root[data-theme-switching] *,
+:root[data-theme-switching] *::before,
+:root[data-theme-switching] *::after { transition: none !important; }
+:root[data-theme-switching] #theme-toggle svg { transition: transform .5s var(--spring), opacity .22s ease !important; }
 
 /* ---------- the header menu: about, contact, theme (1 Oct 2026) ----------
    Same disclosure as the region switch above — native <details>, no script to
@@ -882,6 +930,38 @@ html[data-boot] .boot-part {
    only child of its <li>, so a :nth-child() on .row always matches 1. */
 @keyframes rowIn { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
 
+/* ---------- reveals (9 Oct 2026, after hiregram.ai) ----------
+   A block that starts BELOW the fold waits invisible and fades up out of a
+   blur as it scrolls in, once (the `reveal` helper in app.js and page.js).
+   Nothing here hides anything by itself: .fx-wait is added only by a script
+   that has already checked this stylesheet is current and that the reader has
+   not asked for less motion, and only to something not yet on screen — so a
+   page with no script, a stale script or reduced motion renders as it always
+   did. Opacity only while waiting, never display or size, so the layout and
+   the anchor positions are the same either way. */
+.fx-wait { opacity: 0; animation: none; }
+.fx-in { animation: fx-in var(--d-reveal) var(--ease-out) both; }
+@keyframes fx-in {
+  from { opacity: 0; transform: translateY(18px); filter: blur(8px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+/* A card is smaller and arrives in runs while the list scrolls, so it travels
+   less and blurs less. These outrank .feed.intro .row (same specificity, later
+   in the file): a card below the fold sits out the first-paint entrance and
+   gets this one when it is reached instead. */
+.feed .row.fx-wait { opacity: 0; animation: none; }
+.feed .row.fx-in { animation: fx-row .55s var(--ease-out) both; }
+@keyframes fx-row {
+  from { opacity: 0; transform: translateY(14px); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-wait, .feed .row.fx-wait { opacity: 1; }
+}
+@media print {
+  .fx-wait, .fx-in, .feed .row.fx-wait, .feed .row.fx-in { opacity: 1 !important; animation: none !important; }
+}
+
 /* the lit edge — how selection and freshness are signalled */
 .row::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
@@ -1050,13 +1130,15 @@ html[data-boot] .boot-part {
   background: var(--live); color: var(--live-ink);
   font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: -.01em;
   text-decoration: none; white-space: nowrap; cursor: pointer;
-  /* 140ms: button press feedback belongs in 100-160ms. At 180ms the press
-     read soft rather than tactile. */
-  transition: transform .14s var(--snap), box-shadow .18s, filter .18s;
+  /* The press is 120ms (set on :active below): press feedback belongs in
+     100-160ms, and at 180ms it read soft rather than tactile. The .45s is the
+     RELEASE, on a --spring, so the button comes back up with a small
+     overshoot (9 Oct 2026). */
+  transition: transform .45s var(--spring), box-shadow .18s, filter .18s;
 }
 
 
-.card-go:active { transform: translateY(0) scale(.96); }
+.card-go:active { transform: translateY(0) scale(.96); transition-duration: .12s; }
 .card-go:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
 
@@ -1161,13 +1243,16 @@ html[data-boot] .boot-part {
   border-radius: var(--r); height: 40px; padding: 0 18px; cursor: pointer;
   font-size: 13.5px; font-weight: 700; text-decoration: none;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  transition: transform .14s var(--snap), background .16s, border-color .16s, color .16s;
+  /* The release springs (9 Oct 2026): a short --spring overshoot as the button
+     comes back up. The press itself stays inside 100-160ms — :active below
+     sets the duration while it is held. */
+  transition: transform .45s var(--spring), background .16s, border-color .16s, color .16s;
 }
 .go { background: var(--live); border: 1px solid var(--live); color: var(--live-ink); }
 /* Press feedback. This was `transform: none`, so the detail pane primary
    Apply — and Tailor it, and Download PDF — answered a press with nothing at
    all on touch, where there is no hover lift for it to be cancelling. */
-.go:active, .alt:active, .bare:active { transform: scale(.97); }
+.go:active, .alt:active, .bare:active { transform: scale(.97); transition-duration: .12s; }
 .go:disabled { opacity: .35; cursor: not-allowed; transform: none; }
 .go-block { width: 100%; }
 .alt { background: none; border: 1px solid var(--rule-2); color: var(--ink); }

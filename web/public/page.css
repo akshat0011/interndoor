@@ -677,6 +677,21 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
    re-animates on a filter keystroke. */
 .tiles.in > *, .dir.in > * { animation: tileIn .26s var(--snap) both; }
 @keyframes tileIn { from { opacity: 0; transform: translateY(8px); } }
+/* A tile below the fold sits out the cascade above and fades up out of a blur
+   when it is reached instead (styles.css "reveals", 9 Oct 2026). These outrank
+   `.tiles.in > *`, which would otherwise play tileIn unseen and then hold the
+   waiting tile at opacity 0 through its fill. */
+.tiles.in > .fx-wait, .dir.in > .fx-wait { opacity: 0; animation: none; }
+.tiles.in > .fx-in, .dir.in > .fx-in { animation: fx-in var(--d-reveal) var(--ease-out) both; }
+
+/* A page's heading arrives out of a blur on load (9 Oct 2026, after
+   hiregram.ai). CSS alone, so a page with no script, or one whose
+   stylesheet is a day stale (no fx-in, no --ease-out: the declaration is
+   then dropped), simply shows its heading. Only the heading block — the rest
+   of the first screen is already there to be read. */
+main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
+  animation: fx-in .6s var(--ease-out) both;
+}
 
 /* ============================================================
    THE COMPANY HUB
@@ -933,6 +948,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
   .tiles.in > *, .dir.in > * { animation: none; }
+  main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero { animation: none; }
   .pill.is-hot i { animation: none; }
   .dock { transition: none; }
   *, *::before, *::after {
