@@ -60,6 +60,8 @@ import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { watchJob, postWatchTick } from '../src/postwatch.js';
+import { clickWindows, fetchDayHashes, TRACKED_SINCE } from '../src/jobclicks.js';
+import { jobKeyFor, utcDay } from '../web/api/count.js';
 
 const cfg = loadConfig();
 const PORT = queuePort(cfg);
@@ -1050,6 +1052,40 @@ async function runPublishNow() {
   if (publishAgain) { publishAgain = false; schedulePublish(1_000); }
 }
 
+/* APPLY CLICKS FOR THE OWNER (9 Oct 2026, his ask: "show the apply clicks
+   per job on the website to me"). The counter's day hashes, read with the
+   same KV credentials the site uses (.env), folded into today / 7 days / since
+   tracking began, and named off the published board. One pipeline request for
+   30 days, cached for a minute so a board of cards and an owner bar on every
+   page do not each ask. Only the owner's paired browser ever calls it. */
+const CLICK_DAYS = 30;
+let clicksCache = null;
+async function ownerClicks() {
+  if (clicksCache && Date.now() - clicksCache.at < 60_000) return clicksCache.data;
+  const url = (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || '').replace(/\/+$/, '');
+  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) throw new Error('No counter store in .env (KV_REST_API_URL / KV_REST_API_TOKEN).');
+  const keys = [];
+  for (let i = CLICK_DAYS - 1; i >= 0; i--) keys.push(jobKeyFor(utcDay(Date.now() - i * 86_400_000)));
+  const windows = clickWindows(await fetchDayHashes({ url, token }, keys));
+  const bySlug = new Map();
+  for (const j of publishedJobs()) { try { bySlug.set(jobSlug(j), j); } catch { /* unsluggable */ } }
+  const jobs = [...windows].map(([slug, w]) => {
+    const j = bySlug.get(slug);
+    return {
+      slug,
+      id: j?.id ?? null,
+      company: j?.company ?? null,
+      title: j?.title ?? null,
+      page: `${SITE_ORIGIN}${j ? regionPath(j.__region) : ''}/jobs/${slug}`,
+      ...w,
+    };
+  }).sort((a, b) => b.total - a.total || b.week - a.week || a.slug.localeCompare(b.slug));
+  const data = { since: TRACKED_SINCE, days: CLICK_DAYS, total: jobs.reduce((n, j) => n + j.total, 0), jobs };
+  clicksCache = { at: Date.now(), data };
+  return data;
+}
+
 /** The stored row an owner request names, by job id or by the page's own slug. */
 function ownerRow(body) {
   let id = body?.jobId ? String(body.jobId) : null;
@@ -1144,6 +1180,10 @@ const server = createServer(async (req, res) => {
         scanRunning: !!lock && Date.now() - lock < ((cfg.limits?.maxRuntimeMinutes ?? 90) + 8) * 60_000,
         postsUrl: `http://127.0.0.1:${PORT}/posts/latest`,
       });
+    }
+
+    if (path === '/api/owner/clicks' && req.method === 'GET') {
+      try { return json(res, 200, await ownerClicks()); } catch (err) { return json(res, 503, { error: err.message }); }
     }
 
     if (req.method !== 'POST') return json(res, 405, { error: 'POST only' });
