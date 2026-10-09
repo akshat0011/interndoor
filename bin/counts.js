@@ -13,7 +13,7 @@
  * zeros that reads as "nobody came".
  */
 import { readFileSync, existsSync } from 'node:fs';
-import { EVENTS, REGIONS, keyFor, utcDay } from '../web/api/count.js';
+import { EVENTS, REGIONS, keyFor, jobKeyFor, utcDay } from '../web/api/count.js';
 
 /* .env is loaded by hand — the run scripts do it with `set -a; . .env`, and a
    one-off reader should not need that ceremony. Last assignment wins, matching
@@ -34,6 +34,39 @@ if (!url || !token) {
   console.error('No counter store configured: set KV_REST_API_URL and KV_REST_API_TOKEN in .env '
     + '(the values the Upstash Redis integration puts on the Vercel project).');
   process.exit(2);
+}
+
+/* --jobs: Apply clicks per job and per employer, from the day hashes
+   web/api/count.js keeps since 9 Oct 2026 — the number an employer is told.
+   `--company <name>` narrows it to one employer's roles. */
+if (ARGS.includes('--jobs')) {
+  const { hashPairs, foldJobClicks } = await import('../src/jobclicks.js');
+  const { jobSlug } = await import('../src/pages.js');
+  const dayKeys = [];
+  for (let i = days - 1; i >= 0; i--) dayKeys.push(jobKeyFor(utcDay(Date.now() - i * 86_400_000)));
+  const res = await fetch(`${url}/pipeline`, {
+    method: 'POST',
+    headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+    body: JSON.stringify(dayKeys.map((k) => ['HGETALL', k])),
+  });
+  if (!res.ok) { console.error(`store answered ${res.status}`); process.exit(1); }
+  const answers = await res.json();
+  const perDay = answers.map((a) => hashPairs(a?.result));
+  const board = JSON.parse(readFileSync('web/public/data/jobs.json', 'utf8'));
+  const bySlug = new Map((board.jobs ?? board).map((j) => [jobSlug({ company: j.company, title: j.title, slugTitle: j.slugTitle, id: j.id }), { company: j.company, title: j.title }]));
+  const { jobs, companies, total } = foldJobClicks(perDay, bySlug);
+  const want = ARGS.includes('--company') ? String(ARGS[ARGS.indexOf('--company') + 1] ?? '').toLowerCase() : '';
+  const shown = want ? jobs.filter((j) => (j.company ?? j.slug).toLowerCase().includes(want)) : jobs;
+  console.log(`\nApply clicks by job, last ${days} day(s): ${total} counted against a job page.\n`);
+  for (const j of shown.slice(0, want ? 200 : 30)) {
+    console.log(`${String(j.clicks).padStart(6)}  ${j.company ? `${j.company} — ${j.title}` : `${j.slug}  (no longer on the board)`}`);
+  }
+  if (!want) {
+    console.log('\nBy employer (roles still on the board):\n');
+    for (const c of companies.slice(0, 25)) console.log(`${String(c.clicks).padStart(6)}  ${c.company} (${c.roles} role${c.roles === 1 ? '' : 's'})`);
+  }
+  console.log('');
+  process.exit(0);
 }
 
 const events = [...EVENTS];

@@ -1474,6 +1474,7 @@ ${regionSwitch(region, alternates)}      ${headerPill(region)}
         <div class="bar-menu-list">
           <a class="bar-menu-item" href="/about">About</a>
           <a class="bar-menu-item" href="/contact">Contact</a>
+          <a class="bar-menu-item" href="/post-a-job">Post a job</a>
           <button class="bar-menu-item" id="theme-toggle" type="button" aria-label="Switch theme">
             <svg class="i-sun" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
             <svg class="i-moon" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>
@@ -1635,7 +1636,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
          renderContactPage — so a root-relative href is what resolves from
          /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
          /us/contact, which is not written and never will be. -->
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/insights', region)}">Monthly reports</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/insights', region)}">Monthly reports</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/post-a-job">Post a job</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
     ${preferredSourceLink()}
   </div>
 </footer>
@@ -4440,6 +4441,127 @@ ${foot({
 }
 
 /**
+ * /post-a-job — an employer asking for a role to go on the board. 9 Oct 2026.
+ *
+ * His ask, after "how can we make startups and companies post jobs on our
+ * website": free, and gated by hand. The form posts to /api/post-job, which
+ * STORES A REQUEST and publishes nothing; `npm run submissions` is where it is
+ * approved, and only an approval adds the company to the watchlist. So this
+ * page must never promise that a role "goes live" — it says it is reviewed.
+ *
+ * Written once at the root, like /contact and /about, with the same traps
+ * (publishedPaths, root sitemap only, root-relative links). No JobPosting
+ * markup: nothing here is a vacancy. No figure that moves with the board, so a
+ * publish never rewrites it. Its own page.css version, because the form's
+ * rules are new and page.css is cached for a day.
+ */
+export const POST_JOB_VERSION = 'pj1';
+
+export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null } = {}) {
+  const url = `${SITE}/post-a-job`;
+  const mail = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('A role for InternDoor')}`;
+  return `${head({
+    title: buildTitle(['Post an Internship or Entry-Level Job for Free']),
+    description: 'Post an engineering internship or entry-level job in India on InternDoor, free. Every role is checked by hand: a real company, a paid role, and applications on your own posting.',
+    canonical: url,
+    indexable: true,
+    region,
+    alternates,
+    alternatePath: null,
+    scripts: '<script defer src="/post-job.js"></script>\n',
+  }).replace('href="/page.css"', `href="/page.css?v=${POST_JOB_VERSION}"`)}
+<main class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <i aria-hidden="true">&rsaquo;</i>
+      <span>Post a job</span>
+    </nav>
+
+    <header class="dir-hero">
+      <h1>Post an internship or entry-level job</h1>
+      <p class="hub-lede">Free, for real engineering roles in India that pay. Every submission is checked by hand before it goes on the board.</p>
+    </header>
+
+    <section class="strip">
+      <div class="strip-head"><h2>How it works</h2></div>
+      <ul class="do-list">
+        <li><b>Send the link to the role</b> on your own careers page, the job board you already use, or LinkedIn. Students apply there &mdash; InternDoor never collects applications or resumes.</li>
+        <li><b>It is checked by hand,</b> usually within a day: a real company, an engineering role, and a stipend or salary that is stated.</li>
+        <li><b>Then it goes on the board</b> with your company&rsquo;s page, where students searching for roles like it find it. If your careers page is one we can read, every new internship and entry-level role you post there is picked up automatically from then on.</li>
+        <li><b>It is free.</b> No listing fee, no paid placement, no account to create.</li>
+      </ul>
+    </section>
+
+    <section class="strip">
+      <div class="strip-head"><h2>What gets listed</h2></div>
+      <ul class="do-list">
+        <li><b>Engineering roles</b> &mdash; software, data, AI and machine learning, hardware and embedded.</li>
+        <li><b>Internships, and entry-level jobs</b> that ask for under two years of experience.</li>
+        <li><b>Paid roles only.</b> Unpaid internships, certificate-only schemes and anything that charges the applicant are turned down.</li>
+        <li><b>Your own company&rsquo;s roles.</b> Recruiters and staffing agencies posting for an unnamed client are turned down.</li>
+      </ul>
+    </section>
+
+    <section class="strip" aria-labelledby="pj-h">
+      <div class="strip-head"><h2 id="pj-h">Submit a role</h2></div>
+      <p class="pj-noscript" id="pj-noscript">This form needs JavaScript. You can also email the link to <a href="${mail}">${esc(CONTACT_EMAIL)}</a>.</p>
+      <form class="pj-form" id="pj-form" hidden novalidate>
+        <div class="pj-grid">
+          <label class="pj-f">Company name
+            <input class="pj-in" name="company" type="text" required maxlength="120" autocomplete="organization">
+          </label>
+          <label class="pj-f">Company website
+            <input class="pj-in" name="website" type="url" required maxlength="300" placeholder="https://yourcompany.com" spellcheck="false">
+          </label>
+          <label class="pj-f">Your work email
+            <input class="pj-in" name="email" type="email" required autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@yourcompany.com">
+            <span class="pj-hint">At the same domain as the website.</span>
+          </label>
+          <label class="pj-f">Link to the role
+            <input class="pj-in" name="link" type="url" required maxlength="600" placeholder="https://" spellcheck="false">
+            <span class="pj-hint">Your careers page, job board or LinkedIn posting.</span>
+          </label>
+        </div>
+        <fieldset class="pj-kind">
+          <legend>The role is</legend>
+          <label><input type="radio" name="kind" value="intern" checked> An internship</label>
+          <label><input type="radio" name="kind" value="fulltime"> An entry-level job</label>
+        </fieldset>
+        <div class="pj-pay">
+          <label class="pj-f">Stipend or salary (&#8377;)
+            <input class="pj-in" name="pay" type="text" required inputmode="numeric" placeholder="25000">
+          </label>
+          <label class="pj-f">Per
+            <select class="pj-in" name="period">
+              <option value="month">month</option>
+              <option value="year">year</option>
+            </select>
+          </label>
+        </div>
+        <label class="pj-f">Anything we should know <span class="pj-opt">(optional)</span>
+          <textarea class="pj-in" name="notes" rows="3" maxlength="1000"></textarea>
+        </label>
+        <div class="sub-hp" aria-hidden="true"><label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label></div>
+        <div class="pj-acts">
+          <button class="sub-b pj-send" type="submit">Submit for review</button>
+          <p class="sub-msg pj-msg" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <div class="pj-done" id="pj-done" tabindex="-1" hidden>
+        <b>Received &mdash; thank you.</b>
+        <p>Every submission is checked by hand, usually within a day. If the role fits the board it goes live, with nothing more needed from you. Questions: <a href="${mail}">${esc(CONTACT_EMAIL)}</a>.</p>
+      </div>
+    </section>
+  </div>
+</main>
+${foot({
+    headline: 'See where it would appear',
+    sub: 'Every engineering internship and entry-level role on the board, newest first.',
+    region,
+  })}`;
+}
+
+/**
  * Write only when the bytes actually differ, and SAY whether they did.
  *
  * The name was aspirational: it wrote unconditionally. That was survivable —
@@ -6269,6 +6391,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   if (!region.slug) {
     track(writeIfChanged(join(root, 'contact.html'), renderContactPage({ region, alternates })), '/contact');
     track(writeIfChanged(join(root, 'about.html'), renderAboutPage({ region, alternates })), '/about');
+    track(writeIfChanged(join(root, 'post-a-job.html'), renderPostJobPage({ region, alternates })), '/post-a-job');
   }
 
   let removed = 0;
@@ -6564,6 +6687,7 @@ function writeSitemap(jobs, byCompany, publicDir, pastByCompany = new Map(), reg
        every deploy that touched nothing. */
     ...(region.slug ? [] : [{ loc: `${SITE}/contact`, priority: '0.3', lastmod: boardDay }]),
     ...(region.slug ? [] : [{ loc: `${SITE}/about`, priority: '0.4', lastmod: boardDay }]),
+    ...(region.slug ? [] : [{ loc: `${SITE}/post-a-job`, priority: '0.4', lastmod: boardDay }]),
     /* /report is the only page here that does not expire, so it is the only one
        that can accumulate links over years. Listed above the hubs for that
        reason — and omitted entirely when it is noindex, because submitting a
