@@ -6,7 +6,79 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 08 Oct 2026 19:57:17 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 09 Oct 2026 01:11:29 GMT</lastBuildDate>
+  <item>
+    <title>AI Engineer Intern — Discover Dollar Inc</title>
+    <link>https://interndoor.com/jobs/discover-dollar-inc-ai-engineer-intern-4476231706</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/discover-dollar-inc-ai-engineer-intern-4476231706</guid>
+    <pubDate>Fri, 09 Oct 2026 01:11:29 GMT</pubDate>
+    <description>Company: Discover Dollar Inc · Location: Bengaluru East, Karnataka, India
+• Build AI agents with LangGraph, DeepAgents, and tool integration
+• Implement observability with MLflow, LangSmith, and tracing tools
+• Design evaluations for LLM reliability and performance</description>
+  </item>
+  <item>
+    <title>Technology Platform Engineer — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-technology-platform-engineer-4477462440</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-technology-platform-engineer-4477462440</guid>
+    <pubDate>Thu, 08 Oct 2026 21:42:59 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Gurugram, Haryana, India
+• Design and manage HPC and AI clusters using Kubernetes, Slurm, and GPU orchestration
+• Optimize cloud and hybrid environments for performance, cost, and scalability
+• Integrate AI platforms with existing systems and security frameworks</description>
+  </item>
+  <item>
+    <title>AI ML Computational Science Analyst — Accenture in India</title>
+    <link>https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4477456685</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4477456685</guid>
+    <pubDate>Thu, 08 Oct 2026 21:42:29 GMT</pubDate>
+    <description>Company: Accenture in India · Location: Pune Division, Maharashtra, India
+• Analyze and solve lower-complexity problems using AI tools
+• Work with peers on daily tasks with moderate guidance
+• Collaborate with sales and delivery teams on client solutions</description>
+  </item>
+  <item>
+    <title>Caching SRE — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-caching-sre-4474845781</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-caching-sre-4474845781</guid>
+    <pubDate>Thu, 08 Oct 2026 21:38:31 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Operate and troubleshoot Redis at scale with cluster, replication, HA, and performance tuning
+• Develop automation tools with Python for operational workflows and service lifecycle management
+• Collaborate with dev teams to integrate reliability and scalability into software development
+• Based in Pune</description>
+  </item>
+  <item>
+    <title>Full Stack Engineer — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-full-stack-engineer-4468904432</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-full-stack-engineer-4468904432</guid>
+    <pubDate>Thu, 08 Oct 2026 21:38:22 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Develop scalable software solutions using Java, SpringBoot, and microservices
+• Collaborate with cross-functional teams on product requirements and integration
+• Implement secure coding practices and unit testing for reliable code
+• Based in Pune</description>
+  </item>
+  <item>
+    <title>Platform Engineering Engineer — Tata Communications</title>
+    <link>https://interndoor.com/jobs/tata-communications-engineer-platform-engineering-4475999655</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/tata-communications-engineer-platform-engineering-4475999655</guid>
+    <pubDate>Thu, 08 Oct 2026 21:13:11 GMT</pubDate>
+    <description>Company: Tata Communications · Location: Chennai, Tamil Nadu, India
+• Deploy and manage ai infrastructure
+• Work with virtualization and container platforms
+• Maintain technical documentation and ops procedures</description>
+  </item>
+  <item>
+    <title>AI SDLC Engineer AWS Bedrock — UST</title>
+    <link>https://interndoor.com/jobs/ust-ai-sdlc-engineer-aws-and-bedrock-4474860068</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ust-ai-sdlc-engineer-aws-and-bedrock-4474860068</guid>
+    <pubDate>Thu, 08 Oct 2026 20:48:10 GMT</pubDate>
+    <description>Company: UST · Location: Bengaluru, Karnataka, India
+• Design and implement secure AI access architecture using AWS IAM and Bedrock
+• Integrate AI coding agents with CI/CD pipelines and developer environments
+• Collaborate with engineering and security teams on enterprise-scale AI solutions</description>
+  </item>
   <item>
     <title>Data Quality Analyst — AstraZeneca</title>
     <link>https://interndoor.com/jobs/astrazeneca-analyst-data-quality-4476204329</link>
@@ -444,76 +516,6 @@
 • Use CAPL and Python for test case development and execution
 • Work with Vector or dSPACE tools for communication protocol testing
 • Collaborate with development teams on test scenarios and defect tracking</description>
-  </item>
-  <item>
-    <title>Networking Managed Services Engineer (L1) — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-networking-managed-services-engineer-l1-4446642314</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-networking-managed-services-engineer-l1-4446642314</guid>
-    <pubDate>Thu, 08 Oct 2026 12:19:22 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India
-• Monitor and resolve client IT issues, ensuring systems stay operational
-• Use ITSM tools and support protocols for ticket management and incident resolution
-• Collaborate on process improvements and automation opportunities</description>
-  </item>
-  <item>
-    <title>Full Stack Developer — BNP Paribas</title>
-    <link>https://interndoor.com/jobs/bnp-paribas-full-stack-developer-4337201282</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/bnp-paribas-full-stack-developer-4337201282</guid>
-    <pubDate>Thu, 08 Oct 2026 12:19:13 GMT</pubDate>
-    <description>Company: BNP Paribas · Location: Mumbai, Maharashtra, India
-• Develop full-stack applications using Java, Angular, and microservices
-• Work on global banking platforms with agile teams in Mumbai/Chennai
-• Mentor junior developers and support offshore deliverables</description>
-  </item>
-  <item>
-    <title>Software Development Advisor — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-software-development-advisor-4465602990</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-software-development-advisor-4465602990</guid>
-    <pubDate>Thu, 08 Oct 2026 12:18:58 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Chennai, Tamil Nadu, India
-• Support development and maintenance of healthcare applications using DB2 400 and RPGLE
-• Handle batch jobs, debugging, and scheduling with RBO tools
-• Collaborate on SQL queries and trigger development for database operations</description>
-  </item>
-  <item>
-    <title>MS Engineer L2, Linux — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-ms-engineer-l2-linux-4410132369</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-ms-engineer-l2-linux-4410132369</guid>
-    <pubDate>Thu, 08 Oct 2026 12:18:36 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
-• Monitor, investigate, and resolve technical incidents across IT infrastructure
-• Use ServiceNow for ticket management and ITIL processes
-• Collaborate with teams and clients for second-level support</description>
-  </item>
-  <item>
-    <title>Software Dev Engineer I, L4 — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-software-dev-engineer-i-l4-4477152903</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-software-dev-engineer-i-l4-4477152903</guid>
-    <pubDate>Thu, 08 Oct 2026 12:18:14 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Write secure, stable, testable code for software components
-• Use data structures and algorithms to solve engineering problems
-• Collaborate on test plans and design discussions with team members</description>
-  </item>
-  <item>
-    <title>Applied Scientist, SSG Science — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-applied-scientist-ssg-science-4477165341</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-applied-scientist-ssg-science-4477165341</guid>
-    <pubDate>Thu, 08 Oct 2026 12:17:55 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
-• Optimize gen ai models for edge platforms
-• Collaborate with hardware and product teams
-• Publish research at top ml conferences</description>
-  </item>
-  <item>
-    <title>MS Engineer L2, DBA MySQL, Postgress — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-ms-engineer-l2-dba-mysql-postgress-4466202925</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-ms-engineer-l2-dba-mysql-postgress-4466202925</guid>
-    <pubDate>Thu, 08 Oct 2026 12:16:29 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
-• Monitor, investigate, and resolve technical incidents across IT infrastructure
-• Use ticketing tools like ServiceNow and follow ITIL processes for support
-• Collaborate with teams and clients for second-level problem resolution</description>
   </item>
 </channel>
 </rss>
