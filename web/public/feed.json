@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/zensar-technologies-mern-developer-4464178675",
+      "url": "https://interndoor.com/jobs/zensar-technologies-mern-developer-4464178675",
+      "title": "MERN Developer — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Design and implement MERN stack solutions with React, Node.js, MongoDB, and NestJS\n• Lead development teams, mentor engineers, and enforce Agile and CI/CD practices\n• Collaborate with stakeholders on technical design and solution architecture",
+      "date_published": "2026-10-09T12:52:08.342Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/marmon-technologies-india-pvt-ltd-graduate-engineer-trainee-4477678564",
       "url": "https://interndoor.com/jobs/marmon-technologies-india-pvt-ltd-graduate-engineer-trainee-4477678564",
       "title": "Graduate Engineer Trainee — Marmon Technologies India Pvt Ltd",
@@ -18,6 +30,102 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/tesco-technology-cyber-security-partner-4476293562",
+      "url": "https://interndoor.com/jobs/tesco-technology-cyber-security-partner-4476293562",
+      "title": "Cyber Security Partner — Tesco Technology",
+      "content_text": "Company: Tesco Technology · Location: Bengaluru, Karnataka, India\n• Collaborate with engineering teams to design secure, resilient solutions\n• Leverage cloud security, secure development practices, and threat modeling\n• Engage in security roadmaps, architecture reviews, and vulnerability assessments",
+      "date_published": "2026-10-09T12:41:29.052Z",
+      "authors": [
+        {
+          "name": "Tesco Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/netcore-ai-automation-intern-4476801160",
+      "url": "https://interndoor.com/jobs/netcore-ai-automation-intern-4476801160",
+      "title": "AI Automation Intern — Netcore",
+      "content_text": "Company: Netcore · Location: Mumbai, Maharashtra, India · Duration: 6 months\n• Build AI tools for internal teams to automate workflows and improve efficiency\n• Use LLMs, AI agents, and automation platforms to solve business problems\n• Collaborate with cross-functional teams to design and implement AI solutions",
+      "date_published": "2026-10-09T12:39:47.874Z",
+      "authors": [
+        {
+          "name": "Netcore"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4477682169",
+      "url": "https://interndoor.com/jobs/amazon-digital-associate-ring-data-engineering-services-4477682169",
+      "title": "Digital Associate, Ring Data Engineering Services — Amazon",
+      "content_text": "Company: Amazon · Location: Chennai, Tamil Nadu, India\n• Annotate audio/video/images with precise text labels\n• Use internal tools for data labeling and quality checks\n• Track tasks and report progress daily",
+      "date_published": "2026-10-09T12:16:54.401Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-pcb-engineer-intern-chennai-4476801080",
+      "url": "https://interndoor.com/jobs/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc-pcb-engineer-intern-chennai-4476801080",
+      "title": "PCB Engineer Intern — National Technology Centre for Ports, Waterways and Coasts (NTCPWC)",
+      "content_text": "Company: National Technology Centre for Ports, Waterways and Coasts (NTCPWC) · Location: Kanchipuram, Tamil Nadu, India\n• Design, assemble, and test PCBs for maritime and industrial electronics\n• Use Altium, KiCad, and oscilloscopes for hardware development\n• Work on sensor integration and communication protocols like CAN",
+      "date_published": "2026-10-09T12:13:01.092Z",
+      "authors": [
+        {
+          "name": "National Technology Centre for Ports, Waterways and Coasts (NTCPWC)"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-technical-specialist-ms-oracle-database-4410135305",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-technical-specialist-ms-oracle-database-4410135305",
+      "title": "Oracle Database Technical Specialist — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Resolve technical incidents and ensure client infrastructure is operational\n• Work with cloud, security, networking, and applications technologies\n• Mentor junior team members and coach l2 teams on advanced troubleshooting",
+      "date_published": "2026-10-09T12:05:31.001Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/oceaneering-support-analyst-4477663963",
+      "url": "https://interndoor.com/jobs/oceaneering-support-analyst-4477663963",
+      "title": "Support Analyst — Oceaneering",
+      "content_text": "Company: Oceaneering · Location: Chandigarh, Chandigarh, India\n• Troubleshoot IT systems and business apps, provide user guidance\n• Support via phone, email, chat, and remote tools\n• Work 24x7 rotational shifts with service-level agreements",
+      "date_published": "2026-10-09T12:04:36.037Z",
+      "authors": [
+        {
+          "name": "Oceaneering"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-servicenow-developer-4476295171",
+      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-servicenow-developer-4476295171",
+      "title": "Servicenow developer Specialist — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Pune/Pimpri-Chinchwad Area\n• Configure and implement itsm modules per business needs\n• Develop workflows, ui, scripts, and business rules\n• Collaborate with stakeholders to translate needs into solutions",
+      "date_published": "2026-10-09T12:00:18.224Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/kotak-mahindra-bank-data-scientist-support-services-0789-1288-1081157-4475212840",
+      "url": "https://interndoor.com/jobs/kotak-mahindra-bank-data-scientist-support-services-0789-1288-1081157-4475212840",
+      "title": "Data Scientist_SUPPORT SERVICES_0789_1288_1081157 — Kotak Mahindra Bank",
+      "content_text": "Company: Kotak Mahindra Bank · Location: Mumbai Metropolitan Region\n• Build and deploy analytical models for credit risk and customer experience\n• Write optimized code and manage model lifecycle with version control\n• Collaborate with cross-functional teams to translate business needs into data solutions",
+      "date_published": "2026-10-09T11:55:46.055Z",
+      "authors": [
+        {
+          "name": "Kotak Mahindra Bank"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/siemens-healthineers-software-engineer-4476296165",
       "url": "https://interndoor.com/jobs/siemens-healthineers-software-engineer-4476296165",
       "title": "Software Engineer — Siemens Healthineers",
@@ -26,6 +134,18 @@
       "authors": [
         {
           "name": "Siemens Healthineers"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4469137338",
+      "url": "https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4469137338",
+      "title": "Java AWS Developer-CCB Ramp up - Cards-Bangalore — Mphasis",
+      "content_text": "Company: Mphasis · Location: Bengaluru, Karnataka, India\n• Develop and maintain Java-based microservices for scalable applications\n• Work with Docker, Kubernetes, and cloud platforms like AWS\n• Collaborate on full development lifecycle from planning to deployment",
+      "date_published": "2026-10-09T11:51:15.274Z",
+      "authors": [
+        {
+          "name": "Mphasis"
         }
       ]
     },
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "Oceaneering"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/dp-world-group-sde-i-zodiac-accelerated-rollout-ats-oraclecloud-ehpv-fa-em2-oraclecloud-com-24962",
-      "url": "https://interndoor.com/jobs/dp-world-group-sde-i-zodiac-accelerated-rollout-ats-oraclecloud-ehpv-fa-em2-oraclecloud-com-24962",
-      "title": "Group SDE I - Zodiac Accelerated Rollout — DP World",
-      "content_text": "Company: DP World · Location: India\n• Design and build new software services for blockchain solutions\n• Work with modern tech stack including NodeJS, GoLang, AWS, and databases\n• Lead technical direction and feature roadmap for a critical service",
-      "date_published": "2026-10-09T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "DP World"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-technology-platform-engineer-4477462440",
-      "url": "https://interndoor.com/jobs/accenture-in-india-technology-platform-engineer-4477462440",
-      "title": "Technology Platform Engineer — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Gurugram, Haryana, India\n• Design and manage HPC and AI clusters using Kubernetes, Slurm, and GPU orchestration\n• Optimize cloud and hybrid environments for performance, cost, and scalability\n• Integrate AI platforms with existing systems and security frameworks",
-      "date_published": "2026-10-08T21:42:59.051Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4477456685",
-      "url": "https://interndoor.com/jobs/accenture-in-india-ai-ml-computational-science-analyst-4477456685",
-      "title": "AI ML Computational Science Analyst — Accenture in India",
-      "content_text": "Company: Accenture in India · Location: Pune Division, Maharashtra, India\n• Analyze and solve lower-complexity problems using AI tools\n• Work with peers on daily tasks with moderate guidance\n• Collaborate with sales and delivery teams on client solutions",
-      "date_published": "2026-10-08T21:42:29.142Z",
-      "authors": [
-        {
-          "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-caching-sre-4474845781",
-      "url": "https://interndoor.com/jobs/barclays-caching-sre-4474845781",
-      "title": "Caching SRE — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Operate and troubleshoot Redis at scale with cluster, replication, HA, and performance tuning\n• Develop automation tools with Python for operational workflows and service lifecycle management\n• Collaborate with dev teams to integrate reliability and scalability into software development\n• Based in Pune",
-      "date_published": "2026-10-08T21:38:31.396Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-full-stack-engineer-4468904432",
-      "url": "https://interndoor.com/jobs/barclays-full-stack-engineer-4468904432",
-      "title": "Full Stack Engineer — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Develop scalable software solutions using Java, SpringBoot, and microservices\n• Collaborate with cross-functional teams on product requirements and integration\n• Implement secure coding practices and unit testing for reliable code\n• Based in Pune",
-      "date_published": "2026-10-08T21:38:22.253Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tata-communications-engineer-platform-engineering-4475999655",
-      "url": "https://interndoor.com/jobs/tata-communications-engineer-platform-engineering-4475999655",
-      "title": "Platform Engineering Engineer — Tata Communications",
-      "content_text": "Company: Tata Communications · Location: Chennai, Tamil Nadu, India\n• Deploy and manage ai infrastructure\n• Work with virtualization and container platforms\n• Maintain technical documentation and ops procedures",
-      "date_published": "2026-10-08T21:13:11.531Z",
-      "authors": [
-        {
-          "name": "Tata Communications"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-ai-sdlc-engineer-aws-and-bedrock-4474860068",
-      "url": "https://interndoor.com/jobs/ust-ai-sdlc-engineer-aws-and-bedrock-4474860068",
-      "title": "AI SDLC Engineer AWS Bedrock — UST",
-      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Design and implement secure AI access architecture using AWS IAM and Bedrock\n• Integrate AI coding agents with CI/CD pipelines and developer environments\n• Collaborate with engineering and security teams on enterprise-scale AI solutions",
-      "date_published": "2026-10-08T20:48:10.408Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/astrazeneca-analyst-data-quality-4476204329",
-      "url": "https://interndoor.com/jobs/astrazeneca-analyst-data-quality-4476204329",
-      "title": "Data Quality Analyst — AstraZeneca",
-      "content_text": "Company: AstraZeneca · Location: Chennai, Tamil Nadu, India\n• Diagnose data issues across systems and pipelines, working with engineers to fix root causes\n• Build Power BI dashboards and scorecards to track data health and SLA compliance\n• Automate quality checks with SQL and Python to improve dashboard performance and reporting",
-      "date_published": "2026-10-08T19:57:17.806Z",
-      "authors": [
-        {
-          "name": "AstraZeneca"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-salesforce-commerce-cloud-developer-4477436959",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-salesforce-commerce-cloud-developer-4477436959",
-      "title": "Salesforce Commerce Cloud Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India\n• Support Salesforce Commerce Cloud with ticket resolution, maintenance, and defect fixes\n• Use SFRA, ISML, Algolia, JavaScript, and Git for development and deployment\n• Work in hybrid model with 2 pm to 11 pm IST shift",
-      "date_published": "2026-10-08T19:51:54.979Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4477440880",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4477440880",
-      "title": "Systems Integration Specialist — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design and maintain data pipelines using PySpark and Delta Lake\n• Ingest data from Oracle, Netezza, MongoDB, and Azure Data Lake\n• Build reusable frameworks for data transformation and quality\n• Own CI/CD and environment promotion through Azure DevOps",
-      "date_published": "2026-10-08T19:49:32.537Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
         }
       ]
     }
