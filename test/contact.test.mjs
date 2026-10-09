@@ -255,8 +255,8 @@ console.log('\n== the "preferred source on Google" badge (1 Oct 2026) ==');
   const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
   check('the pill rule is in the stylesheet', /\.pref-src a \{[^}]*border-radius: 999px/.test(css), true);
   check('its star has no spoken text', css.includes(".pref-src a::before { content: '\\2605' / '';"), true);
-  check('the board loads the stylesheet version that has the rule', board.includes('/styles.css?v=16'), true);
-  check('and so do generated pages', page.includes('/styles.css?v=16'), true);
+  check('the board loads the stylesheet version that has the rule', board.includes('/styles.css?v=17'), true);
+  check('and so do generated pages', page.includes('/styles.css?v=17'), true);
 }
 
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);

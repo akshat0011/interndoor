@@ -25,7 +25,7 @@ import { writeFileSync, readFileSync, mkdirSync, readdirSync, rmSync, existsSync
 import { join } from 'node:path';
 import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
 import { ENTRY_MAX_YEARS, POSTDOC_TITLE, schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
-import { facetGroups, facetSlug, canonicalCity } from './facets.js';
+import { facetGroups, facetSlug, canonicalCity, foldCity } from './facets.js';
 import { roleGroups, rolePageOf, stableRank, roleCitySlug } from './rolepages.js';
 
 export const SITE = 'https://interndoor.com';
@@ -895,6 +895,16 @@ function cleanPlace(raw) {
   return printablePlace(last) ? last : '';
 }
 
+/* An employer's places, one name each (9 Oct 2026, the calm redesign). The
+   hub read "Bengaluru · Multiple Locations · Bangalore": two spellings of one
+   city, folded by the same table the city pages use, and an ATS placeholder
+   that names no place at all. */
+const NOT_A_PLACE = /^(multiple|various|several|many|other)\s+(locations?|cities|sites)$/i;
+function hubPlaces(rows, region) {
+  return [...new Set(rows.flatMap((j) => placesOf(j.location, region))
+    .map((p) => foldCity(p)).filter((p) => p && !NOT_A_PLACE.test(p)))];
+}
+
 export function placesOf(location, region = DEFAULT_REGION) {
   const raw = String(location ?? '').trim();
   if (!raw) return [];
@@ -1182,11 +1192,11 @@ function listingRecord(job, { region = DEFAULT_REGION, validDays = DEFAULT_VALID
 function standouts(job, locations = 1) {
   const out = [];
   const money = stipendText(job);
-  if (money) out.push(`Pay is stated up front &mdash; <strong>${esc(money)}</strong>. Most postings never say.`);
+  if (money) out.push(`Pay is stated up front: <strong>${esc(money)}</strong>. Most postings never say.`);
   if (/^remote$/i.test(String(job.workplaceType ?? '').trim())) out.push('<strong>Fully remote</strong>, so where you live is not a constraint.');
   const q = (String(job.applicants ?? '').match(/([\d,]+)/) || [])[1];
   const n = /over/i.test(String(job.applicants ?? '')) ? null : (q ? Number(q.replace(/,/g, '')) : null);
-  if (n === 0) out.push('<strong>Nobody had applied</strong> when this was listed &mdash; you would be near the front of the queue.');
+  if (n === 0) out.push('<strong>Nobody had applied</strong> when this was listed, so you would be near the front of the queue.');
   else if (n != null && n < 10) out.push(`Only <strong>${n}</strong> ${n === 1 ? 'person had' : 'people had'} applied when this was listed.`);
   const posted = job.postedAt ?? job.firstSeenAt;
   if (posted && Date.now() - posted < DAY) out.push('<strong>Posted in the last 24 hours.</strong>');
@@ -1387,6 +1397,11 @@ function imageMeta(image) {
 `;
 }
 
+/* page.css is cached a day (max-age=600 plus stale-while-revalidate), so a
+   change to it that the markup depends on ships with a new version here. The
+   closed page, /post-a-job and /skills carry their own on top of this one. */
+const PAGE_CSS_VERSION = 'r1';
+
 function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '', section = '', sectionExact = false }) {
   /* `page` ONLY WHEN THE LINK IS THE PAGE YOU ARE ON. A company hub is inside
      the Companies section but is not /companies, so announcing its nav item as
@@ -1422,12 +1437,12 @@ ${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="alternate" type="application/rss+xml" title="InternDoor — new ${offerPhrase(region, { adjective: '', noun: 'roles' })}" href="${regionHref('/feed.xml', region)}">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=16">
-<link rel="stylesheet" href="/page.css">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=17">
+<link rel="stylesheet" href="/page.css?v=${PAGE_CSS_VERSION}">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/track.js"></script>
-<script defer src="/page.js?v=3"></script>
+<script defer src="/page.js?v=4"></script>
 ${scripts}<script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -1446,7 +1461,7 @@ ${scripts}<script defer src="/subscribe.js"></script>
           <circle class="s-dot" cx="22" cy="22" r="2.8"/>
         </svg>
       </span>
-      <span class="word">INTERN<em>DOOR</em></span>
+      <span class="word">Intern<em>Door</em></span>
     </a>
 
     <!-- THE CURRENT SECTION IS MARKED, NEVER REMOVED. Dropping the item for the
@@ -1584,7 +1599,7 @@ function signupForm(region, { heading = true } = {}) {
      them by email" above the box says the same thing twice. The label is still
      rendered for screen readers, just visually hidden. */
   const labelText = heading
-    ? 'Or get them by email — one message, no spam.'
+    ? 'Or get them by email: one message a day, no spam.'
     : 'Your email address';
   return `<form class="sub" method="post" action="/api/subscribe" data-region="${esc(region.code)}">
       <label class="sub-l${heading ? '' : ' vh'}">${labelText}</label>
@@ -1630,7 +1645,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
 </section>
 <footer class="foot">
   <div class="wrap">
-    <p>Every listing links back to its original posting — always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
+    <p>Every listing links back to its original posting. Always apply there. Summaries are written by InternDoor; the linked posting is the source of truth.</p>
     <!-- /contact IS THE ONE LINK HERE THAT IS NOT regionHref'd, on purpose.
          There is a single contact page for all three boards — see
          renderContactPage — so a root-relative href is what resolves from
@@ -2287,7 +2302,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
                short title land, a long one takes four or five lines and pushes
                everything a reader came for below the fold. -->
           <h1${job.title.length > 64 ? ' class="is-long"' : job.title.length > 40 ? ' class="is-mid"' : ''}>${esc(job.title)}</h1>
-          ${job.roleLabel ? `<p class="jp-focus">${esc(job.roleLabel)}</p>` : ''}
+          ${job.roleLabel && job.roleLabel.trim().toLowerCase() !== String(job.title ?? '').trim().toLowerCase() ? `<p class="jp-focus">${esc(job.roleLabel)}</p>` : ''}
 
           <div class="pills">${statusPills(job)}</div>
           ${stillListed(job, job.company, region)}
@@ -2331,7 +2346,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
           <div class="apply-band">
             <p>${apply ? '' : 'Apply through the original posting. '}${job.employmentType === FULL_TIME ? `${entryWordCap(region)} roles` : 'Internships'} ${esc(region.inName)} often collect hundreds of applicants within a day, so <strong>applying early matters more than applying perfectly</strong>. A half-finished application sent on the first morning beats a polished one sent on the third.</p>
           </div>
-          <p class="note">This summary was written by InternDoor from the public posting, and is not the employer's own wording. The linked posting is the source of truth — check it before you apply.</p>
+          <p class="note">This summary was written by InternDoor from the public posting, and is not the employer's own wording. The linked posting is the source of truth, so check it before you apply.</p>
         </section>
       </div>
 
@@ -2339,7 +2354,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         <div class="jp-card">
           ${apply ? `<div class="jp-card-top">
             <span class="apply-glow">${applyBtn}</span>
-            <p class="jp-card-note">Opens ${where} in a new tab. Free — we never ask for a fee.</p>
+            <p class="jp-card-note">Opens ${where} in a new tab. Free. We never ask for a fee.</p>
           </div>` : ''}
           <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
                these attributes, because what belongs here depends entirely on
@@ -3018,7 +3033,7 @@ function answerLine(company, live, prof, region) {
       ? `<b>${co} is not advertising an engineering internship ${esc(where)} today.</b> We have tracked ${prof.n} so far and check again every 30 minutes.`
       : `<b>${co} has no engineering internship open ${esc(where)} today.</b> This page is checked every 30 minutes.`;
   }
-  const places = [...new Set(live.flatMap((j) => placesOf(j.location, region)))];
+  const places = hubPlaces(live, region);
   const modes = [...new Set(live.map((j) => modeText(j)).filter(Boolean))];
   const tail = [
     places.length === 1 ? `based in ${esc(places[0])}` : places.length ? `across ${esc(andList(places.slice(0, 3).map(esc)))}` : '',
@@ -3053,7 +3068,7 @@ function answerBar(live, prof, region) {
   const paid = (live ?? []).filter((j) => stipendText(j)).length;
   const eg = eligibilityCounts(live);
   const levels = [eg.ug ? 'Bachelor’s' : '', eg.pg ? 'Master’s' : '', eg.phd ? 'PhD' : ''].filter(Boolean);
-  const places = [...new Set((live ?? []).flatMap((j) => placesOf(j.location, region)))];
+  const places = hubPlaces(live ?? [], region);
   const modes = [...new Set((live ?? []).map((j) => modeText(j)).filter(Boolean))];
 
   // The freshest confirmation across the live roles. One badge for the page is
@@ -3121,12 +3136,12 @@ function qaBlock(company, live, prof, region) {
   // list that lost its sort.
   const starts = [...new Set((live ?? []).map(startDate).filter(Boolean))]
     .sort((a, b) => startKey(a) - startKey(b));
-  const places = [...new Set((live ?? []).flatMap((j) => placesOf(j.location, region)))];
+  const places = hubPlaces(live ?? [], region);
   const modes = [...new Set((live ?? []).map((j) => modeText(j)).filter(Boolean))];
 
   const qa = [
     pay ? [`Does ${co} pay its interns?`,
-      `${paid === live.length ? 'Yes — every one of the' : `${paid} of the`} ${live.length} open role${live.length === 1 ? '' : 's'} state${paid === 1 && paid === live.length ? 's' : ''} pay, ${pay.lo === pay.hi ? `at <b>${esc(pay.lo)}</b>` : `ranging from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}.`] : null,
+      `${paid === live.length ? 'Yes, every one of the' : `${paid} of the`} ${live.length} open role${live.length === 1 ? '' : 's'} state${paid === 1 && paid === live.length ? 's' : ''} pay, ${pay.lo === pay.hi ? `at <b>${esc(pay.lo)}</b>` : `ranging from <b>${esc(pay.lo)}</b> to <b>${esc(pay.hi)}</b>`}.`] : null,
     // "for a Old Mission Capital internship" — an employer name is as likely to
     // start with a vowel as not, and the article is wrong half the time. Naming
     // the employer with "at" sidesteps it and reads better anyway.
@@ -3159,7 +3174,7 @@ function eligibilityBlock(company, live) {
   return `<section class="strip">
       <div class="strip-head"><h2>Who ${esc(company)} accepts</h2></div>
       <dl class="eg">${cell('Undergraduate', eg.ug)}${cell('Master’s', eg.pg)}${cell('PhD', eg.phd)}</dl>
-      <p class="cp-note">Taken from each posting’s own wording. A level reading &ldquo;not stated&rdquo; was not ruled out &mdash; those postings simply did not say. Check the individual role for graduation-year requirements.</p>
+      <p class="cp-note">Taken from each posting’s own wording. A level reading &ldquo;not stated&rdquo; was not ruled out; those postings simply did not say. Check the individual role for graduation-year requirements.</p>
     </section>`;
 }
 
@@ -3577,7 +3592,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
 
     ${history.length ? `<section class="strip">
       <div class="strip-head"><h2>Previously posted</h2></div>
-      <p class="past-note">Roles ${esc(company)} has advertised since we started tracking them. These listings have closed &mdash; they are here so you can see what this employer hires for, and how often.</p>
+      <p class="past-note">Roles ${esc(company)} has advertised since we started tracking them. These listings have closed. They are here so you can see what this employer hires for, and how often.</p>
       <ul class="past">${history.map((p) => `
         <li>
           <b>${esc(p.title)}</b>
@@ -3682,7 +3697,7 @@ export function renderCompanyIndex(byCompany, pastByCompany = new Map(), logos =
       <div class="filter" id="filter">
         <label>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <input type="search" id="filter-input" placeholder="Filter ${rows.length} employers — try “Qualcomm”" aria-label="Filter companies">
+          <input type="search" id="filter-input" placeholder="Filter ${rows.length} employers, e.g. Qualcomm" aria-label="Filter companies">
         </label>
       </div>
     </header>
@@ -3853,7 +3868,7 @@ export function renderReportPage(facts, { region = DEFAULT_REGION, alternates = 
       </ul>
 
       <h2>Using these figures</h2>
-      <p>They are free to quote with a link to this page. Cite them as measured on ${esc(measured)} &mdash; the page is regenerated daily, so the numbers move.</p>
+      <p>They are free to quote with a link to this page. Cite them as measured on ${esc(measured)}. The page is regenerated daily, so the numbers move.</p>
     </section>
   </div>
 </main>
@@ -4072,11 +4087,11 @@ export function renderAlertsPage(channels = [], { region = DEFAULT_REGION, alter
 
     <header class="dir-hero">
       <h1>Get internship and ${esc(entryWord(region))} job alerts ${esc(region.inName)}</h1>
-      <p class="hub-lede">New ${esc(offerPhrase(region, { noun: 'roles' }))}, within minutes of going live. Pick whichever you actually read — you can take more than one, and leave any time.</p>
+      <p class="hub-lede">New ${esc(offerPhrase(region, { noun: 'roles' }))}, within minutes of going live. Pick whichever you actually read. You can take more than one, and leave any time.</p>
     </header>
 
     ${wa ? `<section class="strip">
-      <div class="strip-head"><h2>On ${esc(wa.name)} — fastest, no signup</h2></div>
+      <div class="strip-head"><h2>On ${esc(wa.name)}: fastest, no signup</h2></div>
       <div class="chans">${card(wa)}</div>
     </section>` : ''}
 
@@ -4143,7 +4158,7 @@ export function renderApplicationsPage({ region = DEFAULT_REGION } = {}) {
 
   return `${head({
     title: buildTitle(['My applications']),
-    description: `Track every internship and ${entryWord(region)} role you have applied to ${region.inName} — status, dates and what is still outstanding, kept on your own device.`,
+    description: `Track every internship and ${entryWord(region)} role you have applied to ${region.inName}: status, dates and what is still outstanding, kept on your own device.`,
     canonical: url,
     indexable: false,
     region,
@@ -4183,7 +4198,7 @@ export function renderApplicationsPage({ region = DEFAULT_REGION } = {}) {
          hides it the moment there is a row to show. -->
     <section class="trk-void" id="trk-void">
       <h2>Nothing tracked yet</h2>
-      <p>Open any role on the board and press <strong>Track</strong>, or use the button on a job page. Nothing is sent anywhere &mdash; see below.</p>
+      <p>Open any role on the board and press <strong>Track</strong>, or use the button on a job page. Nothing is sent anywhere; see below.</p>
       <p class="trk-void-go"><a class="a-1" href="${regionHref('/', region)}">Browse live roles</a></p>
 
       <h3>The stages you can move a role through</h3>
@@ -4304,7 +4319,7 @@ export function renderContactPage({ region = DEFAULT_REGION, alternates = null }
 
     <header class="dir-hero">
       <h1>Contact InternDoor</h1>
-      <p class="hub-lede">One inbox, read by one person. There is no support desk and no ticket number &mdash; write in plain English and say what you need.</p>
+      <p class="hub-lede">One inbox, read by one person. There is no support desk and no ticket number. Write in plain English and say what you need.</p>
     </header>
 
     <section class="strip">
@@ -4324,18 +4339,18 @@ export function renderContactPage({ region = DEFAULT_REGION, alternates = null }
     <section class="strip">
       <div class="strip-head"><h2>What people write about</h2></div>
       <ul class="do-list">
-        <li><b>A listing that is wrong, expired or duplicated.</b> Send the page&rsquo;s address and what is wrong with it &mdash; that is enough to find the row behind it. <a href="${mail('Wrong listing')}">Report a listing</a>.</li>
+        <li><b>A listing that is wrong, expired or duplicated.</b> Send the page&rsquo;s address and what is wrong with it. That is enough to find the row behind it. <a href="${mail('Wrong listing')}">Report a listing</a>.</li>
         <li><b>Employers, to take a posting down.</b> It comes down, and the page is replaced by a link to your other open roles rather than left to 404. <a href="${mail('Please remove a posting')}">Ask for a removal</a>.</li>
         <li><b>Employers, to be picked up automatically.</b> Point us at the careers page you post on and new internships and entry-level roles are found from it within about half an hour of going live. There is no charge for this and no listing fee.</li>
         <li><b>Colleges and placement cells.</b> The board is free for your students and needs no signup, so there is nothing to sign. If you want the live openings in a form you can circulate, say which branches and years. <a href="${mail('Placement cell')}">Write about a placement cell</a>.</li>
-        <li><b>Anything else</b> &mdash; a bug, a wrong summary, a question about where a number on <a href="/report">the numbers page</a> came from.</li>
+        <li><b>Anything else:</b> a bug, a wrong summary, a question about where a number on <a href="/report">the numbers page</a> came from.</li>
       </ul>
     </section>
 
     <section class="trk-priv">
       <h2>What this is, and is not</h2>
       <p><strong>InternDoor is not a recruiter and not a placement agency.</strong> We do not take applications, forward resumes, or charge students or employers anything. Every listing links back to the employer&rsquo;s own posting, and that posting is where you apply and the source of truth.</p>
-      <p><strong>We are not affiliated with the companies listed here.</strong> Writing to this address does not reach them, and we cannot tell you where your application stands &mdash; only the employer can.</p>
+      <p><strong>We are not affiliated with the companies listed here.</strong> Writing to this address does not reach them, and we cannot tell you where your application stands. Only the employer can.</p>
       <p>There is no account to close and no profile to delete: nothing on this site is tied to a person. Your saved applications live in your own browser, which <a href="/applications">the tracker page</a> explains in full.</p>
     </section>
   </div>
@@ -4403,7 +4418,7 @@ export function renderAboutPage({ region = DEFAULT_REGION, alternates = null } =
     <section class="strip">
       <div class="strip-head"><h2>Where the listings come from</h2></div>
       <ul class="do-list">
-        <li><b>A vetted list of employers.</b> InternDoor watches the openings of a fixed list of real companies &mdash; product companies, banks, chip makers, research labs and funded startups. A posting from any employer not on the list never appears, which is how course sellers and unpaid &ldquo;internship&rdquo; schemes stay off the board. <a href="/report">The numbers page</a> shows how many listings were turned away.</li>
+        <li><b>A vetted list of employers.</b> InternDoor watches the openings of a fixed list of real companies: product companies, banks, chip makers, research labs and funded startups. A posting from any employer not on the list never appears, which is how course sellers and unpaid &ldquo;internship&rdquo; schemes stay off the board. <a href="/report">The numbers page</a> shows how many listings were turned away.</li>
         <li><b>Engineering roles only.</b> Software, data, AI and machine learning, hardware and embedded roles, with other engineering-adjacent roles filed under Misc. Sales, marketing and operations internships are left out.</li>
         <li><b>Internships and entry-level full-time jobs.</b> An entry-level role that asks for two or more years of experience, or is titled senior, lead or manager, is refused.</li>
       </ul>
@@ -4429,7 +4444,7 @@ export function renderAboutPage({ region = DEFAULT_REGION, alternates = null } =
 
     <section class="trk-priv">
       <h2>Get new roles as they open</h2>
-      <p>Join the <a href="/alerts">WhatsApp channel or the daily email</a> to hear about new listings the day they appear. For anything else &mdash; a wrong listing, a removal, a placement cell &mdash; <a href="/contact">write to InternDoor</a>.</p>
+      <p>Join the <a href="/alerts">WhatsApp channel or the daily email</a> to hear about new listings the day they appear. For anything else (a wrong listing, a removal, a placement cell), <a href="/contact">write to InternDoor</a>.</p>
     </section>
   </div>
 </main>
@@ -4455,7 +4470,7 @@ ${foot({
  * publish never rewrites it. Its own page.css version, because the form's
  * rules are new and page.css is cached for a day.
  */
-export const POST_JOB_VERSION = 'pj1';
+export const POST_JOB_VERSION = 'pj2';
 
 export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null } = {}) {
   const url = `${SITE}/post-a-job`;
@@ -4469,7 +4484,7 @@ export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null }
     alternates,
     alternatePath: null,
     scripts: '<script defer src="/post-job.js"></script>\n',
-  }).replace('href="/page.css"', `href="/page.css?v=${POST_JOB_VERSION}"`)}
+  }).replace(`href="/page.css?v=${PAGE_CSS_VERSION}"`, `href="/page.css?v=${POST_JOB_VERSION}"`)}
 <main class="page">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
@@ -4485,7 +4500,7 @@ export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null }
     <section class="strip">
       <div class="strip-head"><h2>How it works</h2></div>
       <ul class="do-list">
-        <li><b>Send the link to the role</b> on your own careers page, the job board you already use, or LinkedIn. Students apply there &mdash; InternDoor never collects applications or resumes.</li>
+        <li><b>Send the link to the role</b> on your own careers page, the job board you already use, or LinkedIn. Students apply there. InternDoor never collects applications or resumes.</li>
         <li><b>It is checked by hand,</b> usually within a day: a real company, an engineering role, and a stipend or salary that is stated.</li>
         <li><b>Then it goes on the board</b> with your company&rsquo;s page, where students searching for roles like it find it. If your careers page is one we can read, every new internship and entry-level role you post there is picked up automatically from then on.</li>
         <li><b>It is free.</b> No listing fee, no paid placement, no account to create.</li>
@@ -4495,7 +4510,7 @@ export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null }
     <section class="strip">
       <div class="strip-head"><h2>What gets listed</h2></div>
       <ul class="do-list">
-        <li><b>Engineering roles</b> &mdash; software, data, AI and machine learning, hardware and embedded.</li>
+        <li><b>Engineering roles:</b> software, data, AI and machine learning, hardware and embedded.</li>
         <li><b>Internships, and entry-level jobs</b> that ask for under two years of experience.</li>
         <li><b>Paid roles only.</b> Unpaid internships, certificate-only schemes and anything that charges the applicant are turned down.</li>
         <li><b>Your own company&rsquo;s roles.</b> Recruiters and staffing agencies posting for an unnamed client are turned down.</li>
@@ -4548,7 +4563,7 @@ export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null }
         </div>
       </form>
       <div class="pj-done" id="pj-done" tabindex="-1" hidden>
-        <b>Received &mdash; thank you.</b>
+        <b>Received. Thank you.</b>
         <p>Every submission is checked by hand, usually within a day. If the role fits the board it goes live, with nothing more needed from you. Questions: <a href="${mail}">${esc(CONTACT_EMAIL)}</a>.</p>
       </div>
     </section>
@@ -4878,7 +4893,7 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   const listed = homeListings(jobs);
   const rows = listed.map((j) => {
     const facts = [j.location, j.workplaceType].filter(Boolean).map((s) => esc(s)).join(' · ');
-    return `<li><a href="${regionHref(`/jobs/${jobSlug(j)}`, region)}">${esc(j.company)} — ${esc(j.title)}</a>`
+    return `<li><a href="${regionHref(`/jobs/${jobSlug(j)}`, region)}">${esc(j.title)} at ${esc(j.company)}</a>`
       + (facts ? `<span class="tiny"> ${facts}</span>` : '')
       + '</li>';
   }).join('\n');
@@ -4932,7 +4947,7 @@ function writeHomePage(jobs, publicDir, region = DEFAULT_REGION, alternates = nu
   // was live and visible on the homepage until 24 Aug. Punctuation belongs with
   // the phrase it punctuates anyway.
   html = fillMarker(html, 'REGION:LEDE',
-    `<strong>Engineering internships and ${esc(entryWord(region))} jobs</strong>,`) ?? html;
+    `Roles across <strong>${esc(region.name)}</strong>,`) ?? html;
   /* The heading. `fillMarker` writes a newline before the closing marker and it
      renders as a space, so nothing here may end in punctuation — the full stop
      is `.lede h1::after`, a lime square, and a trailing character would sit
@@ -5287,7 +5302,7 @@ export function skillMark(slug, label) {
 /* Its own query on page.css, this page only — the closed page's reason: the
    stylesheet is cached a day, and a reader with yesterday's copy would get
    the new layout unstyled. */
-const SKILLS_INDEX_VERSION = 's1';
+const SKILLS_INDEX_VERSION = 's2';
 const SK_ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
 /**
@@ -5304,7 +5319,7 @@ function renderSkillIndex(facets, region) {
   const name = (f) => titleCaseSkill(f.label);
   const roles = (n) => `${n} open role${n === 1 ? '' : 's'}`;
   const top = ranked.slice(0, 5).map(name);
-  const lede = `Browse live ${offerPhrase(region, { adjective: '' })} ${region.inName} by the skill they ask for${top.length ? ` — ${top.join(', ')}${ranked.length > top.length ? ` and ${ranked.length - top.length} more` : ''}` : ''}. Updated every 30 minutes.`;
+  const lede = `Browse live ${offerPhrase(region, { adjective: '' })} ${region.inName} by the skill they ask for${top.length ? `: ${top.join(', ')}${ranked.length > top.length ? ` and ${ranked.length - top.length} more` : ''}` : ''}. Updated every 30 minutes.`;
   const href = (f) => regionHref(`/${k.dir}/${f.slug}`, region);
 
   return `${head({
@@ -5313,19 +5328,19 @@ function renderSkillIndex(facets, region) {
     canonical: regionUrl(`/${k.dir}/`, region),
     indexable: FACETS_INDEXABLE && facets.length >= 3,
     region,
-  }).replace('href="/page.css"', `href="/page.css?v=${SKILLS_INDEX_VERSION}"`)}
+  }).replace(`href="/page.css?v=${PAGE_CSS_VERSION}"`, `href="/page.css?v=${SKILLS_INDEX_VERSION}"`)}
 <main class="page sk">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="${regionHref('/', region)}">Jobs</a> <span aria-hidden="true">/</span> <span>Skills</span>
     </nav>
     <header class="sk-hero">
-      <h1 class="sk-h1">Internships &amp; ${esc(entryWordTitle(region))} Jobs ${esc(region.inName)} by Skill</h1>
+      <h1 class="sk-h1">Internships and ${esc(entryWord(region))} jobs ${esc(region.inName)} by skill</h1>
       <p class="sk-lede">${esc(lede)}</p>
       <div class="filter" id="filter">
         <label>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-          <input type="search" id="filter-input" placeholder="Search ${facets.length} skills — try “React”" aria-label="Search skills">
+          <input type="search" id="filter-input" placeholder="Search ${facets.length} skills, e.g. React" aria-label="Search skills">
         </label>
       </div>
     </header>
@@ -5880,7 +5895,7 @@ const CLOSED_MARK = 'data-closed-on="';
  * on each publish KEEPING its original stamp (writeIfChanged writes only when
  * its lists moved), which is also how the pre-8-Oct stubs become this page.
  */
-const CLOSED_VERSION = '3';
+const CLOSED_VERSION = '4';
 
 /* The closed page's own icons, drawn as attributes (the CSP refuses style=). */
 const CR_PIN = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
@@ -5944,7 +5959,7 @@ function renderClosedRole({ company, hubSlug, region, closedOn, past = null, ope
        cached for a day (max-age 600 + stale-while-revalidate), and a reader
        holding yesterday's copy would get this layout unstyled. Every other
        page keeps the bare URL, so nothing else is rewritten. */
-    .replace('href="/page.css"', `href="/page.css?v=${CLOSED_VERSION}"`);
+    .replace(`href="/page.css?v=${PAGE_CSS_VERSION}"`, `href="/page.css?v=${CLOSED_VERSION}"`);
   return page.replace('<html ', `<html ${CLOSED_MARK}${esc(closedOn)}" data-closed-v="${CLOSED_VERSION}" `) + `
 <main class="page cr">
   <div class="wrap">
@@ -5970,8 +5985,8 @@ function renderClosedRole({ company, hubSlug, region, closedOn, past = null, ope
           <span class="cr-alert-ic">${CR_BAN}</span>
           <div>
             <strong>This role has closed</strong>
-            <p>${esc(company)} has stopped taking applications${closedTime ? ` — we took this page down on ${closedTime}` : ''}. ${nLike
-              ? `<b>${nLike} ${nLike === 1 ? 'role like it is' : 'roles like it are'} open right now</b> — pick one below.`
+            <p>${esc(company)} has stopped taking applications${closedTime ? `, and we took this page down on ${closedTime}` : ''}. ${nLike
+              ? `<b>${nLike} ${nLike === 1 ? 'role like it is' : 'roles like it are'} open right now</b>. Pick one below.`
               : `<a href="${regionHref('/', region)}">See every role open right now →</a>`}</p>
           </div>
         </div>

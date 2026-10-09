@@ -31,7 +31,7 @@
      only route to the employer's hub above the fold — so it takes a legible
      size and the ordinary text colour. Still mono, still small: it is a path,
      not a heading. */
-  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+  font-family: var(--ui); font-size: 13px; letter-spacing: 0;
   color: var(--ink-2); margin-bottom: 20px;
 }
 /* The trailing item is the page you are on, so it stays quiet — and it is
@@ -39,11 +39,11 @@
 .crumbs > span {
   max-width: 46ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.crumbs a { color: var(--ink); text-decoration: none; transition: color .16s; }
+.crumbs a { color: var(--ink-15); text-decoration: none; transition: color .16s; }
 .crumbs i { font-style: normal; color: var(--rule-2); }
 .crumbs span { color: var(--ink-2); }
 @media (hover: hover) and (pointer: fine) {
-  .crumbs a:hover { color: var(--live); }
+  .crumbs a:hover { color: var(--ink); }
 }
 
 /* ============================================================
@@ -87,9 +87,9 @@
    White plate behind it because most logos are drawn for white. */
 .jp-crest {
   width: 58px; height: 58px; flex: none; position: relative; overflow: hidden;
-  display: grid; place-items: center; border-radius: var(--r-2);
+  display: grid; place-items: center; border-radius: var(--r-plate);
   background: var(--card-2); border: 1px solid var(--rule);
-  font-family: var(--display); font-weight: 800; font-size: 20px; color: var(--ink-2);
+  font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--ink-2);
   text-decoration: none;
   transition: border-color .16s, transform var(--d-press) var(--snap);
 }
@@ -101,14 +101,14 @@ a.jp-crest:active { transform: scale(.97); }
 
 .jp-co {
   display: inline-block;
-  font-family: var(--ui); font-weight: 600; font-size: 13px;
-  letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2);
+  font-family: var(--ui); font-weight: 500; font-size: 13px;
+  letter-spacing: 0;  color: var(--ink-2);
   text-decoration: none; transition: color .16s;
 }
 @media (hover: hover) and (pointer: fine) {
-  .jp-id:hover .jp-co { color: var(--live); }
+  .jp-id:hover .jp-co { color: var(--ink); }
   .jp-id:hover .jp-co::after { transform: translateX(3px); }
-  .jp-id:hover .jp-co-more { color: var(--live); }
+  .jp-id:hover .jp-co-more { color: var(--ink); }
   .jp-id:hover .jp-co-more i { transform: translateX(2px); }
 }
 .jp-id:focus-visible { outline: 2px solid var(--live); outline-offset: 3px; border-radius: var(--r); }
@@ -128,18 +128,17 @@ a.jp-crest:active { transform: scale(.97); }
    gist and the facts below the fold on a laptop. A short title still gets the
    full size; the two longer steps are ~15% and ~27% down from it. */
 .page h1 {
-  font-size: clamp(28px, 4vw, 44px); line-height: 1.02;
-  letter-spacing: -.04em; text-transform: uppercase;
+  font-size: clamp(28px, 4vw, 44px); line-height: 1.06;
+  letter-spacing: -.035em; 
   overflow-wrap: break-word;
   /* Tracking this tight eats the word space with it, and titles here are full
      of them: "Software Engineer Internship (Backend)" set solid read as
      "Internship(Backend)". Put back what the tracking took. */
-  word-spacing: .06em;
-}
+   font-weight: 500; }
 .page h1.is-mid  { font-size: clamp(26px, 3.4vw, 38px); }
 .page h1.is-long { font-size: clamp(24px, 2.9vw, 33px); line-height: 1.06; }
 .jp-focus {
-  margin-top: 12px; font-size: 17px; font-weight: 500; color: var(--live);
+  margin-top: 12px; font-size: 17px; font-weight: 400; color: var(--ink-2);
   letter-spacing: -.01em;
 }
 
@@ -153,8 +152,8 @@ a.jp-crest:active { transform: scale(.97); }
   display: inline-flex; align-items: center; gap: 7px;
   height: 27px; padding: 0 11px; border-radius: var(--r-pill);
   border: 1px solid var(--rule); background: var(--card);
-  font-family: var(--mono); font-size: 10.5px; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+  font-family: var(--ui); font-size: 12px; font-weight: 500;
+  letter-spacing: 0;  color: var(--ink-2);
   white-space: nowrap;
 }
 .pill i {
@@ -165,8 +164,8 @@ a.jp-crest:active { transform: scale(.97); }
 /* Under 24 hours old. The one badge allowed to shout, because it is the only
    fact on the page that expires. */
 .pill.is-hot {
-  color: var(--hot); border-color: color-mix(in oklab, var(--hot) 45%, transparent);
-  background: color-mix(in oklab, var(--hot) 10%, transparent);
+  color: var(--accent); border-color: color-mix(in oklab, var(--accent) 45%, transparent);
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
 }
 .pill.is-hot i { animation: livedot 1.8s var(--snap) infinite; }
 /* THE EIGHTH TIME AN ACCENT HAS BEEN PUT ON A TINT OF ITSELF, and the eighth
@@ -178,13 +177,13 @@ a.jp-crest:active { transform: scale(.97); }
    everywhere it is not sitting on itself.
    The dot inherits currentColor, so it moves with the text. The border is
    decoration at 45% and is not held to a text ratio. */
-:root[data-theme="light"] .pill.is-hot { color: #9a3412; }
+:root[data-theme="light"] .pill.is-hot { color: var(--accent); }
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .pill.is-hot { color: #9a3412; }
+  :root:not([data-theme="dark"]) .pill.is-hot { color: var(--accent); }
 }
 .pill.is-fresh {
-  color: var(--live); border-color: color-mix(in oklab, var(--live) 40%, transparent);
-  background: color-mix(in oklab, var(--live) 8%, transparent);
+  color: var(--accent); border-color: color-mix(in oklab, var(--accent) 40%, transparent);
+  background: color-mix(in oklab, var(--accent) 8%, transparent);
 }
 .pill.is-paid {
   color: var(--cash); border-color: color-mix(in oklab, var(--cash) 40%, transparent);
@@ -206,9 +205,9 @@ a.jp-crest:active { transform: scale(.97); }
    says how many roles are open. Tracking comes down with the size going up;
    .18em is a lot to carry at a readable size. */
 .page h2 {
-  font-family: var(--mono); font-weight: 700;
-  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--ink-2); margin: 0 0 14px;
+  font-family: var(--ui); font-weight: 500;
+  font-size: 13px; letter-spacing: 0; 
+  color: var(--ink-15); margin: 0 0 16px;
   display: flex; align-items: center; gap: 11px;
 }
 
@@ -249,21 +248,19 @@ a.jp-crest:active { transform: scale(.97); }
    visitor arrived with — is there anything open here — so it is the one h2 on
    the site that gets size, full ink and the accent. */
 .page h2.h2-lead {
-  font-family: var(--display); font-weight: 800;
-  font-size: 20px; letter-spacing: -.02em; text-transform: uppercase;
+  font-family: var(--display); font-weight: 600;
+  font-size: 22px; letter-spacing: -.025em; 
   color: var(--ink); gap: 12px; margin-bottom: 16px;
 }
 .page h2.h2-lead b {
-  font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: 0;
-  color: var(--live-ink); background: var(--live);
+  font-family: var(--ui); font-size: 12.5px; font-weight: 500; letter-spacing: 0;
+  color: var(--ink-2); background: var(--card-2);
   padding: 3px 9px; border-radius: 999px; flex: none;
-  font-variant-numeric: tabular-nums;
-}
+  font-variant-numeric: tabular-nums; border: 1px solid var(--rule); }
 /* A hairline that runs from the label to the edge. Cheap, and it stops a page
    of stacked text blocks reading as one undifferentiated column. */
 .page h2::after {
-  content: ""; flex: 1; height: 1px; background: var(--rule);
-}
+  content: none; flex: 1; height: 1px; background: var(--rule); display: none; }
 
 /* The summary. Named .summary rather than .gist: styles.css already owns
    .gist as the card list's two-line clamped blurb, and inheriting
@@ -272,29 +269,27 @@ a.jp-crest:active { transform: scale(.97); }
    copy — and it is the paragraph that tells somebody in one breath whether to
    care. It was sitting unused in the data. */
 .summary {
-  position: relative; padding: 15px 18px 15px 20px;
+  position: relative; padding: 18px 20px;
   background: var(--card); border: 1px solid var(--rule);
   border-radius: var(--r-2); overflow: hidden;
-  font-size: 16px; line-height: 1.62; color: var(--ink);
+  font-size: 16px; line-height: 1.62; color: var(--ink-15);
   max-width: 68ch;
 }
 .summary::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-  background: var(--live);
-}
+  background: var(--live); display: none; }
 
 .do-list { display: grid; gap: 12px; max-width: 68ch; }
 .do-list li {
-  position: relative; padding-left: 26px;
-  font-size: 15.5px; line-height: 1.55; color: var(--ink);
+  position: relative; padding-left: 18px;
+  font-size: 15.5px; line-height: 1.55; color: var(--ink-15);
 }
 /* A drawn marker rather than a bullet glyph: it sits on the cap height instead
    of the baseline, and it carries the accent so the list reads as ours. */
 .do-list li::before {
-  content: ""; position: absolute; left: 2px; top: .58em;
-  width: 7px; height: 7px; background: var(--live);
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
-}
+  content: ""; position: absolute; left: 2px; top: .62em;
+  width: 5px; height: 5px; background: var(--ink-3);
+  clip-path: none; border-radius: 50%; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 /* Each chip is a search of the board now, so it is sized and coloured to be
@@ -302,8 +297,7 @@ a.jp-crest:active { transform: scale(.97); }
    labels; these are destinations. */
 .chip {
   display: inline-block;
-  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
-  text-transform: uppercase; color: var(--ink-2); text-decoration: none;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-2); text-decoration: none;
   background: var(--card-2); border: 1px solid var(--rule);
   border-radius: var(--r); padding: 6px 11px;
   transition: color .16s, border-color .16s, background .16s;
@@ -323,7 +317,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .jp-id-t { display: grid; gap: 3px; min-width: 0; }
 .jp-co-more {
   display: inline-flex; align-items: center; gap: 5px;
-  font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em;
+  font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;
   color: var(--ink-2); text-decoration: none; transition: color .16s;
 }
 .jp-co-more i { font-style: normal; transition: transform .18s var(--snap); }
@@ -337,38 +331,36 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
    footnote under a grey pill. */
 .jp-open {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  margin-top: 14px; padding: 9px 13px 9px 11px;
+  margin-top: 14px; padding: 10px 14px;
   border-radius: var(--r-2); font-size: 13px; line-height: 1.5;
-  border: 1px solid transparent; width: fit-content; max-width: 100%;
-}
+  border: 1px solid transparent; width: fit-content; max-width: 100%; background: var(--card); border-color: var(--rule); }
 .jp-open-b {
   display: inline-flex; align-items: center; gap: 7px; flex: none;
-  font-weight: 700; letter-spacing: -.01em; font-size: 14px;
-}
-.jp-open-b i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
+  font-weight: 500; letter-spacing: -.01em; font-size: 14px; color: var(--ink); }
+.jp-open-b i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
 .jp-open-d { color: var(--ink-2); min-width: 0; }
 
 .jp-open.is-verified {
-  background: color-mix(in oklab, var(--cash) 12%, transparent);
-  border-color: color-mix(in oklab, var(--cash) 34%, transparent);
+  background: var(--card);
+  border-color: var(--rule);
 }
-.jp-open.is-verified .jp-open-b { color: var(--cash); }
+.jp-open.is-verified .jp-open-b { color: var(--ink); }
 /* The unconfirmed tier is quieter but still unmistakably green — it means the
    same thing to a reader ("you can still apply"), and only the basis differs.
    A hollow dot, matching the hub cards. */
 .jp-open.is-likely {
-  background: color-mix(in oklab, var(--live) 8%, transparent);
-  border-color: color-mix(in oklab, var(--live) 26%, transparent);
+  background: var(--card);
+  border-color: var(--rule);
 }
-.jp-open.is-likely .jp-open-b { color: var(--live); }
-.jp-open.is-likely .jp-open-b i { background: none; box-shadow: inset 0 0 0 2px currentColor; }
+.jp-open.is-likely .jp-open-b { color: var(--ink); }
+.jp-open.is-likely .jp-open-b i { background: none; box-shadow: inset 0 0 0 2px var(--accent); }
 /* MEASURED: --live on a tint of itself loses what the token had spare in the
    light theme. Fifth time — see .sub-msg, .flag-rank, the board's freshness
    pill and .jp-sub-t. */
-:root[data-theme="light"] .jp-open.is-likely .jp-open-b { color: #46590a; }
-:root[data-theme="light"] .vfy.is-likely { color: #46590a; }
+:root[data-theme="light"] .jp-open.is-likely .jp-open-b { color: var(--ink); }
+:root[data-theme="light"] .vfy.is-likely { color: var(--accent); }
 /* --cash on a cash tint, same arithmetic, measured at 4.09. */
-:root[data-theme="light"] .jp-open.is-verified .jp-open-b { color: #04503b; }
+:root[data-theme="light"] .jp-open.is-verified .jp-open-b { color: var(--ink); }
 
 /* What stands out. Deliberately plain — the facts are doing the work and a
    boxed, tinted, iconned treatment would make three ordinary sentences look
@@ -377,13 +369,13 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .why-list { display: grid; gap: 9px; max-width: 68ch; }
 .why-list li {
   position: relative; padding-left: 22px;
-  font-size: 14.5px; line-height: 1.5; color: var(--ink-2);
+  font-size: 14.5px; line-height: 1.5; color: var(--ink-15);
 }
-.why-list li strong { color: var(--ink); font-weight: 600; }
+.why-list li strong { color: var(--ink); font-weight: 500; }
 .why-list li::before {
   content: ""; position: absolute; left: 3px; top: .5em;
-  width: 6px; height: 6px; border-radius: 50%;
-  background: color-mix(in oklab, var(--live) 70%, transparent);
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--ink-3);
 }
 
 /* About this listing — InternDoor's own record of the posting (listingRecord
@@ -402,8 +394,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .rec > div:last-child { border-bottom: 0; }
 .rec dt {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--ink-2); padding-top: 2px;
+  font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;  color: var(--ink-2); padding-top: 2px;
 }
 .rec dd { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink); overflow-wrap: anywhere; }
 @media (min-width: 520px) {
@@ -428,10 +419,10 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .btn-apply {
   position: relative; overflow: hidden;
   display: flex; align-items: center; justify-content: center; gap: 9px;
-  width: 100%; height: 50px; padding: 0 18px;
-  border: 1px solid var(--live); border-radius: var(--r);
-  background: var(--live); color: var(--live-ink);
-  font-size: 15px; font-weight: 700; letter-spacing: -.01em;
+  width: 100%; height: 48px; padding: 0 18px;
+  border: 1px solid var(--cta); border-radius: var(--r-pill);
+  background: var(--cta); color: var(--cta-ink);
+  font-size: 15px; font-weight: 500; letter-spacing: -.01em;
   text-decoration: none; text-align: center;
   transition: transform var(--d-press) var(--snap), filter .18s;
 }
@@ -445,7 +436,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .btn-apply:active { transform: scale(.975); }
 
 @media (hover: hover) and (pointer: fine) {
-  .btn-apply:hover { filter: brightness(1.07); }
+  .btn-apply:hover { filter: brightness(1.06); box-shadow: 0 0 0 4px color-mix(in oklab, var(--cta) 24%, transparent); }
   .btn-apply:hover em { transform: translateX(3px); }
 }
 
@@ -501,41 +492,42 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .facts > div:last-child { border-bottom: 0; }
 .facts dt {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--ink-2); flex: none;
+  font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;  color: var(--ink-2); flex: none;
 }
 .facts dd {
   margin: 0; font-size: 13.5px; font-weight: 500; color: var(--ink);
   text-align: right; overflow-wrap: anywhere;
 }
-.facts dd.cash { color: var(--cash); font-weight: 700; }
+.facts dd.cash { color: var(--cash); font-weight: 600; }
 
 /* The retention link, repeated where somebody has just decided to apply and is
    at their most willing to hear about the next one. */
 .jp-sub {
   display: flex; align-items: center; gap: 12px;
   padding: 15px 18px; border-top: 1px solid var(--rule);
-  background: color-mix(in oklab, var(--live) 7%, var(--card-2));
-  color: var(--live); text-decoration: none;
+  background: var(--card);
+  color: var(--ink); text-decoration: none;
   transition: background .16s;
 }
 .jp-sub-t { display: grid; gap: 2px; min-width: 0; flex: 1; }
-.jp-sub-t strong { font-size: 13.5px; font-weight: 700; color: var(--live); }
+.jp-sub-t strong { font-size: 13.5px; font-weight: 500; color: var(--ink); }
 /* The WhatsApp form of the box: solid, since it is now the page's one ask. */
-.jp-sub.is-wa { background: var(--live); border-color: var(--live); color: var(--live-ink); }
-.jp-sub.is-wa .jp-sub-t strong, .jp-sub.is-wa .jp-sub-t em, .jp-sub.is-wa .jp-sub-go { color: var(--live-ink); }
+.jp-sub.is-wa { background: var(--card); border-color: var(--rule); color: var(--ink); }
+.jp-sub.is-wa .jp-sub-t strong, .jp-sub.is-wa .jp-sub-go { color: var(--ink); }
+.jp-sub.is-wa .jp-sub-t em { color: var(--ink-2); }
+.jp-sub.is-wa svg { color: var(--accent); }
 /* MEASURED. The CTA sits on a lime-tinted ground, and in the light theme
    --live on its own tint fell to 4.18 against a 4.5 floor — the tint costs
    exactly what the token had spare. Darkened for that theme and that element
    only; --live is correct everywhere it is not sitting on itself. Same trap as
    .sub-msg, .flag-rank and the board's freshness pill. */
-:root[data-theme="light"] .jp-sub-t strong { color: #46590a; }
-:root[data-theme="light"] .jp-sub.is-wa .jp-sub-t strong { color: var(--live-ink); }
-:root[data-theme="light"] .jp-sub { color: #46590a; }
-:root[data-theme="light"] .jp-sub.is-wa { color: var(--live-ink); }
+:root[data-theme="light"] .jp-sub-t strong { color: var(--ink); }
+:root[data-theme="light"] .jp-sub.is-wa .jp-sub-t strong { color: var(--ink); }
+:root[data-theme="light"] .jp-sub { color: var(--ink); }
+:root[data-theme="light"] .jp-sub.is-wa { color: var(--ink); }
 /* Pre-existing, and under the bar for the same reason: the role focus is
    --live on the card, which measures 4.45 in the light theme. */
-:root[data-theme="light"] .jp-focus { color: #4a6100; }
+:root[data-theme="light"] .jp-focus { color: var(--ink-2); }
 .jp-sub-t em { font-style: normal; font-size: 12px; line-height: 1.4; color: var(--ink-2); }
 .jp-sub-go { font-style: normal; flex: none; transition: transform .18s var(--snap); }
 @media (hover: hover) and (pointer: fine) {
@@ -543,8 +535,8 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .jp-sub svg { flex: none; }
 @media (hover: hover) and (pointer: fine) {
-  .jp-sub:hover { background: color-mix(in oklab, var(--live) 9%, var(--card-2)); }
-  .jp-sub.is-wa:hover { background: var(--live); filter: brightness(1.06); }
+  .jp-sub:hover { background: var(--card-2); }
+  .jp-sub.is-wa:hover { background: var(--card-2); filter: none; }
 }
 
 /* ---------- how to apply ---------- */
@@ -584,8 +576,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 }
 .dock-t span {
   display: block; margin-top: 1px;
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .dock .btn-apply { width: auto; flex: none; height: 42px; padding: 0 18px; font-size: 14px; }
@@ -610,9 +601,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
    takes its own full-width line and still sets on ONE line for every company
    whose name is a normal length — which is every company but this one. */
 .strip-more {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--live); text-decoration: none;
-}
+  font-family: var(--ui); font-size: 13px; letter-spacing: 0;  color: var(--ink-2); text-decoration: none; display: inline-block; padding: 7px 0; }
 @media (hover: hover) and (pointer: fine) {
   .strip-more:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
@@ -637,8 +626,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 /* The lit left edge, the same signal the register uses for a live row. */
 .tile::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-  background: transparent; transition: background .16s;
-}
+  background: transparent; transition: background .16s; display: none; }
 @media (hover: hover) and (pointer: fine) {
   .tile:hover::before { background: var(--live); }
 }
@@ -647,15 +635,15 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .tile-top { display: flex; align-items: center; gap: 10px; }
 .tile-crest {
   width: 28px; height: 28px; flex: none; position: relative; overflow: hidden;
-  border-radius: 5px; background: var(--card-2); border: 1px solid var(--rule);
+  border-radius: 8px; background: var(--card-2); border: 1px solid var(--rule);
   display: grid; place-items: center;
-  font-family: var(--display); font-weight: 800; font-size: 11px; color: var(--ink-3);
+  font-family: var(--display); font-weight: 600; font-size: 12px; color: var(--ink-3);
 }
 .tile-crest img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 3px; background: #fff; }
 .tile-co {
-  font-family: var(--ui); font-size: var(--t-micro); line-height: 1.25;
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
-  font-weight: 600; color: var(--ink-2); min-width: 0;
+  font-family: var(--ui); font-size: 12.5px; line-height: 1.25;
+  letter-spacing: 0; 
+  font-weight: 500; color: var(--ink-15); min-width: 0;
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
   overflow: hidden; overflow-wrap: anywhere;
 }
@@ -666,12 +654,11 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .tile-meta {
   margin-top: auto; padding-top: 4px;
   display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px;
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-2);
 }
-.tile-meta .tile-age { color: var(--ink-2); font-weight: 700; }
-.tile-meta .tile-age.is-hot { color: var(--hot); }
-.tile-meta .tile-age.is-fresh { color: var(--live); }
+.tile-meta .tile-age { color: var(--ink-2); font-weight: 500; }
+.tile-meta .tile-age.is-hot { color: var(--accent); }
+.tile-meta .tile-age.is-fresh { color: var(--accent); }
 
 /* First paint only. page.js sets .in on the container once, so nothing
    re-animates on a filter keystroke. */
@@ -689,7 +676,7 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
    stylesheet is a day stale (no fx-in, no --ease-out: the declaration is
    then dropped), simply shows its heading. Only the heading block — the rest
    of the first screen is already there to be read. */
-main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
+main.page .wrap > h1 {
   animation: fx-in .6s var(--ease-out) both;
 }
 
@@ -708,7 +695,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 }
 .hub-hero .jp-crest { width: 48px; height: 48px; font-size: 17px; flex: none; }
 .hub-hero h1 { font-size: clamp(23px, 3.1vw, 34px); flex: 1 1 300px; min-width: 0; }
-.hub-live { flex: none; }
+.hub-live { flex: none; text-decoration: none; }
 
 /* Past roles. Deliberately quieter than the live list and deliberately not
    links — marking up or linking a closed posting is what earns a
@@ -726,8 +713,8 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 .past b { font-weight: 600; color: var(--ink); }
 .past .qual { color: var(--ink-3); font-size: 12.5px; }
 .past time {
-  margin-left: auto; font-family: var(--mono); font-size: 10px;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
+  margin-left: auto; font-family: var(--ui); font-size: 12px;
+  letter-spacing: 0;  color: var(--ink-3);
 }
 
 .empty {
@@ -735,8 +722,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   border: 1px dashed var(--rule-2); border-radius: var(--r-2);
 }
 .empty b {
-  display: block; font-family: var(--display); font-weight: 800; font-size: 19px;
-  text-transform: uppercase; letter-spacing: -.025em; color: var(--ink);
+  display: block; font-family: var(--display); font-weight: 600; font-size: 19px;  letter-spacing: -.025em; color: var(--ink);
 }
 .empty p { margin-top: 8px; font-size: 14px; color: var(--ink-2); }
 
@@ -755,14 +741,13 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2);
 }
 .stat b {
-  display: block; font-family: var(--display); font-weight: 900;
-  font-size: 30px; line-height: 1; letter-spacing: -.04em; color: var(--live);
+  display: block; font-family: var(--display); font-weight: 600;
+  font-size: 30px; line-height: 1; letter-spacing: -.03em; color: var(--live);
   font-variant-numeric: tabular-nums;
 }
 .stat span {
   display: block; margin-top: 7px;
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 
 /* A hundred-row list with no way to jump to a name is a list nobody reads.
@@ -800,7 +785,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 .dir-card:active { transform: scale(.985); }
 @media (hover: hover) and (pointer: fine) {
   .dir-card:hover { border-color: var(--rule-2); background: var(--card-2); }
-  .dir-card:hover .dir-name { color: var(--live); }
+  .dir-card:hover .dir-name { color: var(--ink); }
 }
 .dir-card .tile-crest { width: 34px; height: 34px; font-size: 12px; }
 .dir-t { min-width: 0; flex: 1; }
@@ -810,8 +795,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 }
 .dir-n {
   display: block; margin-top: 3px;
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--live);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 .dir-card.is-quiet .dir-n { color: var(--ink-3); }
 
@@ -822,43 +806,39 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 /* The last thing on the page is an invitation, not a disclaimer. The
    disclaimer is still there, underneath, where it belongs. */
 .outro {
-  margin-top: 64px; padding: 40px 30px; text-align: center;
+  margin-top: 64px; padding: 56px 30px; text-align: center;
   border-top: 1px solid var(--rule);
-  background:
-    radial-gradient(60% 120% at 50% 0%, color-mix(in oklab, var(--live) 7%, transparent), transparent 70%),
-    var(--bg-2);
+  background: var(--bg-2);
 }
 .outro b {
-  display: block; font-family: var(--display); font-weight: 900;
-  font-size: clamp(20px, 3vw, 30px); line-height: 1.04; letter-spacing: -.035em;
-  text-transform: uppercase; color: var(--ink);
+  display: block; font-family: var(--display); font-weight: 500;
+  font-size: clamp(22px, 3vw, 32px); line-height: 1.04; letter-spacing: -.03em;  color: var(--ink);
 }
 .outro p { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); }
 .outro-acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
 .outro-acts a {
   display: inline-flex; align-items: center; gap: 8px;
-  height: 44px; padding: 0 20px; border-radius: var(--r);
-  font-size: 14px; font-weight: 600; text-decoration: none;
+  height: 44px; padding: 0 20px; border-radius: var(--r-pill);
+  font-size: 14px; font-weight: 500; text-decoration: none;
   transition: transform var(--d-press) var(--snap), background .16s, border-color .16s, color .16s;
 }
 .outro-acts a:active { transform: scale(.97); }
-.outro-acts .a-1 { background: var(--live); color: var(--live-ink); border: 1px solid var(--live); font-weight: 700; }
+.outro-acts .a-1 { background: var(--cta); color: var(--cta-ink); border: 1px solid var(--cta); font-weight: 500; }
 .outro-acts .a-1.is-wa svg { flex: none; }
 .outro-acts .a-2 { background: none; color: var(--ink); border: 1px solid var(--rule-2); }
 @media (hover: hover) and (pointer: fine) {
   .outro-acts .a-1:hover { filter: brightness(1.07); }
-  .outro-acts .a-2:hover { border-color: var(--live); color: var(--live); }
+  .outro-acts .a-2:hover { border-color: var(--ink-3); color: var(--ink); }
 }
 
 .foot { margin-top: 0; }
 .foot a { color: var(--ink-2); }
 @media (hover: hover) and (pointer: fine) {
-  .foot a:hover { color: var(--live); }
+  .foot a:hover { color: var(--ink); }
 }
 
 .tiny {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 
 /* ============================================================
@@ -982,12 +962,12 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
    --------------------------------------------------------------------------- */
 .hub-lede {
   margin: 14px 0 0; max-width: 62ch;
-  font-size: 15px; line-height: 1.65; color: var(--ink-2);
+  font-size: 15px; line-height: 1.65; color: var(--ink-15);
 }
-.hub-lede b { color: var(--ink); font-weight: 650; }
+.hub-lede b { color: var(--ink); font-weight: 600; }
 
 .cp-note {
-  font-size: 13px; line-height: 1.6; color: var(--ink-2);
+  font-size: 13px; line-height: 1.6; color: var(--ink-15);
   max-width: 70ch; margin: 0 0 14px;
 }
 
@@ -1002,8 +982,8 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   background: var(--bg-2, transparent);
 }
 .cp-chips li b {
-  font-family: var(--mono); font-size: 10px; font-weight: 500;
-  color: var(--ink-3); letter-spacing: .04em;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--ink-3); letter-spacing: 0;
 }
 /* A chip that links is the whole chip, not underlined words inside a pill
    (the skill, city and role pages read as a wall of underlines). A chip with
@@ -1014,7 +994,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 .cp-chips li > span { color: var(--ink-2); }
 .cp-chips li:has(> span) { border-color: var(--rule); }
 @media (hover: hover) and (pointer: fine) {
-  .cp-chips li:has(> a:hover) { border-color: var(--live); background: var(--card-2); }
+  .cp-chips li:has(> a:hover) { border-color: var(--ink-3); background: var(--card-2); }
 }
 .cp-chips li > a:focus-visible { outline: none; }
 .cp-chips li:has(> a:focus-visible) { outline: 2px solid var(--live); outline-offset: 2px; }
@@ -1042,8 +1022,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
 }
 .cp-facts dt {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--ink-2); flex: none;
+  font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;  color: var(--ink-2); flex: none;
 }
 .cp-facts dd {
   margin: 0; font-size: 13.5px; font-weight: 500; color: var(--ink);
@@ -1073,20 +1052,19 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
    and at 10px in --ink-3 they were harder to read than the answers under them.
    11.5px and a step brighter. */
 .ans dt {
-  font-family: var(--mono); font-size: 11.5px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--ink-2);
+  font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;  color: var(--ink-2);
 }
 .ans dd {
-  margin: 7px 0 0; font-size: 19px; font-weight: 700; letter-spacing: -.02em;
+  margin: 7px 0 0; font-size: 19px; font-weight: 600; letter-spacing: -.02em;
   line-height: 1.2;
 }
 /* Inside the <dd> now, not beside it — a <div> in a <dl> may hold only <dt>
    and <dd>, so the old sibling <p> made every hub's list malformed. It
    therefore inherits the <dd>'s 700 weight and tight tracking, and has to put
    both back. */
-.ans p { margin: 4px 0 0; font-size: 12.5px; font-weight: 400; letter-spacing: normal; color: var(--ink-3); line-height: 1.45; }
+.ans p { margin: 4px 0 0; font-size: 12.5px; font-weight: 400; letter-spacing: normal; color: var(--ink-2); line-height: 1.45; }
 .ans.is-cash dd { color: var(--cash); }
-.ans.is-live dd { color: var(--live); }
+.ans.is-live dd { color: var(--ink); }
 
 /* Role cards. A row, not a grid cell: the hub is the one page where the reader
    has already chosen the employer and is choosing between roles, so the facts
@@ -1127,9 +1105,9 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 .rc-headt { min-width: 0; }
 .rc-crest {
   width: 34px; height: 34px; flex: none; position: relative; overflow: hidden;
-  border-radius: 6px; background: var(--card-2); border: 1px solid var(--rule);
+  border-radius: 8px; background: var(--card-2); border: 1px solid var(--rule);
   display: grid; place-items: center;
-  font-family: var(--display); font-weight: 800; font-size: 12px; color: var(--ink-3);
+  font-family: var(--display); font-weight: 600; font-size: 12px; color: var(--ink-3);
 }
 .rc-crest img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 4px; background: #fff; }
 .rc-side {
@@ -1144,7 +1122,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 .rc-do li { font-size: 14px; line-height: 1.5; color: var(--ink-15); padding-left: 18px; position: relative; }
 .rc-do li::before {
   content: ""; position: absolute; left: 2px; top: .62em;
-  width: 5px; height: 5px; border-radius: 50%; background: var(--live);
+  width: 5px; height: 5px; border-radius: 50%; background: var(--ink-3);
 }
 
 /* A chip that goes somewhere. Each is a real /skills/ page, or a search of the
@@ -1156,22 +1134,21 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   border-radius: var(--r-pill); padding: 5px 12px; text-decoration: none;
   transition: border-color .16s, background .16s;
 }
-.rc-chips a:hover { border-color: var(--live); }
+.rc-chips a:hover { border-color: var(--ink-3); }
 
 /* Withheld, never guessed: a row is emitted only when the fact exists, so an
    employer that states no pay shows four rows rather than eight placeholders. */
 .rc-rows { display: grid; gap: 11px; margin: 0; }
 .rc-rows dt {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .11em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 .rc-rows dd { margin: 3px 0 0; font-size: 14px; font-weight: 500; color: var(--ink); }
-.rc-rows dd .is-cash { color: var(--cash); font-weight: 700; }
+.rc-rows dd .is-cash { color: var(--cash); font-weight: 600; }
 
 .rc-cta {
   display: block; margin-top: auto; text-align: center;
   padding: 11px 16px; border-radius: var(--r-pill);
-  background: var(--live); color: var(--live-ink);
+  background: var(--cta); color: var(--cta-ink);
   font-weight: 600; font-size: 14px; text-decoration: none;
   transition: transform .14s var(--snap);
 }
@@ -1197,12 +1174,11 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   .role-card:hover { border-color: var(--rule-2); background: var(--card-2); }
 }
 .rc-t {
-  font-size: var(--t-title); font-weight: 700;
+  font-size: var(--t-title); font-weight: 600;
   letter-spacing: var(--t-title-tr); line-height: var(--t-title-lh); color: var(--ink);
 }
 .rc-sub {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 /* Pay is the fact the reader is looking for and the only one that gets colour. */
 /* Measured, not eyeballed: --cash on the tinted chip lands at 3.91 in the light
@@ -1222,7 +1198,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
    how we know, not whether. */
 .vfy { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
 .vfy.is-verified { color: var(--cash); }
-.vfy.is-likely { color: color-mix(in oklab, var(--live) 78%, var(--ink-2)); }
+.vfy.is-likely { color: color-mix(in oklab, var(--accent) 78%, var(--ink-2)); }
 .vfy i {
   width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: block;
 }
@@ -1245,14 +1221,13 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   border: 1px solid var(--rule); border-radius: var(--r-2);
 }
 .eg dt {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .09em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 .eg dd {
   margin: 7px 0 0; font-size: 15px; font-weight: 600;
-  display: flex; align-items: center; gap: 8px; color: var(--cash);
+  display: flex; align-items: center; gap: 8px; color: var(--ink);
 }
-.eg dd b { color: var(--cash); font-weight: 900; }
+.eg dd b { color: var(--ink); font-weight: 600; }
 .eg > div.is-quiet dd { color: var(--ink-3); font-weight: 400; }
 
 /* The questions block. No FAQPage markup — Google restricted those rich
@@ -1301,8 +1276,8 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
    styles.css but only overrides the properties it names, which is what makes
    that class of collision invisible until somebody looks at a screenshot. */
 .rp-stamp {
-  margin-top: 14px; font-family: var(--mono); font-size: 12px;
-  letter-spacing: .02em; color: var(--ink-3);
+  margin-top: 14px; font-family: var(--ui); font-size: 12px;
+  letter-spacing: 0; color: var(--ink-3);
 }
 .rp-stamp strong { color: var(--ink-2); font-weight: 600; }
 
@@ -1322,7 +1297,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 /* The claim is the heading, deliberately — this page is read by somebody
    scanning for a number to quote, not by somebody reading top to bottom. */
 .rp-stat-h {
-  margin: 0; font-family: var(--display); font-weight: 800;
+  margin: 0; font-family: var(--display); font-weight: 600;
   font-size: 21px; line-height: 1.25; letter-spacing: -.02em; color: var(--ink);
   /* min-width:auto on a grid item cannot shrink below its longest unbreakable
      run; these headlines carry no long tokens, but the guard costs nothing and
@@ -1331,19 +1306,19 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 }
 .rp-stat-d { margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
 .rp-stat-n {
-  margin: 12px 0 0; font-family: var(--mono); font-size: 11.5px;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+  margin: 12px 0 0; font-family: var(--ui); font-size: 12.5px;
+  letter-spacing: 0;  color: var(--ink-3);
 }
 /* The denominator is the whole point — a bare "36" is a number, "36 of 403" is
    a fact — so both figures are raised and the joining word is not. */
 .rp-stat-n b {
-  font-family: var(--display); font-weight: 900; font-size: 15px;
-  letter-spacing: -.01em; color: var(--live); font-variant-numeric: tabular-nums;
+  font-family: var(--display); font-weight: 600; font-size: 15px;
+  letter-spacing: -.01em; color: var(--accent); font-variant-numeric: tabular-nums;
 }
 
 .rp-note { margin-top: 40px; max-width: 720px; }
 .rp-note h2 {
-  margin: 30px 0 10px; font-family: var(--display); font-weight: 800;
+  margin: 30px 0 10px; font-family: var(--display); font-weight: 600;
   font-size: 19px; letter-spacing: -.02em; color: var(--ink);
 }
 .rp-note p { margin: 0 0 12px; font-size: 15px; line-height: 1.65; color: var(--ink-2); }
@@ -1365,11 +1340,11 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
    colour is set here by `color` on the cell. */
 .ins-sec { margin-top: 34px; max-width: 720px; }
 .ins-sec h2 {
-  margin: 0; font-family: var(--mono); font-size: 11.5px; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+  margin: 0; font-family: var(--ui); font-size: 12.5px; font-weight: 600;
+  letter-spacing: 0;  color: var(--ink-3);
 }
 .ins-find {
-  margin: 8px 0 0; font-family: var(--display); font-weight: 800;
+  margin: 8px 0 0; font-family: var(--display); font-weight: 600;
   font-size: 21px; line-height: 1.25; letter-spacing: -.02em; color: var(--ink);
   overflow-wrap: anywhere;
 }
@@ -1377,7 +1352,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 .ins-t { width: 100%; margin-top: 14px; border-collapse: collapse; font-size: 14px; }
 .ins-t th, .ins-t td { padding: 5px 0; vertical-align: middle; }
 .ins-t th { width: 34%; padding-right: 12px; text-align: left; font-weight: 500; color: var(--ink); overflow-wrap: anywhere; }
-.ins-b { color: var(--live); }
+.ins-b { color: var(--accent); }
 .ins-b svg { display: block; width: 100%; height: 8px; }
 .ins-track { fill: var(--rule); }
 .ins-v {
@@ -1396,7 +1371,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 }
 .ins-list a:hover { border-color: var(--live); }
 .ins-list b {
-  display: block; font-family: var(--display); font-weight: 800; font-size: 19px;
+  display: block; font-family: var(--display); font-weight: 600; font-size: 19px;
   letter-spacing: -.02em; color: var(--ink);
 }
 .ins-list span { display: block; margin-top: 6px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
@@ -1428,14 +1403,13 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   background: var(--card);
 }
 .trk-tile b {
-  display: block; font-family: var(--display); font-weight: 900;
+  display: block; font-family: var(--display); font-weight: 600;
   font-size: 26px; line-height: 1; letter-spacing: -.03em; color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 .trk-tile span {
   display: block; margin-top: 6px;
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 /* The first tile is the one somebody opens this page to read. */
 .trk-tile:first-child b { color: var(--live); }
@@ -1447,8 +1421,7 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
   height: 32px; padding: 0 12px; cursor: pointer;
   border: 1px solid var(--rule); border-radius: 999px;
   background: none; color: var(--ink-3);
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
-  text-transform: uppercase;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0; 
 }
 .trk-tab b { font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .trk-tab[aria-pressed="true"] {
@@ -1478,8 +1451,8 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 .trk th {
   text-align: left; padding: 11px 14px;
   border-bottom: 1px solid var(--rule);
-  font-family: var(--mono); font-size: 10.5px; font-weight: 400;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; font-weight: 400;
+  letter-spacing: 0;  color: var(--ink-3);
   white-space: nowrap;
 }
 .trk td { padding: 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
@@ -1495,8 +1468,8 @@ main.page .wrap > h1, .jp-hero, .hub-hero, .dir-hero {
 
 .trk-role { min-width: 0; }
 .trk-co {
-  display: block; font-family: var(--mono); font-size: 10.5px;
-  letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3);
+  display: block; font-family: var(--ui); font-size: 12px;
+  letter-spacing: 0;  color: var(--ink-3);
 }
 .trk-t {
   display: block; margin-top: 3px; font-size: 15.5px; font-weight: 650;
@@ -1513,8 +1486,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   overflow-wrap: anywhere;
 }
 .trk-rg {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
-  text-transform: uppercase; border: 1px solid var(--rule);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  border: 1px solid var(--rule);
   border-radius: 999px; padding: 1px 7px;
 }
 /* Shown only where the date COLUMN is hidden. Exactly one of the two is
@@ -1528,7 +1500,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .trk-st { display: flex; align-items: center; gap: 8px; }
 .trk-dot {
   width: 8px; height: 8px; border-radius: 50%; flex: none;
-  background: var(--live);
+  background: var(--accent);
 }
 .trk-dot.is-good { background: var(--cash); }
 /* A rejection is a close, not an error. Muted rather than red: a page somebody
@@ -1550,8 +1522,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .trk-c-act { white-space: nowrap; text-align: right; }
 .trk-go {
   display: inline-block; margin-right: 6px;
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--live); text-decoration: none;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--live); text-decoration: none;
 }
 .trk-go:hover { text-decoration: underline; text-underline-offset: 3px; }
 .trk-x {
@@ -1571,12 +1542,12 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   border: 1px solid var(--rule); border-radius: 14px; background: var(--card);
 }
 .trk-void h2 {
-  font-family: var(--display); font-weight: 900; font-size: 21px;
+  font-family: var(--display); font-weight: 600; font-size: 21px;
   letter-spacing: -.02em; color: var(--ink);
 }
 .trk-void h3 {
-  margin-top: 24px; font-family: var(--mono); font-size: 10.5px;
-  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
+  margin-top: 24px; font-family: var(--ui); font-size: 12px;
+  letter-spacing: 0;  color: var(--ink-3);
 }
 .trk-void p { margin-top: 9px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
 .trk-void strong { color: var(--ink); font-weight: 650; }
@@ -1601,16 +1572,15 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* ---- where this is kept, and the backup controls ------------------------ */
 .trk-priv { margin: 30px 0 10px; }
 .trk-priv h2 {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 .trk-priv p { margin-top: 10px; font-size: 14.5px; line-height: 1.65; color: var(--ink-2); }
 .trk-priv strong { color: var(--ink); font-weight: 650; }
 
 .trk-data { margin-top: 18px; border-top: 1px solid var(--rule); padding-top: 14px; }
 .trk-data > summary {
-  cursor: pointer; font-family: var(--mono); font-size: 11px;
-  letter-spacing: .07em; text-transform: uppercase; color: var(--ink-2);
+  cursor: pointer; font-family: var(--ui); font-size: 12.5px;
+  letter-spacing: 0;  color: var(--ink-2);
 }
 .trk-data > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .trk-data-in p { margin-top: 12px; font-size: 14px; line-height: 1.6; color: var(--ink-3); }
@@ -1678,11 +1648,10 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* The follow-up flag, in the facts line rather than a column of its own —
    most rows never carry one. */
 .trk-due {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em;
-  text-transform: uppercase; border-radius: 999px; padding: 2px 8px;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  border-radius: 999px; padding: 2px 8px;
 }
 .trk-due.is-over { color: var(--hot); background: color-mix(in oklab, var(--hot) 13%, transparent); }
-.trk-due.is-now { color: var(--live); background: color-mix(in oklab, var(--live) 15%, transparent); }
+.trk-due.is-now { color: var(--accent); background: color-mix(in oklab, var(--accent) 15%, transparent); }
 .trk-due.is-soon, .trk-due.is-past { color: var(--ink-3); border: 1px solid var(--rule); padding: 1px 7px; }
 
 /* A due row is marked on its leading edge. NOT a background tint: .is-done
@@ -1698,8 +1667,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   height: 30px; padding: 0 10px; margin-right: 6px; cursor: pointer;
   border: 1px solid var(--rule); border-radius: 8px;
   background: none; color: var(--ink-3);
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em;
-  text-transform: uppercase; vertical-align: middle;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  vertical-align: middle;
 }
 .trk-more-b.has { color: var(--ink-2); border-color: var(--rule-2); }
 .trk-more-b.has::before {
@@ -1721,8 +1689,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .trk-f { display: grid; gap: 6px; min-width: 0; }
 .trk-f > span:first-child {
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3);
 }
 .trk-f .trk-f-hint {
   font-family: var(--ui); font-size: 11.5px; line-height: 1.45;
@@ -1764,7 +1731,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .ap-row textarea:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: transparent; }
 .ap-send {
   font: inherit; font-weight: 700; font-size: 15px;
-  background: var(--live); color: #0a0a0b; border: 0; border-radius: 999px;
+  background: var(--cta); color: var(--cta-ink); border: 0; border-radius: 999px;
   padding: 11px 22px; cursor: pointer; justify-self: start;
   transition: transform 120ms ease-out;
 }
@@ -1775,7 +1742,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
    58 axe violations. */
 .ap-send[disabled] { background: var(--rule-2, #3a3a42); color: var(--ink-2); }
 .ap-msg { font-size: 14px; margin: 0; min-height: 1.3em; color: var(--ink-2); }
-.ap-msg.is-good { color: var(--live); }
+.ap-msg.is-good { color: var(--accent); }
 .ap-msg.is-bad { color: var(--warn, #e8c169); }
 
 /* ============================================================
@@ -1795,7 +1762,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .cr-status { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 6px 0 14px; font-size: 13px; color: var(--ink-2); }
 .cr-closed {
   display: inline-flex; align-items: center; gap: 7px;
-  font-weight: 700; font-size: 13px; color: var(--hot);
+  font-weight: 500; font-size: 13px; color: var(--hot);
   background: color-mix(in oklab, var(--hot) 12%, transparent);
   border: 1px solid color-mix(in oklab, var(--hot) 40%, transparent);
   padding: 4px 11px 4px 9px; border-radius: var(--r-pill);
@@ -1814,20 +1781,20 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .cr-alert {
   display: flex; gap: 14px; align-items: flex-start; margin-top: 22px;
   padding: 16px 18px; border-radius: var(--r-2);
-  background: color-mix(in oklab, var(--hot) 9%, var(--card));
-  border: 1px solid color-mix(in oklab, var(--hot) 38%, transparent);
+  background: var(--card);
+  border: 1px solid var(--rule);
 }
 .cr-alert-ic { color: var(--hot); flex: none; line-height: 0; margin-top: 1px; }
 .cr-alert strong { display: block; font-size: 16px; color: var(--ink); }
 .cr-alert p { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
 .cr-alert b { color: var(--hot); font-weight: 650; }
-.cr-alert a { color: var(--live); font-weight: 600; }
+.cr-alert a { color: var(--ink); font-weight: 600; }
 .cr-strip { padding-top: 34px; }
 .cr-tiles { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 .cr-tile .tile-top, .cr-tile > .tile-role:first-child { padding-right: 36px; }
 .cr-chips { display: flex; flex-wrap: wrap; gap: 5px; list-style: none; margin: 0; padding: 0; }
 .cr-chips span, .cr-chips li {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0; 
   color: var(--ink-15); background: var(--card-2); border: 1px solid var(--rule);
   border-radius: var(--r); padding: 3px 7px;
 }
@@ -1836,7 +1803,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   border-radius: 50%; border: 1px solid var(--rule-2); display: grid; place-items: center;
   color: var(--ink-2); font-style: normal; transition: color .16s, border-color .16s;
 }
-@media (hover: hover) and (pointer: fine) { .cr-tile:hover .cr-go { color: var(--live); border-color: var(--live); } }
+@media (hover: hover) and (pointer: fine) { .cr-tile:hover .cr-go { color: var(--ink); border-color: var(--ink-3); } }
 .cr-orig { margin-top: 34px; border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); padding: 0 18px; }
 .cr-orig summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; justify-content: space-between; padding: 15px 0; }
 .cr-orig summary::-webkit-details-marker { display: none; }
@@ -1849,28 +1816,28 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .cr-orig[open] .cr-show, .cr-orig:not([open]) .cr-hide { display: none; }
 .cr-dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--r-2); overflow: hidden; margin: 0 0 18px; }
 .cr-dl > div { background: var(--bg); padding: 11px 14px; display: grid; gap: 3px; }
-.cr-dl dt { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.cr-dl dt { font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-2); }
 .cr-dl dd { margin: 0; font-size: 14px; color: var(--ink); overflow-wrap: anywhere; }
-.cr-lbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 10px; }
+.cr-lbl { font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-2); margin: 0 0 10px; }
 .cr-side { position: sticky; top: 84px; display: grid; gap: 14px; margin-top: 6px; }
 .cr-card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2); padding: 18px; }
 .cr-cohead { display: flex; align-items: center; gap: 12px; }
 .cr-cohead strong { font-size: 16px; color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
 .cr-stats { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 12px; margin: 16px 0; padding: 14px 0 0; border-top: 1px solid var(--rule); }
-.cr-stats dt { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.cr-stats dt { font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-2); }
 .cr-stats dd { margin: 3px 0 0; font-size: 14px; color: var(--ink); font-weight: 600; }
 .cr-more { font-size: 13px; font-weight: 600; color: var(--live); text-decoration: none; }
 .cr-lead {
   display: grid; gap: 6px; padding: 18px; border-radius: var(--r-2); text-decoration: none;
-  background: color-mix(in oklab, var(--live) 8%, var(--card));
-  border: 1px solid color-mix(in oklab, var(--live) 30%, transparent);
+  background: var(--card);
+  border: 1px solid var(--rule);
 }
-.cr-lead-ic { color: var(--live); line-height: 0; }
+.cr-lead-ic { color: var(--ink-2); line-height: 0; }
 .cr-lead strong { color: var(--ink); font-size: 15px; }
 .cr-lead em { font-style: normal; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
 .cr-lead-go {
   justify-self: start; margin-top: 6px; display: inline-flex; align-items: center; gap: 6px;
-  background: var(--live); color: var(--live-ink); font-weight: 700; font-size: 13px;
+  background: var(--cta); color: var(--cta-ink); font-weight: 500; font-size: 13px;
   padding: 8px 14px; border-radius: var(--r-pill);
 }
 /* On a phone the sidebar falls below every list, so the channel ask moves up
@@ -1907,7 +1874,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 .sk-lede { margin: 12px 0 0; max-width: 72ch; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
 .sk .filter { max-width: 640px; }
 .sk-strip { padding-top: 36px; }
-.sk-meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.sk-meta { font-family: var(--ui); font-size: 12px; letter-spacing: 0;  color: var(--ink-3); }
 .sk-logo {
   width: 40px; height: 40px; flex: none; display: grid; place-items: center;
   border-radius: var(--r-2); background: #fff; border: 1px solid var(--rule); overflow: hidden;
@@ -1917,7 +1884,7 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   background: color-mix(in oklab, var(--live) 9%, var(--card-2));
   border-color: color-mix(in oklab, var(--live) 26%, transparent); color: var(--live);
 }
-.sk-logo.is-initials { font-family: var(--display); font-weight: 800; font-size: 13px; }
+.sk-logo.is-initials { font-family: var(--display); font-weight: 600; font-size: 13px; }
 .sk-go {
   width: 28px; height: 28px; flex: none; display: grid; place-items: center; border-radius: 50%;
   border: 1px solid var(--rule-2); color: var(--ink-2); font-style: normal;
@@ -1987,3 +1954,34 @@ textarea.pj-in { resize: vertical; min-height: 84px; }
 .pj-done b { display: block; font-size: 17px; margin-bottom: 6px; }
 .pj-done p { margin: 0; color: var(--ink-2); }
 .pj-done:focus { outline: none; }
+
+/* Light theme: the same darker-lime hairline as styles.css gives the board's
+   actions, so a lime button keeps an edge on a white card. */
+:root[data-theme="light"] :is(.btn-apply, .outro-acts .a-1, .rc-cta, .ap-send, .cr-lead-go) { border: 1px solid #a3cf00; }
+
+/* Reading width (9 Oct 2026 audit): prose ran 95-137 characters a line on a
+   tablet and a laptop. Capped near 70, where a line is comfortable to read. */
+.page .wrap > p, .page section > p, .page .wrap > ul > li, .page section > ul > li,
+.page :is(.note, .sk-lede, .ins-d, .hub-lede, .cp-note, .jp-open) { max-width: 70ch; }
+/* A link on its own line is a tap target: at least 36px tall on a phone. */
+.ins-nav a { display: inline-block; padding: 8px 0; }
+
+/* THE HEADER OF A PAGE ARRIVES LINE BY LINE (after hiregram.ai): breadcrumb,
+   company, title, facts, each out of a blur 70ms after the last, and the
+   job page's side card just behind them. Replaces the one-block entrance. */
+.crumbs { animation: fx-in .55s var(--ease-out) both; }
+.jp-hero > *, .hub-hero > *, .dir-hero > * { animation: fx-in .7s var(--ease-out) both; }
+.jp-hero > :nth-child(2), .hub-hero > :nth-child(2), .dir-hero > :nth-child(2) { animation-delay: .07s; }
+.jp-hero > :nth-child(3), .hub-hero > :nth-child(3), .dir-hero > :nth-child(3) { animation-delay: .14s; }
+.jp-hero > :nth-child(4), .hub-hero > :nth-child(4), .dir-hero > :nth-child(4) { animation-delay: .21s; }
+.jp-hero > :nth-child(n+5), .hub-hero > :nth-child(n+5), .dir-hero > :nth-child(n+5) { animation-delay: .28s; }
+main.page .wrap > .summary, main.page .wrap > .hub-answer-line { animation: fx-in .7s var(--ease-out) .08s both; }
+@media (min-width: 961px) { .jp-side { animation: fx-in .7s var(--ease-out) .18s both; } }
+@media (prefers-reduced-motion: reduce) {
+  .crumbs, .jp-hero > *, .hub-hero > *, .dir-hero > *, main.page .wrap > .summary,
+  main.page .wrap > .hub-answer-line, .jp-side { animation: none; }
+}
+
+/* Three more measures the 9 Oct audit found too wide: the tracker's privacy
+   note, the closed-role notice and the report's figures. */
+.trk-data-in p, .cr-alert p, .rp-stat { max-width: 70ch; }

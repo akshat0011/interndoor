@@ -407,7 +407,7 @@ console.log('\n== the tab the reader is NOT on still says what arrived ==');
   ok('the markers are drawn after `since` is decided', /state\.since = visit\.since;[\s\S]*?renderTabNews\(\);/.test(boot));
   ok('and again on every refresh, through renderTotal', /\n  renderTabNews\(\);\n/.test(lift(app, 'function renderTotal(', '\n}', 'renderTotal')));
   ok('the tablist itself goes through setKind', /btn\.addEventListener\('click', \(\) => setKind\(btn\.dataset\.kind\)\);/.test(app));
-  ok('the marker is styled, lime on the idle tab', /\.seg-new \{[^}]*color: var\(--live\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
+  ok('the marker is styled, the accent on the idle tab', /\.seg-new \{[^}]*color: var\(--accent\)/.test(css) && /\.seg-b\[aria-selected="true"\] \.seg-new \{ color: var\(--live-ink\); \}/.test(css));
 }
 
 console.log('\n== WhatsApp first — the prompt, the page\'s own links, the email demoted ==');
@@ -439,7 +439,7 @@ console.log('\n== WhatsApp first — the prompt, the page\'s own links, the emai
   registerChannels('IN', [{ kind: 'email', name: 'Email', url: null }, { kind: 'whatsapp', name: 'WhatsApp', url: WA }]);
   /* The band's button sits inside .signup-band, whose links are lime — on a
      lime button that was invisible text on the first render. */
-  ok('the band\'s button text is ink, not lime', /\.signup-band a\.wa-go \{ color: var\(--live-ink\)/.test(css));
+  ok('the band\'s button text is the dark ink on the lime action, never lime on lime', /\.signup-band a\.wa-go \{ color: var\(--cta-ink\)/.test(css));
   const after = renderJobPage(job, [], { region: IN });
   ok('the job page\'s box is the channel', new RegExp(`class="jp-sub is-wa" href="${WA}" target="_blank" rel="noopener noreferrer"`).test(after));
   ok('and says so', /Get internships like this on WhatsApp first/.test(after) && /No signup\./.test(after));
@@ -449,14 +449,14 @@ console.log('\n== WhatsApp first — the prompt, the page\'s own links, the emai
   const usPage = renderJobPage({ ...job, location: 'Austin, TX' }, [], { region: US });
   ok('the US page keeps /alerts — no channel gets another region\'s', /class="jp-sub" href="\/us\/alerts"/.test(usPage) && !/whatsapp\.com/.test(usPage));
   const alerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'whatsapp', name: 'WhatsApp', blurb: 'y', url: WA }, { kind: 'instagram', name: 'Instagram', blurb: 'z', url: 'https://www.instagram.com/interndoorin/' }], { region: IN });
-  const waAt = alerts.indexOf('On WhatsApp — fastest, no signup'), emailAt = alerts.indexOf('Or by email'), restAt = alerts.indexOf('Or follow along');
+  const waAt = alerts.indexOf('On WhatsApp: fastest, no signup'), emailAt = alerts.indexOf('Or by email'), restAt = alerts.indexOf('Or follow along');
   ok('/alerts leads with WhatsApp, then email, then the rest', waAt > 0 && emailAt > waAt && restAt > emailAt);
   /* TELEGRAM LEADS WHERE THERE IS NO WHATSAPP (24 Sep 2026). The US board had
      a channel and led with email anyway, and its email digest is India's — so
      the one alert that delivers US roles was the one buried last. */
   const TG = 'https://t.me/interndoorusa';
   const usAlerts = renderAlertsPage([{ kind: 'email', name: 'Email', blurb: 'x', url: null }, { kind: 'telegram', name: 'Telegram', blurb: 'y', url: TG }], { region: US });
-  const tgAt = usAlerts.indexOf('On Telegram — fastest, no signup'), usEmailAt = usAlerts.indexOf('Or by email');
+  const tgAt = usAlerts.indexOf('On Telegram: fastest, no signup'), usEmailAt = usAlerts.indexOf('Or by email');
   ok('without WhatsApp, /alerts leads with Telegram, then email', tgAt > 0 && usEmailAt > tgAt && !/On WhatsApp/.test(usAlerts));
   const contact = renderContactPage({ region: IN });
   ok('the WhatsApp outro reaches every generated page through foot()', new RegExp(`class="a-1 is-wa" href="${WA}"`).test(contact));

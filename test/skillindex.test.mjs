@@ -26,11 +26,11 @@ const facets = LABELS.map(([label, n]) => ({ slug: label === '.net' ? 'net' : la
 const html = renderFacetIndex('skill', facets, { region: IN });
 
 console.log('\n== THE PAGE ==');
-check('a title-case h1 that names both kinds', html.includes('<h1 class="sk-h1">Internships &amp; Entry-Level Jobs in India by Skill</h1>'), true);
+check('a sentence-case h1 that names both kinds (the calm redesign)', html.includes('<h1 class="sk-h1">Internships and entry-level jobs in India by skill</h1>'), true);
 check('page.css is versioned on this page', /href="\/page\.css\?v=s\d+"/.test(html), true);
-check('the lede names the top five and how many more', html.includes('— Python, SQL, Agile, JavaScript, PyTorch and 4 more.'), true);
+check('the lede names the top five and how many more', html.includes(': Python, SQL, Agile, JavaScript, PyTorch and 4 more.'), true);
 check('the directory search box, revealed by page.js', /<div class="filter" id="filter">/.test(html) && /id="filter-input"/.test(html) && /id="dir-none"/.test(html), true);
-check('placeholder counts the skills', html.includes('placeholder="Search 9 skills — try “React”"'), true);
+check('placeholder counts the skills', html.includes('placeholder="Search 9 skills, e.g. React"'), true);
 
 console.log('\n== RANKED, AND THE POPULAR ROW ==');
 const pop = [...html.matchAll(/<a class="sk-pop-card"[\s\S]*?<span class="dir-name">([^<]+)</g)].map((m) => m[1]);

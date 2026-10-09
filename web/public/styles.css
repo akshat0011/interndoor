@@ -1,35 +1,51 @@
 /* ============================================================
    InternDoor
-   Live-ticker / terminal register. Acid lime on warm black,
-   heavy condensed display type, monospace figures, film grain.
+   Calm register (9 Oct 2026, after hiregram.ai): Geist and Geist
+   Mono, zinc greys, one ink, one accent kept for signals, pills for
+   anything pressed, 16px for anything that holds content.
    ============================================================ */
 
 :root {
-  --ink:        #f2f2ec;
-  --ink-2:      #9d9d94;
-  --ink-3:      #82827a;
-  --bg:         #0a0a0b;
-  --bg-2:       #0f0f11;
-  --card:       #121214;
-  --card-2:     #17171a;
-  --rule:       #222226;
-  --rule-2:     #303036;
+  /* ---- The calm redesign (9 Oct 2026, after hiregram.ai) ----------------
+     Neutral zinc greys, one ink, and ONE accent. --live used to be the lime
+     and painted every primary control; it is now the ink, so a primary
+     button is a white pill on dark and a near-black pill on light. The lime
+     survives as --accent and is reserved for signals: the logo, "new",
+     "open", a resume match. Anything that is not a signal is ink. */
+  --ink:        #fafafa;
+  --ink-2:      #b4b4bc;
+  --ink-3:      #92929b;
+  --bg:         #070708;
+  --bg-2:       #0b0b0d;
+  --card:       #131316;
+  --card-2:     #1c1c20;
+  --rule:       #26262c;
+  --rule-2:     #393940;
+  --ink-15:     #e4e4e7;
+  --accent:     #c8ff00;
+  --accent-ink: #14170a;
+  --live:       var(--ink);
+  --live-ink:   var(--bg);
+  --hot:        #ff6a3d;   /* errors and closed roles only */
+  --cash:       var(--accent);
+  /* The main action on any screen (Apply, WhatsApp alerts, View & apply,
+     Subscribe) is lime, and nothing else is filled with it (9 Oct 2026, his
+     pick between an all-white and a lime-action version). The colour then
+     means one thing: this is what you came to do. */
+  --cta:        var(--accent);
+  --cta-ink:    var(--accent-ink);
 
-  --live:       #c8ff00;   /* the one loud colour. never a gradient. */
-  /* Between --ink and --ink-2, for text that has to outrank a label without
-     reaching the role's weight. */
-  --ink-15:     #c9c8c2;
-  --live-ink:   #14170a;
-  --hot:        #ff5c1a;
-  --cash:       #00e57a;
-
-  --r:          4px;
-  --r-2:        10px;
+  /* One shape rule: anything you press (buttons, chips, tabs, inputs) is a
+     pill; anything that holds content (cards, panes, menus, dialogs) is
+     16px; a logo plate is 10px. */
+  --r:          12px;
+  --r-2:        16px;
+  --r-plate:    10px;
   --r-pill:     999px;
 
-  --display: 'Archivo', 'Helvetica Neue', Impact, sans-serif;
-  --ui:      'Space Grotesk', ui-sans-serif, -apple-system, sans-serif;
-  --mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ui:      'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono:    'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* ---- Type scale -------------------------------------------------------
      Tracking is size-specific, never one value for everything. Letters read
@@ -39,9 +55,9 @@
      loose on body.
      Sizes are rem so that a reader who raises their browser text size scales
      the layout with the text instead of bursting out of it. */
-  --t-display:  clamp(1.75rem, 3.4vw, 2.5rem);
-  --t-display-lh: 1.02;
-  --t-display-tr: -.045em;
+  --t-display:  clamp(1.9rem, 3.6vw, 2.75rem);
+  --t-display-lh: 1.06;
+  --t-display-tr: -.03em;
 
   --t-title:    1.0625rem;   /* the role — the line people actually scan */
   --t-title-lh: 1.3;
@@ -54,9 +70,9 @@
   --t-small:    .8125rem;
   --t-small-lh: 1.45;
 
-  --t-micro:    .6875rem;    /* mono labels, eyebrows, chips */
+  --t-micro:    .75rem;    /* mono labels, eyebrows, chips */
   --t-micro-lh: 1.2;
-  --t-micro-tr: .09em;
+  --t-micro-tr: 0;
 
   /* ---- Spacing ----------------------------------------------------------
      One scale, in rem, so spacing scales with text size too. */
@@ -114,30 +130,27 @@
    the two rules are stronger; the ink is untouched, because the ink was never
    the problem. */
 :root[data-theme="light"] {
-  --ink:      #131311;
-  --ink-2:    #56564e;
-  --ink-3:    #5f5f58;
-  --bg:       #eae8de;
-  --bg-2:     #e1dfd2;
+  /* Neutral, not cream: a warm paper ground is the default AI palette. Cards
+     are white on a light grey page; contrast measured on both grounds. */
+  --ink:      #09090b;
+  --ink-2:    #3f3f46;
+  --ink-3:    #52525b;
+  --bg:       #f4f4f5;
+  --bg-2:     #ececef;
   --card:     #ffffff;
-  --card-2:   #f4f2ea;
-  --rule:     #cdc9b9;
-  --rule-2:   #aeaa98;
-  /* #5d7a00 failed AA as TEXT on three of its four light-theme grounds -
-     4.02 on --bg, 3.69 on --bg-2, and 3.66 for white on top of it - which is
-     the same "accent on a tint of itself" trap this file has patched
-     element-by-element six times (.sub-msg, .flag-rank, the freshness pill,
-     .jp-sub-t strong, .jp-focus, both .jp-open tiers). A seventh override
-     would have been the wrong fix: the defect is in the token, not in the
-     elements. #4a6100 is the value those patches had already converged on.
-     Measured composited through a canvas: 5.70 on --bg, 5.23 on --bg-2, 7.00
-     on --card, and 7.00 for --live-ink white on top. Dark theme is untouched -
-     lime on near-black was never the failing case. */
-  --live:     #4a6100;
-  --ink-15:   #2a2a26;
-  --live-ink: #ffffff;
+  --card-2:   #fafafa;
+  --rule:     #dedee3;
+  --rule-2:   #c8c8cf;
+  --ink-15:   #18181b;
+  --accent:   #4a6100;
+  --accent-ink: #ffffff;
+  /* The olive above exists for lime TEXT, which fails on white. A lime
+     BUTTON carries dark text and reads fine, so the action keeps the brand
+     lime in both themes; its edge is darkened a touch so it does not melt
+     into a white card. */
+  --cta:      #c8ff00;
+  --cta-ink:  #14170a;
   --hot:      #c2410c;
-  --cash:     #067a52;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -151,25 +164,23 @@ body {
   color: var(--ink);
   font-family: var(--ui);
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
+  overflow-x: hidden; }
 
 /* Film grain. Replaces the blurred gradient blobs that make a page read as
    machine-made — texture is the cheapest signal that a human chose something. */
 .grain {
   position: fixed; inset: 0; z-index: 999; pointer-events: none; opacity: .038;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E"); display: none; }
 /* No blend mode in light theme. A full-viewport multiply layer composites
    unpredictably over light surfaces — it rendered a selected row as a black
    block even though the row's computed background was pure white. A plain
    low-opacity overlay is boring and always correct. */
 :root[data-theme="light"] .grain { opacity: .028; }
 
-h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 900; }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 600; letter-spacing: -.02em; text-wrap: balance; }
 p { margin: 0; }
 ol, ul, dl { margin: 0; padding: 0; list-style: none; }
 a { color: inherit; }
@@ -225,18 +236,18 @@ a, button, summary, label, [role="button"], .row {
    keyframes needed 0% AND 100% rest frames precisely because they did not. */
 .scope { width: 30px; height: 30px; flex: none; }
 .scope svg { width: 100%; height: 100%; display: block; overflow: visible; }
-.s-ring { fill: none; stroke: var(--live); stroke-width: 1.1; opacity: .3; }
+.s-ring { fill: none; stroke: var(--accent); stroke-width: 1.1; opacity: .3; }
 .s-sweep { transform-origin: 22px 22px; animation: sweep 2.6s linear infinite; }
-.s-sweep path { fill: var(--live); opacity: .3; }
-.s-dot { fill: var(--live); }
+.s-sweep path { fill: var(--accent); opacity: .3; }
+.s-dot { fill: var(--accent); }
 @keyframes sweep { to { transform: rotate(360deg); } }
 
 
 .word {
-  font-family: var(--display); font-weight: 900; font-size: 18px;
-  letter-spacing: -.045em; line-height: 1;
+  font-family: var(--display); font-weight: 600; font-size: 17px;
+  letter-spacing: -.03em; line-height: 1;
 }
-.word em { font-style: normal; color: var(--live); }
+.word em { font-style: normal; color: inherit; }
 
 /* The masthead is a fixed width budget: brand + bar-right must clear the
    viewport minus 15px of padding a side, which is 345px at 375. The right
@@ -262,7 +273,7 @@ a, button, summary, label, [role="button"], .row {
 @media (max-width: 480px) {
   .scope { width: 26px; height: 26px; }
   .brand { gap: 8px; }
-  .word { font-size: 14.5px; letter-spacing: -.05em; }
+  .word { font-size: 14.5px; letter-spacing: -.03em; }
 }
 
 /* Below ~400px the masthead stopped fitting. It was tuned to sit at exactly
@@ -320,14 +331,13 @@ a, button, summary, label, [role="button"], .row {
 
 .ticker {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: .02em;
-  color: var(--ink-2); text-transform: uppercase;
-  border: 1px solid var(--rule); padding: 6px 11px; border-radius: var(--r);
+  font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;
+  color: var(--ink-2); 
+  border: 0; padding: 0 4px; border-radius: 0;
 }
 .beat {
-  width: 6px; height: 6px; background: var(--live); flex: none;
-  animation: beat 1.6s steps(1) infinite;
-}
+  width: 6px; height: 6px; background: var(--accent); flex: none;
+  animation: beat 1.6s steps(1) infinite; border-radius: 50%; }
 @keyframes beat { 0%,60% { opacity: 1; } 61%,100% { opacity: .18; } }
 
 /* The one link on the page whose job is to bring somebody back.
@@ -337,39 +347,46 @@ a, button, summary, label, [role="button"], .row {
    accented thing in the chrome, not by shouting louder than the primary action. */
 .alerts {
   display: inline-flex; align-items: center; gap: 7px;
-  height: 33px; padding: 0 12px; border-radius: var(--r-pill);
+  height: 34px; padding: 0 14px; border-radius: var(--r-pill);
   border: 1px solid color-mix(in oklab, var(--live) 45%, transparent);
   color: var(--live); background: color-mix(in oklab, var(--live) 8%, transparent);
-  font-size: .8125rem; font-weight: 600; letter-spacing: -.01em;
+  font-size: .8125rem; font-weight: 500; letter-spacing: -.01em;
   text-decoration: none; white-space: nowrap;
-  transition: background .16s, border-color .16s, transform var(--d-press) var(--snap);
+  transition: background .16s, border-color .16s, filter .22s var(--ease-out), box-shadow .22s var(--ease-out), transform var(--d-press) var(--snap);
 }
 .alerts:active { transform: scale(.97); }
 /* The pill points straight at the WhatsApp channel on a board that has one
    (India). Solid, so it reads as THE action rather than one of several. */
-.alerts.is-wa { background: var(--live); color: var(--live-ink); border-color: var(--live); font-weight: 700; }
+.alerts.is-wa { background: var(--cta); color: var(--cta-ink); border-color: var(--cta); font-weight: 500; }
 /* The signup band's lead — the WhatsApp channel above the email form. */
 .wa-lead { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 18px auto 22px; }
 .wa-go {
   display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 22px;
-  border-radius: var(--r-pill); background: var(--live); color: var(--live-ink);
-  font-weight: 700; font-size: 15px; letter-spacing: -.01em; text-decoration: none;
-  transition: transform var(--d-press) var(--snap), filter .16s;
+  border-radius: var(--r-pill); background: var(--cta); color: var(--cta-ink);
+  font-weight: 500; font-size: 15px; letter-spacing: -.01em; text-decoration: none;
+  transition: transform var(--d-press) var(--snap), filter .16s, box-shadow .22s var(--ease-out);
 }
 .wa-go:active { transform: scale(.97); }
 .wa-note { font-size: 13.5px; color: var(--ink-2); }
 .wa-lead + .sub .sub-l { color: var(--ink-3); }
 @media (hover: hover) and (pointer: fine) {
   .alerts:hover { background: color-mix(in oklab, var(--live) 16%, transparent); border-color: var(--live); }
+  /* The lime pill keeps its lime on hover. Without this the rule above (same
+     specificity, later) painted a faint white tint under near-black text and
+     the label vanished. Same treatment as every other lime action. */
+  .alerts.is-wa:hover, .wa-go:hover {
+    background: var(--cta); border-color: var(--cta); color: var(--cta-ink);
+    filter: brightness(1.06);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--cta) 24%, transparent);
+  }
 }
 
 .ghost-btn {
-  display: grid; place-items: center; width: 33px; height: 33px; padding: 0;
-  background: none; border: 1px solid var(--rule); border-radius: var(--r);
+  display: grid; place-items: center; width: 34px; height: 34px; padding: 0;
+  background: none; border: 1px solid var(--rule); border-radius: var(--r-pill);
   color: var(--ink-2); cursor: pointer;
-  transition: color .16s, border-color .16s, background .16s;
-}
-.ghost-btn:hover { color: var(--live); border-color: var(--live); }
+  transition: color .16s, border-color .16s, background .16s; border-color: transparent; }
+.ghost-btn:hover { color: var(--ink); border-color: transparent; background: var(--card-2); }
 /* The switch's two marks share one grid cell and trade places with a quarter
    turn (9 Oct 2026). They were display:none/block, which cannot animate. The
    mark shown is the theme the page is IN — moon on dark, sun on light. The
@@ -408,16 +425,16 @@ a, button, summary, label, [role="button"], .row {
 .bar-menu[open] > summary { color: var(--ink); border-color: color-mix(in oklab, var(--ink) 35%, transparent); }
 .bar-menu-list {
   position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
-  min-width: 190px; padding: 5px;
-  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
-  box-shadow: 0 18px 40px -12px rgb(0 0 0 / .55);
+  min-width: 190px; padding: 6px;
+  background: var(--card); border: 1px solid var(--rule); border-radius: 14px;
+  box-shadow: 0 16px 40px -12px rgb(0 0 0 / .5);
   display: flex; flex-direction: column; gap: 1px;
   transform-origin: top right;
   animation: rg-open .16s var(--snap) both;
 }
 .bar-menu-item {
   display: flex; align-items: center; gap: 9px; width: 100%;
-  padding: 9px 10px; border: 0; border-radius: 3px; background: none;
+  padding: 9px 10px; border: 0; border-radius: 8px; background: none;
   color: var(--ink-2); text-decoration: none; text-align: left; cursor: pointer;
   font: inherit; font-size: .875rem; font-weight: 500; letter-spacing: -.01em;
   transition: background .14s, color .14s;
@@ -442,7 +459,7 @@ a, button, summary, label, [role="button"], .row {
 
 .rg > summary {
   display: inline-flex; align-items: center; gap: 7px;
-  height: 33px; padding: 0 10px 0 11px; border-radius: var(--r);
+  height: 33px; padding: 0 10px 0 11px; border-radius: var(--r-pill);
   border: 1px solid var(--rule); color: var(--ink-2);
   background: color-mix(in oklab, var(--ink) 4%, transparent);
   font-size: .8125rem; font-weight: 600; letter-spacing: -.01em;
@@ -452,9 +469,8 @@ a, button, summary, label, [role="button"], .row {
 /* The live dot. Same language as the .beat in the freshness ticker, so the
    header reads as one family rather than three unrelated controls. */
 .rg > summary::before {
-  content: ''; width: 5px; height: 5px; flex: none; border-radius: 50%;
-  background: var(--live); box-shadow: 0 0 0 3px color-mix(in oklab, var(--live) 18%, transparent);
-}
+  content: none; width: 5px; height: 5px; flex: none; border-radius: 50%;
+  background: var(--live); box-shadow: 0 0 0 3px color-mix(in oklab, var(--live) 18%, transparent); display: none; }
 /* Both are needed: WebKit uses the pseudo-element, everything else the property. */
 .rg > summary::-webkit-details-marker { display: none; }
 .rg > summary::marker { content: ''; }
@@ -470,8 +486,8 @@ a, button, summary, label, [role="button"], .row {
 
 .rg-menu {
   position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
-  min-width: 190px; padding: 5px;
-  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r);
+  min-width: 190px; padding: 6px;
+  background: var(--card); border: 1px solid var(--rule); border-radius: 14px;
   box-shadow: 0 18px 40px -12px rgb(0 0 0 / .55);
   display: flex; flex-direction: column; gap: 1px;
   transform-origin: top right;
@@ -483,7 +499,7 @@ a, button, summary, label, [role="button"], .row {
 
 .rg-opt {
   display: flex; align-items: center; gap: 9px;
-  padding: 9px 10px; border-radius: 3px;
+  padding: 9px 10px; border-radius: 8px;
   color: var(--ink-2); text-decoration: none;
   font-size: .875rem; font-weight: 500; letter-spacing: -.01em;
   transition: background .14s, color .14s;
@@ -530,7 +546,7 @@ a, button, summary, label, [role="button"], .row {
    intro and the site read as one environment rather than two backgrounds
    swapped over, and a reader who never consciously notices it is the intended
    outcome rather than a failure. */
-.field { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.field { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: none; }
 
 /* THE MARKS ARE A MASK, NOT A PICTURE, and that is what puts them in the light
    theme. As drawn images they were lime, and lime at 7-16% over cream is
@@ -660,7 +676,7 @@ html[data-boot] .bar .brand .scope { position: relative; z-index: 1000; overflow
    scale, so it is free and it cannot blur. */
 html[data-boot] .bar .brand .scope > svg {
   position: absolute; left: 0; top: 0;
-  animation: boot-scope 1100ms both;
+  animation: boot-scope 1350ms both;
 }
 /* The header's backdrop-filter puts everything inside it — including the intro
    mark, which overflows far beyond the header — into its own render surface,
@@ -675,7 +691,7 @@ html[data-boot] .bar { -webkit-backdrop-filter: none; backdrop-filter: none; }
    same angle the idle loop resumes from, so nothing jumps when the override is
    dropped. */
 html[data-boot] .bar .brand .scope .s-sweep {
-  animation: sweep 780ms linear 100ms both;
+  animation: sweep 700ms linear 140ms both;
 }
 
 /* THE CONTENT IS HELD BY VISIBILITY, NOT OPACITY, and that is what lets each
@@ -688,12 +704,17 @@ html[data-boot] .bar .brand .scope .s-sweep {
    paint and the tagging is done by app.js; if that script never arrives, this
    is what puts the site back rather than leaving it invisible. It is a real
    state — app.js is served with a day of stale-while-revalidate. */
-html[data-boot] .bar-in,
-html[data-boot] main,
-html[data-boot] .signup-band,
-html[data-boot] .outro {
+/* THE HOLD ENDS WHEN THE MARK LANDS, NOT WHEN THE INTRO ENDS (9 Oct 2026):
+   app.js sets data-boot="reveal" and in the same frame clips the body to a
+   circle around the landed mark, so the whole page grows out of the logo
+   (the theme sweep's move, run outward from the masthead). The failsafe is
+   later than before because the intro is: 1350ms of mark, ~900ms of reveal. */
+html[data-boot]:not([data-boot="reveal"]) .bar-in,
+html[data-boot]:not([data-boot="reveal"]) main,
+html[data-boot]:not([data-boot="reveal"]) .signup-band,
+html[data-boot]:not([data-boot="reveal"]) .outro {
   visibility: hidden;
-  animation: boot-failsafe 1ms linear 2000ms forwards;
+  animation: boot-failsafe 1ms linear 3200ms forwards;
 }
 html[data-boot] .bar .brand .scope,
 html[data-boot] .boot-part { visibility: visible; }
@@ -709,33 +730,36 @@ html[data-boot] .boot-part { visibility: visible; }
    threshold where a sequence is perceived as a sequence, but it is enough for
    the eye to catch the direction of travel. */
 html[data-boot] .boot-part {
-  animation: boot-part 320ms var(--snap) var(--bd, 0ms) both;
+  animation: boot-part 820ms var(--ease-out) var(--bd, 0ms) both;
 }
 
 @keyframes boot-scope {
-  /* THE FALLBACKS DO THE WHOLE JOB ON THEIR OWN and app.js only refines them:
-     it is a module fetched over the network, so the animation has already
-     started by the time it runs. The defaults assume the mark's resting box at
-     (22,16) and a 170px working size, which is what the masthead actually
-     gives at every width the brand does not shrink at. */
-  0%    { opacity: 0; width: var(--bw, 96px); height: var(--bw, 96px);
-          transform: translate(var(--x0, calc(50vw - 70px)), var(--y0, calc(50vh - 64px)));
-          animation-timing-function: var(--snap); }
-  9.1%  { opacity: 1; width: var(--bw, 96px); height: var(--bw, 96px);
+  /* FLUID, AFTER HIREGRAM (9 Oct 2026). It arrives out of a blur and a
+     little small (0-22%, 300ms, expo-out), sweeps once in place (to 59%),
+     then GLIDES home over 550ms on an ease-in-out — it used to snap there in
+     ~220ms, which read as a cut. Size is still animated as width/height,
+     never scale (see above), and the start box is offset by half the size
+     difference so it grows about its own centre.
+     The fallbacks do the whole job on their own; app.js only refines them. */
+  0%    { opacity: 0; filter: blur(10px);
+          width: calc(var(--bw, 96px) * .82); height: calc(var(--bw, 96px) * .82);
+          transform: translate(calc(var(--x0, calc(50vw - 70px)) + var(--bw, 96px) * .09),
+                               calc(var(--y0, calc(50vh - 64px)) + var(--bw, 96px) * .09));
+          animation-timing-function: var(--ease-out); }
+  22%   { opacity: 1; filter: blur(0); width: var(--bw, 96px); height: var(--bw, 96px);
           transform: translate(var(--x0, calc(50vw - 70px)), var(--y0, calc(50vh - 64px)));
           animation-timing-function: linear; }
-  80%   { opacity: 1; width: var(--bw, 96px); height: var(--bw, 96px);
+  59%   { opacity: 1; filter: blur(0); width: var(--bw, 96px); height: var(--bw, 96px);
           transform: translate(var(--x0, calc(50vw - 70px)), var(--y0, calc(50vh - 64px)));
-          animation-timing-function: var(--morph); }
-  /* --rw is the mark's measured resting box. The 100% fallback is what makes
-     the no-JS case land exactly right at every breakpoint, where a hardcoded
-     30px would leave a phone's 24px mark oversized for good. */
-  100%  { opacity: 1; width: var(--rw, 100%); height: var(--rw, 100%);
+          animation-timing-function: cubic-bezier(.65,0,.35,1); }
+  100%  { opacity: 1; filter: blur(0); width: var(--rw, 100%); height: var(--rw, 100%);
           transform: translate(0px, 0px); }
 }
+/* Each block comes out of a blur toward its own place, from the direction
+   of the logo (hiregram's blur-to-sharp, run outward from the mark). */
 @keyframes boot-part {
-  from { opacity: 0; transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(.958); }
-  to   { opacity: 1; transform: none; }
+  from { opacity: 0; filter: blur(10px); transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(.97); }
+  to   { opacity: 1; filter: none; transform: none; }
 }
 @keyframes boot-failsafe { to { visibility: visible; } }
 
@@ -753,21 +777,20 @@ html[data-boot] .boot-part {
 
 /* Deliberately compact. The headline is a label, not a billboard — the
    listings are the product, and every pixel spent here pushes them down. */
-.lede { border-bottom: 1px solid var(--rule); padding: 22px 0 20px; }
-.lede-in { display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap; }
+.lede { border-bottom: 0; padding: 44px 0 30px; }
+.lede-in { display: flex; align-items: flex-start; gap: 14px; flex-wrap: wrap; flex-direction: column; }
 
 .lede h1 {
-  font-size: clamp(26px, 3.4vw, 38px); line-height: 1;
-  letter-spacing: -.045em; text-transform: uppercase;
+  font-size: clamp(30px, 3.6vw, 46px); line-height: 1.06;
+  letter-spacing: -.035em; 
   /* May shrink and wrap, never overflow. `flex: none` let a 52-character
      heading run 1,056px inside a 981px wrap at 1025px and put a horizontal
      scrollbar on the whole board (19 Sep 2026). The paragraph beside it
      still drops to its own line first, because the container wraps. */
-  flex: 0 1 auto; min-width: 0;
-}
-.lede h1::after { content: ""; display: inline-block; width: .13em; height: .13em; margin-left: .05em; background: var(--live); vertical-align: baseline; }
-.lede p { max-width: 68ch; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
-.lede strong { color: var(--ink); font-weight: 600; }
+  flex: 0 1 auto; min-width: 0; font-weight: 500; }
+.lede h1::after { content: none; display: none; width: .13em; height: .13em; margin-left: .05em; background: var(--live); vertical-align: baseline; }
+.lede p { max-width: 58ch; color: var(--ink-15); font-size: 16px; line-height: 1.55; }
+.lede strong { color: var(--ink); font-weight: 500; }
 
 /* ---------- control rail ---------- */
 
@@ -782,21 +805,20 @@ html[data-boot] .boot-part {
      frosted-glass read survives — there is just far less of it. */
   background: color-mix(in oklab, var(--bg) 92%, transparent);
   backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid color-mix(in oklab, var(--rule) 60%, transparent);
+  border-bottom: 1px solid var(--rule);
 }
 .rail-in { display: flex; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
 
-.seg { display: flex; border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; }
+.seg { display: flex; border: 1px solid var(--rule); border-radius: var(--r-pill); overflow: hidden; background: var(--card); padding: 3px; gap: 2px; }
 .seg-b {
   background: none; border: 0; cursor: pointer;
-  padding: 8px 15px; font-size: 13px; font-weight: 600; color: var(--ink-3);
+  padding: 7px 14px; font-size: 13px; font-weight: 500; color: var(--ink-15);
   display: inline-flex; align-items: center; gap: 8px;
-  transition: color .16s, background .16s;
-}
-.seg-b + .seg-b { border-left: 1px solid var(--rule); }
+  transition: color .16s, background .16s; border-radius: var(--r-pill); }
+.seg-b + .seg-b { border-left: 0; }
 .seg-b b {
-  font-family: var(--mono); font-size: 10.5px; font-weight: 700;
-  padding: 2px 6px; border-radius: 3px; background: var(--card-2); color: var(--ink-3);
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  padding: 1px 7px; border-radius: var(--r-pill); background: var(--card-2); color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
 .seg-b:hover { color: var(--ink); }
@@ -806,8 +828,8 @@ html[data-boot] .boot-part {
    renderTabNews). Lime on the idle tab so it reads as news, not as a count;
    the selected tab is already lime, so there it is ink. */
 .seg-new {
-  font-family: var(--mono); font-style: normal; font-size: 10.5px; font-weight: 700;
-  letter-spacing: .02em; color: var(--live); font-variant-numeric: tabular-nums;
+  font-family: var(--mono); font-style: normal; font-size: 10.5px; font-weight: 500;
+  letter-spacing: .02em; color: var(--accent); font-variant-numeric: tabular-nums;
 }
 .seg-b[aria-selected="true"] .seg-new { color: var(--live-ink); }
 /* The shelf inside a tab — Software / Hardware / Misc (app.js renderCatSeg).
@@ -838,18 +860,17 @@ html[data-boot] .boot-part {
 
 .find {
   flex: 1 1 240px; min-width: 190px; display: flex; align-items: center; gap: 9px;
-  border: 1px solid var(--rule); border-radius: var(--r); padding: 0 12px; height: 34px;
-  color: var(--ink-3); transition: border-color .16s;
-}
-.find:focus-within { border-color: var(--live); }
+  border: 1px solid var(--rule); border-radius: var(--r-pill); padding: 0 14px; height: 38px;
+  color: var(--ink-3); transition: border-color .16s; background: var(--card); }
+.find:focus-within { border-color: var(--rule-2); }
 .find input { flex: 1; border: 0; background: none; outline: none; font-size: 13.5px; color: var(--ink); min-width: 0; }
 .find input::-webkit-search-cancel-button { display: none; }
 .x { border: 0; background: none; color: var(--ink-3); cursor: pointer; font-size: 19px; line-height: 1; padding: 0 2px; }
 .x:hover { color: var(--ink); }
 
 .picks { display: flex; gap: 8px; flex-wrap: wrap; }
-.picks label { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule); border-radius: var(--r); padding: 0 10px 0 11px; height: 34px; }
-.picks span { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); }
+.picks label { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule); border-radius: var(--r-pill); padding: 0 12px 0 14px; height: 38px; background: var(--card); }
+.picks span { font-family: var(--ui); font-size: 12px;  letter-spacing: 0; color: var(--ink-3); font-weight: 400; }
 .picks select {
   appearance: none; -webkit-appearance: none; background: none; border: 0; outline: none;
   font-size: 13px; color: var(--ink); cursor: pointer; max-width: 140px;
@@ -858,7 +879,7 @@ html[data-boot] .boot-part {
   background-repeat: no-repeat; background-position: right center; background-size: 11px;
 }
 .picks label:hover { border-color: var(--rule-2); }
-.picks label:focus-within { border-color: var(--live); }
+.picks label:focus-within { border-color: var(--rule-2); }
 
 /* Both controls clear their own outline above, and that also clears the global
    :focus-visible ring: a bare :focus-visible is (0,1,0) and loses to
@@ -871,29 +892,28 @@ html[data-boot] .boot-part {
 
 .flags { display: flex; gap: 8px; }
 .flag {
-  background: none; border: 1px solid var(--rule); border-radius: var(--r);
-  color: var(--ink-3); height: 34px; padding: 0 13px; cursor: pointer;
-  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em;
+  background: none; border: 1px solid var(--rule); border-radius: var(--r-pill);
+  color: var(--ink-15); height: 36px; padding: 0 15px; cursor: pointer;
+  font-family: var(--ui); font-size: 13px;  letter-spacing: 0;
   /* Named properties, not `all`: `all` animates whatever else happens to
      change — including layout properties, off the GPU. */
-  transition: color .16s, background-color .16s, border-color .16s;
-}
+  transition: color .16s, background-color .16s, border-color .16s; font-weight: 500; }
 .flag:hover { color: var(--ink); border-color: var(--rule-2); }
-.flag[aria-pressed="true"] { background: var(--live); border-color: var(--live); color: var(--live-ink); font-weight: 700; }
+.flag[aria-pressed="true"] { background: var(--live); border-color: var(--live); color: var(--live-ink); font-weight: 500; }
 .flag-reset { color: var(--hot); border-color: color-mix(in oklab, var(--hot) 40%, transparent); }
 
 /* ---------- board ---------- */
 
 .board { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 26px; align-items: start; padding: 20px 0 80px; }
 .feed-head {
-  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
-  letter-spacing: .13em; color: var(--ink-3); padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
+  font-family: var(--ui); font-size: 13px; 
+  letter-spacing: 0; color: var(--ink-2); padding-bottom: 4px;
+  border-bottom: 0;
 }
 
 /* ---------- the register ---------- */
 
-.feed { display: flex; flex-direction: column; gap: 10px; }
+.feed { display: flex; flex-direction: column; gap: 12px; }
 
 /* Each job is its own bordered block. Hairline-separated rows blurred into one
    another; an outline makes every listing a distinct object you can aim at. */
@@ -901,14 +921,13 @@ html[data-boot] .boot-part {
   scroll-margin-top: calc(var(--stack-h) + 16px);
   position: relative; display: grid;
   grid-template-columns: 52px minmax(0,1fr) auto;
-  gap: var(--s4); align-items: start;
-  padding: var(--s4); cursor: pointer;
+  gap: 18px; align-items: start;
+  padding: 20px; cursor: pointer;
   background: var(--card);
   border: 1px solid var(--rule);
   border-radius: var(--r-2);
   overflow: hidden;
-  transition: border-color .16s, transform var(--d-press) var(--snap), background .16s;
-}
+  transition: border-color .16s, transform var(--d-press) var(--snap), background .16s; box-shadow: 0 1px 0 rgb(255 255 255 / .03) inset; }
 /* Apple's first rule: respond on the press, not on release. The card is a
    button; without this it stays inert until the sheet opens and the tap reads
    as lag. Small — 0.99 on a full-width surface is the same perceived travel as
@@ -966,21 +985,20 @@ html[data-boot] .boot-part {
 .row::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
   transform: scaleX(.5); transform-origin: left;
-  background: transparent; transition: background .16s, transform .2s var(--snap);
-}
+  background: transparent; transition: background .16s, transform .2s var(--snap); display: none; }
 .row:hover { border-color: var(--rule-2); }
 .row:hover::before { background: var(--rule-2); }
 .row[aria-current="true"] {
-  border-color: var(--live); background: var(--card-2);
+  border-color: color-mix(in oklab, var(--ink) 40%, transparent); background: var(--card);
 }
 .row[aria-current="true"]::before { background: var(--live); transform: scaleX(1); }
 .row.is-hot::before { background: var(--hot); }
-.row.is-hot { border-color: color-mix(in oklab, var(--hot) 42%, var(--rule)); }
+.row.is-hot { border-color: var(--rule); }
 
 .crest {
-  width: 52px; height: 52px; border-radius: var(--r); overflow: hidden; position: relative;
+  width: 52px; height: 52px; border-radius: var(--r-plate); overflow: hidden; position: relative;
   display: grid; place-items: center; background: var(--card-2);
-  font-family: var(--display); font-weight: 800; font-size: 18px; color: var(--ink-2);
+  font-family: var(--display); font-weight: 600; font-size: 17px; color: var(--ink-2);
   border: 1px solid var(--rule);
 }
 /* The initials sit underneath; the logo fades over them once it decodes.
@@ -1016,9 +1034,9 @@ html[data-boot] .boot-part {
    to economise on. */
 .co {
   font-family: var(--ui);
-  font-size: .8125rem; line-height: 1.25;
-  letter-spacing: .06em; text-transform: uppercase;
-  font-weight: 700; color: var(--ink-15);
+  font-size: 13px; line-height: 1.25;
+  letter-spacing: 0; 
+  font-weight: 500; color: var(--ink-15);
   /* Two lines maximum. A pathological company name truncates instead of
      taking over the card. */
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
@@ -1027,8 +1045,8 @@ html[data-boot] .boot-part {
 .role {
   margin-top: var(--s1);
   font-family: var(--ui); font-weight: 600;
-  font-size: var(--t-title); line-height: var(--t-title-lh);
-  letter-spacing: var(--t-title-tr);
+  font-size: 17px; line-height: var(--t-title-lh);
+  letter-spacing: -.015em;
   color: var(--ink); overflow-wrap: anywhere;
 }
 
@@ -1038,8 +1056,8 @@ html[data-boot] .boot-part {
    separator is a pseudo-element so it never appears without a qualifier. */
 .role .qual { color: var(--ink); }
 .role .qual::before { content: "·"; margin: 0 7px; color: var(--ink-3); }
-.meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .05em; color: var(--ink-3); text-transform: uppercase; }
-.meta .cash { color: var(--cash); font-weight: 700; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 10px; font-family: var(--ui); font-size: 12.5px; letter-spacing: 0; color: var(--ink-2);  }
+.meta .cash { color: var(--cash); font-weight: 500; }
 /* The city list on a role advertised in more than one place. Slightly brighter
    than the rest of the meta line because it is replacing the single location,
    which is the fact a reader scans this line for. */
@@ -1052,37 +1070,37 @@ html[data-boot] .boot-part {
    can rule you out entirely — everything else is detail you read afterwards. */
 .elig {
   display: inline-flex; align-items: center; gap: 6px;
-  border: 1px solid color-mix(in oklab, var(--live) 42%, transparent);
-  border-radius: var(--r); padding: 2px 7px; margin: -2px 0;
+  border: 1px solid var(--rule-2);
+  border-radius: var(--r-pill); padding: 2px 9px; margin: -2px 0;
 }
-.elig b { color: var(--live); font-weight: 700; letter-spacing: .08em; }
+.elig b { color: var(--ink); font-weight: 500; letter-spacing: 0; }
 .elig i { font-style: normal; color: var(--ink-2); text-transform: none; letter-spacing: .02em; }
 
-.skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .skill {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
-  color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
-  border-radius: 3px; padding: 3px 7px;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0; 
+  color: var(--ink-15); background: var(--card-2); border: 1px solid var(--rule);
+  border-radius: var(--r-pill); padding: 3px 10px;
 }
 /* A skill the loaded resume already names. The chips stop being uniform
    decoration and become a reason to look at one card over another. */
-.skill.has { color: var(--live); border-color: color-mix(in oklab, var(--live) 45%, transparent); }
+.skill.has { color: var(--accent); border-color: transparent; background: color-mix(in oklab, var(--accent) 12%, var(--card-2)); }
 
 /* The fit score. Mono and tabular so a column of them compares down the page;
    the accent only once it is worth acting on, or every card shouts. */
-.match { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; margin-top: 9px; font-family: var(--mono); font-size: var(--t-micro); }
+.match { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; margin-top: 9px; font-family: var(--ui); font-size: 12.5px; }
 .match b { font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.match.is-strong b { color: var(--live); }
+.match.is-strong b { color: var(--accent); }
 .match span { color: var(--ink-3); overflow-wrap: anywhere; }
 
 /* Reads as an offer, not a warning — .flag-reset is the destructive one and
    owns --hot. This carries the accent the sort control lights up in once a
    resume is loaded, which is the thing it turns on. */
-.flag-rank { color: var(--live); border-color: color-mix(in oklab, var(--live) 38%, transparent); }
+.flag-rank { color: var(--ink); border-color: var(--rule-2); }
 .flag-rank:hover { color: var(--live-ink); background: var(--live); border-color: var(--live); }
 /* MEASURED: --live on the rail composites lighter in the light theme and the
    chip fell under the 4.5 floor. Darkened here and nowhere else. */
-:root[data-theme="light"] .flag-rank { color: #4a6100; }
+:root[data-theme="light"] .flag-rank { color: var(--ink); }
 
 .gist {
   margin-top: 10px; font-size: 13.5px; color: var(--ink-2); max-width: 62ch;
@@ -1091,25 +1109,24 @@ html[data-boot] .boot-part {
 
 /* Bullets replace the description blurb: the old paragraph was clamped to two
    lines and almost always spent them on company boilerplate. */
-.gist-list { margin-top: 10px; max-width: 66ch; display: grid; gap: 5px; }
+.gist-list { margin-top: 12px; max-width: 66ch; display: grid; gap: 6px; }
 .gist-list li {
-  position: relative; padding-left: 15px;
-  font-size: 13.5px; line-height: 1.45; color: var(--ink-2);
+  position: relative; padding-left: 14px;
+  font-size: 14px; line-height: 1.5; color: var(--ink-15);
 }
 .gist-list li::before {
-  content: ""; position: absolute; left: 0; top: .55em;
-  width: 5px; height: 5px; background: var(--live); opacity: .55;
-}
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 4px; height: 4px; background: var(--ink-3); opacity: 1; border-radius: 50%; }
 
 .age { text-align: right; padding-top: 4px; }
 .age b {
-  display: block; font-family: var(--mono); font-size: 13px; font-weight: 700;
+  display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 500;
   color: var(--ink-2); font-variant-numeric: tabular-nums;
 }
-.age.fresh b { color: var(--live); }
-.age.blazing b { color: var(--hot); }
+.age.fresh b { color: var(--accent); }
+.age.blazing b { color: var(--accent); }
 .age s {
-  display: block; margin-top: 6px; margin-left: auto; height: 2px; width: 44px;
+  display: none; margin-top: 6px; margin-left: auto; height: 2px; width: 44px;
   background: var(--rule); text-decoration: none; overflow: hidden;
 }
 .age s i { display: block; height: 100%; background: var(--live); }
@@ -1125,10 +1142,10 @@ html[data-boot] .boot-part {
 .card-go {
   position: relative; overflow: hidden;
   display: inline-flex; align-items: center; gap: 7px;
-  padding: 0 14px; height: 34px; flex: none;
-  border-radius: 999px; border: 1px solid var(--live);
-  background: var(--live); color: var(--live-ink);
-  font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: -.01em;
+  padding: 0 16px; height: 34px; flex: none;
+  border-radius: 999px; border: 0;
+  background: var(--cta); color: var(--cta-ink);
+  font-family: var(--ui); font-size: 13px; font-weight: 500; letter-spacing: -.01em;
   text-decoration: none; white-space: nowrap; cursor: pointer;
   /* The press is 120ms (set on :active below): press feedback belongs in
      100-160ms, and at 180ms it read soft rather than tactile. The .45s is the
@@ -1145,7 +1162,7 @@ html[data-boot] .boot-part {
 
 /* A hot role gets the hot colour, so the button matches the urgency the age
    badge is already signalling rather than fighting it. */
-.row.is-hot .card-go { background: var(--hot); border-color: var(--hot); }
+.row.is-hot .card-go { background: var(--cta); border-color: var(--cta); }
 
 
 /* ============================================================
@@ -1174,7 +1191,7 @@ html[data-boot] .boot-part {
 
 /* ---------- empty ---------- */
 
-.void { padding: 66px 20px; text-align: center; border: 1px dashed var(--rule-2); border-radius: var(--r-2); }
+.void { padding: 66px 20px; text-align: center; border: 1px dashed var(--rule-2); border-radius: var(--r-2); border-style: solid; border-color: var(--rule); }
 /* The board's first frame, before jobs.json lands. Reuses the masthead radar's
    own classes, so the sweep animation and the reduced-motion handling are the
    ones already defined for .scope rather than a second copy. */
@@ -1182,15 +1199,15 @@ html[data-boot] .boot-part {
         gap: 20px; padding: 78px 20px 96px; text-align: center; }
 .scan-eye { display: block; width: 64px; height: 64px; }
 .scan-eye svg { width: 100%; height: 100%; display: block; }
-.scan p { margin: 0; font-family: var(--mono); font-size: var(--t-micro);
-          letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.scan p { margin: 0; font-family: var(--ui); font-size: 12.5px;
+          letter-spacing: 0;  color: var(--ink-3); }
 
 .void-mark {
   display: block; width: 46px; height: 46px; margin: 0 auto 20px;
   border: 1px solid var(--rule-2); border-radius: 50%; position: relative;
 }
 .void-mark::after { content: ""; position: absolute; inset: 12px; border: 1px solid var(--rule-2); border-radius: 50%; }
-.void h3 { font-size: 22px; text-transform: uppercase; letter-spacing: -.03em; }
+.void h3 { font-size: 20px;  letter-spacing: -.02em; }
 .void p { margin-top: 8px; color: var(--ink-3); font-size: 14px; }
 
 /* ---------- detail pane ---------- */
@@ -1198,41 +1215,40 @@ html[data-boot] .boot-part {
 .pane-col { position: sticky; top: calc(var(--stack-h) + 16px); }
 .pane, .pane-idle { border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); }
 .pane-idle { display: grid; place-items: center; text-align: center; padding: 84px 30px; min-height: 380px; }
-.pane-idle p { font-family: var(--display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: -.03em; }
-.pane-idle p span { display: block; margin-top: 9px; font-family: var(--ui); font-weight: 400; font-size: 13.5px; text-transform: none; letter-spacing: 0; color: var(--ink-3); }
+.pane-idle p { font-family: var(--display); font-weight: 500; font-size: 18px;  letter-spacing: -.02em; }
+.pane-idle p span { display: block; margin-top: 9px; font-family: var(--ui); font-weight: 400; font-size: 13.5px; text-transform: none; letter-spacing: 0; color: var(--ink-2); }
 
 .idle-scope, .wait-scope { position: relative; display: block; width: 72px; height: 72px; margin-bottom: 26px; }
 .idle-scope i, .wait-scope i {
   position: absolute; inset: 0; border: 1px solid var(--live); border-radius: 50%;
-  animation: ripple 2.8s var(--snap) infinite;
-}
+  animation: ripple 2.8s var(--snap) infinite; border-color: color-mix(in oklab, var(--ink) 35%, transparent); }
 .idle-scope i:nth-child(2), .wait-scope i:nth-child(2) { animation-delay: .95s; }
 .idle-scope i:nth-child(3), .wait-scope i:nth-child(3) { animation-delay: 1.9s; }
 @keyframes ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
 
 .pane { padding: 26px; max-height: calc(100vh - var(--stack-h) - 44px); overflow: auto; overscroll-behavior: contain; }
-.pane.is-in { animation: rowIn .3s var(--snap) both; }
+.pane.is-in { animation: pane-swap .45s var(--ease-out) both; }
 .back {
-  display: none; background: none; border: 0; color: var(--live); cursor: pointer;
-  font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+  display: none; background: none; border: 0; color: var(--ink-2); cursor: pointer;
+  font-family: var(--ui); font-size: 13px;  letter-spacing: 0;
   padding: 0; margin-bottom: 18px;
 }
-.p-co { font-family: var(--display); font-weight: 900; font-size: 34px; line-height: .96; letter-spacing: -.045em; text-transform: uppercase; }
+.p-co { font-family: var(--display); font-weight: 600; font-size: 28px; line-height: 1.08; letter-spacing: -.03em;  }
 .p-role { margin-top: 9px; font-size: 16px; color: var(--ink); }
-.p-loc { margin-top: 6px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
+.p-loc { margin-top: 6px; font-family: var(--ui); font-size: 13px;  letter-spacing: 0; color: var(--ink-3); }
 
 /* Every city a collapsed role is open in, each its own posting and its own page.
    Chips rather than a sentence: they are links, and they have to look like it. */
 .p-places { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
 .place {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+  font-family: var(--ui); font-size: 12px; letter-spacing: 0; 
   color: var(--ink-2); background: var(--card-2); border: 1px solid var(--rule);
-  border-radius: 3px; padding: 3px 7px; text-decoration: none;
+  border-radius: var(--r-pill); padding: 3px 10px; text-decoration: none;
   transition: border-color .16s, color .16s;
 }
 /* The one already showing in this pane. Marked so the reader can tell which of
    twenty-one cities they are currently reading. */
-.place.is-here { color: var(--live); border-color: var(--live); }
+.place.is-here { color: var(--ink); border-color: var(--ink-3); }
 @media (hover: hover) and (pointer: fine) {
   .place:hover { color: var(--ink); border-color: var(--ink-3); }
 }
@@ -1240,15 +1256,15 @@ html[data-boot] .boot-part {
 .p-acts { display: flex; gap: 9px; margin: 22px 0; flex-wrap: wrap; }
 
 .go, .alt, .bare {
-  border-radius: var(--r); height: 40px; padding: 0 18px; cursor: pointer;
-  font-size: 13.5px; font-weight: 700; text-decoration: none;
+  border-radius: var(--r-pill); height: 40px; padding: 0 18px; cursor: pointer;
+  font-size: 14px; font-weight: 500; text-decoration: none;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   /* The release springs (9 Oct 2026): a short --spring overshoot as the button
      comes back up. The press itself stays inside 100-160ms — :active below
      sets the duration while it is held. */
   transition: transform .45s var(--spring), background .16s, border-color .16s, color .16s;
 }
-.go { background: var(--live); border: 1px solid var(--live); color: var(--live-ink); }
+.go { background: var(--cta); border: 1px solid var(--cta); color: var(--cta-ink); }
 /* Press feedback. This was `transform: none`, so the detail pane primary
    Apply — and Tailor it, and Download PDF — answered a press with nothing at
    all on touch, where there is no hover lift for it to be cancelling. */
@@ -1256,21 +1272,21 @@ html[data-boot] .boot-part {
 .go:disabled { opacity: .35; cursor: not-allowed; transform: none; }
 .go-block { width: 100%; }
 .alt { background: none; border: 1px solid var(--rule-2); color: var(--ink); }
-.alt:hover { border-color: var(--live); color: var(--live); }
+.alt:hover { border-color: var(--ink-3); color: var(--ink); }
 .alt svg { flex: none; }
 .bare { background: none; border: 1px solid transparent; color: var(--ink-3); }
 .bare:hover { color: var(--ink); }
 
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px,1fr)); border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden; margin-bottom: 22px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px,1fr)); border: 1px solid var(--rule); border-radius: var(--r-2); overflow: hidden; margin-bottom: 22px; }
 .fact { padding: 12px 14px; box-shadow: 0 0 0 1px var(--rule); }
-.fact dt { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-3); }
-.fact dd { margin: 5px 0 0; font-size: 14.5px; font-weight: 600; }
+.fact dt { font-family: var(--ui); font-size: 12px;  letter-spacing: 0; color: var(--ink-3); font-weight: 400; }
+.fact dd { margin: 5px 0 0; font-size: 14.5px; font-weight: 500; }
 .fact dd.cash { color: var(--cash); }
 
-.pane h3 { font-family: var(--mono); font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-3); margin: 22px 0 10px; }
+.pane h3 { font-family: var(--ui); font-weight: 500; font-size: 13px;  letter-spacing: 0; color: var(--ink-2); margin: 22px 0 10px; }
 .p-gist { font-size: 14.5px; white-space: pre-line; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { border: 1px solid var(--rule); border-radius: var(--r); padding: 4px 9px; font-family: var(--mono); font-size: 10.5px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .05em; }
+.chip { border: 1px solid var(--rule); border-radius: var(--r-pill); padding: 4px 10px; font-family: var(--ui); font-size: 12px; color: var(--ink-2);  letter-spacing: 0; }
 .src { margin-top: 24px; padding-top: 15px; border-top: 1px solid var(--rule); font-size: 12px; color: var(--ink-3); }
 .src a { color: var(--ink-2); }
 
@@ -1280,7 +1296,7 @@ html[data-boot] .boot-part {
    viewport-fit=cover, which pushes the layout under it; without an inset here
    the last line of the footer sits beneath the bar. */
 .foot { border-top: 1px solid var(--rule); background: var(--bg-2); padding: 30px 0 calc(52px + env(safe-area-inset-bottom)); font-size: 12px; color: var(--ink-3); }
-.foot p { max-width: 80ch; }
+.foot p { max-width: 72ch; }
 /* NO opacity here. It used to carry `opacity: .75`, which faded .foot's
    own --ink-3 from a passing 4.94 on --bg-2 to 3.27 — axe reads the faded
    value as the real foreground, and it is right to. Opacity on text is the
@@ -1310,8 +1326,8 @@ html[data-boot] .boot-part {
 }
 @keyframes pop { from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)); } }
 .modal-top { display: flex; justify-content: space-between; gap: 16px; padding: 20px 22px; border-bottom: 1px solid var(--rule); flex: none; }
-.modal-top h2 { font-size: 21px; text-transform: uppercase; letter-spacing: -.035em; }
-.modal-sub { margin-top: 5px; font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+.modal-top h2 { font-size: 19px;  letter-spacing: -.02em; }
+.modal-sub { margin-top: 5px; font-family: var(--ui); font-size: 12.5px; color: var(--ink-3);  letter-spacing: 0; }
 .modal-body { padding: 22px; overflow: auto; overscroll-behavior: contain; }
 
 /* ---------------- the tailor wizard ----------------
@@ -1372,8 +1388,8 @@ html[data-boot] .boot-part {
 /* The one voice on each screen. Sentence case under the small uppercase dialog
    title, so the two do not shout over each other. */
 .tw-h {
-  margin: 0; font-family: var(--display); font-weight: 900;
-  font-size: 1.5rem; line-height: 1.12; letter-spacing: -.025em; color: var(--ink);
+  margin: 0; font-family: var(--display); font-weight: 600;
+  font-size: 1.5rem; line-height: 1.12; letter-spacing: -.02em; color: var(--ink);
 }
 /* Focused by script so a screen reader announces the new screen; it is not a
    control, so it draws no ring. */
@@ -1476,7 +1492,7 @@ html[data-boot] .boot-part {
 .tw-input {
   display: block; width: 100%; min-width: 0; height: 46px; padding: 0 14px;
   border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink);
-  font-family: var(--mono); font-size: 16px;
+  font-family: var(--ui); font-size: 16px;
 }
 .tw-input::placeholder { color: var(--ink-3); }
 .tw-input:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
@@ -1499,7 +1515,7 @@ html[data-boot] .boot-part {
 /* A <div> in a <dl> may hold only <dt> and <dd> (§15), so Change lives in the dd. */
 .tw-sum > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 13px 16px; }
 .tw-sum > div + div { border-top: 1px solid var(--rule); }
-.tw-sum dt { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.tw-sum dt { font-family: var(--ui); font-size: 12px; font-weight: 500; letter-spacing: 0;  color: var(--ink-3); }
 .tw-sum dd { margin: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-width: 0; font-size: .9375rem; font-weight: 600; color: var(--ink); }
 .tw-sum dd > span { min-width: 0; overflow-wrap: anywhere; }
 .tw-link {
@@ -1547,8 +1563,8 @@ html[data-boot] .boot-part {
 }
 
 .wait { display: grid; place-items: center; text-align: center; padding: 60px 20px; }
-.wait b { font-family: var(--display); font-weight: 800; font-size: 19px; text-transform: uppercase; letter-spacing: -.02em; }
-.wait > span { margin-top: 7px; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
+.wait b { font-family: var(--display); font-weight: 600; font-size: 18px;  letter-spacing: -.02em; }
+.wait > span { margin-top: 7px; font-family: var(--ui); font-size: 12px;  letter-spacing: 0; color: var(--ink-3); }
 
 .acts { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 18px; }
 .flagbox { border-left: 2px solid var(--hot); background: var(--card); padding: 13px 15px; margin-bottom: 12px; font-size: 13px; color: var(--ink-2); }
@@ -1557,17 +1573,17 @@ html[data-boot] .boot-part {
 .flagbox-gap { border-left-color: var(--live); }
 
 .diffs { margin-bottom: 18px; }
-.diffs h4 { margin: 0 0 9px; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .16em; color: var(--ink-3); font-weight: 700; }
+.diffs h4 { margin: 0 0 9px; font-family: var(--ui); font-size: 12px;  letter-spacing: 0; color: var(--ink-3); font-weight: 500; }
 .diffs ul { display: flex; flex-direction: column; gap: 6px; }
 .diffs li { font-size: 13px; color: var(--ink-2); padding-left: 18px; position: relative; }
 .diffs li::before { content: "+"; position: absolute; left: 0; color: var(--live); font-family: var(--mono); font-weight: 700; }
 
 .sheet { background: #fff; color: #16160f; border-radius: var(--r); padding: 38px 42px; font-family: ui-serif, Georgia, serif; font-size: 13px; line-height: 1.5; }
-.sheet .r-name { font-family: var(--display); font-weight: 900; font-size: 26px; letter-spacing: -.035em; text-transform: uppercase; }
+.sheet .r-name { font-family: var(--display); font-weight: 600; font-size: 26px; letter-spacing: -.035em;  }
 .sheet .r-contact { font-family: var(--mono); font-size: 11px; color: #55554c; margin-top: 4px; }
 .sheet .r-summary { margin-top: 14px; }
 .sheet .r-sec { margin-top: 19px; }
-.sheet .r-sec > h5 { margin: 0 0 8px; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .16em; font-weight: 700; border-bottom: 1.5px solid #16160f; padding-bottom: 4px; }
+.sheet .r-sec > h5 { margin: 0 0 8px; font-family: var(--ui); font-size: 12px;  letter-spacing: 0; font-weight: 500; border-bottom: 1.5px solid #16160f; padding-bottom: 4px; }
 .sheet .r-item { margin-bottom: 12px; break-inside: avoid; }
 .sheet .r-item-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
 .sheet .r-role { font-weight: 700; }
@@ -1577,13 +1593,13 @@ html[data-boot] .boot-part {
 .sheet .r-skills { font-family: var(--mono); font-size: 11.5px; }
 
 .oops { text-align: center; padding: 48px 26px; color: var(--ink-2); }
-.oops b { display: block; font-family: var(--display); font-weight: 800; font-size: 20px; color: var(--ink); text-transform: uppercase; margin-bottom: 8px; }
+.oops b { display: block; font-family: var(--display); font-weight: 600; font-size: 19px; color: var(--ink);  margin-bottom: 8px; }
 .oops p { margin-bottom: 18px; font-size: 14px; }
 
 .snack {
   position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 95;
-  background: var(--live); color: var(--live-ink); padding: 11px 20px; border-radius: var(--r);
-  font-family: var(--mono); font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  background: var(--live); color: var(--live-ink); padding: 11px 20px; border-radius: var(--r-pill);
+  font-family: var(--ui); font-size: 13px; font-weight: 500;  letter-spacing: 0;
   /* A transition, not a keyframe. Keyframes restart from zero, so a second
      toast arriving during the first snapped it back to the start; a transition
      retargets from wherever it currently is. */
@@ -1608,8 +1624,8 @@ html[data-boot] .boot-part {
   list-style: none;
   display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
   padding: 6px 4px 8px;
-  font-family: var(--mono); font-size: var(--t-micro); line-height: var(--t-micro-lh);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  font-family: var(--ui); font-size: 12.5px; line-height: var(--t-micro-lh);
+  letter-spacing: 0; 
   color: var(--ink-2);
 }
 .rank-bar b { color: var(--ink); font-weight: 700; }
@@ -1617,7 +1633,7 @@ html[data-boot] .boot-part {
 .rank-ai {
   background: none; border: 0; padding: 0; margin-left: 6px; cursor: pointer;
   font: inherit; letter-spacing: inherit; text-transform: inherit;
-  color: var(--live); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;
+  color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px;
 }
 .rank-ai:hover { color: var(--ink); }
 .rank-ai[disabled] { color: var(--ink-3); text-decoration: none; cursor: default; }
@@ -1649,15 +1665,15 @@ html.nudge-open { overflow: hidden; }
   max-height: calc(100vh - 32px); overflow: auto;
   padding: 30px 30px 26px;
   background: var(--card-2); border: 1px solid var(--rule-2); border-radius: 18px;
-  box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(200,255,0,.08);
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
   color: var(--ink);
   transition: opacity .26s var(--snap), transform .26s var(--snap);
 }
 .nudge:not(.is-up) { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
 .nudge-h {
   margin: 0 40px 10px 0;
-  font-family: var(--display); font-weight: 900; text-transform: uppercase;
-  font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.05; letter-spacing: -.02em;
+  font-family: var(--display); font-weight: 600; 
+  font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.05; letter-spacing: -.025em;
 }
 .nudge-h em { font-style: normal; color: var(--live); }
 .nudge-p { margin: 0 0 22px; max-width: 46ch; font-size: var(--t-body); line-height: 1.45; color: var(--ink-15); }
@@ -1673,8 +1689,8 @@ html.nudge-open { overflow: hidden; }
 .nudge-a:active { transform: scale(.985); }
 .nudge-a:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
 .nudge-a small {
-  font-family: var(--mono); font-size: var(--t-micro); font-weight: 400;
-  letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap;
+  font-family: var(--ui); font-size: 12.5px; font-weight: 400;
+  letter-spacing: 0;  color: var(--ink-2); white-space: nowrap;
 }
 .nudge-k { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .nudge-k i {
@@ -1682,7 +1698,7 @@ html.nudge-open { overflow: hidden; }
   font-style: normal; font-family: var(--mono); font-size: 11px; font-weight: 400;
   background: rgba(255,255,255,.08);
 }
-.nudge-whatsapp { background: var(--live); border-color: var(--live); color: var(--live-ink); }
+.nudge-whatsapp { background: var(--cta); border-color: var(--cta); color: var(--cta-ink); }
 .nudge-whatsapp small { color: rgba(20,23,10,.72); }
 .nudge-whatsapp .nudge-k i { background: rgba(20,23,10,.14); }
 /* Email steps back to a text line when the page offers a channel — one
@@ -1701,13 +1717,13 @@ html.nudge-open { overflow: hidden; }
 }
 .nudge-form input:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; }
 .nudge-send {
-  height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--live);
-  background: var(--live); color: var(--live-ink); cursor: pointer; white-space: nowrap;
+  height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--cta);
+  background: var(--cta); color: var(--cta-ink); cursor: pointer; white-space: nowrap;
   font-family: var(--ui); font-size: var(--t-small); font-weight: 700;
 }
 .nudge-send[disabled] { cursor: default; background: var(--rule-2); border-color: var(--rule-2); color: var(--ink-2); }
 .nudge-msg { grid-column: 1 / -1; margin: 0; min-height: 1.2em; font-size: var(--t-small); color: var(--ink-2); }
-.nudge-msg.is-good { color: var(--live); }
+.nudge-msg.is-good { color: var(--accent); }
 .nudge-msg.is-bad { color: var(--ink); background: var(--bg-2); border-radius: 8px; padding: 6px 10px; }
 .nudge-x {
   position: absolute; top: 12px; right: 12px; width: 36px; height: 36px;
@@ -1725,18 +1741,27 @@ html.nudge-open { overflow: hidden; }
   .nudge-whatsapp:hover { filter: brightness(1.06); }
 }
 
-/* ---------- hover motion, gated ----------
-   A tap on a touchscreen fires a :hover before the click, so every one of these
-   lifts fired on a phone — the device most of this traffic arrives on — and then
-   stuck until the next tap elsewhere. Colour and border cues above stay ungated
-   because they read correctly either way; only movement is gated. */
+/* ---------- hover: light, never lift (9 Oct 2026, his call) ----------
+   "the object should not pop upwards, it should just be highlighted with
+   animation". Nothing moves on hover any more: a card brightens its edge and
+   surface, a lime action brightens and grows a soft halo, an outline button
+   firms its edge. All of it fades in over --d-ui. Still gated to a real
+   pointer: a tap on a touchscreen fires :hover before the click and the
+   highlight would then stick until the next tap. Pressing still scales down
+   a touch (:active) - that is feedback for a click, not a hover. */
+.row { transition: border-color .22s var(--ease-out), background-color .22s var(--ease-out), box-shadow .22s var(--ease-out), transform var(--d-press) var(--snap); }
+.card-go, .go, .btn-apply { transition: transform .45s var(--spring), filter .22s var(--ease-out), box-shadow .22s var(--ease-out), background-color .16s, border-color .16s, color .16s; }
 @media (hover: hover) and (pointer: fine) {
-  .row:hover { transform: translateY(-2px); }
-  .go:hover { transform: translateY(-2px); }
-  .alt:hover { transform: translateY(-2px); }
-  /* Lift only — the button answers the pointer with movement, not light. */
-  .card-go:hover { transform: translateY(-2px); }
-  /* Press outranks the hover lift: :hover:active is (0,3,0) against (0,2,0). */
+  .row:hover {
+    border-color: color-mix(in oklab, var(--ink) 24%, transparent);
+    background-color: var(--card-2);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--ink) 5%, transparent);
+  }
+  .card-go:hover, .go:not([disabled]):hover {
+    filter: brightness(1.06);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--cta) 24%, transparent);
+  }
+  .alt:hover { border-color: var(--ink-3); background-color: color-mix(in oklab, var(--ink) 6%, transparent); }
   .go:hover:active, .alt:hover:active, .bare:hover:active { transform: scale(.97); }
 }
 
@@ -1866,7 +1891,7 @@ html.nudge-open { overflow: hidden; }
   /* The headline. Big enough to be read while a thumb is moving. */
   .role {
     clear: both; padding-top: var(--s2);
-    font-family: var(--display); font-weight: 800;
+    font-family: var(--display); font-weight: 600;
     font-size: clamp(1.25rem, 5.4vw, 1.5rem); line-height: 1.14; letter-spacing: -.03em;
   }
 
@@ -2005,7 +2030,7 @@ html.nudge-open { overflow: hidden; }
    being illegible. */
 .all-roles > summary {
   cursor: pointer; font: 600 0.78rem/1.4 var(--mono, ui-monospace, monospace);
-  letter-spacing: 0.04em; text-transform: uppercase;
+  letter-spacing: 0; 
 }
 .all-roles > summary:hover { color: var(--ink); }
 .all-roles > ul {
@@ -2030,8 +2055,8 @@ html.nudge-open { overflow: hidden; }
    never be the cause of another. */
 .sub { margin-top: 26px; }
 .sub-l {
-  display: block; font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2);
+  display: block; font-family: var(--ui); font-size: 12.5px;
+  letter-spacing: 0;  color: var(--ink-2);
 }
 .sub-row {
   display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
@@ -2047,7 +2072,7 @@ html.nudge-open { overflow: hidden; }
 .sub-i:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
 .sub-b {
   flex: 0 0 auto; padding: 11px 20px; border-radius: var(--r);
-  border: 1px solid var(--live); background: var(--live); color: var(--live-ink);
+  border: 1px solid var(--cta); background: var(--cta); color: var(--cta-ink);
   font-family: var(--ui); font-weight: 700; font-size: 14.5px; cursor: pointer;
 }
 .sub-b:disabled { opacity: .6; cursor: default; }
@@ -2144,15 +2169,14 @@ html.nudge-open { overflow: hidden; }
     var(--bg-2);
 }
 .signup-band b {
-  display: block; font-family: var(--display); font-weight: 900;
-  font-size: clamp(20px, 3vw, 30px); line-height: 1.04; letter-spacing: -.035em;
-  text-transform: uppercase; color: var(--ink);
+  display: block; font-family: var(--display); font-weight: 600;
+  font-size: clamp(20px, 3vw, 30px); line-height: 1.04; letter-spacing: -.035em;  color: var(--ink);
 }
 .signup-band p { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); }
 .signup-band a { color: var(--live); text-underline-offset: 3px; }
 /* The WhatsApp lead is a solid lime button, so its text is ink, not lime —
    the rule above painted it lime-on-lime, invisible, on the first render. */
-.signup-band a.wa-go { color: var(--live-ink); text-decoration: none; }
+.signup-band a.wa-go { color: var(--cta-ink); text-decoration: none; }
 /* The label repeats the heading above it here, so it is for screen readers
    only — the band already says what the box is for. */
 .signup-band .sub { margin-top: 20px; }
@@ -2199,7 +2223,7 @@ html.nudge-open { overflow: hidden; }
    why measuring the parent alone passed this twice. MEASURE THE CHILDREN
    AGAINST THE PARENT. */
 .fb-open { grid-auto-flow: column; gap: 7px; padding: 0 12px; width: auto; }
-.fb-open span { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: var(--t-micro-tr); text-transform: uppercase; }
+.fb-open span { font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;  }
 /* Under 940px the word goes and the icon carries it — the header drops its nav
    at 760 rather than wrapping, and a two-line masthead is broken. Was 560px:
    between 641 and 909 the labelled button was part of a masthead up to 180px
@@ -2223,7 +2247,7 @@ html.nudge-open { overflow: hidden; }
 html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 .fb-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .fb-h {
-  display: block; font-family: var(--display); font-weight: 900;
+  display: block; font-family: var(--display); font-weight: 600;
   font-size: 19px; letter-spacing: -.02em; color: var(--ink);
 }
 .fb-sub { margin-top: 6px; font-size: 13.5px; color: var(--ink-3, var(--ink-2)); }
@@ -2277,7 +2301,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    only action, so an outlined control would just be a weak primary. */
 .fb-b {
   flex: 0 0 auto; padding: 10px 20px; border-radius: var(--r);
-  border: 1px solid var(--live); background: var(--live); color: var(--live-ink);
+  border: 1px solid var(--cta); background: var(--cta); color: var(--cta-ink);
   font-family: var(--ui); font-weight: 700; font-size: 14.5px; cursor: pointer;
 }
 .fb-b:disabled { opacity: .6; cursor: default; }
@@ -2315,8 +2339,8 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
   height: 34px; padding: 0 13px; flex: none;
   border: 1px solid var(--rule); border-radius: 999px;
   background: none; color: var(--ink-3);
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  font-family: var(--ui); font-size: 12.5px;
+  letter-spacing: 0; 
   text-decoration: none; cursor: pointer; white-space: nowrap;
   transition: color var(--d-press) var(--snap), border-color var(--d-press) var(--snap),
               background-color var(--d-press) var(--snap);
@@ -2330,7 +2354,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 }
 .trk-b.is-set::before {
   content: ''; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--live); flex: none;
+  background: var(--accent); flex: none;
 }
 .trk-b:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
@@ -2380,8 +2404,8 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 
 .trk-lab { display: grid; gap: 6px; }
 .trk-lab > span {
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12.5px;
+  letter-spacing: 0;  color: var(--ink-3);
 }
 .trk-sel {
   width: 100%; height: 40px; padding: 0 var(--s3);
@@ -2427,15 +2451,15 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
 
 .trk-bar-acts { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
 .trk-link {
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase;
+  font-family: var(--ui); font-size: 12.5px;
+  letter-spacing: 0; 
   color: var(--live); text-decoration: none;
 }
 .trk-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .trk-drop {
   background: none; border: 0; padding: 0; cursor: pointer;
-  font-family: var(--mono); font-size: var(--t-micro);
-  letter-spacing: var(--t-micro-tr); text-transform: uppercase; color: var(--ink-3);
+  font-family: var(--ui); font-size: 12.5px;
+  letter-spacing: 0;  color: var(--ink-3);
 }
 .trk-drop:hover { color: var(--hot); }
 .trk-drop:focus-visible, .trk-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
@@ -2482,9 +2506,8 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    style in a shipped page.
    ============================================================ */
   .nf { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; }
-  .nf-code { font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .16em;
-             text-transform: uppercase; color: var(--live); margin-bottom: 18px; }
-  .nf h1 { font-family: var(--display); font-weight: 900; letter-spacing: -.035em;
+  .nf-code { font-family: var(--ui); font-size: 12.5px; letter-spacing: 0;  color: var(--live); margin-bottom: 18px; }
+  .nf h1 { font-family: var(--display); font-weight: 600; letter-spacing: -.035em;
            line-height: 1.02; font-size: clamp(38px, 7vw, 68px); margin: 0 0 18px; }
   .nf p { color: var(--ink-2); font-size: 17px; line-height: 1.55; max-width: 56ch; margin: 0 0 30px; }
   .nf-acts { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -2492,7 +2515,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
      means a posting that expired — job pages are deleted at 30 days by design,
      so this is the ORDINARY way a link here goes stale, not an error. */
   .nf-go { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
-           border-radius: 10px; background: var(--live); color: #0a0a0b;
+           border-radius: 10px; background: var(--cta); color: #0a0a0b;
            font-weight: 700; font-size: 15px; text-decoration: none; }
   .nf-alt { display: inline-flex; align-items: center; gap: 9px; padding: 13px 22px;
             border-radius: 10px; border: 1px solid var(--rule-2); color: var(--ink);
@@ -2526,3 +2549,53 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    every label collapsed. "WhatsApp alerts" keeps its words — it is India's one
    channel — so the links go first. */
 @media (max-width: 760px) { .bar-nav { display: none; } }
+
+/* Light theme: a lime fill next to white has almost no luminance edge, so the
+   main action gets a hairline in a darker lime. */
+:root[data-theme="light"] :is(.card-go, .go, .alerts.is-wa, .wa-go, .nudge-send, .sub-b, .fb-b, .nf-go) { border-color: #a3cf00; }
+
+/* ---------- fluid UI motion (9 Oct 2026, after hiregram.ai) ----------
+   All of it is motion the reader watches, so it uses --ease-out / --spring,
+   and all of it collapses under prefers-reduced-motion (the global rule at the
+   top keeps only colour and opacity transitions, and these keyframes are
+   switched off below). */
+
+/* A role's details arrive out of a soft blur, not a hard swap. */
+@keyframes pane-swap {
+  from { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+
+/* THE SLIDING TAB. app.js places one .seg-ind under the selected tab of each
+   segmented control and moves it with a transform when the selection changes,
+   so the white pill glides to the tab you pick instead of jumping. With no
+   script the selected tab keeps its own fill: the transparent fill below only
+   applies once app.js has added the indicator (.has-ind). */
+.seg { position: relative; isolation: isolate; }
+.seg-ind {
+  position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none;
+  border-radius: var(--r-pill); background: var(--live);
+  transition: transform .45s var(--spring), width .45s var(--spring), height .45s var(--spring), opacity .2s ease;
+}
+.seg .seg-b { position: relative; z-index: 1; transition: color .25s var(--ease-out); }
+.seg.has-ind .seg-b[aria-selected="true"] { background: transparent; }
+
+/* PAGE TO PAGE. A same-site navigation cross-fades instead of flashing white
+   (cross-document view transitions; browsers without them simply navigate).
+   The masthead is its own group so it stays put while the page changes under
+   it, and it gives that name up during the theme sweep, which must cover the
+   whole screen as one snapshot. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .bar { view-transition-name: masthead; }
+  ::view-transition-old(root) { animation: vt-out .2s ease both; }
+  ::view-transition-new(root) { animation: vt-in .42s var(--ease-out) both; }
+}
+:root[data-theme-switching] .bar { view-transition-name: none; }
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pane.is-in { animation: none; }
+  .seg-ind { transition: none; }
+}

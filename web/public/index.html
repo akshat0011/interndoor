@@ -91,8 +91,8 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=16">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=17">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -158,7 +158,7 @@
           <circle class="s-dot" cx="22" cy="22" r="2.8"/>
         </svg>
       </span>
-      <span class="word">INTERN<em>DOOR</em></span>
+      <span class="word">Intern<em>Door</em></span>
     </a>
 
     <!-- The board IS the jobs list, so this page marks that item rather
@@ -241,10 +241,9 @@ Engineering internships &amp; entry-level jobs
            listing's blurb. Naming it here is what stops that. -->
       <p>
         <!--REGION:LEDE-->
-<strong>Engineering internships and entry-level jobs</strong>,
-<!--/REGION:LEDE--> listed within minutes of
-        going live. Both pull <strong>hundreds of applicants inside a day</strong>
-        — so you apply while the queue is still short.
+Roles across <strong>India</strong>,
+<!--/REGION:LEDE--> listed within minutes of going live, so you can apply
+        while the queue is still short.
       </p>
     </div>
   </section>
@@ -275,10 +274,10 @@ Engineering internships &amp; entry-level jobs
       </div>
 
       <div class="picks">
-        <label><span>company</span><select id="f-company"><option value="">any</option></select></label>
-        <label><span>city</span><select id="f-location"><option value="">any</option></select></label>
-        <label><span>mode</span><select id="f-mode"><option value="">any</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></label>
-        <label><span>order</span><select id="f-sort"><option value="new">newest</option><option value="company">company</option></select></label>
+        <label><span>Company</span><select id="f-company"><option value="">Any</option></select></label>
+        <label><span>City</span><select id="f-location"><option value="">Any</option></select></label>
+        <label><span>Mode</span><select id="f-mode"><option value="">Any</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></label>
+        <label><span>Sort</span><select id="f-sort"><option value="new">Newest</option><option value="company">Company</option></select></label>
       </div>
 
       <!-- Rank the whole board against a resume. It sits with the filters
@@ -286,7 +285,7 @@ Engineering internships &amp; entry-level jobs
            control beside it — the button and the thing it switches on are the
            same feature. -->
       <div class="flags">
-        <button class="flag flag-rank" id="rank-resume" type="button">rank by my resume</button>
+        <button class="flag flag-rank" id="rank-resume" type="button">Rank by my resume</button>
         <!-- The application tracker. A real link, server-rendered and always
              visible, so a reader whose script never arrives still reaches it —
              app.js only fills the count, and only when there is one. It sits
@@ -295,7 +294,7 @@ Engineering internships &amp; entry-level jobs
              The href is bare on purpose: /applications is in REGION_LINKS, so
              localiseLinks rewrites it to /us/applications and /uk/applications
              when this template is written out for those boards. -->
-        <a class="flag flag-apps" id="my-apps" href="/applications">my applications <b></b></a>
+        <a class="flag flag-apps" id="my-apps" href="/applications">My applications <b></b></a>
         <button class="flag flag-reset" id="reset" type="button" hidden>reset</button>
       </div>
     </div>
@@ -359,7 +358,7 @@ Engineering internships &amp; entry-level jobs
 <p class="wa-lead"><a class="wa-go is-wa" href="https://whatsapp.com/channel/0029VbEJ2qLBA1eq3S5hBE3P" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg> Join the WhatsApp channel</a> <span class="wa-note">Every new role in India, the minute it is posted. No signup.</span></p>
 <!--/REGION:FOLLOW-->
     <form class="sub" method="post" action="/api/subscribe">
-    <label class="sub-l">Get new roles by email — one message, no spam.</label>
+    <label class="sub-l">Get new roles by email: one message a day, no spam.</label>
     <div class="sub-row">
     <input class="sub-i" aria-label="Get new roles by email" type="email" name="email" required
     autocomplete="email" inputmode="email" spellcheck="false"
@@ -381,7 +380,7 @@ Engineering internships &amp; entry-level jobs
     <div class="fb-head">
       <div>
         <b class="fb-h" id="fb-title">Something wrong, or missing?</b>
-        <p class="fb-sub">A dead apply link, a listing that has closed, an employer we should be tracking — mail us at <a href="mailto:akshat@interndoor.com">akshat@interndoor.com</a> and we will fix it.</p>
+        <p class="fb-sub">A dead apply link, a listing that has closed, an employer we should be tracking? Mail us at <a href="mailto:akshat@interndoor.com">akshat@interndoor.com</a> and we will fix it.</p>
       </div>
       <button class="fb-x" type="button" aria-label="Close">&times;</button>
     </div>
@@ -395,7 +394,7 @@ Engineering internships &amp; entry-level jobs
 
   <footer class="foot">
     <div class="wrap">
-      <p>Every listing links back to its original posting — always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
+      <p>Every listing links back to its original posting. Always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
       <p class="dim">Your resume is processed in memory and never stored here.</p>
       <!-- /contact is ROOT-RELATIVE and stays that way on every board. There is
            one contact page for all three, so it is deliberately NOT in
@@ -612,6 +611,6 @@ Engineering internships &amp; entry-level jobs
 <script defer src="/track.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/feedback.js"></script>
-<script src="/app.js?v=6" type="module"></script>
+<script src="/app.js?v=7" type="module"></script>
 </body>
 </html>
