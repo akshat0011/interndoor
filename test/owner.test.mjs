@@ -187,7 +187,7 @@ console.log('\n== PAGE ADDRESSES ==');
 /** Run a script in a fake browser and record what it tried to do. */
 function inBrowser(src, { stored = null, hash = '', throwOnStorage = false } = {}) {
   const log = { scripts: [], links: [], fetches: 0, stored, replaced: null };
-  const el = (tag) => ({ tag, set src(v) { log.scripts.push(v); }, set href(v) { log.links.push(v); } });
+  const el = (tag) => ({ tag, set src(v) { log.scripts.push(v); }, set href(v) { log.links.push(v); }, addEventListener: () => {} });
   const storage = {
     getItem: () => { if (throwOnStorage) throw new Error('blocked'); return log.stored; },
     setItem: (_k, v) => { if (throwOnStorage) throw new Error('blocked'); log.stored = v; },

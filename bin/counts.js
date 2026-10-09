@@ -40,18 +40,12 @@ if (!url || !token) {
    web/api/count.js keeps since 9 Oct 2026 — the number an employer is told.
    `--company <name>` narrows it to one employer's roles. */
 if (ARGS.includes('--jobs')) {
-  const { hashPairs, foldJobClicks } = await import('../src/jobclicks.js');
+  const { fetchDayHashes, foldJobClicks } = await import('../src/jobclicks.js');
   const { jobSlug } = await import('../src/pages.js');
   const dayKeys = [];
   for (let i = days - 1; i >= 0; i--) dayKeys.push(jobKeyFor(utcDay(Date.now() - i * 86_400_000)));
-  const res = await fetch(`${url}/pipeline`, {
-    method: 'POST',
-    headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
-    body: JSON.stringify(dayKeys.map((k) => ['HGETALL', k])),
-  });
-  if (!res.ok) { console.error(`store answered ${res.status}`); process.exit(1); }
-  const answers = await res.json();
-  const perDay = answers.map((a) => hashPairs(a?.result));
+  let perDay;
+  try { perDay = await fetchDayHashes({ url, token }, dayKeys); } catch (err) { console.error(err.message); process.exit(1); }
   const board = JSON.parse(readFileSync('web/public/data/jobs.json', 'utf8'));
   const bySlug = new Map((board.jobs ?? board).map((j) => [jobSlug({ company: j.company, title: j.title, slugTitle: j.slugTitle, id: j.id }), { company: j.company, title: j.title }]));
   const { jobs, companies, total } = foldJobClicks(perDay, bySlug);

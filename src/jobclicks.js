@@ -49,3 +49,49 @@ export function foldJobClicks(days, bySlug = new Map()) {
   const total = jobs.reduce((s, j) => s + j.clicks, 0);
   return { jobs, companies, total };
 }
+
+/** The first day web/api/count.js kept a job on an Apply (UTC). */
+export const TRACKED_SINCE = '2026-10-09';
+
+/**
+ * Per slug: clicks on the newest day ("today", a UTC day), the newest seven,
+ * and the whole run. `days` runs oldest first — the order the readers build
+ * their key lists in.
+ * @param {Map<string, number>[]} days
+ * @returns {Map<string, {today: number, week: number, total: number}>}
+ */
+export function clickWindows(days) {
+  const out = new Map();
+  days.forEach((day, i) => {
+    const age = days.length - 1 - i;
+    for (const [slug, n] of day) {
+      const w = out.get(slug) ?? { today: 0, week: 0, total: 0 };
+      if (age === 0) w.today += n;
+      if (age < 7) w.week += n;
+      w.total += n;
+      out.set(slug, w);
+    }
+  });
+  return out;
+}
+
+/**
+ * Read the day hashes in ONE pipeline request. Returns one Map per key, in
+ * the order given; a key the store does not hold is an empty Map. Throws on
+ * a store that answers with an error, so a reader never shows zeros that
+ * mean "could not ask".
+ */
+export async function fetchDayHashes({ url, token }, keys, fetchImpl = fetch) {
+  const res = await fetchImpl(`${url}/pipeline`, {
+    method: 'POST',
+    headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+    body: JSON.stringify(keys.map((k) => ['HGETALL', k])),
+  });
+  if (!res.ok) throw new Error(`the counter store answered ${res.status}`);
+  const answers = await res.json();
+  /* By key, not by answer: the windows are positional, so a short answer must
+     leave a day empty rather than shift every later day by one. Upstash
+     answers one result per command, so this cannot be told apart from
+     `answers.map` on a real store — kept because it costs nothing. */
+  return keys.map((_, i) => hashPairs(answers?.[i]?.result));
+}

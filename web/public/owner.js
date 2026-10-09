@@ -61,6 +61,31 @@
     });
   }
 
+  /* ---------------- Apply clicks per job ----------------
+     How many times InternDoor's Apply buttons were pressed for each job, read
+     by the helper from the counter (web/api/count.js). One request per page
+     load; every bar, card and the list read the same answer. */
+  var clicks = call('/api/owner/clicks').then(function (data) {
+    var byId = {}, bySlug = {};
+    (data.jobs || []).forEach(function (j) {
+      bySlug[j.slug] = j;
+      if (j.id) byId[j.id] = j;
+    });
+    var since = new Date(data.since + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+    return { data: data, byId: byId, bySlug: bySlug, since: since };
+  });
+  clicks.catch(function () { /* each reader below says why, where it matters */ });
+
+  function slugOfPath(path) {
+    var m = /\/jobs\/([a-z0-9-]+)\/?$/.exec(path || '');
+    return m ? m[1] : null;
+  }
+
+  function clickText(c, j) {
+    if (!j || !j.total) return 'Apply clicks: none since ' + c.since;
+    return 'Apply clicks: ' + j.today + ' today · ' + j.week + ' in 7 days · ' + j.total + ' since ' + c.since;
+  }
+
   function explain(err) {
     if (err.status === 401) return 'This browser is not paired any more — open ' + HELPER + '/owner and pair again.';
     return err.message;
@@ -221,6 +246,16 @@
     state.className = 'owner-state';
     state.textContent = 'connecting…';
     bar.appendChild(state);
+    var clickLine = document.createElement('span');
+    clickLine.className = 'owner-clicks-line';
+    bar.appendChild(clickLine);
+    clicks.then(function (c) {
+      var j = ref.jobId ? c.byId[ref.jobId] : c.bySlug[slugOfPath(ref.path)];
+      clickLine.textContent = clickText(c, j);
+    }, function (err) {
+      // A helper that is not running is already said once, in the state.
+      clickLine.textContent = err.status === 0 ? '' : 'Apply clicks: ' + explain(err);
+    });
 
     call('/api/owner/job', ref).then(function (view) {
       state.textContent = view.hidden ? 'hidden from the site' : view.closed ? 'closed' : view.edit ? 'corrected' : '';
@@ -285,12 +320,120 @@
 
     button(bar, 'Owner off', function () {
       try { localStorage.removeItem(KEY); } catch (e) { /* nothing stored */ }
-      document.querySelectorAll('.owner-bar').forEach(function (b) { b.remove(); });
+      document.querySelectorAll('.owner-bar, .owner-fab, .owner-clicks').forEach(function (b) { b.remove(); });
       toast('Owner controls are off in this browser.');
     }, 'owner-quiet');
 
     return bar;
   }
+
+  /* The board's cards: a badge on every card whose job has been clicked. The
+     list is drawn in chunks as the reader scrolls (and redrawn on every
+     filter), so watch it and badge whatever arrives. A card with no clicks
+     gets nothing — on a board of a thousand cards "0" is noise. */
+  var list = document.getElementById('joblist');
+  if (list) {
+    clicks.then(function (c) {
+      var badge = function () {
+        list.querySelectorAll('.row[data-id]').forEach(function (row) {
+          if (row.querySelector('.owner-clicks')) return;
+          var j = c.byId[row.getAttribute('data-id')];
+          if (!j || !j.total) return;
+          var b = document.createElement('div');
+          b.className = 'owner-clicks';
+          b.textContent = j.total + ' Apply click' + (j.total === 1 ? '' : 's') + (j.today ? ' · ' + j.today + ' today' : '');
+          b.title = clickText(c, j);
+          var co = row.querySelector('.co');
+          if (co) co.before(b); else row.prepend(b);
+        });
+      };
+      new MutationObserver(badge).observe(list, { childList: true, subtree: true });
+      badge();
+    }, function () { /* the bar says why */ });
+  }
+
+  /* Every job, most clicked first. */
+  function clicksDialog() {
+    var dlg = document.createElement('dialog');
+    dlg.className = 'owner-dialog owner-clicks-dialog';
+    var form = document.createElement('form');
+    form.method = 'dialog';
+    var h = document.createElement('h2');
+    h.textContent = 'Apply clicks by job';
+    form.appendChild(h);
+    var note = document.createElement('p');
+    note.textContent = 'Loading…';
+    form.appendChild(note);
+    var wrap = document.createElement('div');
+    wrap.className = 'owner-table-wrap';
+    form.appendChild(wrap);
+    var row = document.createElement('div');
+    row.className = 'owner-row';
+    var close = document.createElement('button');
+    close.type = 'submit';
+    close.value = 'close';
+    close.className = 'owner-primary';
+    close.textContent = 'Close';
+    row.appendChild(close);
+    form.appendChild(row);
+    dlg.appendChild(form);
+    document.body.appendChild(dlg);
+    dlg.addEventListener('close', function () { dlg.remove(); });
+    dlg.showModal();
+
+    clicks.then(function (c) {
+      var jobs = c.data.jobs || [];
+      note.textContent = 'Presses of InternDoor’s Apply buttons since ' + c.since + ' — ' + c.data.total + ' in all, over '
+        + jobs.length + ' job' + (jobs.length === 1 ? '' : 's') + '. “Today” is the UTC day, from 05:30 IST.';
+      if (!jobs.length) return;
+      var table = document.createElement('table');
+      table.className = 'owner-table';
+      var head = document.createElement('tr');
+      ['Job', 'Today', '7 days', 'Since ' + c.since].forEach(function (t, i) {
+        var th = document.createElement('th');
+        th.textContent = t;
+        if (i) th.className = 'num';
+        head.appendChild(th);
+      });
+      var thead = document.createElement('thead');
+      thead.appendChild(head);
+      table.appendChild(thead);
+      var body = document.createElement('tbody');
+      jobs.slice(0, 200).forEach(function (j) {
+        var tr = document.createElement('tr');
+        var td = document.createElement('td');
+        var a = document.createElement('a');
+        a.href = j.page;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = j.company ? j.company + ' — ' + j.title : j.slug;
+        td.appendChild(a);
+        if (!j.company) {
+          var off = document.createElement('span');
+          off.className = 'owner-off';
+          off.textContent = ' no longer on the board';
+          td.appendChild(off);
+        }
+        tr.appendChild(td);
+        [j.today, j.week, j.total].forEach(function (n) {
+          var cell = document.createElement('td');
+          cell.className = 'num';
+          cell.textContent = String(n);
+          tr.appendChild(cell);
+        });
+        body.appendChild(tr);
+      });
+      table.appendChild(body);
+      wrap.appendChild(table);
+    }, function (err) { note.textContent = explain(err); });
+  }
+
+  var fab = document.createElement('button');
+  fab.type = 'button';
+  fab.className = 'owner-fab';
+  fab.textContent = 'Apply clicks';
+  fab.addEventListener('click', clicksDialog);
+  document.body.appendChild(fab);
 
   /* The board: the detail pane is rebuilt on every selection, so watch it and
      put a bar back whenever the role shown changes. */

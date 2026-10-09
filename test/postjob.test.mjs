@@ -17,7 +17,7 @@ import {
 import { parseEvent, commandsFor, jobKeyFor, keyFor, JOB_SLUG } from '../web/api/count.js';
 import { renderPostJobPage, POST_JOB_VERSION } from '../src/pages.js';
 import { publishedPaths } from '../src/publish.js';
-import { hashPairs, foldJobClicks } from '../src/jobclicks.js';
+import { hashPairs, foldJobClicks, clickWindows, fetchDayHashes, TRACKED_SINCE } from '../src/jobclicks.js';
 import { linkedinJobId, payText, addToWatchlist, approveSubmission, GROUP } from '../src/employerjobs.js';
 import { normaliseCompany } from '../src/config.js';
 
@@ -225,6 +225,56 @@ console.log('\n== FOLDING THE DAYS ==');
   check('a slug the board no longer has is kept, unnamed', out.jobs[2].company, null);
   check('employers sum their roles', out.companies, [{ company: 'Acme', clicks: 11, roles: 2 }]);
   check('the total counts every click', out.total, 12);
+}
+
+console.log('\n== THE OWNER SEES THE CLICKS ON THE SITE ==');
+{
+  const day = (o) => new Map(Object.entries(o));
+  // Ten days, oldest first: the last is today, the last seven are the week.
+  const days = [day({ a: 5 }), day({}), day({ a: 1 }), day({ b: 2 }), day({}), day({}), day({ a: 3 }), day({}), day({ b: 1 }), day({ a: 2, b: 4 })];
+  const w = clickWindows(days);
+  check('today is the newest day only', [w.get('a').today, w.get('b').today], [2, 4]);
+  check('the week is the newest seven days', [w.get('a').week, w.get('b').week], [5, 7]);
+  check('the total is every day given', [w.get('a').total, w.get('b').total], [11, 7]);
+  check('tracking began the day the counter learned jobs', TRACKED_SINCE, '2026-10-09');
+
+  const seen = [];
+  const got = await fetchDayHashes({ url: 'https://kv.example', token: 't' }, ['applyjobs:d1', 'applyjobs:d2'], async (url, opts) => {
+    seen.push({ url, body: JSON.parse(opts.body), auth: opts.headers.authorization });
+    return { ok: true, json: async () => [{ result: ['x-1', '3'] }, {}] };
+  });
+  check('the day hashes are one pipeline of HGETALLs, in order', seen, [{ url: 'https://kv.example/pipeline', body: [['HGETALL', 'applyjobs:d1'], ['HGETALL', 'applyjobs:d2']], auth: 'Bearer t' }]);
+  check('…answered one map a day, a missing day empty', got.map((m) => [...m]), [[['x-1', 3]], []]);
+  let threw = false;
+  try { await fetchDayHashes({ url: 'u', token: 't' }, ['k'], async () => ({ ok: false, status: 401, json: async () => ({ error: 'Unauthorized' }) })); } catch { threw = true; }
+  check('a store that refuses throws, never reads as zero clicks', threw, true);
+
+  const server = read('bin/queue-server.js');
+  const authAt = server.indexOf('const auth = ownerAuth(req,');
+  const routeAt = server.indexOf("if (path === '/api/owner/clicks' && req.method === 'GET')");
+  check('the helper answers the clicks only after the owner check', authAt > 0 && routeAt > authAt && routeAt < server.indexOf("return json(res, 405, { error: 'POST only' });"), true);
+  check('…from one 30-day read, cached a minute', /const CLICK_DAYS = 30;/.test(server) && /Date\.now\(\) - clicksCache\.at < 60_000/.test(server), true);
+  check('…named off the published board', /for \(const j of publishedJobs\(\)\) \{ try \{ bySlug\.set\(jobSlug\(j\), j\)/.test(server), true);
+
+  const owner = read('web/public/owner.js');
+  const lift = (start, name) => {
+    const at = owner.indexOf(start);
+    const end = owner.indexOf('\n  }', at);
+    // eslint-disable-next-line no-new-func
+    return at < 0 || end < 0 ? null : new Function(`${owner.slice(at, end + 4)}; return ${name};`)();
+  };
+  const slugOfPath = lift('function slugOfPath(path)', 'slugOfPath') ?? (() => 'MISSING');
+  check('a job page names its slug', [slugOfPath('/jobs/acme-sde-1'), slugOfPath('/jobs/acme-sde-1/'), slugOfPath('/companies/acme'), slugOfPath('/jobs/acme/extra')], ['acme-sde-1', 'acme-sde-1', null, null]);
+  const lifted = lift('function clickText(c, j)', 'clickText');
+  const clickText = (...a) => { try { return lifted ? lifted(...a) : 'MISSING'; } catch (e) { return `THREW ${e.message}`; } };
+  const c = { since: '9 Oct' };
+  check('a job nobody has clicked says so', clickText(c, null), 'Apply clicks: none since 9 Oct');
+  check('a clicked job reads today, the week and the total', clickText(c, { today: 1, week: 4, total: 9 }), 'Apply clicks: 1 today · 4 in 7 days · 9 since 9 Oct');
+  check('the clicks are asked for once a page', (owner.match(/call\('\/api\/owner\/clicks'\)/g) ?? []).length, 1);
+  check('a card is badged only when its job was clicked', /var j = c\.byId\[row\.getAttribute\('data-id'\)\];\s*if \(!j \|\| !j\.total\) return;/.test(owner), true);
+  check('…and badged once, however often the list redraws', /if \(row\.querySelector\('\.owner-clicks'\)\) return;/.test(owner), true);
+  check('nothing from the helper is written as markup', /innerHTML|insertAdjacentHTML/.test(owner), false);
+  check('Owner off takes the clicks away too', owner.includes("document.querySelectorAll('.owner-bar, .owner-fab, .owner-clicks')"), true);
 }
 
 console.log('\n== APPROVAL ==');
