@@ -42,18 +42,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-machine-learning-tools-4448576495",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-machine-learning-tools-4448576495",
-      "title": "Machine Learning Tools Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop and optimize AI inference engines for Qualcomm chipsets\n• Work with C/C++ and Python on edge-based GenAI deployment\n• Collaborate globally on large model performance and power efficiency",
-      "date_published": "2026-10-09T11:27:42.115Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/bristol-myers-squibb-analytics-engineer-i-commercialization-4477662745",
       "url": "https://interndoor.com/jobs/bristol-myers-squibb-analytics-engineer-i-commercialization-4477662745",
       "title": "Analytics Engineer I — Bristol Myers Squibb",
@@ -114,18 +102,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/zensar-technologies-salesforce-agentforce-specialist-4476289401",
-      "url": "https://interndoor.com/jobs/zensar-technologies-salesforce-agentforce-specialist-4476289401",
-      "title": "Salesforce Agentforce Specialist — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Chennai, Tamil Nadu, India\n• Design and deploy AI agents using Agent Studio and Salesforce tools\n• Integrate flows, Apex, and APIs for custom agent actions\n• Optimize data retrieval and grounding for secure AI responses",
-      "date_published": "2026-10-09T11:13:11.118Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/millennium-quantitative-developer-python-4476286554",
       "url": "https://interndoor.com/jobs/millennium-quantitative-developer-python-4476286554",
       "title": "Quantitative Developer Python — Millennium",
@@ -134,18 +110,6 @@
       "authors": [
         {
           "name": "Millennium"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-aes-delivery-digital-test-automation-engineer-4476290366",
-      "url": "https://interndoor.com/jobs/zensar-technologies-aes-delivery-digital-test-automation-engineer-4476290366",
-      "title": "Digital Test Automation Engineer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Write automated tests for Pega, Oracle R12, and B2B systems\n• Use SQL/PLSQL to create test data and validate results\n• Work with developers and analysts to define test strategies",
-      "date_published": "2026-10-09T11:13:05.039Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
         }
       ]
     },
@@ -602,6 +566,42 @@
       "authors": [
         {
           "name": "AstraZeneca"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-salesforce-commerce-cloud-developer-4477436959",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-salesforce-commerce-cloud-developer-4477436959",
+      "title": "Salesforce Commerce Cloud Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India\n• Support Salesforce Commerce Cloud with ticket resolution, maintenance, and defect fixes\n• Use SFRA, ISML, Algolia, JavaScript, and Git for development and deployment\n• Work in hybrid model with 2 pm to 11 pm IST shift",
+      "date_published": "2026-10-08T19:51:54.979Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4477440880",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-databricks-engg-systems-integration-specialist-4477440880",
+      "title": "Systems Integration Specialist — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design and maintain data pipelines using PySpark and Delta Lake\n• Ingest data from Oracle, Netezza, MongoDB, and Azure Data Lake\n• Build reusable frameworks for data transformation and quality\n• Own CI/CD and environment promotion through Azure DevOps",
+      "date_published": "2026-10-08T19:49:32.537Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-mulesoft-and-agentic-ai-integration-engineer-4477440875",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-mulesoft-and-agentic-ai-integration-engineer-4477440875",
+      "title": "Agentic AI Integration Engineer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India\n• Design and build MuleSoft APIs for order processing pipelines\n• Develop AI agents to extract and classify order data from PDFs\n• Implement business rules for automatic account routing and validation",
+      "date_published": "2026-10-08T19:48:28.549Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
         }
       ]
     }
