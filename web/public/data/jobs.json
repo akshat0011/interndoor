@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791531401893,
+ "generatedAt": 1791531637171,
  "region": "IN",
  "regionName": "India",
- "count": 1231,
- "techCount": 1231,
+ "count": 1232,
+ "techCount": 1232,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -515,6 +515,62 @@
    ],
    "category": "misc",
    "family": "ux",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4474884763",
+   "title": "Data Analyst - Firmware Validation",
+   "slugTitle": "Data Analyst Engineer - Firmware Validation",
+   "company": "River",
+   "matchedWatchlist": "Hudson River Trading",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/river.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "matlab",
+    "labview",
+    "tableau",
+    "power bi"
+   ],
+   "summary": "This role involves cleaning and analyzing data from simulation tools and acquisition devices to identify trends and support decision-making. You'll use python and tableaux to create dashboards and reports for cross-functional teams. Ideal for someone with technical skills and a passion for data-driven insights.",
+   "bullets": [
+    "Clean and analyze data from simulation tools and acquisition devices",
+    "Use python/r for data manipulation and tableaux/power bi for dashboards",
+    "Collaborate with cross-functional teams on engineering and business insights"
+   ],
+   "roleLabel": "Data analysis",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "r",
+    "tableau",
+    "power bi"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "55 minutes ago",
+   "postedAt": 1791528179106,
+   "firstSeenAt": 1791531479115,
+   "lastSeenAt": 1791531479115,
+   "url": "https://www.linkedin.com/jobs/view/4474884763/",
+   "applyUrl": "https://short.mynexthire.io/1148-JFQqRs4Wqqxcu3E3bM33",
+   "description": null,
+   "roleFingerprint": "83127b9b0f",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "data_eng",
    "region": "IN",
    "verified": true
   },
