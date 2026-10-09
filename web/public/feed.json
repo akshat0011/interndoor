@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cencora-salesforce-developer-4468916073",
+      "url": "https://interndoor.com/jobs/cencora-salesforce-developer-4468916073",
+      "title": "Salesforce Developer — Cencora",
+      "content_text": "Company: Cencora · Location: Pune Division, Maharashtra, India\n• Develop and customize Salesforce apps using Apex, Visualforce, and Lightning components\n• Implement integrations with REST/SOAP APIs and optimize data models\n• Collaborate with cross-functional teams and conduct code reviews",
+      "date_published": "2026-10-09T03:12:37.222Z",
+      "authors": [
+        {
+          "name": "Cencora"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/discover-dollar-inc-ai-engineer-intern-4476231706",
       "url": "https://interndoor.com/jobs/discover-dollar-inc-ai-engineer-intern-4476231706",
       "title": "AI Engineer Intern — Discover Dollar Inc",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cyient-cluster-validation-4447368599",
-      "url": "https://interndoor.com/jobs/cyient-cluster-validation-4447368599",
-      "title": "Cluster Validation — Cyient",
-      "content_text": "Company: Cyient · Location: Bengaluru, Karnataka, India\n• Validate instrument cluster components like speedometer and warning lamps\n• Use CAPL and Python for test case development and execution\n• Work with Vector or dSPACE tools for communication protocol testing\n• Collaborate with development teams on test scenarios and defect tracking",
-      "date_published": "2026-10-08T12:20:03.259Z",
-      "authors": [
-        {
-          "name": "Cyient"
         }
       ]
     }
