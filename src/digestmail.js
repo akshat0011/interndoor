@@ -49,14 +49,14 @@ import { splitKinds, entryWord, newCountHeadline } from './employment.js';
    KEPT IN STEP BY HAND — `test/digestmail.test.mjs` reads styles.css and fails
    if any of them drifts, which is the only thing making that safe. */
 const C = {
-  bg: '#0a0a0b',
-  card: '#121214',
+  bg: '#070708',
+  card: '#131316',
   card2: '#17171a',
-  rule: '#222226',
+  rule: '#26262c',
   rule2: '#303036',
-  ink: '#f2f2ec',
-  ink2: '#9d9d94',
-  ink3: '#82827a',
+  ink: '#fafafa',
+  ink2: '#b4b4bc',
+  ink3: '#92929b',
   live: '#c8ff00',
   liveInk: '#14170a',
 };

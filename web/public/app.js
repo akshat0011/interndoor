@@ -329,6 +329,72 @@ const reveal = (() => {
   };
 })();
 
+/* ---------------- the sliding tab ----------------
+
+   9 Oct 2026, after hiregram.ai. Each segmented control (Internships /
+   Full-time, Software / Hardware / Misc) gets one .seg-ind under its selected
+   tab, moved by a transform, so the pill glides to the tab you pick. It is
+   driven by the aria-selected attribute itself, through a MutationObserver,
+   so every path that changes a tab (a click, the URL, a #job- link, the
+   shelf falling back to Software) moves it without being told, and a
+   ResizeObserver re-measures when a count loads or the fonts land. The first
+   placement is not animated. */
+function slideSeg(seg) {
+  if (!seg) return;
+  const on = seg.querySelector('.seg-b[aria-selected="true"]');
+  let ind = seg.querySelector(':scope > .seg-ind');
+  if (!on || on.hidden || seg.hidden || !on.offsetWidth) { if (ind) ind.style.opacity = '0'; return; }
+  const first = !ind;
+  if (first) {
+    ind = document.createElement('span');
+    ind.className = 'seg-ind';
+    ind.setAttribute('aria-hidden', 'true');
+    ind.style.transition = 'none';
+    seg.prepend(ind);
+    seg.classList.add('has-ind');
+  }
+  ind.style.opacity = '1';
+  ind.style.width = `${on.offsetWidth}px`;
+  ind.style.height = `${on.offsetHeight}px`;
+  ind.style.transform = `translate(${on.offsetLeft}px, ${on.offsetTop}px)`;
+  if (first) { void ind.offsetWidth; ind.style.transition = ''; }
+}
+
+function watchSegs() {
+  const sized = new WeakSet();
+  let queued = false;
+  const ro = typeof ResizeObserver === 'function' ? new ResizeObserver(() => run()) : null;
+  function run() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      for (const seg of document.querySelectorAll('.seg')) {
+        if (ro) for (const b of seg.querySelectorAll('.seg-b')) if (!sized.has(b)) { sized.add(b); ro.observe(b); }
+        slideSeg(seg);
+      }
+    });
+  }
+  new MutationObserver(run).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['aria-selected', 'hidden'] });
+  addEventListener('resize', run, { passive: true });
+  run();
+}
+
+/* A switched tab or shelf brings its first cards in as a short cascade out of
+   a blur, instead of the list swapping under the reader in one frame. Only on
+   a deliberate switch: typing in the search box still swaps silently, which
+   is the whole reason renderList() keeps its entrance to the first paint. */
+function cascadeList() {
+  if (!motionOk()) return;
+  const rows = [...document.querySelectorAll('#joblist > li > .row')]
+    .filter((r) => !r.classList.contains('fx-wait') && r.getBoundingClientRect().top < innerHeight)
+    .slice(0, 8);
+  rows.forEach((r, i) => r.animate(
+    [{ opacity: 0, transform: 'translateY(12px)', filter: 'blur(4px)' }, { opacity: 1, transform: 'none', filter: 'none' }],
+    { duration: 420, delay: i * 40, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' },
+  ));
+}
+
 /* ---------------- theme ---------------- */
 
 function initTheme() {
@@ -357,6 +423,41 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------------- helpers ---------------- */
+
+/* Skill names as the products spell them (9 Oct 2026, the calm redesign).
+   A COPY of SKILL_UPPER, SKILL_WORDS and titleCaseSkill in src/pages.js: the
+   board cannot import the page generator, and the chips here showed the
+   model's raw lowercase ("llms", "ai agents") beside pages reading "LLMs". */
+const SKILL_UPPER = new Set(['sql', 'aws', 'gcp', 'api', 'css', 'html', 'ml', 'ai', 'nlp', 'ui', 'ux', 'oops', 'oop', 'orm', 'jvm', 'cad', 'iot', 'rtl', 'fpga', 'vlsi', 'etl', 'llm', 'ci/cd', 'saas', 'rest', 'crm', 'erp', 'qa', 'os', 'db', 'ds',
+  'rag', 'rtos', 'spi', 'i2c', 'uart', 'pcb', 'asic', 'autosar', 'php', 'tcl', 'itil', 'sas', 'cuda', 'uvm', 'db2', 'ospf', 'vhdl', 'dax', 'bgp', 'mqtt', 'jcl', 'css3', 'r']);
+/* The product's own spelling, word by word (8 Oct 2026). Upper-casing the
+   first letter turned the store's lowercase into "Javascript", "Pytorch",
+   "Mysql" and "Power Bi" on every chip and every skill page; measured over the
+   live board, ~50 of the commonest skill names came out wrong. Acronyms go in
+   SKILL_UPPER; anything with inner capitals goes here. */
+const SKILL_WORDS = {
+  javascript: 'JavaScript', typescript: 'TypeScript', pytorch: 'PyTorch', tensorflow: 'TensorFlow',
+  postgresql: 'PostgreSQL', mysql: 'MySQL', mongodb: 'MongoDB', fastapi: 'FastAPI', graphql: 'GraphQL',
+  numpy: 'NumPy', pyspark: 'PySpark', langchain: 'LangChain', powershell: 'PowerShell',
+  github: 'GitHub', gitlab: 'GitLab', bigquery: 'BigQuery', servicenow: 'ServiceNow', autocad: 'AutoCAD',
+  opencv: 'OpenCV', junit: 'JUnit', devops: 'DevOps', matlab: 'MATLAB', '.net': '.NET',
+  apis: 'APIs', llms: 'LLMs', restful: 'RESTful', powerbi: 'Power BI', springboot: 'Spring Boot',
+  dbt: 'dbt', 'ai/ml': 'AI/ML', 'c/c++': 'C/C++', bi: 'BI', js: 'JS',
+};
+function titleCaseSkill(raw) {
+  return String(raw ?? '').trim().split(/\s+/).map((w) => {
+    const low = w.toLowerCase();
+    if (Object.hasOwn(SKILL_WORDS, low)) return SKILL_WORDS[low];
+    if (SKILL_UPPER.has(low)) return low.toUpperCase();
+    // Anything carrying capitals, digits or punctuation after the first letter
+    // keeps its own shape — Node.js, PyTorch, S3, C++ — but the FIRST letter is
+    // still raised, because the store holds them lowercase and "c++" rendered
+    // as a chip reading "c++".
+    const tail = /[A-Z0-9+#.]/.test(w.slice(1)) ? w.slice(1) : low.slice(1);
+    return w.charAt(0).toUpperCase() + tail;
+  }).join(' ');
+}
+
 
 /** Compact, monospace-friendly age: 12m, 4h, 3d. */
 function shortAge(ms) {
@@ -578,7 +679,7 @@ async function refreshBoard() {
 
 function renderFreshness() {
   $('freshness-text').textContent = state.generatedAt
-    ? `checked ${relTime(state.generatedAt)}`
+    ? `Updated ${relTime(state.generatedAt)}`
     : 'standing by';
 }
 
@@ -803,6 +904,7 @@ function setCat(cat) {
   state.selectedId = null;
   renderCatSeg();
   applyFilters();
+  cascadeList();
 }
 
 function renderTotal() {
@@ -864,6 +966,7 @@ function setKind(kind) {
   state.selectedId = null;
   syncUrl();
   applyFilters();
+  cascadeList();
 }
 
 /**
@@ -1354,7 +1457,7 @@ function jobCard(job, index, group = [job], seen = false) {
   if (skills.length) {
     const box = el('div', 'skills');
     for (const s of skills) {
-      const chip = el('span', 'skill', s);
+      const chip = el('span', 'skill', titleCaseSkill(s));
       // A skill the loaded resume already names is lit, so the chips stop being
       // uniform decoration and become a reason to look at one card over another.
       if (resumeHay && resumeNames(resumeHay, s)) chip.classList.add('has');
@@ -1479,7 +1582,7 @@ function paintTrackControl(box) {
   if (row && row.status !== 'applied') {
     const a = el('a', 'trk-b is-set', meta.short);
     a.href = `${REGION_PATH}/applications`;
-    a.title = `Tracked — ${meta.label}. Open your applications to change it.`;
+    a.title = `Tracked as ${meta.label}. Open your applications to change it.`;
     a.setAttribute('aria-label',
       `${job.title} at ${job.company}: ${meta.label}. Open your applications.`);
     a.addEventListener('click', stop);
@@ -1502,7 +1605,7 @@ function paintTrackControl(box) {
       T.remove(job.id);
       toast('Removed from your applications');
     } else if (T.track(trackable(job), 'applied')) {
-      toast('Tracked as Applied — see My applications');
+      toast('Tracked as Applied. See My applications.');
     }
     const err = T.error();
     if (err) toast(err);
@@ -1661,7 +1764,7 @@ function renderList() {
       bar.append(el('span', null, ' · scored against your resume, with a reason on each card'));
     } else if (cov.shown === 0) {
       bar.append(el('b', null, 'Nothing here matched your resume'));
-      bar.append(el('span', null, ` — none of these ${cov.total} roles names a skill it mentions. This board is engineering-only, so a resume from another field will score low on word overlap.`));
+      bar.append(el('span', null, `. None of these ${cov.total} roles names a skill it mentions. This board is engineering-only, so a resume from another field will score low on word overlap.`));
     } else {
       bar.append(el('b', null, `${cov.shown} of ${cov.total} roles matched`));
       const tail = [];
@@ -1922,7 +2025,7 @@ function renderDetail(job) {
   if (job.skills?.length) {
     d.append(el('h3', null, 'skills'));
     const row = el('div', 'chips');
-    for (const s of job.skills) row.append(el('span', 'chip', s));
+    for (const s of job.skills) row.append(el('span', 'chip', titleCaseSkill(s)));
     d.append(row);
   }
 
@@ -1937,9 +2040,9 @@ function renderDetail(job) {
     link.href = sourceHref;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    note.append(link, document.createTextNode(' before you apply — it is the source of truth.'));
+    note.append(link, document.createTextNode(' before you apply. It is the source of truth.'));
   } else {
-    note.append(document.createTextNode('Check the original posting before you apply — it is the source of truth.'));
+    note.append(document.createTextNode('Check the original posting before you apply. It is the source of truth.'));
   }
   d.append(note);
 }
@@ -2267,7 +2370,7 @@ async function runTailor() {
     closeTailor();
     const cov = rankCoverage();
     toast(cov && cov.shown === 0
-      ? 'Ranked — but nothing here matched your resume.'
+      ? 'Ranked, but nothing here matched your resume.'
       : `Ranked ${cov?.shown ?? 0} of ${cov?.total ?? 0} roles against your resume.`);
     return;
   }
@@ -2372,7 +2475,7 @@ async function startAiRank() {
     });
     if (ctl.signal.aborted) return;
     if (!scores.size) {
-      toast('The AI returned no usable scores — the skill ranking is unchanged.');
+      toast('The AI returned no usable scores. The skill ranking is unchanged.');
       reset();
       return;
     }
@@ -2793,10 +2896,10 @@ function syncStickyOffset() {
  * things a reader is not looking at yet.
  */
 const BOOT_PARTS = [
-  '.brand .word', '.bar-right > *',
+  '.brand .word', '.bar-nav', '.bar-right > *',
   '.lede h1', '.lede p',
-  '.rail .seg', '.rail .find', '.rail .picks > *',
-  '.feed-head', '.feed > li', '.void', '.pane-col',
+  '.rail .seg', '.rail .find', '.rail .picks > *', '.rail .flags > *',
+  '.feed-head', '.seg-cat', '.feed > li', '.void', '.pane-col',
   '.signup-band .sub-l', '.signup-band .sub-row',
 ];
 
@@ -2811,7 +2914,12 @@ const BOOT_PARTS = [
 const BOOT_MIN = 12;
 const BOOT_MAX = 52;
 const BOOT_SPAN = 0.07;
-const BOOT_LAG = 60;
+/* 9 Oct 2026: the page now grows out of the landed mark in a circle (the
+   theme sweep's move, outward from the masthead), so the lag is the time the
+   circle takes to reach the farthest block, not a 60ms flicker: a block is
+   delayed by its distance, and arrives about when the circle does. */
+const BOOT_LAG = 420;
+const BOOT_REVEAL = 1000;
 
 /**
  * The page-load intro: measure the journey, let it play, clear up.
@@ -2845,9 +2953,11 @@ function runIntro() {
   if (!mark) { root.removeAttribute('data-boot'); return; }
 
   let done = false;
+  let reveal = null;
   const finish = () => {
     if (done) return;
     done = true;
+    reveal?.cancel();
     root.removeAttribute('data-boot');
     for (const el of document.querySelectorAll('.boot-part')) el.classList.remove('boot-part');
     try { sessionStorage.setItem('id-boot', '1'); } catch { /* private mode */ }
@@ -2897,6 +3007,9 @@ function runIntro() {
       for (const el of document.querySelectorAll(sel)) {
         if (!centre) { parts.push({ el }); continue; }
         const b = el.getBoundingClientRect();
+        /* Off screen it is revealed by the circle like everything else; a
+           blur animating where nobody can see it is only cost. */
+        if (b.bottom < 0 || b.top > innerHeight) continue;
         const dx = (b.left + b.width / 2) - centre.x;
         const dy = (b.top + b.height / 2) - centre.y;
         const d = Math.hypot(dx, dy) || 1;
@@ -2904,6 +3017,26 @@ function runIntro() {
         parts.push({ el, dx, dy, d });
       }
     }
+    /* THE PAGE GROWS OUT OF THE LOGO. The body is clipped to a circle on the
+       landed mark (radius 26px, so the mark itself is inside it from the
+       first frame) and the circle opens to the farthest corner. It is started
+       in the same task that releases the hold, so there is no frame where the
+       whole page shows unclipped. The body's own box, not the viewport: a
+       reload that restored a scroll position moves it. */
+    const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (centre && !still && typeof document.body.animate === 'function') {
+      const top = document.body.getBoundingClientRect().top;
+      const cx = centre.x, cy = centre.y - top;
+      const r = Math.hypot(Math.max(centre.x, innerWidth - centre.x), Math.max(centre.y, innerHeight - centre.y));
+      reveal = document.body.animate(
+        { clipPath: [`circle(26px at ${cx}px ${cy}px)`, `circle(${Math.ceil(r)}px at ${cx}px ${cy}px)`] },
+        /* Fast out of the logo, soft at the edges. An ease-in-out (the theme
+           sweep's curve) spent its first 400ms barely growing, which on a
+           circle starting in the corner read as a pause after the landing. */
+        { duration: BOOT_REVEAL, easing: 'cubic-bezier(.22,.8,.26,1)' },
+      );
+    }
+    root.setAttribute('data-boot', 'reveal');
     for (const p of parts) {
       if (p.d) {
         const step = Math.min(Math.max(p.d * BOOT_SPAN, BOOT_MIN), BOOT_MAX);
@@ -2913,8 +3046,8 @@ function runIntro() {
       }
       p.el.classList.add('boot-part');
     }
-    // 320ms each, the last starting 60ms in; clear up once they have arrived.
-    setTimeout(finish, 440);
+    // 820ms each, the farthest starting BOOT_LAG in; clear up once they land.
+    setTimeout(finish, BOOT_LAG + 860);
   };
 
   /* Matched on the target rather than the animation name, so reduced motion —
@@ -2928,12 +3061,13 @@ function runIntro() {
     addEventListener(ev, finish, { once: true, passive: true });
   }
 
-  setTimeout(finish, 2100);
+  setTimeout(finish, 3300);
 }
 
 async function init() {
   initTheme();
   runIntro();
+  watchSegs();
   wireControls();
   wireTailor();
 

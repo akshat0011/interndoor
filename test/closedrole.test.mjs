@@ -385,11 +385,14 @@ console.log('\n== THE CLOSED PAGE, DESIGN A ==');
   check('…and the skills it asked for', /<ul class="cr-chips"><li>Python<\/li><li>SQL<\/li><\/ul>/.test(html), true);
   check('the button says Hide once open (CSS only, no script)', /cr-show">Show details<\/span><span class="cr-hide">Hide details/.test(html), true);
 
-  /* page.css IS VERSIONED ON THIS PAGE ONLY. The stylesheet is cached for a
-     day; without the query a reader with yesterday's copy gets this layout
-     unstyled. Every other page keeps the bare URL, so nothing else rewrites. */
+  /* page.css IS VERSIONED, AND THE CLOSED PAGE CARRIES ITS OWN. The stylesheet
+     is cached for a day; without the query a reader with yesterday's copy gets
+     this layout unstyled. Since the 9 Oct redesign every page asks for the
+     site-wide version, and the closed page's must differ from it. */
+  const ver = (s) => (s.match(/href="\/page\.css\?v=([^"]+)"/) ?? [])[1];
   check('the closed page asks for page.css?v=', /href="\/page\.css\?v=\d+"/.test(html), true);
-  check('a live job page keeps the bare page.css', live.includes('href="/page.css"') && !/page\.css\?v=/.test(live), true);
+  check('a live job page asks for a versioned page.css too', typeof ver(live) === 'string' && !live.includes('href="/page.css"'), true);
+  check('…and the two versions differ', ver(html) !== ver(live), true);
 
   check('its tiles carry skills and an arrow', /class="tile cr-tile"/.test(html) && /class="cr-go"/.test(html)
     && html.includes('<span class="cr-chips"><span>Python</span></span>'), true);

@@ -259,7 +259,8 @@ console.log('\n== THE BOARD TITLE LEADS WITH THE CATEGORY, NOT THE BRAND ==');
      region rides in <title>, the description and the switcher beside it. */
   check('the heading names both kinds', /<h1>[\s\S]*?Engineering internships & entry-level jobs\s*<\/h1>/.test(mixed), true);
   check('and carries no region', /<h1>[\s\S]*?jobs in the US[\s\S]*?<\/h1>/.test(mixed), false);
-  check('and so does the lede', /<strong>Engineering internships and entry-level jobs<\/strong>,/.test(mixed), true);
+  // The calm redesign (9 Oct 2026): the h1 already names both kinds, so the lede names the place.
+  check('and the lede names the place instead of repeating the kinds', /Roles across <strong>[^<]+<\/strong>,/.test(mixed), true);
   check('the share card too', /og:description" content="Software internships and entry-level jobs in the US/.test(mixed), true);
   check('and the feed link', /rss\+xml" title="InternDoor — new engineering internships and entry-level jobs"/.test(mixed), true);
   writePages([job(1), job(2), job(3)], dir, [], { region: regionOf('US') });

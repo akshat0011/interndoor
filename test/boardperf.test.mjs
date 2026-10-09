@@ -135,15 +135,17 @@ const ratio = (a, b) => {
   const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x);
   return (hi + 0.05) / (lo + 0.05);
 };
-const live = tok('live'), ink3 = tok('ink-3'), liveInk = tok('live-ink');
+/* The calm redesign (9 Oct 2026): the lime moved to --accent and --live became the
+   ink, so the text-on-ground checks follow the accent. */
+const live = tok('accent'), ink3 = tok('ink-3'), liveInk = tok('accent-ink');
 const bg = tok('bg'), bg2 = tok('bg-2'), card = tok('card');
 
 // --live as TEXT. It failed 4.02 / 3.69 before, on --bg and --bg-2.
-atLeast('--live on --bg',            ratio(live, bg),   4.5);
-atLeast('--live on --bg-2',          ratio(live, bg2),  4.5);
-atLeast('--live on --card',          ratio(live, card), 4.5);
+atLeast('--accent on --bg',            ratio(live, bg),   4.5);
+atLeast('--accent on --bg-2',          ratio(live, bg2),  4.5);
+atLeast('--accent on --card',          ratio(live, card), 4.5);
 // --live as a BACKGROUND, carrying --live-ink. This failed at 3.66.
-atLeast('--live-ink on --live',      ratio(liveInk, live), 4.5);
+atLeast('--accent-ink on --accent',      ratio(liveInk, live), 4.5);
 // --ink-3 is the muted body colour and sits on the darker band. It failed at 4.32.
 atLeast('--ink-3 on --bg-2',         ratio(ink3, bg2),  4.5);
 atLeast('--ink-3 on --bg',           ratio(ink3, bg),   4.5);

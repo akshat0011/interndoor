@@ -125,7 +125,7 @@ console.log('\n== THE COLOURS ARE THE SITE\'S, READ BACK OUT OF THE STYLESHEET =
   const constOf = (key) => mail.match(new RegExp(`\\b${key}:\\s*'(#[0-9a-fA-F]{3,8})'`))?.[1]?.toLowerCase();
 
   for (const [key, token] of [['bg', 'bg'], ['card', 'card'], ['rule', 'rule'],
-    ['ink', 'ink'], ['ink2', 'ink-2'], ['ink3', 'ink-3'], ['live', 'live']]) {
+    ['ink', 'ink'], ['ink2', 'ink-2'], ['ink3', 'ink-3'], ['live', 'accent']]) {
     const want = tokenOf(token);
     const got = constOf(key);
     /* BOTH SIDES ARE ASSERTED PRESENT FIRST. The first version of this had an

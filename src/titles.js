@@ -177,8 +177,37 @@ export function shelfMove(category, discipline, rawTitle, { open = false, labelM
  */
 export function publishedTitle(row) {
   if (row?.original_title) return row.title;
-  return row?.display_title || row?.title;
+  return calmTitle(row?.display_title || row?.title);
 }
+
+/* A word an employer typed in capitals for emphasis is shown in title case
+   (9 Oct 2026, the calm redesign): "Applied Sciences INTERN" reads as
+   shouting, and a board of them reads as machine-made. ONLY ordinary job
+   words are calmed. Titles are full of acronyms nobody could list (ABAP,
+   SDLC, ADAS, HANA, WLAN, RHEL), so a capitalised word this list does not
+   know keeps its capitals: a missed calming costs nothing, a mangled acronym
+   misnames the job. The slug is built from the original title, so no URL
+   moves. Measured on the live board: 51 titles changed under a "calm any
+   4+ capitals" rule, most of them acronyms; this list is the fix. */
+const SHOUTED = new Set(('INTERN INTERNS INTERNSHIP INTERNSHIPS ENGINEER ENGINEERS ENGINEERING SOFTWARE DEVELOPER '
+  + 'DEVELOPERS DEVELOPMENT ANALYST ANALYSTS ADMINISTRATOR SPECIALIST TEST TESTING QUALITY ASSURANCE DATA SCIENCE '
+  + 'SCIENCES SCIENTIST CYBER SECURITY SYSTEMS SYSTEM EXECUTIVE JAVA REACT BACKEND FRONTEND ELECTRICAL MECHANICAL '
+  + 'DISTINGUISHED TRAINEE TRAINEES GRADUATE ASSOCIATE SENIOR JUNIOR CONSULTANT MANAGER LEAD PRINCIPAL DESIGN '
+  + 'HARDWARE SILICON APPLIED PROGRAM PROGRAMME RESEARCH CLOUD NETWORK NETWORKING SUPPORT OPERATIONS PRODUCT '
+  + 'PYTHON FULL STACK MOBILE APPLICATION APPLICATIONS SUMMER WINTER FRESHER FRESHERS ENTRY LEVEL AUTOMATION '
+  + 'EMBEDDED FIRMWARE VERIFICATION VALIDATION TECHNOLOGY TECHNICAL DIGITAL MACHINE LEARNING INFRASTRUCTURE '
+  + 'PLATFORM SERVICES SOLUTIONS ARCHITECT MAINTENANCE PRODUCTION PROCESS PROJECT INDIA BANGALORE BENGALURU '
+  + 'HYDERABAD PUNE CHENNAI MUMBAI DELHI NOIDA GURUGRAM GURGAON REMOTE HYBRID ONSITE').split(' '));
+const RECASE = { DEVOPS: 'DevOps', DEVSECOPS: 'DevSecOps', MLOPS: 'MLOps', NOSQL: 'NoSQL', GENAI: 'GenAI', IOS: 'iOS', JAVASCRIPT: 'JavaScript' };
+export function calmTitle(title) {
+  const t = String(title ?? '');
+  if (!/[A-Z]{4,}/.test(t)) return title;
+  return t.replace(/\b[A-Z]{4,}\b/g, (w) => {
+    if (Object.hasOwn(RECASE, w)) return RECASE[w];
+    return SHOUTED.has(w) ? w.charAt(0) + w.slice(1).toLowerCase() : w;
+  });
+}
+
 
 /* ------------------------------------------------------------------ store */
 
