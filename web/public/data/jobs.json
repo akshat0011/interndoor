@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791581021291,
+ "generatedAt": 1791581192038,
  "region": "IN",
  "regionName": "India",
- "count": 1281,
- "techCount": 1281,
+ "count": 1283,
+ "techCount": 1283,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -486,6 +486,110 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4476845653",
+   "title": "Career Accelerator Program - Digital IC Design Engineer",
+   "company": "Texas Instruments India",
+   "matchedWatchlist": "Texas Instruments",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/texas-instruments-india.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "In your first year with TI, you will participate in the Career Accelerator Program (CAP), which provides professional and technical training and resources to accelerate your ramp into TI, and set you up for long-term career success. The TMG Development program is a 12-month program for new college graduates in the TMG organization. As a Digital IC Design Engineer, you'll architect new TI products and make our customers' visions a reality. You'll define, design, model and verify digital circuits, which fully meet the performance, power, cost and schedule requirements.",
+   "bullets": [
+    "Design and verify digital circuits for high-performance products",
+    "Work on 64-bit DSP processors and multicore memory systems",
+    "Collaborate with teams to define chip architecture and performance specs"
+   ],
+   "roleLabel": "Digital IC Design",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "chip architecture",
+    "verification"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791577495400,
+   "firstSeenAt": 1791581095406,
+   "lastSeenAt": 1791581095406,
+   "url": "https://www.linkedin.com/jobs/view/4476845653/",
+   "applyUrl": "https://edbz.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/25017396/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "c32510b12f",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "hardware",
+   "family": "hardware",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4477871210",
+   "title": "Cybersecurity Developer",
+   "slugTitle": "Cybersecurity Developer-Internal",
+   "company": "Aptiv",
+   "matchedWatchlist": "Aptiv",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/aptiv.jpg",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "ci/cd",
+    "linux",
+    "rtos",
+    "embedded c",
+    "autosar"
+   ],
+   "summary": "This role involves designing and developing secure automotive systems, focusing on safety and connectivity. You'll implement security features, analyze vulnerabilities, and ensure compliance with quality standards. Ideal for someone with embedded systems experience and a passion for automotive innovation.",
+   "bullets": [
+    "Implement secure boot, flashing, diagnostics, and crypto services",
+    "Use C/C++, RTOS/Linux, and AUTOSAR for embedded systems",
+    "Work on cybersecurity plans and traceability in development"
+   ],
+   "roleLabel": "Automotive Security Development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "embedded c/c++",
+    "autosar",
+    "can/can fd",
+    "crypto/hsm"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791577466080,
+   "firstSeenAt": 1791581066092,
+   "lastSeenAt": 1791581066092,
+   "url": "https://www.linkedin.com/jobs/view/4477871210/",
+   "applyUrl": "https://aptiv.wd5.myworkdayjobs.com/APTIV_CAREERS/job/Bangalore-India/Cybersecurity-Developer-Internal_J000704646-1/apply?AdCode=LINKEDIN13",
+   "description": null,
+   "roleFingerprint": "01f81cd4a6",
+   "cardFacts": [
+    "Bengaluru East"
+   ],
+   "category": "software",
+   "family": "security",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4477846585",
    "title": "Intern",
@@ -16586,7 +16690,7 @@
    "postedText": "42 minutes ago",
    "postedAt": 1791360491004,
    "firstSeenAt": 1791363011010,
-   "lastSeenAt": 1791376581746,
+   "lastSeenAt": 1791581124758,
    "checkedAt": 1791537216103,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4476583201/",

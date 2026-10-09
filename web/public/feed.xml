@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 09 Oct 2026 19:22:22 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 09 Oct 2026 20:24:55 GMT</lastBuildDate>
+  <item>
+    <title>Career Accelerator Program - Digital IC Design Engineer — Texas Instruments India</title>
+    <link>https://interndoor.com/jobs/texas-instruments-india-career-accelerator-program-digital-ic-design-engineer-4476845653</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/texas-instruments-india-career-accelerator-program-digital-ic-design-engineer-4476845653</guid>
+    <pubDate>Fri, 09 Oct 2026 20:24:55 GMT</pubDate>
+    <description>Company: Texas Instruments India · Location: Bengaluru, Karnataka, India
+• Design and verify digital circuits for high-performance products
+• Work on 64-bit DSP processors and multicore memory systems
+• Collaborate with teams to define chip architecture and performance specs</description>
+  </item>
+  <item>
+    <title>Cybersecurity Developer — Aptiv</title>
+    <link>https://interndoor.com/jobs/aptiv-cybersecurity-developer-internal-4477871210</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/aptiv-cybersecurity-developer-internal-4477871210</guid>
+    <pubDate>Fri, 09 Oct 2026 20:24:26 GMT</pubDate>
+    <description>Company: Aptiv · Location: Bengaluru East, Karnataka, India
+• Implement secure boot, flashing, diagnostics, and crypto services
+• Use C/C++, RTOS/Linux, and AUTOSAR for embedded systems
+• Work on cybersecurity plans and traceability in development</description>
+  </item>
   <item>
     <title>Intern — GE HealthCare</title>
     <link>https://interndoor.com/jobs/ge-healthcare-intern-4477846585</link>
@@ -487,26 +507,6 @@
 • Develop and debug bootloaders for microcontrollers and infotainment SoCs
 • Bring up FreeRTOS, QNX, Linux, and Android on new hardware platforms
 • Optimize boot time and power behavior for production-ready systems</description>
-  </item>
-  <item>
-    <title>GIS Cartographers (Immediate Joiners) — SiteRecon</title>
-    <link>https://interndoor.com/jobs/siterecon-gis-cartographers-immediate-joiners-4475221616</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/siterecon-gis-cartographers-immediate-joiners-4475221616</guid>
-    <pubDate>Fri, 09 Oct 2026 13:53:52 GMT</pubDate>
-    <description>Company: SiteRecon · Location: Noida, Uttar Pradesh, India
-• Create and update digital maps using QGIS and ArcGIS
-• Digitize geographic features from satellite and aerial data
-• Collaborate on geospatial projects with team members</description>
-  </item>
-  <item>
-    <title>AI Engineer Advisor — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-ai-engineers-advisor-4477692864</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-ai-engineers-advisor-4477692864</guid>
-    <pubDate>Fri, 09 Oct 2026 13:51:27 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India
-• Develop AI applications using LLMs, RAG, and agentic workflows
-• Integrate AI with enterprise systems and build secure APIs
-• Collaborate with architects and teams on technical design and documentation</description>
   </item>
 </channel>
 </rss>
