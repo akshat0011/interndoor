@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/quest-global-ai-ml-jr-engineer-4476835221",
+      "url": "https://interndoor.com/jobs/quest-global-ai-ml-jr-engineer-4476835221",
+      "title": "AI ML Jr Engineer — Quest Global",
+      "content_text": "Company: Quest Global · Location: Hyderabad, Telangana, India\n• Validate hardware/software designs before release\n• Work with teams to test and analyze new features\n• Use python, pytorch, and onnx for validation tasks",
+      "date_published": "2026-10-09T17:05:16.715Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-ftc-4468677638",
+      "url": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-ftc-4468677638",
+      "title": "Software Dev Engineer I — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 12 months\n• Build and maintain systems for AmazonPay's payment processing and user management\n• Work with backend services and automation tools to improve operational efficiency\n• Collaborate with engineering and business teams to scale global transaction systems",
+      "date_published": "2026-10-09T17:01:56.561Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/irdeto-intern-system-test-4477832399",
+      "url": "https://interndoor.com/jobs/irdeto-intern-system-test-4477832399",
+      "title": "Intern - System Test — Irdeto",
+      "content_text": "Company: Irdeto · Location: Noida, Uttar Pradesh, India · Duration: 1 year\n• Test APIs, CDN, packager, UI, and third-party services\n• Use Jira, Test Rail, Postman, and Confluence\n• Work with leads to ensure quality standards",
+      "date_published": "2026-10-09T17:00:08.464Z",
+      "authors": [
+        {
+          "name": "Irdeto"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-advanced-software-engr-4460190777",
       "url": "https://interndoor.com/jobs/honeywell-technologies-advanced-software-engr-4460190777",
       "title": "Advanced Software Engr — Honeywell Technologies",
@@ -26,6 +62,18 @@
       "authors": [
         {
           "name": "Linde@India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-analyst-4477815751",
+      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-analyst-4477815751",
+      "title": "Analyst — Societe Generale Global Solution Centre",
+      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Manage market data for equities, derivatives, and commodities\n• Use bloomberg and refinitiv for data validation and control\n• Collaborate with teams to ensure data compliance and risk mitigation",
+      "date_published": "2026-10-09T16:40:04.637Z",
+      "authors": [
+        {
+          "name": "Societe Generale Global Solution Centre"
         }
       ]
     },
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Bristol Myers Squibb"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-job-posting-title-ms-engineer-vc-support-l1-4466262716",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-job-posting-title-ms-engineer-vc-support-l1-4466262716",
-      "title": "Job Posting Title MS Engineer VC Support- L1 — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Kolkata, West Bengal, India\n• Monitor and resolve technical issues in cloud infrastructure for client systems\n• Provide telephonic and chat support, execute maintenance tasks, and document cases\n• Collaborate across teams, ensure smooth handovers, and maintain client satisfaction",
-      "date_published": "2026-10-09T11:21:15.898Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-sranalyst-data-governance-and-mgmt-4476289417",
-      "url": "https://interndoor.com/jobs/american-express-sranalyst-data-governance-and-mgmt-4476289417",
-      "title": "SrAnalyst Data Governance&Mgmt — American Express",
-      "content_text": "Company: American Express · Location: Bengaluru, Karnataka, India\n• Support model development and performance monitoring for credit risk systems\n• Leverage BigQuery, Python, and automation to enhance data workflows\n• Collaborate with cross-functional teams to improve data governance and accessibility",
-      "date_published": "2026-10-09T11:19:02.914Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-site-reliability-engineer-i-4476285629",
-      "url": "https://interndoor.com/jobs/american-express-site-reliability-engineer-i-4476285629",
-      "title": "Site Reliability Engineer I — American Express",
-      "content_text": "Company: American Express · Location: Bengaluru, Karnataka, India\n• Supports system resilience and performance through automation and disaster recovery\n• Uses Kubernetes, Docker, AWS, and observability tools like Prometheus and Grafana\n• Works with senior engineers on architectural design and reliability practices",
-      "date_published": "2026-10-09T11:18:54.933Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-cloud-iaas-migration-and-engineering-aws-4476291381",
-      "url": "https://interndoor.com/jobs/zensar-technologies-cloud-iaas-migration-and-engineering-aws-4476291381",
-      "title": "Cloud Migration Engineer AWS — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Migrate enterprise apps between on-premises and cloud environments\n• Use terraform and ci/cd for infrastructure automation\n• Configure sftp, load balancers, and disaster recovery systems",
-      "date_published": "2026-10-09T11:13:18.509Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
         }
       ]
     }
