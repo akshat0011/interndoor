@@ -49,7 +49,7 @@ const SITE = 'https://interndoor.com';
 
 const asset = (name) => readFileSync(new URL(`./assets/${name}`, import.meta.url));
 
-/* Read once per warm instance, not per request. The fonts are 223KB and the
+/* Read once per warm instance, not per request. The fonts are 146KB and the
    rasteriser 2.4MB; paying that on every share would be the whole cost of the
    feature. */
 /* DYNAMIC, and inside the guarded path on purpose. A static import that fails
@@ -141,6 +141,6 @@ function origin(req) {
 
 function generic(res, url, why = '') {
   if (why) res.setHeader('x-og-error', why);
-  res.setHeader('location', `${url.origin}/og.jpg?v=5`);
+  res.setHeader('location', `${url.origin}/og.jpg?v=6`);
   return res.status(302).end();
 }

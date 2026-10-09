@@ -68,7 +68,7 @@ for (const f of ['harfbuzzjs/hb.wasm', 'satori/yoga.wasm']) {
 check('the fonts are inlined, not read from disk',
   /import \{ FONTS \} from '\.\/_fonts\.js'/.test(fn), true);
 check('and the .ttf sources are kept so they can be regenerated',
-  existsSync(join(ROOT, 'web', 'api', 'assets', 'archivo-900.ttf')), true);
+  existsSync(join(ROOT, 'web', 'api', 'assets', 'geist-600.ttf')), true);
 /* @vercel/og is NOT used and must not come back: it is built for Next.js's
    bundler and fails in both runtimes here — `?module` wasm imports the plain
    Edge bundler cannot resolve, and a "type": "module" package shipping
@@ -94,13 +94,13 @@ console.log('\n== the role is sized from its length ==');
 /* Satori cannot fit text to a box the way the HTML card did — there is no
    layout pass to read — so the size is chosen from the length. Real titles run
    from 6 characters to 172, because one employer names fifteen cities in one. */
-/* THE CEILING IS 60, NOT 92, AND THAT IS THE POINT OF THE SCALE.
-   The employer's logo is 248px and has to stay the biggest thing on the card —
-   it is the only element a student recognises at a glance, and ours has no
-   brand equity yet. At 92 a short title like "Apprentice" out-shouted it. */
-check('a short title is capped below the logo', roleSize(10), 60);
-check('and well under the 248px mark', roleSize(10) < 248, true);
-check('a medium one steps down', roleSize(40) < 60, true);
+/* THE CEILING IS 70, NOT 92, AND THAT IS THE POINT OF THE SCALE.
+   The employer's logo (184px since the 9 Oct 2026 redesign) has to stay the
+   biggest thing on the card — it is the only element a student recognises at a
+   glance. At 92 a short title like "Apprentice" out-shouted it. */
+check('a short title is capped below the logo', roleSize(10), 70);
+check('and well under the 184px mark', roleSize(10) < 184, true);
+check('a medium one steps down', roleSize(40) < roleSize(10), true);
 check('a long one steps down again', roleSize(100) < roleSize(40), true);
 check('and the longest is still legible', roleSize(400) >= 30, true);
 // Monotonic: a longer title must never be drawn LARGER than a shorter one.

@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <title>InternDoor reel card</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ------------------------------------------------------------------
      FORMAT A — "company is hiring".  1080x1920, seeked frame by frame.
@@ -12,14 +12,18 @@
      a JS-driven transform cannot be seeked and would render as a
      frozen frame.  Derived text (the count-up) is the one exception
      and is recomputed from t in tick(), which is pure.
+
+     Drawn in the site's language since the 9 Oct 2026 redesign: Geist,
+     sentence case, zinc greys, pills for facts, lime only for the
+     signals (pay, the spoken word) and the one action. Tokens copied by
+     value from web/public/styles.css (dark theme).
      ------------------------------------------------------------------ */
   :root {
-    --ink:#f2f2ec; --ink-2:#9d9d94; --ink-3:#6a6a62;
-    --bg:#0a0a0b; --rule:#222226; --rule-2:#303036;
-    --live:#c8ff00;
-    --display:'Archivo','Helvetica Neue',Impact,sans-serif;
-    --ui:'Space Grotesk',ui-sans-serif,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --ink:#fafafa; --ink-15:#e4e4e7; --ink-2:#b4b4bc; --ink-3:#92929b;
+    --bg:#070708; --card:#131316; --card-2:#1c1c20; --rule:#26262c; --rule-2:#393940;
+    --accent:#c8ff00; --accent-ink:#14170a;
+    --ui:'Geist',ui-sans-serif,system-ui,-apple-system,sans-serif;
+    --mono:'Geist Mono',ui-monospace,Menlo,monospace;
     --snap:cubic-bezier(.16,1,.3,1);
   }
   * { box-sizing:border-box; margin:0; }
@@ -30,130 +34,105 @@
     background:var(--bg); color:var(--ink); font-family:var(--ui);
   }
 
-  /* ---- persistent background ------------------------------------- */
-  /* Radar bleeds off the bottom-right.  It turns for the whole reel so
-     no frame is completely static, which is what stops a card reading
-     as a still image in the feed. */
-  .scope-bleed { position:absolute; right:-320px; bottom:-300px;
-                 width:1180px; height:1180px; opacity:.9; }
-  .scope-bleed svg { width:100%; height:100%; display:block; }
-  .ring  { fill:none; stroke:var(--live); stroke-width:1.6; opacity:.15; }
-  .ring.faint { opacity:.075; }
-  .cross { stroke:var(--live); stroke-width:1.6; opacity:.07; }
-  .sweep-g { transform-origin:360px 360px; animation:spin 8s linear infinite; }
+  /* No radar field and no grain: the site dropped both in the redesign.
+     The mark's own sweep turns for the whole reel, so no frame is
+     completely static, which is what stops a card reading as a still
+     image in the feed. */
 
-  @keyframes spin { to { transform:rotate(360deg); } }
-
-  .grain { position:absolute; inset:0; pointer-events:none; opacity:.05;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-  /* Keeps the lower third readable over the radar, and darkens the strip
-     Instagram covers with its own caption + buttons. */
+  /* Darkens the strip Instagram covers with its own caption + buttons. */
   .floor { position:absolute; left:0; right:0; bottom:0; height:620px;
-           background:linear-gradient(to bottom,rgba(10,10,11,0),rgba(10,10,11,.92) 55%,var(--bg));
+           background:linear-gradient(to bottom,rgba(7,7,8,0),rgba(7,7,8,.92) 55%,var(--bg));
            pointer-events:none; }
 
   /* ---- VO captions ------------------------------------------------
-     The band the safe-area note above reserves, clear of BOTH pieces of
-     Instagram's chrome: its buttons run up the right ~170px and its own
-     caption eats below ~1560.
+     Clear of BOTH pieces of Instagram's chrome: its buttons run up the
+     right ~170px and its own caption eats below ~1560. NARROW AND
+     CENTRED (200 each side, 680px): a full line ends at x880 against
+     buttons that start at 910. Measured, not assumed.
 
-     The box is NARROW AND CENTRED (200 each side, 680px) rather than wide
-     and pushed left. An asymmetric box clears the buttons too, but it
-     centres the text at x490 on a 1080 frame — 50px off, which reads as a
-     mistake rather than as a choice. Narrowing symmetrically clears them
-     by wrapping sooner instead: a full line is 680px wide, so it ends at
-     x880 against buttons that start at 910. Measured, not assumed.
-
-     Drawn here rather than burned in with ffmpeg's subtitles filter so
-     the type is the card's, not libass's — same faces, same --live, and
-     one place where the design lives. It also keeps the reel a pure
-     function of t: the cue is recomputed in tick(), which is what lets a
-     failed render resume frame for frame. */
+     Drawn here rather than burned in with ffmpeg so the type is the
+     card's, and the reel stays a pure function of t. */
   .caps { position:absolute; left:200px; right:200px; top:1372px; height:170px;
           z-index:7; display:flex; align-items:center; justify-content:center; }
-  .cap-line { font-family:var(--display); font-weight:800; font-size:46px;
-              line-height:1.18; letter-spacing:-.02em; text-align:center;
-              color:#fff; text-shadow:0 2px 18px rgba(10,10,11,.85); }
+  .cap-line { font-family:var(--ui); font-weight:600; font-size:46px;
+              line-height:1.2; letter-spacing:-.025em; text-align:center;
+              color:#fff; text-shadow:0 2px 18px rgba(7,7,8,.85); }
   /* The spoken word. Colour, not scale — a per-word transform would have to
-     animate, and nothing in this card may animate from JS or it cannot be
-     seeked. */
-  .cap-line b { font-weight:800; color:var(--live); }
+     animate, and nothing in this card may animate from JS. */
+  .cap-line b { font-weight:600; color:var(--accent); }
 
-  /* ---- brand lockup, always on ----------------------------------- */
+  /* ---- brand lockup, always on: the site's header, scaled ---------- */
   .brand { position:absolute; top:118px; left:72px; z-index:6;
-           display:flex; align-items:center; gap:16px; }
-  .brand .mark { width:52px; height:52px; flex:none; }
+           display:flex; align-items:center; gap:18px; }
+  .brand .mark { width:58px; height:58px; flex:none; }
   .brand .mark svg { width:100%; height:100%; display:block; overflow:visible; }
-  .m-ring  { fill:none; stroke:var(--live); stroke-width:1.7; opacity:.34; }
-  .m-sweep { fill:var(--live); opacity:.32; transform-origin:22px 22px;
+  .m-ring  { fill:none; stroke:var(--accent); stroke-width:1.1; opacity:.3; }
+  .m-sweep { fill:var(--accent); opacity:.3; transform-origin:22px 22px;
              animation:spin 2.6s linear infinite; }
-  .m-dot   { fill:var(--live); }
-  .word { font-family:var(--display); font-weight:900; font-size:44px;
-          letter-spacing:-.045em; line-height:1; }
-  .word em { font-style:normal; color:var(--live); }
+  .m-dot   { fill:var(--accent); }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .word { font-weight:600; font-size:46px; letter-spacing:-.03em; line-height:1; }
 
-  .live-stamp { position:absolute; top:118px; right:72px; z-index:6;
-    font-family:var(--mono); font-size:21px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--ink-2);
-    border:1px solid var(--rule-2); border-radius:5px; padding:12px 18px;
-    display:flex; align-items:center; gap:11px; background:rgba(10,10,11,.6); }
-  .beat { width:10px; height:10px; background:var(--live); flex:none;
+  .live-stamp { position:absolute; top:112px; right:72px; z-index:6;
+    font-size:28px; font-weight:500; letter-spacing:-.01em; color:var(--ink-2);
+    border:1px solid var(--rule-2); border-radius:999px; padding:14px 26px;
+    display:flex; align-items:center; gap:14px; background:var(--card); }
+  .beat { width:12px; height:12px; border-radius:50%; background:var(--accent); flex:none;
           animation:beat 1.6s steps(1,end) infinite; }
-  @keyframes beat { 0%,60% { opacity:1; } 61%,100% { opacity:.15; } }
+  @keyframes beat { 0%,60% { opacity:1; } 61%,100% { opacity:.2; } }
 
   /* ---- the stage --------------------------------------------------
-     Every scene is a layer in the same box.  Content is vertically
-     centred in the SAFE band (y 250-1330): Instagram's own UI eats the
-     bottom ~360px and the right ~170px, and the VO captions sit in the
-     band at y 1372-1542.  Nothing that must be read goes below 1330. */
+     Content is vertically centred in the SAFE band (y 250-1330):
+     Instagram's own UI eats the bottom ~360px and the right ~170px, and
+     the VO captions sit at y 1372-1542. Nothing that must be read goes
+     below 1330. */
   .stage { position:absolute; left:72px; right:72px; top:250px; height:1080px; z-index:5; }
   .scene { position:absolute; inset:0; display:flex; flex-direction:column;
            justify-content:center; opacity:0; }
 
-  .eyebrow { font-family:var(--mono); font-size:26px; letter-spacing:.2em;
-             text-transform:uppercase; color:var(--live); margin-bottom:26px; }
+  /* The site's status line: a lime dot, then the words, in sentence case. */
+  .eyebrow { display:inline-flex; align-self:flex-start; align-items:center; gap:16px; font-size:36px; font-weight:500;
+             letter-spacing:-.015em; color:var(--ink-2); margin-bottom:30px; }
+  .eyebrow::before { content:""; width:14px; height:14px; border-radius:50%;
+                     background:var(--accent); flex:none; }
 
-  /* Scene 1 — the hook.  Deliberately the least animated thing in the
-     reel: a scroller decides in well under a second, so the payload is
-     legible at t=0.12s rather than sliding in over half a second. */
-  #s1 .huge { font-family:var(--display); font-weight:900; font-size:168px;
-              line-height:.86; letter-spacing:-.05em; text-transform:uppercase; }
-  #s1 .huge .lit { color:var(--live); }
-  #s1 .huge .per { font-size:62px; letter-spacing:-.02em; color:var(--ink-2);
-                   text-transform:lowercase; margin-left:6px; }
-  #s1 .under { margin-top:34px; font-size:42px; line-height:1.3; color:var(--ink-2); }
-  #s1 .under b { color:var(--ink); font-weight:600; }
+  /* Scene 1 — the hook. Legible at t=0.12s: a scroller decides in well
+     under a second. */
+  #s1 .huge { font-weight:600; font-size:160px; line-height:.98; letter-spacing:-.045em;
+              max-width:100%; }
+  #s1 .huge .lit { color:var(--accent); }
+  #s1 .huge .per { font-size:60px; font-weight:500; letter-spacing:-.02em; color:var(--ink-2);
+                   margin-left:8px; }
+  #s1 .under { margin-top:36px; font-size:44px; line-height:1.32; color:var(--ink-2);
+               letter-spacing:-.015em; }
+  #s1 .under b { color:var(--ink); font-weight:500; }
 
-  /* Scene 2 — who */
-  .logo-wrap { width:250px; height:250px; border-radius:32px; overflow:hidden;
+  /* Scene 2 — who. CONTAIN on a white plate, never cover. */
+  .logo-wrap { width:280px; height:280px; border-radius:48px; overflow:hidden;
                background:#fff; display:flex; align-items:center; justify-content:center;
-               margin-bottom:44px; }
-  .logo-wrap img { width:100%; height:100%; object-fit:contain; }
-  .logo-fallback { font-family:var(--display); font-weight:900; font-size:104px;
-                   color:#0a0a0b; letter-spacing:-.04em; }
-  #s2 .co { font-family:var(--display); font-weight:900; font-size:118px;
-            line-height:.9; letter-spacing:-.045em; }
-  #s2 .hiring { margin-top:24px; font-family:var(--mono); font-size:34px;
-                letter-spacing:.16em; text-transform:uppercase; color:var(--live); }
+               margin-bottom:48px; }
+  .logo-wrap img { width:100%; height:100%; object-fit:contain; padding:26px; }
+  .logo-fallback { font-weight:600; font-size:104px; color:#09090b; letter-spacing:-.04em; }
+  #s2 .co { font-weight:600; font-size:112px; line-height:1; letter-spacing:-.045em; max-width:100%; }
+  #s2 .hiring { margin-top:26px; font-size:46px; font-weight:500; letter-spacing:-.02em;
+                color:var(--ink-2); }
 
   /* Scene 3 — what */
-  #s3 .role { font-family:var(--display); font-weight:900; font-size:104px;
-              line-height:.92; letter-spacing:-.04em; }
+  #s3 .role { font-weight:600; font-size:100px; line-height:1.02; letter-spacing:-.04em; max-width:100%; }
   .pills { display:flex; flex-wrap:wrap; gap:16px; margin-top:48px; }
-  .pill { font-family:var(--mono); font-size:30px; letter-spacing:.06em;
-          text-transform:uppercase; color:var(--ink-2);
-          border:1px solid var(--rule-2); border-radius:6px; padding:16px 24px;
-          background:rgba(10,10,11,.66); }
-  .pill.hot { color:var(--live); border-color:rgba(200,255,0,.4); }
+  .pill { display:inline-flex; align-items:center; height:76px; padding:0 32px; border-radius:999px;
+          font-size:32px; font-weight:500; letter-spacing:-.01em; color:var(--ink-15);
+          border:1px solid var(--rule-2); background:var(--card-2); }
+  .pill.hot { color:var(--accent); }
 
-  /* Scene 5 — CTA */
+  /* Scene 5 — CTA: the one lime action, as on the site. */
   #s5 { justify-content:center; }
-  #s5 .cta-big { font-family:var(--display); font-weight:900; font-size:98px;
-                 line-height:.9; letter-spacing:-.045em; }
-  #s5 .cta-big em { font-style:normal; color:var(--live); }
-  #s5 .cta-sub { margin-top:36px; font-size:44px; color:var(--ink-2); line-height:1.3; }
-  #s5 .cta-sub b { color:var(--ink); font-weight:600; }
+  #s5 .cta-big { display:inline-flex; align-self:flex-start; align-items:center; gap:22px; height:150px; padding:0 58px;
+                 border-radius:999px; background:var(--accent); color:var(--accent-ink);
+                 font-weight:600; font-size:76px; letter-spacing:-.035em; }
+  #s5 .cta-sub { margin-top:40px; font-size:44px; color:var(--ink-2); line-height:1.32;
+                 letter-spacing:-.015em; }
+  #s5 .cta-sub b { color:var(--ink); font-weight:500; }
 
   /* ---- scene in/out ------------------------------------------------
      fill-mode:both is what makes a seek land correctly before a scene's
@@ -163,37 +142,16 @@
   @keyframes scene-in  { from { opacity:0; } to { opacity:1; } }
   @keyframes scene-out { from { opacity:1; } to { opacity:0; } }
 
+  /* The site's entrance: blur to sharp as it rises. */
   .rise { animation-fill-mode:both; animation-timing-function:var(--snap); }
-  @keyframes rise { from { opacity:0; transform:translateY(46px); }
-                    to   { opacity:1; transform:translateY(0); } }
-  @keyframes pop  { from { opacity:0; transform:scale(.82); }
-                    to   { opacity:1; transform:scale(1); } }
+  @keyframes rise { from { opacity:0; transform:translateY(40px); filter:blur(14px); }
+                    to   { opacity:1; transform:translateY(0); filter:blur(0); } }
+  @keyframes pop  { from { opacity:0; transform:scale(.86); filter:blur(10px); }
+                    to   { opacity:1; transform:scale(1); filter:blur(0); } }
 </style>
 
 <div id="reel">
 
-  <div class="scope-bleed">
-    <svg viewBox="0 0 720 720">
-      <circle class="ring faint" cx="360" cy="360" r="352"/>
-      <circle class="ring" cx="360" cy="360" r="272"/>
-      <circle class="ring faint" cx="360" cy="360" r="192"/>
-      <circle class="ring" cx="360" cy="360" r="112"/>
-      <line class="cross" x1="8" y1="360" x2="712" y2="360"/>
-      <line class="cross" x1="360" y1="8" x2="360" y2="712"/>
-      <defs>
-        <linearGradient id="sw" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#c8ff00" stop-opacity="0"/>
-          <stop offset="1" stop-color="#c8ff00" stop-opacity=".26"/>
-        </linearGradient>
-      </defs>
-      <g class="sweep-g">
-        <path d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(#sw)"/>
-      </g>
-      <circle cx="360" cy="360" r="8" fill="#c8ff00"/>
-    </svg>
-  </div>
-
-  <div class="grain"></div>
   <div class="floor"></div>
 
   <div class="brand">
@@ -203,10 +161,10 @@
         <circle class="m-ring" cx="22" cy="22" r="13"/>
         <circle class="m-ring" cx="22" cy="22" r="6"/>
         <path class="m-sweep" d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/>
-        <circle class="m-dot" cx="22" cy="22" r="2.9"/>
+        <circle class="m-dot" cx="22" cy="22" r="2.8"/>
       </svg>
     </span>
-    <span class="word">INTERN<em>DOOR</em></span>
+    <span class="word">InternDoor</span>
   </div>
   <div class="live-stamp"><i class="beat"></i><span id="stamp">Live</span></div>
 
@@ -230,7 +188,7 @@
     </div>
 
     <div class="scene" id="s5">
-      <div class="cta-big">INTERN<em>DOOR</em>.COM</div>
+      <div class="cta-big">interndoor.com <span aria-hidden="true">→</span></div>
       <div class="cta-sub" id="s5-sub"></div>
     </div>
   </div>
@@ -339,8 +297,8 @@ function fit(el, startPx, minPx, maxH) {
   while (s > minPx && over()) { s -= 4; el.style.fontSize = s + "px"; }
 }
 
-/* Fitting must happen AFTER the webfonts land — Archivo is far wider than
-   the Helvetica fallback, so a size measured at load overflows the moment
+/* Fitting must happen AFTER the webfonts land — the real face is wider than
+   the fallback, so a size measured at load overflows the moment
    the real face arrives. The renderer calls window.layout() once
    document.fonts.ready resolves; the call at the bottom of this file is
    only so that opening the card by hand still looks right. */

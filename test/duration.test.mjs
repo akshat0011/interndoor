@@ -41,9 +41,11 @@ ok('a graduation year alone -> nothing (it is not experience)', expShort({ exper
 ok('nothing stated -> nothing', expShort({}) === '');
 ok('the card shows the duration, else the labelled experience',
   /if \(job\.duration\) meta\.append\(el\('span', null, job\.duration\)\);\s*else if \(expShort\(job\)\) meta\.append\(el\('span', null, expShort\(job\)\)\);/.test(app));
-ok('the pane has an "experience" fact', /if \(job\.experience\) addFact\('experience', job\.experience\);/.test(app));
-ok('…and drops the empty "duration" dash when it has one',
-  /if \(job\.duration \|\| !job\.experience\) addFact\('duration', job\.duration \|\| '\\u2014'\);/.test(app));
+ok('the pane has an "Experience" fact', /if \(job\.experience\) addFact\('Experience', job\.experience\);/.test(app));
+ok('…and a "Duration" fact only when one is stated', /if \(job\.duration\) addFact\('Duration', job\.duration\);/.test(app));
+/* An unknown fact is withheld, never drawn as a dash (9 Oct 2026, the pane
+   redesign): "—" in its own box read as a value. */
+ok('no pane fact falls back to a dash', !/addFact\([^)]*'\\u2014'/.test(app));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

@@ -1924,12 +1924,21 @@ function renderDetail(job) {
 
   const back = el('button', 'back');
   back.type = 'button';
-  back.textContent = '\u2190 all roles';
+  back.textContent = '← All roles';
   back.addEventListener('click', closeDetail);
   d.append(back);
 
-  d.append(el('div', 'p-co', job.company));
-  d.append(el('p', 'p-role', job.title));
+  /* The role card's own head, larger: the employer's mark and name above the
+     role, which is the headline (nobody scans a job board for the company).
+     It had no logo at all, and led with the company in the biggest type. */
+  const head = el('div', 'p-head');
+  const badge = companyBadge(job);
+  badge.classList.add('p-crest');
+  const who = el('div', 'p-who');
+  who.append(el('div', 'p-co', job.company));
+  head.append(badge, who);
+  d.append(head);
+  d.append(el('h2', 'p-role', job.title));
 
   // The other cities this same role is open in.
   //
@@ -1940,7 +1949,7 @@ function renderDetail(job) {
   // only thing standing between a reader and twenty of the openings.
   const siblings = state.groups.get(roleKey(job)) ?? [job];
   if (siblings.length > 1) {
-    d.append(el('div', 'p-loc', `${siblings.length} locations`));
+    who.append(el('div', 'p-loc', [`${siblings.length} locations`, job.workplaceType].filter(Boolean).join(' · ')));
     const places = el('div', 'p-places');
     for (const s of siblings) {
       const a = el('a', s.id === job.id ? 'place is-here' : 'place', cityOf(s.location) || s.location || 'Unspecified');
@@ -1949,8 +1958,8 @@ function renderDetail(job) {
       places.append(a);
     }
     d.append(places);
-  } else if (job.location) {
-    d.append(el('div', 'p-loc', job.location));
+  } else if (job.location || job.workplaceType) {
+    who.append(el('div', 'p-loc', [job.location, job.workplaceType].filter(Boolean).join(' · ')));
   }
 
   const actions = el('div', 'p-acts');
@@ -1993,9 +2002,10 @@ function renderDetail(job) {
 
   d.append(actions);
 
-  const bar = trackBar(job);
-  if (bar) d.append(bar);
-
+  /* Only what is known. An unknown mode or duration used to print a dash in
+     its own box, which read as a fact ("—") rather than an absence. Pay is the
+     exception: on the pane and the job page an unstated stipend says so, so a
+     reader can tell "pays nothing" from "we do not know". */
   const facts = el('dl', 'facts');
   const addFact = (label, value, cls) => {
     if (!value) return;
@@ -2003,27 +2013,38 @@ function renderDetail(job) {
     f.append(el('dt', null, label), el('dd', cls, value));
     facts.append(f);
   };
-  addFact('mode', job.workplaceType || '\u2014');
-  if (job.duration || !job.experience) addFact('duration', job.duration || '\u2014');
-  if (job.experience) addFact('experience', job.experience);
   // Computed from the timestamp, NOT from postedText. postedText is the string
   // LinkedIn showed at the moment the scraper opened the posting — "4 minutes
-  // ago" — and it never ages. Preferring it meant the detail pane still read
-  // "4 minutes ago" a day later, while the card beside it correctly read "22h"
-  // from shortAge(postedAt). On a site whose whole promise is BE EARLY, that is
-  // the worst possible field to get wrong: every stale posting looked brand new.
-  // postedText is kept only as a fallback for a row with no parsed timestamp.
-  addFact('posted', relTime(job.postedAt) || job.postedText);
-  if (job.applicants) addFact('applicants', job.applicants);
+  // ago" — and it never ages. On a site whose whole promise is BE EARLY, that is
+  // the worst possible field to get wrong. postedText is only a fallback for a
+  // row with no parsed timestamp.
+  addFact('Posted', relTime(job.postedAt) || job.postedText);
+  const fullTime = kindOf(job) === 'fulltime';
+  addFact(fullTime ? 'Pay' : 'Stipend', job.stipend || 'Not disclosed', job.stipend ? 'cash' : 'muted');
+  if (job.duration) addFact('Duration', job.duration);
+  if (job.experience) addFact('Experience', job.experience);
+  addFact('Type', fullTime ? 'Full-time' : 'Internship');
+  if (job.degreeLevel) addFact('Open to', [job.degreeLevel, job.degreeText].filter(Boolean).join(' · '));
+  if (job.applicants) addFact('Applicants', job.applicants);
   d.append(facts);
 
+  const bar = trackBar(job);
+  if (bar) d.append(bar);
+
+  if (job.bullets?.length) {
+    d.append(el('h3', null, 'What you’ll do'));
+    const ul = el('ul', 'p-duties');
+    for (const b of job.bullets) ul.append(el('li', null, b));
+    d.append(ul);
+  }
+
   if (job.summary) {
-    d.append(el('h3', null, 'the role'));
+    d.append(el('h3', null, 'About the role'));
     d.append(el('p', 'p-gist', job.summary));
   }
 
   if (job.skills?.length) {
-    d.append(el('h3', null, 'skills'));
+    d.append(el('h3', null, 'Skills'));
     const row = el('div', 'chips');
     for (const s of job.skills) row.append(el('span', 'chip', titleCaseSkill(s)));
     d.append(row);
