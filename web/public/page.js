@@ -75,6 +75,117 @@ document.addEventListener('click', function (e) {
    commits it. Changes here have to be staged by hand.
    ============================================================ */
 
+/* ---------------- motion: the theme sweep and the reveals ----------------
+
+   9 Oct 2026, after hiregram.ai. THIS BLOCK IS IN app.js AND page.js BYTE FOR
+   BYTE, from this comment to the end of `reveal` — test/motion.test.mjs
+   compares the two copies, because two hand-kept copies of one thing drift.
+   The rules it relies on are in styles.css under "the theme sweep" and
+   "reveals". */
+
+/** True when the stylesheet carrying the motion rules is the one loaded, and
+ *  the reader has not asked for less motion. CSS is cached up to a day behind
+ *  this script, so a stale stylesheet is a real case, not a theoretical one. */
+function motionOk() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  return getComputedStyle(document.documentElement).getPropertyValue('--fx').trim() === '1';
+}
+
+/* The theme changes inside a view transition: the browser snapshots the page
+   in the old theme, the attribute flips, and the new theme is shown through a
+   circle that grows from the switch to the farthest corner of the screen in
+   650ms. With no view transitions, with reduced motion, or under a stylesheet
+   too old to switch off the default cross-fade, it changes at once, as it
+   always did. */
+function switchTheme(origin) {
+  const root = document.documentElement;
+  /* The site is dark unless the reader chose light — every theme rule in
+     styles.css keys on data-theme="light" — so "no choice yet" is DARK,
+     whatever the OS says. Asking the OS here made a system-light reader's
+     first click set "dark" on a page that was already dark: a switch that
+     did nothing. */
+  const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+  const apply = () => {
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
+  };
+  if (!origin || typeof document.startViewTransition !== 'function' || !motionOk()) {
+    apply();
+    return;
+  }
+  const run = (switchTheme.run = (switchTheme.run || 0) + 1);
+  root.setAttribute('data-theme-switching', '');
+  const vt = document.startViewTransition(apply);
+  vt.ready.then(() => {
+    const { x, y } = origin;
+    const r = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    root.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+      { duration: 650, easing: 'cubic-bezier(.65,0,.35,1)', pseudoElement: '::view-transition-new(root)' },
+    );
+  }, () => {});
+  /* A second click inside the 650ms skips the first transition, whose
+     `finished` then settles — only the latest may switch transitions back on,
+     or the second sweep would run with every colour fading under it. */
+  const done = () => { if (run === switchTheme.run) root.removeAttribute('data-theme-switching'); };
+  vt.finished.then(done, done);
+}
+
+/** Where the circle starts: the centre of the switch's mark. The two marks
+ *  share one grid cell and turn about their own centres, so either will do. */
+function themeOrigin(btn) {
+  const mark = btn.querySelector('svg') || btn;
+  const b = mark.getBoundingClientRect();
+  return { x: b.left + b.width / 2, y: b.top + b.height / 2 };
+}
+
+/* A block that starts below the fold waits invisible (.fx-wait) and fades up
+   out of a blur as it scrolls into view, once. Only what starts BELOW the
+   fold is held back: this runs after the first paint, and hiding something
+   already on screen would flash it. Several arriving in one callback go 60ms
+   apart, the sixth and later together. The class comes off when its own
+   animation ends, so nothing is left holding a transform over :hover. */
+const reveal = (() => {
+  let io = null;
+  const settle = (e) => {
+    const node = e.currentTarget;
+    if (e.target !== node) return;   // a child's animation, bubbling up
+    node.removeEventListener('animationend', settle);
+    node.classList.remove('fx-in');
+    node.style.animationDelay = '';
+  };
+  const show = (entries) => {
+    let k = 0;
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      const node = e.target;
+      io.unobserve(node);
+      node.style.animationDelay = `${Math.min(k++, 5) * 60}ms`;
+      node.addEventListener('animationend', settle);
+      node.classList.remove('fx-wait');
+      node.classList.add('fx-in');
+    }
+  };
+  return {
+    /** Hold back and watch whichever of `nodes` start below the fold. */
+    watch(nodes) {
+      if (typeof IntersectionObserver !== 'function' || !motionOk()) return;
+      io = io || new IntersectionObserver(show, { rootMargin: '0px 0px -8% 0px' });
+      const fold = window.innerHeight;
+      for (const node of nodes) {
+        if (!node || node.getBoundingClientRect().top < fold) continue;
+        node.classList.add('fx-wait');
+        io.observe(node);
+      }
+    },
+    /** Stop watching nodes that are about to leave the page. */
+    drop(nodes) {
+      if (!io) return;
+      for (const node of nodes) io.unobserve(node);
+    },
+  };
+})();
+
 /* ---------------- theme ---------------- */
 
 /* The no-flash read of localStorage happens inline in <head>; this only wires
@@ -82,15 +193,7 @@ document.addEventListener('click', function (e) {
 (function theme() {
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
-  btn.addEventListener('click', () => {
-    const root = document.documentElement;
-    const isDark = root.dataset.theme
-      ? root.dataset.theme === 'dark'
-      : !window.matchMedia('(prefers-color-scheme: light)').matches;
-    const next = isDark ? 'light' : 'dark';
-    root.dataset.theme = next;
-    try { localStorage.setItem('theme', next); } catch (e) { /* private mode */ }
-  });
+  btn.addEventListener('click', () => switchTheme(themeOrigin(btn)));
 }());
 
 /* ---------------- the header menu ---------------- */
@@ -369,6 +472,8 @@ function tileHtml(job, prefix = '') {
   if (!picks.length) return;
   list.innerHTML = picks.map((j) => tileHtml(j, prefix)).join('');
   strip.hidden = false;
+  // Its heading too: the strip was hidden when reveals() measured the page.
+  reveal.watch(strip.querySelectorAll(':scope > .strip-head'));
   stagger(list);
 }());
 
@@ -382,7 +487,24 @@ function stagger(list) {
   [...list.children].forEach((el, i) => {
     el.style.animationDelay = `${Math.min(i, 7) * 40}ms`;
   });
+  /* The tiles already on screen play the cascade above; the ones below the
+     fold wait for the reader instead of finishing unseen (9 Oct 2026). */
+  reveal.watch(list.children);
 }
 
 for (const list of document.querySelectorAll('.tiles:not(#fresh-list), .dir')) stagger(list);
+
+/* The blocks of a page below the fold arrive as they are reached: a job page's
+   sections, every strip, and the footer. A strip holding tiles reveals its
+   heading here and leaves the tiles to stagger(), or each tile would fade
+   twice — once with its strip and once on its own. */
+(function reveals() {
+  const nodes = [];
+  for (const block of document.querySelectorAll('main .jp-main > section, main .wrap > section, .outro, .foot')) {
+    const grid = block.querySelector(':scope > .tiles, :scope > .dir');
+    if (grid) nodes.push(...[...block.children].filter((c) => c !== grid));
+    else nodes.push(block);
+  }
+  reveal.watch(nodes);
+}());
 
