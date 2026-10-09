@@ -1,13 +1,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* The site's own tokens (web/public/styles.css, dark theme), copied by value:
+     this page renders from file:// with no stylesheet of the site's to link. */
   :root {
-    --ink:#f2f2ec; --ink-2:#9d9d94; --ink-3:#6a6a62;
-    --bg:#0a0a0b; --rule:#222226; --rule-2:#303036;
-    --live:#c8ff00;
-    --display:'Archivo','Helvetica Neue',Impact,sans-serif;
-    --ui:'Space Grotesk',ui-sans-serif,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+    --ink:#fafafa; --ink-15:#e4e4e7; --ink-2:#b4b4bc; --ink-3:#92929b;
+    --bg:#070708; --card:#131316; --card-2:#1c1c20; --rule:#26262c; --rule-2:#393940;
+    --accent:#c8ff00; --accent-ink:#14170a;
+    --ui:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'Geist Mono',ui-monospace,Menlo,monospace;
   }
   * { box-sizing:border-box; margin:0; }
   body { margin:0; }
@@ -15,225 +16,156 @@
   #card {
     position:absolute; top:0; left:0; width:1200px; height:630px; overflow:hidden;
     background:var(--bg); color:var(--ink); font-family:var(--ui);
-    padding:58px 64px; display:flex; flex-direction:column; justify-content:space-between;
+    padding:44px 52px 48px; display:flex; flex-direction:column; gap:30px;
   }
 
-  /* radar bleeding off the right edge — the mark as environment, not sticker */
-  .scope-bleed { position:absolute; right:-170px; top:50%; transform:translateY(-50%);
-                 width:720px; height:720px; }
-  .scope-bleed svg { width:100%; height:100%; display:block; }
-  .ring { fill:none; stroke:var(--live); stroke-width:1.4; opacity:.22; }
-  .ring.faint { opacity:.11; }
-  .cross { stroke:var(--live); stroke-width:1.4; opacity:.10; }
-
-  /* film grain, same recipe and opacity as the site */
-  .grain { position:absolute; inset:0; pointer-events:none; opacity:.038;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E"); }
-
-  /* left column sits above the radar */
-  .row, .mid, .foot { position:relative; z-index:2; }
-
-  .row { display:flex; align-items:center; justify-content:space-between; }
-  .brand { display:flex; align-items:center; gap:16px; }
-  .brand .mark { width:30px; height:30px; flex:none; }
+  /* ---- masthead: the site's header, scaled ---- */
+  .top { display:flex; align-items:center; justify-content:space-between; flex:none; }
+  .brand { display:flex; align-items:center; gap:14px; }
+  .brand .mark { width:40px; height:40px; flex:none; }
   .brand .mark svg { width:100%; height:100%; display:block; overflow:visible; }
-  .m-ring { fill:none; stroke:var(--live); stroke-width:1.6; opacity:.34; }
-  .m-sweep { fill:var(--live); opacity:.32; }
-  .m-dot { fill:var(--live); }
-  .word { font-family:var(--display); font-weight:900; font-size:26px;
-          letter-spacing:-.045em; line-height:1; }
-  .word em { font-style:normal; color:var(--live); }
+  .s-ring { fill:none; stroke:var(--accent); stroke-width:1.1; opacity:.3; }
+  .s-sweep { fill:var(--accent); opacity:.3; }
+  .s-dot { fill:var(--accent); }
+  .word { font-weight:600; font-size:31px; letter-spacing:-.03em; line-height:1; }
+  .status { display:flex; align-items:center; gap:12px; font-size:23px; font-weight:500;
+            color:var(--ink-2); letter-spacing:-.01em; }
+  .status i { width:10px; height:10px; border-radius:50%; background:var(--accent); flex:none; }
 
-  .stamp { font-family:var(--mono); font-size:19px; letter-spacing:.14em;
-           text-transform:uppercase; color:var(--ink-2);
-           border:1px solid var(--rule-2); border-radius:4px; padding:11px 18px;
-           display:flex; align-items:center; gap:11px; background:rgba(10,10,11,.72); }
-  .beat { width:9px; height:9px; background:var(--live); flex:none; }
+  /* ---- generic card: the board's hero ---- */
+  .hero { flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .hero h1 { font-weight:600; font-size:76px; line-height:1.04; letter-spacing:-.035em; max-width:1000px; }
+  .hero p { margin-top:24px; font-size:30px; line-height:1.4; color:var(--ink-2); max-width:880px;
+            letter-spacing:-.01em; }
+  .hero p b { color:var(--ink); font-weight:500; }
 
-  .mid { max-width:770px; }
-  h1 { font-family:var(--display); font-weight:900; font-size:140px; line-height:.88;
-       letter-spacing:-.05em; text-transform:uppercase; }
-  h1 .dot { display:inline-block; width:.115em; height:.115em; margin-left:.04em;
-            background:var(--live); vertical-align:baseline; }
-  .sub { margin-top:28px; font-size:36px; line-height:1.35; color:var(--ink-2);
-         max-width:730px; letter-spacing:-.005em; }
-  .sub b { color:var(--ink); font-weight:600; }
-
-  .foot { display:flex; align-items:center; gap:14px; }
-  .chip { font-family:var(--mono); font-size:19px; letter-spacing:.1em;
-          text-transform:uppercase; color:var(--ink-2);
-          border:1px solid var(--rule); border-radius:4px; padding:10px 16px;
-          background:rgba(10,10,11,.72); }
-  .chip.hot { color:var(--live); border-color:rgba(200,255,0,.34); }
+  /* ---- pills and the one lime action, as on the site ---- */
+  .foot { display:flex; align-items:center; gap:12px; flex:none; }
+  .pill { display:inline-flex; align-items:center; height:52px; padding:0 22px; border-radius:999px;
+          background:var(--card-2); border:1px solid var(--rule-2); color:var(--ink-15);
+          font-size:23px; font-weight:500; letter-spacing:-.01em; white-space:nowrap; }
+  /* Pay is the one fact the site colours (--cash is the accent). */
+  .pill.pay { color:var(--accent); }
   .spacer { flex:1; }
-  /* ---- job variant. The generic card above is untouched and still renders
-     when nothing is passed; renderJob() swaps the middle and the chips. ---- */
-  /* THE EMPLOYER'S MARK IS THE HERO — mirrored from web/api/_card.js, which is
-     the satori card LinkedIn scrapes. Kept in step by hand because these are
-     two renderers of one design and there is no shared source; the numbers here
-     and there must match. At 64px beside a 42px INTERNDOOR wordmark the logo
-     was the smallest thing on the card, while being the only element with brand
-     equity a student recognises at a glance. Stacked rather than inline so the
-     logo gets its own line and real presence. */
-  .eyebrow { display:flex; flex-direction:column; align-items:flex-start;
-             gap:16px; margin-bottom:16px; }
-  /* CONTAIN, NOT COVER. 462 logo files and they are every shape there is —
-     Compass Group's is a wide wordmark and `cover` cropped the compass off the
-     left and the type off both edges. `contain` fits the whole mark inside the
-     box, which is the only correct treatment for somebody's trademark. The
-     padding keeps it off the rounded corners; the white plate is what most of
-     these logos are drawn against. */
-  .eyebrow .logo { width:248px; height:248px; border-radius:36px; flex:none;
-                   object-fit:contain; background:#fff; padding:18px; }
-  .eyebrow .co { font-family:var(--mono); font-size:30px; letter-spacing:.12em;
-                 text-transform:uppercase; color:var(--live); max-width:100%;
-                 overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  /* THE ROLE IS THE HEADLINE AND THE COMPANY IS AN EYEBROW — the same
-     inversion the board's cards make, and for the same reason: nobody scans a
-     job board for the employer's name. */
-  /* The fit loop measures against a real box, so the middle needs a ceiling —
-     without one scrollHeight always equals clientHeight and the loop is inert.
-     630 tall, less 58 padding top and bottom, less the masthead row and the
-     chip row, leaves this. */
-  /* KEEPS ITS 770px MEASURE. The first render set max-width:100% and the
-     headline ran across the radar, which is the one thing the right half of
-     this card is for. Narrower simply means the fit loop shrinks sooner. */
-  /* Raised with the masthead: it dropped 46px -> 30px, so the middle may have
-     that back. The fit loop needs a real ceiling or scrollHeight always equals
-     clientHeight and it is inert. */
-  #card.is-job .mid { max-height:420px; overflow:hidden; }
-  h1.role { font-family:var(--display); font-weight:900; font-size:60px;
-            line-height:1.02; letter-spacing:-.035em; max-width:100%;
-            overflow-wrap:anywhere; }
+  .go { display:inline-flex; align-items:center; gap:12px; height:60px; padding:0 30px;
+        border-radius:999px; background:var(--accent); color:var(--accent-ink);
+        font-size:25px; font-weight:600; letter-spacing:-.015em; white-space:nowrap; }
+  .url { font-family:var(--mono); font-size:22px; color:var(--ink-3); margin-right:10px; }
 
-  .url { font-family:var(--mono); font-size:21px; letter-spacing:.08em;
-         text-transform:uppercase; color:var(--ink-3);
-         background:rgba(10,10,11,.72); padding-left:14px; }
+  /* ---- job card: the board's role card ---- */
+  .panel { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:space-between;
+           background:var(--card); border:1px solid var(--rule); border-radius:28px; padding:40px 42px; }
+  .who { display:flex; gap:36px; align-items:flex-start; min-height:0; }
+  /* CONTAIN, NEVER COVER. 462 logo files in every shape there is; cropping a
+     trademark is simply wrong. White plate, because most marks are drawn on
+     white. Big, because the employer's mark is the one thing a student
+     recognises without reading. */
+  .plate { width:184px; height:184px; flex:none; border-radius:26px; background:#fff;
+           display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .plate img { width:100%; height:100%; object-fit:contain; padding:18px; }
+  .plate.none { background:var(--card-2); border:1px solid var(--rule-2); }
+  .plate.none span { font-size:64px; font-weight:600; letter-spacing:-.03em; color:var(--ink-2); }
+  /* The fit loop needs a real ceiling or it is inert (it once compared a block
+     to itself and shipped every headline at the floor). */
+  .txt { flex:1; min-width:0; max-height:276px; overflow:hidden; display:flex; flex-direction:column; gap:12px; }
+  .co { font-size:31px; font-weight:500; color:var(--ink-15); letter-spacing:-.015em;
+        white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  h1.role { font-weight:600; font-size:70px; line-height:1.07; letter-spacing:-.035em;
+            color:var(--ink); overflow-wrap:anywhere; }
 </style>
 
 <div id="card">
-
-  <div class="scope-bleed">
-    <svg viewBox="0 0 720 720">
-      <circle class="ring faint" cx="360" cy="360" r="352"/>
-      <circle class="ring" cx="360" cy="360" r="272"/>
-      <circle class="ring faint" cx="360" cy="360" r="192"/>
-      <circle class="ring" cx="360" cy="360" r="112"/>
-      <line class="cross" x1="8" y1="360" x2="712" y2="360"/>
-      <line class="cross" x1="360" y1="8" x2="360" y2="712"/>
-      <defs>
-        <linearGradient id="sw" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0" stop-color="#c8ff00" stop-opacity="0"/>
-          <stop offset="1" stop-color="#c8ff00" stop-opacity=".30"/>
-        </linearGradient>
-      </defs>
-      <path d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(#sw)"/>
-      <circle cx="360" cy="360" r="7" fill="#c8ff00"/>
-      <circle cx="486" cy="243" r="6.5" fill="#c8ff00" opacity=".85"/>
-      <circle cx="424" cy="470" r="5" fill="#c8ff00" opacity=".45"/>
-    </svg>
-  </div>
-
-  <div class="grain"></div>
-
-  <div class="row">
+  <div class="top">
     <div class="brand">
       <span class="mark">
         <svg viewBox="0 0 44 44">
-          <circle class="m-ring" cx="22" cy="22" r="20"/>
-          <circle class="m-ring" cx="22" cy="22" r="13"/>
-          <circle class="m-ring" cx="22" cy="22" r="6"/>
-          <path class="m-sweep" d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/>
-          <circle class="m-dot" cx="22" cy="22" r="2.9"/>
+          <circle class="s-ring" cx="22" cy="22" r="20"/>
+          <circle class="s-ring" cx="22" cy="22" r="13"/>
+          <circle class="s-ring" cx="22" cy="22" r="6"/>
+          <path class="s-sweep" d="M22 22 L22 1 A21 21 0 0 1 40 12 Z"/>
+          <circle class="s-dot" cx="22" cy="22" r="2.8"/>
         </svg>
       </span>
-      <span class="word">INTERN<em>DOOR</em></span>
+      <span class="word">InternDoor</span>
     </div>
-    <div class="stamp"><i class="beat"></i>Live</div>
+    <div class="status"><i></i><span id="status">Updated every 30 minutes</span></div>
   </div>
 
-  <div class="mid">
-    <h1>Be early<span class="dot"></span></h1>
-    <p class="sub">Engineering internships and entry-level jobs, listed <b>minutes after they go live</b>.</p>
+  <div class="hero" id="slot">
+    <h1>Engineering internships &amp; entry-level jobs</h1>
+    <p>Listed within minutes of going live, so you can apply <b>while the queue is still short.</b></p>
   </div>
 
-  <div class="foot">
-    <span class="chip hot">Fresh roles daily</span>
-    <span class="chip">Free</span>
-    <span class="chip">No signup</span>
+  <div class="foot" id="foot">
+    <span class="pill">Free</span>
+    <span class="pill">No signup</span>
+    <span class="pill">Every listing links to the original</span>
     <span class="spacer"></span>
-    <span class="url">interndoor.com</span>
+    <span class="go">Browse roles <span aria-hidden="true">→</span></span>
   </div>
-
 </div>
 
 <script>
-/* Fill the card for ONE posting. Called by bin/render-og.js after
-   document.fonts.ready — measuring text before the webfonts land measures
-   Helvetica and then Archivo overflows, which is the bug that shipped three
-   times in the reel card. */
+/* Fill the card for ONE posting. src/ogcard.js loads this page once and calls
+   renderJob for posting after posting on the same page, so this rebuilds
+   everything it touches. Called after document.fonts.ready: measuring before
+   the webfonts land measures the fallback face, and the real one overflows. */
+const PAY = /[₹$€£]|\/\s*(month|year|week|hour)/i;
+
 window.renderJob = function (job) {
-  document.getElementById('card').classList.add('is-job');
-  document.querySelector('.stamp').innerHTML = '<i class="beat"></i>Hiring';
+  const card = document.getElementById('card');
+  card.classList.add('is-job');
+  document.getElementById('status').textContent = 'Hiring now';
 
-  const mid = document.querySelector('.mid');
-  mid.innerHTML = '';
+  /* The panel takes the hero's place and the footer moves inside it, so the
+     card reads exactly like a role on the board. */
+  const old = document.getElementById('slot');
+  const panel = document.createElement('div');
+  panel.className = 'panel'; panel.id = 'slot';
 
-  const eyebrow = document.createElement('div');
-  eyebrow.className = 'eyebrow';
+  const who = document.createElement('div'); who.className = 'who';
+  const plate = document.createElement('div'); plate.className = 'plate';
   if (job.logo) {
-    const img = document.createElement('img');
-    img.className = 'logo';
-    img.src = job.logo;
-    eyebrow.appendChild(img);
+    const img = document.createElement('img'); img.src = job.logo; img.alt = ''; plate.appendChild(img);
+  } else {
+    /* Initials, never an empty box (the site's crest does the same). */
+    plate.classList.add('none');
+    const s = document.createElement('span');
+    s.textContent = String(job.company || '').replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/)
+      .filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+    plate.appendChild(s);
   }
-  const co = document.createElement('span');
-  co.className = 'co';
-  co.textContent = job.company || '';
-  eyebrow.appendChild(co);
+  const txt = document.createElement('div'); txt.className = 'txt';
+  const co = document.createElement('div'); co.className = 'co'; co.textContent = job.company || '';
+  const h = document.createElement('h1'); h.className = 'role'; h.textContent = job.title || '';
+  txt.append(co, h);
+  who.append(plate, txt);
 
-  const h = document.createElement('h1');
-  h.className = 'role';
-  h.textContent = job.title || '';
-
-  mid.appendChild(eyebrow);
-  mid.appendChild(h);
-
-  const foot = document.querySelector('.foot');
-  foot.innerHTML = '';
-  for (const [i, f] of (job.facts || []).entries()) {
-    const c = document.createElement('span');
-    c.className = i === 0 ? 'chip hot' : 'chip';
-    c.textContent = f;
-    foot.appendChild(c);
+  const foot = document.createElement('div'); foot.className = 'foot';
+  for (const f of (job.facts || []).slice(0, 3)) {
+    const p = document.createElement('span');
+    p.className = PAY.test(f) ? 'pill pay' : 'pill';
+    p.textContent = f;
+    foot.appendChild(p);
   }
   const sp = document.createElement('span'); sp.className = 'spacer'; foot.appendChild(sp);
-  const u = document.createElement('span'); u.className = 'url';
-  u.textContent = 'interndoor.com'; foot.appendChild(u);
+  const u = document.createElement('span'); u.className = 'url'; u.textContent = 'interndoor.com'; foot.appendChild(u);
+  const go = document.createElement('span'); go.className = 'go'; go.innerHTML = 'View &amp; apply <span aria-hidden="true">→</span>';
+  foot.appendChild(go);
 
-  /* SHRINK UNTIL IT FITS, checking WIDTH as well as height: a single
-     unbreakable token ("Intern_2027_HW") runs off the right edge without ever
-     growing the block, so a height-only check reports it as fitting.
+  panel.append(who, foot);
+  old.replaceWith(panel);
+  const outer = document.getElementById('foot');
+  if (outer) outer.remove();
 
-     THE HEIGHT IS MEASURED AGAINST THE CEILING, NOT AGAINST clientHeight.
-     `.mid` is an auto-height block, so its clientHeight IS its own content
-     height — `scrollHeight <= clientHeight` was comparing the content to
-     itself, a tautology that only ever failed on sub-pixel rounding. Measured
-     2 Sep 2026: the two differed by exactly 2px at every size from 92 down to
-     44, so the loop ran to its 40px floor on EVERY card, including a one-word
-     role like "Apprentice". Every Telegram and WhatsApp card had been shipping
-     its headline at the minimum size. The satori twin in web/api/_card.js is
-     unaffected — it sizes from the title's LENGTH and has no loop — which is
-     why the LinkedIn preview looked right and these looked cramped.
-
-     Read from computed style so the number is not duplicated out of the CSS. */
-  const ceiling = parseFloat(getComputedStyle(mid).maxHeight) || Infinity;
-  const room = () => mid.scrollHeight <= ceiling + 0.5 && h.scrollWidth <= h.clientWidth;
-
-  /* Checked at the size that is APPLIED. The old loop tested room() before
-     setting the size, so it always landed one step below the first size that
-     fits. */
-  let size = 60;
+  /* SHRINK UNTIL IT FITS, checking WIDTH as well as height: one unbreakable
+     token runs off the side without ever growing the block. Height is measured
+     against the CEILING read from computed style, never against clientHeight
+     (an auto-height block's clientHeight is its own content). Checked at the
+     size that is applied. */
+  const ceiling = parseFloat(getComputedStyle(txt).maxHeight) || Infinity;
+  const room = () => txt.scrollHeight <= ceiling + 0.5 && h.scrollWidth <= h.clientWidth;
+  let size = 70;
   h.style.fontSize = size + 'px';
   while (size > 30 && !room()) {
     size -= 4;

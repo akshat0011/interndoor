@@ -8,11 +8,20 @@
  * extracting a frame and looking at it; none of them would have been found by
  * reading the code.
  */
-const BG = '#0a0a0b';
-const INK = '#f2f2ec';
-const INK_2 = '#9d9d94';
-const LIVE = '#c8ff00';
-const RULE = '#303036';
+/* The site's own tokens (web/public/styles.css, dark theme), by value — an
+   edge function cannot read the stylesheet. Kept in step by hand with
+   web/og-card.html, the Playwright twin the channels upload. */
+const BG = '#070708';
+const CARD = '#131316';
+const CARD_2 = '#1c1c20';
+const RULE = '#26262c';
+const RULE_2 = '#393940';
+const INK = '#fafafa';
+const INK_15 = '#e4e4e7';
+const INK_2 = '#b4b4bc';
+const INK_3 = '#92929b';
+const ACCENT = '#c8ff00';
+const ACCENT_INK = '#14170a';
 
 /** satori takes plain {type, props} objects; there is no JSX step here. */
 const h = (type, props = {}, ...children) => ({
@@ -22,50 +31,27 @@ const h = (type, props = {}, ...children) => ({
 
 const svgUri = (svg) => `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 
-/** The radar, bleeding off the right edge — the mark as environment. */
-const RADAR = svgUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="720" height="720">
-<circle cx="360" cy="360" r="352" fill="none" stroke="${LIVE}" stroke-width="1.4" opacity=".11"/>
-<circle cx="360" cy="360" r="272" fill="none" stroke="${LIVE}" stroke-width="1.4" opacity=".22"/>
-<circle cx="360" cy="360" r="192" fill="none" stroke="${LIVE}" stroke-width="1.4" opacity=".11"/>
-<circle cx="360" cy="360" r="112" fill="none" stroke="${LIVE}" stroke-width="1.4" opacity=".22"/>
-<line x1="8" y1="360" x2="712" y2="360" stroke="${LIVE}" stroke-width="1.4" opacity=".10"/>
-<line x1="360" y1="8" x2="360" y2="712" stroke="${LIVE}" stroke-width="1.4" opacity=".10"/>
-<defs><linearGradient id="sw" x1="0" y1="1" x2="1" y2="0">
-<stop offset="0" stop-color="${LIVE}" stop-opacity="0"/><stop offset="1" stop-color="${LIVE}" stop-opacity=".30"/>
-</linearGradient></defs>
-<path d="M360 360 L360 88 A272 272 0 0 1 552 168 Z" fill="url(#sw)"/>
-<circle cx="360" cy="360" r="7" fill="${LIVE}"/>
-<circle cx="486" cy="243" r="6.5" fill="${LIVE}" opacity=".85"/>
-<circle cx="424" cy="470" r="5" fill="${LIVE}" opacity=".45"/>
-</svg>`);
-
-/** The wordmark's own small scope. */
+/** The site's mark: three rings, the sweep, the dot. */
 const MARK = svgUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44" height="44">
-<circle cx="22" cy="22" r="20" fill="none" stroke="${LIVE}" stroke-width="1.6" opacity=".34"/>
-<circle cx="22" cy="22" r="13" fill="none" stroke="${LIVE}" stroke-width="1.6" opacity=".34"/>
-<circle cx="22" cy="22" r="6" fill="none" stroke="${LIVE}" stroke-width="1.6" opacity=".34"/>
-<path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z" fill="${LIVE}" opacity=".32"/>
-<circle cx="22" cy="22" r="2.9" fill="${LIVE}"/></svg>`);
+<circle cx="22" cy="22" r="20" fill="none" stroke="${ACCENT}" stroke-width="1.1" opacity=".3"/>
+<circle cx="22" cy="22" r="13" fill="none" stroke="${ACCENT}" stroke-width="1.1" opacity=".3"/>
+<circle cx="22" cy="22" r="6" fill="none" stroke="${ACCENT}" stroke-width="1.1" opacity=".3"/>
+<path d="M22 22 L22 1 A21 21 0 0 1 40 12 Z" fill="${ACCENT}" opacity=".3"/>
+<circle cx="22" cy="22" r="2.8" fill="${ACCENT}"/></svg>`);
 
 /**
  * Satori cannot fit text to a box, so the size is chosen from the length.
  *
- * The HTML card measured and shrank in a loop; there is no layout pass to read
- * here. These steps were picked against the real spread of titles — median 34
- * characters, and one real posting at 172 because an employer named fifteen
- * cities in it.
+ * The HTML card measures and shrinks in a loop; there is no layout pass to read
+ * here. Steps picked against the real spread of titles — median 34 characters,
+ * one real posting at 172 — for a 792px column holding three lines at most.
  */
 export function roleSize(len) {
-  /* Capped at 60 so the EMPLOYER'S LOGO stays the biggest thing on the card.
-     It was 92, which out-shouted even the 248px mark on a short title like
-     "Apprentice" — and the logo is the only element here a student recognises
-     at a glance. Kept in step by hand with web/og-card.html, which renders the
-     same design through Playwright for Telegram and WhatsApp. */
-  if (len <= 26) return 60;
-  if (len <= 44) return 52;
-  if (len <= 72) return 44;
-  if (len <= 104) return 36;
-  return 30;
+  if (len <= 26) return 70;
+  if (len <= 44) return 60;
+  if (len <= 80) return 52;
+  if (len <= 110) return 44;
+  return 36;
 }
 
 /** Trim at a word boundary; a title is not allowed to become the whole card. */
@@ -77,89 +63,83 @@ export function clampTitle(raw, max = 128) {
   return (sp > max * 0.5 ? cut.slice(0, sp) : cut).replace(/[\s,;:–-]+$/, '');
 }
 
-const chip = (text, hot) => h('div', {
+/** Pay is the one fact the site colours (--cash is the accent). */
+const PAY = /[₹$€£]|\/\s*(month|year|week|hour)/i;
+
+const pill = (text) => h('div', {
   style: {
-    display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 19, letterSpacing: '0.1em',
-    textTransform: 'uppercase', color: hot ? LIVE : INK_2,
-    border: `1px solid ${hot ? 'rgba(200,255,0,0.34)' : RULE}`,
-    borderRadius: 4, padding: '10px 16px',
+    display: 'flex', alignItems: 'center', height: 52, padding: '0 22px', borderRadius: 999,
+    backgroundColor: CARD_2, border: `1px solid ${RULE_2}`, color: PAY.test(text) ? ACCENT : INK_15,
+    fontFamily: 'Geist', fontWeight: 500, fontSize: 23, letterSpacing: '-0.01em',
   },
 }, text);
 
+/** Initials when there is no logo, never an empty box (the site's crest). */
+const initials = (company) => String(company ?? '').replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/)
+  .filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+
 /**
- * The card, as a satori element tree. Pure, so it can be rendered and LOOKED at
- * without deploying — which is how four bugs were found in the HTML version.
+ * The card, as a satori element tree: the board's role card, scaled. Pure, so
+ * it can be rendered and LOOKED at without deploying.
  */
 export function buildCard({ company, title, facts = [], logo = '' }) {
   const role = clampTitle(title);
   return h('div', {
     style: {
       width: 1200, height: 630, display: 'flex', flexDirection: 'column',
-      justifyContent: 'space-between', backgroundColor: BG, color: INK,
-      padding: '58px 64px', position: 'relative', fontFamily: 'JetBrains Mono',
+      backgroundColor: BG, color: INK, padding: '44px 52px 48px', fontFamily: 'Geist',
     },
   },
-    h('img', { src: RADAR, width: 720, height: 720,
-      style: { position: 'absolute', right: -170, top: -45 } }),
-
-    /* THE EMPLOYER'S MARK IS THE HERO, and ours is attribution.
-     *
-     * This card is what LinkedIn renders as the preview on his posts, and reach
-     * is what the posts are for. At 64px the employer's logo was a detail
-     * beside a 42px INTERNDOOR wordmark — so the thing a student recognises at
-     * a glance, and the only thing on the card with any brand equity yet, was
-     * the smallest element on it. The wordmark is what nobody knows.
-     *
-     * A COMPANY BANNER WOULD BE BETTER AND WE DO NOT HAVE ONE. 462 logo files,
-     * zero banners — LinkedIn company banners are not in the data, and getting
-     * them means new scraping plus hosting somebody else's brand art. A large
-     * logo is the version of that idea we can actually stand behind: it is
-     * nominative use next to a factual "X is hiring, apply here", which is what
-     * every job board does. */
-    // masthead — ours, deliberately small
-    h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+    // masthead — the site's header
+    h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 30 } },
       h('div', { style: { display: 'flex', alignItems: 'center' } },
-        h('img', { src: MARK, width: 30, height: 30, style: { marginRight: 11 } }),
-        h('div', { style: {
-          display: 'flex', fontFamily: 'Archivo', fontSize: 26, letterSpacing: '-0.045em', color: INK,
-        } }, 'INTERN'),
-        h('div', { style: {
-          display: 'flex', fontFamily: 'Archivo', fontSize: 26, letterSpacing: '-0.045em', color: LIVE,
-        } }, 'DOOR'),
+        h('img', { src: MARK, width: 40, height: 40, style: { marginRight: 14 } }),
+        h('div', { style: { display: 'flex', fontWeight: 600, fontSize: 31, letterSpacing: '-0.03em', color: INK } }, 'InternDoor'),
       ),
-      chip('Hiring', true),
+      h('div', { style: { display: 'flex', alignItems: 'center' } },
+        h('div', { style: { display: 'flex', width: 10, height: 10, borderRadius: 999, backgroundColor: ACCENT, marginRight: 12 } }),
+        h('div', { style: { display: 'flex', fontWeight: 500, fontSize: 23, color: INK_2 } }, 'Hiring now'),
+      ),
     ),
 
-    // the employer, then the role
-    h('div', { style: { display: 'flex', flexDirection: 'column', maxWidth: 790 } },
-      /* CONTAIN ON A WHITE PLATE, NOT COVER. 462 logo files and they are every
-         shape there is — Compass Group's is a wide wordmark and `cover` cropped
-         the compass off the left and the type off both edges. Cropping
-         somebody's trademark is the one treatment that is simply wrong. */
-      ...(logo ? [h('div', { style: { display: 'flex', marginBottom: 20 } },
-        h('img', { src: logo, width: 248, height: 248,
-          style: { borderRadius: 36, objectFit: 'contain', backgroundColor: '#fff', padding: 18 } }),
-      )] : []),
-      h('div', { style: { display: 'flex', alignItems: 'center', marginBottom: 16 } },
-        h('div', { style: {
-          display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 30, letterSpacing: '0.12em',
-          textTransform: 'uppercase', color: LIVE,
-        } }, company),
+    // the role card
+    h('div', {
+      style: {
+        display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flexGrow: 1,
+        backgroundColor: CARD, border: `1px solid ${RULE}`, borderRadius: 28, padding: '40px 42px',
+      },
+    },
+      h('div', { style: { display: 'flex', alignItems: 'flex-start' } },
+        /* CONTAIN ON A WHITE PLATE, NEVER COVER — cropping somebody's trademark
+           is the one treatment that is simply wrong. */
+        logo
+          ? h('div', { style: { display: 'flex', width: 184, height: 184, borderRadius: 26, backgroundColor: '#fff', marginRight: 36 } },
+              h('img', { src: logo, width: 184, height: 184, style: { objectFit: 'contain', padding: 18, borderRadius: 26 } }))
+          : h('div', { style: {
+              display: 'flex', alignItems: 'center', justifyContent: 'center', width: 184, height: 184, borderRadius: 26,
+              backgroundColor: CARD_2, border: `1px solid ${RULE_2}`, marginRight: 36,
+              fontWeight: 600, fontSize: 64, letterSpacing: '-0.03em', color: INK_2,
+            } }, initials(company)),
+        h('div', { style: { display: 'flex', flexDirection: 'column', width: 792 } },
+          h('div', { style: { display: 'flex', fontWeight: 500, fontSize: 31, letterSpacing: '-0.015em', color: INK_15, marginBottom: 12 } }, company),
+          h('div', { style: {
+            display: 'flex', fontWeight: 600, fontSize: roleSize(role.length),
+            lineHeight: 1.07, letterSpacing: '-0.035em', color: INK,
+          } }, role),
+        ),
       ),
-      h('div', { style: {
-        display: 'flex', fontFamily: 'Archivo', fontSize: roleSize(role.length),
-        lineHeight: 1.02, letterSpacing: '-0.035em', color: INK,
-      } }, role),
-    ),
-
-    h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
-      h('div', { style: { display: 'flex', alignItems: 'center', gap: 14 } },
-        ...facts.slice(0, 3).map((f, i) => chip(f, i === 0)),
+      h('div', { style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between' } },
+        h('div', { style: { display: 'flex', alignItems: 'center', gap: 12 } },
+          ...facts.slice(0, 3).map((f) => pill(f)),
+        ),
+        h('div', { style: { display: 'flex', alignItems: 'center' } },
+          h('div', { style: { display: 'flex', fontSize: 21, color: INK_3, marginRight: 20, letterSpacing: '0.01em' } }, 'interndoor.com'),
+          h('div', { style: {
+            display: 'flex', alignItems: 'center', height: 60, padding: '0 30px', borderRadius: 999,
+            backgroundColor: ACCENT, color: ACCENT_INK, fontWeight: 600, fontSize: 25, letterSpacing: '-0.015em',
+          } }, 'View & apply →'),
+        ),
       ),
-      h('div', { style: {
-        display: 'flex', fontFamily: 'JetBrains Mono', fontSize: 21,
-        letterSpacing: '0.08em', color: INK_2,
-      } }, 'interndoor.com'),
     ),
   );
 }

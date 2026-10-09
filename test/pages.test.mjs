@@ -917,7 +917,7 @@ const carded = renderJobPage(vtJob);
    attribute is invalid markup, and every crawler decodes the entity before
    fetching. Asserting the raw form would be asserting broken HTML. */
 check('the card is this posting\'s own', ogOf(carded),
-  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=IN`);
+  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=IN&amp;v=2`);
 // Two tags, one image: a preview that disagrees with itself between networks
 // is worse than a generic one.
 check('and twitter agrees with open graph', twOf(carded), ogOf(carded));
@@ -929,12 +929,12 @@ check('no page falls back to the generic card', /og\.jpg/.test(carded), false);
    jobs.json, and a card drawn from the wrong board is worse than none. */
 check('a US page asks for the US board',
   ogOf(renderJobPage(vtJob, [], { region: regionOf('US') })),
-  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=US`);
+  `https://interndoor.com/api/og?id=${vtJob.id}&amp;r=US&amp;v=2`);
 
 // An ats: id carries colons; it is a query parameter and has to survive as one.
 check('the id is url-encoded',
   ogOf(renderJobPage({ ...vtJob, id: 'ats:greenhouse:x:1' })),
-  'https://interndoor.com/api/og?id=ats%3Agreenhouse%3Ax%3A1&amp;r=IN');
+  'https://interndoor.com/api/og?id=ats%3Agreenhouse%3Ax%3A1&amp;r=IN&amp;v=2');
 
 /* ogCardName still exists for src/ogcard.js, which draws TELEGRAM's copies
    locally — the generator cannot see a posting until Vercel redeploys, about a

@@ -1402,7 +1402,7 @@ function imageMeta(image) {
    closed page, /post-a-job and /skills carry their own on top of this one. */
 const PAGE_CSS_VERSION = 'r1';
 
-function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=5`, scripts = '', section = '', sectionExact = false }) {
+function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=6`, scripts = '', section = '', sectionExact = false }) {
   /* `page` ONLY WHEN THE LINK IS THE PAGE YOU ARE ON. A company hub is inside
      the Companies section but is not /companies, so announcing its nav item as
      "current page" is simply untrue — and the region switcher already carries
@@ -1438,7 +1438,7 @@ ${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="InternDoor — new ${offerPhrase(region, { adjective: '', noun: 'roles' })}" href="${regionHref('/feed.xml', region)}">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=17">
+<link rel="stylesheet" href="/styles.css?v=18">
 <link rel="stylesheet" href="/page.css?v=${PAGE_CSS_VERSION}">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/track.js"></script>
@@ -2239,7 +2239,9 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
        public repo. Generated on request it costs nothing per job and covers
        postings that do not exist yet. The function caches for a year, and
        redirects to the generic card rather than erroring on an unknown id. */
-    image: `${SITE}/api/og?id=${encodeURIComponent(job.id)}&r=${region.code}`,
+    /* `v` changes when the card's design does: /api/og answers immutable for a
+       year, so without it every page already shared keeps the old card. */
+    image: `${SITE}/api/og?id=${encodeURIComponent(job.id)}&r=${region.code}&v=2`,
     // No hreflang on a job page. A Stripe internship in Dublin is not a
     // regional variant of one in Bengaluru, it is a different vacancy, and
     // telling Google two unrelated URLs are the same page is a real error.
