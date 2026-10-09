@@ -130,10 +130,10 @@ console.log('\n== the board wires it in the right order ==');
 
   const jobCard = lift(app, 'function jobCard(', '\n}', 'jobCard');
   ok('a seen card carries the class', /if \(seen\) row\.classList\.add\('seen'\)/.test(jobCard));
-  ok('the card\'s Apply tells the layer', /go\.addEventListener\('click', \(e\) => \{ e\.stopPropagation\(\); window\.IDEngage\?\.onApply\(\); \}\)/.test(jobCard));
+  ok('the card\'s Apply tells the layer, naming its job', /go\.addEventListener\('click', \(e\) => \{ e\.stopPropagation\(\); window\.IDEngage\?\.onApply\(jobPageSlug\(job\)\); \}\)/.test(jobCard));
 
   const detail = lift(app, 'function renderDetail(', '\n}', 'renderDetail');
-  ok('so does the pane\'s', /apply\.addEventListener\('click', \(\) => window\.IDEngage\?\.onApply\(\)\)/.test(detail));
+  ok('so does the pane\'s', /apply\.addEventListener\('click', \(\) => window\.IDEngage\?\.onApply\(jobPageSlug\(job\)\)\)/.test(detail));
 
   ok('page.js loads the layer too', /s\.src = '\/engage\.js'/.test(page));
   ok('and delegates the job page\'s Apply buttons', /closest\('a\.btn-apply'\)[\s\S]*IDEngage\.onApply\(\)/.test(page));
@@ -245,7 +245,7 @@ console.log('\n== the prompt is one click per event, and the events are the coun
   ok('and only the channel cards on it', /querySelectorAll\('a\.chan\[href\]'\)/.test(resolveFn));
   ok('behind a deadline, falling back to email alone', /Promise\.race\(\[fetched, deadline\]\)/.test(resolveFn) && /CHANNELS_FETCH_MS = 2500/.test(engage) && /\.catch\(function \(\) \{ return \[\]; \}\)/.test(resolveFn));
   ok('resolved once per page', /if \(pageChannels\) return pageChannels;/.test(resolveFn));
-  const onApplyFn = lift(engage, 'function onApply()', '\n  }', 'onApply');
+  const onApplyFn = lift(engage, 'function onApply(job)', '\n  }', 'onApply');
   ok('the delay and the fetch overlap rather than add', /resolveChannels\(\)\.then/.test(onApplyFn) && /SHOW_DELAY_MS - \(Date\.now\(\) - started\)/.test(onApplyFn));
 
   /* The subline names only the channels this page offers. */
@@ -254,10 +254,11 @@ console.log('\n== the prompt is one click per event, and the events are the coun
   ok('India: WhatsApp or Telegram', /no signup for WhatsApp or Telegram\.$/.test(sublineFn([w, t, m])));
   ok('US: Telegram only', /no signup for Telegram\.$/.test(sublineFn([t, m])) && !/WhatsApp/.test(sublineFn([t, m])));
   ok('UK: no free-channel clause at all', !/no signup/.test(sublineFn([m])) && /see them\.$/.test(sublineFn([m])));
-  const onApply = lift(engage, 'function onApply()', '\n  }', 'onApply');
-  ok('every Apply is counted', /count\('apply'\)/.test(onApply));
+  const onApply = lift(engage, 'function onApply(job)', '\n  }', 'onApply');
+  ok('every Apply is counted', /count\('apply', /.test(onApply));
   ok('at most once a session', /sessionStorage\.getItem\(SESSION_KEY\)/.test(onApply) && /if \(shownThisSession\) return/.test(onApply));
-  ok('the beacon carries the name and the board and nothing else', /JSON\.stringify\(\{ name: String\(name\), region: region\(\) \}\)/.test(engage));
+  ok('the beacon carries the name, the board, a job when one is named, and nothing else',
+    /var ev = \{ name: String\(name\), region: region\(\) \};\s*if \(typeof job === 'string' && job\) ev\.job = job;\s*var body = JSON\.stringify\(ev\);/.test(engage));
 }
 
 console.log('\n== /api/count keeps a number per day and nothing about anyone ==');
@@ -268,7 +269,7 @@ console.log('\n== /api/count keeps a number per day and nothing about anyone =='
   ok('the local server\'s object body parses', parseEvent({ name: 'visit-return', region: 'US' })?.region === 'US');
   ok('an unknown name is nothing', parseEvent({ name: 'signup', region: 'IN' }) === null);
   ok('an unknown board is kept but filed under XX', parseEvent({ name: 'apply', region: 'zz' })?.region === 'XX');
-  ok('a fat body is nothing', parseEvent('{"name":"apply","region":"IN","x":"' + 'y'.repeat(300) + '"}') === null);
+  ok('a fat body is nothing', parseEvent('{"name":"apply","region":"IN","x":"' + 'y'.repeat(600) + '"}') === null);
   ok('junk is nothing', parseEvent('nope') === null && parseEvent(null) === null && parseEvent(42) === null);
   ok('the key is day-first', keyFor('2026-09-17', 'apply', 'IN') === 'count:2026-09-17:apply:IN');
   ok('the day is UTC', utcDay(Date.UTC(2026, 8, 17, 23, 59)) === '2026-09-17' && utcDay(Date.UTC(2026, 8, 18, 0, 0)) === '2026-09-18');

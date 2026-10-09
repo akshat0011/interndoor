@@ -55,9 +55,11 @@
   /* Fire and forget. sendBeacon survives the page being closed, which is the
      common case right after an Apply click; the fetch fallback carries
      keepalive for the same reason. Nothing here can throw into the page. */
-  function count(name) {
+  function count(name, job) {
     try {
-      var body = JSON.stringify({ name: String(name), region: region() });
+      var ev = { name: String(name), region: region() };
+      if (typeof job === 'string' && job) ev.job = job;
+      var body = JSON.stringify(ev);
       if (navigator.sendBeacon && navigator.sendBeacon('/api/count', body)) return;
       fetch('/api/count', { method: 'POST', body: body, keepalive: true }).catch(function () {});
     } catch (e) { /* a counter must never cost the reader anything */ }
@@ -380,9 +382,18 @@
     if (first) first.focus();
   }
 
+  /* WHICH JOB AN APPLY WAS FOR (9 Oct 2026), so an employer can be told how
+     many Apply clicks their roles drew. The board passes the job page's slug;
+     a job page is the job, so its own path says which one. Pure — lifted into
+     test/postjob.test.mjs by name. */
+  function jobFromPath(path) {
+    var m = /^\/jobs\/([a-z0-9][a-z0-9-]*)$/.exec(String(path || ''));
+    return m ? m[1] : '';
+  }
+
   /** Called by the board and the job page on every Apply click. */
-  function onApply() {
-    count('apply');
+  function onApply(job) {
+    count('apply', typeof job === 'string' && job ? job : jobFromPath(location.pathname));
     var shownThisSession = false;
     try { shownThisSession = sessionStorage.getItem(SESSION_KEY) === '1'; } catch (e) { /* fine */ }
     if (shownThisSession) return;
@@ -407,6 +418,6 @@
     if (Number(d.newsince) > 0) count('newsince-shown');
   }
 
-  window.IDEngage = { count: count, onApply: onApply, nudgeDue: nudgeDue, channelsFromPage: channelsFromPage };
+  window.IDEngage = { count: count, onApply: onApply, nudgeDue: nudgeDue, channelsFromPage: channelsFromPage, jobFromPath: jobFromPath };
   reportVisit();
 }());

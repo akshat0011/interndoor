@@ -49,22 +49,53 @@ function clientIp(req) {
   return req.socket?.remoteAddress || 'unknown';
 }
 
+/* A job page's slug, as the site writes them: lower-case words and the id,
+   joined by hyphens. Anything else is dropped, so a stranger can only ever
+   bump a field shaped like a real page. */
+export const JOB_SLUG = /^[a-z0-9](?:[a-z0-9-]{0,198}[a-z0-9])?$/;
+
 /**
  * The event a body describes, or null. sendBeacon posts text/plain, so on
  * Vercel `req.body` is the raw string; the local server hands over an object.
  * Both are accepted; anything else is nothing. Pure — tested by name.
+ *
+ * An Apply may carry `job` — the job page's slug (9 Oct 2026) — so an employer
+ * can be told how many Apply clicks their roles drew. Only on `apply`, and
+ * only when it is shaped like a slug.
  */
 export function parseEvent(body) {
   let b = body;
   if (typeof b === 'string') {
-    if (b.length > 200) return null;
+    if (b.length > 400) return null;
     try { b = JSON.parse(b); } catch { return null; }
   }
   if (!b || typeof b !== 'object') return null;
   const name = typeof b.name === 'string' ? b.name : '';
   if (!EVENTS.has(name)) return null;
   const region = String(b.region ?? '').toUpperCase();
-  return { name, region: REGIONS.has(region) ? region : 'XX' };
+  const out = { name, region: REGIONS.has(region) ? region : 'XX' };
+  if (name === 'apply' && typeof b.job === 'string' && JOB_SLUG.test(b.job)) out.job = b.job;
+  return out;
+}
+
+/** `applyjobs:2026-10-09` — one hash a day, a field per job page. */
+export function jobKeyFor(day) {
+  return `applyjobs:${day}`;
+}
+
+/**
+ * The whole write for one event, as one pipeline. The board's count always;
+ * an Apply that names its job also bumps that job's field in the day's hash,
+ * so reading a day back is one HGETALL rather than a scan.
+ */
+export function commandsFor(day, event) {
+  const key = keyFor(day, event.name, event.region);
+  const cmds = [['INCR', key], ['EXPIRE', key, TTL_SECONDS]];
+  if (event.job) {
+    const hash = jobKeyFor(day);
+    cmds.push(['HINCRBY', hash, event.job, 1], ['EXPIRE', hash, TTL_SECONDS]);
+  }
+  return cmds;
 }
 
 /** `count:2026-09-17:apply:IN` — day first so a range is a prefix scan. */
@@ -82,18 +113,23 @@ function store() {
   return url && token ? { url: url.replace(/\/+$/, ''), token } : null;
 }
 
-/** One pipeline: INCR the key and (re)arm its expiry. Never throws. */
-export async function bump(key, { url, token }, fetchImpl = fetch) {
+/** One pipeline, sent as given. Never throws. */
+export async function send(commands, { url, token }, fetchImpl = fetch) {
   try {
     const res = await fetchImpl(`${url}/pipeline`, {
       method: 'POST',
       headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
-      body: JSON.stringify([['INCR', key], ['EXPIRE', key, TTL_SECONDS]]),
+      body: JSON.stringify(commands),
     });
     return res.ok;
   } catch {
     return false;
   }
+}
+
+/** One pipeline: INCR the key and (re)arm its expiry. Never throws. */
+export function bump(key, target, fetchImpl = fetch) {
+  return send([['INCR', key], ['EXPIRE', key, TTL_SECONDS]], target, fetchImpl);
 }
 
 export default async function handler(req, res) {
@@ -111,7 +147,7 @@ export default async function handler(req, res) {
   if (event && target && !rateLimited(clientIp(req), Date.now())) {
     /* Awaited, not fire-and-forget: a serverless function may be frozen the
        moment it answers, and an un-awaited request is then simply lost. */
-    await bump(keyFor(utcDay(), event.name, event.region), target);
+    await send(commandsFor(utcDay(), event), target);
   }
   return res.status(204).end();
 }

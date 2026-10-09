@@ -150,6 +150,12 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 # ---------------------------------------------------------------------------
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/weekly.js" >> "$LOG" 2>&1 || true
 
+# Employer submissions from /post-a-job (web/api/post-job.js), asked every scan:
+# a Mac banner and a phone push for any not seen before, silent otherwise.
+# Approving is by hand (npm run submissions). Its exit status is discarded —
+# a missing store or a dead network must never cost the scan anything.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/job-submissions.js" --notify >> "$LOG" 2>&1 || true
+
 # The weekly data posts, same contract as the roundup: bin/datapost.js exits
 # at once unless it is on or after the configured hour on the configured
 # weekday and that week has not been written. Its exit status is discarded for

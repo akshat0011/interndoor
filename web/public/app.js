@@ -1307,7 +1307,7 @@ function jobCard(job, index, group = [job], seen = false) {
     go.setAttribute('aria-label', `Apply for ${job.title} at ${job.company}`);
     // The whole card is clickable. Without this, applying would also fire the
     // card's handler and slide the detail pane up behind the new tab.
-    go.addEventListener('click', (e) => { e.stopPropagation(); window.IDEngage?.onApply(); });
+    go.addEventListener('click', (e) => { e.stopPropagation(); window.IDEngage?.onApply(jobPageSlug(job)); });
     foot.append(go);
   }
   row.append(foot);
@@ -1748,7 +1748,7 @@ function renderDetail(job) {
     apply.target = '_blank';
     apply.rel = 'noopener noreferrer';
     apply.textContent = 'Apply on ' + where;
-    apply.addEventListener('click', () => window.IDEngage?.onApply());
+    apply.addEventListener('click', () => window.IDEngage?.onApply(jobPageSlug(job)));
     actions.append(apply);
   }
 

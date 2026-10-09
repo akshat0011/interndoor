@@ -1054,6 +1054,8 @@ export function publishedPaths() {
     /* /about — the same single root page as /contact, and the same trap: not
        listed here it is written every run and pushed never. */
     'web/public/about.html',
+    /* /post-a-job — the employer form, the same single root page. */
+    'web/public/post-a-job.html',
     /* /insights — the frozen monthly reports. Same root-level trap. */
     'web/public/insights',
     /* The daily digest's masthead radar. Email cannot render the site's inline

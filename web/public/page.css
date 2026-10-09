@@ -1937,3 +1937,37 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   .sk-card .sk-logo img { width: 22px; height: 22px; }
   .sk-card .sk-go { display: none; }
 }
+
+/* ============================================================
+   /post-a-job — the employer form (9 Oct 2026). `pj-` checked
+   against styles.css, page.css, app.js and page.js first. The
+   message line and the button reuse .sub-msg and .sub-b, whose
+   colours are measured against --bg-2 in both themes; the
+   inputs copy .sub-i's sizes (16px, or iOS zooms on focus).
+   Every grid track is minmax(0, 1fr) (§15).
+   ============================================================ */
+.pj-noscript { margin: 0 0 14px; color: var(--ink-2); }
+.pj-form { display: grid; gap: 16px; max-width: 760px; }
+.pj-grid { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .pj-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.pj-f { display: grid; gap: 6px; font-weight: 600; font-size: 14px; color: var(--ink); }
+.pj-in {
+  width: 100%; min-width: 0; box-sizing: border-box;
+  padding: 11px 13px; border-radius: var(--r);
+  border: 1px solid var(--rule-2); background: var(--card); color: var(--ink);
+  font-family: var(--ui); font-size: 16px; font-weight: 400;
+}
+textarea.pj-in { resize: vertical; min-height: 84px; }
+.pj-in::placeholder { color: var(--ink-3, var(--ink-2)); opacity: .7; }
+.pj-in:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
+.pj-hint, .pj-opt { font-weight: 400; font-size: 13px; color: var(--ink-2); }
+.pj-kind { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; color: var(--ink); }
+.pj-kind legend { font-weight: 600; font-size: 14px; padding: 0; margin-bottom: 8px; }
+.pj-kind label { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; }
+.pj-pay { display: grid; gap: 14px; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); max-width: 420px; }
+.pj-acts { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.pj-acts .sub-msg { margin: 0; }
+.pj-done { max-width: 760px; padding: 18px 20px; border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); }
+.pj-done b { display: block; font-size: 17px; margin-bottom: 6px; }
+.pj-done p { margin: 0; color: var(--ink-2); }
+.pj-done:focus { outline: none; }
