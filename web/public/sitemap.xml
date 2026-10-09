@@ -66,7 +66,6 @@
   <url><loc>https://interndoor.com/skills/spi</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/i2c</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/kotlin</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/uart</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/vue</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/fpga</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
@@ -74,12 +73,13 @@
   <url><loc>https://interndoor.com/skills/redis</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/ruby</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/scikit-learn</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/uart</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/asic</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/django</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/embedded-c</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/rtos</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/verilog</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/embedded-c</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pcb</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/rtos</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/numpy</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/autosar</loc><lastmod>2026-10-06</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/graphql</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
@@ -145,6 +145,7 @@
   <url><loc>https://interndoor.com/roles/full-stack-development-in-pune</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/qa-testing-in-pune</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering-in-noida</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/gokwik-intern-ai-ats-keka-gokwik-163424</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/brillio-software-development-engineer-r01571170-4475205718</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/cisco-software-engineer-4477656621</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/star-software-artificial-intelligence-engineer-4474899924</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
@@ -374,7 +375,6 @@
   <url><loc>https://interndoor.com/jobs/sap-associate-data-scientist-1-to-2-years-of-experience-4475117592</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/millennium-platform-site-reliability-engineer-4448290508</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hca-healthcare-india-analyst-i-data-analytics-4474990665</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/quest-global-embedded-firmware-engineer-4474982859</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-analyst-quantitative-engineering-4466132773</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/linde-india-data-scientist-ai-hub-4465572397</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/iqvia-data-platforms-sre-4474985404</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
