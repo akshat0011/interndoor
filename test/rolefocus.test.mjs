@@ -7,7 +7,7 @@
  * by a draft of the classifier or is one he named himself.
  */
 import { readFileSync } from 'node:fs';
-import { roleFamily, roleCategory, announceable, announceableIds, settleShelves, OPEN_FAMILIES, RESCUABLE_FAMILIES } from '../src/rolefocus.js';
+import { roleFamily, roleCategory, titleSettlesMisc, announceable, announceableIds, settleShelves, OPEN_FAMILIES, RESCUABLE_FAMILIES } from '../src/rolefocus.js';
 import { closableFrom } from '../src/publish.js';
 import { loadConfig } from '../src/config.js';
 import { entryLevelTitleRefusal, admitEntryLevel, employmentType } from '../src/employment.js';
@@ -388,6 +388,29 @@ check('GE Vernova "Post Doctoral Fellow Materials" (label "Materials Validation"
 check('GE HealthCare "Electrical Intern" (label "Electronics Support")', shelf('Electrical Intern', 'Electronics Support'), 'misc');
 check('…but a label still rescues one onto Software', shelf('Research Intern', 'Machine Learning Development'), 'software');
 check('…and an OPEN title still goes to hardware by its label', shelf('Graduate Engineer Trainee', 'VLSI design verification'), 'hardware');
+
+
+/* WHETHER THE SCAN OPENS A KEPT POSTING FOR ITS EMPLOYER LINK (9 Oct 2026).
+   A title that settles Misc for good is never opened; one a label can still
+   move is, or it publishes on Software with only LinkedIn to apply through —
+   MSD "Information Technology Intern" did exactly that. */
+console.log('\n== only a title that settles Misc for good skips the account open ==');
+{
+  const settles = (t) => titleSettlesMisc(t, FOCUS);
+  check('MSD\'s IT intern is not settled — its label can move it', settles('Information Technology Intern'), false);
+  check('…and its real label does move it onto Software', shelf('Information Technology Intern', 'Software Development'), 'software');
+  check('a research title is not settled either', settles('Analyst, Algorithm Research & Development'), false);
+  check('nor a core-engineering one', settles('Cat Modeler'), false);
+  check('markets finance is settled', settles('Global Markets – Securitized Products - Asset Management - Analyst'), true);
+  check('security operations is settled', settles('Incident Reponse - Analyst'), true);
+  check('an ERP developer is settled', settles('IFS Cloud Developer'), true);
+  check('a software title is not Misc at all', settles('Software Engineering Intern'), false);
+  check('an open title is not Misc at all', settles('Apprentice'), false);
+  check('with no shelves configured nothing is settled', titleSettlesMisc('Global Markets Analyst', {}), false);
+  const EXAMPLE = { research: 'Research Intern', it_support: 'IT Support Intern', core_eng: 'Mechanical Design Intern', robotics: 'Robotics Intern', analytics: 'Power BI Reporting Intern', product: 'Product Management Intern' };
+  check('each example really is its family', [...RESCUABLE_FAMILIES].map((f) => roleFamily(EXAMPLE[f] ?? '')), [...RESCUABLE_FAMILIES]);
+  check('…and every rescuable family is opened', [...RESCUABLE_FAMILIES].map((f) => settles(EXAMPLE[f])), [...RESCUABLE_FAMILIES].map(() => false));
+}
 
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

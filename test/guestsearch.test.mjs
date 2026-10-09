@@ -524,11 +524,11 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /let detail = publicRead;\s*let openedOnAccount = false;\s*if \(!detail\) \{\s*const got = await openOnAccount\(\);/.test(src), true);
   check('a block on the public page stops discovery, it does not fall back to the account',
     /\} else if \(pub\.blocked\) \{[\s\S]{0,120}?sawBlocked = true;\s*guestBlocked = true;[\s\S]{0,400}?break;\s*\} else if \(pub\.gone\)/.test(src), true);
-  check('a kept Misc role, or one on LinkedIn\'s own form, is never opened — an unknown marker is',
-    /if \(shelf === 'misc' \|\| detail\.applyKind === 'onsite'\) \{\s*counters\.keptWithoutOpen\+\+;/.test(src), true);
+  check('a role the title settles on Misc, or one on LinkedIn\'s own form, is never opened — an unknown marker is',
+    /const settledMisc = titleSettlesMisc\(detail\.title \|\| card\.title, cfg\.roleFocus\);\s*if \(settledMisc \|\| detail\.applyKind === 'onsite'\) \{\s*counters\.keptWithoutOpen\+\+;/.test(src), true);
   check('the kept-posting open comes after every refusal',
     src.indexOf('if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag))') > 0
-      && src.indexOf('if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag))') < src.indexOf('const shelf = roleCategory({ title: detail.title || card.title }, cfg.roleFocus).category;'), true);
+      && src.indexOf('if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag))') < src.indexOf('const settledMisc = titleSettlesMisc(detail.title || card.title, cfg.roleFocus);'), true);
   check('an account that fails that open keeps the public read', /kept from the public page without the employer's link/.test(src), true);
   check('the apply-link tripwire counts only real account opens', /if \(openedOnAccount && !detail\.easyApply\) \{/.test(src), true);
   check('a public-search session is opened without the feed',

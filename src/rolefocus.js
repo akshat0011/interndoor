@@ -210,6 +210,23 @@ export function roleCategory({ title, roleLabel } = {}, focus) {
 }
 
 /**
+ * Whether the TITLE ALONE already settles a posting on Misc — so that no label
+ * the enricher writes later can move it onto a kept shelf. The scan uses this
+ * to decide whether a kept posting is worth an account open for the
+ * employer's apply link (src/index.js).
+ *
+ * "The title reads Misc" is not enough, and asking only that cost real links
+ * (9 Oct 2026): a RESCUABLE family is Misc until its label says otherwise, and
+ * MSD's "Information Technology Intern" read it_support at scan time, was
+ * never opened, then published on Software with only its LinkedIn posting to
+ * apply through — 18 such postings in 13 days. A rescuable title is opened.
+ */
+export function titleSettlesMisc(title, focus) {
+  const rc = roleCategory({ title }, focus);
+  return rc.category === 'misc' && !RESCUABLE_FAMILIES.has(rc.family);
+}
+
+/**
  * ONE SHELF PER ROLE. A role advertised in several cities is several rows, and
  * the enricher labels each copy on its own — Northrop's "2027 Intern Systems
  * Engineer" read "Systems Integration" in five cities and "Systems
