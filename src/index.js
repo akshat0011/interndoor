@@ -28,7 +28,7 @@ import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, p
 import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
 import { noteVariant, variantSummary } from './searchvariant.js';
 import { searchSourceFor, buildGuestSearchUrl, fetchGuestPageRetrying, fetchPublicPosting, guestRequestCap, GUEST_PAGE_SIZE, rereadPlan, REREAD_TAIL_PAGES } from './guestsearch.js';
-import { roleCategory } from './rolefocus.js';
+import { titleSettlesMisc } from './rolefocus.js';
 import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
@@ -1661,7 +1661,12 @@ async function main() {
              there is one to find:
                - a Misc-shelf role is kept from the public page and never opened
                  (his call, 26 Sep 2026: the account's opens are for the
-                 software and hardware shelves);
+                 software and hardware shelves) — but only where the TITLE
+                 settles Misc for good. A title a label can still move (IT,
+                 research, core engineering…) is opened: 18 of those landed on
+                 Software in 13 days with only LinkedIn to apply through (9 Oct
+                 2026, MSD "Information Technology Intern"), for ~9 more opens
+                 a day on ~130. titleSettlesMisc;
                - a posting taken on LinkedIn's own apply form has no employer
                  link, so an open could only ever return LinkedIn's form.
              Either way it is stored, published and announced exactly as before;
@@ -1669,11 +1674,11 @@ async function main() {
              that fails keeps the public read — the posting is never lost for
              want of a link. */
           if (detail.viaPublicPage) {
-            const shelf = roleCategory({ title: detail.title || card.title }, cfg.roleFocus).category;
-            if (shelf === 'misc' || detail.applyKind === 'onsite') {
+            const settledMisc = titleSettlesMisc(detail.title || card.title, cfg.roleFocus);
+            if (settledMisc || detail.applyKind === 'onsite') {
               counters.keptWithoutOpen++;
               detail.easyApply = detail.applyKind === 'onsite';
-              log.info(`  kept from the public page — ${shelf === 'misc' ? 'a Misc-shelf role' : 'applied for on LinkedIn itself'}, so the account does not open it.`);
+              log.info(`  kept from the public page — ${settledMisc ? 'a Misc-shelf role' : 'applied for on LinkedIn itself'}, so the account does not open it.`);
             } else {
               const got = await openOnAccount();
               if (got.signedOut) {
