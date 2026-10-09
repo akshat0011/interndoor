@@ -78,18 +78,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/citi-mid-level-data-analyst-observability-and-telemetry-digital-application-4476825135",
-      "url": "https://interndoor.com/jobs/citi-mid-level-data-analyst-observability-and-telemetry-digital-application-4476825135",
-      "title": "Data Analyst Observability — Citi",
-      "content_text": "Company: Citi · Location: Pune Division, Maharashtra, India\n• Instrument applications with OpenTelemetry to collect metrics and traces\n• Build dashboards in Splunk or ELK to monitor system health and KPIs\n• Collaborate with SRE and DevOps to troubleshoot production issues\n• Ensure telemetry data compliance with enterprise logging standards",
-      "date_published": "2026-10-09T16:04:57.023Z",
-      "authors": [
-        {
-          "name": "Citi"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/natwest-group-oic-software-engineer-4477819246",
       "url": "https://interndoor.com/jobs/natwest-group-oic-software-engineer-4477819246",
       "title": "OIC Software Engineer — NatWest Group",
@@ -150,18 +138,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/cisco-software-engineer-4469139462",
-      "url": "https://interndoor.com/jobs/cisco-software-engineer-4469139462",
-      "title": "Software Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Design and deliver system software for automation, working with microservices and cloud-native tech\n• Collaborate with product, QA, and dev teams to ensure seamless integration\n• Implement CI/CD pipelines and manage DevOps practices",
-      "date_published": "2026-10-09T15:47:29.908Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996",
       "url": "https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996",
       "title": "Machine Learning Engineer (Model Bring-Up) — Cerebras",
@@ -170,18 +146,6 @@
       "authors": [
         {
           "name": "Cerebras"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-ai-agentic-fuzzing-and-linux-security-4476807267",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-ai-agentic-fuzzing-and-linux-security-4476807267",
-      "title": "Linux Security Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Design and deploy AI-driven fuzzing tools for Linux kernel and drivers\n• Work with LangChain, AutoGen, and Syzkaller in CI/CD pipelines\n• Conduct secure code reviews and vulnerability assessments for embedded systems",
-      "date_published": "2026-10-09T14:49:54.425Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     },
@@ -602,6 +566,42 @@
       "authors": [
         {
           "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/american-express-site-reliability-engineer-i-4476285629",
+      "url": "https://interndoor.com/jobs/american-express-site-reliability-engineer-i-4476285629",
+      "title": "Site Reliability Engineer I — American Express",
+      "content_text": "Company: American Express · Location: Bengaluru, Karnataka, India\n• Supports system resilience and performance through automation and disaster recovery\n• Uses Kubernetes, Docker, AWS, and observability tools like Prometheus and Grafana\n• Works with senior engineers on architectural design and reliability practices",
+      "date_published": "2026-10-09T11:18:54.933Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-cloud-iaas-migration-and-engineering-aws-4476291381",
+      "url": "https://interndoor.com/jobs/zensar-technologies-cloud-iaas-migration-and-engineering-aws-4476291381",
+      "title": "Cloud Migration Engineer AWS — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Migrate enterprise apps between on-premises and cloud environments\n• Use terraform and ci/cd for infrastructure automation\n• Configure sftp, load balancers, and disaster recovery systems",
+      "date_published": "2026-10-09T11:13:18.509Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/millennium-quantitative-developer-python-4476286554",
+      "url": "https://interndoor.com/jobs/millennium-quantitative-developer-python-4476286554",
+      "title": "Quantitative Developer Python — Millennium",
+      "content_text": "Company: Millennium · Location: Bengaluru, Karnataka, India\n• Build and enhance multi-asset analytics tools for risk platforms\n• Develop Python microservices with FastAPI or Django on AWS\n• Transform large datasets using pandas and polars for risk analysis\n• Collaborate with quants and technologists across global offices",
+      "date_published": "2026-10-09T11:13:05.158Z",
+      "authors": [
+        {
+          "name": "Millennium"
         }
       ]
     }
