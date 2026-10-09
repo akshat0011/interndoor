@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/nielseniq-associate-software-engineer-backend-java-ats-smartrecruiters-nielseniq-744000154589889",
+      "url": "https://interndoor.com/jobs/nielseniq-associate-software-engineer-backend-java-ats-smartrecruiters-nielseniq-744000154589889",
+      "title": "Backend Java Associate Engineer — NielsenIQ",
+      "content_text": "Company: NielsenIQ · Location: Chennai, in\n• Develop and maintain Java backend services with Spring Boot and RESTful APIs\n• Work with SQL and NoSQL databases, Git, and CI/CD pipelines\n• Collaborate with cross-functional teams on global data platforms",
+      "date_published": "2026-10-09T05:47:19.816Z",
+      "authors": [
+        {
+          "name": "NielsenIQ"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/citi-qa-automation-engineer-4476257274",
       "url": "https://interndoor.com/jobs/citi-qa-automation-engineer-4476257274",
       "title": "QA Automation Engineer — Citi",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "BlackRock"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/eclerx-analyst-4477175112",
-      "url": "https://interndoor.com/jobs/eclerx-analyst-4477175112",
-      "title": "Analyst — eClerx",
-      "content_text": "Company: eClerx · Location: Chandigarh, Chandigarh, India\n• Troubleshoot technical issues over phone with customers\n• Use CRM and call center tools to resolve problems\n• Document interactions and escalate complex cases",
-      "date_published": "2026-10-08T12:26:42.334Z",
-      "authors": [
-        {
-          "name": "eClerx"
         }
       ]
     }

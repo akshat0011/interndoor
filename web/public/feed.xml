@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 09 Oct 2026 04:04:39 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 09 Oct 2026 05:47:19 GMT</lastBuildDate>
+  <item>
+    <title>Backend Java Associate Engineer — NielsenIQ</title>
+    <link>https://interndoor.com/jobs/nielseniq-associate-software-engineer-backend-java-ats-smartrecruiters-nielseniq-744000154589889</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/nielseniq-associate-software-engineer-backend-java-ats-smartrecruiters-nielseniq-744000154589889</guid>
+    <pubDate>Fri, 09 Oct 2026 05:47:19 GMT</pubDate>
+    <description>Company: NielsenIQ · Location: Chennai, in
+• Develop and maintain Java backend services with Spring Boot and RESTful APIs
+• Work with SQL and NoSQL databases, Git, and CI/CD pipelines
+• Collaborate with cross-functional teams on global data platforms</description>
+  </item>
   <item>
     <title>QA Automation Engineer — Citi</title>
     <link>https://interndoor.com/jobs/citi-qa-automation-engineer-4476257274</link>
@@ -506,16 +516,6 @@
 • Developing frontend applications and building scalable projects
 • Working with Angular, JavaScript, Git, and Agile methodologies
 • Collaborating with global teams on AI-driven product development</description>
-  </item>
-  <item>
-    <title>Analyst — eClerx</title>
-    <link>https://interndoor.com/jobs/eclerx-analyst-4477175112</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/eclerx-analyst-4477175112</guid>
-    <pubDate>Thu, 08 Oct 2026 12:26:42 GMT</pubDate>
-    <description>Company: eClerx · Location: Chandigarh, Chandigarh, India
-• Troubleshoot technical issues over phone with customers
-• Use CRM and call center tools to resolve problems
-• Document interactions and escalate complex cases</description>
   </item>
 </channel>
 </rss>
