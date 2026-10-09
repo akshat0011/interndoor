@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791519923374,
+ "generatedAt": 1791520080375,
  "region": "IN",
  "regionName": "India",
- "count": 1228,
- "techCount": 1228,
+ "count": 1229,
+ "techCount": 1229,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -470,6 +470,63 @@
  ],
  "jobs": [
   {
+   "id": "4476257274",
+   "title": "QA Automation Engineer",
+   "company": "Citi",
+   "matchedWatchlist": "Citi",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/citi.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "typescript",
+    "sql",
+    "jenkins",
+    "ci/cd",
+    "git"
+   ],
+   "summary": "This full-time role involves developing automated tests for financial systems using Java and BDD. The candidate will work closely with developers to ensure quality and reliability in a global banking environment. Ideal for someone with experience in test automation and a background in finance or software testing.",
+   "bullets": [
+    "Write automated test scripts using Java and BDD frameworks",
+    "Test APIs and databases with SQL for functional and non-functional validation",
+    "Collaborate with developers to resolve issues and improve quality",
+    "Work in a global financial services team with a focus on automation"
+   ],
+   "roleLabel": "QA Automation",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "java",
+    "bdd",
+    "sql",
+    "jenkins"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "22 minutes ago",
+   "postedAt": 1791518679813,
+   "firstSeenAt": 1791519999823,
+   "lastSeenAt": 1791519999823,
+   "url": "https://www.linkedin.com/jobs/view/4476257274/",
+   "applyUrl": "https://ad.doubleclick.net/ddm/trackclk/N4789.466581LINKEDIN.COM/B31905581.393693070;dc_trk_aid=614356665;dc_trk_cid=216798306;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;ltd=;dc_tdv=1;dc_transparent=1;?https://jobs.citi.com/job/-/-/287/101706910928?source=APPLICANT_SOURCE-3-354&utm_medium=job_posting&utm_campaign=apac_experienced&utm_content=social_media&utm_term=393693070&ss=paid&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "e156665d78",
+   "cardFacts": [
+    "Pune Division",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "qa",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4468916073",
    "title": "Salesforce Developer",
    "company": "Cencora",
@@ -508,7 +565,7 @@
    "postedText": "6 minutes ago",
    "postedAt": 1791515557222,
    "firstSeenAt": 1791515917239,
-   "lastSeenAt": 1791515917239,
+   "lastSeenAt": 1791519988225,
    "url": "https://www.linkedin.com/jobs/view/4468916073/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4468916073/",
    "description": null,
