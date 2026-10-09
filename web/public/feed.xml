@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 09 Oct 2026 01:11:29 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 09 Oct 2026 03:12:37 GMT</lastBuildDate>
+  <item>
+    <title>Salesforce Developer — Cencora</title>
+    <link>https://interndoor.com/jobs/cencora-salesforce-developer-4468916073</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cencora-salesforce-developer-4468916073</guid>
+    <pubDate>Fri, 09 Oct 2026 03:12:37 GMT</pubDate>
+    <description>Company: Cencora · Location: Pune Division, Maharashtra, India
+• Develop and customize Salesforce apps using Apex, Visualforce, and Lightning components
+• Implement integrations with REST/SOAP APIs and optimize data models
+• Collaborate with cross-functional teams and conduct code reviews</description>
+  </item>
   <item>
     <title>AI Engineer Intern — Discover Dollar Inc</title>
     <link>https://interndoor.com/jobs/discover-dollar-inc-ai-engineer-intern-4476231706</link>
@@ -505,17 +515,6 @@
 • Design and optimize control systems for industrial applications
 • Use control theory and mathematical modeling for system behavior
 • Collaborate with cross-functional teams on product development</description>
-  </item>
-  <item>
-    <title>Cluster Validation — Cyient</title>
-    <link>https://interndoor.com/jobs/cyient-cluster-validation-4447368599</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cyient-cluster-validation-4447368599</guid>
-    <pubDate>Thu, 08 Oct 2026 12:20:03 GMT</pubDate>
-    <description>Company: Cyient · Location: Bengaluru, Karnataka, India
-• Validate instrument cluster components like speedometer and warning lamps
-• Use CAPL and Python for test case development and execution
-• Work with Vector or dSPACE tools for communication protocol testing
-• Collaborate with development teams on test scenarios and defect tracking</description>
   </item>
 </channel>
 </rss>
