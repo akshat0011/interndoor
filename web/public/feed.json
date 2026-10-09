@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/citi-qa-automation-engineer-4476257274",
+      "url": "https://interndoor.com/jobs/citi-qa-automation-engineer-4476257274",
+      "title": "QA Automation Engineer — Citi",
+      "content_text": "Company: Citi · Location: Pune Division, Maharashtra, India\n• Write automated test scripts using Java and BDD frameworks\n• Test APIs and databases with SQL for functional and non-functional validation\n• Collaborate with developers to resolve issues and improve quality\n• Work in a global financial services team with a focus on automation",
+      "date_published": "2026-10-09T04:04:39.813Z",
+      "authors": [
+        {
+          "name": "Citi"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cencora-salesforce-developer-4468916073",
       "url": "https://interndoor.com/jobs/cencora-salesforce-developer-4468916073",
       "title": "Salesforce Developer — Cencora",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "eClerx"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-engineer-controls-engineering-4475932407",
-      "url": "https://interndoor.com/jobs/ge-vernova-engineer-controls-engineering-4475932407",
-      "title": "Controls Engineering Engineer — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Noida, Uttar Pradesh, India\n• Design and optimize control systems for industrial applications\n• Use control theory and mathematical modeling for system behavior\n• Collaborate with cross-functional teams on product development",
-      "date_published": "2026-10-08T12:20:13.018Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
         }
       ]
     }
