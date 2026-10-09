@@ -6,6 +6,90 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/greythr-linked-in-e2e-4476286420",
+      "url": "https://interndoor.com/jobs/greythr-linked-in-e2e-4476286420",
+      "title": "Linked In E2E — greytHR",
+      "content_text": "Company: greytHR · Location: Chandigarh, Chandigarh, India\n• Build scalable software applications\n• Work with java and spring boot\n• Collaborate with cross-functional teams",
+      "date_published": "2026-10-09T10:14:16.300Z",
+      "authors": [
+        {
+          "name": "greytHR"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/brillio-software-development-engineer-r01571170-4475205718",
+      "url": "https://interndoor.com/jobs/brillio-software-development-engineer-r01571170-4475205718",
+      "title": "Software Development Engineer — Brillio",
+      "content_text": "Company: Brillio · Location: Bengaluru, Karnataka, India\n• Build full-stack applications from concept to deployment\n• Work with Java/Python/Node.js and React/SSR frameworks\n• Design scalable systems using cloud platforms and AI tools",
+      "date_published": "2026-10-09T10:05:00.747Z",
+      "authors": [
+        {
+          "name": "Brillio"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cisco-software-engineer-4477656621",
+      "url": "https://interndoor.com/jobs/cisco-software-engineer-4477656621",
+      "title": "Software Engineer — Cisco",
+      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Develop scalable cloud applications with AI-assisted workflows\n• Work on secure, privacy-focused code with team of experts\n• Own projects and lead features from design to completion",
+      "date_published": "2026-10-09T09:52:22.748Z",
+      "authors": [
+        {
+          "name": "Cisco"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/star-software-artificial-intelligence-engineer-4474899924",
+      "url": "https://interndoor.com/jobs/star-software-artificial-intelligence-engineer-4474899924",
+      "title": "Artificial Intelligence Engineer — Star Software",
+      "content_text": "Company: Star Software · Location: Bhopal, Madhya Pradesh, India\n• Build AI models for document processing and generative applications\n• Work with Python, PyTorch, and vector databases\n• Deploy production-ready AI solutions with Flask and PostgreSQL",
+      "date_published": "2026-10-09T09:50:46.965Z",
+      "authors": [
+        {
+          "name": "Star Software"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ust-software-design-validation-4466283259",
+      "url": "https://interndoor.com/jobs/ust-software-design-validation-4466283259",
+      "title": "Software Design Validation — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Test and validate NFC components at system level\n• Write and execute test scripts for performance metrics\n• Debug issues with lab tools like oscilloscopes and logic analyzers",
+      "date_published": "2026-10-09T09:37:55.908Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-services-pvt-ltd-forward-deployed-engineer-4476277591",
+      "url": "https://interndoor.com/jobs/accenture-services-pvt-ltd-forward-deployed-engineer-4476277591",
+      "title": "Forward Deployed Engineer — Accenture services Pvt Ltd",
+      "content_text": "Company: Accenture services Pvt Ltd · Location: Gurugram, Haryana, India\n• Design and deploy AI infrastructure across cloud and hybrid platforms\n• Leverage Python for automation, data pipelines, and AI agent development\n• Collaborate with client teams to modernize legacy systems and enable AI scalability",
+      "date_published": "2026-10-09T09:36:24.608Z",
+      "authors": [
+        {
+          "name": "Accenture services Pvt Ltd"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-test-analyst-4476277388",
+      "url": "https://interndoor.com/jobs/cognizant-test-analyst-4476277388",
+      "title": "Test Analyst — Cognizant",
+      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Design and execute automated tests in python and java for enterprise systems\n• Collaborate with hybrid teams to ensure test coverage and release readiness\n• Optimize test cases and frameworks to improve efficiency and reduce defects",
+      "date_published": "2026-10-09T09:19:27.942Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/msd-information-technology-intern-4477657485",
       "url": "https://interndoor.com/jobs/msd-information-technology-intern-4477657485",
       "title": "Information Technology Intern — MSD",
@@ -14,6 +98,30 @@
       "authors": [
         {
           "name": "MSD"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/synopsys-inc-r-and-d-engineer-ip-quality-4468655746",
+      "url": "https://interndoor.com/jobs/synopsys-inc-r-and-d-engineer-ip-quality-4468655746",
+      "title": "IP Quality Engineer — Synopsys Inc",
+      "content_text": "Company: Synopsys Inc · Location: Noida, Uttar Pradesh, India\n• Run regression tests on embedded memory ip and track validation results\n• Write python and tcl scripts to automate testing and reporting workflows\n• Analyze test data to identify quality issues and suggest process improvements",
+      "date_published": "2026-10-09T09:16:50.003Z",
+      "authors": [
+        {
+          "name": "Synopsys Inc"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ebay-platform-engineer-java-fmwk-4466290198",
+      "url": "https://interndoor.com/jobs/ebay-platform-engineer-java-fmwk-4466290198",
+      "title": "Platform Engineer, Java Fmwk — eBay",
+      "content_text": "Company: eBay · Location: Bengaluru, Karnataka, India\n• Build and maintain ci/cd pipelines for java frameworks\n• Work on spring boot platform for ebay developers\n• Collaborate with us team on release management and security",
+      "date_published": "2026-10-09T09:15:08.384Z",
+      "authors": [
+        {
+          "name": "eBay"
         }
       ]
     },
@@ -38,6 +146,18 @@
       "authors": [
         {
           "name": "Signzy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/raymond-lifestyle-limited-information-technology-engineer-4475214124",
+      "url": "https://interndoor.com/jobs/raymond-lifestyle-limited-information-technology-engineer-4475214124",
+      "title": "Information Technology Engineer — Raymond Lifestyle Limited",
+      "content_text": "Company: Raymond Lifestyle Limited · Location: Maharashtra, India\n• Support users with hardware, software, and network issues\n• Manage desktops, laptops, and network security controls\n• Document incidents and improve IT processes on-site",
+      "date_published": "2026-10-09T08:39:01.287Z",
+      "authors": [
+        {
+          "name": "Raymond Lifestyle Limited"
         }
       ]
     },
@@ -98,18 +218,6 @@
       "authors": [
         {
           "name": "West Pharmaceutical Services"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/razorpay-frontend-engineer-4477656089",
-      "url": "https://interndoor.com/jobs/razorpay-frontend-engineer-4477656089",
-      "title": "Frontend Engineer — Razorpay",
-      "content_text": "Company: Razorpay · Location: Bengaluru, Karnataka, India\n• Build responsive UIs with HTML, CSS, and JavaScript\n• Work with React, Angular, or Vue.js frameworks\n• Collaborate with designers and backend teams on integrations",
-      "date_published": "2026-10-09T07:53:59.256Z",
-      "authors": [
-        {
-          "name": "Razorpay"
         }
       ]
     },
@@ -494,114 +602,6 @@
       "authors": [
         {
           "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cisco-security-engineer-4477400879",
-      "url": "https://interndoor.com/jobs/cisco-security-engineer-4477400879",
-      "title": "Security Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Build security observability for SaaS, cloud, and endpoints using AI and automation\n• Integrate tools like Axonius, Wiz, Splunk, and ServiceNow for monitoring and remediation\n• Design dashboards and automate workflows to track vulnerabilities and risks",
-      "date_published": "2026-10-08T15:51:33.162Z",
-      "authors": [
-        {
-          "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fiserv-data-scientist-professional-i-4475964590",
-      "url": "https://interndoor.com/jobs/fiserv-data-scientist-professional-i-4475964590",
-      "title": "Data Scientist Professional I — Fiserv",
-      "content_text": "Company: Fiserv · Location: Thane, Maharashtra, India\n• Analyze financial data to improve payment systems\n• Use python and sql to build predictive models\n• Work with cross-functional teams on global projects",
-      "date_published": "2026-10-08T15:20:07.076Z",
-      "authors": [
-        {
-          "name": "Fiserv"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4468647570",
-      "url": "https://interndoor.com/jobs/linde-software-engineer-ai-hub-4468647570",
-      "title": "Software Engineer AI Hub — Linde",
-      "content_text": "Company: Linde · Location: Bengaluru, Karnataka, India\n• Develop cloud-based applications for internal customers\n• Work with customer data and build backend/frontend systems\n• Implement CI/CD tools for reliable software delivery",
-      "date_published": "2026-10-08T15:07:50.110Z",
-      "authors": [
-        {
-          "name": "Linde"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/pwc-india-specialist-apptech-gdc-4291061886",
-      "url": "https://interndoor.com/jobs/pwc-india-specialist-apptech-gdc-4291061886",
-      "title": "Specialist - AppTech - GDC — PwC India",
-      "content_text": "Company: PwC India · Location: Kolkata, West Bengal, India\n• Design data platforms and manage large volumes of client data\n• Research new technologies to drive innovation and sustainable change\n• Work on defining technology objectives and assessing solution options",
-      "date_published": "2026-10-08T14:56:02.390Z",
-      "authors": [
-        {
-          "name": "PwC India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-site-reliability-engineer-sre-ems-production-and-observability-4475949953",
-      "url": "https://interndoor.com/jobs/cognizant-site-reliability-engineer-sre-ems-production-and-observability-4475949953",
-      "title": "Site Reliability Engineer SRE — Cognizant",
-      "content_text": "Company: Cognizant · Location: Gurgaon, Haryana, India\n• Support EMS production services, troubleshoot infrastructure and application issues\n• Build dashboards and alerts for monitoring system health and customer impact\n• Automate operational tasks and improve reliability for high-visibility events",
-      "date_published": "2026-10-08T14:48:29.059Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-ai-augmented-sdet-in-airlines-pss-4475953830",
-      "url": "https://interndoor.com/jobs/cognizant-ai-augmented-sdet-in-airlines-pss-4475953830",
-      "title": "AI SDET in Airlines PSS — Cognizant",
-      "content_text": "Company: Cognizant · Location: Greater Kolkata Area\n• Write automated tests for airline systems using AI tools and selenium\n• Work on airport operations and flight management processes\n• Collaborate with distributed teams on test strategies and automation",
-      "date_published": "2026-10-08T14:48:28.049Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-network-cloud-engineer-aws-azure-terraform-palo-alto-4475968344",
-      "url": "https://interndoor.com/jobs/cognizant-network-cloud-engineer-aws-azure-terraform-palo-alto-4475968344",
-      "title": "Cloud Network Engineer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Configure next-gen firewalls and WAFs for cloud security\n• Manage Azure and AWS networking with Terraform and CLI tools\n• Work on hub-and-spoke architectures across multiple regions",
-      "date_published": "2026-10-08T14:48:19.002Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/idfc-first-bank-engineer-network-and-security-4448573130",
-      "url": "https://interndoor.com/jobs/idfc-first-bank-engineer-network-and-security-4448573130",
-      "title": "Network Security Engineer — IDFC FIRST Bank",
-      "content_text": "Company: IDFC FIRST Bank · Location: Mumbai, Maharashtra, India\n• Support and manage Illumio micro-segmentation tool for IT infrastructure\n• Collaborate with cross-functional teams and vendors on infrastructure projects\n• Automate tasks with scripts and contribute to strategic IT infrastructure planning",
-      "date_published": "2026-10-08T14:43:09.465Z",
-      "authors": [
-        {
-          "name": "IDFC FIRST Bank"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-qa-engineer-generative-ai-and-agentic-ai-4474835013",
-      "url": "https://interndoor.com/jobs/ust-qa-engineer-generative-ai-and-agentic-ai-4474835013",
-      "title": "QA Engineer Generative AI — UST",
-      "content_text": "Company: UST · Location: Trivandrum, Kerala, India\n• Test AI-generated outputs for correctness, coherence, and hallucination in GenAI and Agentic AI systems\n• Validate Text-to-SQL pipelines, RAG systems, and multi-step agent workflows\n• Design automated test frameworks and golden datasets for LLM evaluation\n• Collaborate with data science and product teams on quality gates and release criteria",
-      "date_published": "2026-10-08T14:42:02.083Z",
-      "authors": [
-        {
-          "name": "UST"
         }
       ]
     }
