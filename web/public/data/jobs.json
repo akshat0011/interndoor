@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791648447505,
+ "generatedAt": 1791648708025,
  "region": "IN",
  "regionName": "India",
  "count": 1285,
@@ -834,6 +834,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "linux",
     "networking",
@@ -1127,6 +1129,8 @@
    "roleLabel": "Software Engineer",
    "degreeLevel": "UG/PG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Campus hire",
    "keySkills": [
     "c/c++",
     "linux",
@@ -1252,6 +1256,8 @@
    "roleLabel": "SoC Design Engineer",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Campus hire",
    "keySkills": [
     "verilog",
     "vhdl",
@@ -1962,6 +1968,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "c#"
    ],
@@ -2012,6 +2020,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "splunk security analytics"
    ],
@@ -2397,6 +2407,8 @@
    "degreeLevel": "UG",
    "degreeText": "Bachelors",
    "experience": "0–3 years",
+   "expLevel": "fresher",
+   "expSays": "0–3 years",
    "keySkills": [
     "unix",
     "python",
@@ -2447,6 +2459,8 @@
    "roleLabel": "Digital IC Design",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Recent graduates welcome",
    "keySkills": [
     "chip architecture",
     "verification"
@@ -2923,8 +2937,7 @@
   },
   {
    "id": "4467882209",
-   "title": "Data Scientist",
-   "slugTitle": "AIML and Data Science",
+   "title": "AIML and Data Science",
    "company": "Cognizant",
    "matchedWatchlist": "Cognizant",
    "isTech": true,
@@ -3549,6 +3562,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "sql",
@@ -3717,6 +3732,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "software development"
    ],
@@ -4634,6 +4651,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "java",
     "sql",
@@ -4698,6 +4717,8 @@
    "degreeLevel": null,
    "degreeText": "B.E",
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "Python",
     "Kubernetes",
@@ -4813,6 +4834,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "matlab",
     "python",
@@ -5020,6 +5043,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "bounding box annotation",
     "lidar",
@@ -5126,6 +5151,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–1 years",
+   "expLevel": "fresher",
+   "expSays": "0–1 years",
    "keySkills": [
     "qgis",
     "arcgis",
@@ -5374,6 +5401,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "sql",
     "python",
@@ -6212,6 +6241,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "sql",
     "python",
@@ -6861,6 +6892,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "java",
     "python",
@@ -7201,6 +7234,8 @@
    "degreeLevel": "UG",
    "degreeText": "electronics and communication engineering/electrical engineering",
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "python",
     "tcl",
@@ -8944,6 +8979,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "python",
@@ -9382,6 +9419,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "python",
@@ -9440,6 +9479,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "java",
@@ -10067,6 +10108,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "sap master data management",
     "excel",
@@ -10179,6 +10222,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "problem-solving"
    ],
@@ -10356,6 +10401,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–4 years",
+   "expLevel": "fresher",
+   "expSays": "0–4 years",
    "keySkills": [
     "paloalto",
     "fortigate",
@@ -10412,6 +10459,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "aws",
     "azure",
@@ -11022,6 +11071,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "data structures",
     "algorithms"
@@ -11286,6 +11337,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "python",
     "go",
@@ -11569,6 +11622,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "0–1 years",
+   "expLevel": "fresher",
+   "expSays": "0–1 years",
    "keySkills": [
     "sql",
     "python",
@@ -11627,6 +11682,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "c#",
     "wpf",
@@ -11808,6 +11865,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "Fresh graduates from 2025 or 2026 batches",
+   "expLevel": "fresher",
+   "expSays": "Fresh graduates from 2025 or 2026 batches",
    "keySkills": [
     "c#",
     "reactjs",
@@ -11984,6 +12043,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "2025 or 2026 graduates",
+   "expLevel": "fresher",
+   "expSays": "2025 or 2026 graduates",
    "keySkills": [
     "sql",
     "python",
@@ -12258,6 +12319,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "swift",
     "swiftui",
@@ -12321,6 +12384,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "kotlin",
     "jetpack compose",
@@ -12383,6 +12448,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "sql",
     "dbt",
@@ -12444,6 +12511,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "c#",
     "asp.net mvc",
@@ -12506,6 +12575,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "sql",
     "python",
@@ -12617,6 +12688,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "0–3 years",
+   "expLevel": "fresher",
+   "expSays": "0–3 years",
    "keySkills": [
     "salesforce apex",
     "rest api development",
@@ -12853,6 +12926,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "sql",
     "power bi",
@@ -13813,6 +13888,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "python",
     "sql",
@@ -14369,6 +14446,8 @@
    "roleLabel": "Defect Analysis",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Recent graduates welcome",
    "keySkills": [
     "image processing",
     "semiconductor fabrication",
@@ -14647,6 +14726,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "power apps",
     "power automate",
@@ -14760,6 +14841,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "python",
     "c++",
@@ -16488,6 +16571,8 @@
    "roleLabel": "Memory Design Engineer",
    "degreeLevel": null,
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Campus hire",
    "keySkills": [
     "semiconductor design",
     "verification",
@@ -16544,6 +16629,8 @@
    "roleLabel": "Memory Design Engineering",
    "degreeLevel": null,
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Campus hire",
    "keySkills": [
     "semiconductor design",
     "verification",
@@ -16828,6 +16915,8 @@
    "roleLabel": "AI Tool Evaluator",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "No experience required",
    "keySkills": [
     "ai tools",
     "communication",
@@ -16883,6 +16972,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "automated testing",
     "api testing",
@@ -17062,6 +17153,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "c",
     "linux kernel",
@@ -17126,6 +17219,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "go",
     "java",
@@ -17188,6 +17283,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "java",
@@ -17257,6 +17354,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "angular",
     "python",
@@ -17317,6 +17416,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "python",
     "iec61850",
@@ -18105,8 +18206,7 @@
   },
   {
    "id": "4476593296",
-   "title": "Data Analyst",
-   "slugTitle": "Business Operations Specialist - Data Analytics",
+   "title": "Business Operations Specialist - Data Analytics",
    "company": "Arctic Wolf",
    "matchedWatchlist": "Arctic Wolf",
    "isTech": true,
@@ -18135,6 +18235,8 @@
    "degreeLevel": "UG",
    "degreeText": "Data Analytics/Business/Statistics/Computer Science",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "sql",
     "power bi",
@@ -18820,6 +18922,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "excel",
     "tableau",
@@ -19053,6 +19157,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "0+ years",
+   "expLevel": "fresher",
+   "expSays": "0+ years",
    "keySkills": [
     "security policies"
    ],
@@ -19168,6 +19274,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "B.E./B.Tech/M.E./M.Tech",
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "sql",
     "python",
@@ -19460,6 +19568,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "python",
     "sql",
@@ -19799,6 +19909,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "r",
     "python",
@@ -20418,8 +20530,7 @@
   },
   {
    "id": "4474975127",
-   "title": "Full Stack Developer",
-   "slugTitle": "Dotnet Fullstack Developer (React & AI)",
+   "title": "Dotnet Fullstack Developer (React & AI)",
    "company": "Cognizant",
    "matchedWatchlist": "Cognizant",
    "isTech": true,
@@ -20663,6 +20774,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–3 years",
+   "expLevel": "fresher",
+   "expSays": "0–3 years",
    "keySkills": [
     "jira",
     "zephyr",
@@ -20779,6 +20892,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "rip",
     "eigrp",
@@ -20894,6 +21009,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech/BCA",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "ai security",
     "cloud security",
@@ -21347,6 +21464,8 @@
    "degreeLevel": "UG",
    "degreeText": "mechanical engineering/it/computer science",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "playwright",
     "selenium",
@@ -21510,6 +21629,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "go",
     "java",
@@ -23547,6 +23668,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "flutter"
    ],
@@ -23599,6 +23722,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "java-j2ee"
    ],
@@ -23706,6 +23831,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "jira",
     "microsoft teams",
@@ -23939,6 +24066,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "golang",
     "terraform",
@@ -24177,6 +24306,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–1 years",
+   "expLevel": "fresher",
+   "expSays": "0–1 years",
    "keySkills": [
     "master data management"
    ],
@@ -25807,6 +25938,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.E",
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "snowflake",
     "oracle db",
@@ -26481,6 +26614,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "rest apis",
@@ -26778,6 +26913,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "python",
@@ -27575,8 +27712,7 @@
   },
   {
    "id": "4409293079",
-   "title": "MS Engineer - RHEL",
-   "slugTitle": "MS Engineer - RHEL-1",
+   "title": "MS Engineer - RHEL-1",
    "company": "NTT DATA, Inc.",
    "matchedWatchlist": "NTT DATA",
    "isTech": true,
@@ -27867,6 +28003,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "microsoft entra id"
    ],
@@ -28308,6 +28446,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "selenium",
     "soapui",
@@ -28487,6 +28627,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "python",
@@ -28656,6 +28798,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "talend",
     "collibra",
@@ -29741,8 +29885,7 @@
   },
   {
    "id": "4473844790",
-   "title": "Engineering Intern",
-   "slugTitle": "Engineering Intern 1",
+   "title": "Engineering Intern 1",
    "company": "Lam Research",
    "matchedWatchlist": "Lam Research",
    "isTech": true,
@@ -29976,6 +30119,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "coding",
     "unit testing",
@@ -30256,6 +30401,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "0–5 years",
+   "expLevel": "fresher",
+   "expSays": "0–5 years",
    "keySkills": [
     "c++",
     "python",
@@ -30320,6 +30467,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "java",
     "python",
@@ -30379,6 +30528,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "bash",
@@ -32537,8 +32688,7 @@
   },
   {
    "id": "4446727270",
-   "title": "Data Engineer",
-   "slugTitle": "Data Engineer+Data Analyst",
+   "title": "Data Engineer+Data Analyst",
    "company": "EXL",
    "matchedWatchlist": "EXL",
    "isTech": true,
@@ -33417,6 +33567,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [],
    "stipendStatus": "unknown",
    "postedText": "32 minutes ago",
@@ -33648,6 +33800,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "networking",
@@ -34155,6 +34309,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "spark",
     "redshift",
@@ -34599,6 +34755,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "ericsson oss/nms",
     "netcool",
@@ -34661,6 +34819,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "c++",
     "python",
@@ -35408,6 +35568,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "python",
@@ -35630,6 +35792,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "windows support",
     "ticketing tools"
@@ -35839,6 +36003,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "windows",
     "mac",
@@ -36156,6 +36322,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "Python",
     "DWDM",
@@ -36548,6 +36716,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "aws",
@@ -36927,6 +37097,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "c",
     "python",
@@ -37111,6 +37283,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "python",
     "tensorflow",
@@ -37165,6 +37339,8 @@
    "degreeLevel": "UG",
    "degreeText": "Engineering/Computer Science",
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "crm",
     "workflow configuration",
@@ -37413,8 +37589,7 @@
   },
   {
    "id": "4248975250",
-   "title": "Full Stack Dot Net Developer Intermediate",
-   "slugTitle": "Intermediate Applications Developer - Full Stack Dot Net",
+   "title": "Intermediate Applications Developer - Full Stack Dot Net",
    "company": "UPS",
    "matchedWatchlist": "UPS",
    "isTech": true,
@@ -37611,6 +37786,8 @@
    "degreeLevel": "UG",
    "degreeText": "engineering",
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "manual testing",
     "automation tools",
@@ -38575,6 +38752,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "hadoop",
     "spark",
@@ -38745,6 +38924,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "B.E./B.Tech/MBA",
    "experience": "2025/2026 graduates",
+   "expLevel": "fresher",
+   "expSays": "2025/2026 graduates",
    "keySkills": [
     "oracle cloud",
     "ai tools",
@@ -39035,6 +39216,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "java",
     "spring boot",
@@ -39330,6 +39513,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "oracle",
     "cognos tm1",
@@ -39592,6 +39777,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "hadoop",
     "spark",
@@ -39805,6 +39992,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "edi",
     "seeburger",
@@ -40748,6 +40937,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "sql",
     "power bi",
@@ -40857,6 +41048,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "qualys vmdr",
     "wiz",
@@ -41041,6 +41234,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "data structures",
     "algorithms"
@@ -41421,6 +41616,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "distributed systems",
     "large-scale computing",
@@ -41527,6 +41724,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "c",
     "linux",
@@ -41582,6 +41781,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "appium",
@@ -41690,6 +41891,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "sql",
@@ -41812,6 +42015,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "databricks",
     "spark",
@@ -41880,6 +42085,8 @@
    "roleLabel": "SoC Design Engineer",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Campus hire",
    "keySkills": [
     "verilog",
     "vhdl",
@@ -41945,6 +42152,8 @@
    "roleLabel": "SoC Design Engineer",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Campus hire",
    "keySkills": [
     "verilog",
     "vhdl",
@@ -42007,6 +42216,8 @@
    "roleLabel": "Systems Engineering",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Campus hire",
    "keySkills": [
     "hardware",
     "software"
@@ -42062,6 +42273,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "B.E/M.E",
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "c",
     "ieee 802.11",
@@ -42232,6 +42445,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "java",
     "aws",
@@ -42537,6 +42752,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "c/c++",
     "python",
@@ -42710,6 +42927,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "swift",
     "swiftui",
@@ -42815,6 +43034,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "defect tracking"
    ],
@@ -42864,6 +43085,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "defect tracking"
    ],
@@ -42917,6 +43140,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "pytest",
@@ -42973,6 +43198,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "power apps",
     "power automate",
@@ -43448,6 +43675,8 @@
    "degreeLevel": "Pursuing",
    "degreeText": null,
    "experience": "1–5 years",
+   "expLevel": "one",
+   "expSays": "1–5 years",
    "keySkills": [
     "python",
     "jira",
@@ -43790,6 +44019,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "r",
     "python",
@@ -43919,6 +44150,8 @@
    "degreeLevel": "PG",
    "degreeText": "B.E./M.Sc./M.E./M.Tech",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "c",
     "c++",
@@ -44146,6 +44379,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "web application development",
     "server side application",
@@ -45430,6 +45665,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "0 years",
+   "expLevel": "fresher",
+   "expSays": "0 years",
    "keySkills": [
     "c#",
     "java",
@@ -45487,6 +45724,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "0 years",
+   "expLevel": "fresher",
+   "expSays": "0 years",
    "keySkills": [
     "customer support",
     "product demonstration",
@@ -46494,6 +46733,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "sql",
@@ -46552,6 +46793,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "unix/linux",
     "networking",
@@ -46730,6 +46973,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "perl",
@@ -46793,6 +47038,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "perl",
@@ -47185,6 +47432,8 @@
    "degreeLevel": "PG",
    "degreeText": "B.E./M.Sc./M.E./M.Tech",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "c",
     "c++",
@@ -47697,6 +47946,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "java",
     "aws",
@@ -47750,6 +48001,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "software development",
     "system platforms",
@@ -47814,6 +48067,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "Computer Science",
    "experience": "0–3 years",
+   "expLevel": "fresher",
+   "expSays": "0–3 years",
    "keySkills": [
     "java",
     "react.js",
@@ -48019,6 +48274,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [],
    "stipendStatus": "unknown",
    "postedText": "1 hour ago",
@@ -48185,6 +48442,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "sql",
     "python",
@@ -48557,6 +48816,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–3 years",
+   "expLevel": "fresher",
+   "expSays": "0–3 years",
    "keySkills": [
     "java",
     "python",
@@ -49013,6 +49274,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "aws",
@@ -49073,6 +49336,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "sql",
     "aws",
@@ -49130,6 +49395,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "drm/kms framework",
     "v4l2 driver",
@@ -49296,6 +49563,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "agile",
     "aspice",
@@ -49409,6 +49678,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "oracle fccs",
     "oracle epm cloud",
@@ -49462,6 +49733,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "agile methodology",
     "erp systems",
@@ -49515,6 +49788,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "software development",
     "system platforms",
@@ -49745,6 +50020,8 @@
    "degreeLevel": "PG",
    "degreeText": "Electronics Engineering",
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "c",
     "assembly language",
@@ -50649,6 +50926,8 @@
    "degreeLevel": "PG",
    "degreeText": "M.Sc",
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "pytorch",
@@ -51295,6 +51574,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "python",
     "r",
@@ -51579,6 +51860,8 @@
    "degreeLevel": null,
    "degreeText": "CA",
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "financial statements",
     "journal entries",
@@ -51993,6 +52276,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "windows",
     "macos",
@@ -52881,6 +53166,8 @@
    "degreeLevel": "PG",
    "degreeText": "M.Sc",
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "python",
     "sql",
@@ -53161,6 +53448,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "weblogic admin"
    ],
@@ -53213,6 +53502,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "linux admin"
    ],
@@ -53787,6 +54078,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "tableau",
     "sql",
@@ -54058,6 +54351,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "iot",
     "plc/scada",
@@ -54179,6 +54474,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "c",
     "c++",
@@ -54628,6 +54925,8 @@
    "degreeLevel": "UG",
    "degreeText": "Bachelors",
    "experience": "1–7 years",
+   "expLevel": "one",
+   "expSays": "1–7 years",
    "keySkills": [
     "python",
     "sas",
@@ -54848,6 +55147,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "oracle cloud",
     "obiee",
@@ -54876,8 +55177,7 @@
   },
   {
    "id": "4471040760",
-   "title": "End User Support Associate",
-   "slugTitle": "End User Support - Associate Services Specialist I - Bangalore",
+   "title": "End User Support - Associate Services Specialist I - Bangalore",
    "company": "Deloitte",
    "matchedWatchlist": "Deloitte",
    "isTech": true,
@@ -54903,6 +55203,8 @@
    "degreeLevel": "UG",
    "degreeText": "B. Tech / BE",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "Microsoft Office",
     "Windows",
@@ -54932,8 +55234,7 @@
   },
   {
    "id": "4471041749",
-   "title": "End User Support Associate",
-   "slugTitle": "End User Support - Associate Services Specialist I - Hyderabad",
+   "title": "End User Support - Associate Services Specialist I - Hyderabad",
    "company": "Deloitte",
    "matchedWatchlist": "Deloitte",
    "isTech": true,
@@ -54959,6 +55260,8 @@
    "degreeLevel": "UG",
    "degreeText": "B. Tech / BE",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "Microsoft Office",
     "Windows",
@@ -55139,6 +55442,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "B.Tech/M.Tech",
    "experience": "1–6 years",
+   "expLevel": "one",
+   "expSays": "1–6 years",
    "keySkills": [
     "c",
     "python",
@@ -55294,6 +55599,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "0–4 years",
+   "expLevel": "fresher",
+   "expSays": "0–4 years",
    "keySkills": [
     "pcr",
     "cloning",
@@ -55405,6 +55712,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "c++",
     "grpc",
@@ -55636,6 +55945,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "cad",
     "cae",
@@ -55962,6 +56273,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "java",
     "python",
@@ -56539,6 +56852,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "Bachelors/Masters",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "sql",
@@ -57128,6 +57443,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "c",
     "c++",
@@ -57520,6 +57837,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "rest apis",
     "websocket",
@@ -57630,6 +57949,8 @@
    "degreeLevel": "PG",
    "degreeText": "MCA",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "net maui",
     "azure devops",
@@ -58088,6 +58409,8 @@
    "roleLabel": "Application Development",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Freshers welcome",
    "keySkills": [
     "sap bobj",
     "crystal reports",
@@ -58267,6 +58590,8 @@
    "degreeLevel": "PG",
    "degreeText": "B.E/B.Tech/M.E/M.Tech",
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "system verilog",
     "uvm",
@@ -58771,6 +59096,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–5 years",
+   "expLevel": "one",
+   "expSays": "1–5 years",
    "keySkills": [
     "sql",
     "python"
@@ -59481,6 +59808,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "edi maps",
     "edi standards"
@@ -59537,6 +59866,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "sql",
     "snowflake",
@@ -59777,6 +60108,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "typescript",
     "javascript",
@@ -59834,6 +60167,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "tableau",
     "sql",
@@ -60132,6 +60467,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–3 years",
+   "expLevel": "fresher",
+   "expSays": "0–3 years",
    "keySkills": [
     "azure cloud",
     "windows server",
@@ -60370,6 +60707,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "java",
     "python",
@@ -60655,6 +60994,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "python",
     "spark",
@@ -60718,6 +61059,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": null,
    "experience": "1–5 years",
+   "expLevel": "one",
+   "expSays": "1–5 years",
    "keySkills": [
     "python",
     "sql",
@@ -61326,6 +61669,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–10 years",
+   "expLevel": "one",
+   "expSays": "1–10 years",
    "keySkills": [
     "c# .net",
     "medidata rave",
@@ -61383,6 +61728,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–10 years",
+   "expLevel": "one",
+   "expSays": "1–10 years",
    "keySkills": [
     "c# .net",
     "medidata rave",
@@ -61847,6 +62194,8 @@
    "roleLabel": "Python Development",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Recent graduates welcome",
    "keySkills": [
     "python",
     "rest apis",
@@ -62624,6 +62973,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "java",
     "spring boot",
@@ -62686,6 +63037,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "java",
     "spring boot",
@@ -62860,6 +63213,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "B.E./B.Tech/M.Tech",
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "python",
     "typescript",
@@ -62927,6 +63282,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "java",
     "python",
@@ -63466,6 +63823,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "B.Tech/ M.Tech",
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "verilog",
     "systemverilog",
@@ -63525,6 +63884,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "splunk enterprise security",
     "cloud security",
@@ -63588,6 +63949,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "python",
     "machine learning",
@@ -63646,6 +64009,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "git",
@@ -63707,6 +64072,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "c",
     "c++",
@@ -64883,6 +65250,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "sql",
     "ms access",
@@ -64939,6 +65308,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
    "keySkills": [
     "sql",
     "ms access",
@@ -65051,6 +65422,8 @@
    "degreeLevel": "UG/PG",
    "degreeText": "Electronics/Electrical/Mechanical",
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "linux",
     "python",
@@ -65388,6 +65761,8 @@
    "roleLabel": "Software Development",
    "degreeLevel": "UG",
    "degreeText": "Bachelors",
+   "expLevel": "fresher",
+   "expSays": "Recent graduates welcome",
    "keySkills": [
     "c",
     "c++"
@@ -65437,6 +65812,8 @@
    "roleLabel": "Digital Technology Associate",
    "degreeLevel": "UG",
    "degreeText": null,
+   "expLevel": "fresher",
+   "expSays": "Recent graduates welcome",
    "keySkills": [
     "product management",
     "software development"
@@ -65919,6 +66296,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "python",
     "langchain",
@@ -66045,6 +66424,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "python",
     "agentic ai",
@@ -66263,6 +66644,8 @@
    "degreeLevel": "PG",
    "degreeText": "PhD",
    "experience": "1 year",
+   "expLevel": "one",
+   "expSays": "1 year",
    "keySkills": [
     "C++",
     "Python",
@@ -66878,6 +67261,8 @@
    "degreeLevel": "PG",
    "degreeText": "computer science",
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "sql",
     "spark",
@@ -67269,6 +67654,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "java",
     "rest apis",
@@ -67602,6 +67989,8 @@
    "degreeLevel": "PG",
    "degreeText": null,
    "experience": "0 years",
+   "expLevel": "fresher",
+   "expSays": "0 years",
    "keySkills": [
     "c++",
     "python"
@@ -67950,6 +68339,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–1 years",
+   "expLevel": "fresher",
+   "expSays": "0–1 years",
    "keySkills": [
     "react.js",
     "python",
@@ -68015,6 +68406,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "sql",
@@ -68126,6 +68519,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "0–2 years",
+   "expLevel": "fresher",
+   "expSays": "0–2 years",
    "keySkills": [
     "ab suite",
     "mcp",
@@ -68253,6 +68648,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [
     "python",
     "django",
@@ -68372,6 +68769,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
    "keySkills": [
     "c#",
     "aws",
@@ -68923,6 +69322,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "java",
     "springboot"
@@ -68949,8 +69350,7 @@
   },
   {
    "id": "4469244033",
-   "title": "FrontEnd Associate Engineer",
-   "slugTitle": "Associate Engineer - FrontEnd 2",
+   "title": "Associate Engineer - FrontEnd 2",
    "company": "Accenture in India",
    "matchedWatchlist": "Accenture",
    "isTech": true,
@@ -68981,6 +69381,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "html",
     "css",
@@ -69039,6 +69441,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "java",
     "springboot"
@@ -69093,6 +69497,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "java",
     "springboot"
@@ -69143,6 +69549,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "microsoft exchange",
     "microsoft 365",
@@ -69258,6 +69666,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "java",
     "springboot"
@@ -69317,6 +69727,8 @@
    "degreeLevel": "UG",
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "html",
     "css",
@@ -69632,6 +70044,8 @@
    "degreeLevel": "UG",
    "degreeText": "B.Tech",
    "experience": "0–3 years",
+   "expLevel": "fresher",
+   "expSays": "0–3 years",
    "keySkills": [
     "scada",
     "networking",
@@ -71235,8 +71649,7 @@
   },
   {
    "id": "ats:workday:automationanywhere:wd5:AutomationAnywhereJobs:JR1474",
-   "title": "Software Development Engineer in Test Intern",
-   "slugTitle": "Software Development Engineer in Test Intern (SDET Intern)",
+   "title": "Software Development Engineer in Test Intern (SDET Intern)",
    "company": "Automation Anywhere",
    "matchedWatchlist": "Automation Anywhere",
    "isTech": true,
@@ -72083,8 +72496,7 @@
   },
   {
    "id": "4466328563",
-   "title": "CAD Intern",
-   "slugTitle": "Intern - CAD 2",
+   "title": "Intern - CAD 2",
    "company": "Valeo",
    "matchedWatchlist": "Valeo",
    "isTech": true,
@@ -72135,8 +72547,7 @@
   },
   {
    "id": "4466334472",
-   "title": "CAD Intern",
-   "slugTitle": "Intern - CAD 1",
+   "title": "Intern - CAD 1",
    "company": "Valeo",
    "matchedWatchlist": "Valeo",
    "isTech": true,
@@ -72830,8 +73241,7 @@
   },
   {
    "id": "ats:workday:nvidia:wd5:NVIDIAExternalCareerSite:JR2024423",
-   "title": "AI ML Intern Wireless L1 L2",
-   "slugTitle": "PhD Intern, AI ML in Wireless L1/L2 - Fall 2026",
+   "title": "PhD Intern, AI ML in Wireless L1/L2 - Fall 2026",
    "company": "Nvidia",
    "matchedWatchlist": "Nvidia",
    "isTech": true,
@@ -72977,6 +73387,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–2 years",
+   "expLevel": "one",
+   "expSays": "1–2 years",
    "keySkills": [
     "javascript",
     "nodejs",
@@ -73028,6 +73440,8 @@
    "degreeLevel": null,
    "degreeText": null,
    "experience": "1–3 years",
+   "expLevel": "one",
+   "expSays": "1–3 years",
    "keySkills": [],
    "stipendStatus": "unknown",
    "postedText": null,
