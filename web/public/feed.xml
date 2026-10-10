@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 19:16:36 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 19:19:29 GMT</lastBuildDate>
+  <item>
+    <title>Implementation Engineer — Seismic</title>
+    <link>https://interndoor.com/jobs/seismic-implementation-engineer-4430570534</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/seismic-implementation-engineer-4430570534</guid>
+    <pubDate>Sat, 10 Oct 2026 19:19:29 GMT</pubDate>
+    <description>Company: Seismic · Location: Hyderabad, Telangana, India
+• Design and implement integration solutions for enterprise clients
+• Lead projects with cross-functional teams across different geographies
+• Collaborate with product and engineering teams to deliver custom solutions</description>
+  </item>
   <item>
     <title>Dotnet Developer — NTT DATA North America</title>
     <link>https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478064935</link>
@@ -500,16 +510,6 @@
 • Build and maintain CI/CD pipelines with Jenkins, GitLab CI, and GitHub Actions
 • Automate workflows using Docker, Kubernetes, and Helm for scalable systems
 • Monitor and optimize infrastructure with Prometheus and Grafana</description>
-  </item>
-  <item>
-    <title>Returnship - Postgre + Tableau — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-returnship-postgre-tableau-4467865576</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-returnship-postgre-tableau-4467865576</guid>
-    <pubDate>Fri, 09 Oct 2026 18:53:38 GMT</pubDate>
-    <description>Company: Cognizant · Location: Pune Division, Maharashtra, India
-• Build dashboards and reports using Tableau and PostgreSQL
-• Write SQL queries for data analysis and reporting
-• Support business decisions with data insights</description>
   </item>
 </channel>
 </rss>
