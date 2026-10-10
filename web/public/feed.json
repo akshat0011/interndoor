@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478064935",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478064935",
+      "title": "Dotnet Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Gurgaon, Haryana, India\n• Develop and maintain backend systems using C# and .NET Core\n• Work with microservices, RESTful APIs, and SQL databases\n• Collaborate on secure coding practices and cloud infrastructure",
+      "date_published": "2026-10-10T19:16:36.955Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-java-data-engineer-irc300002-4440234392",
+      "url": "https://interndoor.com/jobs/globallogic-java-data-engineer-irc300002-4440234392",
+      "title": "Java Data Engineer — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Bengaluru, Karnataka, India\n• Design and implement data pipelines using Kafka and Spark\n• Develop Java backend services with strong focus on API and DSA\n• Work on high-tech projects with global brands in healthcare and telecom",
+      "date_published": "2026-10-10T18:53:30.164Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-embedded-c-irc301402-4448741754",
+      "url": "https://interndoor.com/jobs/globallogic-embedded-c-irc301402-4448741754",
+      "title": "Embedded C IRC301402 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Chennai, Tamil Nadu, India\n• Develop software for Linux-based embedded systems\n• Work with C/C++ and Linux kernel tools\n• Collaborate in a global team on high-tech projects",
+      "date_published": "2026-10-10T18:41:08.988Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-music-quality-assurance-technician-music-visual-experience-team-4468847215",
+      "url": "https://interndoor.com/jobs/amazon-music-quality-assurance-technician-music-visual-experience-team-4468847215",
+      "title": "Quality Assurance Technician — Amazon Music",
+      "content_text": "Company: Amazon Music · Location: Bengaluru, Karnataka, India\n• Test new features, write and maintain test cases, debug automation scripts\n• Use Python, Perl, Ruby for scripting; experience with Selenium/SOAPUI preferred\n• Work in a fast-paced team on music and culture products with global reach",
+      "date_published": "2026-10-10T18:19:54.631Z",
+      "authors": [
+        {
+          "name": "Amazon Music"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/valeo-engineer-testing-4469179991",
       "url": "https://interndoor.com/jobs/valeo-engineer-testing-4469179991",
       "title": "Test Engineer — Valeo",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-aiml-and-data-science-4467882209",
-      "url": "https://interndoor.com/jobs/cognizant-aiml-and-data-science-4467882209",
-      "title": "AIML and Data Science — Cognizant",
-      "content_text": "Company: Cognizant · Location: Greater Kolkata Area\n• Build and deploy deep learning models for text, image, and video analysis\n• Use Python/R/SQL and cloud tools for data preprocessing and feature engineering\n• Collaborate with domain teams to design AI solutions for business challenges",
-      "date_published": "2026-10-09T18:53:11.721Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-devops-engineer-irc299946-4449375888",
-      "url": "https://interndoor.com/jobs/globallogic-devops-engineer-irc299946-4449375888",
-      "title": "DevOps Engineer — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Gurgaon, Haryana, India\n• Build and maintain CI/CD pipelines with Jenkins, GitLab CI, and GitHub Actions\n• Automate workflows using Docker, Kubernetes, and Helm for scalable systems\n• Monitor and optimize infrastructure with Prometheus and Grafana",
-      "date_published": "2026-10-09T18:51:27.345Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-sdet-test-engineer-with-playwright-c-4431447090",
-      "url": "https://interndoor.com/jobs/cognizant-sdet-test-engineer-with-playwright-c-4431447090",
-      "title": "Test Engineer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Write automated tests for web and API services using Playwright and C#\n• Set up and maintain CI/CD pipelines on Azure for continuous integration\n• Work with development teams to ensure quality in client projects",
-      "date_published": "2026-10-09T18:50:57.022Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/abb-solution-engineer-4469191491",
-      "url": "https://interndoor.com/jobs/abb-solution-engineer-4469191491",
-      "title": "DevOps Engineer — ABB",
-      "content_text": "Company: ABB · Location: Bengaluru East, Karnataka, India\n• Build and maintain CI/CD pipelines for on-premise and cloud platforms\n• Automate testing with Python, Selenium, and PyTest for UI and API\n• Collaborate with teams on requirements and deliverables in a hybrid model",
-      "date_published": "2026-10-09T18:43:50.128Z",
-      "authors": [
-        {
-          "name": "ABB"
         }
       ]
     }
