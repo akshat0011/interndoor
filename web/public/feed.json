@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/hitachi-energy-associate-project-engineer-4466066235",
+      "url": "https://interndoor.com/jobs/hitachi-energy-associate-project-engineer-4466066235",
+      "title": "Associate Project Engineer — Hitachi Energy",
+      "content_text": "Company: Hitachi Energy · Location: Chennai, Tamil Nadu, India\n• Analyze software requirements and interfaces between hardware and software\n• Write code in programming and scripting languages\n• Support testing, deployment, and maintenance of software\n• Work under close supervision with minimal complexity",
+      "date_published": "2026-10-10T15:03:25.048Z",
+      "authors": [
+        {
+          "name": "Hitachi Energy"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649",
       "url": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649",
       "title": "Apprentice. IT. Development Program — Eaton",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/expedia-group-security-engineer-application-security-4476826709",
-      "url": "https://interndoor.com/jobs/expedia-group-security-engineer-application-security-4476826709",
-      "title": "Application Security Engineer — Expedia Group",
-      "content_text": "Company: Expedia Group · Location: Gurgaon, Haryana, India\n• Review code for security flaws and help fix them in software projects\n• Use tools like SAST and DAST to scan apps and automate security checks\n• Work with engineers to build secure systems and prevent data leaks",
-      "date_published": "2026-10-09T18:29:28.146Z",
-      "authors": [
-        {
-          "name": "Expedia Group"
         }
       ]
     }
