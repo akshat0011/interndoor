@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791595429009,
+ "generatedAt": 1791595769164,
  "region": "IN",
  "regionName": "India",
- "count": 1287,
- "techCount": 1287,
+ "count": 1289,
+ "techCount": 1289,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -487,7 +487,7 @@
  ],
  "jobs": [
   {
-   "id": "4478002328",
+   "id": "4478009111",
    "title": "Developer L2",
    "slugTitle": "DEVELOPER L2",
    "company": "Wipro",
@@ -505,27 +505,25 @@
    "skills": [
     ".net"
    ],
-   "summary": "This role involves coding and testing applications while collaborating with teams to ensure development meets client needs. It suits students with experience in full-stack .NET development seeking hands-on coding and documentation tasks.",
+   "summary": "This role involves coding and testing web applications using .NET, working with teams to meet client needs, and maintaining project documentation. It suits students with experience in full-stack development looking for a structured technical role.",
    "bullets": [
-    "Code and test applications following quality standards and client specs",
-    "Work with teams to align development with project needs",
-    "Maintain documentation and contribute to process improvements"
+    "Write and test code for web applications using .NET framework",
+    "Collaborate with teams to ensure client requirements are met",
+    "Maintain documentation and contribute to standard processes"
    ],
-   "roleLabel": "Software development",
+   "roleLabel": "Web Application Development",
    "degreeLevel": null,
    "degreeText": null,
-   "experience": "1–3 years",
    "keySkills": [
-    "fullstack microsoft .net",
-    "smart web app"
+    "c#"
    ],
    "stipendStatus": "unknown",
-   "postedText": "8 minutes ago",
-   "postedAt": 1791591432571,
-   "firstSeenAt": 1791591912576,
-   "lastSeenAt": 1791591912576,
-   "url": "https://www.linkedin.com/jobs/view/4478002328/",
-   "applyUrl": "https://wipro-limited.contactrh.com/jobs/12/44499021/en_US",
+   "postedText": "1 hour ago",
+   "postedAt": 1791592062698,
+   "firstSeenAt": 1791595662702,
+   "lastSeenAt": 1791595662702,
+   "url": "https://www.linkedin.com/jobs/view/4478009111/",
+   "applyUrl": "https://wipro-limited.contactrh.com/jobs/12/44499051/en_US",
    "description": null,
    "roleFingerprint": "9663aff9b2",
    "cardFacts": [
@@ -534,6 +532,99 @@
    ],
    "category": "software",
    "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4478011017",
+   "title": "Cyber Security Analyst L2",
+   "slugTitle": "CYBER SECURITY ANALYST L2",
+   "company": "Wipro",
+   "matchedWatchlist": "Wipro",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/wipro.jpg",
+   "location": "Ahmedabad, Gujarat, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves monitoring network activity for security threats, analyzing incidents, and supporting vulnerability checks. It suits students with a background in cybersecurity or related fields looking to gain hands-on experience in threat detection and incident management.",
+   "bullets": [
+    "Review logs to detect unauthorized access and malware",
+    "Triage security incidents and document findings",
+    "Support vulnerability assessments and data gathering"
+   ],
+   "roleLabel": "Cybersecurity analyst",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "splunk security analytics"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791591988321,
+   "firstSeenAt": 1791595588324,
+   "lastSeenAt": 1791595588324,
+   "url": "https://www.linkedin.com/jobs/view/4478011017/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4478011017/",
+   "description": null,
+   "roleFingerprint": "b519a0c28e",
+   "cardFacts": [
+    "Ahmedabad"
+   ],
+   "category": "misc",
+   "family": "secops",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4478010030",
+   "title": "Cyber Security Analyst L1",
+   "slugTitle": "CYBER SECURITY ANALYST L1",
+   "company": "Wipro",
+   "matchedWatchlist": "Wipro",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/wipro.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves monitoring network activity for threats, responding to security incidents, and assisting with vulnerability checks. It suits students interested in cybersecurity operations and system protection.",
+   "bullets": [
+    "Review logs to detect malware and unauthorized access",
+    "Triage security incidents and document findings",
+    "Support vulnerability assessments and data collection"
+   ],
+   "roleLabel": "Cybersecurity Operations",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "trend micro antivirus",
+    "deep security"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791591917501,
+   "firstSeenAt": 1791595517504,
+   "lastSeenAt": 1791595517504,
+   "url": "https://www.linkedin.com/jobs/view/4478010030/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4478010030/",
+   "description": null,
+   "roleFingerprint": "d9e6b32cae",
+   "cardFacts": [
+    "Bengaluru"
+   ],
+   "category": "misc",
+   "family": "secops",
    "region": "IN",
    "verified": true
   },
@@ -575,7 +666,7 @@
    "postedText": "6 minutes ago",
    "postedAt": 1791591426768,
    "firstSeenAt": 1791591786775,
-   "lastSeenAt": 1791595385913,
+   "lastSeenAt": 1791595483817,
    "url": "https://www.linkedin.com/jobs/view/4477895308/",
    "applyUrl": "https://joinbytedance.com/search/7656823895123446069",
    "description": null,
@@ -636,7 +727,7 @@
    "postedText": "1 hour ago",
    "postedAt": 1791588301343,
    "firstSeenAt": 1791591901351,
-   "lastSeenAt": 1791591901351,
+   "lastSeenAt": 1791595483817,
    "url": "https://www.linkedin.com/jobs/view/4475259744/",
    "applyUrl": "https://www.amazon.jobs/jobs/10566528/applied-scientist-i-ads-trust-science?cmpid=bsp-amazon-science",
    "description": null,
