@@ -6,11 +6,35 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/wipro-developer-l2-4478002328",
-      "url": "https://interndoor.com/jobs/wipro-developer-l2-4478002328",
+      "id": "https://interndoor.com/jobs/wipro-developer-l2-4478009111",
+      "url": "https://interndoor.com/jobs/wipro-developer-l2-4478009111",
       "title": "Developer L2 — Wipro",
-      "content_text": "Company: Wipro · Location: Chennai, Tamil Nadu, India\n• Code and test applications following quality standards and client specs\n• Work with teams to align development with project needs\n• Maintain documentation and contribute to process improvements",
-      "date_published": "2026-10-10T00:17:12.571Z",
+      "content_text": "Company: Wipro · Location: Chennai, Tamil Nadu, India\n• Write and test code for web applications using .NET framework\n• Collaborate with teams to ensure client requirements are met\n• Maintain documentation and contribute to standard processes",
+      "date_published": "2026-10-10T00:27:42.698Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wipro-cyber-security-analyst-l2-4478011017",
+      "url": "https://interndoor.com/jobs/wipro-cyber-security-analyst-l2-4478011017",
+      "title": "Cyber Security Analyst L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Ahmedabad, Gujarat, India\n• Review logs to detect unauthorized access and malware\n• Triage security incidents and document findings\n• Support vulnerability assessments and data gathering",
+      "date_published": "2026-10-10T00:26:28.321Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/wipro-cyber-security-analyst-l1-4478010030",
+      "url": "https://interndoor.com/jobs/wipro-cyber-security-analyst-l1-4478010030",
+      "title": "Cyber Security Analyst L1 — Wipro",
+      "content_text": "Company: Wipro · Location: Bengaluru, Karnataka, India\n• Review logs to detect malware and unauthorized access\n• Triage security incidents and document findings\n• Support vulnerability assessments and data collection",
+      "date_published": "2026-10-10T00:25:17.501Z",
       "authors": [
         {
           "name": "Wipro"
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "S&P Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/citi-apps-dev-programmer-analyst-4449310314",
-      "url": "https://interndoor.com/jobs/citi-apps-dev-programmer-analyst-4449310314",
-      "title": "Apps Dev Programmer Analyst — Citi",
-      "content_text": "Company: Citi · Location: Pune Division, Maharashtra, India\n• Analyze systems and implement solutions for complex business issues\n• Work with Java, SQL, and Oracle databases in energy trading systems\n• Support application development and troubleshooting in a full-time role",
-      "date_published": "2026-10-09T14:40:55.552Z",
-      "authors": [
-        {
-          "name": "Citi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/netapp-software-engineer-4475231472",
-      "url": "https://interndoor.com/jobs/netapp-software-engineer-4475231472",
-      "title": "Software Engineer — NetApp",
-      "content_text": "Company: NetApp · Location: Bengaluru, Karnataka, India\n• Develop and operate cloud-native services using containers and microservices\n• Collaborate across teams to deliver storage and cloud infrastructure solutions\n• Own features from design through production and drive engineering excellence",
-      "date_published": "2026-10-09T14:40:25.118Z",
-      "authors": [
-        {
-          "name": "NetApp"
         }
       ]
     }
