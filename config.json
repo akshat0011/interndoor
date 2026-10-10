@@ -1425,7 +1425,7 @@
     "budgetMinutes": 1.5,
     "perRunLimit": 40,
     "model": "qwen3:14b",
-    "_model_note": "The larger local model names titles (his call, 10 Oct 2026): on the same 50 live titles it named the two near-identical Citi PKI roles alike where the small one did not. ~4.5 s a title against ~1.5 s, and one model swap per scan that has new postings. Enrichment and the facts read stay on the small model.",
+    "_model_note": "The larger local model names titles (his call, 10 Oct 2026): on the same 50 live titles it named the two near-identical Citi PKI roles alike where the small one did not. ~4.5 s a title against ~1.5 s, and one model swap per scan that has new postings. Only the TITLE call uses it: the discipline is a separate call on the small model with its audited prompt (DISCIPLINE_SYSTEM), so the shelves do not move with the titles. Enrichment and the facts read stay on the small model too.",
     "moveToMisc": true,
     "_note": "Clean titles and disciplines from the local model (src/titles.js), his ask 30 Sep 2026. Each scan reads up to perRunLimit new postings within budgetMinutes BEFORE the publish; bin/clean-titles.js reads the rest of the store. A title is only ever the original's own words (groundTitle) and the page URL keeps the original title. moveToMisc lets a Software-shelf role move to Misc on two signals (shelfMove). Turned on 30 Sep 2026 after the full India read: 32 of 931 live India roles move (IT/app support, SAP/EPM functional, strategy consulting, MBA, bioinformatics, ops); 0 on the US and UK. Set false to put every one back on Software at the next publish."
   },

@@ -6,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { jobParts, composeJob } from '../src/telegram.js';
 import { readdirSync } from 'node:fs';
-import { groundTitle, shelfMove, publishedTitle, titleTargets, saveTitleReading, MISC_DISCIPLINES, DISCIPLINES, TITLE_SCHEMA, TITLE_MAX, STANDARD_NAMES, TITLE_SYSTEM } from '../src/titles.js';
+import { groundTitle, shelfMove, publishedTitle, titleTargets, saveTitleReading, MISC_DISCIPLINES, DISCIPLINES, TITLE_SCHEMA, TITLE_MAX, STANDARD_NAMES, TITLE_SYSTEM, DISCIPLINE_SYSTEM, DISCIPLINE_SCHEMA } from '../src/titles.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -76,6 +76,8 @@ check('a title naming a standard job keeps it', groundTitle('Full Stack Develope
 check('a rename must be a whole standard name', groundTitle('Infrastructure Agent Developer', 'AI Infra Agent Dev'), null);
 check('a title that names a role may not gain a different one', groundTitle('Java Developer', 'Java Specialist'), null);
 check('a role-less title may gain only Developer or Engineer', groundTitle('Java Security Developer', 'Java Fullstack IRC300668'), null);
+check('a returnship keeps saying so', groundTitle('Data Integration Returnship', 'Returnship - Data Integration'), 'Data Integration Returnship');
+check('...and may not drop it', groundTitle('Data Integration Engineer', 'Returnship - Data Integration'), null);
 check('a bare word is too little', groundTitle('Analyst', 'Analyst – Demand Forecasting'), null);
 check('a one-word title may stay one word', groundTitle('Apprentice', 'Apprentice'), 'Apprentice');
 check('no more than five words', groundTitle('Backend Java Spring Boot Software Engineer', 'Backend Java Spring Boot Software Engineer'), null);
@@ -85,7 +87,15 @@ check('an internship may not be added', groundTitle('Software Engineer Intern', 
 check('the prompt carries the standard names', STANDARD_NAMES.every((n) => TITLE_SYSTEM.includes(n)), true);
 check('and the larger model is configured for titles',
   JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).titles.model, 'qwen3:14b');
-check('cleanTitles reads it', /const model = cfg\.titles\?\.model \|\| /.test(readFileSync(new URL('../src/ollama.js', import.meta.url), 'utf8')), true);
+{
+  const ol = readFileSync(new URL('../src/ollama.js', import.meta.url), 'utf8');
+  const fn = ol.slice(ol.indexOf('export async function cleanTitles('), ol.indexOf('/* ----', ol.indexOf('export async function cleanTitles(')));
+  check('the cleanTitles body was found', fn.length > 500, true);
+  check('titles use the configured model', /const titleModel = cfg\.titles\?\.model \|\| /.test(fn) && /model: titleModel, system: TITLE_SYSTEM/.test(fn), true);
+  check('the discipline stays on the small model', /const disciplineModel = cfg\.enrich\?\.model \|\| /.test(fn) && /model: disciplineModel, system: DISCIPLINE_SYSTEM/.test(fn), true);
+  check('the discipline is read before the titles', fn.indexOf('system: DISCIPLINE_SYSTEM') > 0 && fn.indexOf('system: DISCIPLINE_SYSTEM') < fn.indexOf('system: TITLE_SYSTEM'), true);
+  check('a posting is reported only once both are read', /if \(disciplines && !read\.has\(i\)\) continue;/.test(fn), true);
+}
 
 console.log('\n== Software moves to Misc on TWO signals, and only Software moves ==');
 check('Accenture strategy analyst moves', shelfMove('software', 'consulting_strategy', 'I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS'), 'misc');
@@ -121,7 +131,10 @@ check('hardware is never moved', shelfMove('hardware', 'business_sales_marketing
 check('misc is never promoted', shelfMove('misc', 'software_development', 'Business Analyst'), null);
 check('an unread posting never moves', shelfMove('software', null, 'Business Strategy Analyst'), null);
 check('every Misc discipline is on the model\'s list', [...MISC_DISCIPLINES].every((d) => DISCIPLINES.includes(d)), true);
-check('the schema offers exactly that list', TITLE_SCHEMA.properties.discipline.enum, DISCIPLINES);
+check('the discipline schema offers exactly that list', DISCIPLINE_SCHEMA.properties.discipline.enum, DISCIPLINES);
+check('the title call asks for a title only', Object.keys(TITLE_SCHEMA.properties), ['title']);
+check('the discipline prompt keeps its audited words', /core_engineering \(mechanical, civil, electrical, chemical, manufacturing, process\)/.test(DISCIPLINE_SYSTEM)
+  && !/discipline/.test(TITLE_SYSTEM), true);
 
 console.log('\n== the published title: an owner edit, then the clean title, then the original ==');
 check('the clean title', publishedTitle({ title: 'S&C GN - AI Analyst', display_title: 'AI Analyst' }), 'AI Analyst');
