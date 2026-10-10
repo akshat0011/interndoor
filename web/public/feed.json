@@ -30,18 +30,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/youtube-channel-unemployed-4475280002",
-      "url": "https://interndoor.com/jobs/youtube-channel-unemployed-4475280002",
-      "title": "Unemployed — Youtube Channel",
-      "content_text": "Company: Youtube Channel · Location: Raurkela, Odisha, India",
-      "date_published": "2026-10-10T03:30:20.130Z",
-      "authors": [
-        {
-          "name": "Youtube Channel"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/wipro-developer-l2-4478009111",
       "url": "https://interndoor.com/jobs/wipro-developer-l2-4478009111",
       "title": "Developer L2 — Wipro",
@@ -602,6 +590,18 @@
       "authors": [
         {
           "name": "Linde"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996",
+      "url": "https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996",
+      "title": "Machine Learning Engineer (Model Bring-Up) — Cerebras",
+      "content_text": "Company: Cerebras · Location: Bengaluru, Karnataka, India\n• Bring up models on AI hardware, convert weights, and ensure correctness\n• Develop MLIR lowering paths and optimize performance across compiler and runtime\n• Collaborate with hardware and kernel teams to improve inference efficiency",
+      "date_published": "2026-10-09T14:54:24.573Z",
+      "authors": [
+        {
+          "name": "Cerebras"
         }
       ]
     }
