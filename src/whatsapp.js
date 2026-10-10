@@ -921,6 +921,15 @@ export function writePending(store, code, ids) {
   } catch { /* a backlog that cannot be saved must not fail the run */ }
 }
 
+/**
+ * How long a posting may wait for its experience requirement to be read before
+ * it is announced anyway. The facts pass runs before every publish, so a
+ * posting normally waits one run at most; the ceiling is for one whose read
+ * keeps slipping (not enriched yet, or Ollama down), which must not sit on the
+ * queue for ever.
+ */
+export const FACTS_WAIT_MS = 6 * 3_600_000;
+
 export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
   const conf = cfg.whatsapp ?? {};
   if (!conf.enabled) return { sent: 0, reason: 'disabled' };
@@ -959,6 +968,21 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
      no software job — src/channelgate.js. The role stays on the site; it is
      only not pushed to every follower's phone. A held id is dropped from the
      backlog like a misc one, so it never comes back on a later run. */
+  /* NOT BEFORE ITS EXPERIENCE IS READ (his ask, 10 Oct 2026). A role asking
+     2+ years is hidden by publish (asksExperience), but only once extractFacts
+     has read the posting. That read runs before the publish now; a posting it
+     has not reached yet (its budget ran out, or the posting is not enriched)
+     waits on the queue for the next run instead of going out on the strength
+     of a title, for at most FACTS_WAIT_MS. Asked after the shelf and the
+     channel's bar, so a role that would never go is dropped, not kept. */
+  const candidates = [];
+  for (const code of regions) candidates.push(...readPending(store, code));
+  for (const row of jobs ?? []) candidates.push(String(row.job_id ?? row.id));
+  let unread = new Set();
+  try { unread = store?.factsUnread?.(candidates, Date.now() - FACTS_WAIT_MS) ?? new Set(); }
+  catch { /* a store that cannot answer must not hold every listing back */ }
+  const waiting = [];
+
   const mine = [];
   const seen = new Set();
   let misc = 0;
@@ -969,6 +993,7 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
     if (!announceable(pub.category)) { misc++; return; }
     const why = channelRefusal(pub);
     if (why) { const k = why.replace(/:.*/, ''); held.set(k, (held.get(k) ?? 0) + 1); return; }
+    if (unread.has(id)) { waiting.push({ code, id }); return; }
     mine.push({ job: pub, code, id });
   };
   for (const code of regions) {
@@ -983,7 +1008,13 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
   if (misc) log.info(`WhatsApp: ${misc} misc listing${misc === 1 ? '' : 's'} left to the site, not the channel.`);
   const below = [...held.values()].reduce((a, b) => a + b, 0);
   if (below) log.info(`WhatsApp: ${below} listing${below === 1 ? '' : 's'} below the channel's bar left to the site (${[...held].map(([k, n]) => `${k} ${n}`).join(', ')}).`);
-  if (!mine.length) return { sent: 0, reason: 'nothing on these boards' };
+  if (waiting.length) log.info(`WhatsApp: ${waiting.length} listing${waiting.length === 1 ? '' : 's'} wait${waiting.length === 1 ? 's' : ''} for the posting's experience requirement to be read — next run.`);
+  const waitingIn = (code) => waiting.filter((w) => w.code === code).map((w) => w.id);
+  if (!mine.length) {
+    /* Nothing is sent, so the backlog is left as it was, plus what waits. */
+    if (waiting.length) for (const code of regions) writePending(store, code, [...readPending(store, code), ...waitingIn(code)]);
+    return { sent: 0, reason: waiting.length ? 'waiting for facts' : 'nothing on these boards' };
+  }
 
   /* ONE SCAN'S WORTH, and the rest wait for the next — the same call the reel
      sweep makes. This is a UI being driven at roughly six seconds a message,
@@ -1082,7 +1113,7 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
        before it got there. Written per region, oldest first, so the next run
        picks them up ahead of its own new rows. */
     const left = mine.filter((m) => !posted.has(m.id));
-    for (const code of regions) writePending(store, code, left.filter((m) => m.code === code).map((m) => m.id));
+    for (const code of regions) writePending(store, code, [...left.filter((m) => m.code === code).map((m) => m.id), ...waitingIn(code)]);
     if (left.length) log.info(`WhatsApp: ${left.length} listing(s) queued for the next run.`);
   }
   return { sent };
