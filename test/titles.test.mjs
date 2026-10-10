@@ -26,7 +26,7 @@ check('"Custom Software Engineer" is not "Agentic AI Engineer"', groundTitle('Ag
 check('"Campus Summer Intern" is not "Data Science Intern"', groundTitle('Data Science Intern', 'Campus Summer Intern'), null);
 check('"Software Developer" is not "Full Stack Developer"', groundTitle('Full Stack Developer', 'Software Developer'), null);
 // 10 Oct 2026: a title naming no standard job may take one, so this rename now stands.
-check('"Tech Specialist, DevOps" may be named "DevOps Engineer"', groundTitle('DevOps Engineer', 'Tech Specialist, DevOps - R01571826'), 'DevOps Engineer');
+check('"Tech Specialist, DevOps" may be named "DevOps Engineer"', groundTitle('DevOps Engineer', 'Tech Specialist, DevOps - R01571826', '', { discipline: 'devops_cloud_sre' }), 'DevOps Engineer');
 
 console.log('\n== what the check allows ==');
 check('a dotted word\'s part: React.js -> React', groundTitle('React Developer', 'React.js Developer'), 'React Developer');
@@ -60,7 +60,32 @@ console.log('\n== the job and its level, nothing else (his ask, 10 Oct 2026) =='
 check('Amazon: the team goes, the level stays', groundTitle('Applied Scientist I', 'Applied Scientist I, Ads Trust Science', 'Amazon Science'), 'Applied Scientist I');
 check('...and the old reading, which lost the level, is refused', groundTitle('Ads Trust Science Applied Scientist', 'Applied Scientist I, Ads Trust Science'), null);
 check('NetApp: the department goes', groundTitle('App Programmer', 'Enterprise App Programmer', 'NetApp'), 'App Programmer');
-check('Citi: jargon is renamed to a standard job', groundTitle('Security Engineer', 'PKI Engineer - C# Expert', 'Citi'), 'Security Engineer');
+check('Citi: jargon is renamed to a standard job', groundTitle('Security Engineer', 'PKI Engineer - C# Expert', 'Citi', { discipline: 'security' }), 'Security Engineer');
+
+// A RENAME KEEPS THE JOB'S NOUN AND FITS ITS DISCIPLINE — every refusal from
+// the 10 Oct 2026 hand read of the live board, with the discipline stored on it.
+const sw = { discipline: 'software_development' };
+const dsa = { discipline: 'data_science_analytics' };
+check('Cat Modeler is not a Software Engineer', groundTitle('Software Engineer', 'Cat Modeler', 'EXL', sw), null);
+check('an Advisor is not a Data Analyst', groundTitle('Data Analyst', 'Product Sppt Tech Advisor', 'IQVIA', dsa), null);
+check('an InfoSec compliance manager is not a Data Engineer', groundTitle('Data Engineer', 'Data Protect & InfoSec Compl Assoc Mgr', 'Accenture in India', dsa), null);
+check('an annotation analyst is not a Data Engineer', groundTitle('Data Engineer', 'Science Annotation Ops Analyst', 'Amazon', dsa), null);
+check('a Developer does not become an Engineer', groundTitle('Data Engineer Associate', 'Associate Developer - IT', 'Flex', { discipline: 'data_engineering' }), null);
+check('a markets analyst filed under business is not a Data Analyst',
+  groundTitle('Data Analyst', 'Global Markets – Securitized Products - Asset Management - Analyst', 'Nomura', { discipline: 'business_sales_marketing_ops' }), null);
+check('a code-only title in core engineering is not a Software Engineer', groundTitle('Software Engineer', 'IT - LTSSHF - 20221132', 'Larsen & Toubro', { discipline: 'core_engineering' }), null);
+check('a teaching role named SDE is not a Software Engineer', groundTitle('Software Engineer', 'SDE + SME - Software Development & System Designs', 'Newton School', { discipline: 'core_engineering' }), null);
+check('no discipline read, no rename', groundTitle('Security Engineer', 'PKI Engineer - C# Expert', 'Citi'), null);
+check('SDE I is a Software Engineer I', groundTitle('Software Engineer I', 'SDE I', 'Hevo Data', sw), 'Software Engineer I');
+check('"SW Eng" keeps its Engineer', groundTitle('Software Engineer Associate', 'Associate, SW Eng', 'Northern Trust', { discipline: 'devops_cloud_sre' }), 'Software Engineer Associate');
+check('a hardware campus hire in core engineering may be a Hardware Engineer', groundTitle('Hardware Engineer', '2027 Campus Hire_ Engineer_ HW', 'Qualcomm', { discipline: 'core_engineering' }), 'Hardware Engineer');
+check('a title naming no job may take a standard name that fits', groundTitle('Data Scientist', 'Data Science', 'EXL', { discipline: 'data_science_analytics' }), 'Data Scientist');
+check('an AI/ML title is not renamed to a job without AI or ML', groundTitle('Software Engineering Trainee', 'AIML Trainee | 6-Month Fixed-Term Contract | 2026 Graduates', 'NatWest Group', sw), null);
+check('...and may be renamed to one with it', groundTitle('AI Engineer', 'Cognitive Engineer', 'EXL', { discipline: 'machine_learning_ai' }), 'AI Engineer');
+check('a lone grade closing the title is kept: Backend 2', groundTitle('Backend Associate Engineer', 'Associate Engineer - Backend 2', 'Accenture in India'), null);
+check('...and may stay', groundTitle('Backend Associate Engineer 2', 'Associate Engineer - Backend 2', 'Accenture in India'), 'Backend Associate Engineer 2');
+check('a year closing the title is not a grade', groundTitle('Software Engineer Intern', 'Software Engineer Intern 2027'), 'Software Engineer Intern');
+check('a field kept is the posting\'s own words', groundTitle('Highways Apprentice Engineer', 'Apprentice Engineer - Highways', 'Jacobs'), 'Highways Apprentice Engineer');
 // Amazon titles that were not in the instructions, as the model returned them.
 check('Amazon: another team dropped', groundTitle('Data Engineer I', 'Data Engineer I - FTC, Payfort'), 'Data Engineer I');
 check('Amazon: an internal L-band after a roman level', groundTitle('Software Dev Engineer I', 'Software Dev Engineer I, L4'), 'Software Dev Engineer I');

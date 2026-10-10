@@ -40,7 +40,15 @@ ok('"2+ years" -> "2+ yrs exp"', expShort({ experience: '2+ years' }) === '2+ yr
 ok('a graduation year alone -> nothing (it is not experience)', expShort({ experience: 'Graduating 2027' }) === '');
 ok('nothing stated -> nothing', expShort({}) === '');
 ok('the card shows the duration, else the labelled experience',
-  /if \(job\.duration\) meta\.append\(el\('span', null, job\.duration\)\);\s*else if \(expShort\(job\)\) meta\.append\(el\('span', null, expShort\(job\)\)\);/.test(app));
+  /if \(job\.duration\) meta\.append\(el\('span', null, job\.duration\)\);\s*else if \(expCard\(job\)\) meta\.append\(el\('span', null, expCard\(job\)\)\);/.test(app));
+const cardSrc = app.slice(app.indexOf('function expCard('), app.indexOf('\n}', app.indexOf('function expCard(')) + 2);
+const expCard = new Function(`${src}\n${cardSrc}; return expCard;`)();
+ok('the card reads stated years first', expCard({ experience: '1–2 years', expSays: '1–2 years' }) === '1–2 yrs exp', expCard({ experience: '1–2 years' }));
+ok('…labels years in expSays as experience, never a bare range', expCard({ expSays: '0–2 years' }) === '0–2 yrs exp', expCard({ expSays: '0–2 years' }));
+ok('…shows what the posting says in words', expCard({ expSays: 'Freshers welcome' }) === 'Freshers welcome');
+ok('…and nothing when the posting says nothing', expCard({}) === '');
+ok('a full-time pane says "Not stated in the posting" rather than nothing',
+  /else if \(fullTime\) addFact\('Experience', 'Not stated in the posting', 'muted'\);/.test(app));
 ok('the pane has an "Experience" fact', /if \(job\.experience\) addFact\('Experience', job\.experience\);/.test(app));
 ok('…and a "Duration" fact only when one is stated', /if \(job\.duration\) addFact\('Duration', job\.duration\);/.test(app));
 /* An unknown fact is withheld, never drawn as a dash (9 Oct 2026, the pane

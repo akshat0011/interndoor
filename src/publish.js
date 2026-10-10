@@ -18,6 +18,13 @@ import { applyJobEdits } from './owner.js';
 import { fullTimeWording, FULL_TIME } from './employment.js';
 import { roleCategory, settleShelves, OPEN_FAMILIES } from './rolefocus.js';
 import { shelfMove, publishedTitle } from './titles.js';
+import { experienceLevel } from './experience.js';
+
+/** `expLevel` and `expSays` for a full-time role whose posting says something about experience, else nothing. */
+function experienceFields(row) {
+  const { level, says } = experienceLevel(row);
+  return level ? { expLevel: level, expSays: says } : {};
+}
 
 const PUBLIC_DIR = join(ROOT, 'web', 'public');
 
@@ -120,6 +127,12 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
        a few percent of rows. */
     ...(row.deadline ? { deadline: row.deadline } : {}),
     ...(row.experience ? { experience: row.experience } : {}),
+    /* What the posting says about experience, for the Full-time tab's filter
+       (src/experience.js: stated years, or freshers, graduates or campus
+       hiring in words). Full-time only — an internship is for students by
+       definition — and absent when the posting says nothing, which is four
+       roles in five. Never guessed. */
+    ...(row.employment_type === FULL_TIME ? experienceFields(row) : {}),
     keySkills: parseJsonArray(row.key_skills),
     stipendStatus: row.stipend_status || (stipend ? 'paid' : 'unknown'),
     postedText: row.posted_text || null,

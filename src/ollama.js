@@ -726,12 +726,15 @@ export async function cleanTitles(items, cfg = {}, { budgetMinutes = cfg.titles?
       log.debug(`  title reading failed (${res.reason}) for "${job.title}".`);
       continue;
     }
-    const grounded = groundTitle(res.value.title, job.title, job.company);
+    // The rename checks need the role's discipline: the one just read, or the
+    // stored one when only titles are being read (bin/clean-titles, a backfill).
+    const grounded = groundTitle(res.value.title, job.title, job.company,
+      { discipline: disciplines ? read.get(i) : job.discipline });
     if (grounded && grounded !== job.title) cleaned++;
     if (!grounded) refused++;
     out.set(i, { displayTitle: grounded && grounded !== job.title ? grounded : null, ...(disciplines ? { discipline: read.get(i) } : {}) });
   }
-  log.info(`Titles: read ${out.size} posting(s) — ${cleaned} cleaned, ${refused} kept as posted because the model added words.`);
+  log.info(`Titles: read ${out.size} posting(s) — ${cleaned} cleaned, ${refused} kept as posted because the model's title failed a check.`);
   return out;
 }
 

@@ -60,7 +60,9 @@ Keep: the job's name (Software Engineer, Applied Scientist, Data Analyst, Progra
 NEVER add a level, grade or number the title does not have, and drop any other grade number ("Data Engineer 11" -> "Data Engineer").
 Remove: team, product, department, business-unit and programme names (Ads Trust Science, Enterprise, Global Technology, S&C Global Network, Payments Platform, Career Accelerator Program), requisition and job codes, locations, work modes, contract terms, dates, years, seasons, the company's name, and specialist jargon a student would not recognise (PKI, ABAP, EVS, HCM). A word like Enterprise, Corporate, Global or Technology Services in front of a job names the department, not the job: remove it even when the rest of the title is plain.
 A technology stays only when it IS the job and a student would know it: Java Developer, React Developer, Android Developer, Python Developer.
-When the title already says plainly what the job is, keep its own words and only remove the rest: "Cybersecurity Product Engineer" stays as it is, "Data Engineer" stays "Data Engineer". Only when the title does not say plainly what the job is, or names it with jargon, name it with the plainest standard name for the work in the description: ${STANDARD_NAMES.join(', ')}. Two roles that differ only in the language or tool they use get the same name.
+Keep the FIELD the job works in when the title names one. A field says what the work is (Highways, Telecom, Water, Structures, Molecular Biology, Machine Learning, Storage Systems, FPGA, SCADA, Embedded Software) and is part of the job's name. A team, product, platform or programme does not say what the work is, and goes.
+When a title names two jobs, keep the one that says what the work is.
+When the title already says plainly what the job is, keep its own words and only remove the rest: "Cybersecurity Product Engineer" stays as it is, "Data Engineer" stays "Data Engineer". Only when the title does not say plainly what the job is, or names it with jargon, name it with the plainest standard name for the work in the description: ${STANDARD_NAMES.join(', ')}. A renamed title keeps the title's own job noun: an Engineer stays an Engineer, an Analyst stays an Analyst. Never rename a finance, markets, operations, support, compliance, annotation or modelling role into a software or data job: keep its own words instead. Two roles that differ only in the language or tool they use get the same name.
 Examples:
 "Applied Scientist I, Ads Trust Science" -> "Applied Scientist I"
 "Enterprise App Programmer" -> "App Programmer"
@@ -72,6 +74,11 @@ Examples:
 "Software Engineer II - Backend (Payments Platform)" -> "Backend Software Engineer II"
 "2027 Summer Internship - Software Engineering - Bengaluru" -> "Software Engineering Intern"
 "Data Engineer 11" -> "Data Engineer"
+"Apprentice Engineer - Highways" -> "Highways Apprentice Engineer"
+"Scientist I, Molecular Biology" -> "Molecular Biology Scientist I"
+"PhD Intern, Machine Learning: MSI, Product Operations Team" -> "Machine Learning PhD Intern"
+"Research Intern (PhD), Storage Systems for AI" -> "Storage Systems Research Intern"
+"Foundation Engineer, Embedded Software Engineer" -> "Embedded Software Engineer"
 "Java Developer" -> "Java Developer"
 "Cybersecurity Engineer" -> "Cybersecurity Engineer"`;
 
@@ -145,10 +152,14 @@ export const TITLE_MAX = 60;
  */
 const LEVEL_ROMAN = /(?:^|[\s,(\-–_/])(I|II|III|IV)(?=$|[\s,)\-–_/])/;
 const LEVEL_OTHER = /\b(L[1-4])\b|\b(?:engineer|engr|developer|scientist|associate|analyst|sde|programmer|executive|specialist|consultant)[\s-]*([1-4])\b/i;
+/* A lone 1-4 closing the title is a level too: Accenture's "Associate
+   Engineer - Backend 2" and "- Backend 3" are different grades, and the
+   model dropped both numbers into one "Backend Associate Engineer". */
+const LEVEL_TRAILING = /[\s\-–]([1-4])\s*$/;
 function keepsLevel(clean, raw) {
   const s = String(raw ?? '');
   const r = s.match(LEVEL_ROMAN);
-  const o = s.match(LEVEL_OTHER);
+  const o = s.match(LEVEL_OTHER) ?? s.match(LEVEL_TRAILING);
   const token = r && (!o || r.index <= o.index) ? r[1] : (o?.[1] ?? o?.[2]);
   if (!token) return true;
   return new RegExp(`(^|[^A-Za-z0-9])${token}(?=$|[^A-Za-z0-9])`, /^[IV]+$/.test(token) ? '' : 'i').test(clean);
@@ -167,6 +178,58 @@ const namesStandardJob = (raw) => {
   return [...NAME_SET].some((n) => flat.includes(` ${n} `));
 };
 
+/*
+ * A RENAME MUST KEEP THE JOB'S NOUN AND FIT ITS DISCIPLINE (10 Oct 2026).
+ * Reading all 100 renames the first pass made, about one in ten named a
+ * different job: EXL "Cat Modeler" -> "Software Engineer", IQVIA "Product
+ * Sppt Tech Advisor" -> "Data Analyst", Accenture "Data Protect & InfoSec
+ * Compl Assoc Mgr" -> "Data Engineer", Nomura's securitized-products
+ * "Analyst" -> "Data Analyst". The model's own role label was wrong on most
+ * of them, so it cannot vouch. Two checks catch them instead: the posting's
+ * job noun survives (an Advisor, a Manager, a Modeler is not an Engineer —
+ * "PKI Engineer" -> "Security Engineer" keeps its Engineer), and the standard
+ * name belongs to the role's stored discipline (a markets analyst filed under
+ * business is not a Data Analyst). A role with no discipline read is not
+ * renamed at all.
+ */
+const RENAME_NOUN = /\b(engineer|engineering|engr|eng|developer|dev|analyst|scientist|programmer|tester|administrator|admin|architect|designer|consultant|advisor|adviser|modeler|modeller|manager|mgr|strategist|cartographer|technician|researcher|sde|sdet)\b/gi;
+const NOUN_CANON = { engineering: 'engineer', engr: 'engineer', eng: 'engineer', dev: 'developer', admin: 'administrator', adviser: 'advisor', modeller: 'modeler', mgr: 'manager' };
+const roleNouns = (s) => new Set([...String(s ?? '').toLowerCase().matchAll(RENAME_NOUN)].map((m) => NOUN_CANON[m[1]] ?? m[1]));
+function keepsRoleNouns(clean, raw) {
+  const kept = roleNouns(clean);
+  for (const n of roleNouns(raw)) {
+    if (n === 'sde') { if (/\bsde\b|software (?:development )?engineer|software developer/i.test(clean)) continue; return false; }
+    if (n === 'sdet') { if (/\bsdet\b|\btest/i.test(clean)) continue; return false; }
+    if (!kept.has(n)) return false;
+  }
+  return true;
+}
+const SOFTWARE_DISCIPLINES = ['software_development', 'devops_cloud_sre', 'machine_learning_ai', 'data_engineering', 'qa_testing', 'security'];
+const HARDWARE_DISCIPLINES = ['hardware_embedded', 'core_engineering'];
+const NAME_DISCIPLINES = {
+  'software engineer': SOFTWARE_DISCIPLINES, 'software developer': SOFTWARE_DISCIPLINES, 'software engineering': SOFTWARE_DISCIPLINES,
+  'full stack developer': SOFTWARE_DISCIPLINES, 'backend developer': SOFTWARE_DISCIPLINES, 'frontend developer': SOFTWARE_DISCIPLINES,
+  'data engineer': ['data_engineering', 'data_science_analytics'],
+  'data analyst': ['data_science_analytics', 'data_engineering'],
+  'data scientist': ['data_science_analytics', 'machine_learning_ai'],
+  'machine learning engineer': ['machine_learning_ai', 'data_science_analytics', 'software_development'],
+  'ai engineer': ['machine_learning_ai', 'data_science_analytics', 'software_development'],
+  'research scientist': ['machine_learning_ai', 'data_science_analytics'],
+  'cloud engineer': ['devops_cloud_sre', 'software_development'],
+  'devops engineer': ['devops_cloud_sre', 'software_development'],
+  'qa engineer': ['qa_testing', 'software_development'],
+  'test engineer': ['qa_testing', 'software_development'],
+  'network engineer': ['devops_cloud_sre', 'it_support_helpdesk', 'security'],
+  'security engineer': ['security'],
+  'embedded engineer': HARDWARE_DISCIPLINES, 'firmware engineer': HARDWARE_DISCIPLINES, 'hardware engineer': HARDWARE_DISCIPLINES,
+  'design engineer': HARDWARE_DISCIPLINES, 'verification engineer': HARDWARE_DISCIPLINES,
+};
+const fitsDiscipline = (name, discipline) => (NAME_DISCIPLINES[name] ?? []).includes(discipline);
+/* An AI/ML title renamed to a name without AI or ML in it has lost what the
+   job is: NatWest's "AIML Trainee" came back "Software Engineering Trainee". */
+const AI_ML = /\b(?:ai|ml|aiml|ai\/ml|ai-ml|machine learning|artificial intelligence|genai|gen ai)\b/i;
+const keepsAiMl = (clean, raw) => !AI_ML.test(String(raw ?? '')) || AI_ML.test(clean);
+
 /**
  * The model's title, if it is safe to publish, else null.
  *
@@ -174,13 +237,14 @@ const namesStandardJob = (raw) => {
  * parts), a close stem of one (Engineer <- Engineering, Intern <- Internship),
  * or a joining word — OR the title is renamed to a standard job name
  * (STANDARD_NAMES), which is allowed only where the original names no standard
- * job itself, or, for a title naming no role at all ("Java Fullstack"), as the
- * original's own words plus Developer or Engineer. An original that names an
+ * job itself, keeps the original's job noun and fits the role's discipline,
+ * or, for a title naming no role at all ("Java Fullstack"), as the original's
+ * own words plus Developer or Engineer. An original that names an
  * internship must still name one, one that names a role must still name one,
  * and a stated level must survive. Each word keeps the original title's own
  * spelling, so the model cannot publish "Powerbi" or "Macos".
  */
-export function groundTitle(clean, raw, company = '') {
+export function groundTitle(clean, raw, company = '', { discipline = null } = {}) {
   const c = String(clean ?? '').replace(/\s+/g, ' ').replace(/^[\s\-–—|,:]+|[\s\-–—|,:]+$/g, '').trim();
   if (c.length < 3 || c.length > TITLE_MAX) return null;
   const count = words(c).length;
@@ -199,8 +263,11 @@ export function groundTitle(clean, raw, company = '') {
     return null;
   }
   if (added.length) {
-    const standard = NAME_SET.has(coreName(c)) && !namesStandardJob(raw);
-    const roleAdded = !ROLE_WORD.test(String(raw)) && added.every((n) => n === 'developer' || n === 'engineer');
+    const name = coreName(c);
+    const standard = NAME_SET.has(name) && !namesStandardJob(raw)
+      && keepsRoleNouns(c, raw) && fitsDiscipline(name, discipline) && keepsAiMl(c, raw);
+    const roleAdded = !ROLE_WORD.test(String(raw)) && added.every((n) => n === 'developer' || n === 'engineer')
+      && keepsRoleNouns(c, raw);
     if (!standard && !roleAdded) return null;
   }
   if (INTERN_WORD.test(String(raw)) && !INTERN_WORD.test(c)) return null;
