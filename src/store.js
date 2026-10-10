@@ -840,6 +840,25 @@ export class Store {
     `).all(sinceMs, limit);
   }
 
+  /**
+   * Which of these postings are still waiting for extractFacts, among those
+   * first seen since `sinceMs`. The WhatsApp channel holds such a posting back
+   * a run rather than announce a role whose "2+ years" the site is about to
+   * hide (asksExperience holds it at publish once `experience` is read). A
+   * posting too thin to read (200 characters or less) never waits, because
+   * needingFacts would never pick it up.
+   */
+  factsUnread(ids, sinceMs) {
+    const list = [...new Set((ids ?? []).map(String))];
+    if (!list.length) return new Set();
+    const rows = this.db.prepare(`
+      SELECT job_id FROM jobs
+      WHERE job_id IN (${list.map(() => '?').join(',')})
+        AND facts_checked_at IS NULL AND length(description) > 200 AND first_seen_at >= ?
+    `).all(...list, sinceMs);
+    return new Set(rows.map((r) => String(r.job_id)));
+  }
+
   /** Store what extractFacts found — '' is saved as NULL — and that it looked. */
   saveFacts(jobId, f) {
     this.db.prepare('UPDATE jobs SET deadline = ?, experience = ?, facts_checked_at = ? WHERE job_id = ?')

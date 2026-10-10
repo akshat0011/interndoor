@@ -55,6 +55,7 @@ import { formatStipend } from '../src/extract.js';
 import { resolveRowRegion } from '../src/regions.js';
 import { utmUrl } from '../src/postgen.js';
 import { announceable } from '../src/rolefocus.js';
+import { channelRefusal } from '../src/channelgate.js';
 import { publishedTitle } from '../src/titles.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
@@ -910,11 +911,15 @@ function autoSweep() {
     /* NO REEL FOR A MISC ROLE (his call, 25 Sep 2026): it stays on the site
        under its Misc tab and the reels carry software and hardware. The shelf
        is the one publish wrote into jobs.json, never re-derived here. A manual
-       reel from the run report is his own choice and is not filtered. */
+       reel from the run report is his own choice and is not filtered.
+       AND NOTHING BELOW THE WHATSAPP CHANNEL'S BAR (his ask, 10 Oct 2026): the
+       same channelRefusal, so support work, niche products, senior grades and
+       titles that name no software job are not made into reels either. */
     const fresh = all
       .filter((j) => j.__region === region
         && j.isTech !== false
         && announceable(j.category)
+        && !channelRefusal(j)
         && !known.has(String(j.id))
         && (now - (j.firstSeenAt ?? j.postedAt ?? 0)) <= maxAgeMs)
       .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));

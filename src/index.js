@@ -292,17 +292,20 @@ const FACTS_SINCE = Date.parse('2026-09-25T07:06:43Z');
  * The application deadline and the experience requirement of postings already
  * enriched — extractFacts, one model call each, under its own small budget.
  *
- * Called LAST, after publish and the channel posts, because nothing a reader is
- * waiting for depends on it: what it finds reaches the site with the next
- * run's publish. Never throws — the run lock is released after it.
+ * Called TWICE (10 Oct 2026): before the publish under a short budget, so a
+ * role whose posting asks 2+ years is held back by that same publish instead
+ * of reaching the board, the WhatsApp channel and the reel sweep for a run
+ * first (asksExperience); and again LAST, after the channel posts, for
+ * whatever the first pass had no time for. A few seconds a new posting.
+ * Never throws — the run lock is released after it.
  */
-async function readPostingFacts(store, cfg) {
+async function readPostingFacts(store, cfg, { budgetMinutes = cfg.enrich?.factsBudgetMinutes ?? 3 } = {}) {
   try {
     const maxAgeDays = cfg.publish?.maxAgeDays ?? 14;
     const pending = store.needingFacts(cfg.enrich?.factsPerRunLimit ?? 60,
       publishedRegions(cfg).map((r) => r.code), Math.max(FACTS_SINCE, Date.now() - maxAgeDays * 86_400_000));
     if (!pending.length) return;
-    const results = await extractFacts(pending, { ...cfg, enrich: { ...cfg.enrich, budgetMinutes: cfg.enrich?.factsBudgetMinutes ?? 3 } });
+    const results = await extractFacts(pending, { ...cfg, enrich: { ...cfg.enrich, budgetMinutes } });
     for (const [i, f] of results) store.saveFacts(pending[i].job_id, f);
   } catch (err) {
     log.warn(`Deadline/experience pass failed (${err.message}) — picked up next run.`);
@@ -2324,6 +2327,10 @@ async function main() {
   // manual run — the newest listings, which are the ones anyone actually looks at.
   if (!DRY_RUN) await enrichNewJobs(store, cfg);
   if (!DRY_RUN) await cleanNewTitles(store, cfg);
+  /* THE EXPERIENCE IS READ BEFORE THE PUBLISH, so it can hold a 2+ years role
+     back before anyone is told about it (readPostingFacts). Budgeted short: a
+     listing must not wait on it. */
+  if (!DRY_RUN) await readPostingFacts(store, cfg, { budgetMinutes: cfg.enrich?.factsBeforePublishMinutes ?? 1.5 });
 
   const newJobs = store.jobsForRun(runId);
 

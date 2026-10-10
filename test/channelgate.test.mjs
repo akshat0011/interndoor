@@ -138,12 +138,66 @@ console.log('\n== THE WIRING ==');
   const wa = readFileSync(new URL('../src/whatsapp.js', import.meta.url), 'utf8');
   check('whatsapp.js imports the gate', /import \{ channelRefusal \} from '\.\/channelgate\.js';/.test(wa), true);
   check('take() asks it after the shelf and before queueing, and a held listing returns',
-    /if \(!announceable\(pub\.category\)\) \{ misc\+\+; return; \}\s*const why = channelRefusal\(pub\);\s*if \(why\) \{[^}]*return; \}\s*mine\.push\(\{ job: pub, code, id \}\);/.test(wa), true);
+    /if \(!announceable\(pub\.category\)\) \{ misc\+\+; return; \}\s*const why = channelRefusal\(pub\);\s*if \(why\) \{[^}]*return; \}\s*if \(unread\.has\(id\)\) \{ waiting\.push\(\{ code, id \}\); return; \}\s*mine\.push\(\{ job: pub, code, id \}\);/.test(wa), true);
   check('one take() serves the backlog and new rows alike',
     /for \(const id of readPending\(store, code\)\) take\(/.test(wa) && /const id = String\(row\.job_id \?\? row\.id\);\s*take\(/.test(wa), true);
   check('the backlog is rewritten from what was queued, so a held id is dropped',
     /const left = mine\.filter\(\(m\) => !posted\.has\(m\.id\)\);/.test(wa), true);
   check('the run log counts what was held back', /below the channel's bar left to the site/.test(wa), true);
+}
+
+console.log('\n== THE REELS GET THE SAME BAR (10 Oct 2026) ==');
+{
+  const qs = readFileSync(new URL('../bin/queue-server.js', import.meta.url), 'utf8');
+  check('queue-server imports the gate', /^import \{ channelRefusal \} from '\.\.\/src\/channelgate\.js';$/m.test(qs), true);
+  const sweep = qs.slice(qs.indexOf('function autoSweep()'), qs.indexOf('const seenEmployers'));
+  check('the sweep body was found', sweep.length > 500, true);
+  check('the auto-sweep drops a listing below the bar, beside the shelf check',
+    /&& announceable\(j\.category\)\s*&& !channelRefusal\(j\)\s*&& !known\.has/.test(sweep), true);
+}
+
+console.log('\n== NOTHING GOES OUT BEFORE ITS EXPERIENCE IS READ (10 Oct 2026) ==');
+{
+  const { DatabaseSync } = await import('node:sqlite');
+  const { Store } = await import('../src/store.js');
+  const db = new DatabaseSync(':memory:');
+  db.exec('CREATE TABLE jobs (job_id TEXT PRIMARY KEY, description TEXT, first_seen_at INTEGER, facts_checked_at INTEGER)');
+  const T = 1_800_000_000_000, long = 'x'.repeat(201);
+  const ins = db.prepare('INSERT INTO jobs VALUES (?, ?, ?, ?)');
+  ins.run('unread', long, T, null);
+  ins.run('read', long, T, T + 1);
+  ins.run('thin', 'x'.repeat(200), T, null);
+  ins.run('old', long, T - 1, null);
+  ins.run('other', long, T, null);
+  const st = { db, factsUnread: Store.prototype.factsUnread };
+  check('only an unread, readable, recent posting among those asked about waits',
+    [...st.factsUnread(['unread', 'read', 'thin', 'old', 'missing'], T)].sort(), ['unread']);
+  check('ids are compared as strings and repeats are harmless', [...st.factsUnread(['unread', 'unread'], T)], ['unread']);
+  check('a posting not asked about is not reported', st.factsUnread(['read'], T).has('other'), false);
+  check('nothing asked, nothing waits', st.factsUnread([], T).size, 0);
+
+  const wa = readFileSync(new URL('../src/whatsapp.js', import.meta.url), 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  const { FACTS_WAIT_MS } = await import('../src/whatsapp.js');
+  check('a posting waits a few hours at most', FACTS_WAIT_MS > 3_600_000 && FACTS_WAIT_MS <= 12 * 3_600_000, true);
+  check('the backlog and this run are both asked, bounded by the wait',
+    /for \(const code of regions\) candidates\.push\(\.\.\.readPending\(store, code\)\);/.test(wa)
+      && /candidates\.push\(String\(row\.job_id \?\? row\.id\)\)/.test(wa)
+      && /store\?\.factsUnread\?\.\(candidates, Date\.now\(\) - FACTS_WAIT_MS\)/.test(wa), true);
+  check('what waits is put back on the queue when something was sent',
+    /writePending\(store, code, \[\.\.\.left\.filter\(\(m\) => m\.code === code\)\.map\(\(m\) => m\.id\), \.\.\.waitingIn\(code\)\]\)/.test(wa), true);
+  check('...and when nothing was, keeping the backlog as it was',
+    /if \(!mine\.length\) \{\s*if \(waiting\.length\) for \(const code of regions\) writePending\(store, code, \[\.\.\.readPending\(store, code\), \.\.\.waitingIn\(code\)\]\);/.test(wa), true);
+
+  const ix = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8')
+    .replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+  const early = ix.indexOf('await readPostingFacts(store, cfg, { budgetMinutes: cfg.enrich?.factsBeforePublishMinutes');
+  const pub = ix.indexOf('await publish(store, cfg, newJobs.length)');
+  check('the scan reads the facts before its publish', early > 0 && pub > 0 && early < pub, true);
+  check('and again after the channels for whatever was left', ix.lastIndexOf('await readPostingFacts(store, cfg);') > pub, true);
+  check('the pass takes the budget it is given',
+    /async function readPostingFacts\(store, cfg, \{ budgetMinutes = [^}]+\} = \{\}\)/.test(ix)
+      && /enrich: \{ \.\.\.cfg\.enrich, budgetMinutes \}/.test(ix), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
