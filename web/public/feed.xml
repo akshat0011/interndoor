@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 15:58:37 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 16:40:45 GMT</lastBuildDate>
+  <item>
+    <title>Test Engineer — Valeo</title>
+    <link>https://interndoor.com/jobs/valeo-engineer-testing-4469179991</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/valeo-engineer-testing-4469179991</guid>
+    <pubDate>Sat, 10 Oct 2026 16:40:45 GMT</pubDate>
+    <description>Company: Valeo · Location: Chennai, Tamil Nadu, India
+• Develop test programs for hardware and software functionality
+• Collaborate with R&amp;D on test methodology and coverage
+• Validate test equipment specs and standards across sites</description>
+  </item>
+  <item>
+    <title>IT Support Associate — Amazon</title>
+    <link>https://interndoor.com/jobs/amazon-it-support-associate-4459884018</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-it-support-associate-4459884018</guid>
+    <pubDate>Sat, 10 Oct 2026 16:28:54 GMT</pubDate>
+    <description>Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 3 months
+• Resolve technical issues for end-user devices like desktops, laptops, printers, and scanners
+• Support Windows and Linux operating systems with troubleshooting skills
+• Work in a global support team with rotating shift patterns in Bengaluru</description>
+  </item>
   <item>
     <title>LLM Research Intern — Sony Research India</title>
     <link>https://interndoor.com/jobs/sony-research-india-llm-research-intern-4478061801</link>
@@ -490,26 +510,6 @@
 • Build and maintain CI/CD pipelines for on-premise and cloud platforms
 • Automate testing with Python, Selenium, and PyTest for UI and API
 • Collaborate with teams on requirements and deliverables in a hybrid model</description>
-  </item>
-  <item>
-    <title>AWS Data Engineer Returnship — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-returnship-aws-data-engineer-4467886016</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-returnship-aws-data-engineer-4467886016</guid>
-    <pubDate>Fri, 09 Oct 2026 18:34:50 GMT</pubDate>
-    <description>Company: Cognizant · Location: Chennai, Tamil Nadu, India
-• Design and maintain data pipelines using Python and PySpark
-• Implement cloud-native solutions with AWS services
-• Collaborate with cross-functional teams on data workflows</description>
-  </item>
-  <item>
-    <title>MLOps Engineer — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-mlops-engineer-4467882208</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-mlops-engineer-4467882208</guid>
-    <pubDate>Fri, 09 Oct 2026 18:33:37 GMT</pubDate>
-    <description>Company: Cognizant · Location: Coimbatore, Tamil Nadu, India
-• Build and maintain deployment pipelines for machine learning models
-• Use Kubernetes, Terraform, and cloud platforms to automate workflows
-• Collaborate with data science teams to improve model monitoring and retraining</description>
   </item>
 </channel>
 </rss>
