@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 05:53:40 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 07:54:10 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineering Intern — Heads Up For Tails</title>
+    <link>https://interndoor.com/jobs/heads-up-for-tails-software-engineering-intern-4477207173</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/heads-up-for-tails-software-engineering-intern-4477207173</guid>
+    <pubDate>Sat, 10 Oct 2026 07:54:10 GMT</pubDate>
+    <description>Company: Heads Up For Tails · Location: Gurugram, Haryana, India
+• Build backend services and restful apis with node.js and mongodb
+• Work on mern stack projects with frontend and backend integration
+• Collaborate with senior engineers and product teams on real features
+• Contribute to code reviews and ci/cd automation workflows</description>
+  </item>
   <item>
     <title>Speech Recognition Intern — Sony Research India</title>
     <link>https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878</link>
@@ -497,16 +508,6 @@
 • Bring up models on AI hardware, convert weights, and ensure correctness
 • Develop MLIR lowering paths and optimize performance across compiler and runtime
 • Collaborate with hardware and kernel teams to improve inference efficiency</description>
-  </item>
-  <item>
-    <title>Developer — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-developer-4476812397</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-developer-4476812397</guid>
-    <pubDate>Fri, 09 Oct 2026 14:48:37 GMT</pubDate>
-    <description>Company: Cognizant · Location: Chennai, Tamil Nadu, India
-• Design and build analytics solutions for billing and revenue management
-• Use Oracle Analytics Cloud for data modeling and dashboard creation
-• Collaborate with billing teams to translate requirements into technical designs</description>
   </item>
 </channel>
 </rss>

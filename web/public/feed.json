@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/heads-up-for-tails-software-engineering-intern-4477207173",
+      "url": "https://interndoor.com/jobs/heads-up-for-tails-software-engineering-intern-4477207173",
+      "title": "Software Engineering Intern — Heads Up For Tails",
+      "content_text": "Company: Heads Up For Tails · Location: Gurugram, Haryana, India\n• Build backend services and restful apis with node.js and mongodb\n• Work on mern stack projects with frontend and backend integration\n• Collaborate with senior engineers and product teams on real features\n• Contribute to code reviews and ci/cd automation workflows",
+      "date_published": "2026-10-10T07:54:10.424Z",
+      "authors": [
+        {
+          "name": "Heads Up For Tails"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878",
       "url": "https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878",
       "title": "Speech Recognition Intern — Sony Research India",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Cerebras"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-developer-4476812397",
-      "url": "https://interndoor.com/jobs/cognizant-developer-4476812397",
-      "title": "Developer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Design and build analytics solutions for billing and revenue management\n• Use Oracle Analytics Cloud for data modeling and dashboard creation\n• Collaborate with billing teams to translate requirements into technical designs",
-      "date_published": "2026-10-09T14:48:37.137Z",
-      "authors": [
-        {
-          "name": "Cognizant"
         }
       ]
     }
