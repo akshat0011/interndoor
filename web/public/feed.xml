@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 14:33:20 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 15:03:25 GMT</lastBuildDate>
+  <item>
+    <title>Associate Project Engineer — Hitachi Energy</title>
+    <link>https://interndoor.com/jobs/hitachi-energy-associate-project-engineer-4466066235</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/hitachi-energy-associate-project-engineer-4466066235</guid>
+    <pubDate>Sat, 10 Oct 2026 15:03:25 GMT</pubDate>
+    <description>Company: Hitachi Energy · Location: Chennai, Tamil Nadu, India
+• Analyze software requirements and interfaces between hardware and software
+• Write code in programming and scripting languages
+• Support testing, deployment, and maintenance of software
+• Work under close supervision with minimal complexity</description>
+  </item>
   <item>
     <title>Apprentice. IT. Development Program — Eaton</title>
     <link>https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649</link>
@@ -499,16 +510,6 @@
 • Design and deliver POC labs for Cisco solutions across multiple architectures
 • Use AI tools like Claude Code and Cursor with Ansible/Terraform for automation
 • Collaborate with teams on global projects with varying time zones</description>
-  </item>
-  <item>
-    <title>Application Security Engineer — Expedia Group</title>
-    <link>https://interndoor.com/jobs/expedia-group-security-engineer-application-security-4476826709</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/expedia-group-security-engineer-application-security-4476826709</guid>
-    <pubDate>Fri, 09 Oct 2026 18:29:28 GMT</pubDate>
-    <description>Company: Expedia Group · Location: Gurgaon, Haryana, India
-• Review code for security flaws and help fix them in software projects
-• Use tools like SAST and DAST to scan apps and automate security checks
-• Work with engineers to build secure systems and prevent data leaks</description>
   </item>
 </channel>
 </rss>
