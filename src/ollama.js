@@ -696,7 +696,7 @@ export async function cleanTitles(items, cfg = {}, { budgetMinutes = cfg.titles?
     log.warn(`Ollama not reachable at ${HOST} — ${items.length} title(s) left as they are for now.`);
     return out;
   }
-  const model = cfg.enrich?.model || cfg.ollama?.model || 'qwen3:8b';
+  const model = cfg.titles?.model || cfg.enrich?.model || cfg.ollama?.model || 'qwen3:8b';
   const timeoutMs = (cfg.ollama?.timeoutSeconds ?? 120) * 1000;
   const budgetMs = budgetMinutes * 60_000;
   const started = Date.now();
