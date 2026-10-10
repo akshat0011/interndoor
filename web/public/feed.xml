@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 07:54:10 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 08:00:44 GMT</lastBuildDate>
+  <item>
+    <title>Database Administrator — Uffizio</title>
+    <link>https://interndoor.com/jobs/uffizio-database-administrator-dba-4477208253</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/uffizio-database-administrator-dba-4477208253</guid>
+    <pubDate>Sat, 10 Oct 2026 08:00:44 GMT</pubDate>
+    <description>Company: Uffizio · Location: Valsad, Gujarat, India
+• Monitor and optimize database performance, security, and availability
+• Work with DevOps and development teams to improve application efficiency
+• Handle backups, recovery, and production issues
+• Analyze bottlenecks and implement long-term solutions</description>
+  </item>
   <item>
     <title>Software Engineering Intern — Heads Up For Tails</title>
     <link>https://interndoor.com/jobs/heads-up-for-tails-software-engineering-intern-4477207173</link>
@@ -17,6 +28,16 @@
 • Work on mern stack projects with frontend and backend integration
 • Collaborate with senior engineers and product teams on real features
 • Contribute to code reviews and ci/cd automation workflows</description>
+  </item>
+  <item>
+    <title>Dotnet Developer — NTT DATA North America</title>
+    <link>https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478023980</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478023980</guid>
+    <pubDate>Sat, 10 Oct 2026 07:30:11 GMT</pubDate>
+    <description>Company: NTT DATA North America · Location: Gurgaon, Haryana, India
+• Develop and maintain backend systems using C# and .NET Core
+• Work with microservices, RESTful APIs, and SQL databases
+• Collaborate on cloud infrastructure using AWS services</description>
   </item>
   <item>
     <title>Speech Recognition Intern — Sony Research India</title>
@@ -488,26 +509,6 @@
 • Build data pipelines for digitalization projects using Databricks and SAP platforms
 • Collaborate with teams to design data models and governance frameworks
 • Ensure high data quality across analytics and AI applications</description>
-  </item>
-  <item>
-    <title>Data Engineer AI Hub — Linde</title>
-    <link>https://interndoor.com/jobs/linde-data-engineer-software-engineering-ai-hub-4469125132</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/linde-data-engineer-software-engineering-ai-hub-4469125132</guid>
-    <pubDate>Fri, 09 Oct 2026 15:47:42 GMT</pubDate>
-    <description>Company: Linde · Location: Bengaluru, Karnataka, India
-• Build scalable data pipelines for digitalization projects
-• Work with SAP, Databricks, and Microsoft Fabric
-• Collaborate across teams to deliver data products and services</description>
-  </item>
-  <item>
-    <title>Machine Learning Engineer (Model Bring-Up) — Cerebras</title>
-    <link>https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996</guid>
-    <pubDate>Fri, 09 Oct 2026 14:54:24 GMT</pubDate>
-    <description>Company: Cerebras · Location: Bengaluru, Karnataka, India
-• Bring up models on AI hardware, convert weights, and ensure correctness
-• Develop MLIR lowering paths and optimize performance across compiler and runtime
-• Collaborate with hardware and kernel teams to improve inference efficiency</description>
   </item>
 </channel>
 </rss>
