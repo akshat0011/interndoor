@@ -53,23 +53,35 @@ export const STANDARD_NAMES = [
   'Full Stack Developer', 'Backend Developer', 'Frontend Developer',
 ];
 
-export const TITLE_SYSTEM = `You name jobs for a student job board and name each role's discipline. Reply with JSON only.
+export const TITLE_SYSTEM = `You name jobs for a student job board. Reply with JSON only.
 
-"title": the name of the job a student would search for, and its level. Nothing else. 1 to 4 words (5 for an internship).
-Keep: the job's name (Software Engineer, Applied Scientist, Data Analyst, Programmer, Java Developer); its level ONLY when the title states it as I, II, III, IV, 1-4, L1-L4 or SDE-1 to SDE-4, written as the title writes it; its kind (Intern, Internship, Trainee, Apprentice, Graduate, Co-op).
+"title": the name of the job a student would search for, and its level. Nothing else. 1 to 4 words (5 for an internship or a returnship).
+Keep: the job's name (Software Engineer, Applied Scientist, Data Analyst, Programmer, Java Developer); its level ONLY when the title states it as I, II, III, IV, 1-4, L1-L4 or SDE-1 to SDE-4, written as the title writes it; its kind (Intern, Internship, Trainee, Apprentice, Graduate, Co-op, Returnship).
 NEVER add a level, grade or number the title does not have, and drop any other grade number ("Data Engineer 11" -> "Data Engineer").
-Remove: team, product, department, business-unit and programme names (Ads Trust Science, Enterprise, Global Technology, S&C Global Network, Payments Platform), requisition and job codes, locations, work modes, contract terms, dates, years, seasons, the company's name, and specialist jargon a student would not recognise (PKI, ABAP, EVS, HCM).
+Remove: team, product, department, business-unit and programme names (Ads Trust Science, Enterprise, Global Technology, S&C Global Network, Payments Platform, Career Accelerator Program), requisition and job codes, locations, work modes, contract terms, dates, years, seasons, the company's name, and specialist jargon a student would not recognise (PKI, ABAP, EVS, HCM). A word like Enterprise, Corporate, Global or Technology Services in front of a job names the department, not the job: remove it even when the rest of the title is plain.
 A technology stays only when it IS the job and a student would know it: Java Developer, React Developer, Android Developer, Python Developer.
-When the title already says plainly what the job is, keep its own words and only remove the rest: "Cybersecurity Product Engineer" stays as it is, "Data Engineer" stays "Data Engineer". Only when the title does not say plainly what the job is, name it with the plainest standard name for the work in the description: ${STANDARD_NAMES.join(', ')}.
+When the title already says plainly what the job is, keep its own words and only remove the rest: "Cybersecurity Product Engineer" stays as it is, "Data Engineer" stays "Data Engineer". Only when the title does not say plainly what the job is, or names it with jargon, name it with the plainest standard name for the work in the description: ${STANDARD_NAMES.join(', ')}. Two roles that differ only in the language or tool they use get the same name.
 Examples:
 "Applied Scientist I, Ads Trust Science" -> "Applied Scientist I"
 "Enterprise App Programmer" -> "App Programmer"
 "PKI Engineer - C# Expert" (builds certificate and encryption systems) -> "Security Engineer"
+"PKI Engineer - Java /Cloud Expert" (the same work in Java) -> "Security Engineer"
+"Returnship - Data Integration" -> "Data Integration Returnship"
+"Career Accelerator Program - Digital IC Design Engineer" -> "Digital IC Design Engineer"
 "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS" -> "Strategy Analyst"
 "Software Engineer II - Backend (Payments Platform)" -> "Backend Software Engineer II"
 "2027 Summer Internship - Software Engineering - Bengaluru" -> "Software Engineering Intern"
+"Data Engineer 11" -> "Data Engineer"
 "Java Developer" -> "Java Developer"
-"Cybersecurity Engineer" -> "Cybersecurity Engineer"
+"Cybersecurity Engineer" -> "Cybersecurity Engineer"`;
+
+/**
+ * The discipline is a call of its own, on the small model, with the words it
+ * was audited on (30 Sep and 8 Oct 2026): sharing one prompt with the title
+ * rules made the larger model ignore half of them (10 Oct 2026), and the
+ * shelves must not move because the titles changed.
+ */
+export const DISCIPLINE_SYSTEM = `You name each role's discipline for a student job board. Reply with JSON only.
 
 "discipline": what the person will actually do, judged from the title AND the description:
 software_development (building applications, web, mobile, backend, frontend, full-stack, APIs),
@@ -84,8 +96,14 @@ unclear (the title and description do not say).`;
 
 export const TITLE_SCHEMA = {
   type: 'object',
-  properties: { title: { type: 'string' }, discipline: { type: 'string', enum: DISCIPLINES } },
-  required: ['title', 'discipline'],
+  properties: { title: { type: 'string' } },
+  required: ['title'],
+};
+
+export const DISCIPLINE_SCHEMA = {
+  type: 'object',
+  properties: { discipline: { type: 'string', enum: DISCIPLINES } },
+  required: ['discipline'],
 };
 
 /** What the model is shown for one posting. */
@@ -113,6 +131,8 @@ function vocabulary(raw) {
 /** Joining words the model may use though the title does not ("Data Processing with Python"). */
 const CONNECTORS = new Set(['and', 'of', 'for', 'in', 'the', 'a', 'to', 'with', 'on']);
 const INTERN_WORD = /\b(intern|internship|trainee|apprentice|apprenticeship|co-?op)\b/i;
+/** A returnship is for people back from a career break, so it must say so (Cognizant, 10 Oct 2026). */
+const RETURN_WORD = /\breturn(?:ship|er)s?\b/i;
 const ROLE_WORD = /\b(engineer|engineering|developer|development|analyst|analytics|scientist|intern|internship|trainee|specialist|consultant|architect|designer|programmer|tester|administrator|associate|manager|lead|apprentice|researcher|sde|sdet|technician|executive|officer)\b/i;
 export const TITLE_MAX = 60;
 /**
@@ -184,6 +204,7 @@ export function groundTitle(clean, raw, company = '') {
     if (!standard && !roleAdded) return null;
   }
   if (INTERN_WORD.test(String(raw)) && !INTERN_WORD.test(c)) return null;
+  if (RETURN_WORD.test(String(raw)) && !RETURN_WORD.test(c)) return null;
   if (ROLE_WORD.test(String(raw)) && !ROLE_WORD.test(c)) return null;
   if (!keepsLevel(c, raw)) return null;
   if (BIG_GRADE.test(c)) return null;

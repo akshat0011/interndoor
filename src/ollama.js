@@ -26,7 +26,7 @@ import { log } from './logger.js';
 import { classifyRole, vetoNonTech, GENERIC_POSITIVE } from './roles.js';
 import { POST_SYSTEM, POST_SCHEMA, postPrompt } from './postgen.js';
 import { groundDeadline, groundExperienceYears, groundGraduation, couldStateFacts } from './extract.js';
-import { TITLE_SYSTEM, TITLE_SCHEMA, titleUserPrompt, groundTitle, DISCIPLINES } from './titles.js';
+import { TITLE_SYSTEM, TITLE_SCHEMA, DISCIPLINE_SYSTEM, DISCIPLINE_SCHEMA, titleUserPrompt, groundTitle, DISCIPLINES } from './titles.js';
 
 const HOST = process.env.OLLAMA_HOST || 'http://127.0.0.1:11434';
 
@@ -689,34 +689,47 @@ export async function extractFacts(items, cfg = {}) {
  *
  * @returns {Promise<Map<number, {displayTitle: string|null, discipline: string}>>} keyed by index into `items`
  */
-export async function cleanTitles(items, cfg = {}, { budgetMinutes = cfg.titles?.budgetMinutes ?? 1.5 } = {}) {
+export async function cleanTitles(items, cfg = {}, { budgetMinutes = cfg.titles?.budgetMinutes ?? 1.5, disciplines = true } = {}) {
   const out = new Map();
   if (!items.length) return out;
   if (!(await ollamaAvailable())) {
     log.warn(`Ollama not reachable at ${HOST} — ${items.length} title(s) left as they are for now.`);
     return out;
   }
-  const model = cfg.titles?.model || cfg.enrich?.model || cfg.ollama?.model || 'qwen3:8b';
+  const titleModel = cfg.titles?.model || cfg.enrich?.model || cfg.ollama?.model || 'qwen3:8b';
+  const disciplineModel = cfg.enrich?.model || cfg.ollama?.model || 'qwen3:8b';
   const timeoutMs = (cfg.ollama?.timeoutSeconds ?? 120) * 1000;
-  const budgetMs = budgetMinutes * 60_000;
-  const started = Date.now();
+  const deadline = Date.now() + budgetMinutes * 60_000;
+  /* THE DISCIPLINE FIRST, on the small model the scan has just used for the
+     enrichment and the facts, THEN the titles on the larger one: one model
+     swap a run on a Mac that holds one of them at a time. A posting is
+     reported only once both are read, or it is asked again next run. */
+  const read = new Map();
+  if (disciplines) {
+    for (const [i, job] of items.entries()) {
+      if (Date.now() > deadline) break;
+      const res = await chatJson({ model: disciplineModel, system: DISCIPLINE_SYSTEM, user: titleUserPrompt(job), schema: DISCIPLINE_SCHEMA, numCtx: 4096, timeoutMs, temperature: 0 });
+      if (!res.ok) { log.debug(`  discipline reading failed (${res.reason}) for "${job.title}".`); continue; }
+      read.set(i, DISCIPLINES.includes(res.value.discipline) ? res.value.discipline : 'unclear');
+    }
+  }
   let cleaned = 0;
   let refused = 0;
   for (const [i, job] of items.entries()) {
-    if (Date.now() - started > budgetMs) {
-      log.info(`Titles budget spent — ${items.length - i} posting(s) left for the next run.`);
+    if (disciplines && !read.has(i)) continue;
+    if (Date.now() > deadline) {
+      log.info(`Titles budget spent — ${items.length - out.size} posting(s) left for the next run.`);
       break;
     }
-    const res = await chatJson({ model, system: TITLE_SYSTEM, user: titleUserPrompt(job), schema: TITLE_SCHEMA, numCtx: 4096, timeoutMs, temperature: 0 });
+    const res = await chatJson({ model: titleModel, system: TITLE_SYSTEM, user: titleUserPrompt(job), schema: TITLE_SCHEMA, numCtx: 4096, timeoutMs, temperature: 0 });
     if (!res.ok) {
       log.debug(`  title reading failed (${res.reason}) for "${job.title}".`);
       continue;
     }
-    const discipline = DISCIPLINES.includes(res.value.discipline) ? res.value.discipline : 'unclear';
     const grounded = groundTitle(res.value.title, job.title, job.company);
     if (grounded && grounded !== job.title) cleaned++;
     if (!grounded) refused++;
-    out.set(i, { displayTitle: grounded && grounded !== job.title ? grounded : null, discipline });
+    out.set(i, { displayTitle: grounded && grounded !== job.title ? grounded : null, ...(disciplines ? { discipline: read.get(i) } : {}) });
   }
   log.info(`Titles: read ${out.size} posting(s) — ${cleaned} cleaned, ${refused} kept as posted because the model added words.`);
   return out;
