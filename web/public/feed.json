@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431858476",
+      "url": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431858476",
+      "title": "Software Engineer, PhD — Google",
+      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India\n• Design and implement large-scale distributed systems with focus on scalability and performance\n• Work on AI/ML infrastructure with emphasis on traceability and auditability\n• Collaborate with small team on critical projects impacting Google's AI offerings",
+      "date_published": "2026-10-10T11:21:08.774Z",
+      "authors": [
+        {
+          "name": "Google"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-2027-campus-hire-associate-engineer-hw-4440749494",
+      "url": "https://interndoor.com/jobs/qualcomm-2027-campus-hire-associate-engineer-hw-4440749494",
+      "title": "Hardware Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Chennai, Tamil Nadu, India\n• Design and verify complex SoC subsystems with embedded processors and communication ASICs\n• Work with Verilog/VHDL, C/C++, Tcl/Perl, and Cadence tools for RTL and layout\n• Collaborate on RF/analog/mixed-signal IC design with focus on low power and signal integrity",
+      "date_published": "2026-10-10T10:50:26.542Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ust-azure-data-platform-engineer-4448755215",
       "url": "https://interndoor.com/jobs/ust-azure-data-platform-engineer-4448755215",
       "title": "Azure Data Platform Engineer — UST",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Societe Generale Global Solution Centre"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-data-scientist-i-4475244316",
-      "url": "https://interndoor.com/jobs/mastercard-data-scientist-i-4475244316",
-      "title": "Data Scientist I — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Build AI models for AML transaction monitoring using RAG and LangChain\n• Develop scalable solutions on AWS/Azure with Databricks data platforms\n• Implement evaluation frameworks for GenAI with bias checks and quality scoring",
-      "date_published": "2026-10-09T16:39:36.418Z",
-      "authors": [
-        {
-          "name": "Mastercard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-developer-4476824312",
-      "url": "https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-developer-4476824312",
-      "title": "AI Developer — Hitachi Solutions India Pvt Ltd",
-      "content_text": "Company: Hitachi Solutions India Pvt Ltd · Location: Chennai, Tamil Nadu, India\n• Build AI/LLM components with schema-constrained output and RAG pipelines\n• Use Node.js/TypeScript or Python for parsing XML/JSON workflows\n• Integrate with Azure AD and MCP server endpoints via REST APIs",
-      "date_published": "2026-10-09T16:22:06.435Z",
-      "authors": [
-        {
-          "name": "Hitachi Solutions India Pvt Ltd"
         }
       ]
     }

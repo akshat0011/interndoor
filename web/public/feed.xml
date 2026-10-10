@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 10:03:30 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 11:21:08 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer, PhD — Google</title>
+    <link>https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431858476</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431858476</guid>
+    <pubDate>Sat, 10 Oct 2026 11:21:08 GMT</pubDate>
+    <description>Company: Google · Location: Bengaluru, Karnataka, India
+• Design and implement large-scale distributed systems with focus on scalability and performance
+• Work on AI/ML infrastructure with emphasis on traceability and auditability
+• Collaborate with small team on critical projects impacting Google&#39;s AI offerings</description>
+  </item>
+  <item>
+    <title>Hardware Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-2027-campus-hire-associate-engineer-hw-4440749494</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-2027-campus-hire-associate-engineer-hw-4440749494</guid>
+    <pubDate>Sat, 10 Oct 2026 10:50:26 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Chennai, Tamil Nadu, India
+• Design and verify complex SoC subsystems with embedded processors and communication ASICs
+• Work with Verilog/VHDL, C/C++, Tcl/Perl, and Cadence tools for RTL and layout
+• Collaborate on RF/analog/mixed-signal IC design with focus on low power and signal integrity</description>
+  </item>
   <item>
     <title>Azure Data Platform Engineer — UST</title>
     <link>https://interndoor.com/jobs/ust-azure-data-platform-engineer-4448755215</link>
@@ -488,26 +508,6 @@
 • Manage market data for equities, derivatives, and commodities
 • Use bloomberg and refinitiv for data validation and control
 • Collaborate with teams to ensure data compliance and risk mitigation</description>
-  </item>
-  <item>
-    <title>Data Scientist I — Mastercard</title>
-    <link>https://interndoor.com/jobs/mastercard-data-scientist-i-4475244316</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mastercard-data-scientist-i-4475244316</guid>
-    <pubDate>Fri, 09 Oct 2026 16:39:36 GMT</pubDate>
-    <description>Company: Mastercard · Location: Pune Division, Maharashtra, India
-• Build AI models for AML transaction monitoring using RAG and LangChain
-• Develop scalable solutions on AWS/Azure with Databricks data platforms
-• Implement evaluation frameworks for GenAI with bias checks and quality scoring</description>
-  </item>
-  <item>
-    <title>AI Developer — Hitachi Solutions India Pvt Ltd</title>
-    <link>https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-developer-4476824312</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/hitachi-solutions-india-pvt-ltd-ai-developer-4476824312</guid>
-    <pubDate>Fri, 09 Oct 2026 16:22:06 GMT</pubDate>
-    <description>Company: Hitachi Solutions India Pvt Ltd · Location: Chennai, Tamil Nadu, India
-• Build AI/LLM components with schema-constrained output and RAG pipelines
-• Use Node.js/TypeScript or Python for parsing XML/JSON workflows
-• Integrate with Azure AD and MCP server endpoints via REST APIs</description>
   </item>
 </channel>
 </rss>
