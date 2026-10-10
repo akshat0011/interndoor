@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 00:17:06 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 00:17:12 GMT</lastBuildDate>
+  <item>
+    <title>Developer L2 — Wipro</title>
+    <link>https://interndoor.com/jobs/wipro-developer-l2-4478002328</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-developer-l2-4478002328</guid>
+    <pubDate>Sat, 10 Oct 2026 00:17:12 GMT</pubDate>
+    <description>Company: Wipro · Location: Chennai, Tamil Nadu, India
+• Code and test applications following quality standards and client specs
+• Work with teams to align development with project needs
+• Maintain documentation and contribute to process improvements</description>
+  </item>
   <item>
     <title>Data Analyst Intern — ByteDance</title>
     <link>https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4477895308</link>
@@ -16,6 +26,16 @@
 • Analyze data and create reports for operations teams
 • Use excel and statistical tools to support decision-making
 • Work on short-term projects with real-world impact</description>
+  </item>
+  <item>
+    <title>Ads Trust Science Applied Scientist — Amazon Science</title>
+    <link>https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744</guid>
+    <pubDate>Fri, 09 Oct 2026 23:25:01 GMT</pubDate>
+    <description>Company: Amazon Science · Location: Bengaluru, Karnataka, India
+• Build ml models that flag or clear ads across languages and cultures
+• Own systems that moderate millions of ads daily with production impact
+• Work on multimodal content understanding with vision and language models</description>
   </item>
   <item>
     <title>Core Java Developer — Citi</title>
@@ -487,26 +507,6 @@
 • Develop and operate cloud-native services using containers and microservices
 • Collaborate across teams to deliver storage and cloud infrastructure solutions
 • Own features from design through production and drive engineering excellence</description>
-  </item>
-  <item>
-    <title>Video Design Verification Engineer — Qualcomm</title>
-    <link>https://interndoor.com/jobs/qualcomm-video-design-verification-engineer-4476806289</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-video-design-verification-engineer-4476806289</guid>
-    <pubDate>Fri, 09 Oct 2026 14:18:36 GMT</pubDate>
-    <description>Company: Qualcomm · Location: Bengaluru, Karnataka, India
-• Analyze and verify digital/analog designs for high-performance ICs
-• Use tools like RTL to GDS Flow and Virtuoso for block/SoC development
-• Collaborate on implementation strategies and process flows with cross-functional teams</description>
-  </item>
-  <item>
-    <title>GNSS Systems Engineer — Qualcomm</title>
-    <link>https://interndoor.com/jobs/qualcomm-modem-gnss-systems-engineer-4476296665</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-modem-gnss-systems-engineer-4476296665</guid>
-    <pubDate>Fri, 09 Oct 2026 14:18:35 GMT</pubDate>
-    <description>Company: Qualcomm · Location: Greater Hyderabad Area
-• Design and develop algorithms for centimeter-level GNSS positioning
-• Work with MATLAB/Python and large-scale data analysis
-• Collaborate on commercialization of location technologies</description>
   </item>
 </channel>
 </rss>
