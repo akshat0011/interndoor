@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 15:03:25 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 15:58:37 GMT</lastBuildDate>
+  <item>
+    <title>LLM Research Intern — Sony Research India</title>
+    <link>https://interndoor.com/jobs/sony-research-india-llm-research-intern-4478061801</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/sony-research-india-llm-research-intern-4478061801</guid>
+    <pubDate>Sat, 10 Oct 2026 15:58:37 GMT</pubDate>
+    <description>Company: Sony Research India · Location: Bengaluru, Karnataka, India
+• Research and prototype LLMs for multilingual understanding and entertainment domain adaptation
+• Collaborate with scientists on experiments, analysis, and paper contributions
+• Work on translation reasoning, reinforcement learning, and real-world data evaluation</description>
+  </item>
+  <item>
+    <title>Data Science Intern — Sony Research India</title>
+    <link>https://interndoor.com/jobs/sony-research-india-data-science-intern-4478080141</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/sony-research-india-data-science-intern-4478080141</guid>
+    <pubDate>Sat, 10 Oct 2026 15:47:18 GMT</pubDate>
+    <description>Company: Sony Research India · Location: Bengaluru, Karnataka, India
+• Analyze massive datasets to extract insights from user interactions
+• Implement ai/ml models for video analysis and predictive algorithms
+• Collaborate with engineering and business teams to align models with kpis</description>
+  </item>
   <item>
     <title>Associate Project Engineer — Hitachi Energy</title>
     <link>https://interndoor.com/jobs/hitachi-energy-associate-project-engineer-4466066235</link>
@@ -490,26 +510,6 @@
 • Build and maintain deployment pipelines for machine learning models
 • Use Kubernetes, Terraform, and cloud platforms to automate workflows
 • Collaborate with data science teams to improve model monitoring and retraining</description>
-  </item>
-  <item>
-    <title>Analyst — eClerx</title>
-    <link>https://interndoor.com/jobs/eclerx-analyst-4477851038</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/eclerx-analyst-4477851038</guid>
-    <pubDate>Fri, 09 Oct 2026 18:32:23 GMT</pubDate>
-    <description>Company: eClerx · Location: Chandigarh, Chandigarh, India
-• Troubleshoot technical issues via outbound calls, guiding customers through solutions
-• Use CRM and call center tools to track and resolve customer problems
-• Work with global teams to escalate and follow up on unresolved cases</description>
-  </item>
-  <item>
-    <title>Technical Projects Systems Engineer — Cisco</title>
-    <link>https://interndoor.com/jobs/cisco-technical-projects-systems-engineer-4460357868</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cisco-technical-projects-systems-engineer-4460357868</guid>
-    <pubDate>Fri, 09 Oct 2026 18:30:23 GMT</pubDate>
-    <description>Company: Cisco · Location: Bengaluru, Karnataka, India
-• Design and deliver POC labs for Cisco solutions across multiple architectures
-• Use AI tools like Claude Code and Cursor with Ansible/Terraform for automation
-• Collaborate with teams on global projects with varying time zones</description>
   </item>
 </channel>
 </rss>

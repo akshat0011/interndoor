@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/sony-research-india-llm-research-intern-4478061801",
+      "url": "https://interndoor.com/jobs/sony-research-india-llm-research-intern-4478061801",
+      "title": "LLM Research Intern — Sony Research India",
+      "content_text": "Company: Sony Research India · Location: Bengaluru, Karnataka, India\n• Research and prototype LLMs for multilingual understanding and entertainment domain adaptation\n• Collaborate with scientists on experiments, analysis, and paper contributions\n• Work on translation reasoning, reinforcement learning, and real-world data evaluation",
+      "date_published": "2026-10-10T15:58:37.164Z",
+      "authors": [
+        {
+          "name": "Sony Research India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sony-research-india-data-science-intern-4478080141",
+      "url": "https://interndoor.com/jobs/sony-research-india-data-science-intern-4478080141",
+      "title": "Data Science Intern — Sony Research India",
+      "content_text": "Company: Sony Research India · Location: Bengaluru, Karnataka, India\n• Analyze massive datasets to extract insights from user interactions\n• Implement ai/ml models for video analysis and predictive algorithms\n• Collaborate with engineering and business teams to align models with kpis",
+      "date_published": "2026-10-10T15:47:18.853Z",
+      "authors": [
+        {
+          "name": "Sony Research India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/hitachi-energy-associate-project-engineer-4466066235",
       "url": "https://interndoor.com/jobs/hitachi-energy-associate-project-engineer-4466066235",
       "title": "Associate Project Engineer — Hitachi Energy",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/eclerx-analyst-4477851038",
-      "url": "https://interndoor.com/jobs/eclerx-analyst-4477851038",
-      "title": "Analyst — eClerx",
-      "content_text": "Company: eClerx · Location: Chandigarh, Chandigarh, India\n• Troubleshoot technical issues via outbound calls, guiding customers through solutions\n• Use CRM and call center tools to track and resolve customer problems\n• Work with global teams to escalate and follow up on unresolved cases",
-      "date_published": "2026-10-09T18:32:23.641Z",
-      "authors": [
-        {
-          "name": "eClerx"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cisco-technical-projects-systems-engineer-4460357868",
-      "url": "https://interndoor.com/jobs/cisco-technical-projects-systems-engineer-4460357868",
-      "title": "Technical Projects Systems Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Design and deliver POC labs for Cisco solutions across multiple architectures\n• Use AI tools like Claude Code and Cursor with Ansible/Terraform for automation\n• Collaborate with teams on global projects with varying time zones",
-      "date_published": "2026-10-09T18:30:23.309Z",
-      "authors": [
-        {
-          "name": "Cisco"
         }
       ]
     }
