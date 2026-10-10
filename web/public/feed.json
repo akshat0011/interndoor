@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878",
+      "url": "https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878",
+      "title": "Speech Recognition Intern — Sony Research India",
+      "content_text": "Company: Sony Research India · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Implement speech recognition algorithms and models\n• Use Python, PyTorch, TensorFlow, and AWS\n• Work on real-time speech processing systems",
+      "date_published": "2026-10-10T05:53:40.652Z",
+      "authors": [
+        {
+          "name": "Sony Research India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/netapp-enterprise-app-programmer-4475271864",
       "url": "https://interndoor.com/jobs/netapp-enterprise-app-programmer-4475271864",
       "title": "Enterprise App Programmer — NetApp",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Linde"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996",
-      "url": "https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996",
-      "title": "Machine Learning Engineer (Model Bring-Up) — Cerebras",
-      "content_text": "Company: Cerebras · Location: Bengaluru, Karnataka, India\n• Bring up models on AI hardware, convert weights, and ensure correctness\n• Develop MLIR lowering paths and optimize performance across compiler and runtime\n• Collaborate with hardware and kernel teams to improve inference efficiency",
-      "date_published": "2026-10-09T14:54:24.573Z",
-      "authors": [
-        {
-          "name": "Cerebras"
         }
       ]
     }
