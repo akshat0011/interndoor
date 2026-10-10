@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/valeo-engineer-testing-4469179991",
+      "url": "https://interndoor.com/jobs/valeo-engineer-testing-4469179991",
+      "title": "Test Engineer — Valeo",
+      "content_text": "Company: Valeo · Location: Chennai, Tamil Nadu, India\n• Develop test programs for hardware and software functionality\n• Collaborate with R&D on test methodology and coverage\n• Validate test equipment specs and standards across sites",
+      "date_published": "2026-10-10T16:40:45.255Z",
+      "authors": [
+        {
+          "name": "Valeo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-it-support-associate-4459884018",
+      "url": "https://interndoor.com/jobs/amazon-it-support-associate-4459884018",
+      "title": "IT Support Associate — Amazon",
+      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 3 months\n• Resolve technical issues for end-user devices like desktops, laptops, printers, and scanners\n• Support Windows and Linux operating systems with troubleshooting skills\n• Work in a global support team with rotating shift patterns in Bengaluru",
+      "date_published": "2026-10-10T16:28:54.538Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/sony-research-india-llm-research-intern-4478061801",
       "url": "https://interndoor.com/jobs/sony-research-india-llm-research-intern-4478061801",
       "title": "LLM Research Intern — Sony Research India",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "ABB"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-returnship-aws-data-engineer-4467886016",
-      "url": "https://interndoor.com/jobs/cognizant-returnship-aws-data-engineer-4467886016",
-      "title": "AWS Data Engineer Returnship — Cognizant",
-      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Design and maintain data pipelines using Python and PySpark\n• Implement cloud-native solutions with AWS services\n• Collaborate with cross-functional teams on data workflows",
-      "date_published": "2026-10-09T18:34:50.173Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-mlops-engineer-4467882208",
-      "url": "https://interndoor.com/jobs/cognizant-mlops-engineer-4467882208",
-      "title": "MLOps Engineer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Coimbatore, Tamil Nadu, India\n• Build and maintain deployment pipelines for machine learning models\n• Use Kubernetes, Terraform, and cloud platforms to automate workflows\n• Collaborate with data science teams to improve model monitoring and retraining",
-      "date_published": "2026-10-09T18:33:37.158Z",
-      "authors": [
-        {
-          "name": "Cognizant"
         }
       ]
     }
