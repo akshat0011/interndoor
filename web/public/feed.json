@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-netreveal-developer-4460305158",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-netreveal-developer-4460305158",
+      "title": "NetReveal Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India\n• Configure and develop netreveal components for transaction monitoring migration\n• Work with data engineers to ensure data meets netreveal requirements\n• Optimise sql and batch processes for large-scale data ingestion",
+      "date_published": "2026-10-10T12:38:44.083Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/dp-world-group-data-scientist-4405239833",
+      "url": "https://interndoor.com/jobs/dp-world-group-data-scientist-4405239833",
+      "title": "Data Scientist — DP World",
+      "content_text": "Company: DP World · Location: Bengaluru, Karnataka, India\n• Design and develop ML models for operational optimization problems\n• Work with PyTorch, OR-Tools, and cloud platforms\n• Collaborate with engineers to deploy models in production",
+      "date_published": "2026-10-10T12:37:37.527Z",
+      "authors": [
+        {
+          "name": "DP World"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-angular-developer-india-4468010314",
+      "url": "https://interndoor.com/jobs/nationwide-specialist-software-engineer-angular-developer-india-4468010314",
+      "title": "Angular Developer — Nationwide",
+      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Develop and maintain web applications using Angular and Java\n• Work with RESTful APIs, SQL, and cloud platforms like Kubernetes\n• Collaborate in agile teams with DevSecOps practices",
+      "date_published": "2026-10-10T12:37:21.405Z",
+      "authors": [
+        {
+          "name": "Nationwide"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nationwide-specialist-cybersecurity-4468001490",
+      "url": "https://interndoor.com/jobs/nationwide-specialist-cybersecurity-4468001490",
+      "title": "Specialist, Cybersecurity — Nationwide",
+      "content_text": "Company: Nationwide · Location: Hyderabad, Telangana, India\n• Own service requests across multiple channels, triage, prioritize, and maintain accurate records\n• Build and scale New Relic automation with Python and Terraform for dashboards and alerts\n• Collaborate with cross-functional teams to define telemetry and alerting standards\n• Reduce alert noise and automate repetitive tasks with governance and supportability",
+      "date_published": "2026-10-10T12:36:48.982Z",
+      "authors": [
+        {
+          "name": "Nationwide"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-2027-campus-hire-associate-engineer-sw-4440743864",
+      "url": "https://interndoor.com/jobs/qualcomm-2027-campus-hire-associate-engineer-sw-4440743864",
+      "title": "Software Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop real-time embedded software and device drivers\n• Work with Linux, Android, and Windows platforms\n• Collaborate on wireless modem and multimedia technologies",
+      "date_published": "2026-10-10T12:36:23.537Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431858476",
       "url": "https://interndoor.com/jobs/google-software-engineer-phd-early-career-2026-4431858476",
       "title": "Software Engineer, PhD — Google",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Quest Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-ftc-4468677638",
-      "url": "https://interndoor.com/jobs/amazon-software-dev-engineer-i-ftc-4468677638",
-      "title": "Software Dev Engineer I — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 12 months\n• Build and maintain systems for AmazonPay's payment processing and user management\n• Work with backend services and automation tools to improve operational efficiency\n• Collaborate with engineering and business teams to scale global transaction systems",
-      "date_published": "2026-10-09T17:01:56.561Z",
-      "authors": [
-        {
-          "name": "Amazon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/irdeto-intern-system-test-4477832399",
-      "url": "https://interndoor.com/jobs/irdeto-intern-system-test-4477832399",
-      "title": "System Test Intern — Irdeto",
-      "content_text": "Company: Irdeto · Location: Noida, Uttar Pradesh, India · Duration: 1 year\n• Test APIs, CDN, packager, UI, and third-party services\n• Use Jira, Test Rail, Postman, and Confluence\n• Work with leads to ensure quality standards",
-      "date_published": "2026-10-09T17:00:08.464Z",
-      "authors": [
-        {
-          "name": "Irdeto"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-advanced-software-engr-4460190777",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-advanced-software-engr-4460190777",
-      "title": "Advanced Software Engineer — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Design and build edge computing solutions for distributed and resource-constrained environments\n• Work with Kubernetes, Ansible, and Python to scale cloud and hybrid architectures\n• Lead architecture reviews and mentor engineers across cross-functional teams",
-      "date_published": "2026-10-09T16:46:25.576Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/linde-india-software-engineer-ai-hub-4468652539",
-      "url": "https://interndoor.com/jobs/linde-india-software-engineer-ai-hub-4468652539",
-      "title": "Software Engineer — Linde@India",
-      "content_text": "Company: Linde@India · Location: Bengaluru, Karnataka, India\n• Develop cloud-based applications for internal customers\n• Work with customer data and build scalable backend systems\n• Implement CI/CD pipelines and performance testing tools",
-      "date_published": "2026-10-09T16:44:46.307Z",
-      "authors": [
-        {
-          "name": "Linde@India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/societe-generale-global-solution-centre-analyst-4477815751",
-      "url": "https://interndoor.com/jobs/societe-generale-global-solution-centre-analyst-4477815751",
-      "title": "Analyst — Societe Generale Global Solution Centre",
-      "content_text": "Company: Societe Generale Global Solution Centre · Location: Bengaluru, Karnataka, India\n• Manage market data for equities, derivatives, and commodities\n• Use bloomberg and refinitiv for data validation and control\n• Collaborate with teams to ensure data compliance and risk mitigation",
-      "date_published": "2026-10-09T16:40:04.637Z",
-      "authors": [
-        {
-          "name": "Societe Generale Global Solution Centre"
         }
       ]
     }
