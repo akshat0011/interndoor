@@ -39,14 +39,37 @@ export const MISC_DISCIPLINES = new Set([
   'business_sales_marketing_ops', 'life_sciences', 'core_engineering', 'design',
 ]);
 
-export const TITLE_SYSTEM = `You tidy job titles for a student job board and name each role's discipline. Reply with JSON only.
+/**
+ * The plainest standard names for a job. The model may put one of these on a
+ * posting whose own title does not say plainly what the job is ("PKI Engineer
+ * - C# Expert" is a Security Engineer); anything else it publishes must be the
+ * posting's own words. groundTitle holds it to exactly this list.
+ */
+export const STANDARD_NAMES = [
+  'Software Engineer', 'Software Developer', 'Security Engineer', 'Data Engineer', 'Data Analyst',
+  'Data Scientist', 'Machine Learning Engineer', 'AI Engineer', 'Cloud Engineer', 'DevOps Engineer',
+  'QA Engineer', 'Test Engineer', 'Network Engineer', 'Embedded Engineer', 'Firmware Engineer',
+  'Hardware Engineer', 'Design Engineer', 'Verification Engineer', 'Research Scientist',
+  'Full Stack Developer', 'Backend Developer', 'Frontend Developer',
+];
 
-"title": the job title a student would recognise, at most 6 words, still saying what the job is.
-Use ONLY words that appear in the original title. You may remove words, reorder them and fix capitalisation. Never add, translate, abbreviate or expand a word.
-Remove: requisition and job codes (R01571827, JR12345, EVS), business-unit and team codes (I&P GN, SC&E, S&C Global Network), locations and city names, work modes (Remote, Hybrid, On-site), contract terms, the company's name, and dates, years and seasons.
-Keep: what the job is (Software Engineer, Data Analyst, Java Developer), its level or kind (Intern, Internship, Trainee, Apprentice, Co-op, Graduate, Associate, Junior, I, II) and at most two technologies when they are the point of the role.
-Word order: the discipline first and the role last, as a person would say it — "Enterprise AI Strategy Analyst", "Windows Support Engineer", "Java Developer Intern".
-If the original title is already clean and short, return it unchanged.
+export const TITLE_SYSTEM = `You name jobs for a student job board and name each role's discipline. Reply with JSON only.
+
+"title": the name of the job a student would search for, and its level. Nothing else. 1 to 4 words (5 for an internship).
+Keep: the job's name (Software Engineer, Applied Scientist, Data Analyst, Programmer, Java Developer); its level ONLY when the title states it as I, II, III, IV, 1-4, L1-L4 or SDE-1 to SDE-4, written as the title writes it; its kind (Intern, Internship, Trainee, Apprentice, Graduate, Co-op).
+NEVER add a level, grade or number the title does not have, and drop any other grade number ("Data Engineer 11" -> "Data Engineer").
+Remove: team, product, department, business-unit and programme names (Ads Trust Science, Enterprise, Global Technology, S&C Global Network, Payments Platform), requisition and job codes, locations, work modes, contract terms, dates, years, seasons, the company's name, and specialist jargon a student would not recognise (PKI, ABAP, EVS, HCM).
+A technology stays only when it IS the job and a student would know it: Java Developer, React Developer, Android Developer, Python Developer.
+When the title already says plainly what the job is, keep its own words and only remove the rest: "Cybersecurity Product Engineer" stays as it is, "Data Engineer" stays "Data Engineer". Only when the title does not say plainly what the job is, name it with the plainest standard name for the work in the description: ${STANDARD_NAMES.join(', ')}.
+Examples:
+"Applied Scientist I, Ads Trust Science" -> "Applied Scientist I"
+"Enterprise App Programmer" -> "App Programmer"
+"PKI Engineer - C# Expert" (builds certificate and encryption systems) -> "Security Engineer"
+"I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS" -> "Strategy Analyst"
+"Software Engineer II - Backend (Payments Platform)" -> "Backend Software Engineer II"
+"2027 Summer Internship - Software Engineering - Bengaluru" -> "Software Engineering Intern"
+"Java Developer" -> "Java Developer"
+"Cybersecurity Engineer" -> "Cybersecurity Engineer"
 
 "discipline": what the person will actually do, judged from the title AND the description:
 software_development (building applications, web, mobile, backend, frontend, full-stack, APIs),
@@ -93,43 +116,77 @@ const INTERN_WORD = /\b(intern|internship|trainee|apprentice|apprenticeship|co-?
 const ROLE_WORD = /\b(engineer|engineering|developer|development|analyst|analytics|scientist|intern|internship|trainee|specialist|consultant|architect|designer|programmer|tester|administrator|associate|manager|lead|apprentice|researcher|sde|sdet|technician|executive|officer)\b/i;
 export const TITLE_MAX = 60;
 /**
- * A grade of two or higher: roman II-IV, L2-L4, or 2-4 straight after a role
- * noun ("Associate 2", "SDE-2"). Dropping it makes a level-2 role read as an
- * entry-level one, so the clean title must keep it. Level 1 may go.
+ * A level the title states: roman I-IV as a word of its own, L1-L4, or 1-4
+ * straight after a role noun ("Associate 2", "SDE-1"). The clean title keeps
+ * it, level 1 included (his ask, 10 Oct 2026: Amazon's "Applied Scientist I"
+ * is "Applied Scientist I", not "Applied Scientist"). A roman numeral must
+ * stand alone: the "I" of "I&P GN" is a unit code, not a level. A year is not
+ * a level, and nor is an internal grade like Cummins' "Data Engineer 11".
  */
-const LEVEL_UP = /\b(II|III|IV)\b|\b(L[2-4])\b|\b(?:engineer|developer|associate|analyst|sde|executive|specialist|consultant)[\s-]*([2-4])\b/i;
+const LEVEL_ROMAN = /(?:^|[\s,(\-–_/])(I|II|III|IV)(?=$|[\s,)\-–_/])/;
+const LEVEL_OTHER = /\b(L[1-4])\b|\b(?:engineer|engr|developer|scientist|associate|analyst|sde|programmer|executive|specialist|consultant)[\s-]*([1-4])\b/i;
 function keepsLevel(clean, raw) {
-  const m = String(raw ?? '').match(LEVEL_UP);
-  if (!m) return true;
-  const token = m[1] ?? m[2] ?? m[3];
-  return new RegExp(`(^|[^A-Za-z0-9])${token}(?=$|[^A-Za-z0-9])`, 'i').test(clean);
+  const s = String(raw ?? '');
+  const r = s.match(LEVEL_ROMAN);
+  const o = s.match(LEVEL_OTHER);
+  const token = r && (!o || r.index <= o.index) ? r[1] : (o?.[1] ?? o?.[2]);
+  if (!token) return true;
+  return new RegExp(`(^|[^A-Za-z0-9])${token}(?=$|[^A-Za-z0-9])`, /^[IV]+$/.test(token) ? '' : 'i').test(clean);
 }
+/** An internal grade the title carried and the clean title must drop: "Data Engineer 11". */
+const BIG_GRADE = /\b(?:engineer|engr|developer|scientist|analyst|associate|programmer|specialist)\s+(?:[5-9]|\d{2,})\b/i;
+
+/** The words a standard name may add, and the kind and level words it may carry beside one. */
+const STANDARD_WORDS = new Set(STANDARD_NAMES.flatMap((n) => n.toLowerCase().split(' ')).concat('engineering'));
+const NAME_SET = new Set(STANDARD_NAMES.map((n) => n.toLowerCase()).concat('software engineering'));
+const KIND_OR_LEVEL = /\b(?:intern|internship|trainee|apprentice|apprenticeship|graduate|co-?op|junior|associate|I|II|III|IV|L[1-4]|[1-4])\b/gi;
+const coreName = (s) => String(s).replace(KIND_OR_LEVEL, ' ').replace(/[-\s]+/g, ' ').trim().toLowerCase();
+/** The posting's own title already names a standard job, so it must not be renamed to another. */
+const namesStandardJob = (raw) => {
+  const flat = ` ${String(raw ?? '').toLowerCase().replace(/[^a-z0-9+#]+/g, ' ')} `;
+  return [...NAME_SET].some((n) => flat.includes(` ${n} `));
+};
 
 /**
  * The model's title, if it is safe to publish, else null.
  *
  * Every word must be a word of the original title (or of one of its dotted
  * parts), a close stem of one (Engineer <- Engineering, Intern <- Internship),
- * or a joining word. An original that names an internship must still name one,
- * and one that names a role must still name one. Each word keeps the original
- * title's own spelling, so the model cannot publish "Powerbi" or "Macos".
+ * or a joining word — OR the title is renamed to a standard job name
+ * (STANDARD_NAMES), which is allowed only where the original names no standard
+ * job itself, or, for a title naming no role at all ("Java Fullstack"), as the
+ * original's own words plus Developer or Engineer. An original that names an
+ * internship must still name one, one that names a role must still name one,
+ * and a stated level must survive. Each word keeps the original title's own
+ * spelling, so the model cannot publish "Powerbi" or "Macos".
  */
 export function groundTitle(clean, raw, company = '') {
   const c = String(clean ?? '').replace(/\s+/g, ' ').replace(/^[\s\-–—|,:]+|[\s\-–—|,:]+$/g, '').trim();
   if (c.length < 3 || c.length > TITLE_MAX) return null;
+  const count = words(c).length;
+  if (count > 5) return null;
+  if (count < 2 && words(raw).length > 1) return null;
   const vocab = vocabulary(raw);
   const respell = [];
+  const added = [];
   for (const w of words(c)) {
     const n = norm(w);
     if (vocab.has(n)) { respell.push([w, vocab.get(n)]); continue; }
     if (CONNECTORS.has(n)) continue;
     const stem = n.length >= 4 && [...vocab.keys()].some((r) => r.startsWith(n) && r.length - n.length <= 4);
     if (stem) continue;
+    if (STANDARD_WORDS.has(n)) { added.push(n); continue; }
     return null;
+  }
+  if (added.length) {
+    const standard = NAME_SET.has(coreName(c)) && !namesStandardJob(raw);
+    const roleAdded = !ROLE_WORD.test(String(raw)) && added.every((n) => n === 'developer' || n === 'engineer');
+    if (!standard && !roleAdded) return null;
   }
   if (INTERN_WORD.test(String(raw)) && !INTERN_WORD.test(c)) return null;
   if (ROLE_WORD.test(String(raw)) && !ROLE_WORD.test(c)) return null;
   if (!keepsLevel(c, raw)) return null;
+  if (BIG_GRADE.test(c)) return null;
   if (company && c.toLowerCase() === String(company).trim().toLowerCase()) return null;
   let title = c;
   for (const [w, spelled] of respell) {

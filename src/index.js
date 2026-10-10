@@ -2326,11 +2326,13 @@ async function main() {
   // meant every freshly scraped job appeared as a boilerplate paragraph until the next
   // manual run — the newest listings, which are the ones anyone actually looks at.
   if (!DRY_RUN) await enrichNewJobs(store, cfg);
-  if (!DRY_RUN) await cleanNewTitles(store, cfg);
   /* THE EXPERIENCE IS READ BEFORE THE PUBLISH, so it can hold a 2+ years role
      back before anyone is told about it (readPostingFacts). Budgeted short: a
-     listing must not wait on it. */
+     listing must not wait on it. Read before the titles: both it and the
+     enrichment use the small model, the titles use the larger one, and this
+     Mac holds one of them at a time — one swap a run, not two. */
   if (!DRY_RUN) await readPostingFacts(store, cfg, { budgetMinutes: cfg.enrich?.factsBeforePublishMinutes ?? 1.5 });
+  if (!DRY_RUN) await cleanNewTitles(store, cfg);
 
   const newJobs = store.jobsForRun(runId);
 

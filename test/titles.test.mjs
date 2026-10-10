@@ -6,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { jobParts, composeJob } from '../src/telegram.js';
 import { readdirSync } from 'node:fs';
-import { groundTitle, shelfMove, publishedTitle, titleTargets, saveTitleReading, MISC_DISCIPLINES, DISCIPLINES, TITLE_SCHEMA, TITLE_MAX } from '../src/titles.js';
+import { groundTitle, shelfMove, publishedTitle, titleTargets, saveTitleReading, MISC_DISCIPLINES, DISCIPLINES, TITLE_SCHEMA, TITLE_MAX, STANDARD_NAMES, TITLE_SYSTEM } from '../src/titles.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -25,7 +25,8 @@ check('a location dropped', groundTitle('Tester Intern', 'Tester Intern (Mumbai 
 check('"Custom Software Engineer" is not "Agentic AI Engineer"', groundTitle('Agentic AI Engineer', 'Custom Software Engineer'), null);
 check('"Campus Summer Intern" is not "Data Science Intern"', groundTitle('Data Science Intern', 'Campus Summer Intern'), null);
 check('"Software Developer" is not "Full Stack Developer"', groundTitle('Full Stack Developer', 'Software Developer'), null);
-check('"Tech Specialist, DevOps" is not "DevOps Engineer"', groundTitle('DevOps Engineer', 'Tech Specialist, DevOps - R01571826'), null);
+// 10 Oct 2026: a title naming no standard job may take one, so this rename now stands.
+check('"Tech Specialist, DevOps" may be named "DevOps Engineer"', groundTitle('DevOps Engineer', 'Tech Specialist, DevOps - R01571826'), 'DevOps Engineer');
 
 console.log('\n== what the check allows ==');
 check('a dotted word\'s part: React.js -> React', groundTitle('React Developer', 'React.js Developer'), 'React Developer');
@@ -45,13 +46,46 @@ check('a level 2 kept by digit', groundTitle('Software Development Associate', '
 check('a level 2 kept by L-code', groundTitle('Software Engineering Associate', 'Engineering-L2-Hyderabad-Associate-Software Engineering'), null);
 check('a roman II kept', groundTitle('Platform Engineer', 'Platform Engineer II'), null);
 check('the level may stay', groundTitle('Software Development Associate 2', 'Software Engineering & Development, Associate 2'), 'Software Development Associate 2');
-check('level 1 may go', groundTitle('API Engineer', 'API Engineer 1 - Credit (L08)'), 'API Engineer');
+// 10 Oct 2026, his ask: level 1 stays too ("Applied Scientist I").
+check('level 1 stays', [groundTitle('API Engineer', 'API Engineer 1 - Credit (L08)'), groundTitle('API Engineer 1', 'API Engineer 1 - Credit (L08)')], [null, 'API Engineer 1']);
 check('the level is a word of its own, not the end of another number', groundTitle('Associate Team 42', 'Associate 2 - Team 42'), null);
 check('a year is not a level', groundTitle('Software Engineer Intern', 'Software Engineer Intern 2027'), 'Software Engineer Intern');
 check('the company name alone', groundTitle('Accenture', 'Accenture Analyst', 'Accenture'), null);
 check('too short', groundTitle('AI', 'AI Analyst'), null);
 check(`longer than ${TITLE_MAX}`, groundTitle('Intermediate Software Engineer Full Stack C# Dotnet MVC Angular Azure', 'Intermediate Software Engineer- Full Stack-C#, Dotnet, MVC, Angular, Azure DevOps'), null);
 check('empty or missing', [groundTitle('', 'Java Developer'), groundTitle(null, 'Java Developer')], [null, null]);
+
+console.log('\n== the job and its level, nothing else (his ask, 10 Oct 2026) ==');
+// His three examples, and what the larger model returned for each.
+check('Amazon: the team goes, the level stays', groundTitle('Applied Scientist I', 'Applied Scientist I, Ads Trust Science', 'Amazon Science'), 'Applied Scientist I');
+check('...and the old reading, which lost the level, is refused', groundTitle('Ads Trust Science Applied Scientist', 'Applied Scientist I, Ads Trust Science'), null);
+check('NetApp: the department goes', groundTitle('App Programmer', 'Enterprise App Programmer', 'NetApp'), 'App Programmer');
+check('Citi: jargon is renamed to a standard job', groundTitle('Security Engineer', 'PKI Engineer - C# Expert', 'Citi'), 'Security Engineer');
+// Amazon titles that were not in the instructions, as the model returned them.
+check('Amazon: another team dropped', groundTitle('Data Engineer I', 'Data Engineer I - FTC, Payfort'), 'Data Engineer I');
+check('Amazon: an internal L-band after a roman level', groundTitle('Software Dev Engineer I', 'Software Dev Engineer I, L4'), 'Software Dev Engineer I');
+check('an abbreviation spelled out as a standard name', groundTitle('Embedded Engineer I', 'Embedded Engr I'), 'Embedded Engineer I');
+check('a title naming no role takes Developer', groundTitle('Java Fullstack Developer', 'Java Fullstack IRC300668'), 'Java Fullstack Developer');
+// What the test runs showed the model doing wrong, each refused.
+check('a level the posting never stated (the model added "II")', groundTitle('Data Engineer II', 'Data Engineer'), null);
+check('...or "I"', groundTitle('Security Engineer I', 'PKI Engineer - C# Expert'), null);
+check('an internal grade dropped', groundTitle('Data Engineer', 'Data Engineer 11'), 'Data Engineer');
+check('...and never kept', groundTitle('Data Engineer 11', 'Data Engineer 11'), null);
+check('a plain title is not reworded into another', groundTitle('Security Product Engineer', 'Cybersecurity Product Engineer'), null);
+check('a title naming a standard job keeps it', groundTitle('Full Stack Developer', 'Software Developer'), null);
+check('a rename must be a whole standard name', groundTitle('Infrastructure Agent Developer', 'AI Infra Agent Dev'), null);
+check('a title that names a role may not gain a different one', groundTitle('Java Developer', 'Java Specialist'), null);
+check('a role-less title may gain only Developer or Engineer', groundTitle('Java Security Developer', 'Java Fullstack IRC300668'), null);
+check('a bare word is too little', groundTitle('Analyst', 'Analyst – Demand Forecasting'), null);
+check('a one-word title may stay one word', groundTitle('Apprentice', 'Apprentice'), 'Apprentice');
+check('no more than five words', groundTitle('Backend Java Spring Boot Software Engineer', 'Backend Java Spring Boot Software Engineer'), null);
+check('the "I" of a unit code is not a level', groundTitle('Strategy Analyst', 'I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS'), 'Strategy Analyst');
+check('a roman level is matched as written', groundTitle('Quality Engineer 1', 'Quality Engineer I'), null);
+check('an internship may not be added', groundTitle('Software Engineer Intern', 'Campus Hire - Software'), null);
+check('the prompt carries the standard names', STANDARD_NAMES.every((n) => TITLE_SYSTEM.includes(n)), true);
+check('and the larger model is configured for titles',
+  JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).titles.model, 'qwen3:14b');
+check('cleanTitles reads it', /const model = cfg\.titles\?\.model \|\| /.test(readFileSync(new URL('../src/ollama.js', import.meta.url), 'utf8')), true);
 
 console.log('\n== Software moves to Misc on TWO signals, and only Software moves ==');
 check('Accenture strategy analyst moves', shelfMove('software', 'consulting_strategy', 'I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS'), 'misc');
@@ -136,6 +170,9 @@ console.log('\n== wired where it counts ==');
     at('await enrichNewJobs(store, cfg);') > 0
       && at('await cleanNewTitles(store, cfg);') > at('await enrichNewJobs(store, cfg);')
       && at('await publish(store, cfg') > at('await cleanNewTitles(store, cfg);'), true);
+  check('the facts read (small model) comes before the titles (larger model)',
+    at('await readPostingFacts(store, cfg, { budgetMinutes: cfg.enrich?.factsBeforePublishMinutes') > 0
+      && at('await readPostingFacts(store, cfg, { budgetMinutes: cfg.enrich?.factsBeforePublishMinutes') < at('await cleanNewTitles(store, cfg);'), true);
   check('the server slug builds from slugTitle', /slugify\(job\.slugTitle \?\? job\.title\)/.test(strip('../src/pages.js')), true);
 }
 
