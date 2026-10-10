@@ -477,6 +477,14 @@ function expShort(job) {
   return m ? `${m[1].replace(/\s+/g, '')} yrs exp` : '';
 }
 
+/* What a full-time card says about experience: the years the posting states,
+   or, where it states none, what it says in words ("Freshers welcome",
+   "Campus hire") — publish's expSays. Nothing when the posting says nothing:
+   "not stated" on four cards in five is noise, and the pane says it. */
+function expCard(job) {
+  return expShort(job) || expShort({ experience: job?.expSays }) || job?.expSays || '';
+}
+
 function relTime(ms) {
   if (!ms) return '';
   const mins = Math.round((Date.now() - ms) / 60000);
@@ -895,6 +903,7 @@ function renderCatSeg() {
   }
   // One shelf is no choice: the control appears once there is a second.
   seg.hidden = !counts.hardware && !counts.misc;
+  renderExpFilter();
 }
 
 /** Switch shelves. The kind tab is untouched; the selection is cleared. */
@@ -1167,16 +1176,71 @@ function syncRelevance() {
   applyFilters();
 }
 
+/*
+ * THE EXPERIENCE FILTER — Full-time tab only (10 Oct 2026, his ask: students
+ * want to filter by the experience a role needs). It filters on what the
+ * posting SAYS (publish's expLevel), and "Not stated" is an answer of its own
+ * because it is the answer for four roles in five. Every role on the tab is
+ * entry level by LinkedIn's own tag or its title, and publish holds back any
+ * posting that states 2+ years, so "not stated" never means "senior".
+ * Made HERE rather than in index.html, like the shelf tabs: it needs this
+ * script to mean anything, and the board template is published every run.
+ * "Up to 1 year" includes the fresher roles: a reader with a year behind
+ * them can apply to both.
+ */
+const EXP_OPTIONS = [['', 'Any'], ['fresher', 'Freshers welcome'], ['one', 'Up to 1 year'], ['none', 'Not stated']];
+function expMatches(job, want) {
+  const level = job?.expLevel || null;
+  if (want === 'fresher') return level === 'fresher';
+  if (want === 'one') return level === 'fresher' || level === 'one';
+  if (want === 'none') return !level;
+  return true;
+}
+function ensureExpFilter() {
+  if ($('f-exp')) return;
+  const picks = document.querySelector('.picks');
+  if (!picks) return;
+  const label = document.createElement('label');
+  const name = document.createElement('span');
+  name.textContent = 'Experience';
+  const sel = document.createElement('select');
+  sel.id = 'f-exp';
+  sel.title = 'What the posting itself says. Most entry-level postings name no years.';
+  for (const [value, text] of EXP_OPTIONS) sel.append(new Option(text, value));
+  label.append(name, sel);
+  // First in the strip: on a phone the strip scrolls sideways, and this is the
+  // filter students asked for. It is hidden on the Internships tab.
+  picks.prepend(label);
+}
+/** Shown on the Full-time tab only, with each answer's count in roles over the tab and shelf on screen. */
+function renderExpFilter() {
+  const sel = $('f-exp');
+  if (!sel) return;
+  sel.closest('label').hidden = state.kind !== 'fulltime';
+  const seen = { '': new Set(), fresher: new Set(), one: new Set(), none: new Set() };
+  for (const j of state.jobs) {
+    if (kindOf(j) !== 'fulltime' || catOf(j) !== state.cat) continue;
+    const key = roleKey(j);
+    for (const v of Object.keys(seen)) if (expMatches(j, v)) seen[v].add(key);
+  }
+  for (const o of sel.options) {
+    const text = EXP_OPTIONS.find(([v]) => v === o.value)?.[1];
+    if (text) o.textContent = `${text} (${seen[o.value]?.size ?? 0})`;
+  }
+}
+
 function applyFilters() {
   const q = $('q').value.trim().toLowerCase();
   const company = $('f-company').value;
   const location = $('f-location').value;
   const mode = $('f-mode').value;
   const sort = $('f-sort').value;
+  const exp = state.kind === 'fulltime' ? ($('f-exp')?.value ?? '') : '';
 
   const list = state.jobs.filter((j) => {
     if (kindOf(j) !== state.kind) return false;
     if (catOf(j) !== state.cat) return false;
+    if (exp && !expMatches(j, exp)) return false;
     if (company && j.company !== company) return false;
     if (location && j.location !== location) return false;
     if (mode && (j.workplaceType ?? '').toLowerCase() !== mode.toLowerCase()) return false;
@@ -1204,7 +1268,7 @@ function applyFilters() {
 
 function anyFilterActive() {
   return $('q').value.trim() || $('f-company').value || $('f-location').value ||
-    $('f-mode').value;
+    $('f-mode').value || (state.kind === 'fulltime' && $('f-exp')?.value);
 }
 
 /* ---------------- rendering ---------------- */
@@ -1432,7 +1496,7 @@ function jobCard(job, index, group = [job], seen = false) {
      and says so — "1–2 yrs exp", never a bare "1–2 years" a reader could take
      for the length of the role (8 Oct 2026). */
   if (job.duration) meta.append(el('span', null, job.duration));
-  else if (expShort(job)) meta.append(el('span', null, expShort(job)));
+  else if (expCard(job)) meta.append(el('span', null, expCard(job)));
   if (meta.children.length) mid.append(meta);
 
   /* Fit, when a resume is loaded. Under the facts rather than beside the role:
@@ -1662,12 +1726,12 @@ function renderTrackCount() {
    one history entry per character would make Back unusable. A fragment-only
    URL resolves against the current one, so selectJob()'s `#job-<id>` keeps the
    query string and this keeps the fragment. */
-const URL_FILTERS = { q: 'q', company: 'f-company', city: 'f-location', mode: 'f-mode', sort: 'f-sort' };
+const URL_FILTERS = { q: 'q', company: 'f-company', city: 'f-location', mode: 'f-mode', exp: 'f-exp', sort: 'f-sort' };
 
 function syncUrl() {
   const params = new URLSearchParams();
   for (const [key, id] of Object.entries(URL_FILTERS)) {
-    const value = $(id).value.trim();
+    const value = $(id)?.value.trim();
     // 'new' is the default sort; leaving it out keeps a shared link clean.
     if (value && !(key === 'sort' && value === 'new')) params.set(key, value);
   }
@@ -1681,6 +1745,7 @@ function readUrl() {
     const value = params.get(key);
     if (value === null) continue;
     const node = $(id);
+    if (!node) continue;
     // A company or city that has aged off the board would otherwise blank the
     // <select> and silently filter to nothing.
     if (node.tagName === 'SELECT' && !Array.from(node.options).some((o) => o.value === value)) continue;
@@ -2023,6 +2088,8 @@ function renderDetail(job) {
   addFact(fullTime ? 'Pay' : 'Stipend', job.stipend || 'Not disclosed', job.stipend ? 'cash' : 'muted');
   if (job.duration) addFact('Duration', job.duration);
   if (job.experience) addFact('Experience', job.experience);
+  else if (job.expSays) addFact('Experience', job.expSays);
+  else if (fullTime) addFact('Experience', 'Not stated in the posting', 'muted');
   addFact('Type', fullTime ? 'Full-time' : 'Internship');
   if (job.degreeLevel) addFact('Open to', [job.degreeLevel, job.degreeText].filter(Boolean).join(' · '));
   if (job.applicants) addFact('Applicants', job.applicants);
@@ -2752,6 +2819,7 @@ function wireFilterStrip() {
 
 function wireControls() {
   const rerun = () => { syncUrl(); applyFilters(); };
+  ensureExpFilter();
   wireFilterStrip();
 
   // Internship / full-time. A real tablist rather than a filter dropdown,
@@ -2772,14 +2840,14 @@ function wireControls() {
     rerun();
     $('q').focus();
   });
-  for (const id of ['f-company', 'f-location', 'f-mode', 'f-sort']) {
-    $(id).addEventListener('change', rerun);
+  for (const id of ['f-company', 'f-location', 'f-mode', 'f-exp', 'f-sort']) {
+    $(id)?.addEventListener('change', rerun);
   }
 
   $('reset').addEventListener('click', () => {
     $('q').value = '';
     $('clear-q').hidden = true;
-    for (const id of ['f-company', 'f-location', 'f-mode']) $(id).value = '';
+    for (const id of ['f-company', 'f-location', 'f-mode', 'f-exp']) if ($(id)) $(id).value = '';
     $('f-sort').value = 'new';
     rerun();
   });
