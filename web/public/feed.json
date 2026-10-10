@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wipro-developer-l2-4478002328",
+      "url": "https://interndoor.com/jobs/wipro-developer-l2-4478002328",
+      "title": "Developer L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Chennai, Tamil Nadu, India\n• Code and test applications following quality standards and client specs\n• Work with teams to align development with project needs\n• Maintain documentation and contribute to process improvements",
+      "date_published": "2026-10-10T00:17:12.571Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4477895308",
       "url": "https://interndoor.com/jobs/bytedance-data-analyst-project-intern-training-and-quality-2026-start-bs-ms-4477895308",
       "title": "Data Analyst Intern — ByteDance",
@@ -14,6 +26,18 @@
       "authors": [
         {
           "name": "ByteDance"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744",
+      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744",
+      "title": "Ads Trust Science Applied Scientist — Amazon Science",
+      "content_text": "Company: Amazon Science · Location: Bengaluru, Karnataka, India\n• Build ml models that flag or clear ads across languages and cultures\n• Own systems that moderate millions of ads daily with production impact\n• Work on multimodal content understanding with vision and language models",
+      "date_published": "2026-10-09T23:25:01.343Z",
+      "authors": [
+        {
+          "name": "Amazon Science"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "NetApp"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-video-design-verification-engineer-4476806289",
-      "url": "https://interndoor.com/jobs/qualcomm-video-design-verification-engineer-4476806289",
-      "title": "Video Design Verification Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Bengaluru, Karnataka, India\n• Analyze and verify digital/analog designs for high-performance ICs\n• Use tools like RTL to GDS Flow and Virtuoso for block/SoC development\n• Collaborate on implementation strategies and process flows with cross-functional teams",
-      "date_published": "2026-10-09T14:18:36.993Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-modem-gnss-systems-engineer-4476296665",
-      "url": "https://interndoor.com/jobs/qualcomm-modem-gnss-systems-engineer-4476296665",
-      "title": "GNSS Systems Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Design and develop algorithms for centimeter-level GNSS positioning\n• Work with MATLAB/Python and large-scale data analysis\n• Collaborate on commercialization of location technologies",
-      "date_published": "2026-10-09T14:18:35.879Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }
