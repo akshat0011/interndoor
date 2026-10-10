@@ -6,7 +6,24 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 00:27:42 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 03:35:31 GMT</lastBuildDate>
+  <item>
+    <title>Enterprise App Programmer — NetApp</title>
+    <link>https://interndoor.com/jobs/netapp-enterprise-app-programmer-4475271864</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/netapp-enterprise-app-programmer-4475271864</guid>
+    <pubDate>Sat, 10 Oct 2026 03:35:31 GMT</pubDate>
+    <description>Company: NetApp · Location: India
+• Administer snowflake and informatica platforms, manage access controls, and enforce data governance
+• Support elt pipelines, migration projects, and disaster recovery for enterprise data systems
+• Collaborate with architects and stakeholders to ensure secure, scalable data infrastructure</description>
+  </item>
+  <item>
+    <title>Unemployed — Youtube Channel</title>
+    <link>https://interndoor.com/jobs/youtube-channel-unemployed-4475280002</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/youtube-channel-unemployed-4475280002</guid>
+    <pubDate>Sat, 10 Oct 2026 03:30:20 GMT</pubDate>
+    <description>Company: Youtube Channel · Location: Raurkela, Odisha, India</description>
+  </item>
   <item>
     <title>Developer L2 — Wipro</title>
     <link>https://interndoor.com/jobs/wipro-developer-l2-4478009111</link>
@@ -487,26 +504,6 @@
 • Bring up models on AI hardware, convert weights, and ensure correctness
 • Develop MLIR lowering paths and optimize performance across compiler and runtime
 • Collaborate with hardware and kernel teams to improve inference efficiency</description>
-  </item>
-  <item>
-    <title>Developer — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-developer-4476812397</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-developer-4476812397</guid>
-    <pubDate>Fri, 09 Oct 2026 14:48:37 GMT</pubDate>
-    <description>Company: Cognizant · Location: Chennai, Tamil Nadu, India
-• Design and build analytics solutions for billing and revenue management
-• Use Oracle Analytics Cloud for data modeling and dashboard creation
-• Collaborate with billing teams to translate requirements into technical designs</description>
-  </item>
-  <item>
-    <title>Data Analyst — S&amp;P Global</title>
-    <link>https://interndoor.com/jobs/s-and-p-global-data-analyst-4476817130</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/s-and-p-global-data-analyst-4476817130</guid>
-    <pubDate>Fri, 09 Oct 2026 14:43:15 GMT</pubDate>
-    <description>Company: S&amp;P Global · Location: Bengaluru, Karnataka, India
-• Process and enter transaction data into a premium M&amp;A database used by top tech investors
-• Use press releases, company sites, and financial reports to validate and summarize deals
-• Work with a global team on a product valued by 80% of active tech investment bankers</description>
   </item>
 </channel>
 </rss>
