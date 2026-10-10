@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649",
+      "url": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649",
+      "title": "Apprentice. IT. Development Program — Eaton",
+      "content_text": "Company: Eaton · Location: Pune Division, Maharashtra, India\n• Support data engineering and governance projects using Snowflake and Medallion Architecture\n• Write and optimize SQL for data transformation and analysis\n• Collaborate with cross-functional teams on data pipelines and GenAI use cases",
+      "date_published": "2026-10-10T14:33:20.761Z",
+      "authors": [
+        {
+          "name": "Eaton"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ntt-data-north-america-netreveal-developer-4460305158",
       "url": "https://interndoor.com/jobs/ntt-data-north-america-netreveal-developer-4460305158",
       "title": "NetReveal Developer — NTT DATA North America",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Expedia Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-ai-ml-jr-engineer-4476835221",
-      "url": "https://interndoor.com/jobs/quest-global-ai-ml-jr-engineer-4476835221",
-      "title": "AI ML Jr Engineer — Quest Global",
-      "content_text": "Company: Quest Global · Location: Hyderabad, Telangana, India\n• Validate hardware/software designs before release\n• Work with teams to test and analyze new features\n• Use python, pytorch, and onnx for validation tasks",
-      "date_published": "2026-10-09T17:05:16.715Z",
-      "authors": [
-        {
-          "name": "Quest Global"
         }
       ]
     }

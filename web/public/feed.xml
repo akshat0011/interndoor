@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 12:38:44 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 14:33:20 GMT</lastBuildDate>
+  <item>
+    <title>Apprentice. IT. Development Program — Eaton</title>
+    <link>https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649</guid>
+    <pubDate>Sat, 10 Oct 2026 14:33:20 GMT</pubDate>
+    <description>Company: Eaton · Location: Pune Division, Maharashtra, India
+• Support data engineering and governance projects using Snowflake and Medallion Architecture
+• Write and optimize SQL for data transformation and analysis
+• Collaborate with cross-functional teams on data pipelines and GenAI use cases</description>
+  </item>
   <item>
     <title>NetReveal Developer — NTT DATA North America</title>
     <link>https://interndoor.com/jobs/ntt-data-north-america-netreveal-developer-4460305158</link>
@@ -499,16 +509,6 @@
 • Support database infrastructure projects from design to go-live
 • Work with Elasticsearch, AWS, MongoDB, MySQL, PostgreSQL, Redis
 • Perform routine health checks and incident triage</description>
-  </item>
-  <item>
-    <title>AI ML Jr Engineer — Quest Global</title>
-    <link>https://interndoor.com/jobs/quest-global-ai-ml-jr-engineer-4476835221</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/quest-global-ai-ml-jr-engineer-4476835221</guid>
-    <pubDate>Fri, 09 Oct 2026 17:05:16 GMT</pubDate>
-    <description>Company: Quest Global · Location: Hyderabad, Telangana, India
-• Validate hardware/software designs before release
-• Work with teams to test and analyze new features
-• Use python, pytorch, and onnx for validation tasks</description>
   </item>
 </channel>
 </rss>
