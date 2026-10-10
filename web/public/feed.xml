@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 03:35:31 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 10 Oct 2026 05:53:40 GMT</lastBuildDate>
+  <item>
+    <title>Speech Recognition Intern — Sony Research India</title>
+    <link>https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878</guid>
+    <pubDate>Sat, 10 Oct 2026 05:53:40 GMT</pubDate>
+    <description>Company: Sony Research India · Location: Bengaluru, Karnataka, India · Duration: 6 months
+• Implement speech recognition algorithms and models
+• Use Python, PyTorch, TensorFlow, and AWS
+• Work on real-time speech processing systems</description>
+  </item>
   <item>
     <title>Enterprise App Programmer — NetApp</title>
     <link>https://interndoor.com/jobs/netapp-enterprise-app-programmer-4475271864</link>
@@ -494,16 +504,6 @@
 • Build scalable data pipelines for digitalization projects
 • Work with SAP, Databricks, and Microsoft Fabric
 • Collaborate across teams to deliver data products and services</description>
-  </item>
-  <item>
-    <title>Machine Learning Engineer (Model Bring-Up) — Cerebras</title>
-    <link>https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cerebras-machine-learning-engineer-model-bring-up-4477800996</guid>
-    <pubDate>Fri, 09 Oct 2026 14:54:24 GMT</pubDate>
-    <description>Company: Cerebras · Location: Bengaluru, Karnataka, India
-• Bring up models on AI hardware, convert weights, and ensure correctness
-• Develop MLIR lowering paths and optimize performance across compiler and runtime
-• Collaborate with hardware and kernel teams to improve inference efficiency</description>
   </item>
 </channel>
 </rss>
