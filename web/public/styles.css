@@ -1226,7 +1226,10 @@ html[data-boot] .boot-part {
 .idle-scope i:nth-child(3), .wait-scope i:nth-child(3) { animation-delay: 1.9s; }
 @keyframes ripple { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
 
-.pane { padding: 26px; max-height: calc(100vh - var(--stack-h) - 44px); overflow: auto; overscroll-behavior: contain; }
+/* No bottom padding: the pane ends with the pinned actions, and a scroll
+   container's end padding cannot be cancelled by a child's negative margin —
+   it left the bar floating 26px short of the edge with text showing under it. */
+.pane { padding: 26px 26px 0; max-height: calc(100vh - var(--stack-h) - 44px); overflow: auto; overscroll-behavior: contain; }
 .pane.is-in { animation: pane-swap .45s var(--ease-out) both; }
 .back {
   display: none; background: none; border: 0; color: var(--ink-2); cursor: pointer;
@@ -1236,13 +1239,39 @@ html[data-boot] .boot-part {
 /* The pane's head is the role card's, larger: the employer's mark and name,
    then the role as the headline (9 Oct 2026 — it had no logo and led with the
    company in the biggest type). */
-.p-head { display: flex; align-items: center; gap: 14px; }
+/* The head (11 Oct 2026, after his reference): mark, company over role, two
+   quiet tools, then the three facts a reader checks first, with icons. */
+.p-top { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: start; }
 .crest.p-crest { width: 56px; height: 56px; font-size: 18px; }
 .crest.p-crest img { padding: 6px; }
-.p-who { display: grid; gap: 3px; min-width: 0; }
-.p-co { font-family: var(--ui); font-weight: 500; font-size: 15px; line-height: 1.3; letter-spacing: -.01em; color: var(--ink-15); }
-.p-role { margin: 16px 0 0; font-family: var(--display); font-weight: 600; font-size: 27px; line-height: 1.14; letter-spacing: -.03em; color: var(--ink); text-wrap: balance; }
-.p-loc { font-family: var(--ui); font-size: 13px; letter-spacing: 0; color: var(--ink-3); }
+.p-who { display: grid; gap: 4px; min-width: 0; padding-top: 2px; }
+.p-co { font-family: var(--ui); font-weight: 500; font-size: 14px; line-height: 1.3; letter-spacing: -.01em; color: var(--ink-2); }
+.p-role { margin: 0; font-family: var(--display); font-weight: 600; font-size: 25px; line-height: 1.16; letter-spacing: -.03em; color: var(--ink); text-wrap: balance; }
+.p-tools { display: flex; gap: 6px; }
+.p-tool {
+  width: 36px; height: 36px; display: grid; place-items: center; flex: none;
+  border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--ink-2);
+  cursor: pointer; text-decoration: none;
+  transition: color .16s, border-color .16s, transform .45s var(--spring);
+}
+.p-tool:active { transform: scale(.94); transition-duration: .12s; }
+.p-tool:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .p-tool:hover { color: var(--ink); border-color: var(--rule-2); }
+}
+.p-meta {
+  list-style: none; margin: 16px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px 18px;
+  font-family: var(--ui); font-size: 13.5px; line-height: 1.3; color: var(--ink-2);
+}
+.p-meta li { display: inline-flex; align-items: center; gap: 7px; min-width: 0; }
+.p-meta svg { color: var(--ink-3); }
+.p-tags { margin-top: 16px; }
+.pane .p-tags + .facts, .pane .p-warn + .facts { margin-top: 18px; }
+.chip.is-deg { color: var(--ink); border-color: var(--rule-2); background: var(--card-2); font-weight: 600; }
+.chip.has { color: var(--accent); border-color: transparent; background: color-mix(in oklab, var(--accent) 12%, var(--card-2)); }
+.p-warn { margin: 16px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--hot); }
+:root[data-theme="light"] .p-warn { color: #9a3412; }
 
 /* Every city a collapsed role is open in, each its own posting and its own page.
    Chips rather than a sentence: they are links, and they have to look like it. */
@@ -1260,7 +1289,17 @@ html[data-boot] .boot-part {
   .place:hover { color: var(--ink); border-color: var(--ink-3); }
 }
 
-.p-acts { display: flex; gap: 9px; margin: 22px 0 18px; flex-wrap: wrap; }
+/* Apply and the tailor, pinned to the foot of the pane so they are in reach
+   however far down the reader is. The pane's own padding is cancelled so the
+   bar runs edge to edge over the content scrolling under it. */
+.p-cta {
+  position: sticky; bottom: 0; z-index: 1;
+  display: flex; gap: 10px; align-items: center;
+  margin: 24px -26px 0; padding: 14px 26px;
+  background: var(--card); border-top: 1px solid var(--rule);
+}
+.p-cta .go { flex: 1 1 auto; }
+.p-cta .alt { flex: none; }
 
 .go, .alt, .bare {
   border-radius: var(--r-pill); height: 40px; padding: 0 18px; cursor: pointer;
@@ -1291,7 +1330,10 @@ html[data-boot] .boot-part {
 .fact dd.cash { color: var(--cash); }
 .fact dd.muted { color: var(--ink-3); font-weight: 400; }
 
-.pane h3 { font-family: var(--ui); font-weight: 500; font-size: 13px;  letter-spacing: 0; color: var(--ink-2); margin: 22px 0 10px; }
+.pane h3 { font-family: var(--ui); font-weight: 600; font-size: 15px; letter-spacing: -.01em; color: var(--ink); margin: 26px 0 10px; }
+.p-reqs { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; line-height: 1.5; color: var(--ink-15); }
+.p-reqs li { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+.p-req-k { color: var(--ink-3); font-size: 13px; padding-top: 1px; }
 .p-gist { font-size: 14.5px; white-space: pre-line; color: var(--ink-15); }
 .p-duties { margin: 0; padding-left: 18px; display: grid; gap: 7px; font-size: 14.5px; line-height: 1.5; color: var(--ink-15); list-style: disc; }
 .p-duties li { display: list-item; }
@@ -1542,30 +1584,153 @@ html[data-boot] .boot-part {
 .wait > span { margin-top: 7px; font-family: var(--ui); font-size: 12px;  letter-spacing: 0; color: var(--ink-3); }
 
 .acts { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 18px; }
-.flagbox { border-left: 2px solid var(--hot); background: var(--card); padding: 13px 15px; margin-bottom: 12px; font-size: 13px; color: var(--ink-2); }
-.flagbox b { display: block; color: var(--ink); margin-bottom: 5px; }
-.flagbox ul { list-style: disc; padding-left: 18px; margin-top: 5px; }
-.flagbox-gap { border-left-color: var(--live); }
 
-.diffs { margin-bottom: 18px; }
-.diffs h4 { margin: 0 0 9px; font-family: var(--ui); font-size: 12px;  letter-spacing: 0; color: var(--ink-3); font-weight: 500; }
-.diffs ul { display: flex; flex-direction: column; gap: 6px; }
-.diffs li { font-size: 13px; color: var(--ink-2); padding-left: 18px; position: relative; }
-.diffs li::before { content: "+"; position: absolute; left: 0; color: var(--live); font-family: var(--mono); font-weight: 700; }
 
-.sheet { background: #fff; color: #16160f; border-radius: var(--r); padding: 38px 42px; font-family: ui-serif, Georgia, serif; font-size: 13px; line-height: 1.5; }
-.sheet .r-name { font-family: var(--display); font-weight: 600; font-size: 26px; letter-spacing: -.035em;  }
-.sheet .r-contact { font-family: var(--mono); font-size: 11px; color: #55554c; margin-top: 4px; }
-.sheet .r-summary { margin-top: 14px; }
-.sheet .r-sec { margin-top: 19px; }
-.sheet .r-sec > h5 { margin: 0 0 8px; font-family: var(--ui); font-size: 12px;  letter-spacing: 0; font-weight: 500; border-bottom: 1.5px solid #16160f; padding-bottom: 4px; }
-.sheet .r-item { margin-bottom: 12px; break-inside: avoid; }
+/* The resume itself: one column, standard headings and plain text, which is
+   what an applicant tracking system reads best. */
+.sheet { background: #fff; color: #16160f; border-radius: 6px; padding: 44px 48px; font-family: ui-serif, Georgia, serif; font-size: 13px; line-height: 1.5; }
+.sheet .r-name { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.15; letter-spacing: -.035em; }
+.sheet .r-contact { font-family: var(--ui); font-size: 11.5px; color: #55554c; margin-top: 6px; }
+.sheet .r-sec { margin-top: 20px; }
+.sheet .r-sec > h5 {
+  margin: 0 0 8px; padding-bottom: 4px; border-bottom: 1px solid #16160f;
+  font-family: var(--ui); font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+.sheet .r-summary { margin: 0; }
+.sheet .r-item { margin-bottom: 10px; break-inside: avoid; }
 .sheet .r-item-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
 .sheet .r-role { font-weight: 700; }
-.sheet .r-org { font-style: italic; color: #3d3d35; }
-.sheet .r-dates { font-family: var(--mono); font-size: 10.5px; color: #62625a; white-space: nowrap; }
-.sheet .r-item ul { list-style: disc; padding-left: 18px; margin-top: 4px; }
-.sheet .r-skills { font-family: var(--mono); font-size: 11.5px; }
+.sheet .r-org { color: #3d3d35; }
+.sheet .r-dates { font-family: var(--ui); font-size: 11px; color: #62625a; white-space: nowrap; }
+.sheet .r-item ul { list-style: disc; padding-left: 18px; margin: 3px 0 0; }
+.sheet .r-item li + li { margin-top: 2px; }
+.sheet .r-skills { margin: 0 0 3px; }
+/* What the tailor added: a highlighter stroke under the words. Never printed. */
+.sheet .r-add {
+  background: linear-gradient(transparent 58%, rgba(200, 255, 0, .55) 58%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.sheet .r-flash { animation: r-flash 1.2s var(--ease-out); }
+@keyframes r-flash { 0%, 35% { box-shadow: 0 0 0 4px rgba(200, 255, 0, .6); } 100% { box-shadow: 0 0 0 4px rgba(200, 255, 0, 0); } }
+.sheet.is-editing { outline: 2px dashed color-mix(in oklab, var(--accent) 60%, transparent); outline-offset: 6px; caret-color: #16160f; cursor: text; }
+.sheet.is-editing:focus { outline-style: solid; }
+
+/* ---- the result: the document gets the room ---- */
+.modal.tw[data-step="result"] {
+  top: clamp(16px, 4vh, 40px);
+  width: min(1180px, calc(100vw - 48px));
+  height: calc(100vh - 2 * clamp(16px, 4vh, 40px));
+  max-height: none;
+}
+.modal.tw[data-step="result"] .modal-top { padding: 16px 18px 14px 24px; }
+.modal.tw[data-step="result"] .modal-body { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+/* :not([hidden]): a display here would otherwise beat the hidden attribute. */
+#step-result:not([hidden]) { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.rs-bar {
+  flex: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 12px 16px; padding: 12px 24px; border-bottom: 1px solid var(--rule);
+}
+.rs-view { width: max-content; }
+.rs-view .seg-b { padding: 6px 16px; font-size: 13px; }
+.rs-acts { display: flex; align-items: center; gap: 8px; }
+.rs-acts .go, .rs-acts .alt, .rs-acts .bare { height: 36px; padding: 0 14px; font-size: 13.5px; }
+.rs-acts .go { padding: 0 18px; }
+.rs-acts .alt[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+.rs-acts .alt:disabled { color: var(--ink-3); border-color: var(--rule); cursor: not-allowed; transform: none; }
+.rs-grid { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 320px; }
+.rs-doc { overflow: auto; overscroll-behavior: contain; padding: 28px 32px 48px; background: var(--bg); }
+.rs-doc .sheet { max-width: 800px; margin: 0 auto; box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 18px 44px rgba(0, 0, 0, .35); }
+:root[data-theme="light"] .rs-doc .sheet { box-shadow: 0 1px 2px rgba(20, 20, 30, .08), 0 14px 34px rgba(20, 20, 30, .12); }
+.rs-editing { max-width: 800px; margin: 0 auto 12px; font-size: 12.5px; color: var(--accent); }
+.rs-side {
+  overflow: auto; overscroll-behavior: contain; padding: 22px 20px;
+  border-left: 1px solid var(--rule); background: var(--bg-2);
+  display: flex; flex-direction: column;
+}
+
+.rs-score { padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+.rs-score-head { display: flex; align-items: center; gap: 14px; }
+.rs-num { font-family: var(--display); line-height: 1; white-space: nowrap; }
+.rs-num b { font-size: 40px; font-weight: 600; letter-spacing: -.04em; color: var(--accent); }
+.rs-num span { margin-left: 2px; font-size: 18px; font-weight: 500; color: var(--ink-3); }
+.rs-lab { display: grid; gap: 3px; font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--ink); }
+.rs-lab small { font-size: 12.5px; font-weight: 400; color: var(--ink-3); }
+.rs-kw { margin-top: 14px; }
+.rs-kw .chip { padding: 3px 9px; font-size: 11.5px; }
+.rs-keep { margin: 12px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
+
+.rs-sec { border-bottom: 1px solid var(--rule); }
+.rs-sec > summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px;
+  padding: 15px 0; font-family: var(--ui); font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.rs-sec > summary::-webkit-details-marker { display: none; }
+.rs-sec > summary::after {
+  content: ''; margin-left: auto; width: 7px; height: 7px; flex: none;
+  border-right: 1.5px solid var(--ink-3); border-bottom: 1.5px solid var(--ink-3);
+  transform: translateY(-2px) rotate(45deg); transition: transform .2s var(--ease-out);
+}
+.rs-sec[open] > summary::after { transform: translateY(2px) rotate(225deg); }
+.rs-sec > summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+.rs-n { padding: 1px 7px; border-radius: 999px; background: var(--card-2); font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--ink-2); }
+.rs-n:empty { display: none; }
+.rs-note { margin: -4px 0 12px; font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
+.rs-list { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 8px; font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+.rs-list > li { position: relative; padding-left: 14px; }
+.rs-list > li::before { content: ''; position: absolute; left: 2px; top: .62em; width: 4px; height: 4px; border-radius: 50%; background: var(--ink-3); }
+.rs-adds > li {
+  padding: 10px 12px; border: 1px solid var(--rule); border-radius: var(--r); background: var(--card);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: start;
+}
+.rs-adds > li::before { display: none; }
+.rs-add-body { display: grid; gap: 3px; min-width: 0; }
+.rs-kind { font-size: 11px; font-weight: 600; color: var(--accent); }
+.rs-jump {
+  padding: 0; border: 0; background: none; cursor: pointer; text-align: left;
+  font: inherit; font-size: 13px; line-height: 1.45; color: var(--ink); overflow-wrap: anywhere;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;
+}
+.rs-add-body small {
+  font-size: 12px; line-height: 1.4; color: var(--ink-3);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+}
+.rs-rm {
+  padding: 2px 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 12px; color: var(--ink-3); transition: color .16s;
+}
+.rs-jump:focus-visible, .rs-rm:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .rs-rm:hover { color: var(--hot); }
+  .rs-jump:hover { text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px; }
+}
+/* A close button big enough to hit. */
+.modal.tw #tailor-close { width: 40px; height: 40px; margin: -8px -8px 0 0; font-size: 22px; flex: none; }
+
+@media (max-width: 900px) {
+  .modal.tw[data-step="result"] .modal-body { display: block; overflow: auto; }
+  #step-result:not([hidden]) { display: block; }
+  .rs-bar { padding: 12px 16px; }
+  .rs-view, .rs-acts { width: 100%; }
+  .rs-view .seg-b { flex: 1 1 0; }
+  .rs-acts { flex-wrap: wrap; }
+  .rs-acts .go { order: -1; flex: 1 1 100%; height: 44px; }
+  .rs-over { margin-right: auto; }
+  .rs-grid { display: flex; flex-direction: column; }
+  /* The score first, then the document, then the folded details. */
+  .rs-side { display: contents; }
+  .rs-score { order: 0; margin: 16px 16px 0; padding-bottom: 0; border-bottom: 0; }
+  .rs-doc { order: 1; overflow: visible; padding: 16px; background: none; }
+  .rs-sec { order: 2; margin: 0 16px; }
+  .rs-sec:last-child { margin-bottom: 24px; }
+}
+/* A phone gets the whole screen, as the asking screens do. This sits after the
+   result's own size, which would otherwise win at the same specificity. */
+@media (max-width: 640px) {
+  .modal.tw[data-step="result"] {
+    top: 0; width: 100%; height: 100vh; height: 100dvh;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
+}
 
 .oops { text-align: center; padding: 48px 26px; color: var(--ink-2); }
 .oops b { display: block; font-family: var(--display); font-weight: 600; font-size: 19px; color: var(--ink);  margin-bottom: 8px; }
@@ -1767,7 +1932,12 @@ html.nudge-open { overflow: hidden; }
   @keyframes paneIn { from { opacity: 0; transform: translateY(22px); } }
   @keyframes paneOut { to { opacity: 0; transform: translateY(16px); } }
   .pane-idle { display: none; }
-  .pane { max-height: none; min-height: 100vh; border: 0; border-radius: 0; padding: 22px 22px 70px; }
+  /* overflow: visible — the overlay scrolls, not the pane. Left at auto, the
+     pane became the pinned actions' scroll container without ever scrolling,
+     and they sat at the very end of the role instead of in reach. */
+  .pane { max-height: none; min-height: 100vh; border: 0; border-radius: 0; padding: 22px 22px 0; overflow: visible; display: flex; flex-direction: column; }
+  .p-body { flex: 1 0 auto; }
+  .p-cta { margin: 24px -22px 0; padding: 12px 22px calc(12px + env(safe-area-inset-bottom)); }
   .back { display: inline-block !important; }
 
 }
@@ -1908,10 +2078,11 @@ html.nudge-open { overflow: hidden; }
   .modal { width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; top: 0; left: 0; transform: none; border: 0; border-radius: 0; }
   @keyframes pop { from { opacity: 0; transform: translateY(14px); } }
   .sheet { padding: 24px 20px; }
-  .p-role { font-size: 28px; }
-  /* Apply takes the full width; the two quieter actions share the row under it. */
-  .p-acts .go { flex: 1 0 100%; height: 48px; font-size: 15px; }
-  .p-acts .alt { flex: 1 1 0; min-width: 0; height: 44px; padding: 0 12px; }
+  .p-role { font-size: 24px; }
+  /* The pinned actions clear the home indicator; Apply takes the room. */
+  .p-cta .go { height: 48px; font-size: 15px; }
+  .p-cta .alt { height: 48px; padding: 0 14px; }
+  .p-reqs li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .pane .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -1984,12 +2155,18 @@ html.nudge-open { overflow: hidden; }
 
 @media print {
   .bar, .lede, .rail, .board, .foot, .grain, .veil, .snack,
-  .modal-top, .wiz, .tw-foot, .acts, .flagbox, .diffs { display: none !important; }
+  .modal-top, .wiz, .tw-foot, .acts, .rs-bar, .rs-side, .rs-editing { display: none !important; }
   body { background: #fff; }
   .modal { position: static; transform: none; width: auto; max-height: none; border: 0; border-radius: 0; animation: none; background: #fff; }
   /* .modal.tw outranks the line above on screen, so print has to say it too. */
   .modal.tw, .modal.tw[data-step="result"] { position: static; margin: 0; width: auto; height: auto; max-height: none; border: 0; border-radius: 0; box-shadow: none; }
-  .modal-body { padding: 0; overflow: visible; }
+  .modal-body, .modal.tw[data-step="result"] .modal-body { display: block; padding: 0; overflow: visible; }
+  #step-result:not([hidden]), .rs-grid { display: block; }
+  .rs-doc { overflow: visible; padding: 0; background: none; }
+  .rs-doc .sheet { box-shadow: none; max-width: none; margin: 0; }
+  .sheet .r-add { background: none; }
+  .sheet .r-flash { animation: none; box-shadow: none; }
+  .sheet.is-editing { outline: none; }
   .sheet { border-radius: 0; padding: 0; font-size: 10.5pt; line-height: 1.42; color: #000; }
   .sheet .r-name { font-size: 19pt; }
   .sheet .r-sec { margin-top: 13pt; break-inside: avoid; }
@@ -2313,7 +2490,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    beside it would halve the weight of the thing every visitor came to press.
    Same 34px height so the two read as one group. */
 .trk-w { display: contents; }
-.trk-b {
+.trk-b, .tl-b {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
   height: 34px; padding: 0 13px; flex: none;
   border: 1px solid var(--rule); border-radius: 999px;
@@ -2335,10 +2512,14 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
   content: ''; width: 6px; height: 6px; border-radius: 50%;
   background: var(--accent); flex: none;
 }
-.trk-b:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.trk-b:focus-visible, .tl-b:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+/* The tailor is an action, so it reads a step stronger than a status chip. */
+.tl-b { color: var(--ink-2); }
+.tl-b svg { color: var(--accent); flex: none; }
+.tl-b:active { transform: scale(.96); }
 
 @media (hover: hover) and (pointer: fine) {
-  .trk-b:hover { color: var(--ink); border-color: var(--rule-2); }
+  .trk-b:hover, .tl-b:hover { color: var(--ink); border-color: var(--rule-2); }
 }
 
 /* ---- the rail's entry point --------------------------------------------- */
@@ -2454,13 +2635,14 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
      from exactly that. */
   .card-foot {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas: "go go" "age trk";
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas: "go go go" "age trk tl";
     align-items: center;
   }
   .card-go { grid-area: go; }
   .age { grid-area: age; }
   .trk-b { grid-area: trk; justify-self: end; }
+  .tl-b { grid-area: tl; justify-self: end; }
 }
 
 

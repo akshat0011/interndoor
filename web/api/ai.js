@@ -61,7 +61,9 @@ export const MAX_OUTPUT_TOKENS = 16_000;
 const RETRY_STATUSES = new Set([500, 502, 503, 504]);
 export const ATTEMPTS = 3;
 const RETRY_PAUSE_MS = 1_500;
-export const BUDGET_MS = 50_000;      // vercel.json gives the function 60s
+/* A tailor returns the parsed original AND the rewrite since 11 Oct 2026, and
+   measured 23-27s on a one-page resume; a long two-page one needs headroom. */
+export const BUDGET_MS = 80_000;      // vercel.json gives the function 90s
 const MIN_ATTEMPT_MS = 8_000;
 
 const API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';

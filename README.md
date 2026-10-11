@@ -62,20 +62,25 @@ Works on a phone, has a dark mode, and remembers which one you picked.
 
 ## Tailor your resume to a listing
 
-Pick any listing, upload your resume as a PDF, and get a version rewritten to target that
-specific role — then download it as a PDF or copy the text.
+Pick any listing, upload your resume as a PDF, and get a version rewritten for that role, with
+the role's own keywords where your work supports them. Then edit any line, compare it with your
+original, and download it as a PDF or copy the text. It also works from the card: every listing
+has a Tailor button beside Apply.
 
-Two rules it won't break:
+Three rules it won't break:
 
-- **It never invents anything.** It reorders, rephrases and re-emphasises what's already in your
-  resume. Every skill in the output is checked against your original, and anything you didn't
-  claim is stripped out. A tool that quietly adds Kubernetes because the job mentions Kubernetes
-  is handing you a false document to send to a real employer.
+- **It never removes anything you wrote.** It may reorder, reword and regroup, but every job,
+  project, bullet and skill in your resume is still there afterwards. That is checked in code,
+  not left to the model: anything a rewrite drops is put back.
+- **Everything it adds is shown to you.** Skills or lines added to fit the role are highlighted in
+  the resume and listed beside it, each with one click to remove. It never invents an employer,
+  a title, a date, a degree or a number.
 - **It never stores your resume.** Your PDF is read inside your own browser and only its text is
   sent, for that one request. Nothing is written down and nothing is logged.
 
-Free, with no key and no sign-up: 5 AI uses a day, shared between tailoring and reading the board
-with AI. Ranking the board by your skills is unlimited and runs on your own device.
+Beside the resume, a count shows how many of the role's keywords it now carries against your
+original. Free, with no key and no sign-up: 5 AI uses a day, shared between tailoring and reading
+the board with AI. Ranking the board by your skills is unlimited and runs on your own device.
 
 ## Right now
 

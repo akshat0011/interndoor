@@ -258,7 +258,8 @@ console.log('\n== possibly closed on the site (only in "on" mode) ==');
   ok('the reels leave it out', /!channelRefusal\(j\)\s*&& !isUnsure\(j\)/.test(read('bin/queue-server.js')));
   const app = read('web/public/app.js');
   ok('the board card labels it', /job\.status === 'possibly_closed'\) meta\.append\(el\('span', 'unsure', 'May have closed'\)\)/.test(app));
-  ok('the board pane says so first', /job\.status === 'possibly_closed'\) addFact\('Status'/.test(app));
+  // A notice above the facts since the 11 Oct 2026 pane redesign.
+  ok('the board pane says so first', /if \(job\.status === 'possibly_closed'\) \{\s*body\.append\(el\('p', 'p-warn', 'This role may have closed\./.test(app));
 }
 
 console.log('\n== wired in ==');

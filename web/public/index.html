@@ -92,7 +92,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=20">
+<link rel="stylesheet" href="/styles.css?v=21">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -548,16 +548,45 @@ Roles across <strong>India</strong>,
       </div>
     </section>
 
+    <!-- The result: the document takes the room, and what changed sits beside
+         it in sections that fold away. Both versions are in the page so an
+         edit to the tailored one survives a look at the original. -->
     <section class="step" id="step-result" hidden>
-      <div class="acts">
-        <button class="go" id="download-pdf" type="button">Download PDF</button>
-        <button class="alt" id="copy-text" type="button">Copy text</button>
-        <button class="bare" id="start-over" type="button">Start over</button>
+      <div class="rs-bar">
+        <div class="seg rs-view" role="tablist" aria-label="Version">
+          <button class="seg-b" id="view-tailored" type="button" role="tab" aria-selected="true" aria-controls="resume-preview">Tailored</button>
+          <button class="seg-b" id="view-original" type="button" role="tab" aria-selected="false" aria-controls="resume-original">Original</button>
+        </div>
+        <div class="rs-acts">
+          <button class="bare rs-over" id="start-over" type="button">Start over</button>
+          <button class="alt" id="edit-resume" type="button" aria-pressed="false">Edit</button>
+          <button class="alt" id="copy-text" type="button">Copy text</button>
+          <button class="go" id="download-pdf" type="button">Download PDF</button>
+        </div>
       </div>
-      <div class="flagbox" id="removed-note" hidden></div>
-      <div class="flagbox flagbox-gap" id="gaps-note" hidden></div>
-      <div class="diffs" id="changes"></div>
-      <div class="sheet" id="resume-preview"></div>
+      <div class="rs-grid">
+        <div class="rs-doc">
+          <p class="rs-editing" id="rs-editing" hidden>Editing. Click any line to change it.</p>
+          <div class="sheet" id="resume-preview" role="tabpanel" aria-labelledby="view-tailored"></div>
+          <div class="sheet" id="resume-original" role="tabpanel" aria-labelledby="view-original" hidden></div>
+        </div>
+        <aside class="rs-side" aria-label="About this version">
+          <div class="rs-score" id="rs-score"></div>
+          <details class="rs-sec" id="rs-added">
+            <summary>Added for this role <span class="rs-n"></span></summary>
+            <p class="rs-note">Highlighted in your resume. Remove anything that is not true for you.</p>
+            <ul class="rs-list rs-adds"></ul>
+          </details>
+          <details class="rs-sec" id="rs-gaps">
+            <summary>Still missing <span class="rs-n"></span></summary>
+            <ul class="rs-list"></ul>
+          </details>
+          <details class="rs-sec" id="rs-changes">
+            <summary>What changed <span class="rs-n"></span></summary>
+            <ul class="rs-list"></ul>
+          </details>
+        </aside>
+      </div>
     </section>
 
     <section class="step" id="step-error" hidden>
@@ -585,6 +614,6 @@ Roles across <strong>India</strong>,
 <script defer src="/track.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/feedback.js"></script>
-<script src="/app.js?v=12" type="module"></script>
+<script src="/app.js?v=13" type="module"></script>
 </body>
 </html>

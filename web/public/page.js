@@ -363,6 +363,14 @@ dressAges(document);
     appsHref: d.apps || '/applications',
   });
   mount.append(strip);
+
+  /* Apply tracks the role on its own, as it does on the board (11 Oct 2026).
+     A role already tracked is left where it is, so pressing Apply again never
+     moves "Interview" back to "Applied". */
+  document.addEventListener('click', function (e) {
+    const a = e.target && e.target.closest ? e.target.closest('a.btn-apply') : null;
+    if (a && !T.has(job.id)) T.track(job, 'applied');
+  });
   // One subscription, for the life of the page. Also repaints for a change
   // made in another tab.
   T.on(strip.repaint);

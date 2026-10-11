@@ -17,11 +17,11 @@
 import { readFileSync } from 'node:fs';
 import {
   respond, parseRequest, geminiRequest, limitKeys, overLimit, siteCap, endpointFor, askGemini,
-  PER_IP_PER_DAY, SITE_PER_DAY, MAX_OUTPUT_TOKENS, ATTEMPTS,
+  PER_IP_PER_DAY, SITE_PER_DAY, MAX_OUTPUT_TOKENS, ATTEMPTS, BUDGET_MS,
 } from '../web/api/ai.js';
 import { FREE_PER_DAY, RANK_BATCH, istDay } from '../web/public/resumeai.js';
 import {
-  RANK_MODEL, TAILOR_MODEL, RANK_SYSTEM, TAILOR_SYSTEM, buildRankPrompt,
+  RANK_MODEL, TAILOR_MODEL, RANK_SYSTEM, TAILOR_SYSTEM, TAILOR_SCHEMA, buildRankPrompt, buildTailorPrompt,
 } from '../web/api/_prompts.js';
 import { EVENTS } from '../web/api/count.js';
 
@@ -131,6 +131,21 @@ check('tailoring keeps the stronger one', TAILOR_MODEL, 'gemini-2.5-flash');
   const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title: 'B', company: 'Y' }]);
   check('every role is indexed', /\[0\][\s\S]*\[1\]/.test(prompt), true);
   check('the resume is in the prompt', prompt.includes('RESUME'), true);
+}
+
+console.log('\n== the tailor\'s contract (11 Oct 2026) ==');
+{
+  check('the model is told never to remove anything', /NEVER REMOVE ANYTHING/.test(TAILOR_SYSTEM), true);
+  check('and to list every addition', /must list every addition in "added"/.test(TAILOR_SYSTEM), true);
+  check('and never to invent an employer, date or number', /Never invent an employer, job title, project, school, date, degree, certification, award or number/.test(TAILOR_SYSTEM), true);
+  check('it returns the original and the rewrite', ['original', 'tailored', 'added', 'keywords'].every((k) => TAILOR_SCHEMA.required.includes(k)), true);
+  check('the original is written first, so its ids exist before they are used', TAILOR_SCHEMA.propertyOrdering[0], 'original');
+  const item = TAILOR_SCHEMA.properties.tailored.properties.sections.items.properties.items.items;
+  check('a tailored item names where it came from', 'from' in item.properties && 'from' in item.properties.bullets.items.properties, true);
+  const prompt = buildTailorPrompt('RESUME', { title: 'LLM Research Intern', company: 'Sony', keySkills: ['pytorch'], bullets: ['Research LLMs'], experience: '0-1 years', degreeLevel: 'PG' });
+  check('the prompt carries the duties', prompt.includes('What the work is:\n- Research LLMs'), true);
+  check('the key skills', prompt.includes('Key skills: pytorch'), true);
+  check('and who the role is for', prompt.includes('Open to: PG') && prompt.includes('Experience asked: 0-1 years'), true);
 }
 
 console.log('\n== the browser never writes the prompt ==');
@@ -299,7 +314,7 @@ console.log('\n== failures give the browser its use back ==');
   let t = 0;
   const w = world({ gemini: [{ status: 503 }, { status: 200, text: '{"scores":[]}' }] });
   const out = await askGemini({ key: KEY, model: RANK_MODEL, body: {}, fetchImpl: w.fetchImpl,
-    now: () => t, sleep: async () => { t += 45_000; } });
+    now: () => t, sleep: async () => { t += BUDGET_MS - 5_000; } });
   check('no retry past the time budget', [out.ok, w.calls.gemini.length], [false, 1]);
 }
 
@@ -367,7 +382,9 @@ console.log('\n== the wiring around it ==');
 {
   check('the counter knows the three AI events', ['ai-rank', 'ai-tailor', 'ai-limit'].every((e) => EVENTS.has(e)), true);
   const vercel = JSON.parse(readFileSync(new URL('../web/vercel.json', import.meta.url), 'utf8'));
-  check('the function has time for a slow tailor', (vercel.functions?.['api/ai.js']?.maxDuration ?? 0) >= 55, true);
+  const limit = vercel.functions?.['api/ai.js']?.maxDuration ?? 0;
+  check('the function has time for a slow tailor', limit >= 85, true);
+  check('and outlives the model budget it is given', limit * 1000 > BUDGET_MS + 5_000, true);
   const serve = readFileSync(new URL('../web/serve.js', import.meta.url), 'utf8');
   check('the local preview routes it', /'\/api\/ai': '\.\/api\/ai\.js'/.test(serve), true);
 }

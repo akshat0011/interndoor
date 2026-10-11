@@ -72,8 +72,8 @@ const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
  * together. Both files are hand-committed and ship in one commit. */
 import {
   resumeNames, shortlist, rankWithAI, tailorWithAI, RANK_BATCH,
-  FREE_PER_DAY, allowanceLeft, forgetOldKey,
-} from './resumeai.js?v=3';
+  FREE_PER_DAY, allowanceLeft, forgetOldKey, roleKeywords, keywordMatch,
+} from './resumeai.js?v=4';
 
 const PDFJS_BASE = '/vendor/pdfjs';
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -94,6 +94,21 @@ const el = (tag, cls, text) => {
   if (text != null) n.textContent = text;
   return n;
 };
+
+/* Stroke icons, the same 24-unit grid and line weight as the board's other
+   inline SVG. Paths after Tabler Icons (MIT). Static strings only: nothing a
+   reader or a posting supplies ever reaches innerHTML. */
+const ICONS = {
+  pin: '<path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.66 16.66l-4.25 4.24a2 2 0 0 1 -2.82 0l-4.25 -4.24a8 8 0 1 1 11.32 0z"/>',
+  brief: '<path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"/><path d="M3 13a20 20 0 0 0 18 0"/>',
+  clock: '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 7v5l3 3"/>',
+  share: '<path d="M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1"/><path d="M12 14v-11"/><path d="M9 6l3 -3l3 3"/>',
+  open: '<path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"/><path d="M11 13l9 -9"/><path d="M15 4h5v5"/>',
+  wand: '<path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M12.2 11.8l-1.4 1.4M3 21l9-9"/><circle cx="15" cy="9" r="3"/>',
+};
+const icon = (name, size = 16) => `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" `
+  + 'stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+  + `${ICONS[name]}</svg>`;
 
 const state = {
   jobs: [],
@@ -1568,11 +1583,22 @@ function jobCard(job, index, group = [job], seen = false) {
   const foot = el('div', 'card-foot');
   foot.append(ageBox);
 
-  /* Between the age and Apply. Marking a role applied is the step that happens
-     RIGHT AFTER Apply is pressed, so it belongs on the card the reader is
-     already looking at rather than two taps away inside the detail pane. */
+  /* A role the reader has applied to says so. There is no Track BUTTON on the
+     card any more (his call, 11 Oct 2026): pressing Apply tracks the role on
+     its own (autoTrack), and the full ladder lives in the detail pane. */
   const trk = trackControl(job);
   if (trk) foot.append(trk);
+
+  /* Most readers press Apply straight from the card and never open the role,
+     so the resume tailor has to be ON the card or they never learn it exists.
+     It took the Track button's place. */
+  const tl = el('button', 'tl-b');
+  tl.type = 'button';
+  tl.insertAdjacentHTML('afterbegin', icon('wand', 14));
+  tl.append(document.createTextNode('Tailor resume'));
+  tl.setAttribute('aria-label', `Tailor your resume to ${job.title} at ${job.company}`);
+  tl.addEventListener('click', (e) => { e.stopPropagation(); openTailor(job); });
+  foot.append(tl);
 
   const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);
   if (applyHref) {
@@ -1584,7 +1610,7 @@ function jobCard(job, index, group = [job], seen = false) {
     go.setAttribute('aria-label', `Apply for ${job.title} at ${job.company}`);
     // The whole card is clickable. Without this, applying would also fire the
     // card's handler and slide the detail pane up behind the new tab.
-    go.addEventListener('click', (e) => { e.stopPropagation(); window.IDEngage?.onApply(jobPageSlug(job)); });
+    go.addEventListener('click', (e) => { e.stopPropagation(); autoTrack(job); window.IDEngage?.onApply(jobPageSlug(job)); });
     foot.append(go);
   }
   row.append(foot);
@@ -1623,18 +1649,16 @@ function trackable(job) {
 }
 
 /**
- * The track control on a card.
+ * The track status on a card: a chip linking to the tracker when the role is
+ * tracked, and nothing when it is not.
  *
- * A container whose contents are rebuilt on every change, because the control
- * is a BUTTON in one state and a LINK in another and the element itself has to
- * change with it.
+ * It used to be a Track BUTTON as well. That went on 11 Oct 2026 (his call):
+ * Apply now tracks the role itself (autoTrack), and changing a status, adding a
+ * note or removing a role happens in the detail pane or on the tracker, where
+ * there is room to say what a click will do.
  *
- * THE CARD CAN ONLY UNDO WHAT THE CARD DID. Untracked, it marks the role
- * Applied; still at Applied, pressing again removes it, which is a real undo
- * for a mis-click. Once the role has moved past Applied it becomes a status
- * chip that links to the tracker instead — a role sitting at "Interview
- * scheduled" carries a history that a stray click on a list of 250 cards must
- * not be able to delete, and there is nothing on a card to confirm against.
+ * A container whose contents are rebuilt on every change, so a role tracked in
+ * another tab, or moved along the ladder, repaints here without a re-render.
  */
 function paintTrackControl(box) {
   const T = window.IDTrack;
@@ -1642,44 +1666,27 @@ function paintTrackControl(box) {
   if (!T || !job) return;
 
   const row = T.get(job.id);
-  const meta = row ? T.statusMeta(row.status) : null;
   box.replaceChildren();
   box.classList.toggle('is-on', !!row);
+  if (!row) return;
 
-  const stop = (e) => e.stopPropagation();
+  const meta = T.statusMeta(row.status);
+  const a = el('a', 'trk-b is-set', meta.short);
+  a.href = `${REGION_PATH}/applications`;
+  a.title = `Tracked as ${meta.label}. Open your applications to change it.`;
+  a.setAttribute('aria-label', `${job.title} at ${job.company}: ${meta.label}. Open your applications.`);
+  // The whole card opens the detail pane; the chip goes to the tracker instead.
+  a.addEventListener('click', (e) => e.stopPropagation());
+  box.append(a);
+}
 
-  if (row && row.status !== 'applied') {
-    const a = el('a', 'trk-b is-set', meta.short);
-    a.href = `${REGION_PATH}/applications`;
-    a.title = `Tracked as ${meta.label}. Open your applications to change it.`;
-    a.setAttribute('aria-label',
-      `${job.title} at ${job.company}: ${meta.label}. Open your applications.`);
-    a.addEventListener('click', stop);
-    box.append(a);
-    return;
-  }
-
-  const b = el('button', row ? 'trk-b is-set' : 'trk-b');
-  b.type = 'button';
-  b.setAttribute('aria-pressed', String(!!row));
-  b.textContent = row ? 'Applied' : 'Track';
-  b.setAttribute('aria-label', row
-    ? `Applied to ${job.title} at ${job.company}. Press to remove from your applications.`
-    : `Mark ${job.title} at ${job.company} as applied`);
-  b.addEventListener('click', (e) => {
-    // The whole card opens the detail pane; without this, tracking would also
-    // slide the pane up over the board.
-    stop(e);
-    if (row) {
-      T.remove(job.id);
-      toast('Removed from your applications');
-    } else if (T.track(trackable(job), 'applied')) {
-      toast('Tracked as Applied. See My applications.');
-    }
-    const err = T.error();
-    if (err) toast(err);
-  });
-  box.append(b);
+/* Apply tracks the role on its own, so nobody has to remember to. A role that
+   is already tracked is left exactly where it is: a reader at "Interview"
+   pressing Apply again must never be moved back to "Applied". */
+function autoTrack(job) {
+  const T = window.IDTrack;
+  if (!T || T.has(job.id)) return;
+  if (T.track(trackable(job), 'applied')) toast('Added to My applications');
 }
 
 function trackControl(job) {
@@ -2001,29 +2008,59 @@ function renderDetail(job) {
   back.textContent = '← All roles';
   back.addEventListener('click', closeDetail);
   d.append(back);
+  // The content, in its own box, so the pinned actions can settle at the foot
+  // of a short role on a phone instead of straight under its last line.
+  const body = el('div', 'p-body');
+  d.append(body);
 
-  /* The role card's own head, larger: the employer's mark and name above the
-     role, which is the headline (nobody scans a job board for the company).
-     It had no logo at all, and led with the company in the biggest type. */
-  const head = el('div', 'p-head');
+  /* THE HEAD (11 Oct 2026, after his reference): the employer's mark, the
+     company above the role, two quiet tools on the right, and the three facts
+     a reader checks first on one line with icons. */
+  const pageHref = `${REGION_PATH}/jobs/${jobPageSlug(job)}`;
+  const top = el('div', 'p-top');
   const badge = companyBadge(job);
   badge.classList.add('p-crest');
   const who = el('div', 'p-who');
-  who.append(el('div', 'p-co', job.company));
-  head.append(badge, who);
-  d.append(head);
-  d.append(el('h2', 'p-role', job.title));
+  who.append(el('div', 'p-co', job.company), el('h2', 'p-role', job.title));
+  const tools = el('div', 'p-tools');
+  const share = el('button', 'p-tool');
+  share.type = 'button';
+  share.setAttribute('aria-label', 'Share this role');
+  share.title = 'Share';
+  share.insertAdjacentHTML('afterbegin', icon('share', 17));
+  share.addEventListener('click', () => shareRole(job, pageHref));
+  // The job's own page: the link that survives being pasted into a WhatsApp
+  // group, and the internal link a crawler can follow.
+  const page = el('a', 'p-tool');
+  page.href = pageHref;
+  page.setAttribute('aria-label', 'Open the full page');
+  page.title = 'Open the full page';
+  page.insertAdjacentHTML('afterbegin', icon('open', 17));
+  tools.append(share, page);
+  top.append(badge, who, tools);
+  body.append(top);
 
-  // The other cities this same role is open in.
-  //
-  // The card collapses them into one row; this is where the collapsed postings
-  // become reachable again. Each is a genuinely separate vacancy with its own
-  // id, its own page and its own apply link, so every one gets a real link
-  // rather than a line of text — otherwise collapsing the card would be the
-  // only thing standing between a reader and twenty of the openings.
+  // The other cities this same role is open in. Each is a separate vacancy
+  // with its own page, so each gets a real link.
   const siblings = state.groups.get(roleKey(job)) ?? [job];
+  const fullTime = kindOf(job) === 'fulltime';
+  const meta = el('ul', 'p-meta');
+  const addMeta = (name, text) => {
+    if (!text) return;
+    const li = el('li');
+    li.insertAdjacentHTML('afterbegin', icon(name, 15));
+    li.append(document.createTextNode(text));
+    meta.append(li);
+  };
+  addMeta('pin', [siblings.length > 1 ? `${siblings.length} locations` : job.location, job.workplaceType].filter(Boolean).join(' · '));
+  addMeta('brief', fullTime ? 'Full-time' : 'Internship');
+  // From the timestamp, never postedText: that is what the page said at the
+  // moment it was read, and it never ages.
+  const posted = relTime(job.postedAt) || job.postedText;
+  addMeta('clock', posted ? `Posted ${posted}` : '');
+  body.append(meta);
+
   if (siblings.length > 1) {
-    who.append(el('div', 'p-loc', [`${siblings.length} locations`, job.workplaceType].filter(Boolean).join(' · ')));
     const places = el('div', 'p-places');
     for (const s of siblings) {
       const a = el('a', s.id === job.id ? 'place is-here' : 'place', cityOf(s.location) || s.location || 'Unspecified');
@@ -2031,54 +2068,25 @@ function renderDetail(job) {
       a.title = s.location || '';
       places.append(a);
     }
-    d.append(places);
-  } else if (job.location || job.workplaceType) {
-    who.append(el('div', 'p-loc', [job.location, job.workplaceType].filter(Boolean).join(' · ')));
+    body.append(places);
   }
 
-  const actions = el('div', 'p-acts');
-  const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);
-  if (applyHref) {
-    // Label the destination honestly: ATS listings and, since LinkedIn's
-    // redesign, plenty of LinkedIn ones too, apply on the employer's own site.
-    const host = (applyHref.match(/^https?:\/\/([^/?#]+)/i) || [])[1] || '';
-    const where = /(^|\.)linkedin\.com$/i.test(host) ? 'LinkedIn' : 'company site';
-    // Plain label. The drawn arrow and the .apply-glow wrapper are gone with
-    // the ambient loop they existed for — the wrapper's only job was letting a
-    // halo escape the overflow:hidden the sheen needed, and there is no sheen.
-    const apply = el('a', 'go');
-    apply.href = applyHref;
-    apply.target = '_blank';
-    apply.rel = 'noopener noreferrer';
-    apply.textContent = 'Apply on ' + where;
-    apply.addEventListener('click', () => window.IDEngage?.onApply(jobPageSlug(job)));
-    actions.append(apply);
+  // Who it is open to, then the skills it asks for. A skill the loaded resume
+  // names is lit, the same signal the card gives.
+  const tags = el('div', 'chips p-tags');
+  if (job.degreeLevel) tags.append(el('span', 'chip is-deg', job.degreeLevel));
+  for (const s of (job.keySkills?.length ? job.keySkills : job.skills ?? []).slice(0, 6)) {
+    const chip = el('span', 'chip', titleCaseSkill(s));
+    if (resumeHay && resumeNames(resumeHay, s)) chip.classList.add('has');
+    tags.append(chip);
+  }
+  if (tags.children.length) body.append(tags);
+
+  if (job.status === 'possibly_closed') {
+    body.append(el('p', 'p-warn', 'This role may have closed. Our last check could not confirm it is still open, so check the posting before you apply.'));
   }
 
-  const tailorBtn = el('button', 'alt');
-  tailorBtn.type = 'button';
-  tailorBtn.innerHTML =
-    '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" '
-    + 'stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
-    + '<path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M12.2 11.8l-1.4 1.4M3 21l9-9"/>'
-    + '<circle cx="15" cy="9" r="3"/></svg>';
-  tailorBtn.append(document.createTextNode('Tailor my resume'));
-  tailorBtn.addEventListener('click', () => openTailor(job));
-  actions.append(tailorBtn);
-
-  // The job's own page. Two reasons it belongs here: it is the only way to get a
-  // link to one role that survives being pasted into a WhatsApp group, and it is
-  // the internal link that lets a crawler reach a page the feed otherwise hides
-  // behind JavaScript.
-  const page = el('a', 'alt', 'Open full page ↗');
-  page.href = `${REGION_PATH}/jobs/${jobPageSlug(job)}`;
-  actions.append(page);
-
-  d.append(actions);
-
-  /* Only what is known. An unknown mode or duration used to print a dash in
-     its own box, which read as a fact ("—") rather than an absence. Pay is the
-     exception: on the pane and the job page an unstated stipend says so, so a
+  /* Only what is known. Pay is the exception: an unstated stipend says so, so a
      reader can tell "pays nothing" from "we do not know". */
   const facts = el('dl', 'facts');
   const addFact = (label, value, cls) => {
@@ -2087,52 +2095,51 @@ function renderDetail(job) {
     f.append(el('dt', null, label), el('dd', cls, value));
     facts.append(f);
   };
-  // Computed from the timestamp, NOT from postedText. postedText is the string
-  // LinkedIn showed at the moment the scraper opened the posting — "4 minutes
-  // ago" — and it never ages. On a site whose whole promise is BE EARLY, that is
-  // the worst possible field to get wrong. postedText is only a fallback for a
-  // row with no parsed timestamp.
-  if (job.status === 'possibly_closed') addFact('Status', 'May have closed — our last check could not confirm it is still open. Check the posting before you apply.', 'muted');
-  addFact('Posted', relTime(job.postedAt) || job.postedText);
-  const fullTime = kindOf(job) === 'fulltime';
   addFact(fullTime ? 'Pay' : 'Stipend', job.stipend || 'Not disclosed', job.stipend ? 'cash' : 'muted');
   if (job.duration) addFact('Duration', job.duration);
-  if (job.experience) addFact('Experience', job.experience);
-  else if (job.expSays) addFact('Experience', job.expSays);
-  else if (fullTime) addFact('Experience', 'Not stated in the posting', 'muted');
-  addFact('Type', fullTime ? 'Full-time' : 'Internship');
-  if (job.degreeLevel) addFact('Open to', [job.degreeLevel, job.degreeText].filter(Boolean).join(' · '));
   if (job.applicants) addFact('Applicants', job.applicants);
-  d.append(facts);
-
-  const bar = trackBar(job);
-  if (bar) d.append(bar);
-
-  if (job.bullets?.length) {
-    d.append(el('h3', null, 'What you’ll do'));
-    const ul = el('ul', 'p-duties');
-    for (const b of job.bullets) ul.append(el('li', null, b));
-    d.append(ul);
-  }
+  body.append(facts);
 
   if (job.summary) {
-    d.append(el('h3', null, 'About the role'));
-    d.append(el('p', 'p-gist', job.summary));
+    body.append(el('h3', null, 'Job description'));
+    body.append(el('p', 'p-gist', job.summary));
   }
 
-  if (job.skills?.length) {
-    d.append(el('h3', null, 'Skills'));
-    const row = el('div', 'chips');
-    for (const s of job.skills) row.append(el('span', 'chip', titleCaseSkill(s)));
-    d.append(row);
+  if (job.bullets?.length) {
+    body.append(el('h3', null, 'Key responsibilities'));
+    const ul = el('ul', 'p-duties');
+    for (const b of job.bullets) ul.append(el('li', null, b));
+    body.append(ul);
+  }
+
+  // What the posting asks of an applicant, as far as it says.
+  const reqs = [];
+  if (job.degreeLevel || job.degreeText) reqs.push(['Open to', [job.degreeLevel, job.degreeText].filter(Boolean).join(' · ')]);
+  const exp = job.experience || job.expSays || (fullTime ? 'Not stated in the posting' : '');
+  if (exp) reqs.push(['Experience', exp]);
+  if (job.skills?.length) reqs.push(['Skills', job.skills.map(titleCaseSkill).join(', ')]);
+  if (reqs.length) {
+    body.append(el('h3', null, 'Requirements'));
+    const ul = el('ul', 'p-reqs');
+    for (const [k, v] of reqs) {
+      const li = el('li');
+      li.append(el('span', 'p-req-k', k), el('span', null, v));
+      ul.append(li);
+    }
+    body.append(ul);
+  }
+
+  const bar = trackBar(job);
+  if (bar) {
+    body.append(el('h3', null, 'Your application'));
+    body.append(bar);
   }
 
   const note = el('p', 'src');
   note.append(document.createTextNode('This is an automatic summary. '));
   const sourceHref = safeUrl(job.url);
   if (sourceHref) {
-    // A careers-board row's source is the employer's own site, not LinkedIn;
-    // naming LinkedIn on it was a false sentence on the pane.
+    // A careers-board row's source is the employer's own site, not LinkedIn.
     const onLinkedIn = /^https:\/\/([a-z0-9-]+\.)*linkedin\.com\//i.test(sourceHref);
     const link = el('a', null, onLinkedIn ? 'Read the full posting on LinkedIn' : 'Read the full posting on the employer\'s site');
     link.href = sourceHref;
@@ -2142,7 +2149,50 @@ function renderDetail(job) {
   } else {
     note.append(document.createTextNode('Check the original posting before you apply. It is the source of truth.'));
   }
-  d.append(note);
+  body.append(note);
+
+  /* The two actions, pinned to the foot of the pane so they are in reach
+     however far the reader has scrolled. Apply leads; the tailor sits beside
+     it as a secondary button, not a banner. */
+  const cta = el('div', 'p-cta');
+  const tailorBtn = el('button', 'alt');
+  tailorBtn.type = 'button';
+  tailorBtn.insertAdjacentHTML('afterbegin', icon('wand', 15));
+  tailorBtn.append(document.createTextNode('Tailor my resume'));
+  tailorBtn.addEventListener('click', () => openTailor(job));
+  cta.append(tailorBtn);
+  const applyHref = safeUrl(job.applyUrl) || safeUrl(job.url);
+  if (applyHref) {
+    // Label the destination honestly: plenty of postings apply on the
+    // employer's own site.
+    const host = (applyHref.match(/^https?:\/\/([^/?#]+)/i) || [])[1] || '';
+    const where = /(^|\.)linkedin\.com$/i.test(host) ? 'LinkedIn' : 'company site';
+    const apply = el('a', 'go');
+    apply.href = applyHref;
+    apply.target = '_blank';
+    apply.rel = 'noopener noreferrer';
+    apply.textContent = 'Apply on ' + where;
+    apply.addEventListener('click', () => { autoTrack(job); window.IDEngage?.onApply(jobPageSlug(job)); });
+    cta.append(apply);
+  }
+  d.append(cta);
+  fitPane();
+}
+
+/* The system share sheet where there is one (phones), else the link copied.
+   The job's own page, so whoever opens it lands on InternDoor. */
+async function shareRole(job, path) {
+  const url = new URL(path, location.origin).toString();
+  if (navigator.share) {
+    try { await navigator.share({ title: `${job.title} at ${job.company}`, url }); } catch { /* dismissed */ }
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    toast('Link copied');
+  } catch {
+    toast('Could not copy the link');
+  }
 }
 
 /**
@@ -2474,9 +2524,9 @@ async function runTailor() {
     const tailored = await tailorWithAI({ resumeText, job: activeJob, region: REGION });
 
     state.tailored = tailored;
-    renderTailored(tailored);
+    renderTailored(tailored, resumeText);
     showStep('result');
-    toast('resume tailored');
+    toast('Resume tailored');
   } catch (err) {
     $('error-text').textContent = err.message;
     showStep('error');
@@ -2610,89 +2660,246 @@ function syncSteps() {
   }
 }
 
-function renderTailored(t) {
-  const removed = $('removed-note');
-  if (t.removedSkills?.length) {
-    removed.hidden = false;
-    removed.replaceChildren(
-      el('b', null, 'Some skills were removed'),
-      el('span', null, `These appeared in the draft but not in your resume, so they were stripped out rather than left in as claims you cannot back up: ${t.removedSkills.join(', ')}.`),
-    );
-  } else {
-    removed.hidden = true;
+/* ---------------- the tailored result ----------------
+ *
+ * Rebuilt 11 Oct 2026 at his request: the document is the point, so it gets
+ * the width and the height, and everything about it (the keyword score, what
+ * was added, what is still missing, what changed) sits in a narrow column
+ * beside it in sections that fold away. Both versions are rendered once and
+ * toggled, so edits to the tailored one survive a look at the original.
+ */
+let editing = false;
+
+/** One resume into a sheet. A line or skill added for the role carries
+ *  data-add and a highlight that never prints. */
+function renderSheet(box, R) {
+  box.replaceChildren();
+  if (R.name) box.append(el('div', 'r-name', R.name));
+  if (R.contact) box.append(el('div', 'r-contact', R.contact));
+  const mark = (node, x) => {
+    if (!x.added) return node;
+    node.classList.add('r-add');
+    if (x.key) node.dataset.add = x.key;
+    node.title = 'Added for this role';
+    return node;
+  };
+  if (R.summary) {
+    const sec = el('section', 'r-sec');
+    sec.append(el('h5', null, 'Summary'), el('p', 'r-summary', R.summary));
+    box.append(sec);
   }
-
-  const gaps = $('gaps-note');
-  if (t.gaps?.length) {
-    gaps.hidden = false;
-    gaps.replaceChildren(el('b', null, 'What this role wants that your resume does not show'));
-    const ul = el('ul');
-    for (const g of t.gaps) ul.append(el('li', null, g));
-    gaps.append(ul);
-  } else {
-    gaps.hidden = true;
-  }
-
-  const changes = $('changes');
-  changes.replaceChildren();
-  if (t.changeNotes?.length) {
-    changes.append(el('h4', null, 'What changed'));
-    const ul = el('ul');
-    for (const c of t.changeNotes) ul.append(el('li', null, c));
-    changes.append(ul);
-  }
-
-  const p = $('resume-preview');
-  p.replaceChildren();
-  if (t.name) p.append(el('div', 'r-name', t.name));
-  if (t.contact) p.append(el('div', 'r-contact', t.contact));
-  if (t.summary) p.append(el('p', 'r-summary', t.summary));
-
-  for (const section of t.sections ?? []) {
+  for (const section of R.sections ?? []) {
     const sec = el('section', 'r-sec');
     sec.append(el('h5', null, section.heading));
     for (const item of section.items ?? []) {
-      const box = el('div', 'r-item');
+      const it = el('div', 'r-item');
       const head = el('div', 'r-item-head');
-      const left = el('div');
-      if (item.title) left.append(el('span', 'r-role', item.title));
+      const what = el('div', 'r-what');
+      if (item.title) what.append(el('span', 'r-role', item.title));
       if (item.org) {
-        left.append(document.createTextNode(' — '));
-        left.append(el('span', 'r-org', item.org));
+        // Real text, not a pseudo-element, so it copies and an ATS reads it.
+        if (item.title) what.append(document.createTextNode(', '));
+        what.append(el('span', 'r-org', item.org));
       }
-      head.append(left);
+      head.append(what);
       if (item.dates) head.append(el('span', 'r-dates', item.dates));
-      box.append(head);
+      it.append(head);
       if (item.bullets?.length) {
         const ul = el('ul');
-        for (const b of item.bullets) ul.append(el('li', null, b));
-        box.append(ul);
+        for (const b of item.bullets) {
+          // The highlight goes on the words, so it follows every line of a
+          // wrapped bullet; the line itself carries the key for removal.
+          const li = el('li');
+          if (b.added) {
+            li.dataset.add = b.key;
+            li.append(mark(el('span', null, b.text), { ...b, key: '' }));
+          } else {
+            li.textContent = b.text;
+          }
+          ul.append(li);
+        }
+        it.append(ul);
       }
-      sec.append(box);
+      sec.append(it);
     }
-    p.append(sec);
+    box.append(sec);
   }
-
-  if (t.skills?.length) {
+  if (R.skills?.length) {
     const sec = el('section', 'r-sec');
     sec.append(el('h5', null, 'Skills'));
-    sec.append(el('div', 'r-skills', t.skills.join(' · ')));
-    p.append(sec);
+    for (const g of R.skills) {
+      const line = el('p', 'r-skills');
+      if (g.group) line.append(el('b', null, `${g.group}: `));
+      g.items.forEach((x, i) => {
+        if (i) line.append(document.createTextNode(', '));
+        line.append(mark(el('span', null, x.text), x));
+      });
+      sec.append(line);
+    }
+    box.append(sec);
   }
 }
 
-function resumeAsText(t) {
-  const out = [t.name, t.contact, '', t.summary, ''];
-  for (const s of t.sections ?? []) {
-    out.push(String(s.heading || '').toUpperCase(), '');
-    for (const item of s.items ?? []) {
-      out.push([item.title, item.org].filter(Boolean).join(' — ') + (item.dates ? `  (${item.dates})` : ''));
-      for (const b of item.bullets ?? []) out.push(`  • ${b}`);
-      out.push('');
+/** The sheet on screen, as plain text, edits included. Walked rather than
+ *  read with innerText, so a heading is a heading and a bullet keeps its dot
+ *  whatever the reader typed into it. */
+function sheetText(box) {
+  const out = [];
+  for (const node of box.children) {
+    if (node.matches('.r-name, .r-contact')) { out.push(node.textContent.trim()); continue; }
+    if (!node.matches('.r-sec')) { out.push(node.innerText.trim()); continue; }
+    out.push('');
+    for (const part of node.children) {
+      if (part.tagName === 'H5') out.push(part.textContent.trim().toUpperCase());
+      else if (part.matches('.r-item')) {
+        const head = part.querySelector('.r-item-head');
+        if (head) {
+          const what = [...head.querySelectorAll('.r-role, .r-org')].map((n) => n.textContent.trim()).filter(Boolean).join(', ');
+          const when = head.querySelector('.r-dates')?.textContent.trim();
+          out.push(when ? `${what} | ${when}` : what);
+        }
+        for (const li of part.querySelectorAll('li')) out.push(`• ${li.textContent.trim()}`);
+      } else {
+        out.push(part.innerText.trim());
+      }
     }
   }
-  if (t.skills?.length) out.push('SKILLS', '', t.skills.join(' · '));
-  return out.filter((l) => l !== undefined).join('\n');
+  return out.filter((line, i, all) => line || (all[i - 1] && i < all.length - 1)).join('\n');
+}
+
+/** How many of the role's keywords the tailored resume carries, recounted as
+ *  the reader edits, against how many their own resume had. */
+function renderScore() {
+  const t = state.tailored;
+  const box = $('rs-score');
+  if (!t || !box) return;
+  box.replaceChildren();
+  if (t.kw.length) {
+    const now = keywordMatch(t.kw, sheetText($('resume-preview')));
+    const head = el('div', 'rs-score-head');
+    const num = el('div', 'rs-num');
+    num.append(el('b', null, String(now.hit.length)), el('span', null, `/${t.kw.length}`));
+    const lab = el('div', 'rs-lab');
+    lab.append(el('span', null, 'Role keywords in your resume'), el('small', null, `Was ${t.beforeHit}/${t.kw.length} before tailoring`));
+    head.append(num, lab);
+    const chips = el('div', 'chips rs-kw');
+    for (const k of t.kw) {
+      const hit = now.hit.includes(k);
+      const chip = el('span', hit ? 'chip has' : 'chip', titleCaseSkill(k));
+      if (!hit) chip.title = 'Not in your resume yet';
+      chips.append(chip);
+    }
+    box.append(head, chips);
+  }
+  box.append(el('p', 'rs-keep', t.coverage < 0.85
+    ? 'Part of your resume may not have been read. Compare it with Original.'
+    : 'Everything from your resume is kept.'));
+}
+
+function fillSection(id, items, render) {
+  const d = $(id);
+  if (!d) return;
+  d.hidden = !items.length;
+  d.querySelector('.rs-n').textContent = items.length ? String(items.length) : '';
+  const ul = d.querySelector('ul');
+  ul.replaceChildren(...items.map(render));
+}
+
+/** Take an addition out of the tailored resume: the line, or the skill and
+ *  the comma beside it. */
+function removeAdded(key) {
+  for (const node of document.querySelectorAll(`#resume-preview [data-add="${CSS.escape(key)}"]`)) {
+    if (node.tagName === 'SPAN') {
+      const prev = node.previousSibling;
+      const next = node.nextSibling;
+      if (prev?.nodeType === 3 && prev.textContent === ', ') prev.remove();
+      else if (next?.nodeType === 3 && next.textContent === ', ') next.remove();
+    }
+    node.remove();
+  }
+}
+
+function renderAdded() {
+  const t = state.tailored;
+  fillSection('rs-added', t.added, (a) => {
+    const li = el('li');
+    const text = el('button', 'rs-jump', a.text);
+    text.type = 'button';
+    text.title = 'Show it in the resume';
+    text.addEventListener('click', () => {
+      showVersion('tailored');
+      const node = document.querySelector(`#resume-preview [data-add="${CSS.escape(a.key)}"]`);
+      if (!node) return;
+      node.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      node.classList.remove('r-flash');
+      requestAnimationFrame(() => node.classList.add('r-flash'));
+    });
+    const body = el('div', 'rs-add-body');
+    body.append(el('span', 'rs-kind', a.kind === 'skill' ? 'Skill' : 'Line'), text);
+    if (a.why) body.append(el('small', null, a.why));
+    const rm = el('button', 'rs-rm', 'Remove');
+    rm.type = 'button';
+    rm.setAttribute('aria-label', `Remove "${a.text}" from the resume`);
+    rm.addEventListener('click', () => {
+      removeAdded(a.key);
+      t.added = t.added.filter((x) => x.key !== a.key);
+      renderAdded();
+      renderScore();
+    });
+    li.append(body, rm);
+    return li;
+  });
+}
+
+function renderTailored(t, resumeText) {
+  setEditing(false);
+  renderSheet($('resume-preview'), t.tailored);
+  renderSheet($('resume-original'), t.original);
+  showVersion('tailored');
+
+  t.kw = roleKeywords(activeJob, t.keywords);
+  t.beforeHit = keywordMatch(t.kw, resumeText).hit.length;
+  renderScore();
+  renderAdded();
+  fillSection('rs-gaps', t.gaps, (g) => el('li', null, g));
+  fillSection('rs-changes', t.changes, (c) => el('li', null, c));
+
+  // Open by default where there is room; folded on a phone, where the
+  // document comes first.
+  const roomy = matchMedia('(min-width: 901px)').matches;
+  $('rs-added').open = roomy;
+  $('rs-gaps').open = false;
+  $('rs-changes').open = false;
+  const doc = document.querySelector('.rs-doc');
+  if (doc) doc.scrollTop = 0;
+}
+
+/* Tailored or original. Both stay in the page, so nothing typed into the
+   tailored one is lost by looking at the other. Editing applies to the
+   tailored one only. */
+function showVersion(which) {
+  const orig = which === 'original';
+  if (orig && editing) setEditing(false);
+  $('view-tailored').setAttribute('aria-selected', String(!orig));
+  $('view-original').setAttribute('aria-selected', String(orig));
+  $('resume-preview').hidden = orig;
+  $('resume-original').hidden = !orig;
+  $('edit-resume').disabled = orig;
+}
+
+function setEditing(on) {
+  editing = on;
+  const sheet = $('resume-preview');
+  if (!sheet) return;
+  if (on) showVersion('tailored');
+  sheet.contentEditable = on ? 'true' : 'false';
+  sheet.spellcheck = on;
+  sheet.classList.toggle('is-editing', on);
+  const btn = $('edit-resume');
+  btn.setAttribute('aria-pressed', String(on));
+  btn.textContent = on ? 'Done' : 'Edit';
+  $('rs-editing').hidden = !on;
+  if (on) sheet.focus({ preventScroll: true });
 }
 
 /* ---------------- wiring ---------------- */
@@ -2808,24 +3015,46 @@ function wireTailor() {
 
   $('error-retry').addEventListener('click', () => goTo(tailorMode === 'tailor' && resumeReady() ? 'review' : 'upload'));
   $('start-over').addEventListener('click', () => {
+    setEditing(false);
     state.tailored = null;
     clearResume();
     goTo('upload');
   });
 
+  // Prints the version on screen, edits and all; the highlight never prints.
   $('download-pdf').addEventListener('click', () => {
-    toast('choose Save as PDF');
+    if (editing) setEditing(false);
+    toast('Choose "Save as PDF"');
     setTimeout(() => window.print(), 350);
   });
 
+  const visibleSheet = () => ($('resume-original').hidden ? $('resume-preview') : $('resume-original'));
   $('copy-text').addEventListener('click', async () => {
     if (!state.tailored) return;
     try {
-      await navigator.clipboard.writeText(resumeAsText(state.tailored));
-      toast('copied');
+      await navigator.clipboard.writeText(sheetText(visibleSheet()));
+      toast('Copied');
     } catch {
-      toast('could not copy');
+      toast('Could not copy');
     }
+  });
+
+  $('view-tailored').addEventListener('click', () => showVersion('tailored'));
+  $('view-original').addEventListener('click', () => showVersion('original'));
+  $('edit-resume').addEventListener('click', () => setEditing(!editing));
+
+  // Typing into the sheet: plain text only (a paste from Word would bring its
+  // fonts with it), and the keyword count follows the edit.
+  const sheet = $('resume-preview');
+  sheet.addEventListener('paste', (e) => {
+    if (!editing) return;
+    e.preventDefault();
+    document.execCommand('insertText', false, e.clipboardData?.getData('text/plain') ?? '');
+  });
+  let rescore = 0;
+  sheet.addEventListener('input', () => {
+    clearTimeout(rescore);
+    rescore = setTimeout(renderScore, 250);
   });
 }
 
@@ -2849,6 +3078,33 @@ function syncStickyOffset() {
     .filter((el) => getComputedStyle(el).position === 'sticky')
     .reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
   document.documentElement.style.setProperty('--stack-h', `${Math.round(h)}px`);
+}
+
+/* The detail pane's height, fitted to what is actually on screen.
+
+   Its CSS cap assumes the column is already stuck under the masthead. At the
+   top of the page it is not: it starts below the filters, and the cap let its
+   foot, with the pinned Apply bar, sit ~160px under the fold until the reader
+   scrolled. While the column is on its way up, the cap is the room left.
+   A passive, frame-throttled listener that writes one property on one element,
+   and only when the number changes; once the column is stuck it never does. */
+let paneCap = 0;
+function fitPane() {
+  const d = $('detail');
+  const col = $('detail-col');
+  if (!d || !col) return;
+  if (matchMedia(`(max-width: ${PANE_OVERLAY_MAX_PX}px)`).matches) {
+    if (paneCap) { d.style.maxHeight = ''; paneCap = 0; }
+    return;
+  }
+  const cap = Math.max(320, Math.floor(innerHeight - Math.max(col.getBoundingClientRect().top, 0) - 28));
+  if (cap !== paneCap) { d.style.maxHeight = `${cap}px`; paneCap = cap; }
+}
+let fitQueued = false;
+function queueFit() {
+  if (fitQueued) return;
+  fitQueued = true;
+  requestAnimationFrame(() => { fitQueued = false; fitPane(); });
 }
 
 /* ---------------- boot ---------------- */
@@ -3043,6 +3299,8 @@ async function init() {
   // the text metrics — both move the stack height.
   addEventListener('resize', syncStickyOffset, { passive: true });
   document.fonts?.ready.then(syncStickyOffset);
+  addEventListener('scroll', queueFit, { passive: true });
+  addEventListener('resize', queueFit, { passive: true });
 
   await loadJobs();
   /* Hidden here rather than in render(), which also runs on every filter

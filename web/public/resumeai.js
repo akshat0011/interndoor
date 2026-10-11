@@ -243,13 +243,23 @@ export function shortlist(jobs, localPct, n = RANK_BATCH) {
 const MAX_FIELD = 200;
 const MAX_DESC = 12_000;
 const MAX_SKILLS = 40;
+const MAX_DUTIES = 10;
+const MAX_DUTY = 300;
 
 /** Trim every field to a size a real posting could have. The job comes off the
  *  board, but the request comes from a browser, and the server clamps again
- *  because it pays for every token. */
+ *  because it pays for every token.
+ *
+ *  The duties, the key skills, who it is open to and the experience asked are
+ *  here since 11 Oct 2026: before that the tailor saw a title, one summary
+ *  paragraph and the skill tags, and could not match the role's own words. */
 export function clampJob(job) {
   const text = (v, max = MAX_FIELD) =>
     typeof v === 'string' && v.trim() ? v.trim().slice(0, max) : null;
+  const list = (v, n, max = MAX_FIELD) => (Array.isArray(v) ? v : [])
+    .filter((x) => typeof x === 'string' && x.trim())
+    .slice(0, n)
+    .map((x) => x.trim().slice(0, max));
   return {
     title: text(job?.title),
     company: text(job?.company),
@@ -257,32 +267,465 @@ export function clampJob(job) {
     workplaceType: text(job?.workplaceType),
     stipend: text(job?.stipend),
     duration: text(job?.duration),
-    skills: (Array.isArray(job?.skills) ? job.skills : [])
-      .filter((s) => typeof s === 'string' && s.trim())
-      .slice(0, MAX_SKILLS)
-      .map((s) => s.trim().slice(0, MAX_FIELD)),
+    skills: list(job?.skills, MAX_SKILLS),
+    keySkills: list(job?.keySkills, 20),
+    bullets: list(job?.bullets, MAX_DUTIES, MAX_DUTY),
+    roleLabel: text(job?.roleLabel),
+    degreeLevel: text(job?.degreeLevel),
+    degreeText: text(job?.degreeText),
+    experience: text(job?.experience) ?? text(job?.expSays),
     description: text(job?.description, MAX_DESC),
     summary: text(job?.summary, MAX_DESC),
   };
 }
 
-/* ---------------- verification ---------------- */
+/* ---------------- keeping every line ----------------
+ *
+ * HIS RULE, 11 Oct 2026: the tailor must NEVER remove a skill or a claim the
+ * reader wrote. It may reorder, reword and add, and every addition is shown.
+ *
+ * The model is asked for two resumes: `original`, the input parsed as it
+ * stands, every item and bullet given an id, and `tailored`, whose items and
+ * bullets name the originals they came from. Nothing here trusts the model to
+ * have kept everything. reconcileTailored() checks it, and anything of the
+ * reader's that the rewrite dropped is put back. That is a guarantee made in
+ * code, not a promise made in a prompt.
+ *
+ * WHAT USED TO GO WRONG, and why skills are split before they are compared:
+ * the model returned skills as whole resume lines — "Programming: Python,
+ * JavaScript, C++" — and the old check called "programming:" an invented skill
+ * (the colon matched nothing) and stripped the line. A reader's entire skills
+ * section disappeared that way.
+ */
+
+/** A haystack for whole-word matching: normalised, padded, with a full stop at
+ *  the end of a word dropped ("Python." still names Python) and the dot inside
+ *  a name kept (Node.js, .NET). Hyphens become spaces on both sides, so
+ *  "scikit-learn" in a skill list finds "scikit-learn" in a resume. */
+export function hayOf(text) {
+  return ` ${normSkill(text).replace(/\.(?=\s|$)/g, ' ').replace(/\s+/g, ' ').trim()} `;
+}
+
+const keyOf = (s) => hayOf(s).trim();
+/** One skill under two spellings is one skill: "LLM" and "LLMs" included. */
+const stemOf = (k) => (k.length > 3 && k.endsWith('s') ? k.slice(0, -1) : k);
+
+/** Does this text name the skill, under any spelling, singular or plural? */
+export function mentions(hay, skill) {
+  const k = keyOf(skill);
+  if (!hay || !k) return false;
+  for (const s of new Set([k, ...spellingsOf(k)])) {
+    if (hay.includes(` ${s} `)) return true;
+    if (s.length > 3 && s.endsWith('s') && hay.includes(` ${s.slice(0, -1)} `)) return true;
+    if (hay.includes(` ${s}s `)) return true;
+  }
+  return false;
+}
+
+/** Split on commas, semicolons and bullets, but never inside brackets, so
+ *  "AWS (EC2, S3)" stays one skill. */
+function splitList(text) {
+  const out = [];
+  let depth = 0;
+  let cur = '';
+  for (const ch of String(text)) {
+    if (ch === '(' || ch === '[') depth += 1;
+    if (ch === ')' || ch === ']') depth = Math.max(0, depth - 1);
+    if (depth === 0 && /[,;|•·]/.test(ch)) { out.push(cur); cur = ''; continue; }
+    cur += ch;
+  }
+  out.push(cur);
+  return out.map((x) => x.trim().replace(/\.$/, '').trim()).filter(Boolean);
+}
+
+/** "Programming: Python, Go" -> { group: 'Programming', items: [Python, Go] }. */
+export function splitSkillEntry(entry) {
+  const s = String(entry ?? '').replace(/\s+/g, ' ').trim();
+  if (!s) return { group: '', items: [] };
+  const m = s.match(/^([^:,()]{1,40}):\s*(.+)$/);
+  return m ? { group: m[1].trim(), items: splitList(m[2]) } : { group: '', items: splitList(s) };
+}
+
+const str = (v, max) => (typeof v === 'string' ? v.replace(/\s+/g, ' ').trim().slice(0, max) : '');
+const strList = (v, n, max = 300) => (Array.isArray(v) ? v : []).map((x) => str(x, max)).filter(Boolean).slice(0, n);
+const sameKey = (a, b) => keyOf(a) === keyOf(b);
+
+/** Words worth comparing, for telling a reworded bullet from a new one. */
+function wordsOf(text) {
+  return new Set(normSkill(text).split(/\s+/).filter((w) => w.length > 2));
+}
+function overlap(a, b) {
+  const A = wordsOf(a);
+  const B = wordsOf(b);
+  if (!A.size || !B.size) return 0;
+  let n = 0;
+  for (const w of A) if (B.has(w)) n += 1;
+  return n / Math.min(A.size, B.size);
+}
+
+/** Titles that read the same, or share most of their words. */
+function sameTitle(o, t) {
+  return Boolean(o.title || t.title) && (sameKey(o.title, t.title) || overlap(o.title, t.title) >= 0.6);
+}
+/** The same item, found without a link: the title AND no organisation that
+ *  says otherwise. An explicit link needs only the title, because the
+ *  organisation is then put back from the original whatever the rewrite said. */
+function sameItem(o, t) {
+  const orgOk = !o.org || !t.org || sameKey(o.org, t.org) || overlap(o.org, t.org) >= 0.6;
+  return sameTitle(o, t) && orgOk;
+}
+
+/** Shape whatever came back into one resume structure. Nothing here invents.
+ *
+ *  The model is told to put skills in `skills` and the summary in `summary`,
+ *  and does not always: it has returned a "Skills" section with one item per
+ *  line and a "Summary" section beside a written summary. Both are folded
+ *  into their own fields here, or the summary prints twice and a skills line
+ *  is treated as a job. */
+function normResume(raw) {
+  const r = raw && typeof raw === 'object' ? raw : {};
+  const all = (Array.isArray(r.sections) ? r.sections : []).map((sec) => ({
+    heading: str(sec?.heading, 80),
+    items: (Array.isArray(sec?.items) ? sec.items : []).map((it) => ({
+      id: str(it?.id, 40),
+      from: str(it?.from, 40),
+      title: str(it?.title, 200),
+      org: str(it?.org, 200),
+      dates: str(it?.dates, 80),
+      bullets: (Array.isArray(it?.bullets) ? it.bullets : []).map((b) => (typeof b === 'string'
+        ? { id: '', text: str(b, 1200), from: [] }
+        : {
+          id: str(b?.id, 40),
+          text: str(b?.text, 1200),
+          from: (Array.isArray(b?.from) ? b.from : []).map((x) => str(x, 40)).filter(Boolean),
+        })).filter((b) => b.text),
+    })).filter((it) => it.title || it.org || it.bullets.length),
+  })).filter((sec) => sec.items.length);
+
+  const groups = [];
+  const add = (group, items) => {
+    if (!items.length) return;
+    const home = groups.find((g) => g.group.toLowerCase() === group.toLowerCase());
+    if (home) home.items.push(...items);
+    else groups.push({ group, items: [...items] });
+  };
+  for (const g of Array.isArray(r.skills) ? r.skills : []) {
+    if (typeof g === 'string') {
+      const sp = splitSkillEntry(g);
+      add(sp.group, sp.items);
+      continue;
+    }
+    const items = [];
+    let group = str(g?.group, 60);
+    for (const e of Array.isArray(g?.items) ? g.items : []) {
+      const sp = splitSkillEntry(e);
+      if (!group && sp.group) group = sp.group;
+      items.push(...sp.items);
+    }
+    add(group, items);
+  }
+
+  let summary = str(r.summary, 2000);
+  const sections = [];
+  for (const sec of all) {
+    if (SUMMARY_HEAD.test(sec.heading)) {
+      if (!summary) {
+        summary = sec.items.map((it) => (it.bullets.length
+          ? it.bullets.map((b) => b.text).join(' ')
+          : [it.title, it.org].filter(Boolean).join(' '))).join(' ').slice(0, 2000);
+      }
+      continue;
+    }
+    if (SKILLS_HEAD.test(sec.heading)) {
+      for (const it of sec.items) {
+        const head = splitSkillEntry(it.title);
+        const titleIsList = Boolean(head.group) || head.items.length > 1;
+        let group = head.group || (titleIsList || !it.bullets.length ? '' : it.title);
+        const items = titleIsList || !it.bullets.length ? [...head.items] : [];
+        for (const b of it.bullets) {
+          const sp = splitSkillEntry(b.text);
+          if (!group && sp.group) group = sp.group;
+          items.push(...sp.items);
+        }
+        add(group, items);
+      }
+      continue;
+    }
+    sections.push(sec);
+  }
+
+  // A skill listed twice in one resume is one skill.
+  for (const g of groups) {
+    const seen = new Set();
+    g.items = g.items.filter((x) => {
+      const k = stemOf(keyOf(x));
+      if (!k || seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+  }
+
+  return {
+    name: str(r.name, 120),
+    contact: str(r.contact, 400),
+    summary,
+    sections,
+    skills: groups.filter((g) => g.items.length),
+  };
+}
+
+const SUMMARY_HEAD = /^(professional |career )?(summary|profile|objective|about( me)?)$/i;
+const SKILLS_HEAD = /\bskills?\b|technolog|tech stack|competenc/i;
+
+/** The resume as plain text, in reading order. Used for the keyword count and
+ *  for checking how much of the input the parse actually read. */
+export function resumePlainText(R) {
+  const out = [R?.name, R?.contact, R?.summary];
+  for (const sec of R?.sections ?? []) {
+    out.push(sec.heading);
+    for (const it of sec.items ?? []) {
+      out.push([it.title, it.org, it.dates].filter(Boolean).join(' '));
+      for (const b of it.bullets ?? []) out.push(typeof b === 'string' ? b : b.text);
+    }
+  }
+  for (const g of R?.skills ?? []) {
+    out.push([g.group, ...g.items.map((x) => (typeof x === 'string' ? x : x.text))].filter(Boolean).join(', '));
+  }
+  return out.filter(Boolean).join('\n');
+}
 
 /**
- * The most damaging failure a tailorer can have is a skill in the output that
- * was never in the input — that hands a student a document making a claim they
- * cannot back up in an interview. A safety net under the prompt, not a
- * replacement for it.
+ * The model's answer, made safe to show. Returns both resumes in one shape:
+ *   original  the input as parsed, nothing changed
+ *   tailored  the rewrite, with every original item, bullet and skill present;
+ *             each bullet and skill carries `added: true` when it is new
+ * plus the list of additions (each with a `key` the page uses to remove it),
+ * how many dropped things were put back, and how much of the input the parse
+ * covered (a low number means the parse itself may have missed lines).
  */
-export function findInventedSkills(resumeText, skills) {
-  const haystack = String(resumeText).toLowerCase().replace(/[^a-z0-9+#./ ]/g, ' ');
-  return (skills ?? []).filter((skill) => {
-    const s = String(skill).toLowerCase().trim();
-    if (s.length < 2) return false;
-    const words = s.split(/[\s/,]+/).filter((w) => w.length > 2);
-    if (words.length > 1) return !words.every((w) => haystack.includes(w));
-    return !haystack.includes(s);
-  });
+export function reconcileTailored(data, resumeText) {
+  const d = data && typeof data === 'object' ? data : {};
+  const O = normResume(d.original);
+  const T = normResume(d.tailored);
+  const hay = hayOf(resumeText);
+  let restored = 0;
+
+  // Every original item and bullet gets an id we can rely on.
+  const oItem = new Map();
+  const oBullet = new Map();
+  const ownerOf = new Map();
+  let n = 0;
+  for (const sec of O.sections) {
+    for (const it of sec.items) {
+      n += 1;
+      if (!it.id || oItem.has(it.id)) it.id = `i${n}`;
+      oItem.set(it.id, { item: it, heading: sec.heading });
+      it.bullets.forEach((b, k) => {
+        if (!b.id || oBullet.has(b.id)) b.id = `${it.id}.b${k + 1}`;
+        oBullet.set(b.id, b);
+        ownerOf.set(b.id, it.id);
+      });
+    }
+  }
+
+  // Link each tailored item and bullet to what it came from. When the model
+  // gave no usable id, the closest unclaimed original stands in for it, so a
+  // reworded line is never mistaken for a new one and then duplicated.
+  const usedItems = new Set();
+  const usedBullets = new Set();
+  for (const sec of T.sections) {
+    for (const it of sec.items) {
+      /* A link is trusted only when the titles agree. Titles are facts that
+         never change, so a link to an item with a different title is the
+         model pointing at the wrong one — and trusting it would overwrite this
+         item's title with another's (a project came back named after a job). */
+      const linked = oItem.get(it.from)?.item;
+      let src = linked && !usedItems.has(it.from) && sameTitle(linked, it) ? it.from : '';
+      if (!src) {
+        for (const [id, { item }] of oItem) {
+          if (usedItems.has(id)) continue;
+          if (sameItem(item, it)) { src = id; break; }
+        }
+      }
+      it.from = src;
+      it.added = !src;
+      if (src) {
+        usedItems.add(src);
+        const o = oItem.get(src).item;
+        // An employer, a title and the dates are facts, not wording.
+        it.title = o.title || it.title;
+        it.org = o.org;
+        it.dates = o.dates;
+      }
+      for (const b of it.bullets) {
+        let from = b.from.filter((id) => oBullet.has(id));
+        if (!from.length) {
+          let best = '';
+          let score = 0.5;
+          for (const [id, ob] of oBullet) {
+            if (usedBullets.has(id)) continue;
+            const s = overlap(ob.text, b.text);
+            if (s >= score) { best = id; score = s; }
+          }
+          if (best) from = [best];
+        }
+        b.from = from;
+        for (const id of from) usedBullets.add(id);
+        b.added = from.length === 0;
+      }
+    }
+  }
+
+  // Anything of the reader's that the rewrite dropped goes back in.
+  for (const [id, { item, heading }] of oItem) {
+    if (usedItems.has(id)) continue;
+    let sec = T.sections.find((x) => sameKey(x.heading, heading));
+    if (!sec) { sec = { heading, items: [] }; T.sections.push(sec); }
+    sec.items.push({
+      id: '', from: id, added: false, title: item.title, org: item.org, dates: item.dates,
+      bullets: item.bullets.map((b) => ({ id: '', text: b.text, from: [b.id], added: false })),
+    });
+    usedItems.add(id);
+    for (const b of item.bullets) usedBullets.add(b.id);
+    restored += 1;
+  }
+  for (const [id, ob] of oBullet) {
+    if (usedBullets.has(id)) continue;
+    const home = T.sections.flatMap((x) => x.items).find((it) => it.from === ownerOf.get(id));
+    home.bullets.push({ id: '', text: ob.text, from: [id], added: false });
+    usedBullets.add(id);
+    restored += 1;
+  }
+
+  // Skills: every original one stays, in its own group where that survives.
+  const tHay = () => hayOf(T.skills.flatMap((g) => g.items).join(' , '));
+  for (const g of O.skills) {
+    for (const s of g.items) {
+      if (mentions(tHay(), s)) continue;
+      // Back under its own heading: a reader's "Tools" group comes back as
+      // "Tools", not folded into whatever group the rewrite kept first.
+      let home = T.skills.find((x) => x.group.toLowerCase() === g.group.toLowerCase())
+        || (g.group ? null : T.skills[0]);
+      if (!home) { home = { group: g.group, items: [] }; T.skills.push(home); }
+      home.items.push(s);
+      restored += 1;
+    }
+  }
+  const oSkills = hayOf(O.skills.flatMap((g) => g.items).join(' , '));
+  const skillOut = (R, isTailored) => R.skills.map((g) => ({
+    group: g.group,
+    items: g.items.map((text) => ({
+      text,
+      added: isTailored && !mentions(oSkills, text) && !mentions(hay, text),
+    })),
+  }));
+
+  // What was added, with the model's reason where it gave one.
+  const reasons = Array.isArray(d.added) ? d.added : [];
+  const whyFor = (text) => {
+    const k = keyOf(text);
+    const hit = reasons.find((a) => {
+      const ak = keyOf(a?.text ?? '');
+      return ak && (ak.includes(k) || k.includes(ak));
+    });
+    return hit ? str(hit.why, 200) : '';
+  };
+  const tailored = {
+    ...T,
+    name: O.name || T.name,
+    contact: O.contact || T.contact,
+    summary: T.summary || O.summary,
+    skills: skillOut(T, true),
+  };
+  const added = [];
+  let k = 0;
+  for (const sec of tailored.sections) {
+    for (const it of sec.items) {
+      for (const b of it.bullets) {
+        if (!b.added) continue;
+        b.key = `a${++k}`;
+        added.push({ key: b.key, kind: 'line', text: b.text, why: whyFor(b.text) });
+      }
+    }
+  }
+  for (const g of tailored.skills) {
+    for (const s of g.items) {
+      if (!s.added) continue;
+      s.key = `a${++k}`;
+      added.push({ key: s.key, kind: 'skill', text: s.text, why: whyFor(s.text) });
+    }
+  }
+
+  const original = {
+    ...O,
+    sections: O.sections.map((sec) => ({
+      heading: sec.heading,
+      items: sec.items.map((it) => ({ ...it, bullets: it.bullets.map((b) => ({ text: b.text, added: false })) })),
+    })),
+    skills: skillOut(O, false),
+  };
+
+  // How much of the input the parse read. Words of four letters or more, so
+  // "and" and "the" cannot carry a bad parse over the line.
+  const big = (t) => new Set(normSkill(t).split(/\s+/).filter((w) => /^[a-z]/.test(w) && w.length > 3));
+  const src = big(resumeText);
+  const read = big(resumePlainText(O));
+  let covered = 0;
+  for (const w of src) if (read.has(w)) covered += 1;
+
+  return {
+    name: tailored.name,
+    contact: tailored.contact,
+    original,
+    tailored,
+    added,
+    restored,
+    coverage: src.size ? covered / src.size : 1,
+    changes: strList(d.changes, 12),
+    gaps: strList(d.gaps, 10),
+    keywords: strList(d.keywords, 20, 60),
+  };
+}
+
+/* ---------------- the role's keywords ---------------- */
+
+/**
+ * The words an applicant tracking system would scan this role for: the
+ * posting's key skills first, then its skill tags, then the model's reading of
+ * the role. One skill under two spellings is listed once.
+ */
+export function roleKeywords(job, extra = [], max = 16) {
+  const out = [];
+  const seen = new Set();
+  /* The model's own terms are a supplement, and kept short: a phrase like
+     "Entertainment Domain Adaptation" is not something an ATS matches word for
+     word, and counting it only pads the score. The role's title is not a
+     keyword either. */
+  const title = keyOf(job?.title ?? '');
+  const theirs = (extra ?? []).filter((x) => {
+    const t = String(x ?? '').trim();
+    return t && t.length <= 28 && t.split(/\s+/).length <= 3 && keyOf(t) !== title;
+  }).slice(0, 6);
+  for (const raw of [...(job?.keySkills ?? []), ...(job?.skills ?? []), ...theirs]) {
+    const t = String(raw ?? '').replace(/\s+/g, ' ').trim();
+    const k = stemOf(keyOf(t));
+    if (!t || t.length > 40 || !k || seen.has(k)) continue;
+    if (spellingsOf(k).some((s) => seen.has(stemOf(s)))) continue;
+    seen.add(k);
+    for (const s of spellingsOf(k)) seen.add(stemOf(s));
+    out.push(t);
+    if (out.length >= max) break;
+  }
+  return out;
+}
+
+/** Which of the role's keywords this text contains. */
+export function keywordMatch(keywords, text) {
+  const hay = hayOf(text);
+  const hit = [];
+  const miss = [];
+  for (const kw of keywords ?? []) (mentions(hay, kw) ? hit : miss).push(kw);
+  return { hit, miss };
 }
 
 /* ---------------- the one network call ---------------- */
@@ -362,17 +805,15 @@ export async function rankWithAI({ resumeText, jobs, signal, region }) {
   return out;
 }
 
-/** Rewrite one resume against one job. */
+/** Rewrite one resume against one job. Nothing of the reader's is ever
+ *  removed: reconcileTailored puts back anything the rewrite dropped, and
+ *  marks everything it added. */
 export async function tailorWithAI({ resumeText, job, signal, region }) {
   const resume = String(resumeText).slice(0, MAX_RESUME_CHARS);
-  const tailored = await callAI('tailor', { resume, job: clampJob(job) }, { signal, region });
-
-  const invented = findInventedSkills(resume, tailored.skills);
-  if (invented.length) {
-    // Strip rather than fail — the rest of the rewrite is still useful, and the
-    // student is told exactly what came out and why.
-    tailored.skills = (tailored.skills ?? []).filter((s) => !invented.includes(s));
-    tailored.removedSkills = invented;
+  const data = await callAI('tailor', { resume, job: clampJob(job) }, { signal, region });
+  const t = reconcileTailored(data, resume);
+  if (!t.tailored.sections.length && !t.tailored.skills.length) {
+    throw new Error('The AI returned an empty resume. Please try again.');
   }
-  return tailored;
+  return t;
 }

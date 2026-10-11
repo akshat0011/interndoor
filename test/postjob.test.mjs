@@ -212,7 +212,7 @@ console.log('\n== APPLY CLICKS PER JOB ==');
   check('an Apply with no job named reads it off the page', /count\('apply', typeof job === 'string' && job \? job : jobFromPath\(location\.pathname\)\);/.test(engage), true);
   const app = read('web/public/app.js');
   check('the card’s Apply names its job', app.includes("window.IDEngage?.onApply(jobPageSlug(job)); });"), true);
-  check('the pane’s Apply names its job', app.includes("apply.addEventListener('click', () => window.IDEngage?.onApply(jobPageSlug(job)));"), true);
+  check('the pane’s Apply names its job', app.includes("apply.addEventListener('click', () => { autoTrack(job); window.IDEngage?.onApply(jobPageSlug(job)); });"), true);
 }
 
 console.log('\n== FOLDING THE DAYS ==');

@@ -130,10 +130,12 @@ console.log('\n== the board wires it in the right order ==');
 
   const jobCard = lift(app, 'function jobCard(', '\n}', 'jobCard');
   ok('a seen card carries the class', /if \(seen\) row\.classList\.add\('seen'\)/.test(jobCard));
-  ok('the card\'s Apply tells the layer, naming its job', /go\.addEventListener\('click', \(e\) => \{ e\.stopPropagation\(\); window\.IDEngage\?\.onApply\(jobPageSlug\(job\)\); \}\)/.test(jobCard));
+  // And tracks the role (11 Oct 2026): Apply is the one moment a reader is
+  // certain to pass through, so the card no longer needs a Track button.
+  ok('the card\'s Apply tells the layer, naming its job', /go\.addEventListener\('click', \(e\) => \{ e\.stopPropagation\(\); autoTrack\(job\); window\.IDEngage\?\.onApply\(jobPageSlug\(job\)\); \}\)/.test(jobCard));
 
   const detail = lift(app, 'function renderDetail(', '\n}', 'renderDetail');
-  ok('so does the pane\'s', /apply\.addEventListener\('click', \(\) => window\.IDEngage\?\.onApply\(jobPageSlug\(job\)\)\)/.test(detail));
+  ok('so does the pane\'s', /apply\.addEventListener\('click', \(\) => \{ autoTrack\(job\); window\.IDEngage\?\.onApply\(jobPageSlug\(job\)\); \}\)/.test(detail));
 
   ok('page.js loads the layer too', /s\.src = '\/engage\.js'/.test(page));
   ok('and delegates the job page\'s Apply buttons', /closest\('a\.btn-apply'\)[\s\S]*IDEngage\.onApply\(\)/.test(page));

@@ -85,23 +85,46 @@ ${roles}
 Score every posting above. Return one entry per posting, using the [index] shown.`;
 }
 
-export const TAILOR_SYSTEM = `You rewrite a candidate's existing resume so it targets one specific job. You are working with a real person's real resume, which they will send to real employers.
+export const TAILOR_SYSTEM = `You tailor a candidate's resume to one job so that it scores as high as possible in an applicant tracking system (ATS) and reads well to a recruiter. It is a real person's resume, which they will send to a real employer.
 
-ABSOLUTE RULE — invent nothing.
-- Every skill, tool, employer, job title, date, degree, metric and achievement in your output must already be present in the resume you were given.
-- You may reword, reorder, re-emphasise, merge, cut, and re-title sections. You may adopt the job's vocabulary WHERE THE RESUME ALREADY SUPPORTS THE CLAIM (e.g. if the resume says "built REST APIs in Flask" and the job asks for "backend services", describing it as backend service work is fine).
-- You may NOT add a technology the resume never mentions, inflate a duration, invent a number, upgrade a title, or imply seniority the resume does not show. If the job wants Kubernetes and the resume has no Kubernetes, the resume still has no Kubernetes.
-- Never write placeholders like "[add metric]" or "X%". Omit rather than fabricate.
+Return two resumes.
 
-How to tailor well:
-- Lead with the experience closest to this job; push less relevant material down or cut it.
-- Mirror the job's terminology for things the candidate genuinely did.
-- Prefer concrete outcomes already stated in the resume over vague duties.
-- Keep it to one page of content unless the source clearly warrants two.
-- Keep the candidate's real contact details exactly as given.
-- In "gaps", be honest about what the job asks for that the resume does not evidence. That is useful information, not a failure.`;
+1. "original": the resume EXACTLY as given, parsed into the structure. Copy every line word for word. Do not fix, shorten, merge, reorder or drop anything. Give every item an id ("i1", "i2", ...) and every bullet an id ("i1.b1", "i1.b2", ...). Put every skill the resume lists into "skills", as individual skills, one per entry, in the groups the resume uses (for example group "Programming", items ["Python", "C++"]). Skills go in "skills", never in a section. The summary or objective goes in "summary", never in a section.
 
-export const TAILOR_SCHEMA = {
+2. "tailored": the resume rewritten for this job.
+
+NEVER REMOVE ANYTHING. Every item, bullet, skill, tool, project, job, school and claim in the original must still be in the tailored resume. You may:
+- reorder sections, items, bullets and skills so what matters most for this job comes first;
+- reword bullets in the job's own vocabulary, starting with a strong verb, keeping every number exactly as written;
+- rewrite the summary for this role, naming the role and its key skills;
+- regroup skills, with the ones this job asks for first.
+Each tailored item gives the id of the original item it came from in "from". Each tailored bullet lists, in "from", the ids of the original bullets it came from.
+
+YOU MAY ADD, and must list every addition in "added" with a short reason:
+- skills and keywords this job asks for that fit what the candidate has actually done (someone who ran local language models can list "LLM inference");
+- at most three new bullets that connect the candidate's real work to this job, with "from": [].
+Never invent an employer, job title, project, school, date, degree, certification, award or number. Keep the name and contact details exactly as written.
+
+FOR THE ATS:
+- Use the job's exact words (its key skills, tools and duties) wherever the candidate's work supports them, in the summary, the bullets and the skills.
+- Use standard section headings: Summary, Experience, Projects, Education, Skills, Certifications. Keep the candidate's own heading where it is already standard.
+- Plain text only: no tables, columns, icons, emoji or first person.
+
+In "keywords", list the 10 to 15 terms an ATS would scan this job for, each one to three words (skills, tools, methods), not the job title.
+In "gaps", name what the job asks for that the resume still does not show, as short phrases.
+In "changes", list what you changed, as short sentences.`;
+
+const BULLET = {
+  type: 'OBJECT',
+  properties: {
+    id: { type: 'STRING' },
+    text: { type: 'STRING' },
+    from: { type: 'ARRAY', items: { type: 'STRING' } },
+  },
+  required: ['text'],
+};
+
+const RESUME = {
   type: 'OBJECT',
   properties: {
     name: { type: 'STRING' },
@@ -118,10 +141,12 @@ export const TAILOR_SCHEMA = {
             items: {
               type: 'OBJECT',
               properties: {
+                id: { type: 'STRING' },
+                from: { type: 'STRING' },
                 title: { type: 'STRING' },
                 org: { type: 'STRING' },
                 dates: { type: 'STRING' },
-                bullets: { type: 'ARRAY', items: { type: 'STRING' } },
+                bullets: { type: 'ARRAY', items: BULLET },
               },
               required: ['title', 'bullets'],
             },
@@ -130,11 +155,42 @@ export const TAILOR_SCHEMA = {
         required: ['heading', 'items'],
       },
     },
-    skills: { type: 'ARRAY', items: { type: 'STRING' } },
-    changeNotes: { type: 'ARRAY', items: { type: 'STRING' } },
+    skills: {
+      type: 'ARRAY',
+      items: {
+        type: 'OBJECT',
+        properties: {
+          group: { type: 'STRING' },
+          items: { type: 'ARRAY', items: { type: 'STRING' } },
+        },
+        required: ['items'],
+      },
+    },
+  },
+  required: ['name', 'sections', 'skills'],
+};
+
+/* The original comes first on purpose: the model parses the resume and gives
+   it ids before it writes the version that has to refer to them. */
+export const TAILOR_SCHEMA = {
+  type: 'OBJECT',
+  properties: {
+    original: RESUME,
+    tailored: RESUME,
+    added: {
+      type: 'ARRAY',
+      items: {
+        type: 'OBJECT',
+        properties: { text: { type: 'STRING' }, why: { type: 'STRING' } },
+        required: ['text'],
+      },
+    },
+    keywords: { type: 'ARRAY', items: { type: 'STRING' } },
+    changes: { type: 'ARRAY', items: { type: 'STRING' } },
     gaps: { type: 'ARRAY', items: { type: 'STRING' } },
   },
-  required: ['name', 'summary', 'sections', 'skills', 'changeNotes', 'gaps'],
+  required: ['original', 'tailored', 'added', 'keywords', 'changes', 'gaps'],
+  propertyOrdering: ['original', 'tailored', 'added', 'keywords', 'changes', 'gaps'],
 };
 
 export function buildTailorPrompt(resumeText, rawJob) {
@@ -142,21 +198,23 @@ export function buildTailorPrompt(resumeText, rawJob) {
   const facts = [
     `Role: ${job.title ?? 'Unknown'}`,
     `Company: ${job.company ?? 'Unknown'}`,
+    job.roleLabel ? `Kind of work: ${job.roleLabel}` : null,
     job.location ? `Location: ${job.location}` : null,
     job.workplaceType ? `Work mode: ${job.workplaceType}` : null,
-    job.stipend ? `Stipend: ${job.stipend}` : null,
     job.duration ? `Duration: ${job.duration}` : null,
+    job.degreeLevel || job.degreeText ? `Open to: ${[job.degreeLevel, job.degreeText].filter(Boolean).join(', ')}` : null,
+    job.experience ? `Experience asked: ${job.experience}` : null,
+    job.keySkills?.length ? `Key skills: ${job.keySkills.join(', ')}` : null,
     job.skills?.length ? `Listed skills: ${job.skills.join(', ')}` : null,
   ].filter(Boolean).join('\n');
+  const duties = job.bullets?.length ? `\nWhat the work is:\n${job.bullets.map((b) => `- ${b}`).join('\n')}\n` : '';
+  const about = job.description || job.summary || '';
 
   return `THE JOB
 ${facts}
-
-What the posting says:
-${job.description || job.summary || '(no description captured — tailor against the role, company and listed skills above)'}
-
-THE CANDIDATE'S CURRENT RESUME
+${duties}${about ? `\nAbout the role:\n${about}\n` : ''}
+THE CANDIDATE'S RESUME
 ${resumeText}
 
-Rewrite this resume to target the job above. Remember: reorganise and rephrase what is there. Add nothing that is not.`;
+Parse the resume into "original" exactly as it is, then write "tailored" for this job. Keep everything; add only what you list in "added".`;
 }

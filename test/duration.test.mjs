@@ -47,9 +47,11 @@ ok('the card reads stated years first', expCard({ experience: '1–2 years', exp
 ok('…labels years in expSays as experience, never a bare range', expCard({ expSays: '0–2 years' }) === '0–2 yrs exp', expCard({ expSays: '0–2 years' }));
 ok('…shows what the posting says in words', expCard({ expSays: 'Freshers welcome' }) === 'Freshers welcome');
 ok('…and nothing when the posting says nothing', expCard({}) === '');
+// Experience moved from the facts box to the pane's "Requirements" on 11 Oct
+// 2026; what it says, and the fallback, are unchanged.
 ok('a full-time pane says "Not stated in the posting" rather than nothing',
-  /else if \(fullTime\) addFact\('Experience', 'Not stated in the posting', 'muted'\);/.test(app));
-ok('the pane has an "Experience" fact', /if \(job\.experience\) addFact\('Experience', job\.experience\);/.test(app));
+  /const exp = job\.experience \|\| job\.expSays \|\| \(fullTime \? 'Not stated in the posting' : ''\);/.test(app));
+ok('the pane has an "Experience" requirement', /if \(exp\) reqs\.push\(\['Experience', exp\]\);/.test(app));
 ok('…and a "Duration" fact only when one is stated', /if \(job\.duration\) addFact\('Duration', job\.duration\);/.test(app));
 /* An unknown fact is withheld, never drawn as a dash (9 Oct 2026, the pane
    redesign): "—" in its own box read as a value. */

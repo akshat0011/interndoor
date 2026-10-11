@@ -66,7 +66,7 @@
   ],
   "functions": {
     "api/ai.js": {
-      "maxDuration": 60
+      "maxDuration": 90
     },
     "api/tailor.js": {
       "maxDuration": 60

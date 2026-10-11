@@ -21,7 +21,8 @@
 import { readFileSync } from 'node:fs';
 import {
   resumeNames, spellingsOf, normSkill, SKILL_ALIASES,
-  shortlist, clampJob, rankDigest, findInventedSkills, failureFor,
+  shortlist, clampJob, rankDigest, failureFor,
+  hayOf, mentions, splitSkillEntry, reconcileTailored, roleKeywords, keywordMatch,
   rankWithAI, tailorWithAI, RANK_BATCH,
   AI_ENDPOINT, FREE_PER_DAY, DEVICE_STORE, DEVICE_SHAPE, ALLOWANCE_STORE, OLD_KEY_STORE,
   deviceId, allowanceLeft, rememberAllowance, forgetOldKey, istDay,
@@ -158,7 +159,9 @@ check('a rank sends no description — the prompt never reads one', 'description
 check('and the role it is about', sentBody.jobs[0].title, 'SDE Intern');
 check('the server’s count is remembered for today', allowanceLeft(), 3);
 
-globalThis.fetch = answer({ name: 'A', summary: 's', sections: [], skills: [], changeNotes: [], gaps: [] }, { remaining: 2 });
+// The answer's shape is the 11 Oct 2026 contract: the original parsed, and the rewrite.
+const TINY = { name: 'A', sections: [{ heading: 'Projects', items: [{ id: 'i1', title: 'P', bullets: [{ id: 'i1.b1', text: 'Built it' }] }] }], skills: [] };
+globalThis.fetch = answer({ original: TINY, tailored: { ...TINY, sections: [{ heading: 'Projects', items: [{ from: 'i1', title: 'P', bullets: [{ text: 'Built it well', from: ['i1.b1'] }] }] }] } }, { remaining: 2 });
 await tailorWithAI({ resumeText: 'x'.repeat(400), job: { title: 'T', description: 'about the role' } });
 sentBody = JSON.parse(answer.seen.init.body);
 check('a tailor is a tailor', sentBody.task, 'tailor');
@@ -271,23 +274,237 @@ console.log('\n== failures say something a student can act on ==');
   check('failureFor never returns empty', failureFor(418).length > 0, true);
 }
 
-console.log('\n== the fabrication guard, carried over from the server ==');
-const resume = `Akshat Saroha — akshat@example.com — Bengaluru
-B.Tech Computer Science, graduating 2027.
-Built a REST API in Flask backed by PostgreSQL, deployed with Docker.
-Skills: Python, Flask, SQL, Git, Docker, Node.js`;
-check('keeps what is really there', findInventedSkills(resume, ['Python', 'Docker']), []);
-check('catches an invented skill', findInventedSkills(resume, ['Kubernetes']), ['Kubernetes']);
-check('empty list', findInventedSkills(resume, []), []);
-check('undefined list', findInventedSkills(resume, undefined), []);
+console.log('\n== skills are read one by one, never as whole lines ==');
+/* THE BUG HE REPORTED: the model returned "Programming: Python, JavaScript,
+   C++" as ONE skill, the old check called "programming:" invented, and the
+   reader's whole skills section was stripped. */
+check('a grouped line splits into its group', splitSkillEntry('Programming: Python, JavaScript, C++'), { group: 'Programming', items: ['Python', 'JavaScript', 'C++'] });
+check('a bracket keeps its commas', splitSkillEntry('AWS (EC2, S3), Docker').items, ['AWS (EC2, S3)', 'Docker']);
+check('a plain skill is one skill', splitSkillEntry('Python'), { group: '', items: ['Python'] });
+check('semicolons and bullets split too', splitSkillEntry('Git; Linux • Vercel').items, ['Git', 'Linux', 'Vercel']);
+check('an empty entry is empty', splitSkillEntry('  ').items, []);
 
-globalThis.fetch = answer({
-  name: 'A', summary: 's', sections: [], skills: ['Python', 'Kubernetes'], changeNotes: [], gaps: [],
+console.log('\n== whole-word matching that survives punctuation ==');
+const H = (t) => hayOf(t);
+check('a hyphenated skill matches itself', mentions(H('Built a recommender in scikit-learn.'), 'scikit-learn'), true);
+check('a skill at the end of a sentence still counts', mentions(H('I mostly write Python.'), 'Python'), true);
+check('the dot inside a name is kept', mentions(H('APIs in Node.js and Express'), 'Node.js'), true);
+check('one LLM is the same skill as LLMs', mentions(H('Fine-tuned an LLM'), 'LLMs'), true);
+check('and the other way round', mentions(H('Worked with LLMs'), 'LLM'), true);
+check('"go" is not inside "algorithms"', mentions(H('algorithms and data'), 'Go'), false);
+check('an alias still counts', mentions(H('Skills: JS, K8s'), 'Kubernetes'), true);
+
+console.log('\n== NOTHING THE READER WROTE IS EVER REMOVED ==');
+const RESUME_TEXT = `Riya Mehta
+riya@example.com
+Summary
+Builds full-stack apps.
+Projects
+StudyPortal | 2026
+- Built a study portal for 300+ students with React and PostgreSQL.
+- Added an AI tutor grounded on the syllabus.
+JobBoard | 2026
+- Wrote a Playwright scraper into SQLite.
+Experience
+Android ROM Developer, XDA | 2023 - 2025
+- Maintained ROM builds for three devices.
+Skills
+Programming: Python, JavaScript, C++
+Tools: Git, Docker`;
+const ORIGINAL = {
+  name: 'Riya Mehta', contact: 'riya@example.com', summary: 'Builds full-stack apps.',
+  sections: [
+    { heading: 'Projects', items: [
+      { id: 'i1', title: 'StudyPortal', dates: '2026', bullets: [
+        { id: 'i1.b1', text: 'Built a study portal for 300+ students with React and PostgreSQL.' },
+        { id: 'i1.b2', text: 'Added an AI tutor grounded on the syllabus.' }] },
+      { id: 'i2', title: 'JobBoard', dates: '2026', bullets: [{ id: 'i2.b1', text: 'Wrote a Playwright scraper into SQLite.' }] }] },
+    { heading: 'Experience', items: [
+      { id: 'i3', title: 'Android ROM Developer', org: 'XDA', dates: '2023 - 2025', bullets: [{ id: 'i3.b1', text: 'Maintained ROM builds for three devices.' }] }] },
+  ],
+  skills: [{ group: 'Programming', items: ['Python', 'JavaScript', 'C++'] }, { group: 'Tools', items: ['Git', 'Docker'] }],
+};
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const fullTailored = () => ({
+  name: 'Riya Mehta', contact: 'riya@example.com', summary: 'Full-stack developer who ships LLM tools.',
+  sections: [
+    { heading: 'Projects', items: [
+      { from: 'i2', title: 'JobBoard', dates: '2026', bullets: [{ text: 'Built a Playwright scraper feeding SQLite.', from: ['i2.b1'] }] },
+      { from: 'i1', title: 'StudyPortal', dates: '2026', bullets: [
+        { text: 'Grounded an AI tutor on the syllabus.', from: ['i1.b2'] },
+        { text: 'Built a React and PostgreSQL study portal for 300+ students.', from: ['i1.b1'] }] }] },
+    { heading: 'Experience', items: [
+      { from: 'i3', title: 'Android ROM Developer', org: 'XDA', dates: '2023 - 2025', bullets: [{ text: 'Maintained ROM builds for three devices.', from: ['i3.b1'] }] }] },
+  ],
+  skills: [{ group: 'Programming', items: ['Python', 'JavaScript', 'C++'] }, { group: 'Tools', items: ['Git', 'Docker'] }],
 });
-const tailored = await tailorWithAI({ resumeText: resume, job: { title: 'X' } });
-check('an invented skill is stripped from the output', tailored.skills, ['Python']);
-check('and the student is told which', tailored.removedSkills, ['Kubernetes']);
-globalThis.fetch = realFetch;
+const allBullets = (R) => R.sections.flatMap((s) => s.items.flatMap((i) => i.bullets.map((b) => b.text)));
+const allSkills = (R) => R.skills.flatMap((g) => g.items.map((x) => x.text));
+/** Every original bullet is in the tailored resume, verbatim or as the bullet
+ *  that names it as its source; every original skill is in its skills. */
+function keepsEverything(t) {
+  const tSkills = hayOf(allSkills(t.tailored).join(' , '));
+  const lost = [];
+  for (const g of ORIGINAL.skills) for (const s of g.items) if (!mentions(tSkills, s)) lost.push(s);
+  for (const sec of ORIGINAL.sections) {
+    for (const it of sec.items) {
+      const home = t.tailored.sections.flatMap((x) => x.items).find((x) => x.title === it.title);
+      if (!home) { lost.push(it.title); continue; }
+      for (const b of it.bullets) {
+        if (!home.bullets.some((x) => x.text === b.text || (x.from ?? []).includes(b.id))) lost.push(b.text);
+      }
+    }
+  }
+  return lost;
+}
+
+{
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: fullTailored() }, RESUME_TEXT);
+  check('a complete rewrite needs nothing put back', t.restored, 0);
+  check('and keeps everything', keepsEverything(t), []);
+  check('and adds nothing', t.added, []);
+  check('the summary is the rewrite', t.tailored.summary, 'Full-stack developer who ships LLM tools.');
+}
+{
+  const T = fullTailored();
+  T.sections[0].items[1].bullets.splice(0, 1);          // drop a bullet
+  T.sections.splice(1, 1);                               // drop the whole Experience section
+  T.skills = [{ group: 'Programming', items: ['Python'] }]; // drop four skills and a whole group
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T }, RESUME_TEXT);
+  check('a dropped bullet, section and skills all come back', keepsEverything(t), []);
+  check('and the count says how many', t.restored, 6);
+  check('a dropped section comes back under its own heading', t.tailored.sections.map((s) => s.heading), ['Projects', 'Experience']);
+  check('dropped skills go back in their own group', t.tailored.skills.map((g) => [g.group, g.items.map((x) => x.text)]),
+    [['Programming', ['Python', 'JavaScript', 'C++']], ['Tools', ['Git', 'Docker']]]);
+  check('nothing put back is called an addition', t.added, []);
+}
+{
+  // The exact shape that used to wipe a skills section.
+  const T = fullTailored();
+  T.skills = ['Programming: Python, JavaScript, C++', 'Tools: Git, Docker, PyTorch'];
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T, added: [{ text: 'PyTorch', why: 'The role asks for it.' }] }, RESUME_TEXT);
+  check('a whole skills line is read as its skills', allSkills(t.tailored), ['Python', 'JavaScript', 'C++', 'Git', 'Docker', 'PyTorch']);
+  check('only the new one is an addition', t.added.map((a) => [a.kind, a.text, a.why]), [['skill', 'PyTorch', 'The role asks for it.']]);
+  check('and it is marked in the resume', t.tailored.skills[1].items.find((x) => x.text === 'PyTorch').added, true);
+}
+{
+  const T = fullTailored();
+  T.sections[1].items[0].bullets.push({ text: 'Debugged kernel panics across three phones.', from: [] });
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T }, RESUME_TEXT);
+  check('a new bullet is kept and flagged', t.added.map((a) => [a.kind, a.text]), [['line', 'Debugged kernel panics across three phones.']]);
+  const b = t.tailored.sections[1].items[0].bullets.at(-1);
+  check('with a key the page can remove it by', [b.added, b.key], [true, t.added[0].key]);
+}
+{
+  // The model linked JobBoard to the Android job's id (seen on a real run).
+  const T = fullTailored();
+  T.sections[0].items[0].from = 'i3';
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T }, RESUME_TEXT);
+  const titles = t.tailored.sections.flatMap((s) => s.items.map((i) => i.title));
+  check('a wrong link never renames an item', titles.filter((x) => x === 'Android ROM Developer').length, 1);
+  check('JobBoard keeps its name', titles.includes('JobBoard'), true);
+  check('and nothing is lost', keepsEverything(t), []);
+}
+{
+  // The model forgets its links: an item with no "from", a reworded bullet
+  // with none. Neither may be duplicated or called new.
+  const T = fullTailored();
+  T.sections[0].items[0].from = '';
+  T.sections[0].items[1].bullets[1].from = [];   // "Built a React and PostgreSQL study portal for 300+ students."
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T }, RESUME_TEXT);
+  const titles = t.tailored.sections.flatMap((s) => s.items.map((i) => i.title));
+  check('an unlinked item is matched by its title, not duplicated', titles.filter((x) => x === 'JobBoard').length, 1);
+  check('an unlinked rewording is matched by its words, not duplicated', allBullets(t.tailored).filter((b) => /study portal/.test(b)).length, 1);
+  check('and neither is called an addition', t.added, []);
+}
+{
+  // Employers, titles and dates are facts: the original's always win.
+  const T = fullTailored();
+  Object.assign(T.sections[1].items[0], { org: 'Google', dates: '2019 - 2025' });
+  T.contact = 'someone-else@example.com';
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T }, RESUME_TEXT);
+  check('an organisation cannot be changed', t.tailored.sections[1].items[0].org, 'XDA');
+  check('nor dates', t.tailored.sections[1].items[0].dates, '2023 - 2025');
+  check('nor the contact line', t.contact, 'riya@example.com');
+}
+{
+  // The model sometimes puts the summary and the skills in sections.
+  const O = clone(ORIGINAL);
+  O.summary = '';
+  O.skills = [];
+  O.sections.unshift({ heading: 'Summary', items: [{ id: 's1', title: 'Builds full-stack apps.', bullets: [] }] });
+  O.sections.push({ heading: 'Skills', items: [{ id: 'k1', title: 'Programming: Python, JavaScript, C++', bullets: [] }, { id: 'k2', title: 'Tools', bullets: [{ id: 'k2.b1', text: 'Git, Docker' }] }] });
+  const T = fullTailored();
+  T.summary = '';
+  T.sections.unshift({ heading: 'Summary', items: [{ title: 'Role', bullets: [{ text: 'Full-stack developer who ships LLM tools.', from: [] }] }] });
+  const t = reconcileTailored({ original: O, tailored: T }, RESUME_TEXT);
+  check('a Summary section becomes the summary', t.tailored.summary, 'Full-stack developer who ships LLM tools.');
+  check('so it is never printed twice', t.tailored.sections.some((s) => /summary/i.test(s.heading)), false);
+  check('a Skills section becomes skills', t.original.skills.map((g) => [g.group, g.items.map((x) => x.text)]),
+    [['Programming', ['Python', 'JavaScript', 'C++']], ['Tools', ['Git', 'Docker']]]);
+  check('and is not restored as a job', t.tailored.sections.some((s) => /skill/i.test(s.heading)), false);
+  check('everything is still kept', keepsEverything(t), []);
+}
+{
+  const t = reconcileTailored({ original: {}, tailored: fullTailored() }, RESUME_TEXT);
+  check('a parse that read nothing says so', t.coverage < 0.5, true);
+  const ok = reconcileTailored({ original: clone(ORIGINAL), tailored: fullTailored() }, RESUME_TEXT);
+  check('a full parse reads nearly everything', ok.coverage > 0.85, true);
+}
+{
+  /* The property, over many random deletions: whatever the model leaves out,
+     nothing of the reader's is missing afterwards. A tiny seeded generator, so
+     a failure is reproducible. */
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
+  let worst = [];
+  for (let n = 0; n < 300; n++) {
+    const T = fullTailored();
+    for (const sec of T.sections) {
+      sec.items = sec.items.filter(() => rnd() > 0.25);
+      for (const it of sec.items) it.bullets = it.bullets.filter(() => rnd() > 0.3);
+    }
+    T.sections = T.sections.filter(() => rnd() > 0.15);
+    for (const g of T.skills) g.items = g.items.filter(() => rnd() > 0.35);
+    if (rnd() > 0.7) T.skills = [];
+    const lost = keepsEverything(reconcileTailored({ original: clone(ORIGINAL), tailored: T }, RESUME_TEXT));
+    if (lost.length) { worst = lost; break; }
+  }
+  check('300 random drops: nothing of the reader\'s is ever missing', worst, []);
+}
+
+console.log('\n== the role\'s keywords ==');
+{
+  const job = { title: 'LLM Research Intern', keySkills: ['python', 'pytorch', 'llms'], skills: ['python', 'deep learning', 'llm'] };
+  // Each long phrase is refused by exactly one rule: four words but short, and
+  // three words but over 28 characters.
+  const kw = roleKeywords(job, ['LLM Research Intern', 'Real World Data Evaluation', 'Entertainment Domain Adaptation', 'fine-tuning', 'PyTorch']);
+  check('the posting\'s key skills come first, each once', kw, ['python', 'pytorch', 'llms', 'deep learning', 'fine-tuning']);
+  check('the title is not a keyword', kw.includes('LLM Research Intern'), false);
+  // "fine-tuned" is not the keyword "fine-tuning", and an ATS would not count it either.
+  check('a near miss is a miss', keywordMatch(['fine-tuning'], 'fine-tuned an LLM').hit, []);
+  const m = keywordMatch(kw, 'Python and PyTorch; fine-tuning small LLMs.');
+  check('the match counts what the text says', [m.hit, m.miss], [['python', 'pytorch', 'llms', 'fine-tuning'], ['deep learning']]);
+}
+
+console.log('\n== the tailor hears the whole role ==');
+{
+  const j = clampJob({ title: 'T', bullets: Array(15).fill('d'.repeat(400)), keySkills: Array(30).fill('k'), experience: '0-1 years', degreeLevel: 'PG' });
+  check('duties are sent, bounded', [j.bullets.length, j.bullets[0].length], [10, 300]);
+  check('key skills too', j.keySkills.length, 20);
+  check('and who it is for', [j.experience, j.degreeLevel], ['0-1 years', 'PG']);
+}
+{
+  const raw = { original: clone(ORIGINAL), tailored: (() => { const T = fullTailored(); T.skills = [{ group: 'Programming', items: ['Python'] }]; return T; })() };
+  globalThis.fetch = answer(raw);
+  const t = await tailorWithAI({ resumeText: RESUME_TEXT, job: { title: 'X' } });
+  check('tailorWithAI returns the reconciled resume', keepsEverything(t), []);
+  globalThis.fetch = answer({ original: {}, tailored: {} });
+  await returns('an empty answer is an error, not a blank resume',
+    () => tailorWithAI({ resumeText: RESUME_TEXT, job: { title: 'X' } }).then(() => 'resolved'),
+    'THREW: The AI returned an empty resume. Please try again.');
+  globalThis.fetch = realFetch;
+}
 
 console.log('\n== prompt bounds ==');
 const huge = { title: 'T'.repeat(900), company: 'C', description: 'd'.repeat(50_000), skills: Array(200).fill('s') };
@@ -402,6 +619,59 @@ console.log('\n== one question per screen: the resume, then tailor ==');
   // .modal.tw outranks print's .modal rule, so the resume would print as a
   // fixed card unless print says it too.
   check('print releases the pinned dialog', /\.modal\.tw[^{]*\{[^}]*position: static/.test(print), true);
+}
+
+console.log('\n== the card, the pane and the result (11 Oct 2026) ==');
+{
+  const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
+  const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
+  const html = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
+  const page = readFileSync(new URL('../web/public/page.js', import.meta.url), 'utf8');
+  const fn = (name) => { const a = app.indexOf(`function ${name}(`); return a < 0 ? '' : app.slice(a, app.indexOf('\n}\n', a) + 2); };
+
+  // Most readers press Apply from the card and never open the role.
+  const card = fn('jobCard');
+  check('the card offers the tailor', /el\('button', 'tl-b'\)[\s\S]{0,400}openTailor\(job\)/.test(card), true);
+  check('and the button is really on the card', /foot\.append\(tl\);/.test(card), true);
+  check('and stops the card opening under it', /tl\.addEventListener\('click', \(e\) => \{ e\.stopPropagation\(\); openTailor\(job\); \}\)/.test(card), true);
+  const chip = fn('paintTrackControl');
+  check('the card has no Track button any more', /el\('button'/.test(chip), false);
+  check('only a status chip for a tracked role', /el\('a', 'trk-b is-set'/.test(chip), true);
+  const auto = fn('autoTrack');
+  check('Apply tracks a role on its own', /T\.track\(trackable\(job\), 'applied'\)/.test(auto), true);
+  check('but never moves a tracked role back to Applied', /if \(!T \|\| T\.has\(job\.id\)\) return;/.test(auto), true);
+  check('so does a job page\'s Apply', /closest\('a\.btn-apply'\)[\s\S]{0,80}!T\.has\(job\.id\)\) T\.track\(job, 'applied'\)/.test(page), true);
+
+  const pane = fn('renderDetail');
+  for (const h of ['Job description', 'Key responsibilities', 'Requirements']) {
+    check(`the pane has "${h}"`, pane.includes(`'${h}'`), true);
+  }
+  check('the pane can be shared', /shareRole\(job, pageHref\)/.test(pane), true);
+  check('its actions are pinned to the foot', /const cta = el\('div', 'p-cta'\)[\s\S]*d\.append\(cta\)/.test(pane), true);
+  check('the tailor there is a secondary button, not a banner', /const tailorBtn = el\('button', 'alt'\)/.test(pane), true);
+  check('the pinned bar sticks to the bottom', /\.p-cta \{[^}]*position: sticky; bottom: 0/.test(css), true);
+  check('on a phone the overlay scrolls, not the pane', /\.pane \{[^}]*overflow: visible[^}]*\}/.test(css), true);
+
+  const modal = html.slice(html.indexOf('id="tailor"'), html.indexOf('<div class="snack" id="toast"'));
+  for (const id of ['view-tailored', 'view-original', 'edit-resume', 'copy-text', 'download-pdf', 'resume-original', 'rs-score', 'rs-added', 'rs-gaps', 'rs-changes']) {
+    check(`the result has #${id}`, modal.includes(`id="${id}"`), true);
+  }
+  const result = modal.slice(modal.indexOf('id="step-result"'), modal.indexOf('id="step-error"'));
+  check('Download PDF is the result screen\'s one primary', /class="go" id="download-pdf"/.test(result) && (result.match(/class="go"/g) || []).length === 1, true);
+  check('Start over is a quiet text button', /class="bare rs-over" id="start-over"/.test(modal), true);
+  check('the summary folds away', (modal.match(/<details class="rs-sec"/g) || []).length, 3);
+  check('the old removed-skills box is gone', /removed-note|Some skills were removed/.test(modal + app), false);
+
+  check('editing makes the tailored sheet editable', /sheet\.contentEditable = on \? 'true' : 'false'/.test(fn('setEditing')), true);
+  check('a paste arrives as plain text', /getData\('text\/plain'\)/.test(app), true);
+  check('the score is counted from the sheet as edited', /keywordMatch\(t\.kw, sheetText\(\$\('resume-preview'\)\)\)/.test(fn('renderScore')), true);
+  check('an addition can be removed', /removeAdded\(a\.key\)/.test(fn('renderAdded')), true);
+  check('the original is never editable', /\$\('edit-resume'\)\.disabled = orig;/.test(fn('showVersion')), true);
+
+  const print = css.slice(css.indexOf('@media print'));
+  check('print leaves out the bar and the side panel', /\.rs-bar, \.rs-side/.test(print), true);
+  check('and the highlight on additions', /\.sheet \.r-add \{ background: none; \}/.test(print), true);
+  check('the close button is big enough to hit', /\.modal\.tw #tailor-close \{ width: 40px; height: 40px;/.test(css), true);
 }
 
 console.log('\n== the wiring that is only visible in production ==');
