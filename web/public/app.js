@@ -74,6 +74,8 @@ import {
   resumeNames, shortlist, rankWithAI, tailorWithAI, RANK_BATCH,
   FREE_PER_DAY, allowanceLeft, forgetOldKey, roleKeywords, keywordMatch,
 } from './resumeai.js?v=4';
+// Same reason as above: the PDF builder and its caller ship together.
+import { sheetModel, resumePdf, pdfFileName } from './resumepdf.js?v=1';
 
 const PDFJS_BASE = '/vendor/pdfjs';
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -3021,14 +3023,26 @@ function wireTailor() {
     goTo('upload');
   });
 
-  // Prints the version on screen, edits and all; the highlight never prints.
-  $('download-pdf').addEventListener('click', () => {
-    if (editing) setEditing(false);
-    toast('Choose "Save as PDF"');
-    setTimeout(() => window.print(), 350);
-  });
-
   const visibleSheet = () => ($('resume-original').hidden ? $('resume-preview') : $('resume-original'));
+
+  // The version on screen, edits and all, as a real one-page PDF file. Not
+  // window.print(): that prints the whole page behind the dialog and lets the
+  // browser add its own date, title and address. The highlight never goes in.
+  $('download-pdf').addEventListener('click', () => {
+    if (!state.tailored) return;
+    if (editing) setEditing(false);
+    const model = sheetModel(visibleSheet());
+    const pdf = resumePdf(model);
+    const url = URL.createObjectURL(new Blob([pdf.bytes], { type: 'application/pdf' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = pdfFileName(model.name);
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    toast(pdf.onePage ? 'Resume downloaded' : `This resume is longer than one page, so the PDF has ${pdf.pages} pages`);
+  });
   $('copy-text').addEventListener('click', async () => {
     if (!state.tailored) return;
     try {
