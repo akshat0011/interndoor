@@ -1349,10 +1349,11 @@ html[data-boot] .boot-part {
 .modal-body { padding: 22px; overflow: auto; overscroll-behavior: contain; }
 
 /* ---------------- the tailor wizard ----------------
-   ONE QUESTION PER SCREEN: the resume, then the key, then a review with one
-   button. It used to be one screen carrying an upload box, a key panel, a
-   privacy warning and the button at once, and a reader could not tell which
-   came first.
+   ONE QUESTION PER SCREEN: the resume, then a review with one button. It used
+   to be one screen carrying an upload box, a key panel, a privacy warning and
+   the button at once, and a reader could not tell which came first. (The key
+   screen itself went on 11 Oct 2026, when the site's own key replaced the
+   reader's.)
    The dialog is a narrow card while it asks and widens only for the tailored
    resume. It is PINNED NEAR THE TOP rather than centred, so a screen taller
    than the last grows downward instead of moving the title under the reader's
@@ -1379,7 +1380,7 @@ html[data-boot] .boot-part {
 /* The three asking screens share a floor, so the footer does not jump up and
    down as the reader moves between them. Capped by the viewport, or on a short
    window the floor would push the footer out of the dialog. */
-.modal.tw:is([data-step="upload"], [data-step="key"], [data-step="review"]) .modal-body {
+.modal.tw:is([data-step="upload"], [data-step="review"]) .modal-body {
   min-height: min(380px, 50vh);
 }
 
@@ -1481,54 +1482,15 @@ html[data-boot] .boot-part {
   max-width: 52ch; font-size: .8125rem; line-height: 1.5; color: var(--ink-3); text-wrap: pretty;
 }
 
-/* ---- screen 2: the key ---- */
-.tw-how { list-style: none; counter-reset: how; margin: 20px 0 0; padding: 0; display: grid; gap: 12px; }
-.tw-how li {
-  counter-increment: how;
-  display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: 12px; row-gap: 8px;
-  font-size: .9375rem; line-height: 1.4; color: var(--ink-15);
-}
-.tw-how li::before {
-  content: counter(how); display: grid; place-items: center; width: 24px; height: 24px;
-  border-radius: 50%; border: 1px solid var(--rule-2);
-  font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink-2);
-}
-/* Always on its own row under the step, at every width, rather than wrapping
-   under the number on a phone and beside the text on a desktop. */
-.tw-ext {
-  grid-column: 2; justify-self: start;
-  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px;
-  border: 1px solid var(--rule-2); border-radius: var(--r);
-  color: var(--ink); font-size: .8125rem; font-weight: 700; text-decoration: none;
-  transition: border-color .16s, color .16s, transform var(--d-press) var(--snap);
-}
-.tw-ext:active { transform: scale(.97); }
-@media (hover: hover) and (pointer: fine) {
-  .tw-ext:hover { border-color: var(--live); color: var(--live); }
-}
-.tw-label { display: block; margin: 24px 0 8px; font-size: .8125rem; font-weight: 700; color: var(--ink); }
-.tw-input {
-  display: block; width: 100%; min-width: 0; height: 46px; padding: 0 14px;
-  border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); color: var(--ink);
-  font-family: var(--ui); font-size: 16px;
-}
-.tw-input::placeholder { color: var(--ink-3); }
-.tw-input:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
-.tw-input[aria-invalid="true"] { border-color: var(--hot); }
-.tw-msg { margin: 8px 0 0; font-size: .8125rem; color: var(--hot); }
-/* --hot measures under 4.5 on the light --bg-2 this sits on; the value the
-   feedback box already uses for its own light-theme error line. */
-:root[data-theme="light"] .tw-msg { color: #9a3412; }
-.tw-msg:empty { display: none; }
-.keyset-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-/* The privacy position, said ONCE, where the key is decided. */
-.keyfine {
+/* The allowance and the privacy position, said ONCE, on the screen where the
+   AI is about to be used. */
+.tw-fine {
   margin: 24px 0 0; padding-top: 16px; border-top: 1px solid var(--rule);
   font-size: .8125rem; line-height: 1.5; color: var(--ink-3);
 }
-.keyfine b { color: var(--ink-2); font-weight: 600; }
+.tw-fine b { display: block; margin-bottom: 4px; color: var(--ink-2); font-weight: 600; }
 
-/* ---- screen 3: the review ---- */
+/* ---- screen 2: the review ---- */
 .tw-sum { margin: 22px 0 0; border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); }
 /* A <div> in a <dl> may hold only <dt> and <dd> (§15), so Change lives in the dd. */
 .tw-sum > div { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 13px 16px; }

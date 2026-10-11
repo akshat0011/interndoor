@@ -1,40 +1,38 @@
-/* InternDoor — bring-your-own-key resume AI.
+/* InternDoor — the resume AI, on the site's own Gemini key.
  *
- * EVERYTHING HERE RUNS IN THE READER'S BROWSER AND TALKS TO GOOGLE DIRECTLY.
- * The key and the resume never reach interndoor.com at all — there is no
- * server hop to log them, rate-limit them or get them wrong. That is the whole
- * point of the design, and it is why `connect-src` in web/vercel.json carries
- * generativelanguage.googleapis.com: without that one host the browser refuses
- * the call and nothing on the page looks broken (§5 — no local server sends the
- * CSP header, so this is only ever visible in production).
+ * TWO HALVES SHARE THIS FILE. The browser half (app.js imports it) holds the
+ * skill vocabulary, the shortlist, the device id and the remembered allowance,
+ * and posts to /api/ai. The server half (web/api/ai.js imports it) takes the
+ * prompts, the schemas and the two model names from here, so the words sent to
+ * Google are written in ONE place and a browser can never choose them — the
+ * endpoint builds every prompt itself from a resume and a role, which is what
+ * stops the site's key being used as a free general-purpose model.
  *
- * The site used to proxy this through /api/tailor on its own Gemini key, capped
- * at 200 tailors a day for the whole site. That key is gone. A reader with no
- * key still gets the local skill ranker, which costs nothing and needs no
- * network at all.
+ * Until 11 Oct 2026 this ran in the browser on the READER'S OWN Google key
+ * (23 Sep, "bring your own key"). Getting a key stopped nearly every student
+ * before they started, so the site pays now: FREE_PER_DAY uses a day per
+ * browser, counted by /api/ai in Redis, with a per-network and a whole-site cap
+ * behind it. The resume passes through our function to Google for that one
+ * request and is never stored or logged.
  *
- * NOTHING IN THIS FILE MAY LOG THE KEY. Not on failure, not in a thrown
- * message, not into a URL query string — a key in a URL lands in history and in
- * every referrer on the way. It travels in the x-goog-api-key header and
- * nowhere else.
+ * NOTHING AT MODULE SCOPE MAY TOUCH THE DOM OR localStorage — the server and
+ * the tests import this file in Node. Every browser access is inside a
+ * function, inside a try.
  */
 
-/* TWO MODELS, AND THE REASON IS THE QUOTA, NOT THE TASTE.
+/* TWO MODELS, AND THE REASON WAS THE QUOTA, NOT THE TASTE.
  *
- * Google's free tier is **20 generateContent calls per day** and the quota id
- * is `GenerateRequestsPerDayPerProjectPerModel-FreeTier` — PER MODEL. So
- * putting ranking and tailoring on the same model makes them fight over one
- * bucket of 20; splitting them gives each its own.
- *
- * Measured on a real key over the same 25-role shortlist:
+ * On Google's free tier the daily quota is PER MODEL
+ * (`GenerateRequestsPerDayPerProjectPerModel-FreeTier`), so ranking and
+ * tailoring on one model fought over one bucket. On a billed key the reason is
+ * cost: measured on a real key over the same 25-role shortlist,
  *
  *   gemini-2.5-flash        16-25s   ~6,600 tokens   (thinks: 2,000-6,000)
  *   gemini-flash-lite-latest  12.0s    2,607 tokens   (no thinking)
  *
  * and the lite model discriminated at least as well — it scored a SAP supply
  * chain role 0 against a software internship at 85, which is exactly the
- * separation the AI rank exists to make. Ranking is a scoring task over short
- * digests, so it goes to the cheap fast model.
+ * separation the AI rank exists to make.
  *
  * TAILORING STAYS ON THE STRONGER MODEL. It rewrites a real person's real
  * resume, the output goes to real employers, and the invention rule is the
@@ -46,19 +44,21 @@ export const RANK_MODEL = 'gemini-flash-lite-latest';
 export const TAILOR_MODEL = 'gemini-2.5-flash';
 /** Kept for callers and tests that just want "the model this talks to". */
 export const MODEL = TAILOR_MODEL;
-const API_BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 
-/** The only host this file may ever send a key to. Anchored, so a lookalike
- *  such as https://generativelanguage.googleapis.com.evil.example cannot pass
- *  a prefix test — the same shape §12 fixed in utmUrl and engage.js. */
-const ALLOWED_ORIGIN = 'https://generativelanguage.googleapis.com';
-export function endpointFor(model, base = API_BASE) {
-  const url = new URL(`${base}/${encodeURIComponent(model)}:generateContent`);
-  if (url.origin !== ALLOWED_ORIGIN) throw new Error('refusing to call an unexpected host');
-  return url.toString();
-}
+/** Same origin, so connect-src 'self' covers it and no third party sees the call. */
+export const AI_ENDPOINT = '/api/ai';
 
-export const KEY_STORE = 'interndoor-ai-key';
+/* THE FREE ALLOWANCE. One pool for both features: an AI rank and a tailored
+   resume each use one. The server enforces it; the browser only remembers the
+   last number the server told it, to say it on screen and grey a button. At
+   the prices read on 11 Oct 2026 a tailor costs about a rupee and an AI rank a
+   fraction of one, so five a day per browser is affordable and still worth
+   inviting a friend for when credits arrive. */
+export const FREE_PER_DAY = 5;
+
+/* Below this a resume is not a resume, and the server refuses it — the same
+   line app.js draws before it will let anyone continue. */
+export const MIN_RESUME_CHARS = 200;
 export const MAX_RESUME_CHARS = 18_000;
 /* MEASURED against a real key on the live board: 25 roles takes 16-25s and 40
    takes ~34s, for the same one request. The reader is staring at a button the
@@ -67,43 +67,76 @@ export const MAX_RESUME_CHARS = 18_000;
    the least valuable part of the list. */
 export const RANK_BATCH = 25;
 
-/* ---------------- key handling ----------------
- *
- * localStorage is per-origin and per-browser: the key never leaves the reader's
- * machine and never reaches us. Every access is wrapped because a private
- * window, blocked site data or an embedded webview throws on the accessor
- * itself rather than returning empty.
- */
+/* ---------------- the day, the browser, the allowance ---------------- */
 
-export function getKey() {
-  try { return localStorage.getItem(KEY_STORE) || ''; } catch { return ''; }
+/** The allowance resets at midnight in India, where the board is — not at UTC
+ *  midnight, which is 05:30 there. Shared with the server so both count the
+ *  same day. */
+export function istDay(now = Date.now()) {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date(now));
 }
 
-export function setKey(key) {
-  try { localStorage.setItem(KEY_STORE, String(key).trim()); return true; } catch { return false; }
+/* A random id for this browser, so the server can count its free uses. It is
+   not a person: it names nothing, the server only ever sees it hashed with the
+   day, and clearing site data makes a new one. The server's per-network and
+   whole-site caps are what bound a reader who does that on purpose. */
+export const DEVICE_STORE = 'interndoor-ai-device';
+export const DEVICE_SHAPE = /^[A-Za-z0-9_-]{16,64}$/;
+let memoryDevice = null;
+
+function freshId() {
+  try {
+    if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID().replace(/-/g, '');
+  } catch { /* fall through */ }
+  let s = '';
+  while (s.length < 32) s += Math.random().toString(36).slice(2);
+  return s.slice(0, 32);
 }
 
-export function forgetKey() {
-  try { localStorage.removeItem(KEY_STORE); return true; } catch { return false; }
+export function deviceId() {
+  try {
+    const kept = localStorage.getItem(DEVICE_STORE);
+    if (kept && DEVICE_SHAPE.test(kept)) return kept;
+    const id = freshId();
+    localStorage.setItem(DEVICE_STORE, id);
+    return id;
+  } catch {
+    /* A private window or blocked site data throws on the accessor itself.
+       One id for as long as the page is open is still a working answer. */
+    memoryDevice ??= freshId();
+    return memoryDevice;
+  }
 }
 
-export function hasKey() { return getKey().length > 0; }
+/* What the server last said was left, for today only. A number from yesterday
+   says nothing about today, so it is read as unknown rather than as a limit. */
+export const ALLOWANCE_STORE = 'interndoor-ai-left';
 
-/**
- * Shape check only — whether the key WORKS is settled by using it, which is the
- * §13 rule (a configured id is checked by using it, never by comparing it to
- * another id). This exists to catch a pasted email address or a truncated
- * paste before spending a round trip on it.
- */
-export function looksLikeKey(value) {
-  const k = String(value ?? '').trim();
-  /* GOOGLE ISSUES TWO KEY FORMATS AND ONLY ONE OF THEM IS `AIza`. AI Studio now
-     hands out keys beginning `AQ.` — his own key is one, 53 characters — and a
-     check written against the old shape alone refuses the key most new users
-     will actually have. Found by testing with a real key rather than a
-     synthetic one; every fixture in the suite was an AIza string, so nothing
-     could have caught it. */
-  return /^(AIza[A-Za-z0-9_-]{30,}|AQ\.[A-Za-z0-9_.-]{20,})$/.test(k);
+export function allowanceLeft(now = Date.now()) {
+  try {
+    const kept = JSON.parse(localStorage.getItem(ALLOWANCE_STORE) || 'null');
+    if (!kept || kept.day !== istDay(now)) return null;
+    const left = Number(kept.left);
+    return Number.isInteger(left) && left >= 0 && left <= FREE_PER_DAY ? left : null;
+  } catch { return null; }
+}
+
+export function rememberAllowance(left, now = Date.now()) {
+  const n = Number(left);
+  if (!Number.isInteger(n) || n < 0) return false;
+  try {
+    localStorage.setItem(ALLOWANCE_STORE, JSON.stringify({ day: istDay(now), left: Math.min(n, FREE_PER_DAY) }));
+    return true;
+  } catch { return false; }
+}
+
+/* The 23 Sep build kept the reader's own Google key here. Nothing reads it any
+   more, and a credential nothing uses should not sit in a browser. */
+export const OLD_KEY_STORE = 'interndoor-ai-key';
+export function forgetOldKey() {
+  try { localStorage.removeItem(OLD_KEY_STORE); return true; } catch { return false; }
 }
 
 /* ---------------- skill vocabulary ----------------
@@ -207,7 +240,7 @@ export function resumeNames(hay, skill) {
 /* ---------------- shortlist ----------------
  *
  * THE US BOARD IS 3,884 ROLES AND THEY CANNOT ALL GO TO A MODEL. Sending the
- * lot would be slow, would cost the reader real money on their own key, and
+ * lot would be slow, would spend the site's key on roles nobody will read, and
  * would buy nothing: the local ranker already puts plausible roles at the top,
  * and what the model is for is fixing the ORDER among those, plus scoring the
  * ones our skill extractor could not judge at all.
@@ -237,8 +270,8 @@ const MAX_DESC = 12_000;
 const MAX_SKILLS = 40;
 
 /** Trim every field to a size a real posting could have. The job comes off the
- *  board rather than from a stranger now, but the cap still bounds what one
- *  rank call can cost the reader. */
+ *  board, but the request comes from a browser, and the server clamps again
+ *  because it pays for every token. */
 export function clampJob(job) {
   const text = (v, max = MAX_FIELD) =>
     typeof v === 'string' && v.trim() ? v.trim().slice(0, max) : null;
@@ -407,104 +440,54 @@ export function findInventedSkills(resumeText, skills) {
 
 /* ---------------- the one network call ---------------- */
 
-/** Turn Google's failure into something a student can act on. The key is never
- *  quoted back, on any branch. */
-export function explainFailure(status) {
-  if (status === 400 || status === 403) {
-    return 'Google rejected that API key. Check you pasted it whole, and that the Generative Language API is enabled on its project.';
-  }
-  if (status === 429) {
-    /* MEASURED, not guessed: the free tier is 20 generateContent calls PER DAY
-       per model (quota id GenerateRequestsPerDayPerProjectPerModel-FreeTier).
-       "Resets after a while" sent people back to retry within the minute, which
-       can never work — say the number and say when. */
-    return 'Your Google key is out of free quota for today — the free tier allows about 20 AI requests a day per model, and it resets daily. Ranking by skills still works without any key.';
-  }
-  if (status >= 500) return 'Google’s API is having trouble. Try again shortly.';
-  return `Google refused the request (HTTP ${status}).`;
+/** What a rank needs of a role and nothing more. clampJob alone would let 25
+ *  full descriptions through, which is 300 KB the prompt never reads. */
+export function rankDigest(job) {
+  const j = clampJob(job);
+  return {
+    title: j.title,
+    company: j.company,
+    location: j.location,
+    skills: j.skills.slice(0, 12),
+    summary: j.summary ? j.summary.slice(0, 220) : null,
+  };
 }
 
-/* gemini-2.5-flash is a THINKING model and its reasoning tokens are charged
-   against maxOutputTokens, before a single character of answer is produced.
-   Measured against a real key on a real 40-role shortlist:
+/** When the answer carries no words of its own — a platform timeout or a
+ *  gateway page rather than our endpoint — say something a student can act on. */
+export function failureFor(status) {
+  if (status === 429) return `You have used today's ${FREE_PER_DAY} free AI uses. They come back at midnight. Ranking by skills still works.`;
+  if (status === 504) return 'That took too long. Please try again.';
+  return 'The AI is not available right now. Please try again in a moment. Ranking by skills still works.';
+}
 
-     budget  thinking  output  result
-      4,000     3,839     146  MAX_TOKENS — 0 of 40 scores, unparseable
-      8,000     5,917   1,639  40 of 40
-     16,000     6,014   1,647  40 of 40
-
-   So the 4,000 this shipped with could not complete a single default rank. 8,000
-   leaves about 450 tokens of slack, which one long resume erases. 16,000 costs
-   NOTHING extra — the 8k and 16k runs consumed the same tokens, because billing
-   is on tokens used, not on the ceiling. Tailoring measured 2,838 thinking plus
-   786 output, i.e. 376 tokens under the old 4,000 limit, so it was one long
-   posting away from the same failure. */
-const MAX_OUTPUT_TOKENS = 16_000;
-
-/** Google's own overload, not the reader's problem. Measured 23 Sep 2026: four
- *  of seven consecutive calls came back 503 while timings were being taken, and
- *  every one of them succeeded on the next attempt. §5's rule — retry before
- *  believing a network-level error; only a real refusal is a real refusal. A
- *  4xx is never retried, because nothing about retrying fixes a bad key or a
- *  spent quota. */
-const RETRY_STATUSES = new Set([500, 502, 503, 504]);
-const RETRIES = 2;
-const RETRY_PAUSE_MS = 1_500;
-
-async function callGemini({ key, model, system, prompt, schema, maxTokens, temperature, signal, onAttempt }) {
-  const body = JSON.stringify({
-    systemInstruction: { parts: [{ text: system }] },
-    contents: [{ role: 'user', parts: [{ text: prompt }] }],
-    generationConfig: {
-      temperature,
-      maxOutputTokens: maxTokens,
-      responseMimeType: 'application/json',
-      responseSchema: schema,
-    },
-  });
-
+/* Posts to our own endpoint and nowhere else. The server answers
+   { result, remaining } or { error, code, remaining? }; its error text is
+   written for a reader and is shown as it comes. */
+async function callAI(task, fields, { signal, region } = {}) {
   let res;
-  for (let attempt = 0; ; attempt += 1) {
-    res = await fetch(endpointFor(model), {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        // The header, never the query string — a URL is logged, a header is not.
-        'x-goog-api-key': key,
-      },
-      signal,
-      body,
-    });
-    if (res.ok || !RETRY_STATUSES.has(res.status) || attempt >= RETRIES) break;
-    onAttempt?.(attempt + 2);
-    await new Promise((r, reject) => {
-      const t = setTimeout(r, RETRY_PAUSE_MS);
-      signal?.addEventListener('abort', () => { clearTimeout(t); reject(new Error('aborted')); }, { once: true });
-    });
-  }
-
-  if (!res.ok) throw new Error(explainFailure(res.status));
-
-  const payload = await res.json();
-  if (payload.promptFeedback?.blockReason) {
-    throw new Error('Google’s content filter rejected this. If your resume contains anything unusual, try removing it.');
-  }
-  const candidate = payload.candidates?.[0];
-  if (candidate?.finishReason === 'MAX_TOKENS') {
-    throw new Error('That was too long to handle in one pass. Try trimming the resume to its most relevant two pages.');
-  }
-  const raw = (candidate?.content?.parts ?? []).map((p) => p.text).filter(Boolean).join('').trim();
-  if (!raw) {
-    /* A candidate with no parts and a clean finishReason means the model spent
-       the whole budget thinking. Distinguishable from a genuine empty answer,
-       and the remedy is different, so say which. */
-    throw new Error('Google spent the whole budget reasoning and returned no answer. Try again, or shorten the resume.');
-  }
   try {
-    return JSON.parse(raw);
-  } catch {
-    throw new Error('Google returned something unreadable. Please try again.');
+    res = await fetch(AI_ENDPOINT, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      signal,
+      body: JSON.stringify({ task, device: deviceId(), region, ...fields }),
+    });
+  } catch (err) {
+    if (signal?.aborted) throw err;
+    throw new Error('Could not reach InternDoor. Check your connection and try again.');
   }
+
+  let body = null;
+  try { body = await res.json(); } catch { body = null; }
+  if (Number.isInteger(body?.remaining)) rememberAllowance(body.remaining);
+
+  if (!res.ok || !body || typeof body.result !== 'object' || body.result === null) {
+    const err = new Error(typeof body?.error === 'string' && body.error ? body.error : failureFor(res.status));
+    err.code = typeof body?.code === 'string' ? body.code : null;
+    throw err;
+  }
+  return body.result;
 }
 
 /**
@@ -514,19 +497,12 @@ async function callGemini({ key, model, system, prompt, schema, maxTokens, tempe
  * clamped — a fabricated index is the one way a score could attach to the wrong
  * posting, and showing the wrong role a high fit is worse than showing none.
  */
-export async function rankWithAI({ key, resumeText, jobs, signal, onAttempt }) {
+export async function rankWithAI({ resumeText, jobs, signal, region }) {
   if (!jobs.length) return new Map();
-  const data = await callGemini({
-    key,
-    model: RANK_MODEL,
-    onAttempt,
-    system: RANK_SYSTEM,
-    prompt: buildRankPrompt(String(resumeText).slice(0, MAX_RESUME_CHARS), jobs),
-    schema: RANK_SCHEMA,
-    maxTokens: MAX_OUTPUT_TOKENS,
-    temperature: 0.2,
-    signal,
-  });
+  const data = await callAI('rank', {
+    resume: String(resumeText).slice(0, MAX_RESUME_CHARS),
+    jobs: jobs.map(rankDigest),
+  }, { signal, region });
 
   const out = new Map();
   for (const row of data?.scores ?? []) {
@@ -540,19 +516,9 @@ export async function rankWithAI({ key, resumeText, jobs, signal, onAttempt }) {
 }
 
 /** Rewrite one resume against one job. */
-export async function tailorWithAI({ key, resumeText, job, signal, onAttempt }) {
+export async function tailorWithAI({ resumeText, job, signal, region }) {
   const resume = String(resumeText).slice(0, MAX_RESUME_CHARS);
-  const tailored = await callGemini({
-    key,
-    model: TAILOR_MODEL,
-    onAttempt,
-    system: TAILOR_SYSTEM,
-    prompt: buildTailorPrompt(resume, job),
-    schema: TAILOR_SCHEMA,
-    maxTokens: MAX_OUTPUT_TOKENS,
-    temperature: 0.4,
-    signal,
-  });
+  const tailored = await callAI('tailor', { resume, job: clampJob(job) }, { signal, region });
 
   const invented = findInventedSkills(resume, tailored.skills);
   if (invented.length) {

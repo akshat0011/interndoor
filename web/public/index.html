@@ -92,7 +92,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=18">
+<link rel="stylesheet" href="/styles.css?v=19">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -506,11 +506,10 @@ Roles across <strong>India</strong>,
     </div>
     <button class="ghost-btn" id="tailor-close" type="button" aria-label="Close">&times;</button>
   </div>
-  <!-- One question per screen: the resume, then the key, then a review with one
-       button. app.js shows one step section at a time and draws this bar. -->
+  <!-- One question per screen: the resume, then a review with one button.
+       app.js shows one step section at a time and draws this bar. -->
   <ol class="wiz" id="wiz" aria-label="Progress">
     <li class="wstep" data-wiz="upload">Resume</li>
-    <li class="wstep" data-wiz="key">Google AI key</li>
     <li class="wstep" data-wiz="review">Tailor</li>
   </ol>
 
@@ -532,37 +531,14 @@ Roles across <strong>India</strong>,
       <p class="tw-hint" id="upload-hint">Remove your home address and any ID numbers first. Name, email, education and experience are all it needs.</p>
     </section>
 
-    <section class="step" id="step-key" aria-labelledby="key-h" hidden>
-      <h3 class="tw-h" id="key-h" tabindex="-1">Connect Google AI</h3>
-      <div id="key-form">
-        <p class="tw-p" id="key-p">Tailoring runs on Google&rsquo;s AI with your own key. Getting one is free and takes about a minute.</p>
-        <ol class="tw-how">
-          <li><span>Open Google AI Studio and sign in.</span> <a class="tw-ext" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Open AI Studio<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
-          <li><span>Create an API key and copy it.</span></li>
-          <li><span>Paste it below.</span></li>
-        </ol>
-        <label class="tw-label" for="ai-key">Your key</label>
-        <input class="tw-input" type="password" id="ai-key" autocomplete="off" spellcheck="false" placeholder="AIza&hellip; or AQ.&hellip;" aria-describedby="key-msg">
-        <p class="tw-msg" id="key-msg" aria-live="polite"></p>
-      </div>
-      <div class="keyset" id="key-set" hidden>
-        <p class="tw-p">Your key is saved in this browser, so there is nothing to paste.</p>
-        <div class="keyset-acts">
-          <button class="alt" id="replace-key" type="button">Use a different key</button>
-          <button class="bare" id="forget-key" type="button">Forget it</button>
-        </div>
-      </div>
-      <p class="keyfine">Kept in <b>this browser only</b>. Your key and your resume go from your device straight to Google and never reach InternDoor. On a free key Google may use what you send to improve its models; a paid key does not.</p>
-    </section>
-
     <section class="step" id="step-review" aria-labelledby="review-h" hidden>
       <h3 class="tw-h" id="review-h" tabindex="-1">Ready to tailor</h3>
       <p class="tw-p">Google&rsquo;s AI rewrites your resume for this role. It usually takes well under a minute.</p>
       <dl class="tw-sum">
         <div><dt>Role</dt><dd><span id="sum-role"></span></dd></div>
         <div><dt>Resume</dt><dd><span id="sum-resume"></span><button class="tw-link" type="button" data-go="upload">Change</button></dd></div>
-        <div><dt>AI key</dt><dd><span>Connected</span><button class="tw-link" type="button" data-go="key">Change</button></dd></div>
       </dl>
+      <p class="tw-fine"><b id="ai-left">Free: 5 AI uses a day. This uses one.</b> Your resume goes through InternDoor to Google&rsquo;s AI for this one rewrite. InternDoor does not store it.</p>
     </section>
 
     <section class="step" id="step-working" hidden>
@@ -597,7 +573,6 @@ Roles across <strong>India</strong>,
   <div class="tw-foot" id="tw-foot">
     <button class="bare" id="tw-back" type="button" hidden>Back</button>
     <button class="go" id="resume-next" type="button" disabled>Continue</button>
-    <button class="go" id="key-next" type="button" hidden disabled>Save key and continue</button>
     <button class="go" id="do-tailor" type="button" hidden disabled>Tailor my resume</button>
   </div>
 </div>
@@ -611,6 +586,6 @@ Roles across <strong>India</strong>,
 <script defer src="/track.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/feedback.js"></script>
-<script src="/app.js?v=10" type="module"></script>
+<script src="/app.js?v=11" type="module"></script>
 </body>
 </html>

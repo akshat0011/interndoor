@@ -6,8 +6,9 @@
  * Vercel runs in production, so the whole flow can be exercised before
  * deploying. Set BUTTONDOWN_API_KEY for email signup; without it the route
  * returns the same refusal it would live, which is itself worth being able to
- * see. Resume tailoring needs NO key here — it runs in the browser against the
- * reader's own Google key and never touches this server.
+ * see. The resume AI (/api/ai) needs GEMINI_API_KEY and the KV_REST_API_*
+ * pair in the environment, as it does on Vercel; without them it answers the
+ * same 503 it would live.
  *
  *   node web/serve.js          →  http://localhost:4321
  */
@@ -68,6 +69,7 @@ const server = createServer(async (req, res) => {
      has to be kept in step by hand. A function missing from it 404s in preview
      and works in production, which is the confusing direction of that bug. */
   const API = {
+    '/api/ai': './api/ai.js',
     '/api/tailor': './api/tailor.js',
     '/api/subscribe': './api/subscribe.js',
     '/api/og': './api/og.js',
@@ -121,9 +123,6 @@ const server = createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`InternDoor preview → http://localhost:${PORT}`);
-  /* Resume tailoring needs no key HERE any more — it runs in the browser
-     against the reader's own Google key, so there is nothing for this server to
-     be missing. Note that no local server sends the production CSP, so the one
-     thing this preview cannot show you is whether connect-src still allows
-     generativelanguage.googleapis.com. That is only ever visible live. */
+  /* No local server sends the production CSP, so the one thing this preview
+     cannot show you is a connect-src refusal. That is only ever visible live. */
 });

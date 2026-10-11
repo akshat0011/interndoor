@@ -21,6 +21,9 @@ export const EVENTS = new Set([
   'visit-new', 'visit-return', 'newsince-shown',
   'apply',
   'nudge-shown', 'nudge-whatsapp', 'nudge-telegram', 'nudge-email', 'nudge-dismiss',
+  // Bumped by /api/ai on the server, never by a beacon: a rank and a tailor
+  // the AI answered, and a request refused for being over an allowance.
+  'ai-rank', 'ai-tailor', 'ai-limit',
 ]);
 export const REGIONS = new Set(['IN', 'US', 'GB', 'CA']);
 

@@ -1,31 +1,30 @@
 /**
- * Bring-your-own-key resume AI.
+ * The resume AI, browser half (web/public/resumeai.js).
  *
- * THE TWO THINGS THAT MUST NOT BREAK, in order:
+ * THE THINGS THAT MUST NOT BREAK, in order:
  *
- *   1. The key goes to Google and NOWHERE ELSE, in a HEADER and never a URL. A
- *      key in a query string lands in browser history, in referrers and in
- *      every proxy log on the way. The call is therefore made with a stubbed
- *      fetch and the recorded request is inspected — a source grep cannot tell
- *      you where a value ends up, which is the lesson /api/apply and
- *      /api/feedback both learned the expensive way.
+ *   1. The resume goes to OUR endpoint and nowhere else, carrying the browser's
+ *      id and no key at all. Since 11 Oct 2026 the site's own key lives only on
+ *      the server (/api/ai, pinned by test/ai.test.mjs). The call is made with a
+ *      stubbed fetch and the recorded request is inspected — a source grep
+ *      cannot tell you where a value ends up.
  *
  *   2. An AI score never attaches to the wrong posting. The model answers with
  *      indices; a fabricated or out-of-range index must be DROPPED, not
  *      clamped, because showing somebody a 95% fit against a role that is not
  *      the one they are reading is worse than showing them nothing.
  *
- * `resumeai.js` is browser code, but nothing in it touches the DOM at import
- * time — every localStorage access is inside a function, inside a try — so it
- * imports cleanly into Node and the pure half is tested directly rather than
- * by reading its source.
+ * `resumeai.js` is shared with the server, so nothing in it touches the DOM or
+ * localStorage at import time — every access is inside a function, inside a
+ * try — and it imports cleanly into Node.
  */
 import { readFileSync } from 'node:fs';
 import {
   resumeNames, spellingsOf, normSkill, SKILL_ALIASES,
-  shortlist, clampJob, buildRankPrompt, findInventedSkills,
-  looksLikeKey, endpointFor, explainFailure,
-  rankWithAI, tailorWithAI, MODEL, RANK_MODEL, TAILOR_MODEL, RANK_BATCH, KEY_STORE,
+  shortlist, clampJob, rankDigest, buildRankPrompt, findInventedSkills, failureFor,
+  rankWithAI, tailorWithAI, MODEL, RANK_MODEL, TAILOR_MODEL, RANK_BATCH,
+  AI_ENDPOINT, FREE_PER_DAY, DEVICE_STORE, DEVICE_SHAPE, ALLOWANCE_STORE, OLD_KEY_STORE,
+  deviceId, allowanceLeft, rememberAllowance, forgetOldKey, istDay,
 } from '../web/public/resumeai.js';
 
 let pass = 0, fail = 0;
@@ -42,6 +41,24 @@ async function returns(label, fn, expected) {
   try { actual = await fn(); } catch (err) { actual = `THREW: ${err.message}`; }
   check(label, actual, expected);
 }
+
+/* A localStorage for Node, so the device id and the remembered allowance can
+   be tested as they run in a browser. Set and cleared per section. */
+function fakeStorage() {
+  const m = new Map();
+  return {
+    getItem: (k) => (m.has(k) ? m.get(k) : null),
+    setItem: (k, v) => { m.set(k, String(v)); },
+    removeItem: (k) => { m.delete(k); },
+    _m: m,
+  };
+}
+const realFetch = globalThis.fetch;
+/** Our endpoint's answer: { result, remaining } on success. */
+const answer = (result, { status = 200, remaining = 3, extra = {} } = {}) => async (url, init) => {
+  answer.seen = { url: String(url), init };
+  return { ok: status >= 200 && status < 300, status, json: async () => ({ result, remaining, ...extra }) };
+};
 
 const hay = (t) => ` ${normSkill(t)} `;
 
@@ -102,128 +119,142 @@ check('unscorable roles sort last', shortlist(
 check('a short board is not padded', shortlist([{ id: 'x' }], () => 1, 40).length, 1);
 check('an empty board is empty', shortlist([], () => 1, 40), []);
 
-console.log('\n== the endpoint ==');
-check('model is in the path', endpointFor(MODEL).includes(MODEL), true);
-check('host is Google and nothing else',
-  new URL(endpointFor(MODEL)).origin, 'https://generativelanguage.googleapis.com');
-check('no query string at all', new URL(endpointFor(MODEL)).search, '');
-// The guard is only worth having if it fires. A lookalike host must be refused
-// on the ORIGIN, not on a string prefix — the shape §12 fixed in utmUrl.
-await returns('a lookalike host is refused',
-  () => endpointFor(MODEL, 'https://generativelanguage.googleapis.com.evil.example/v1beta/models'),
-  'THREW: refusing to call an unexpected host');
-await returns('an unrelated host is refused',
-  () => endpointFor(MODEL, 'https://evil.example/v1beta/models'),
-  'THREW: refusing to call an unexpected host');
-
 console.log('\n== the two models, and why they are two ==');
-/* Google's free tier is 20 calls A DAY and the quota is PER MODEL
-   (GenerateRequestsPerDayPerProjectPerModel-FreeTier), so sharing one model
-   between ranking and tailoring makes them fight over one bucket. */
 check('ranking and tailoring use different models', RANK_MODEL !== TAILOR_MODEL, true);
 check('ranking uses the cheap fast one', RANK_MODEL, 'gemini-flash-lite-latest');
 check('tailoring keeps the stronger one', TAILOR_MODEL, 'gemini-2.5-flash');
-{
-  const keep = globalThis.fetch;
-  const seenUrls = [];
-  globalThis.fetch = async (url) => {
-    seenUrls.push(String(url));
-    return { ok: true, status: 200, json: async () => ({ candidates: [{ content: { parts: [{
-      text: '{"scores":[],"name":"A","summary":"s","sections":[],"skills":[],"changeNotes":[],"gaps":[]}' }] } }] }) };
-  };
-  await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs: [{ id: 'a' }] });
-  check('the rank call really goes to the rank model', seenUrls[0].includes(RANK_MODEL), true);
-  await tailorWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), job: { title: 'T' } });
-  check('the tailor call really goes to the tailor model', seenUrls[1].includes(TAILOR_MODEL), true);
-  globalThis.fetch = keep;
-}
+check('MODEL still names the tailor model', MODEL, TAILOR_MODEL);
 
-console.log('\n== key shape ==');
-check('a classic AIza key passes', looksLikeKey('AIza' + 'b'.repeat(35)), true);
-/* GOOGLE HAS TWO KEY FORMATS. AI Studio now issues keys beginning `AQ.`, and
-   the first version of this check only knew `AIza` — so it refused the real key
-   of the person it was built for. Every fixture here was an AIza string, which
-   is exactly why nothing caught it until a real key was tried. */
-check('a newer AQ. key passes', looksLikeKey('AQ.Ab8RN6' + 'c'.repeat(40)), true);
-check('an AQ. key with dots and dashes passes', looksLikeKey('AQ.Ab8RN6-x_y.' + 'd'.repeat(30)), true);
-check('a stub AQ. is refused', looksLikeKey('AQ.short'), false);
-check('an email is refused', looksLikeKey('someone@example.com'), false);
-check('a truncated paste is refused', looksLikeKey('AIzaSy'), false);
-check('empty is refused', looksLikeKey(''), false);
-check('undefined is refused', looksLikeKey(undefined), false);
-check('whitespace is tolerated', looksLikeKey('  AIza' + 'c'.repeat(35) + '  '), true);
+console.log('\n== WHERE THE RESUME GOES ==');
+globalThis.localStorage = fakeStorage();
+globalThis.fetch = answer({ scores: [{ i: 0, fit: 80, why: 'python and sql overlap' }] });
+await rankWithAI({ resumeText: 'x'.repeat(400), jobs: [{ id: 'j1', title: 'SDE Intern', description: 'd'.repeat(9000) }], region: 'IN' });
+let sentTo = answer.seen;
+let sentBody = JSON.parse(sentTo.init.body);
+check('to our own endpoint', sentTo.url, '/api/ai');
+check('which is same-origin, so connect-src self covers it', AI_ENDPOINT.startsWith('/') && !AI_ENDPOINT.startsWith('//'), true);
+check('by POST', sentTo.init.method, 'POST');
+check('as a rank', sentBody.task, 'rank');
+check('with the resume', sentBody.resume.length, 400);
+check('with this browser’s id', sentBody.device, deviceId());
+check('with the board', sentBody.region, 'IN');
+check('and no key of any kind', 'key' in sentBody || JSON.stringify(sentTo.init.headers).toLowerCase().includes('goog'), false);
+check('a rank sends no description — the prompt never reads one', 'description' in sentBody.jobs[0], false);
+check('and the role it is about', sentBody.jobs[0].title, 'SDE Intern');
+check('the server’s count is remembered for today', allowanceLeft(), 3);
 
-console.log('\n== WHERE THE KEY GOES ==');
-const realFetch = globalThis.fetch;
-let seen = null;
-const KEY = 'AIza' + 'z'.repeat(35);
-globalThis.fetch = async (url, init) => {
-  seen = { url: String(url), init };
-  return {
-    ok: true,
-    status: 200,
-    json: async () => ({ candidates: [{ content: { parts: [{ text: JSON.stringify({ scores: [{ i: 0, fit: 80, why: 'python and sql overlap' }] }) }] } }] }),
-  };
-};
+globalThis.fetch = answer({ name: 'A', summary: 's', sections: [], skills: [], changeNotes: [], gaps: [] }, { remaining: 2 });
+await tailorWithAI({ resumeText: 'x'.repeat(400), job: { title: 'T', description: 'about the role' } });
+sentBody = JSON.parse(answer.seen.init.body);
+check('a tailor is a tailor', sentBody.task, 'tailor');
+check('and carries the role’s description', sentBody.job.description, 'about the role');
+check('the new count replaces the old one', allowanceLeft(), 2);
 
-await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: [{ id: 'j1', title: 'SDE Intern' }] });
-check('called Google', new URL(seen.url).origin, 'https://generativelanguage.googleapis.com');
-check('the key is NOT in the url', seen.url.includes(KEY), false);
-check('the key is in the header', seen.init.headers['x-goog-api-key'], KEY);
-check('the key is not in the body', String(seen.init.body).includes(KEY), false);
+console.log('\n== the browser id ==');
+globalThis.localStorage = fakeStorage();
+const id1 = deviceId();
+check('it has the shape the server accepts', DEVICE_SHAPE.test(id1), true);
+check('it is kept', localStorage.getItem(DEVICE_STORE), id1);
+check('and the same one comes back', deviceId(), id1);
+localStorage.setItem(DEVICE_STORE, 'not an id!');
+check('a damaged one is replaced', DEVICE_SHAPE.test(deviceId()) && deviceId() !== 'not an id!', true);
+globalThis.localStorage = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); }, removeItem() { throw new Error('blocked'); } };
+const idA = deviceId();
+check('with storage blocked there is still an id', DEVICE_SHAPE.test(idA), true);
+check('and it holds for the page', deviceId(), idA);
+check('a blocked store remembers no allowance', allowanceLeft(), null);
+check('and says so rather than throwing', rememberAllowance(3), false);
+
+console.log('\n== the remembered allowance ==');
+globalThis.localStorage = fakeStorage();
+const T = Date.UTC(2026, 9, 11, 10, 0);
+check('nothing remembered is unknown, not zero', allowanceLeft(T), null);
+rememberAllowance(0, T);
+check('zero is remembered as zero', allowanceLeft(T), 0);
+check('yesterday’s zero says nothing about today', allowanceLeft(T + 86_400_000), null);
+rememberAllowance(99, T);
+check('a number over the limit is held to it', allowanceLeft(T), FREE_PER_DAY);
+check('a nonsense number is refused', rememberAllowance('lots', T), false);
+localStorage.setItem(ALLOWANCE_STORE, '{not json');
+check('a damaged record reads as unknown', allowanceLeft(T), null);
+check('the day is India’s', [istDay(Date.UTC(2026, 9, 11, 18, 29)), istDay(Date.UTC(2026, 9, 11, 18, 30))], ['2026-10-11', '2026-10-12']);
+
+console.log('\n== the old key is cleared ==');
+globalThis.localStorage = fakeStorage();
+localStorage.setItem(OLD_KEY_STORE, 'AQ.someones-own-key');
+check('forgetOldKey removes the stored Google key', forgetOldKey() && localStorage.getItem(OLD_KEY_STORE), null);
 
 console.log('\n== a score may never attach to the wrong posting ==');
+globalThis.localStorage = fakeStorage();
 const three = [{ id: 'a' }, { id: 'b' }, { id: 'c' }];
-const reply = (scores) => {
-  globalThis.fetch = async () => ({
-    ok: true, status: 200,
-    json: async () => ({ candidates: [{ content: { parts: [{ text: JSON.stringify({ scores }) }] } }] }),
-  });
-};
+const reply = (scores) => { globalThis.fetch = answer({ scores }); };
 
 reply([{ i: 0, fit: 90, why: 'ok' }, { i: 2, fit: 10, why: 'no' }]);
-let out = await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three });
+let out = await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three });
 check('scores bind by index', [...out.entries()].map(([k, v]) => [k, v.fit]), [['a', 90], ['c', 10]]);
 
 reply([{ i: 99, fit: 90, why: 'ok' }]);
-out = await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three });
+out = await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three });
 check('an out-of-range index is dropped, not clamped', out.size, 0);
 
 reply([{ i: -1, fit: 50, why: 'x' }]);
-out = await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three });
+out = await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three });
 check('a negative index is dropped', out.size, 0);
 
 // A job the board handed us with no id resolves fine but cannot be keyed, so
-// its score has nowhere safe to go. Found by mutation: jobs[99] is undefined
-// and caught by the !job half, so nothing here reached the id half at all.
+// its score has nowhere safe to go.
 reply([{ i: 0, fit: 77, why: 'x' }, { i: 1, fit: 88, why: 'y' }]);
-out = await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: [{ title: 'no id' }, { id: 'ok' }] });
+out = await rankWithAI({ resumeText: 'x'.repeat(400), jobs: [{ title: 'no id' }, { id: 'ok' }] });
 check('a job with no id is dropped', [...out.keys()], ['ok']);
 
 reply([{ i: 0, fit: 150, why: 'x' }, { i: 1, fit: -5, why: 'y' }, { i: 2, fit: 'abc', why: 'z' }]);
-out = await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three });
+out = await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three });
 check('an impossible score is dropped', out.size, 0);
 
 reply([{ i: 0, fit: 55, why: 'w'.repeat(400) }]);
-out = await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three });
+out = await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three });
 check('the reason is bounded', out.get('a').why.length, 120);
 
 reply([]);
-out = await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three });
+out = await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three });
 check('no scores is an empty map, not a throw', out.size, 0);
-await returns('an empty shortlist makes no request at all',
-  async () => (await rankWithAI({ key: KEY, resumeText: 'x', jobs: [] })).size, 0);
+{
+  let called = 0;
+  globalThis.fetch = async () => { called += 1; return { ok: true, status: 200, json: async () => ({ result: {} }) }; };
+  await returns('an empty shortlist makes no request at all',
+    async () => (await rankWithAI({ resumeText: 'x', jobs: [] })).size, 0);
+  check('not one', called, 0);
+}
 
 console.log('\n== failures say something a student can act on ==');
-for (const [status, want] of [[400, /rejected that API key/], [403, /rejected that API key/], [429, /20 AI requests a day/], [500, /trouble/i]]) {
-  globalThis.fetch = async () => ({ ok: false, status, json: async () => ({}) });
+{
+  globalThis.localStorage = fakeStorage();
+  const said = 'You have used today’s 5 free AI uses. They come back at midnight.';
+  globalThis.fetch = async () => ({ ok: false, status: 429, json: async () => ({ code: 'limit', error: said, remaining: 0 }) });
+  let caught = null;
+  try { await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three }); } catch (err) { caught = err; }
+  check('the server’s own words are shown', caught?.message, said);
+  check('with its code', caught?.code, 'limit');
+  check('and the spent allowance is remembered', allowanceLeft(), 0);
+
+  for (const [status, want] of [[429, /free AI uses/], [504, /too long/], [500, /not available/], [502, /not available/]]) {
+    globalThis.fetch = async () => ({ ok: false, status, json: async () => { throw new Error('not json'); } });
+    let msg = '';
+    try { await tailorWithAI({ resumeText: 'x'.repeat(400), job: { title: 'X' } }); } catch (err) { msg = err.message; }
+    check(`an HTTP ${status} with no words of its own still explains itself`, want.test(msg), true);
+  }
+  globalThis.fetch = async () => { throw new TypeError('Failed to fetch'); };
   let msg = '';
-  try { await rankWithAI({ key: KEY, resumeText: 'x'.repeat(400), jobs: three }); }
-  catch (err) { msg = err.message; }
-  check(`HTTP ${status} explains itself`, want.test(msg), true);
-  check(`HTTP ${status} never quotes the key`, msg.includes(KEY), false);
+  try { await tailorWithAI({ resumeText: 'x'.repeat(400), job: { title: 'X' } }); } catch (err) { msg = err.message; }
+  check('no network says so', /Could not reach InternDoor/.test(msg), true);
+  // A 200 that carries no result is a failure, not an empty success.
+  globalThis.fetch = async () => ({ ok: true, status: 200, json: async () => ({ remaining: 4 }) });
+  msg = '';
+  try { await tailorWithAI({ resumeText: 'x'.repeat(400), job: { title: 'X' } }); } catch (err) { msg = err.message; }
+  // Readable words, not a TypeError from reading .skills off nothing.
+  check('a 200 with no result is not a success', /not available/.test(msg), true);
+  check('failureFor never returns empty', failureFor(418).length > 0, true);
 }
-check('explainFailure never returns empty', explainFailure(418).length > 0, true);
 
 console.log('\n== the fabrication guard, carried over from the server ==');
 const resume = `Akshat Saroha — akshat@example.com — Bengaluru
@@ -235,13 +266,10 @@ check('catches an invented skill', findInventedSkills(resume, ['Kubernetes']), [
 check('empty list', findInventedSkills(resume, []), []);
 check('undefined list', findInventedSkills(resume, undefined), []);
 
-globalThis.fetch = async () => ({
-  ok: true, status: 200,
-  json: async () => ({ candidates: [{ content: { parts: [{ text: JSON.stringify({
-    name: 'A', summary: 's', sections: [], skills: ['Python', 'Kubernetes'], changeNotes: [], gaps: [],
-  }) }] } }] }),
+globalThis.fetch = answer({
+  name: 'A', summary: 's', sections: [], skills: ['Python', 'Kubernetes'], changeNotes: [], gaps: [],
 });
-const tailored = await tailorWithAI({ key: KEY, resumeText: resume, job: { title: 'X' } });
+const tailored = await tailorWithAI({ resumeText: resume, job: { title: 'X' } });
 check('an invented skill is stripped from the output', tailored.skills, ['Python']);
 check('and the student is told which', tailored.removedSkills, ['Kubernetes']);
 globalThis.fetch = realFetch;
@@ -256,77 +284,23 @@ check('a missing job does not throw', clampJob(undefined).title, null);
 const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title: 'B', company: 'Y' }]);
 check('every role is indexed', /\[0\][\s\S]*\[1\]/.test(prompt), true);
 check('the resume is in the prompt', prompt.includes('RESUME'), true);
-
-console.log('\n== a transient 5xx is retried; a 4xx never is ==');
-{
-  const keep = globalThis.fetch;
-  const okBody = { candidates: [{ content: { parts: [{ text: '{"scores":[{"i":0,"fit":70,"why":"x"}]}' }] } }] };
-  const jobs = [{ id: 'a' }];
-
-  // Google 503'd on four of seven consecutive calls while this was measured.
-  let calls = 0; const attempts = [];
-  globalThis.fetch = async () => {
-    calls += 1;
-    return calls < 3
-      ? { ok: false, status: 503, json: async () => ({}) }
-      : { ok: true, status: 200, json: async () => okBody };
-  };
-  let out = await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs,
-    onAttempt: (n) => attempts.push(n) });
-  check('a 503 is retried until it succeeds', out.get('a')?.fit, 70);
-  check('and it took three attempts', calls, 3);
-  check('the caller is told about each retry', attempts, [2, 3]);
-
-  // Retrying a bad key or a spent quota buys nothing and costs the reader time.
-  calls = 0;
-  globalThis.fetch = async () => { calls += 1; return { ok: false, status: 400, json: async () => ({}) }; };
-  let msg = '';
-  try { await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs }); }
-  catch (e) { msg = e.message; }
-  check('a 400 is NOT retried', calls, 1);
-  check('and still explains itself', /rejected that API key/.test(msg), true);
-
-  calls = 0;
-  globalThis.fetch = async () => { calls += 1; return { ok: false, status: 429, json: async () => ({}) }; };
-  try { await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs }); } catch { /* expected */ }
-  check('a 429 is NOT retried', calls, 1);
-
-  // A 5xx that never clears must give up rather than loop.
-  calls = 0;
-  globalThis.fetch = async () => { calls += 1; return { ok: false, status: 500, json: async () => ({}) }; };
-  try { await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs }); } catch { /* expected */ }
-  check('retries are bounded', calls, 3);
-
-  globalThis.fetch = keep;
-}
+const digest = rankDigest(huge);
+check('a rank digest carries no description', 'description' in digest, false);
+check('and at most twelve skills', digest.skills.length, 12);
+check('and a short summary only', rankDigest({ summary: 's'.repeat(5000) }).summary.length, 220);
 
 console.log('\n== the shortlist is sized for the wait, not for coverage ==');
 // 25 roles measured 16-25s against ~34s for 40, for the same single request.
 check('RANK_BATCH is 25', RANK_BATCH, 25);
 
-console.log('\n== the output budget must survive the model thinking ==');
-/* Measured against a real key on a real 40-role shortlist: 4,000 tokens went
-   entirely on reasoning (3,839) and returned 146 tokens of truncated JSON —
-   MAX_TOKENS, zero usable scores. Pin the budget so it cannot drift back. */
-{
-  let sawBudget = null;
-  const keep = globalThis.fetch;
-  globalThis.fetch = async (url, init) => {
-    sawBudget = JSON.parse(init.body).generationConfig.maxOutputTokens;
-    return { ok: true, status: 200, json: async () => ({ candidates: [{ content: { parts: [{ text: '{"scores":[]}' }] } }] }) };
-  };
-  await rankWithAI({ key: 'AIza' + 'z'.repeat(35), resumeText: 'x'.repeat(400), jobs: [{ id: 'a' }] });
-  check('the rank budget leaves room for thinking', sawBudget >= 8000, true);
-  globalThis.fetch = keep;
-}
 
-console.log('\n== one question per screen: the resume, then the key, then tailor ==');
-/* Reported live, twice. First the key was a collapsed <details> beside a
-   bright, enabled "Tailor it", so the only way to learn a key was needed was to
-   press the button and meet an error. Then the fix put the upload box, the key
-   panel, a warning and the button on ONE screen, and he called it cramped and
-   unreadable. It is a wizard now. These pin the order, the gate and the key
-   rules; the look was checked in a browser. */
+globalThis.fetch = realFetch;
+delete globalThis.localStorage;
+
+console.log('\n== one question per screen: the resume, then tailor ==');
+/* The key screen that stood between them (23 Sep) went on 11 Oct 2026, when
+   the site's own key and a free daily allowance replaced the reader's. These
+   pin the order, the gate and the allowance; the look was checked in a browser. */
 {
   const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
   const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
@@ -336,55 +310,54 @@ console.log('\n== one question per screen: the resume, then the key, then tailor
   const at = (id) => modal.indexOf(`id="${id}"`);
   const section = (id, next) => modal.slice(at(id), at(next));
 
-  check('the three asking screens exist', at('step-upload') > 0 && at('step-key') > 0 && at('step-review') > 0, true);
-  check('in order: resume, key, review', at('step-upload') < at('step-key') && at('step-key') < at('step-review'), true);
-  check('the key is not on the resume screen', section('step-upload', 'step-key').includes('id="ai-key"'), false);
-  check('the key screen and the review start hidden',
-    /id="step-key"[^>]*\bhidden\b/.test(modal) && /id="step-review"[^>]*\bhidden\b/.test(modal), true);
+  check('the two asking screens exist', at('step-upload') > 0 && at('step-review') > 0, true);
+  check('in order: resume, review', at('step-upload') < at('step-review'), true);
+  check('there is no key screen any more', at('step-key'), -1);
+  check('and no key field anywhere in the dialog', /id="ai-key"|type="password"/.test(modal), false);
+  check('the review starts hidden', /id="step-review"[^>]*\bhidden\b/.test(modal), true);
   check('the actions live in one footer after every screen', at('tw-foot') > at('step-error'), true);
-  for (const id of ['resume-next', 'key-next', 'do-tailor']) {
+  for (const id of ['resume-next', 'do-tailor']) {
     check(`${id} is in the footer`, at(id) > at('tw-foot'), true);
   }
+  check('the key button is gone from the footer', at('key-next'), -1);
   // The markup and the script must change together, and app.js has a day of
   // stale-while-revalidate. The version on the tag is what keeps them paired.
   check('app.js is versioned with the markup that needs it', /src="\/app\.js\?v=\d+"/.test(html), true);
+  // The same day of caching applies to the module app.js imports: an unversioned
+  // specifier lets a new app.js link against yesterday's resumeai.js.
+  check('app.js imports a versioned resumeai.js', /from '\.\/resumeai\.js\?v=\d+';/.test(app), true);
+  check('and never the bare one', /from '\.\/resumeai\.js';/.test(app), false);
 
   const prim = app.slice(app.indexOf('function syncPrimary('), app.indexOf('function syncSteps('));
   check('one function owns every primary button', prim.length > 200, true);
   check('Continue needs a resume', /next\.disabled = !haveResume;/.test(prim), true);
-  check('the key screen needs a key typed or already saved', /keyNext\.disabled = !typed && !haveKey;/.test(prim), true);
-  check('Tailor needs both', /go\.disabled = !haveResume \|\| needsKey;/.test(prim), true);
-  check('and says why when it cannot', /Add your key to tailor/.test(prim), true);
-  check('ranking is never gated on a key', /tailorMode === 'tailor' \? 'Continue' : 'Rank the board'/.test(prim), true);
+  check('Tailor needs a resume and a free use left', /go\.disabled = !haveResume \|\| spent;/.test(prim), true);
+  check('spent means the server said zero', /const spent = allowanceLeft\(\) === 0;/.test(prim), true);
+  check('and says why when it cannot', /'Back tomorrow'/.test(prim), true);
+  check('ranking by skills is never gated', /tailorMode === 'tailor' \? 'Continue' : 'Rank the board'/.test(prim), true);
   check('the progress bar follows the gate', /\bsyncSteps\(\);/.test(prim), true);
-  for (const id of ['do-tailor', 'resume-next', 'key-next']) {
+  for (const id of ['do-tailor', 'resume-next']) {
     const strays = (app.match(new RegExp(`\\$\\('${id}'\\)\\.disabled\\s*=`, 'g')) || []).length;
     check(`no stray enable/disable of ${id}`, strays, 0);
   }
 
   const wire = app.slice(app.indexOf('function wireTailor('), app.indexOf("$('download-pdf')"));
-  check('Continue goes to the key screen when there is no key',
-    /goTo\(hasKey\(\) \? 'review' : 'key'\)/.test(wire), true);
+  check('Continue goes straight to the review', /if \(tailorMode !== 'tailor'\) \{ runTailor\(\); return; \}\s*goTo\('review'\);/.test(wire), true);
+  check('the old stored key is cleared at boot', /forgetOldKey\(\);/.test(wire), true);
+  check('nothing in app.js handles a key any more', /hasKey|getKey|setKey|looksLikeKey|ai-key|key-next/.test(app), false);
+
   const run = app.slice(app.indexOf('async function runTailor('), app.indexOf('async function startAiRank('));
-  check('tailoring without a key goes back to the key screen',
-    /if \(!hasKey\(\)\) \{[\s\S]{0,500}?goTo\('key'\);/.test(run), true);
+  check('a tailor names its board for the counter', /tailorWithAI\(\{ resumeText, job: activeJob, region: REGION \}\)/.test(run), true);
+  check('and re-checks the gate afterwards', /finally \{[\s\S]{0,120}syncPrimary\(\);/.test(run), true);
+  const rank = app.slice(app.indexOf('async function startAiRank('), app.indexOf('function syncPrimary('));
+  check('an AI rank names its board', /rankWithAI\(\{ resumeText, jobs: picked, signal: ctl\.signal, region: REGION \}\)/.test(rank), true);
+  check('a spent allowance greys the rank button', /allowanceLeft\(\) === 0 && btn\) \{\s*btn\.disabled = true;/.test(rank), true);
+  const bar = app.slice(app.indexOf("const go = el('button', 'rank-ai'") - 200, app.indexOf("go.addEventListener('click', startAiRank)"));
+  check('the rank bar does not offer what will be refused', /go\.disabled = spent;/.test(bar), true);
 
-  const ui = app.slice(app.indexOf('function syncKeyUi('), app.indexOf('function renderTailored('));
-  check('the saved key is never written back into the input', /input\.value = '';/.test(ui) && !/value = getKey\(/.test(app), true);
-  check('the form gives way only to a saved key', /const showForm = !have \|\| replacingKey;/.test(ui), true);
-  check('a bad key is refused inline, not by toast', /!looksLikeKey\(v\)\)\s*\{\s*showKeyMsg\(/.test(ui), true);
-  const keyScreen = section('step-key', 'step-review');
-  const formPart = keyScreen.slice(keyScreen.indexOf('id="key-form"'), keyScreen.indexOf('id="key-set"'));
-  check('the key form was found', formPart.length > 200, true);
-  // The form hides once a key is saved. Forget living inside it would leave a
-  // saved key that nothing on screen can remove.
-  check('Forget is not inside the form that hides', formPart.includes('id="forget-key"'), false);
-  check('Forget is on the saved-key panel', keyScreen.slice(keyScreen.indexOf('id="key-set"')).includes('id="forget-key"'), true);
-  check('the key is never behind a collapsible <details>', /<details/.test(keyScreen), false);
-  check('the privacy promise is stated once in the dialog', (modal.match(/never reach/g) || []).length, 1);
-
-  const steps = app.slice(app.indexOf('function syncSteps('), app.indexOf('function syncKeyUi('));
-  check('three parts in the progress bar', (modal.match(/class="wstep" data-wiz="(upload|key|review)"/g) || []).length, 3);
+  const steps = app.slice(app.indexOf('function syncSteps('), app.indexOf('function renderTailored('));
+  check('two parts in the progress bar', (modal.match(/class="wstep" data-wiz="(upload|review)"/g) || []).length, 2);
+  check('and no key part', /data-wiz="key"/.test(modal), false);
   check('the bar hides where there is one screen', /bar\.hidden = !tailoring/.test(steps), true);
   check('the current part is announced', /setAttribute\('aria-current', 'step'\)/.test(steps), true);
 
@@ -395,28 +368,34 @@ console.log('\n== one question per screen: the resume, then the key, then tailor
   const review = section('step-review', 'step-working');
   const changes = (review.match(/data-go=/g) || []).length;
   const inDd = (review.match(/<dd>(?:(?!<\/dd>)[\s\S])*?data-go=/g) || []).length;
-  check('the review offers Change on the resume and the key', changes, 2);
-  check('and every Change sits inside a <dd>', inDd, changes);
+  check('the review offers Change on the resume', changes, 1);
+  check('and it sits inside a <dd>', inDd, changes);
+  check('the review says what this costs', /id="ai-left"/.test(review), true);
+  check('the privacy position is stated once in the dialog', (modal.match(/does not store it/g) || []).length, 1);
+  check('and does not claim the resume never leaves the device', /never reach|straight to Google/.test(modal), false);
+  const sum = app.slice(app.indexOf('function syncReview('), app.indexOf('function setResumeText('));
+  check('the review fills the allowance line', /\$\('ai-left'\)[\s\S]{0,120}allowanceText\(allowanceLeft\(\)\)/.test(sum), true);
 
   check('a disabled primary looks unpressable', /\.go\[disabled\]/.test(css), true);
   const dis = css.slice(css.indexOf('.go[disabled]'), css.indexOf('}', css.indexOf('.go[disabled]')));
   check('and does not dim text with opacity', /opacity:\s*0?\.[0-9]/.test(dis), false);
+  check('the fine print has its rule', /\.tw-fine \{/.test(css), true);
+  check('the key screen’s rules are gone', /\.tw-how|\.tw-input|\.keyset|\.keyfine/.test(css), false);
   const print = css.slice(css.indexOf('@media print'));
   check('print hides the wizard chrome', /\.wiz, \.tw-foot/.test(print), true);
   // .modal.tw outranks print's .modal rule, so the resume would print as a
   // fixed card unless print says it too.
   check('print releases the pinned dialog', /\.modal\.tw[^{]*\{[^}]*position: static/.test(print), true);
-  check('the light theme error line is re-coloured', /\[data-theme="light"\] \.tw-msg \{ color: #9a3412; \}/.test(css), true);
 }
 
 console.log('\n== the wiring that is only visible in production ==');
-/* No local server sends the CSP header, so a browser call to Google is refused
-   ONLY on the live site and nothing in any preview looks wrong. Pin the host in
-   connect-src against the real vercel.json. */
+/* No local server sends the CSP header. The browser now calls only its own
+   origin, so Google's host has no business in connect-src: a leftover allowance
+   is a door nothing uses. */
 const vercel = JSON.parse(readFileSync(new URL('../web/vercel.json', import.meta.url), 'utf8'));
 const csp = vercel.headers.flatMap((h) => h.headers).find((h) => /Content-Security-Policy/i.test(h.key)).value;
 const connect = csp.split(';').map((s) => s.trim()).find((s) => s.startsWith('connect-src'));
-check('connect-src allows the Gemini host', connect.includes('https://generativelanguage.googleapis.com'), true);
+check('connect-src no longer allows the Gemini host', connect.includes('generativelanguage.googleapis.com'), false);
 check('and still allows our own origin', connect.includes("'self'"), true);
 // script-src is untouched: this adds no inline script and needs no new hash.
 check('no unsafe-inline crept into script-src', /script-src[^;]*unsafe-inline/.test(csp), false);
@@ -435,6 +414,7 @@ const stubRes = { status(c) { this._c = c; return this; }, json(b) { sent = { co
 tailorHandler({ method: 'POST', headers: {} }, stubRes);
 check('/api/tailor answers 410', sent.code, 410);
 check('and names the fix', /reload/i.test(sent.body.error), true);
+check('and no longer tells anyone to add a key', /your own|key/i.test(sent.body.error), false);
 check('and does not mention a site API key', /GEMINI|site.s API key/i.test(sent.body.error), false);
 tailorHandler({ method: 'GET', headers: {} }, stubRes);
 check('GET is still 405', sent.code, 405);

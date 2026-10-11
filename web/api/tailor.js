@@ -1,5 +1,6 @@
 /**
- * POST /api/tailor — retired 23 Sep 2026.
+ * POST /api/tailor — retired 23 Sep 2026. The resume AI is /api/ai since
+ * 11 Oct 2026 (the site's own key again, with a free daily allowance).
  *
  * Resume tailoring now runs entirely in the reader's browser against their own
  * Google AI key (web/public/resumeai.js). Nothing about a resume touches this
@@ -25,8 +26,7 @@
 
 const GONE = {
   error:
-    'Resume tailoring now runs in your own browser with your own Google AI key — nothing is sent to InternDoor. '
-    + 'Reload this page to pick up the new version (Cmd+Shift+R, or Ctrl+Shift+R on Windows), then add your key in the "AI features" panel.',
+    'Resume tailoring has moved. Reload this page to pick up the new version (Cmd+Shift+R, or Ctrl+Shift+R on Windows).',
 };
 
 export default function handler(req, res) {

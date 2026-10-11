@@ -255,8 +255,11 @@ console.log('\n== the "preferred source on Google" badge (1 Oct 2026) ==');
   const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), 'utf8');
   check('the pill rule is in the stylesheet', /\.pref-src a \{[^}]*border-radius: 999px/.test(css), true);
   check('its star has no spoken text', css.includes(".pref-src a::before { content: '\\2605' / '';"), true);
-  check('the board loads the stylesheet version that has the rule', board.includes('/styles.css?v=18'), true);
-  check('and so do generated pages', page.includes('/styles.css?v=18'), true);
+  // At least the version the rule shipped in; a later bump (the board went to
+  // 19 for the resume AI, 11 Oct 2026) still carries it.
+  const cssVersion = (html) => Number((html.match(/\/styles\.css\?v=(\d+)/) || [])[1] || 0);
+  check('the board loads the stylesheet version that has the rule', cssVersion(board) >= 18, true);
+  check('and so do generated pages', cssVersion(page) >= 18, true);
 }
 
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);
