@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791724091429,
+ "generatedAt": 1791725387683,
  "region": "IN",
  "regionName": "India",
  "count": 1290,
@@ -526,7 +526,7 @@
    "postedText": "13 minutes ago",
    "postedAt": 1791720267330,
    "firstSeenAt": 1791721047333,
-   "lastSeenAt": 1791721047333,
+   "lastSeenAt": 1791725099583,
    "url": "https://www.linkedin.com/jobs/view/4458978028/",
    "applyUrl": "https://careers.qualcomm.com/careers/job/446720816242?hl=en-US&utm_source=linkedin&domain=qualcomm.com&source=APPLICANT_SOURCE-6-2",
    "description": null,
@@ -583,7 +583,7 @@
    "postedText": "20 minutes ago",
    "postedAt": 1791719431900,
    "firstSeenAt": 1791720631906,
-   "lastSeenAt": 1791723869950,
+   "lastSeenAt": 1791724266318,
    "url": "https://www.linkedin.com/jobs/view/4440758187/",
    "applyUrl": "https://careers.qualcomm.com/careers/job/446719784235?hl=en-US&utm_source=linkedin&domain=qualcomm.com&source=APPLICANT_SOURCE-6-2",
    "description": null,
@@ -710,7 +710,7 @@
    "postedText": "44 minutes ago",
    "postedAt": 1791718383765,
    "firstSeenAt": 1791721023769,
-   "lastSeenAt": 1791724019500,
+   "lastSeenAt": 1791725078993,
    "url": "https://www.linkedin.com/jobs/view/4440761092/",
    "applyUrl": "https://careers.qualcomm.com/careers/job/446719783557?hl=en-US&utm_source=linkedin&domain=qualcomm.com&source=APPLICANT_SOURCE-6-2",
    "description": null,
@@ -888,6 +888,8 @@
    "postedAt": 1791713517424,
    "firstSeenAt": 1791720717431,
    "lastSeenAt": 1791720717431,
+   "checkedAt": 1791725098494,
+   "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4343622096/",
    "applyUrl": "https://careers.thalesgroup.com/global/en/job/TGPTGWGLOBALR0270564EXTERNALENGLOBAL/AdvSec-Software-Development-Engineer-STL?utm_source=linkedin&utm_medium=phenom-feeds&source=LinkedIn",
    "description": null,
@@ -11667,7 +11669,7 @@
    "category": "misc",
    "family": "robotics",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4447368599",
@@ -11772,7 +11774,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4337201282",
