@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-ssg-science-4475663747",
+      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-ssg-science-4475663747",
+      "title": "Applied Scientist — Amazon Science",
+      "content_text": "Company: Amazon Science · Location: Bengaluru, Karnataka, India\n• Optimize Gen AI models for edge platforms using quantization and distillation\n• Collaborate with hardware and product teams to build ML-centric solutions\n• Publish research and present at top ML conferences like NeurIPS and ICLR",
+      "date_published": "2026-10-11T22:28:35.917Z",
+      "authors": [
+        {
+          "name": "Amazon Science"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/gsk-specialist-tech-development-4475675117",
       "url": "https://interndoor.com/jobs/gsk-specialist-tech-development-4475675117",
       "title": "Specialist - Tech Development — GSK",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "ByteDance"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744",
-      "url": "https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744",
-      "title": "Applied Scientist I — Amazon Science",
-      "content_text": "Company: Amazon Science · Location: Bengaluru, Karnataka, India\n• Build ml models that flag or clear ads across languages and cultures\n• Own systems that moderate millions of ads daily with production impact\n• Work on multimodal content understanding with vision and language models",
-      "date_published": "2026-10-09T23:25:01.343Z",
-      "authors": [
-        {
-          "name": "Amazon Science"
         }
       ]
     }

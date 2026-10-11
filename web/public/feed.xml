@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 11 Oct 2026 20:47:05 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 11 Oct 2026 22:28:35 GMT</lastBuildDate>
+  <item>
+    <title>Applied Scientist — Amazon Science</title>
+    <link>https://interndoor.com/jobs/amazon-science-applied-scientist-ssg-science-4475663747</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-science-applied-scientist-ssg-science-4475663747</guid>
+    <pubDate>Sun, 11 Oct 2026 22:28:35 GMT</pubDate>
+    <description>Company: Amazon Science · Location: Bengaluru, Karnataka, India
+• Optimize Gen AI models for edge platforms using quantization and distillation
+• Collaborate with hardware and product teams to build ML-centric solutions
+• Publish research and present at top ML conferences like NeurIPS and ICLR</description>
+  </item>
   <item>
     <title>Specialist - Tech Development — GSK</title>
     <link>https://interndoor.com/jobs/gsk-specialist-tech-development-4475675117</link>
@@ -499,16 +509,6 @@
 • Analyze data and create reports for operations teams
 • Use excel and statistical tools to support decision-making
 • Work on short-term projects with real-world impact</description>
-  </item>
-  <item>
-    <title>Applied Scientist I — Amazon Science</title>
-    <link>https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-science-applied-scientist-i-ads-trust-science-4475259744</guid>
-    <pubDate>Fri, 09 Oct 2026 23:25:01 GMT</pubDate>
-    <description>Company: Amazon Science · Location: Bengaluru, Karnataka, India
-• Build ml models that flag or clear ads across languages and cultures
-• Own systems that moderate millions of ads daily with production impact
-• Work on multimodal content understanding with vision and language models</description>
   </item>
 </channel>
 </rss>

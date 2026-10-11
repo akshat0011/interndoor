@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791759571132,
+ "generatedAt": 1791759691954,
  "region": "IN",
  "regionName": "India",
  "count": 1283,
@@ -480,6 +480,63 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4475663747",
+   "title": "Applied Scientist",
+   "slugTitle": "Applied Scientist, SSG Science",
+   "company": "Amazon Science",
+   "matchedWatchlist": "Amazon",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/amazon-science.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "java",
+    "c++",
+    "machine learning",
+    "deep learning",
+    "algorithms"
+   ],
+   "summary": "This role involves optimizing large AI models for edge devices and working with cross-functional teams to create cutting-edge machine learning solutions. It suits students with a strong background in computer science or related fields and experience with programming languages like Python or C++.",
+   "bullets": [
+    "Optimize Gen AI models for edge platforms using quantization and distillation",
+    "Collaborate with hardware and product teams to build ML-centric solutions",
+    "Publish research and present at top ML conferences like NeurIPS and ICLR"
+   ],
+   "roleLabel": "AI model optimization",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "c++",
+    "java",
+    "information theory"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "32 minutes ago",
+   "postedAt": 1791757715917,
+   "firstSeenAt": 1791759635923,
+   "lastSeenAt": 1791759635923,
+   "url": "https://www.linkedin.com/jobs/view/4475663747/",
+   "applyUrl": "https://www.amazon.jobs/jobs/10570717/applied-scientist-ssg-science?cmpid=bsp-amazon-science",
+   "description": null,
+   "roleFingerprint": "3453bafced",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "ai_ml",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4475675117",
    "title": "Specialist - Tech Development",
@@ -12068,65 +12125,6 @@
    ],
    "category": "software",
    "family": "swe",
-   "region": "IN",
-   "verified": true
-  },
-  {
-   "id": "4477165341",
-   "title": "Applied Scientist",
-   "slugTitle": "Applied Scientist, SSG Science",
-   "company": "Amazon",
-   "matchedWatchlist": "Amazon",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/amazon.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "c++",
-    "machine learning",
-    "deep learning",
-    "algorithms"
-   ],
-   "summary": "This role involves developing and optimizing gen ai models for edge devices, working with cross-functional teams to create ml-centric solutions. It suits students with strong math and programming backgrounds interested in cutting-edge research and real-world impact.",
-   "bullets": [
-    "Optimize gen ai models for edge platforms",
-    "Collaborate with hardware and product teams",
-    "Publish research at top ml conferences"
-   ],
-   "roleLabel": "Applied Science",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "keySkills": [
-    "java",
-    "c++",
-    "python",
-    "information theory"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "1 hour ago",
-   "postedAt": 1791461875180,
-   "firstSeenAt": 1791465475182,
-   "lastSeenAt": 1791474624513,
-   "checkedAt": 1791711264138,
-   "checkedVia": "linkedin",
-   "url": "https://www.linkedin.com/jobs/view/4477165341/",
-   "applyUrl": "https://www.amazon.jobs/jobs/10572900/applied-scientist-ssg-science?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
-   "description": null,
-   "roleFingerprint": "c99cbc2974",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "ai_ml",
    "region": "IN",
    "verified": true
   },
@@ -60140,7 +60138,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1791702708872,
+   "lastSeenAt": 1791759635924,
    "checkedAt": 1791626557772,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
