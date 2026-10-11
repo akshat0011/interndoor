@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/veradigm-contractor-4448771468",
+      "url": "https://interndoor.com/jobs/veradigm-contractor-4448771468",
+      "title": "Contractor — Veradigm®",
+      "content_text": "Company: Veradigm® · Location: Pune Division, Maharashtra, India\n• Answer customer calls and resolve technical issues over phone\n• Work with team to troubleshoot application and infrastructure problems\n• Require bca or bsc in computer field with technical aptitude",
+      "date_published": "2026-10-11T17:43:48.145Z",
+      "authors": [
+        {
+          "name": "Veradigm®"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/coindcx-sm-m-quant-researcher-4440780350",
+      "url": "https://interndoor.com/jobs/coindcx-sm-m-quant-researcher-4440780350",
+      "title": "Quant Researcher — CoinDCX",
+      "content_text": "Company: CoinDCX · Location: Bengaluru, Karnataka, India\n• Design pricing and hedging algorithms for Spot and Futures markets\n• Build predictive models for inventory risk and strategy health\n• Author technical blueprints for Quant dev teams to implement strategies",
+      "date_published": "2026-10-11T16:00:21.604Z",
+      "authors": [
+        {
+          "name": "CoinDCX"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/qualcomm-modem-gnss-systems-engineer-4458978028",
       "url": "https://interndoor.com/jobs/qualcomm-modem-gnss-systems-engineer-4458978028",
       "title": "GNSS Systems Engineer — Qualcomm",
@@ -575,30 +599,6 @@
       "title": "Core Java Developer — Citi",
       "content_text": "Company: Citi · Location: Pune Division, Maharashtra, India\n• Write and maintain java applications for core banking systems\n• Use spring, guice, hibernate, and mongodb with linux\n• Work on microservices and cloud platforms in agile teams",
       "date_published": "2026-10-09T22:23:56.134Z",
-      "authors": [
-        {
-          "name": "Citi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/citi-pki-engineer-c-expert-4476859445",
-      "url": "https://interndoor.com/jobs/citi-pki-engineer-c-expert-4476859445",
-      "title": "Security Engineer — Citi",
-      "content_text": "Company: Citi · Location: Chennai, Tamil Nadu, India\n• Develop cryptographic systems and PKI solutions using C# and Python\n• Work on certificate automation for Citi infrastructure and platforms\n• Collaborate with teams to integrate security technologies into mission critical systems",
-      "date_published": "2026-10-09T22:05:20.021Z",
-      "authors": [
-        {
-          "name": "Citi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/citi-pki-engineer-java-cloud-expert-4476865281",
-      "url": "https://interndoor.com/jobs/citi-pki-engineer-java-cloud-expert-4476865281",
-      "title": "Security Engineer — Citi",
-      "content_text": "Company: Citi · Location: Chennai, Tamil Nadu, India\n• Develop cryptographic systems and PKI solutions for enterprise security\n• Work with Java, cloud platforms, and advanced encryption algorithms\n• Collaborate with teams to integrate security tools across Citi infrastructure",
-      "date_published": "2026-10-09T22:04:56.008Z",
       "authors": [
         {
           "name": "Citi"
