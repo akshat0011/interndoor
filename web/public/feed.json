@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-full-stack-asp-net-4478080756",
+      "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-full-stack-asp-net-4478080756",
+      "title": "Full Stack Software Engineer I — Honeywell Technologies",
+      "content_text": "Company: Honeywell Technologies · Location: Pune Division, Maharashtra, India\n• Build and maintain software applications using ASP.Net\n• Work on full development cycle from design to deployment\n• Collaborate with cross-functional teams on new features",
+      "date_published": "2026-10-11T00:03:10.271Z",
+      "authors": [
+        {
+          "name": "Honeywell Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/seismic-implementation-engineer-4430570534",
       "url": "https://interndoor.com/jobs/seismic-implementation-engineer-4430570534",
       "title": "Implementation Engineer — Seismic",
@@ -587,18 +599,6 @@
       "title": "DevOps Engineer — GlobalLogic",
       "content_text": "Company: GlobalLogic · Location: Chennai, Tamil Nadu, India\n• Implement and maintain CI/CD pipelines using Jenkins, GitLab CI, and GitHub Actions\n• Collaborate with cross-functional teams to optimize platform performance and adoption\n• Champion containerization with Docker, Kubernetes, and Helm for scalable systems",
       "date_published": "2026-10-09T18:54:41.670Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-devops-engineer-chennai-irc300885-4449393133",
-      "url": "https://interndoor.com/jobs/globallogic-devops-engineer-chennai-irc300885-4449393133",
-      "title": "DevOps Engineer — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Chennai, Tamil Nadu, India\n• Build and maintain CI/CD pipelines with Jenkins, GitLab CI, and GitHub Actions\n• Automate workflows using Docker, Kubernetes, and Helm for scalable systems\n• Monitor and optimize infrastructure with Prometheus and Grafana",
-      "date_published": "2026-10-09T18:53:41.493Z",
       "authors": [
         {
           "name": "GlobalLogic"

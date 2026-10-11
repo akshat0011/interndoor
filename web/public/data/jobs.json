@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791677946481,
+ "generatedAt": 1791678867496,
  "region": "IN",
  "regionName": "India",
  "count": 1288,
@@ -483,6 +483,54 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4478080756",
+   "title": "Full Stack Software Engineer I",
+   "slugTitle": "Software Engr I- Full Stack ASP.Net",
+   "company": "Honeywell Technologies",
+   "matchedWatchlist": "Honeywell",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/honeywell-technologies.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves developing and maintaining software applications using ASP.Net. You'll work through the full development cycle, from design to deployment, and collaborate with cross-functional teams to build new features. It's ideal for someone with a strong foundation in programming and an interest in contributing to real-world software solutions.",
+   "bullets": [
+    "Build and maintain software applications using ASP.Net",
+    "Work on full development cycle from design to deployment",
+    "Collaborate with cross-functional teams on new features"
+   ],
+   "roleLabel": "Software development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "coding",
+    "code reviews"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "17 minutes ago",
+   "postedAt": 1791676990271,
+   "firstSeenAt": 1791678010282,
+   "lastSeenAt": 1791678010282,
+   "url": "https://www.linkedin.com/jobs/view/4478080756/",
+   "applyUrl": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/160028/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "b877f8bd44",
+   "cardFacts": [
+    "Pune Division",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "fullstack",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4430570534",
    "title": "Implementation Engineer",
@@ -59920,7 +59968,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1791674383951,
+   "lastSeenAt": 1791678278497,
    "checkedAt": 1791626557772,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
@@ -73037,64 +73085,6 @@
    ],
    "category": "software",
    "family": "swe",
-   "region": "IN",
-   "verified": true
-  },
-  {
-   "id": "4465894117",
-   "title": "Data Science Intern",
-   "slugTitle": "Intern Masters Data Science",
-   "company": "Honeywell Technologies",
-   "matchedWatchlist": "Honeywell",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/honeywell-technologies.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "python",
-    "machine learning",
-    "algorithms",
-    "tableau",
-    "power bi"
-   ],
-   "summary": "This internship involves working on real-world data science projects, analyzing data, and building predictive models. It suits students with experience in data analysis and machine learning, looking to gain hands-on skills in a collaborative environment.",
-   "bullets": [
-    "Analyze datasets to find trends and patterns",
-    "Build predictive models with machine learning",
-    "Work with teams to deliver data insights"
-   ],
-   "roleLabel": "Data Science Intern",
-   "degreeLevel": "PG",
-   "degreeText": null,
-   "keySkills": [
-    "python",
-    "r",
-    "tableau",
-    "power bi"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "41 minutes ago",
-   "postedAt": 1789084164746,
-   "firstSeenAt": 1789086624749,
-   "lastSeenAt": 1789086624749,
-   "checkedAt": 1791626910733,
-   "checkedVia": "link",
-   "url": "https://www.linkedin.com/jobs/view/4465894117/",
-   "applyUrl": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/157577/?utm_medium=jobboard&utm_source=linkedin",
-   "description": null,
-   "roleFingerprint": "c38916e6a2",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "ai_ml",
    "region": "IN",
    "verified": true
   },

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sat, 10 Oct 2026 19:19:29 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 11 Oct 2026 00:03:10 GMT</lastBuildDate>
+  <item>
+    <title>Full Stack Software Engineer I — Honeywell Technologies</title>
+    <link>https://interndoor.com/jobs/honeywell-technologies-software-engr-i-full-stack-asp-net-4478080756</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-technologies-software-engr-i-full-stack-asp-net-4478080756</guid>
+    <pubDate>Sun, 11 Oct 2026 00:03:10 GMT</pubDate>
+    <description>Company: Honeywell Technologies · Location: Pune Division, Maharashtra, India
+• Build and maintain software applications using ASP.Net
+• Work on full development cycle from design to deployment
+• Collaborate with cross-functional teams on new features</description>
+  </item>
   <item>
     <title>Implementation Engineer — Seismic</title>
     <link>https://interndoor.com/jobs/seismic-implementation-engineer-4430570534</link>
@@ -500,16 +510,6 @@
 • Implement and maintain CI/CD pipelines using Jenkins, GitLab CI, and GitHub Actions
 • Collaborate with cross-functional teams to optimize platform performance and adoption
 • Champion containerization with Docker, Kubernetes, and Helm for scalable systems</description>
-  </item>
-  <item>
-    <title>DevOps Engineer — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-devops-engineer-chennai-irc300885-4449393133</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-devops-engineer-chennai-irc300885-4449393133</guid>
-    <pubDate>Fri, 09 Oct 2026 18:53:41 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Chennai, Tamil Nadu, India
-• Build and maintain CI/CD pipelines with Jenkins, GitLab CI, and GitHub Actions
-• Automate workflows using Docker, Kubernetes, and Helm for scalable systems
-• Monitor and optimize infrastructure with Prometheus and Grafana</description>
   </item>
 </channel>
 </rss>
