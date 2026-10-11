@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/united-airlines-india-knowledge-center-analyst-data-scientist-4450731636",
+      "url": "https://interndoor.com/jobs/united-airlines-india-knowledge-center-analyst-data-scientist-4450731636",
+      "title": "Data Scientist — United Airlines India Knowledge Center",
+      "content_text": "Company: United Airlines India Knowledge Center · Location: Gurugram, Haryana, India\n• Build and deploy AI applications using Python, SQL, and large language models\n• Collaborate with cross-functional teams to solve business problems with data\n• Work on scalable AI solutions for customer experience and operational efficiency",
+      "date_published": "2026-10-11T18:04:35.883Z",
+      "authors": [
+        {
+          "name": "United Airlines India Knowledge Center"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/veradigm-contractor-4448771468",
       "url": "https://interndoor.com/jobs/veradigm-contractor-4448771468",
       "title": "Contractor — Veradigm®",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Amazon Science"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/citi-core-java-developer-4476861420",
-      "url": "https://interndoor.com/jobs/citi-core-java-developer-4476861420",
-      "title": "Core Java Developer — Citi",
-      "content_text": "Company: Citi · Location: Pune Division, Maharashtra, India\n• Write and maintain java applications for core banking systems\n• Use spring, guice, hibernate, and mongodb with linux\n• Work on microservices and cloud platforms in agile teams",
-      "date_published": "2026-10-09T22:23:56.134Z",
-      "authors": [
-        {
-          "name": "Citi"
         }
       ]
     }
