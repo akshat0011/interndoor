@@ -22,7 +22,7 @@ import { readFileSync } from 'node:fs';
 import {
   resumeNames, spellingsOf, normSkill, SKILL_ALIASES,
   shortlist, clampJob, rankDigest, failureFor,
-  hayOf, mentions, splitSkillEntry, reconcileTailored, roleKeywords, keywordMatch,
+  hayOf, mentions, splitSkillEntry, reconcileTailored, roleKeywords, keywordMatch, keptIn, addHeadline,
   rankWithAI, tailorWithAI, RANK_BATCH,
   AI_ENDPOINT, FREE_PER_DAY, DEVICE_STORE, DEVICE_SHAPE, ALLOWANCE_STORE, OLD_KEY_STORE,
   deviceId, allowanceLeft, rememberAllowance, forgetOldKey, istDay,
@@ -498,6 +498,7 @@ console.log('\n== the tailor hears the whole role ==');
   const raw = { original: clone(ORIGINAL), tailored: (() => { const T = fullTailored(); T.skills = [{ group: 'Programming', items: ['Python'] }]; return T; })() };
   globalThis.fetch = answer(raw);
   const t = await tailorWithAI({ resumeText: RESUME_TEXT, job: { title: 'X' } });
+  check('the real call sets the posting\'s title as the headline', [t.tailored.headline, t.added[0]?.key], ['X', 'headline']);
   check('tailorWithAI returns the reconciled resume', keepsEverything(t), []);
   globalThis.fetch = answer({ original: {}, tailored: {} });
   await returns('an empty answer is an error, not a blank resume',
@@ -704,6 +705,53 @@ check('and no longer tells anyone to add a key', /your own|key/i.test(sent.body.
 check('and does not mention a site API key', /GEMINI|site.s API key/i.test(sent.body.error), false);
 tailorHandler({ method: 'GET', headers: {} }, stubRes);
 check('GET is still 405', sent.code, 405);
+
+console.log('\n== A RESPELLED SKILL IS KEPT; A DIFFERENT TOOL IS NOT ==');
+{
+  const h = hayOf('JavaScript, Node.js, Express.js, RESTful APIs, HTML, CSS, Docker, Flask, GitHub, WebSockets');
+  for (const s of ['JS', 'Node', 'Node/Express', 'HTML/CSS', 'REST', 'websockets', 'Express']) check(`"${s}" is kept as its standard spelling`, keptIn(h, s), true);
+  check('a qualifier the reader wrote must survive ("Docker (basic)")', keptIn(h, 'Docker (basic)'), false);
+  check('FastAPI is not kept by Flask', keptIn(h, 'FastAPI'), false);
+  check('Git is not kept by GitHub', keptIn(h, 'Git'), false);
+  check('a part that is missing means the whole is missing', keptIn(h, 'Node/Django'), false);
+
+  // The model respells the reader's skills; nothing comes back as a duplicate.
+  const data = {
+    original: { name: 'K', sections: [], skills: [{ group: 'Languages', items: ['JS', 'Python'] }, { group: 'Web', items: ['Node/Express', 'REST'] }, { group: 'Tools', items: ['Docker (basic)', 'FastAPI'] }] },
+    tailored: { name: 'K', sections: [], skills: [{ group: 'Skills', items: ['JavaScript', 'Python', 'Node.js', 'Express.js', 'RESTful APIs', 'Docker', 'Flask'] }] },
+    added: [],
+  };
+  const t = reconcileTailored(data, 'K\nLanguages: JS, Python\nWeb: Node/Express, REST\nTools: Docker (basic), FastAPI');
+  check('respelled skills are not put back twice', t.tailored.skills.map((g) => g.group), ['Skills', 'Tools']);
+  check('but a dropped qualifier and a different tool are', t.tailored.skills[1].items.map((x) => x.text), ['Docker (basic)', 'FastAPI']);
+}
+
+console.log('\n== THE PLACE OR LINK BESIDE AN ENTRY IS A FACT ==');
+{
+  const data = {
+    original: { name: 'K', sections: [{ heading: 'Experience', items: [{ id: 'i1', title: 'Web Intern', org: 'Brightleaf', dates: '2024', where: 'Pune, India', bullets: [{ id: 'i1.b1', text: 'Fixed bugs reported by QA.' }] }] }], skills: [] },
+    tailored: { name: 'K', sections: [{ heading: 'Experience', items: [{ from: 'i1', title: 'Web Intern', org: 'Brightleaf', dates: '2024', where: 'Remote', bullets: [{ text: 'Fixed bugs reported by the QA team.', from: ['i1.b1'] }] }] }], skills: [] },
+    added: [],
+  };
+  const t = reconcileTailored(data, 'K\nWeb Intern Brightleaf 2024 Pune, India\nFixed bugs reported by QA.');
+  check('the original place wins over the rewrite', t.tailored.sections[0].items[0].where, 'Pune, India');
+  const lost = reconcileTailored({ ...data, tailored: { ...data.tailored, sections: [] } }, 'K');
+  check('and comes back with an item that was put back', lost.tailored.sections[0].items[0].where, 'Pune, India');
+}
+
+console.log('\n== THE HEADLINE IS THE POSTING\'S EXACT TITLE ==');
+{
+  const t = { tailored: { name: 'K' }, added: [{ key: 'a1', kind: 'skill', text: 'MERN Stack' }] };
+  addHeadline(t, { title: '  Software Engineering Intern  ' });
+  check('set word for word from the role', t.tailored.headline, 'Software Engineering Intern');
+  check('listed first among the additions, removable like any', t.added.map((a) => [a.key, a.kind]), [['headline', 'headline'], ['a1', 'skill']]);
+  addHeadline(t, { title: 'Software Engineering Intern' });
+  check('listed once however often it is set', t.added.filter((a) => a.key === 'headline').length, 1);
+  const none = { tailored: { name: 'K' }, added: [] };
+  addHeadline(none, { title: '' });
+  check('no title, no headline', [none.tailored.headline, none.added.length], [undefined, 0]);
+  check('the original never gets one', 'headline' in (reconcileTailored({ original: { name: 'K', sections: [], skills: [] }, tailored: { name: 'K', sections: [], skills: [] } }, 'K').original), false);
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

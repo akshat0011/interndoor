@@ -73,9 +73,9 @@ const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
 import {
   resumeNames, shortlist, rankWithAI, tailorWithAI, RANK_BATCH,
   FREE_PER_DAY, allowanceLeft, forgetOldKey, roleKeywords, keywordMatch,
-} from './resumeai.js?v=4';
+} from './resumeai.js?v=5';
 // Same reason as above: the PDF builder and its caller ship together.
-import { sheetModel, resumePdf, pdfFileName } from './resumepdf.js?v=1';
+import { sheetModel, resumePdf, pdfFileName } from './resumepdf.js?v=2';
 
 const PDFJS_BASE = '/vendor/pdfjs';
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -2672,12 +2672,15 @@ function syncSteps() {
  */
 let editing = false;
 
-/** One resume into a sheet. A line or skill added for the role carries
- *  data-add and a highlight that never prints. */
+/** One resume into a sheet, laid out like the classic LaTeX resume the PDF
+ *  copies (resumepdf.js): name, headline and contact centred; per entry a
+ *  bold title with its dates on the right, then the organisation in italics
+ *  with its place or link on the right. Skills come right after the summary,
+ *  or after Education when Education leads, because the skills list is the
+ *  first place a recruiter looks. Anything added for the role carries data-add
+ *  and a highlight that never prints. */
 function renderSheet(box, R) {
   box.replaceChildren();
-  if (R.name) box.append(el('div', 'r-name', R.name));
-  if (R.contact) box.append(el('div', 'r-contact', R.contact));
   const mark = (node, x) => {
     if (!x.added) return node;
     node.classList.add('r-add');
@@ -2685,27 +2688,61 @@ function renderSheet(box, R) {
     node.title = 'Added for this role';
     return node;
   };
+  if (R.name) box.append(el('div', 'r-name', R.name));
+  if (R.headline) {
+    // The highlight on the words, the key on the line, as with a bullet.
+    const h = el('div', 'r-headline');
+    h.dataset.add = 'headline';
+    h.append(mark(el('span', null, R.headline), { added: true }));
+    box.append(h);
+  }
+  if (R.contact) box.append(el('div', 'r-contact', R.contact));
   if (R.summary) {
     const sec = el('section', 'r-sec');
     sec.append(el('h5', null, 'Summary'), el('p', 'r-summary', R.summary));
     box.append(sec);
   }
-  for (const section of R.sections ?? []) {
+  const skills = () => {
+    if (!R.skills?.length) return;
+    const sec = el('section', 'r-sec');
+    sec.append(el('h5', null, 'Skills'));
+    for (const g of R.skills) {
+      const line = el('p', 'r-skills');
+      if (g.group) line.append(el('b', null, `${g.group}: `));
+      g.items.forEach((x, i) => {
+        if (i) line.append(document.createTextNode(', '));
+        line.append(mark(el('span', null, x.text), x));
+      });
+      sec.append(line);
+    }
+    box.append(sec);
+  };
+  const sections = R.sections ?? [];
+  const eduFirst = /^education\b/i.test(sections[0]?.heading ?? '');
+  if (!eduFirst) skills();
+  sections.forEach((section, n) => {
     const sec = el('section', 'r-sec');
     sec.append(el('h5', null, section.heading));
     for (const item of section.items ?? []) {
       const it = el('div', 'r-item');
-      const head = el('div', 'r-item-head');
-      const what = el('div', 'r-what');
-      if (item.title) what.append(el('span', 'r-role', item.title));
-      if (item.org) {
-        // Real text, not a pseudo-element, so it copies and an ATS reads it.
-        if (item.title) what.append(document.createTextNode(', '));
-        what.append(el('span', 'r-org', item.org));
+      // Real text in every slot, not pseudo-elements, so it copies and an
+      // ATS reads it.
+      // A parse can name a lone item after its own section ("Achievements"
+      // under "Achievements"); printing it twice says nothing new.
+      const echo = !item.org && !item.dates && !item.where
+        && (item.title ?? '').trim().toLowerCase() === (section.heading ?? '').trim().toLowerCase();
+      if ((item.title && !echo) || item.dates) {
+        const head = el('div', 'r-item-head');
+        head.append(el('span', 'r-role', echo ? '' : item.title || ''));
+        if (item.dates) head.append(el('span', 'r-dates', item.dates));
+        it.append(head);
       }
-      head.append(what);
-      if (item.dates) head.append(el('span', 'r-dates', item.dates));
-      it.append(head);
+      if (item.org || item.where) {
+        const sub = el('div', 'r-item-sub');
+        sub.append(el('span', 'r-org', item.org || ''));
+        if (item.where) sub.append(el('span', 'r-where', item.where));
+        it.append(sub);
+      }
       if (item.bullets?.length) {
         const ul = el('ul');
         for (const b of item.bullets) {
@@ -2725,21 +2762,9 @@ function renderSheet(box, R) {
       sec.append(it);
     }
     box.append(sec);
-  }
-  if (R.skills?.length) {
-    const sec = el('section', 'r-sec');
-    sec.append(el('h5', null, 'Skills'));
-    for (const g of R.skills) {
-      const line = el('p', 'r-skills');
-      if (g.group) line.append(el('b', null, `${g.group}: `));
-      g.items.forEach((x, i) => {
-        if (i) line.append(document.createTextNode(', '));
-        line.append(mark(el('span', null, x.text), x));
-      });
-      sec.append(line);
-    }
-    box.append(sec);
-  }
+    if (eduFirst && n === 0) skills();
+  });
+  if (eduFirst && !sections.length) skills();
 }
 
 /** The sheet on screen, as plain text, edits included. Walked rather than
@@ -2747,18 +2772,21 @@ function renderSheet(box, R) {
  *  whatever the reader typed into it. */
 function sheetText(box) {
   const out = [];
+  const pair = (line) => {
+    const left = line.querySelector('.r-role, .r-org')?.textContent.trim();
+    const right = line.querySelector('.r-dates, .r-where')?.textContent.trim();
+    return [left, right].filter(Boolean).join(' | ');
+  };
   for (const node of box.children) {
-    if (node.matches('.r-name, .r-contact')) { out.push(node.textContent.trim()); continue; }
+    if (node.matches('.r-name, .r-headline, .r-contact')) { out.push(node.textContent.trim()); continue; }
     if (!node.matches('.r-sec')) { out.push(node.innerText.trim()); continue; }
     out.push('');
     for (const part of node.children) {
       if (part.tagName === 'H5') out.push(part.textContent.trim().toUpperCase());
       else if (part.matches('.r-item')) {
-        const head = part.querySelector('.r-item-head');
-        if (head) {
-          const what = [...head.querySelectorAll('.r-role, .r-org')].map((n) => n.textContent.trim()).filter(Boolean).join(', ');
-          const when = head.querySelector('.r-dates')?.textContent.trim();
-          out.push(when ? `${what} | ${when}` : what);
+        for (const line of part.querySelectorAll('.r-item-head, .r-item-sub')) {
+          const t = pair(line);
+          if (t) out.push(t);
         }
         for (const li of part.querySelectorAll('li')) out.push(`• ${li.textContent.trim()}`);
       } else {
@@ -2837,7 +2865,7 @@ function renderAdded() {
       requestAnimationFrame(() => node.classList.add('r-flash'));
     });
     const body = el('div', 'rs-add-body');
-    body.append(el('span', 'rs-kind', a.kind === 'skill' ? 'Skill' : 'Line'), text);
+    body.append(el('span', 'rs-kind', a.kind === 'skill' ? 'Skill' : a.kind === 'headline' ? 'Headline' : 'Line'), text);
     if (a.why) body.append(el('small', null, a.why));
     const rm = el('button', 'rs-rm', 'Remove');
     rm.type = 'button';

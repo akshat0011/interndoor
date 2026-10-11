@@ -14,7 +14,7 @@
  *      not fit even at the smallest size spills over, saying so.
  *
  *   3. An applicant tracking system can read it: real text in the standard
- *      Helvetica (nothing embedded, no images), so the parser below, the one
+ *      Times faces (nothing embedded, no images), so the parser below, the one
  *      the site already ships, gets every word back.
  *
  * The file is read back with the vendored pdf.js, the same way a recruiter's
@@ -61,15 +61,17 @@ async function read(bytes) {
 }
 
 const squash = (s) => s.replace(/\s+/g, '');
+const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
 
 // A real-shaped student resume (the one used to test the tailor).
 const MODEL = {
   name: 'Riya Mehta',
+  headline: 'Software Engineering Intern',
   contact: 'Delhi, India · +91 90000 00000 · riya.mehta@example.com · linkedin.com/in/riyamehta · github.com/riyam',
   sections: [
     { heading: 'Summary', blocks: [{ kind: 'para', runs: [{ text: 'B.Tech CSE student (2027) who builds full-stack apps and small AI tools, with “real” users.' }] }] },
     { heading: 'Projects', blocks: [
-      { kind: 'item', title: 'JobBoard', org: 'Internship aggregator', dates: 'Jan 2026 – Present', bullets: [
+      { kind: 'item', title: 'JobBoard', org: 'Internship aggregator', dates: 'Jan 2026 – Present', where: 'github.com/riyam/jobboard', bullets: [
         'Developed a Node.js scraper (B.Tech project) with Playwright to collect 1,000+ postings daily into SQLite.',
         'Used Ollama to run local LLMs for summarising and classifying postings (C++ \\ Python).',
         'Built a static site with search and filters, refreshed every 30 minutes.',
@@ -83,7 +85,7 @@ const MODEL = {
       ] },
     ] },
     { heading: 'Education', blocks: [
-      { kind: 'item', title: 'B.Tech, Computer Science and Engineering', org: 'GGSIPU', dates: '2023 – 2027', bullets: ['CGPA 8.4'] },
+      { kind: 'item', title: 'B.Tech, Computer Science and Engineering', org: 'GGSIPU', dates: '2023 – 2027', where: 'Delhi, India', bullets: ['CGPA 8.4'] },
     ] },
     { heading: 'Skills', blocks: [
       { kind: 'para', runs: [{ text: 'Languages: ', bold: true }, { text: 'Python, JavaScript, C++, SQL' }] },
@@ -94,12 +96,12 @@ const MODEL = {
 
 /** The model's text in the order a reader meets it. */
 function expectedText(m) {
-  const out = [m.name, m.contact];
+  const out = [m.name, m.headline ?? '', m.contact];
   for (const s of m.sections) {
-    out.push(s.heading.toUpperCase());
+    out.push(s.heading);
     for (const b of s.blocks) {
       if (b.kind === 'para') { out.push(b.runs.map((r) => r.text).join('')); continue; }
-      out.push(b.title, b.org ? `, ${b.org}` : '', b.dates);
+      out.push(b.title, b.dates, b.org, b.where ?? '');
       for (const t of b.bullets) out.push('•', t);
     }
   }
@@ -130,10 +132,10 @@ check('nobody else is named as the author', /InternDoor/.test(got.info.Author ??
 
 console.log('\n== READABLE BY AN APPLICANT TRACKING SYSTEM ==');
 const raw = Buffer.from(one.bytes).toString('latin1');
-check('the two standard Helvetica faces, nothing embedded',
-  [...raw.matchAll(/\/BaseFont \/([\w-]+)/g)].map((m) => m[1]), ['Helvetica', 'Helvetica-Bold']);
+check('the three standard Times faces, nothing embedded',
+  [...raw.matchAll(/\/BaseFont \/([\w-]+)/g)].map((m) => m[1]), ['Times-Roman', 'Times-Bold', 'Times-Italic']);
 check('no font file, no image', /\/FontFile|\/Image|\/XObject/.test(raw), false);
-check('WinAnsi, so every reader maps the letters back', (raw.match(/\/Encoding \/WinAnsiEncoding/g) || []).length, 2);
+check('WinAnsi, so every reader maps the letters back', (raw.match(/\/Encoding \/WinAnsiEncoding/g) || []).length, 3);
 check('A4', [PAGE_W, PAGE_H], [595.28, 841.89]);
 check('the page is A4 in the file', /\/MediaBox \[0 0 595\.28 841\.89\]/.test(raw), true);
 check('the email is a link', got.pages[0].links.includes('mailto:riya.mehta@example.com'), true);
@@ -151,13 +153,24 @@ check('each stream is as long as it says', [...raw.matchAll(/<< \/Length (\d+) >
 
 console.log('\n== EVERYTHING INSIDE THE PAGE ==');
 const xs = got.pages[0].items;
-check('nothing past the left edge', xs.every((i) => i.x >= 33), true);
-check('nothing past the right edge', xs.every((i) => i.x + i.w <= PAGE_W - 33), true);
+check('nothing past the left edge', xs.every((i) => i.x >= 31.9), true);
+check('nothing past the right edge', xs.every((i) => i.x + i.w <= PAGE_W - 31.9), true);
 check('nothing off the top or the bottom', xs.every((i) => i.y > 36 && i.y < PAGE_H - 36), true);
 const dates = xs.find((i) => i.str.includes('Jan 2026'));
-check('dates sit at the right margin', Math.round(dates.x + dates.w), Math.round(PAGE_W - 44));
+check('dates sit at the right margin', Math.round(dates.x + dates.w), Math.round(PAGE_W - 39.6));
 const title = xs.find((i) => i.str.startsWith('JobBoard'));
 check('on the same line as the role', Math.abs(dates.y - title.y) < 0.01, true);
+// The LaTeX layout: the organisation on its own line under the title, with
+// its place or link on the right of that line.
+const org = xs.find((i) => i.str.trim() === 'Internship aggregator');
+const where = xs.find((i) => i.str.includes('github.com/riyam/jobboard'));
+check('the organisation sits on the line under the title', org && org.y < title.y && Math.abs(org.x - title.x) < 0.01, true);
+check('with its link on the right of that line', where && Math.abs(where.y - org.y) < 0.01 && Math.round(where.x + where.w) === Math.round(PAGE_W - 39.6), true);
+const nameItem = xs.find((i) => i.str.trim() === 'Riya Mehta');
+check('the name is centred', Math.abs(nameItem.x + nameItem.w / 2 - PAGE_W / 2) < 0.5, true);
+const head = xs.find((i) => i.str.trim() === 'Software Engineering Intern');
+check('the headline sits under the name, centred', head && head.y < nameItem.y && Math.abs(head.x + head.w / 2 - PAGE_W / 2) < 0.5, true);
+check('the organisation line is italic and the title bold', [/\/F3 [\d.]+ Tf 0 g [\d.]+ [\d.]+ Td \(Internship aggregator\) Tj/.test(raw), /\/F2 [\d.]+ Tf 0 g [\d.]+ [\d.]+ Td \(JobBoard\) Tj/.test(raw)], [true, true]);
 
 /* ---------------- 2. one page ---------------- */
 
@@ -199,7 +212,7 @@ for (let n = 70; n <= 130; n++) {
   if (f.onePage) continue;
   swept++;
   const r = await returns('a swept file parses', () => read(f.bytes), { pages: [] });
-  if (r.pages.slice(0, -1).some((p) => p.items[p.items.length - 1]?.str.trim() === 'NEXT SECTION')) orphans++;
+  if (r.pages.slice(0, -1).some((p) => p.items[p.items.length - 1]?.str.trim() === 'Next Section')) orphans++;
 }
 check('the sweep really spilled onto a second page', swept > 20, true);
 check('a section heading never sits alone at the foot of a page', orphans, 0);
@@ -220,9 +233,11 @@ check('odd spaces are spaces', String.fromCharCode(...winAnsi('a\u00a0b\u2009c\t
 const twice = (s) => winAnsi(String.fromCharCode(...winAnsi(s)));
 check('converting twice changes nothing (a dash is never lost)', twice('“x” – y • z ₹'), winAnsi('“x” – y • z ₹'));
 
-console.log('\n== WIDTHS ARE HELVETICA\'S ==');
-check('Hello at 10pt', Math.round(textWidth('Hello', false, 10) * 100) / 100, 22.78);
-check('and in bold', Math.round(textWidth('Hello', true, 10) * 100) / 100, 24.45);
+console.log('\n== WIDTHS ARE TIMES ==');
+check('Hello at 10pt', Math.round(textWidth('Hello', 'r', 10) * 100) / 100, 22.22);
+check('and in bold', Math.round(textWidth('Hello', 'b', 10) * 100) / 100, 22.78);
+check('and in italic', Math.round(textWidth('Hello', 'i', 10) * 100) / 100, 22.22);
+check('true still means bold', textWidth('Hello', true, 10), textWidth('Hello', 'b', 10));
 check('W is wider than i', textWidth('W', false, 10) > textWidth('i', false, 10), true);
 
 console.log('\n== LINES ==');
@@ -266,11 +281,13 @@ class El {
 const h = (tag, cls, ...kids) => new El(tag, cls, kids);
 const sheet = h('div', 'sheet',
   h('div', 'r-name', 'Riya  Mehta'),
+  h('div', 'r-headline r-add', 'Software Engineering Intern'),
   h('div', 'r-contact', 'riya@example.com'),
   h('section', 'r-sec', h('h5', null, 'Summary'), h('p', 'r-summary', 'Builds things. ', h('span', 'r-add', 'Added line.'))),
   h('section', 'r-sec', h('h5', null, 'Projects'),
     h('div', 'r-item',
-      h('div', 'r-item-head', h('div', 'r-what', h('span', 'r-role', 'JobBoard'), ', ', h('span', 'r-org', 'Aggregator')), h('span', 'r-dates', '2026')),
+      h('div', 'r-item-head', h('span', 'r-role', 'JobBoard'), h('span', 'r-dates', '2026')),
+      h('div', 'r-item-sub', h('span', 'r-org', 'Aggregator'), h('span', 'r-where', 'Pune, India')),
       h('ul', null, h('li', null, 'Scraped postings.'), h('li', null, h('span', 'r-add', 'Edited by the reader.')), h('li', null, '  ')),
       'Typed after the list.')),
   h('section', 'r-sec', h('h5', null, 'Skills'),
@@ -278,14 +295,67 @@ const sheet = h('div', 'sheet',
   h('div', null, 'A line typed outside every section.'),
 );
 const sm = sheetModel(sheet);
-check('name and contact', [sm.name, sm.contact], ['Riya Mehta', 'riya@example.com']);
+check('name, headline and contact', [sm.name, sm.headline, sm.contact], ['Riya Mehta', 'Software Engineering Intern', 'riya@example.com']);
 check('the sections, in order', sm.sections.map((s) => s.heading), ['Summary', 'Projects', 'Skills', '']);
 check('a paragraph, highlight and all, as text', sm.sections[0].blocks, [{ kind: 'para', runs: [{ text: 'Builds things. Added line.' }] }]);
-check('an item: role, org, dates', [sm.sections[1].blocks[0].title, sm.sections[1].blocks[0].org, sm.sections[1].blocks[0].dates], ['JobBoard', 'Aggregator', '2026']);
+check('an item: role, dates, org, where', [sm.sections[1].blocks[0].title, sm.sections[1].blocks[0].dates, sm.sections[1].blocks[0].org, sm.sections[1].blocks[0].where], ['JobBoard', '2026', 'Aggregator', 'Pune, India']);
 check('its bullets, an edited one included, an emptied one left out, typed text kept',
   sm.sections[1].blocks[0].bullets, ['Typed after the list.', 'Scraped postings.', 'Edited by the reader.']);
 check('a skills line keeps its bold label', sm.sections[2].blocks[0].runs, [{ text: 'Languages: ', bold: true }, { text: 'Python', bold: false }, { text: ', ', bold: false }, { text: 'Go', bold: false }]);
 check('text outside every section is not lost', sm.sections[3].blocks, [{ kind: 'para', runs: [{ text: 'A line typed outside every section.' }] }]);
+
+console.log('\n== THE SHEET THE PAGE DRAWS, INTO THE FILE ==');
+{
+  // The real renderSheet() and sheetText() from app.js, run on a small fake
+  // DOM, so the order and the two-line entries are pinned on the code that
+  // ships, not on a copy of it.
+  class Node2 {
+    constructor(tag) { this.nodeType = 1; this.tagName = tag.toUpperCase(); this.childNodes = []; this.className = ''; this.dataset = {}; this.title = ''; }
+    get classList() { const n = this; return { add(c) { n.className = `${n.className} ${c}`.trim(); }, contains: (c) => n.className.split(' ').includes(c) }; }
+    get children() { return this.childNodes.filter((k) => k.nodeType === 1); }
+    get textContent() { return this.childNodes.map((k) => k.textContent).join(''); }
+    set textContent(t) { this.childNodes = [{ nodeType: 3, textContent: String(t) }]; }
+    get innerText() { return this.textContent; }
+    append(...kids) { this.childNodes.push(...kids); }
+    replaceChildren() { this.childNodes = []; }
+    matches(sel) { return sel.split(',').some((x) => { x = x.trim(); return x.startsWith('.') ? this.className.split(' ').includes(x.slice(1)) : this.tagName === x.toUpperCase(); }); }
+    querySelectorAll(sel) { const out = []; const walk = (n) => { for (const k of n.childNodes) if (k.nodeType === 1) { if (k.matches(sel)) out.push(k); walk(k); } }; walk(this); return out; }
+    querySelector(sel) { return this.querySelectorAll(sel)[0] ?? null; }
+  }
+  const fakeDoc = { createElement: (t) => new Node2(t), createTextNode: (t) => ({ nodeType: 3, textContent: t }) };
+  const grab = (name) => { const i = app.indexOf(`function ${name}(`); return app.slice(i, app.indexOf('\n}\n', i) + 2); };
+  const make = new Function('document', `const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };\n${grab('renderSheet')}\n${grab('sheetText')}\nreturn { renderSheet, sheetText };`);
+  const { renderSheet, sheetText } = make(fakeDoc);
+  const R = {
+    name: 'Kabir Sharma', headline: 'Software Engineering Intern', contact: 'Pune, India | kabir@example.com',
+    summary: 'Software Engineering Intern candidate with Node.js and MongoDB.',
+    sections: [
+      { heading: 'Education', items: [{ title: 'B.E. Computer Engineering', org: 'Pune Institute of Engineering and Technology', dates: '2022 - 2026', where: 'Pune, India', bullets: [] }] },
+      { heading: 'Projects', items: [{ title: 'SplitSmart', org: 'MongoDB, Express, React, Node', dates: '', where: 'github.com/kabir/splitsmart', bullets: [{ text: 'Built a MERN app used by 150 people.', added: false }] }] },
+    ],
+    skills: [{ group: 'Web', items: [{ text: 'Node.js', added: false }, { text: 'MERN Stack', added: true, key: 'a1' }] }],
+  };
+  const box = new Node2('div');
+  renderSheet(box, R);
+  check('the headline is drawn, marked as an addition', [box.querySelector('.r-headline')?.textContent, box.querySelector('.r-headline')?.dataset.add], ['Software Engineering Intern', 'headline']);
+  check('its highlight is on the words, not the whole line', [box.querySelector('.r-headline')?.className, box.querySelector('.r-headline')?.childNodes[0]?.className], ['r-headline', 'r-add']);
+  const R3 = { name: 'K', sections: [{ heading: 'Achievements', items: [{ title: 'Achievements', org: '', dates: '', where: '', bullets: [{ text: '400+ LeetCode problems.' }] }] }], skills: [] };
+  const box3 = new Node2('div');
+  renderSheet(box3, R3);
+  check('an item named after its own section is not printed twice', [box3.querySelectorAll('.r-role').length, box3.querySelectorAll('li').length], [0, 1]);
+  check('Education leads, so Skills come right after it',
+    box.querySelectorAll('h5').map((x) => x.textContent), ['Summary', 'Education', 'Skills', 'Projects']);
+  const R2 = { ...R, sections: [R.sections[1], R.sections[0]] };
+  const box2 = new Node2('div');
+  renderSheet(box2, R2);
+  check('otherwise Skills come right after the summary', box2.querySelectorAll('h5').map((x) => x.textContent), ['Summary', 'Skills', 'Projects', 'Education']);
+  check('the organisation and its place share the second line', [box.querySelector('.r-item-sub')?.querySelector('.r-org')?.textContent, box.querySelector('.r-item-sub')?.querySelector('.r-where')?.textContent], ['Pune Institute of Engineering and Technology', 'Pune, India']);
+  check('copied text keeps both lines of an entry', sheetText(box).includes('B.E. Computer Engineering | 2022 - 2026\nPune Institute of Engineering and Technology | Pune, India'), true);
+  check('and the headline', sheetText(box).split('\n').slice(0, 3), ['Kabir Sharma', 'Software Engineering Intern', 'Pune, India | kabir@example.com']);
+  const pdf = resumePdf(sheetModel(box));
+  const back = await returns('the drawn sheet becomes a file', () => read(pdf.bytes), { pages: [{ text: '' }] });
+  check('and the file reads in the same order', squash(back.pages[0].text), squash('Kabir SharmaSoftware Engineering InternPune, India | kabir@example.comSummarySoftware Engineering Intern candidate with Node.js and MongoDB.EducationB.E. Computer Engineering2022 - 2026Pune Institute of Engineering and TechnologyPune, IndiaSkillsWeb: Node.js, MERN StackProjectsSplitSmartMongoDB, Express, React, Nodegithub.com/kabir/splitsmart•Built a MERN app used by 150 people.'));
+}
 
 console.log('\n== FILE NAME ==');
 check('name-Resume.pdf', pdfFileName('Riya Mehta'), 'Riya-Mehta-Resume.pdf');
@@ -295,7 +365,6 @@ check('accents folded, slashes gone', pdfFileName('José / Ñúñez'), 'Jose-Nun
 /* ---------------- 5. the button ---------------- */
 
 console.log('\n== THE BUTTON BUILDS THE FILE, IT DOES NOT PRINT THE PAGE ==');
-const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
 const handler = app.slice(app.indexOf("$('download-pdf').addEventListener"), app.indexOf("$('copy-text').addEventListener"));
 check('the handler is found', handler.length > 200, true);
 const code = app.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
@@ -312,7 +381,9 @@ const css = readFileSync(new URL('../web/public/styles.css', import.meta.url), '
 const print = css.slice(css.lastIndexOf('@media print'));
 check('Cmd+P on the result prints only the dialog, not the page behind it',
   /body:has\(> #tailor\[data-step="result"\]:not\(\[hidden\]\)\) > :not\(#tailor\) \{ display: none !important; \}/.test(print), true);
-check('the sheet on screen is set in the PDF\'s face', /\.sheet \{ --sheet-font: "Helvetica Neue", Helvetica, Arial, sans-serif;/.test(css), true);
+check('the sheet on screen is set in the PDF\'s face', /\.sheet \{ --sheet-font: "Times New Roman", Times,/.test(css), true);
+check('and laid out like it: centred header, italic organisation line',
+  /\.sheet \.r-name \{[^}]*text-align: center/.test(css) && /\.sheet \.r-org, \.sheet \.r-where \{ font-style: italic; \}/.test(css), true);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail) process.exit(1);

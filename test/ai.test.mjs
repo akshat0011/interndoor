@@ -146,6 +146,18 @@ console.log('\n== the tailor\'s contract (11 Oct 2026) ==');
   check('the prompt carries the duties', prompt.includes('What the work is:\n- Research LLMs'), true);
   check('the key skills', prompt.includes('Key skills: pytorch'), true);
   check('and who the role is for', prompt.includes('Open to: PG') && prompt.includes('Experience asked: 0-1 years'), true);
+  // The recruiter's three rules (11 Oct 2026): title, keyword placement, exact wording.
+  check('the prompt names the exact job title', prompt.includes('Exact job title: LLM Research Intern'), true);
+  check('the summary must carry the exact title', /the job's exact title, word for word/.test(TAILOR_SYSTEM), true);
+  check('the job\'s skills lead the skills list', /The first group holds the job's skills that the candidate has/.test(TAILOR_SYSTEM), true);
+  check('the posting\'s own words replace a synonym', /EXACT WORDING\./.test(TAILOR_SYSTEM) && /use the posting's words/.test(TAILOR_SYSTEM), true);
+  check('no words about character in the summary', /passionate, hardworking, motivated, aspiring/.test(TAILOR_SYSTEM), true);
+  check('a reworded line keeps the size of its claim', /Keep the size of every claim/.test(TAILOR_SYSTEM) && /Never add a duty the resume does not state/.test(TAILOR_SYSTEM), true);
+  check('rewording never adds facts', /Rewording changes the words, never the facts/.test(TAILOR_SYSTEM), true);
+  check('a qualifier on a skill survives', /"Docker \(basic\)" stays "Docker \(basic\)"/.test(TAILOR_SYSTEM), true);
+  check('skills in standard capitalization', /standard spelling and capitalization/.test(TAILOR_SYSTEM), true);
+  check('no first person', /No first person/.test(TAILOR_SYSTEM), true);
+  check('an entry\'s place or link has a slot', 'where' in item.properties, true);
 }
 
 console.log('\n== the browser never writes the prompt ==');

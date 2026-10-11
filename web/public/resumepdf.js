@@ -7,11 +7,18 @@
  * instead, from the resume on screen (edits included), and hands it over as a
  * download. Nothing leaves the browser.
  *
- * What makes it ATS-friendly: one column, real text in reading order, the
- * standard Helvetica that every PDF reader and parser knows (so nothing is
- * embedded or drawn as shapes), plain section headings, bullets as text.
+ * THE LOOK IS THE CLASSIC LaTeX RESUME (his ask, 11 Oct 2026: "similar looking
+ * layout and fonts" to his own): name, headline and contact centred; section
+ * titles in bold with a rule under them; each entry a bold title with its dates
+ * on the right, then the organisation in italics with its location or link on
+ * the right; bullets under it. Set in Times, the built-in PDF face closest to
+ * LaTeX's Computer Modern, so nothing has to be embedded.
  *
- * One page: the layout is measured with Helvetica's own letter widths and the
+ * What makes it ATS-friendly: one column, real text in reading order, standard
+ * fonts every PDF reader and parser knows (nothing embedded or drawn as
+ * shapes), plain section headings, bullets as text.
+ *
+ * One page: the layout is measured with the font's own letter widths and the
  * type is stepped down until everything fits on one A4 sheet. Nothing is ever
  * cut to make it fit. Only a resume that will not fit even at the smallest
  * size runs onto a second page, and the caller says so.
@@ -24,48 +31,67 @@
 export const PAGE_W = 595.28;
 export const PAGE_H = 841.89;
 const SIZES = [];
-for (let s = 10.5; s >= 7; s -= 0.25) SIZES.push(Math.round(s * 100) / 100);
+for (let s = 11; s >= 7.5; s -= 0.25) SIZES.push(Math.round(s * 100) / 100);
 export const MAX_SIZE = SIZES[0];
 export const MIN_SIZE = SIZES[SIZES.length - 1];
-const MARGINS = [44, 34];
+// 0.55in, the LaTeX template's margin, then a tighter one before the type shrinks.
+const MARGINS = [39.6, 32];
+const TOP = 39.6;
+const BOTTOM = 39.6;
 
-// Helvetica and Helvetica-Bold widths (1/1000 em) for WinAnsi codes 32..255,
-// taken from the standard font metrics.
-const REG = [
-  278, 278, 355, 556, 556, 889, 667, 191, 333, 333, 389, 584, 278, 333, 278, 278,
-  556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 278, 278, 584, 584, 584, 556,
-  1015, 667, 667, 722, 722, 667, 611, 778, 722, 278, 500, 667, 556, 833, 722, 778,
-  667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 278, 278, 278, 469, 556,
-  333, 556, 556, 500, 556, 556, 278, 556, 556, 222, 222, 500, 222, 833, 556, 556,
-  556, 556, 333, 500, 278, 556, 500, 722, 500, 500, 500, 334, 260, 334, 584, 350,
-  556, 350, 222, 556, 333, 1000, 556, 556, 333, 1000, 667, 333, 1000, 350, 611, 350,
-  350, 222, 222, 333, 333, 350, 556, 1000, 333, 1000, 500, 333, 944, 350, 500, 667,
-  278, 333, 556, 556, 556, 556, 260, 556, 333, 737, 370, 556, 584, 333, 737, 333,
-  400, 584, 333, 333, 333, 556, 537, 278, 333, 333, 365, 556, 834, 834, 834, 611,
-  667, 667, 667, 667, 667, 667, 1000, 722, 667, 667, 667, 667, 278, 278, 278, 278,
-  722, 722, 778, 778, 778, 778, 778, 584, 778, 722, 722, 722, 722, 667, 667, 611,
-  556, 556, 556, 556, 556, 556, 889, 500, 556, 556, 556, 556, 278, 278, 278, 278,
-  556, 556, 556, 556, 556, 556, 556, 584, 611, 556, 556, 556, 556, 500, 556, 500,
+// Times-Roman, Times-Bold and Times-Italic widths (1/1000 em) for WinAnsi
+// codes 32..255, taken from the standard font metrics.
+const ROMAN = [
+  250, 333, 408, 500, 500, 833, 778, 180, 333, 333, 500, 564, 250, 333, 250, 278,
+  500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 278, 278, 564, 564, 564, 444,
+  921, 722, 667, 667, 722, 611, 556, 722, 722, 333, 389, 722, 611, 889, 722, 722,
+  556, 722, 667, 556, 611, 722, 722, 944, 722, 722, 611, 333, 278, 333, 469, 500,
+  333, 444, 500, 444, 500, 444, 333, 500, 500, 278, 278, 500, 278, 778, 500, 500,
+  500, 500, 333, 389, 278, 500, 500, 722, 500, 500, 444, 480, 200, 480, 541, 350,
+  500, 350, 333, 500, 444, 1000, 500, 500, 333, 1000, 556, 333, 889, 350, 611, 350,
+  350, 333, 333, 444, 444, 350, 500, 1000, 333, 980, 389, 333, 722, 350, 444, 722,
+  250, 333, 500, 500, 500, 500, 200, 500, 333, 760, 276, 500, 564, 333, 760, 333,
+  400, 564, 300, 300, 333, 500, 453, 250, 333, 300, 310, 500, 750, 750, 750, 444,
+  722, 722, 722, 722, 722, 722, 889, 667, 611, 611, 611, 611, 333, 333, 333, 333,
+  722, 722, 722, 722, 722, 722, 722, 564, 722, 722, 722, 722, 722, 722, 556, 500,
+  444, 444, 444, 444, 444, 444, 667, 444, 444, 444, 444, 444, 278, 278, 278, 278,
+  500, 500, 500, 500, 500, 500, 500, 564, 500, 500, 500, 500, 500, 500, 500, 500,
 ];
 const BOLD = [
-  278, 333, 474, 556, 556, 889, 722, 238, 333, 333, 389, 584, 278, 333, 278, 278,
-  556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 333, 333, 584, 584, 584, 611,
-  975, 722, 722, 722, 722, 667, 611, 778, 722, 278, 556, 722, 611, 833, 722, 778,
-  667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 333, 278, 333, 584, 556,
-  333, 556, 611, 556, 611, 556, 333, 611, 611, 278, 278, 556, 278, 889, 611, 611,
-  611, 611, 389, 556, 333, 611, 556, 778, 556, 556, 500, 389, 280, 389, 584, 350,
-  556, 350, 278, 556, 500, 1000, 556, 556, 333, 1000, 667, 333, 1000, 350, 611, 350,
-  350, 278, 278, 500, 500, 350, 556, 1000, 333, 1000, 556, 333, 944, 350, 500, 667,
-  278, 333, 556, 556, 556, 556, 280, 556, 333, 737, 370, 556, 584, 333, 737, 333,
-  400, 584, 333, 333, 333, 611, 556, 278, 333, 333, 365, 556, 834, 834, 834, 611,
-  722, 722, 722, 722, 722, 722, 1000, 722, 667, 667, 667, 667, 278, 278, 278, 278,
-  722, 722, 778, 778, 778, 778, 778, 584, 778, 722, 722, 722, 722, 667, 667, 611,
-  556, 556, 556, 556, 556, 556, 889, 556, 556, 556, 556, 556, 278, 278, 278, 278,
-  611, 611, 611, 611, 611, 611, 611, 584, 611, 611, 611, 611, 611, 556, 611, 556,
+  250, 333, 555, 500, 500, 1000, 833, 278, 333, 333, 500, 570, 250, 333, 250, 278,
+  500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 333, 333, 570, 570, 570, 500,
+  930, 722, 667, 722, 722, 667, 611, 778, 778, 389, 500, 778, 667, 944, 722, 778,
+  611, 778, 722, 556, 667, 722, 722, 1000, 722, 722, 667, 333, 278, 333, 581, 500,
+  333, 500, 556, 444, 556, 444, 333, 500, 556, 278, 333, 556, 278, 833, 556, 500,
+  556, 556, 444, 389, 333, 556, 500, 722, 500, 500, 444, 394, 220, 394, 520, 350,
+  500, 350, 333, 500, 500, 1000, 500, 500, 333, 1000, 556, 333, 1000, 350, 667, 350,
+  350, 333, 333, 500, 500, 350, 500, 1000, 333, 1000, 389, 333, 722, 350, 444, 722,
+  250, 333, 500, 500, 500, 500, 220, 500, 333, 747, 300, 500, 570, 333, 747, 333,
+  400, 570, 300, 300, 333, 556, 540, 250, 333, 300, 330, 500, 750, 750, 750, 500,
+  722, 722, 722, 722, 722, 722, 1000, 722, 667, 667, 667, 667, 389, 389, 389, 389,
+  722, 722, 778, 778, 778, 778, 778, 570, 778, 722, 722, 722, 722, 722, 611, 556,
+  500, 500, 500, 500, 500, 500, 722, 444, 444, 444, 444, 444, 278, 278, 278, 278,
+  500, 556, 500, 500, 500, 500, 500, 570, 500, 556, 556, 556, 556, 500, 556, 500,
 ];
+const ITALIC = [
+  250, 333, 420, 500, 500, 833, 778, 214, 333, 333, 500, 675, 250, 333, 250, 278,
+  500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 333, 333, 675, 675, 675, 500,
+  920, 611, 611, 667, 722, 611, 611, 722, 722, 333, 444, 667, 556, 833, 667, 722,
+  611, 722, 611, 500, 556, 722, 611, 833, 611, 556, 556, 389, 278, 389, 422, 500,
+  333, 500, 500, 444, 500, 444, 278, 500, 500, 278, 278, 444, 278, 722, 500, 500,
+  500, 500, 389, 389, 278, 500, 444, 667, 444, 444, 389, 400, 275, 400, 541, 350,
+  500, 350, 333, 500, 556, 889, 500, 500, 333, 1000, 500, 333, 944, 350, 556, 350,
+  350, 333, 333, 556, 556, 350, 500, 889, 333, 980, 389, 333, 667, 350, 389, 556,
+  250, 389, 500, 500, 500, 500, 275, 500, 333, 760, 276, 500, 675, 333, 760, 333,
+  400, 675, 300, 300, 333, 500, 523, 250, 333, 300, 310, 500, 750, 750, 750, 500,
+  611, 611, 611, 611, 611, 611, 889, 667, 611, 611, 611, 611, 333, 333, 333, 333,
+  722, 667, 722, 722, 722, 722, 722, 675, 722, 722, 722, 722, 722, 556, 611, 500,
+  500, 500, 500, 500, 500, 500, 667, 444, 444, 444, 444, 444, 278, 278, 278, 278,
+  500, 500, 500, 500, 500, 500, 500, 675, 500, 500, 500, 500, 500, 444, 500, 444,
+];
+const FACES = { r: ROMAN, b: BOLD, i: ITALIC };
+const faceOf = (font) => (font === true || font === 'b' ? 'b' : font === 'i' ? 'i' : 'r');
 
-// The WinAnsi codes 128-159 hold these characters; everything else in
-// 32-126 and 160-255 is the character's own code.
 const WIN_HIGH = {
   0x20ac: 128, 0x201a: 130, 0x0192: 131, 0x201e: 132, 0x2026: 133, 0x2020: 134, 0x2021: 135,
   0x02c6: 136, 0x2030: 137, 0x0160: 138, 0x2039: 139, 0x0152: 140, 0x017d: 142, 0x2018: 145,
@@ -112,20 +138,23 @@ export function winAnsi(text) {
 
 const tidy = (t) => winAnsi(t).map((c) => String.fromCharCode(c)).join('').replace(/ {2,}/g, ' ').trim();
 
-/** Width of WinAnsi-safe text, in points. */
-export function textWidth(text, bold, size) {
-  const table = bold ? BOLD : REG;
+/** Width of WinAnsi-safe text, in points. `font` is 'r', 'b' or 'i' (true
+ *  means bold). */
+export function textWidth(text, font, size) {
+  const table = FACES[faceOf(font)];
   let w = 0;
   for (let i = 0; i < text.length; i++) w += table[text.charCodeAt(i) - 32] ?? 0;
   return (w * size) / 1000;
 }
 
+const runFont = (r) => (r.italic ? 'i' : r.bold ? 'b' : 'r');
+
 /**
- * Runs of text into lines no wider than `width`. A run is { text, bold }.
- * Breaks at spaces; a word longer than a whole line (a long link) is broken
- * between letters. Each line is a list of segments { x, text, bold }, and the
- * space before a word travels with that word, so a parser reading the file
- * sees the words apart.
+ * Runs of text into lines no wider than `width`. A run is { text, bold } or
+ * { text, italic }. Breaks at spaces; a word longer than a whole line (a long
+ * link) is broken between letters. Each line is a list of segments
+ * { x, text, font, bold }, and the space before a word travels with that word,
+ * so a parser reading the file sees the words apart.
  */
 export function wrapRuns(runs, width, size) {
   const words = [];
@@ -135,24 +164,24 @@ export function wrapRuns(runs, width, size) {
       if (!piece) continue;
       if (piece.startsWith(' ')) { gap = true; continue; }
       const last = words[words.length - 1];
-      if (last && !gap) last.parts.push({ text: piece, bold: Boolean(r.bold) });
-      else words.push({ gap: words.length > 0 && gap, parts: [{ text: piece, bold: Boolean(r.bold) }] });
+      if (last && !gap) last.parts.push({ text: piece, font: runFont(r) });
+      else words.push({ gap: words.length > 0 && gap, parts: [{ text: piece, font: runFont(r) }] });
       gap = false;
     }
   }
   const lines = [];
   let line = [];
   let x = 0;
-  const wordW = (w) => w.parts.reduce((n, p) => n + textWidth(p.text, p.bold, size), 0);
+  const wordW = (w) => w.parts.reduce((n, p) => n + textWidth(p.text, p.font, size), 0);
   const put = (w, withGap) => {
     for (const [i, p] of w.parts.entries()) {
       const text = i === 0 && withGap ? ` ${p.text}` : p.text;
-      line.push({ x, text, bold: p.bold });
-      x += textWidth(text, p.bold, size);
+      line.push({ x, text, font: p.font });
+      x += textWidth(text, p.font, size);
     }
   };
   for (const w of words) {
-    const lead = w.gap && line.length ? textWidth(' ', w.parts[0].bold, size) : 0;
+    const lead = w.gap && line.length ? textWidth(' ', w.parts[0].font, size) : 0;
     const ww = wordW(w);
     if (line.length && x + lead + ww <= width + 0.01) { put(w, lead > 0); continue; }
     if (line.length) { lines.push(merge(line)); line = []; x = 0; }
@@ -161,14 +190,14 @@ export function wrapRuns(runs, width, size) {
     for (const p of w.parts) {
       let chunk = '';
       for (const ch of p.text) {
-        if (x + textWidth(chunk + ch, p.bold, size) > width && (chunk || line.length)) {
-          if (chunk) line.push({ x, text: chunk, bold: p.bold });
+        if (x + textWidth(chunk + ch, p.font, size) > width && (chunk || line.length)) {
+          if (chunk) line.push({ x, text: chunk, font: p.font });
           lines.push(merge(line));
           line = []; x = 0; chunk = '';
         }
         chunk += ch;
       }
-      if (chunk) { line.push({ x, text: chunk, bold: p.bold }); x += textWidth(chunk, p.bold, size); }
+      if (chunk) { line.push({ x, text: chunk, font: p.font }); x += textWidth(chunk, p.font, size); }
     }
   }
   if (line.length) lines.push(merge(line));
@@ -178,28 +207,33 @@ export function wrapRuns(runs, width, size) {
 // tidy() without the trim, so the space between two runs survives.
 const tidyKeep = (t) => winAnsi(t).map((c) => String.fromCharCode(c)).join('');
 
-// Neighbouring segments in the same font become one.
+// Neighbouring segments in the same face become one.
 function merge(line) {
   const out = [];
   for (const seg of line) {
     const last = out[out.length - 1];
-    if (last && last.bold === seg.bold) last.text += seg.text;
-    else out.push({ ...seg });
+    if (last && last.font === seg.font) last.text += seg.text;
+    else out.push({ ...seg, bold: seg.font === 'b' });
   }
   return out;
 }
 
+const lineWidth = (segs, size) => {
+  const last = segs[segs.length - 1];
+  return last ? last.x + textWidth(last.text, last.font, size) : 0;
+};
+
 /**
  * The resume on screen as a plain model:
- *   { name, contact, sections: [{ heading, blocks: [
+ *   { name, headline, contact, sections: [{ heading, blocks: [
  *       { kind: 'para', runs } |
- *       { kind: 'item', title, org, dates, bullets: [text] } ] }] }
+ *       { kind: 'item', title, org, dates, where, bullets: [text] } ] }] }
  * Read from the DOM renderSheet() builds, so whatever the reader edited or
  * removed is what goes into the file.
  */
 export function sheetModel(box) {
   const text = (n) => (n?.textContent ?? '').replace(/\s+/g, ' ').trim();
-  const model = { name: '', contact: '', sections: [] };
+  const model = { name: '', headline: '', contact: '', sections: [] };
   let loose = null;
   const looseSection = () => {
     if (!loose) { loose = { heading: '', blocks: [] }; model.sections.push(loose); }
@@ -212,6 +246,7 @@ export function sheetModel(box) {
     }
     if (node.nodeType !== 1) continue;
     if (node.matches('.r-name')) { model.name = text(node); continue; }
+    if (node.matches('.r-headline')) { model.headline = text(node); continue; }
     if (node.matches('.r-contact')) { model.contact = text(node); continue; }
     if (!node.matches('.r-sec')) {
       if (text(node)) looseSection().blocks.push({ kind: 'para', runs: [{ text: text(node) }] });
@@ -228,14 +263,18 @@ export function sheetModel(box) {
       if (part.tagName === 'H5') { sec.heading = text(part); continue; }
       if (part.matches('.r-item')) {
         const head = part.querySelector('.r-item-head');
+        const sub = part.querySelector('.r-item-sub');
         const bullets = [...part.querySelectorAll('li')].map(text).filter(Boolean);
-        // Anything typed into the item outside its head and its list.
-        const extra = [...part.childNodes].filter((n) => n !== head && !(n.nodeType === 1 && n.matches('ul'))).map(text).filter(Boolean);
+        // Anything typed into the item outside its two lines and its list.
+        const extra = [...part.childNodes]
+          .filter((n) => n !== head && n !== sub && !(n.nodeType === 1 && n.matches('ul')))
+          .map(text).filter(Boolean);
         sec.blocks.push({
           kind: 'item',
-          title: text(head?.querySelector('.r-role')),
-          org: text(head?.querySelector('.r-org')),
-          dates: text(head?.querySelector('.r-dates')),
+          title: text(part.querySelector('.r-role')),
+          org: text(part.querySelector('.r-org')),
+          dates: text(part.querySelector('.r-dates')),
+          where: text(part.querySelector('.r-where')),
           bullets: [...extra, ...bullets],
         });
         continue;
@@ -258,67 +297,70 @@ export function sheetModel(box) {
 
 /**
  * The model as rows on a page at body size `size` with side margins `margin`.
- * A row is { gap, h, ops, keep }: space above it, its height, what to draw
- * (relative to the row's top-left) and whether it must stay with the row
- * after it. Pure arithmetic; drawing happens in toPdf().
+ * A row is { gap, h, base, ops, keep }: space above it, its height, the type
+ * size its baseline is set for, what to draw (relative to the row's top-left)
+ * and whether it must stay with the row after it. Pure arithmetic; drawing
+ * happens in drawPage(). Proportions follow the LaTeX template at 10pt: name
+ * \LARGE, headline and section titles \large, 0.7pt rules.
  */
 export function layout(model, size, margin) {
   const s = size;
   const width = PAGE_W - margin * 2;
-  const lh = s * 1.3;
+  const lh = s * 1.22;
   const rows = [];
-  const small = s * 0.92;
-  const textRows = (runs, { x = 0, w = width, sz = s, grey = false, gap = 0, keepFirst = false } = {}) => {
+  const textRows = (runs, { x = 0, w = width, sz = s, gap = 0, keepFirst = false, center = false } = {}) => {
     const lines = wrapRuns(runs, w, sz);
     lines.forEach((segs, i) => {
+      const shift = center ? (w - lineWidth(segs, sz)) / 2 : 0;
       rows.push({
-        gap: i === 0 ? gap : 0, h: sz * 1.3, base: sz, keep: keepFirst && i === 0,
-        ops: segs.map((g) => ({ type: 'text', x: x + g.x, text: g.text, bold: g.bold, size: sz, grey })),
+        gap: i === 0 ? gap : 0, h: sz * 1.22, base: sz, keep: keepFirst && i === 0,
+        ops: segs.map((g) => ({ type: 'text', x: x + shift + g.x, text: g.text, font: g.font, size: sz })),
       });
     });
     return lines.length;
   };
+  // A line with text on the left and, optionally, on the right (dates, a
+  // place, a link), the way \hfill sets it. The left side wraps short of the
+  // right side; the right side sits on the first line.
+  const pair = (left, right, font, gap) => {
+    const r = tidy(right);
+    const rw = r ? textWidth(r, font === 'i' ? 'i' : 'r', s) : 0;
+    const start = rows.length;
+    if (left.length) textRows(left, { w: width - (rw ? rw + s : 0), gap, keepFirst: true });
+    else if (r) rows.push({ gap, h: lh, base: s, keep: true, ops: [] });
+    if (r && rows[start]) rows[start].ops.push({ type: 'text', x: width - rw, text: r, font: font === 'i' ? 'i' : 'r', size: s });
+    for (let i = start; i < rows.length; i++) rows[i].keep = true;
+  };
 
-  if (tidy(model.name)) {
-    const ns = s * 1.9;
-    textRows([{ text: model.name, bold: true }], { sz: ns });
-    rows[rows.length - 1].h = ns * 1.2;
-  }
-  if (tidy(model.contact)) textRows([{ text: model.contact }], { sz: small, grey: true, gap: s * 0.2 });
+  if (tidy(model.name)) textRows([{ text: model.name, bold: true }], { sz: s * 1.73, center: true });
+  if (tidy(model.headline)) textRows([{ text: model.headline }], { sz: s * 1.2, center: true, gap: s * 0.15 });
+  if (tidy(model.contact)) textRows([{ text: model.contact }], { center: true, gap: s * 0.2 });
 
-  model.sections.forEach((sec, si) => {
-    const head = tidy(String(sec.heading ?? '').toUpperCase());
-    const before = rows.length ? s * (si === 0 ? 0.95 : 0.85) : 0;
+  model.sections.forEach((sec) => {
+    const head = tidy(sec.heading);
+    const before = rows.length ? s * 0.95 : 0;
     if (head) {
-      const hs = s * 0.98;
+      const hs = s * 1.2;
       rows.push({
-        gap: before, h: hs * 1.25, base: hs, keep: true,
+        gap: before, h: hs * 1.2, base: hs, keep: true,
         ops: [
-          { type: 'text', x: 0, text: head, bold: true, size: hs, grey: false },
-          { type: 'rule', x: 0, w: width, dy: hs * 1.25 + s * 0.12 },
+          { type: 'text', x: 0, text: head, font: 'b', size: hs },
+          { type: 'rule', x: 0, w: width, dy: hs * 1.2 + s * 0.05 },
         ],
       });
-      rows.push({ gap: 0, h: s * 0.42, base: s, keep: true, ops: [] });
+      rows.push({ gap: 0, h: s * 0.45, base: s, keep: true, ops: [] });
     }
     sec.blocks.forEach((b, bi) => {
-      const lead = bi === 0 ? (head ? 0 : before) : s * (b.kind === 'item' ? 0.5 : 0.15);
+      const lead = bi === 0 ? (head ? 0 : before) : s * (b.kind === 'item' ? 0.7 : 0.3);
       if (b.kind === 'para') { textRows(b.runs, { gap: lead }); return; }
-      const dates = tidy(b.dates);
-      const dw = dates ? textWidth(dates, false, small) : 0;
-      const what = [];
-      if (tidy(b.title)) what.push({ text: b.title, bold: true });
-      if (tidy(b.org)) what.push({ text: `${what.length ? ', ' : ''}${b.org}` });
       const start = rows.length;
-      if (what.length) textRows(what, { w: width - (dw ? dw + s : 0), gap: lead, keepFirst: true });
-      else if (dates) rows.push({ gap: lead, h: lh, base: s, keep: true, ops: [] });
-      if (dates && rows[start]) rows[start].ops.push({ type: 'text', x: width - dw, text: dates, bold: false, size: small, grey: true });
-      // A heading line stays with the item's first bullet.
-      for (let i = start; i < rows.length; i++) rows[i].keep = true;
-      const ind = s * 1.25;
+      pair(tidy(b.title) ? [{ text: b.title, bold: true }] : [], b.dates, 'r', lead);
+      if (tidy(b.org) || tidy(b.where)) pair(tidy(b.org) ? [{ text: b.org, italic: true }] : [], b.where, 'i', rows.length > start ? 0 : lead);
+      const ind = s * 1.4;
       b.bullets.forEach((t, i) => {
         const first = rows.length;
-        const n = textRows([{ text: t }], { x: ind, w: width - ind, gap: i === 0 ? s * 0.12 : s * 0.1 });
-        if (n) rows[first].ops.unshift({ type: 'text', x: s * 0.35, text: '\u0095', bold: false, size: s, grey: false });
+        const n = textRows([{ text: t }], { x: ind, w: width - ind, gap: i === 0 ? s * 0.4 : s * 0.3 });
+        if (n) rows[first].ops.unshift({ type: 'text', x: s * 0.5, text: '\u0095', font: 'r', size: s });
       });
       if (!b.bullets.length && rows.length > start) rows[rows.length - 1].keep = false;
     });
@@ -328,8 +370,6 @@ export function layout(model, size, margin) {
 }
 
 const heightOf = (rows) => rows.reduce((n, r) => n + r.gap + r.h, 0);
-const TOP = 40;
-const BOTTOM = 40;
 
 /** The largest type that puts the whole resume on one page, or the smallest
  *  size when nothing fits. */
@@ -353,7 +393,7 @@ function paginate(rows) {
     const r = rows[i];
     const page = pages[pages.length - 1];
     const need = (page.length ? r.gap : 0) + r.h;
-    // Keep a heading or an item's first line with what follows it.
+    // Keep a heading or an item's first lines with what follows them.
     let chain = need;
     for (let j = i; rows[j]?.keep && rows[j + 1] && j < i + 6; j++) chain += rows[j + 1].gap + rows[j + 1].h;
     if (page.length && (used + need > room || (r.keep && used + chain > room && chain <= room))) {
@@ -410,6 +450,8 @@ function asciiOnly(s) {
   return s.replace(/[^\x20-\x7e]/g, (ch) => encodeURI(ch));
 }
 
+const FONT_NAME = { r: 'F1', b: 'F2', i: 'F3' };
+
 function drawPage(rows, margin, size) {
   const ops = [];
   const links = [];
@@ -419,18 +461,18 @@ function drawPage(rows, margin, size) {
     for (const op of r.ops) {
       if (op.type === 'rule') {
         const y = top - op.dy;
-        ops.push(`0.6 G 0.6 w ${num(margin + op.x)} ${num(y)} m ${num(margin + op.x + op.w)} ${num(y)} l S`);
+        ops.push(`0 G 0.7 w ${num(margin + op.x)} ${num(y)} m ${num(margin + op.x + op.w)} ${num(y)} l S`);
         continue;
       }
       // One baseline per row, centred on the row's own type size, so a date
-      // in smaller type sits on the same line as the title beside it.
+      // in another face sits on the same line as the title beside it.
       const y = top - r.h / 2 - 0.2555 * (r.base ?? size);
       const x = margin + op.x;
-      ops.push(`BT /${op.bold ? 'F2' : 'F1'} ${num(op.size)} Tf ${op.grey ? '0.3 g' : '0 g'} ${num(x)} ${num(y)} Td ${pdfString(op.text)} Tj ET`);
+      ops.push(`BT /${FONT_NAME[faceOf(op.font)]} ${num(op.size)} Tf 0 g ${num(x)} ${num(y)} Td ${pdfString(op.text)} Tj ET`);
       for (const m of op.text.matchAll(LINK)) {
         const { text, uri } = linkTarget(m[0]);
-        const lx = x + textWidth(op.text.slice(0, m.index), op.bold, op.size);
-        const lw = textWidth(text, op.bold, op.size);
+        const lx = x + textWidth(op.text.slice(0, m.index), op.font, op.size);
+        const lw = textWidth(text, op.font, op.size);
         links.push({ rect: [lx, y - op.size * 0.22, lx + lw, y + op.size * 0.75], uri });
       }
     }
@@ -450,8 +492,10 @@ export function resumePdf(model, { date = new Date() } = {}) {
   const add = (body) => { objects.push(body); return objects.length; };
   const catalog = add(null);
   const pagesObj = add(null);
-  const f1 = add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
-  const f2 = add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+  const font = (base) => add(`<< /Type /Font /Subtype /Type1 /BaseFont /${base} /Encoding /WinAnsiEncoding >>`);
+  const f1 = font('Times-Roman');
+  const f2 = font('Times-Bold');
+  const f3 = font('Times-Italic');
   const kids = [];
   for (const rows of pageRows) {
     const { content, links } = drawPage(rows, fit.margin, fit.size);
@@ -461,7 +505,7 @@ export function resumePdf(model, { date = new Date() } = {}) {
     ));
     kids.push(add(
       `<< /Type /Page /Parent ${pagesObj} 0 R /MediaBox [0 0 ${num(PAGE_W)} ${num(PAGE_H)}] `
-      + `/Resources << /Font << /F1 ${f1} 0 R /F2 ${f2} 0 R >> >> /Contents ${stream} 0 R`
+      + `/Resources << /Font << /F1 ${f1} 0 R /F2 ${f2} 0 R /F3 ${f3} 0 R >> >> /Contents ${stream} 0 R`
       + `${annots.length ? ` /Annots [${annots.map((a) => `${a} 0 R`).join(' ')}]` : ''} >>`,
     ));
   }

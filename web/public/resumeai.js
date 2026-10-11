@@ -141,6 +141,8 @@ export const SKILL_ALIASES = {
   javascript: ['js', 'ecmascript'],
   typescript: ['ts'],
   'node.js': ['nodejs', 'node js', 'node'],
+  'express.js': ['express', 'expressjs'],
+  websockets: ['websocket', 'web sockets', 'web socket'],
   'react.js': ['reactjs', 'react'],
   'next.js': ['nextjs'],
   'vue.js': ['vuejs', 'vue'],
@@ -322,6 +324,35 @@ export function mentions(hay, skill) {
   return false;
 }
 
+/* A spelling the reader used, standing for the canonical name the rewrite may
+   use instead ("JS" for JavaScript, "Node" for Node.js). Only true spellings:
+   an alias that is a DIFFERENT tool (FastAPI listed beside Flask, GitHub beside
+   Git, Keras beside TensorFlow) never counts as the reader's skill being kept,
+   or a rewrite could drop it and nothing would put it back. */
+const NOT_A_SPELLING = new Set([
+  'fastapi', 'keras', 'opencv', 'scrum', 'ubuntu', 'unix', 'simulink', 'git', 'github', 'gitlab',
+  'asp.net', 'system verilog', 'systemverilog', 'containerisation', 'containerization', 'spring',
+]);
+const CANONICAL_OF = new Map();
+for (const [canon, alts] of Object.entries(SKILL_ALIASES)) {
+  for (const alt of alts) if (!NOT_A_SPELLING.has(normSkill(alt))) CANONICAL_OF.set(normSkill(alt), canon);
+}
+
+/**
+ * Is the reader's skill still in the rewrite, under its own name, a spelling of
+ * it, or (for a combined entry like "Node/Express" or "HTML/CSS") with every
+ * part present? Used only to decide whether a skill must be PUT BACK, so it
+ * errs towards "not kept": a qualifier the reader wrote ("Docker (basic)") is
+ * part of the skill's words and has to survive with it.
+ */
+export function keptIn(hay, skill) {
+  if (mentions(hay, skill)) return true;
+  const canon = CANONICAL_OF.get(keyOf(skill));
+  if (canon && mentions(hay, canon)) return true;
+  const parts = String(skill).split(/\s*[/&+]\s*|\s+and\s+/i).map((x) => x.trim()).filter(Boolean);
+  return parts.length > 1 && parts.every((x) => x.length > 1) && parts.every((x) => keptIn(hay, x));
+}
+
 /** Split on commas, semicolons and bullets, but never inside brackets, so
  *  "AWS (EC2, S3)" stays one skill. */
 function splitList(text) {
@@ -392,6 +423,7 @@ function normResume(raw) {
       title: str(it?.title, 200),
       org: str(it?.org, 200),
       dates: str(it?.dates, 80),
+      where: str(it?.where, 160),
       bullets: (Array.isArray(it?.bullets) ? it.bullets : []).map((b) => (typeof b === 'string'
         ? { id: '', text: str(b, 1200), from: [] }
         : {
@@ -484,7 +516,7 @@ export function resumePlainText(R) {
   for (const sec of R?.sections ?? []) {
     out.push(sec.heading);
     for (const it of sec.items ?? []) {
-      out.push([it.title, it.org, it.dates].filter(Boolean).join(' '));
+      out.push([it.title, it.org, it.dates, it.where].filter(Boolean).join(' '));
       for (const b of it.bullets ?? []) out.push(typeof b === 'string' ? b : b.text);
     }
   }
@@ -556,6 +588,7 @@ export function reconcileTailored(data, resumeText) {
         it.title = o.title || it.title;
         it.org = o.org;
         it.dates = o.dates;
+        it.where = o.where;
       }
       for (const b of it.bullets) {
         let from = b.from.filter((id) => oBullet.has(id));
@@ -582,7 +615,7 @@ export function reconcileTailored(data, resumeText) {
     let sec = T.sections.find((x) => sameKey(x.heading, heading));
     if (!sec) { sec = { heading, items: [] }; T.sections.push(sec); }
     sec.items.push({
-      id: '', from: id, added: false, title: item.title, org: item.org, dates: item.dates,
+      id: '', from: id, added: false, title: item.title, org: item.org, dates: item.dates, where: item.where,
       bullets: item.bullets.map((b) => ({ id: '', text: b.text, from: [b.id], added: false })),
     });
     usedItems.add(id);
@@ -601,7 +634,7 @@ export function reconcileTailored(data, resumeText) {
   const tHay = () => hayOf(T.skills.flatMap((g) => g.items).join(' , '));
   for (const g of O.skills) {
     for (const s of g.items) {
-      if (mentions(tHay(), s)) continue;
+      if (keptIn(tHay(), s)) continue;
       // Back under its own heading: a reader's "Tools" group comes back as
       // "Tools", not folded into whatever group the rewrite kept first.
       let home = T.skills.find((x) => x.group.toLowerCase() === g.group.toLowerCase())
@@ -808,10 +841,29 @@ export async function rankWithAI({ resumeText, jobs, signal, region }) {
 /** Rewrite one resume against one job. Nothing of the reader's is ever
  *  removed: reconcileTailored puts back anything the rewrite dropped, and
  *  marks everything it added. */
+/**
+ * The posting's exact title as the resume's headline, the first thing a
+ * recruiter's search matches (a senior recruiter, 11 Oct 2026: "If I search
+ * 'Senior Project Manager' and your resume says 'Project Coordinator', you
+ * won't show up"). Set here, from the role, never by the model, so it is the
+ * title word for word. It is an addition like any other: listed, highlighted,
+ * and one click removes it.
+ */
+export function addHeadline(t, job) {
+  const title = str(job?.title, 120);
+  if (!t?.tailored || !title) return t;
+  t.tailored.headline = title;
+  t.added = [{
+    key: 'headline', kind: 'headline', text: title,
+    why: "The posting's exact title. Recruiters search by title first.",
+  }, ...(t.added ?? []).filter((a) => a.key !== 'headline')];
+  return t;
+}
+
 export async function tailorWithAI({ resumeText, job, signal, region }) {
   const resume = String(resumeText).slice(0, MAX_RESUME_CHARS);
   const data = await callAI('tailor', { resume, job: clampJob(job) }, { signal, region });
-  const t = reconcileTailored(data, resume);
+  const t = addHeadline(reconcileTailored(data, resume), job);
   if (!t.tailored.sections.length && !t.tailored.skills.length) {
     throw new Error('The AI returned an empty resume. Please try again.');
   }

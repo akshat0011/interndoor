@@ -1587,25 +1587,29 @@ html[data-boot] .boot-part {
 
 
 /* The resume itself: one column, standard headings and plain text, which is
-   what an applicant tracking system reads best. Set in Helvetica because the
-   downloaded PDF is (resumepdf.js), so what is on screen is what you get. */
-.sheet { --sheet-font: "Helvetica Neue", Helvetica, Arial, sans-serif; background: #fff; color: #16160f; border-radius: 6px; padding: 44px 48px; font-family: var(--sheet-font); font-size: 13px; line-height: 1.5; }
-.sheet .r-name { font-family: var(--sheet-font); font-weight: 700; font-size: 26px; line-height: 1.15; letter-spacing: -.01em; }
-.sheet .r-contact { font-family: var(--sheet-font); font-size: 11.5px; color: #55554c; margin-top: 6px; }
-.sheet .r-sec { margin-top: 20px; }
+   what an applicant tracking system reads best. Laid out and set like the
+   downloaded PDF (resumepdf.js), which copies the classic LaTeX resume: name,
+   headline and contact centred, bold section titles over a rule, a bold title
+   with its dates on the right and the organisation in italics beneath. Times,
+   the PDF's face, so what is on screen is what you get. */
+.sheet { --sheet-font: "Times New Roman", Times, "Liberation Serif", serif; background: #fff; color: #000; border-radius: 6px; padding: 40px 44px; font-family: var(--sheet-font); font-size: 14.5px; line-height: 1.3; }
+.sheet .r-name { font-family: var(--sheet-font); font-weight: 700; font-size: 25px; line-height: 1.15; text-align: center; }
+.sheet .r-headline { font-size: 17.5px; text-align: center; margin-top: 2px; }
+.sheet .r-contact { font-family: var(--sheet-font); font-size: 14.5px; text-align: center; margin-top: 3px; }
+.sheet .r-sec { margin-top: 14px; }
 .sheet .r-sec > h5 {
-  margin: 0 0 8px; padding-bottom: 4px; border-bottom: 1px solid #16160f;
-  font-family: var(--sheet-font); font-size: 12px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;
+  margin: 0 0 7px; padding-bottom: 2px; border-bottom: 1px solid #000;
+  font-family: var(--sheet-font); font-size: 17.5px; font-weight: 700; letter-spacing: 0; text-transform: none;
 }
 .sheet .r-summary { margin: 0; }
 .sheet .r-item { margin-bottom: 10px; break-inside: avoid; }
-.sheet .r-item-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.sheet .r-item-head, .sheet .r-item-sub { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
 .sheet .r-role { font-weight: 700; }
-.sheet .r-org { color: #3d3d35; }
-.sheet .r-dates { font-family: var(--sheet-font); font-size: 12px; color: #62625a; white-space: nowrap; }
-.sheet .r-item ul { list-style: disc; padding-left: 18px; margin: 3px 0 0; }
-.sheet .r-item li + li { margin-top: 2px; }
-.sheet .r-skills { margin: 0 0 3px; }
+.sheet .r-org, .sheet .r-where { font-style: italic; }
+.sheet .r-dates, .sheet .r-where { font-family: var(--sheet-font); white-space: nowrap; }
+.sheet .r-item ul { list-style: disc; padding-left: 20px; margin: 5px 0 0; }
+.sheet .r-item li + li { margin-top: 3px; }
+.sheet .r-skills { margin: 0 0 4px; }
 /* What the tailor added: a highlighter stroke under the words. Never printed. */
 .sheet .r-add {
   background: linear-gradient(transparent 58%, rgba(200, 255, 0, .55) 58%);
