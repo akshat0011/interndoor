@@ -19,7 +19,7 @@
  * codepoints; a local 8b model asked to emit them produces mojibake about half
  * the time, and it has no way to know which spans should be bold anyway.
  */
-import { jobSlug, SITE, durationText } from './pages.js';
+import { jobSlug, SITE, durationText, stipendText } from './pages.js';
 import { publishedTitle } from './titles.js';
 import { resolveRowRegion, regionPath, publishedRegions, regionOf } from './regions.js';
 import { formatStipend } from './extract.js';
@@ -247,13 +247,32 @@ export function telegramFor(cfg, code) {
  * four-digit years: a copyright line, "founded in 2011", a ₹2,026 figure that
  * reached the stipend slot. Anything before this year is somebody's history.
  */
+/*
+ * AND THE YEAR MUST BE ABOUT GRADUATING (11 Oct 2026). Any year in the window
+ * used to count, so Sony's "starting first week of November 2026" printed
+ * "Batch: 2026", and posting dates ("Posting Start Date: 08/10/2026"), award
+ * years and summer-programme years ("Intern – 2027", whose interns graduate
+ * later) did the same. A year now counts only with a graduation word beside it
+ * in the same sentence: graduating, passing / pass-outs, batch, class of, or a
+ * campus hire. Measured over the 1,287 live roles: 51 lose a year, every one
+ * of them a date that was never a batch; "2027 Campus Hire" and "Academic
+ * Passing in 2026" keep theirs.
+ */
+const BATCH_CUE = /graduat|\bpass(?:ing|ed)?(?:[\s-]*outs?)?\b|year of passing|\bbatch(?:es)?\b|\bclass of\b|\bcampus (?:hire|hiring|placement|recruit)/i;
+const SENTENCE_END = /[.;!?\n](?:\s|$)/;
+
 export function batchYears(...texts) {
-  const haystack = texts.filter(Boolean).join('\n');
   const thisYear = new Date().getFullYear();
   const found = new Set();
-  for (const m of haystack.matchAll(/\b(20[2-3]\d)\b/g)) {
-    const year = Number(m[1]);
-    if (year >= thisYear && year <= thisYear + 5) found.add(year);
+  for (const text of texts.filter(Boolean)) {
+    const s = String(text);
+    for (const m of s.matchAll(/\b(20[2-3]\d)\b/g)) {
+      const year = Number(m[1]);
+      if (year < thisYear || year > thisYear + 5) continue;
+      const before = s.slice(Math.max(0, m.index - 80), m.index).split(SENTENCE_END).at(-1);
+      const after = s.slice(m.index + 4, m.index + 64).split(SENTENCE_END)[0];
+      if (BATCH_CUE.test(`${before} ${after}`)) found.add(year);
+    }
   }
   return [...found].sort();
 }
@@ -377,7 +396,12 @@ export function jobFacts(row, cfg = {}, campaign = 'post') {
     min: row.stipend_min, max: row.stipend_max,
     currency: row.stipend_currency, period: row.stipend_period,
   }) || row.salary_text || null;
-  const stipend = isZeroPay(rawStipend) ? null : rawStipend;
+  /* AND A BARE NUMBER IS NOT PAY (11 Oct 2026): Sony Research India's row
+     stores 2026 as its stipend — no currency, no period, the year — and the
+     post's first line read "— 2,026". The site's own gate (stipendText) wants
+     a currency or a period and has refused it all along; the post now asks
+     the same question. */
+  const stipend = isZeroPay(rawStipend) ? null : (stipendText({ stipend: rawStipend }) || null);
 
   const region = resolveRowRegion(row);
   const published = new Set(publishedRegions(cfg).map((r) => r.code));
@@ -390,7 +414,9 @@ export function jobFacts(row, cfg = {}, campaign = 'post') {
     ? `${SITE}${regionPath(region)}/jobs/${jobSlug({ company: row.company, title: row.title, id: row.job_id })}`
     : null;
 
-  const years = batchYears(row.description, row.title);
+  /* The grounded `experience` field carries "Graduating 2027" when the
+     facts reader found one — the most trustworthy source, read first. */
+  const years = batchYears(row.experience, row.description, row.title);
   const postedAt = row.posted_at || row.first_seen_at || null;
   const tag = (url, content) => utmUrl(url, { campaign, content }, cfg);
 
@@ -648,12 +674,6 @@ const B = boldSans;
  * under LinkedIn's 3,000-character limit can drop whole sections from the least
  * important end, rather than slicing the string and leaving half a URL.
  */
-/**
- * HIS LINE, VERBATIM (1 Oct 2026): "add the exact line 'comment ur resume link
- * for a refferal'". Spelling and case are his and are not to be "fixed".
- */
-export const REFERRAL_ASK = 'comment ur resume link for a refferal';
-
 /** "Wed, 16 Sept, 5:30 am" -> "16 Sept": the day is the fact, the clock is noise. */
 const dayOnly = (label) => (String(label ?? '').match(/\b\d{1,2} [A-Z][a-z]{2,4}\b/) ?? [label])[0];
 
@@ -670,15 +690,20 @@ export function composePost(facts, ai) {
      LinkedIn's own list while typing, so the posts page has him type it and
      copies the post from just AFTER the name (src/postpage.js). Bold letters
      here would make the name unpickable. */
+  /* HIS FORMAT, 11 Oct 2026 — "Sony is hiring interns: Data Science
+     Intern!": the company, whom, the role and nothing else. The city, the
+     work mode and the pay came off the line (pay is a fact line below). */
   const who = facts.fullTime ? (facts.region === 'IN' ? 'freshers' : `${facts.entryWord ?? 'entry-level'} engineers`) : 'interns';
-  const city = facts.location ? cityOf(facts.location) : '';
-  const mode = facts.workplaceType ? ` (${facts.workplaceType})` : '';
-  const head = `${facts.company} is hiring ${who}: ${B(role)}${city ? ` in ${city}${mode}` : ''}${facts.stipend ? ` — ${facts.stipend}` : ''}`;
+  const head = `${facts.company} is hiring ${who}: ${B(role)}!`;
 
   /* ONLY WHAT A READER DECIDES ON (1 Oct 2026, "remove any useless info").
      The place, mode and pay are on the first line already; the applicant
      count was a stale snapshot; the clock time of the posting was noise. */
   const factLines = [];
+  /* Pay is still the first thing a student asks, so a STATED figure keeps a
+     line of its own now that it is off the first line. Only what jobFacts let
+     through the site's stipend gate. */
+  if (facts.stipend) factLines.push(`💰 ${B(facts.fullTime ? 'Pay' : 'Stipend')}: ${facts.stipend}`);
   if (facts.batch) factLines.push(`🎓 ${B('Batch')}: ${facts.batch}`);
   if (facts.degreeText) factLines.push(`📜 ${B('Degree')}: ${facts.degreeText}`);
   if (facts.experience) factLines.push(`🧭 ${B('Experience')}: ${facts.experience}`);
@@ -687,14 +712,14 @@ export function composePost(facts, ai) {
   if (duration) factLines.push(`⏳ ${B('Duration')}: ${duration}`);
   if (facts.postedLabel) factLines.push(`🕐 ${B('Posted')}: ${dayOnly(facts.postedLabel)}`);
 
-  /* ONE link in the body, the job page; the board and the channel go in the
-     first comment (composeComment). The channel is NAMED here without a
-     link — a handle is not an outbound link. */
+  /* ONE link in the body, the job page. The channel is NAMED without a link
+     — a handle is not an outbound link — and, in his 11 Oct format, without
+     "link in the comments": the first comment is his to post or not. */
   const kinds = `internships and ${facts.entryWord ?? 'entry-level'} roles`;
   const follow = facts.follow
     ? (facts.follow.handle
-      ? `📢 New ${kinds} daily: ${facts.follow.handle} on ${facts.follow.name} — link in the comments.`
-      : `📢 New ${kinds} daily on our ${facts.follow.name} channel — link in the comments.`)
+      ? `📢 New ${kinds} daily: ${facts.follow.handle} on ${facts.follow.name}.`
+      : `📢 New ${kinds} daily on our ${facts.follow.name} channel.`)
     : '';
 
   const section = {
@@ -715,7 +740,8 @@ export function composePost(facts, ai) {
     factLines.join('\n'),
     `👉 ${B('Apply here')}: ${facts.link}`,
     drop.has('tip') ? '' : section.tip,
-    REFERRAL_ASK,
+    /* "comment ur resume link for a refferal" (his line of 1 Oct) is not in
+       his 11 Oct format, so it is gone. */
     follow,
     `Source: ${facts.source} · not affiliated with ${facts.company}.`,
     drop.has('hashtags') ? '' : section.hashtags,

@@ -52,6 +52,16 @@ ok('finds several', batchYears(`${Y} and ${Y + 1} batches`).join() === `${Y},${Y
 ok('ignores a year in the past', batchYears('founded in 2011, © 2019').length === 0);
 ok('ignores a year far in the future', batchYears(`valid until ${Y + 9}`).length === 0);
 ok('nothing stated means nothing claimed', batchYears('Great team, apply now').length === 0);
+/* 11 Oct 2026: a year counts only beside a graduation word. Sony's posting
+   said "starting first week of November 2026" and the post read "Batch: 2026". */
+ok('a start date is not a batch', batchYears(`The paid internship will be for six months starting first week of November ${Y}.`).length === 0);
+ok('a posting date is not a batch', batchYears(`Posting Start Date: 08/10/${Y}`).length === 0);
+ok('a summer-programme year in a title is not a batch', batchYears(`Technology Consulting – Intern – ${Y + 1}`).length === 0);
+ok('a campus hire year is a batch', batchYears(`${Y + 1} Campus Hire_ Engineer_ HW`).join() === String(Y + 1));
+ok('"Academic Passing in" is a batch', batchYears(`Academic Passing in ${Y}`).join() === String(Y));
+ok('pass-outs are a batch', batchYears(`${Y}/${Y + 1} passouts only`).join() === `${Y},${Y + 1}`);
+ok('a graduation word in the NEXT sentence does not count', batchYears(`Starts January ${Y + 1}. Graduates welcome.`).length === 0);
+ok('the grounded "Graduating 2027" field counts', batchYears(`Graduating ${Y + 1} · 0–1 years`).join() === String(Y + 1));
 
 console.log('\n== where the listing came from ==');
 ok('a numeric id is LinkedIn', sourceLabel(row()) === 'LinkedIn');
@@ -170,7 +180,8 @@ const { text } = buildPost(row(), CFG, { hook: 'You would be on the payments bac
 
 ok('names the company', text.includes('NoBroker.com'));
 ok('names the role', plainText(text).includes('Software Engineering Intern'));
-ok('carries the city on the first line', plainText(text).split('\n')[0].includes(' in Bengaluru'));
+/* HIS FORMAT, 11 Oct 2026: the first line is the company, whom and the role. */
+ok('the first line carries no city, mode or pay', !/ in Bengaluru|\(On-site\)|[₹$]/.test(plainText(text).split('\n')[0]));
 ok('carries the batch', text.includes(String(Y + 1)));
 ok('links to the job page on the site', text.includes('https://interndoor.com/jobs/nobroker-com-software-engineering-intern-4449259269'));
 ok('links to the board', text.includes('https://interndoor.com/'));
@@ -184,7 +195,7 @@ ok('under the LinkedIn limit', text.length <= MAX_POST_CHARS, `${text.length} ch
 /* THE OPENER, 1 Oct 2026: who is hiring, whom and where — not the job-spam
    "🚨 … is Hiring … 💻🔥" every other account writes. */
 const firstLine = plainText(text).split('\n')[0];
-ok('the first line is "<company> is hiring interns: <role> in <city> (<mode>)"', firstLine === 'NoBroker.com is hiring interns: Software Engineering Intern in Bengaluru (On-site)', firstLine);
+ok('the first line is "<company> is hiring interns: <role>!"', firstLine === 'NoBroker.com is hiring interns: Software Engineering Intern!', firstLine);
 /* THE COMPANY IS PLAIN so he can turn it into an @mention (1 Oct 2026): bold
    letters are different characters and LinkedIn's picker would not match. */
 ok('the post opens with the company in plain letters', text.startsWith('NoBroker.com is hiring'));
@@ -194,18 +205,25 @@ ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <=
   const ft = buildPost(row({ employment_type: 'fulltime', title: 'Associate Software Engineer', job_id: '4470000010' }), CFG, null);
   ok('a full-time role on the India board hires freshers', plainText(ft.text).split('\n')[0].startsWith('NoBroker.com is hiring freshers: Associate Software Engineer'));
   const paid = buildPost(row({ stipend_min: 50000, stipend_max: 50000, stipend_currency: 'INR', stipend_period: 'month' }), CFG, null);
-  ok('a stated stipend is on the first line', plainText(paid.text).split('\n')[0].endsWith('— ₹50,000 / month'));
+  ok('a stated stipend is a fact line of its own', plainText(paid.text).split('\n').includes('💰 Stipend: ₹50,000 / month') && !plainText(paid.text).split('\n')[0].includes('₹'));
+  /* Sony Research India, 11 Oct 2026: 2026 stored as the stipend, no currency, no period. */
+  const year = buildPost(row({ stipend_min: 2026, stipend_max: 2026, stipend_currency: null, stipend_period: null, salary_text: null }), CFG, null);
+  ok('a bare number is not pay (the site\'s own stipend gate)', !/2,026|Stipend:/.test(plainText(year.text)));
+  const grad = buildPost(row({ experience: `Graduating ${new Date().getFullYear() + 1}`, description: 'Join our team. The internship starts in November.' }), CFG, null);
+  ok('the grounded experience field feeds the batch', plainText(grad.text).split('\n').includes(`🎓 Batch: ${new Date().getFullYear() + 1}`));
   ok('no stated stipend, no money on the first line', !/[₹$]/.test(firstLine));
 }
 
 /* HIS LINE, VERBATIM (1 Oct 2026), spelling and all — and the separate
    referral comment it replaced is gone. */
 {
-  const { REFERRAL_ASK } = await import('../src/postgen.js');
   const b = buildPost(row(), CFG, null);
-  ok('the exact line is the one he gave', REFERRAL_ASK === 'comment ur resume link for a refferal');
-  ok('it is in the post, on a line of its own', b.text.split('\n').includes(REFERRAL_ASK));
-  ok('and it sits after the apply link', b.text.indexOf(REFERRAL_ASK) > b.text.indexOf('Apply here'));
+  /* His 11 Oct format drops the referral line and "link in the comments". */
+  ok('the referral line is gone (11 Oct format)', !/refferal|referral/i.test(b.text) && !('REFERRAL_ASK' in await import('../src/postgen.js')));
+  ok('the channel line no longer points at the comments', !/link in the comments/i.test(b.text));
+  /* India's channel is WhatsApp, which has no handle: the other variant. */
+  const wa = buildPost(row(), { ...CFG, notifications: { ...CFG.notifications, whatsapp: { channels: { IN: 'https://www.whatsapp.com/channel/0029Vb0000000000000000' } } } }, null);
+  ok('his WhatsApp line, verbatim', plainText(wa.text).split('\n').includes('📢 New internships and entry-level roles daily on our WhatsApp channel.'));
   ok('there is no separate referral comment any more', !('referral' in b));
   ok('the "work at X? say so" ask is gone', !/If you can refer for this role/.test(plainText(b.text)));
   ok('the urgency filler is gone', !/openings like this close within days/i.test(plainText(b.text)));
@@ -224,7 +242,7 @@ ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <=
   /* The site's clean title is what the post SHOWS; the stored one still
      builds the job-page link, or every cleaned listing would 404. */
   const clean = buildPost(row({ title: 'Software Engineering Intern 2027 (Evergreen)', display_title: 'Software Engineering Intern' }), CFG, null);
-  ok('the post shows the clean title', plainText(clean.text).split('\n')[0].includes('interns: Software Engineering Intern in'));
+  ok('the post shows the clean title', plainText(clean.text).split('\n')[0] === 'NoBroker.com is hiring interns: Software Engineering Intern!');
   ok('and links the page at the stored title', clean.text.includes('/jobs/nobroker-com-software-engineering-intern-2027-evergreen-4449259269?'));
 }
 
