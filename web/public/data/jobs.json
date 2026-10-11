@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791709569373,
+ "generatedAt": 1791709885099,
  "region": "IN",
  "regionName": "India",
  "count": 1284,
@@ -102,6 +102,7 @@
   "Dyson",
   "EMotorad",
   "EXL",
+  "EXL Solutions",
   "EY",
   "Eaton",
   "Echo Initiative by Joveo",
@@ -481,6 +482,61 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4477256318",
+   "title": "Automation Engineer",
+   "company": "EXL Solutions",
+   "matchedWatchlist": "EXL",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/exl-solutions.jpg",
+   "location": "India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": true,
+   "skills": [
+    "python",
+    "aws",
+    "azure",
+    "gcp"
+   ],
+   "summary": "This role involves creating automation tools to enhance operational efficiency in ai and infrastructure projects. The candidate will work with python and cloud platforms, collaborating with cybersecurity and operations teams to ensure secure and scalable solutions. It suits those with a background in automation engineering and experience with scripting languages and cloud technologies.",
+   "bullets": [
+    "Design and implement automation workflows for ai and infrastructure projects",
+    "Work with python and cloud platforms like aws or azure",
+    "Collaborate with cybersecurity and operations teams on secure solutions"
+   ],
+   "roleLabel": "Automation engineering",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "aws",
+    "azure",
+    "powershell",
+    "cloud platforms"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "13 minutes ago",
+   "postedAt": 1791709023841,
+   "firstSeenAt": 1791709803852,
+   "lastSeenAt": 1791709803852,
+   "url": "https://www.linkedin.com/jobs/view/4477256318/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4477256318/",
+   "description": null,
+   "roleFingerprint": "f8a1aae211",
+   "cardFacts": [
+    "India",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "generic",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4478080756",
    "title": "Full Stack Software Engineer I",
@@ -72794,69 +72850,6 @@
    ],
    "category": "misc",
    "family": "core_eng",
-   "region": "IN",
-   "verified": true
-  },
-  {
-   "id": "4466048783",
-   "title": "Full-Stack Intern - B2B",
-   "company": "ixigo",
-   "matchedWatchlist": "ixigo",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/ixigo.png",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "36 people clicked apply",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "typescript",
-    "flask",
-    "fastapi",
-    "aws",
-    "docker",
-    "kubernetes",
-    "ci/cd",
-    "postgresql",
-    "redis"
-   ],
-   "summary": "This internship involves building voice bot systems and backend infrastructure for enterprise customer support. Interns will work with python, typescript, and voice ai technologies to develop tools that help automate calls and improve customer service. The role is ideal for students with experience in full-stack development and an interest in ai-driven customer support solutions.",
-   "bullets": [
-    "Build voice bot tools and backend systems for enterprise customer support",
-    "Work with python, typescript, fastapi, and voice ai technologies",
-    "Contribute to call scheduling, retry frameworks, and observability tools"
-   ],
-   "roleLabel": "Voice bot development",
-   "degreeLevel": "Pursuing",
-   "degreeText": "Computer Science/Engineering",
-   "keySkills": [
-    "python",
-    "typescript",
-    "fastapi",
-    "voice ai",
-    "stt/tts"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "13 minutes ago",
-   "postedAt": 1789116807075,
-   "firstSeenAt": 1789117587078,
-   "lastSeenAt": 1789117587078,
-   "checkedAt": 1791626907822,
-   "checkedVia": "link",
-   "url": "https://www.linkedin.com/jobs/view/4466048783/",
-   "applyUrl": "https://smrtr.io/BPCht",
-   "description": null,
-   "roleFingerprint": "611aae2268",
-   "cardFacts": [
-    "Gurugram",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "fullstack",
    "region": "IN",
    "verified": true
   },

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Sun, 11 Oct 2026 00:03:10 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 11 Oct 2026 08:57:03 GMT</lastBuildDate>
+  <item>
+    <title>Automation Engineer — EXL Solutions</title>
+    <link>https://interndoor.com/jobs/exl-solutions-automation-engineer-4477256318</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/exl-solutions-automation-engineer-4477256318</guid>
+    <pubDate>Sun, 11 Oct 2026 08:57:03 GMT</pubDate>
+    <description>Company: EXL Solutions · Location: India
+• Design and implement automation workflows for ai and infrastructure projects
+• Work with python and cloud platforms like aws or azure
+• Collaborate with cybersecurity and operations teams on secure solutions</description>
+  </item>
   <item>
     <title>Full Stack Software Engineer I — Honeywell Technologies</title>
     <link>https://interndoor.com/jobs/honeywell-technologies-software-engr-i-full-stack-asp-net-4478080756</link>
@@ -500,16 +510,6 @@
 • Build and maintain PostgreSQL databases with focus on performance, security, and scalability
 • Use Python, Snowflake, and AWS to design data pipelines and optimize cloud costs
 • Work in a global team on high-tech projects with opportunities for remote work</description>
-  </item>
-  <item>
-    <title>DevOps Engineer — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-devops-engineer-irc299946-4449374994</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-devops-engineer-irc299946-4449374994</guid>
-    <pubDate>Fri, 09 Oct 2026 18:54:41 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Chennai, Tamil Nadu, India
-• Implement and maintain CI/CD pipelines using Jenkins, GitLab CI, and GitHub Actions
-• Collaborate with cross-functional teams to optimize platform performance and adoption
-• Champion containerization with Docker, Kubernetes, and Helm for scalable systems</description>
   </item>
 </channel>
 </rss>

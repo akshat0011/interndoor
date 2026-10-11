@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/exl-solutions-automation-engineer-4477256318",
+      "url": "https://interndoor.com/jobs/exl-solutions-automation-engineer-4477256318",
+      "title": "Automation Engineer — EXL Solutions",
+      "content_text": "Company: EXL Solutions · Location: India\n• Design and implement automation workflows for ai and infrastructure projects\n• Work with python and cloud platforms like aws or azure\n• Collaborate with cybersecurity and operations teams on secure solutions",
+      "date_published": "2026-10-11T08:57:03.841Z",
+      "authors": [
+        {
+          "name": "EXL Solutions"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-full-stack-asp-net-4478080756",
       "url": "https://interndoor.com/jobs/honeywell-technologies-software-engr-i-full-stack-asp-net-4478080756",
       "title": "Full Stack Software Engineer I — Honeywell Technologies",
@@ -587,18 +599,6 @@
       "title": "Database Engineer — GlobalLogic",
       "content_text": "Company: GlobalLogic · Location: Bengaluru, Karnataka, India\n• Build and maintain PostgreSQL databases with focus on performance, security, and scalability\n• Use Python, Snowflake, and AWS to design data pipelines and optimize cloud costs\n• Work in a global team on high-tech projects with opportunities for remote work",
       "date_published": "2026-10-09T18:54:59.625Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-devops-engineer-irc299946-4449374994",
-      "url": "https://interndoor.com/jobs/globallogic-devops-engineer-irc299946-4449374994",
-      "title": "DevOps Engineer — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Chennai, Tamil Nadu, India\n• Implement and maintain CI/CD pipelines using Jenkins, GitLab CI, and GitHub Actions\n• Collaborate with cross-functional teams to optimize platform performance and adoption\n• Champion containerization with Docker, Kubernetes, and Helm for scalable systems",
-      "date_published": "2026-10-09T18:54:41.670Z",
       "authors": [
         {
           "name": "GlobalLogic"
