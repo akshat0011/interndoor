@@ -470,6 +470,9 @@ function normResume(raw) {
     }
     if (SKILLS_HEAD.test(sec.heading)) {
       for (const it of sec.items) {
+        // A model can file an empty "Skills" section whose one item is the
+        // word "Skills": that is the heading again, not a skill.
+        if (!it.bullets.length && !it.org && (sameKey(it.title, sec.heading) || BARE_SKILLS_HEAD.test(it.title))) continue;
         const head = splitSkillEntry(it.title);
         const titleIsList = Boolean(head.group) || head.items.length > 1;
         let group = head.group || (titleIsList || !it.bullets.length ? '' : it.title);
@@ -508,6 +511,7 @@ function normResume(raw) {
 
 const SUMMARY_HEAD = /^(professional |career )?(summary|profile|objective|about( me)?)$/i;
 const SKILLS_HEAD = /\bskills?\b|technolog|tech stack|competenc/i;
+const BARE_SKILLS_HEAD = /^\s*(technical |key |core |soft |other |additional )?skills?\s*$/i;
 
 /** The resume as plain text, in reading order. Used for the keyword count and
  *  for checking how much of the input the parse actually read. */

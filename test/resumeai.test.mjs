@@ -726,6 +726,20 @@ console.log('\n== A RESPELLED SKILL IS KEPT; A DIFFERENT TOOL IS NOT ==');
   check('but a dropped qualifier and a different tool are', t.tailored.skills[1].items.map((x) => x.text), ['Docker (basic)', 'FastAPI']);
 }
 
+{
+  // Seen on a real answer, 11 Oct 2026: an empty "Skills" section whose one
+  // item is the word "Skills". That is the heading, not a skill.
+  const data = {
+    original: { name: 'K', sections: [], skills: [{ group: 'Languages', items: ['Python'] }] },
+    tailored: { name: 'K', sections: [{ heading: 'Skills', items: [{ title: 'Skills', bullets: [] }] }, { heading: 'Technical Skills', items: [{ title: 'Technical Skills', bullets: [] }, { title: 'Kotlin', bullets: [] }] }], skills: [{ group: 'Languages', items: ['Python'] }] },
+    added: [],
+  };
+  const t = reconcileTailored(data, 'K\nLanguages: Python');
+  const all = t.tailored.skills.flatMap((g) => g.items.map((x) => x.text));
+  check('the word "Skills" under a Skills heading is not a skill', all.includes('Skills') || all.includes('Technical Skills'), false);
+  check('a real skill filed the same way still is', all.includes('Kotlin'), true);
+}
+
 console.log('\n== THE PLACE OR LINK BESIDE AN ENTRY IS A FACT ==');
 {
   const data = {

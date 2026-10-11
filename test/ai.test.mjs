@@ -17,11 +17,11 @@
 import { readFileSync } from 'node:fs';
 import {
   respond, parseRequest, geminiRequest, limitKeys, overLimit, siteCap, endpointFor, askGemini,
-  PER_IP_PER_DAY, SITE_PER_DAY, MAX_OUTPUT_TOKENS, ATTEMPTS, BUDGET_MS,
+  PER_IP_PER_DAY, COST_PAISE, MONTHLY_BUDGET_INR, MAX_OUTPUT_TOKENS, ATTEMPTS, BUDGET_MS,
 } from '../web/api/ai.js';
 import { FREE_PER_DAY, RANK_BATCH, istDay } from '../web/public/resumeai.js';
 import {
-  RANK_MODEL, TAILOR_MODEL, RANK_SYSTEM, TAILOR_SYSTEM, TAILOR_SCHEMA, buildRankPrompt, buildTailorPrompt,
+  RANK_MODEL, TAILOR_MODEL, TAILOR_THINKING, RANK_SYSTEM, TAILOR_SYSTEM, TAILOR_SCHEMA, buildRankPrompt, buildTailorPrompt,
 } from '../web/api/_prompts.js';
 import { EVENTS } from '../web/api/count.js';
 
@@ -55,9 +55,11 @@ function world({ gemini = [], redisDown = false } = {}) {
       const cmds = JSON.parse(init.body);
       calls.redis.push({ cmds, auth: init.headers.authorization });
       if (redisDown) return { ok: false, status: 500, json: async () => ({}) };
-      const out = cmds.map(([op, k]) => {
+      const out = cmds.map(([op, k, n]) => {
         if (op === 'INCR') { kv.set(k, (kv.get(k) ?? 0) + 1); return { result: kv.get(k) }; }
         if (op === 'DECR') { kv.set(k, (kv.get(k) ?? 0) - 1); return { result: kv.get(k) }; }
+        if (op === 'INCRBY') { kv.set(k, (kv.get(k) ?? 0) + Number(n)); return { result: kv.get(k) }; }
+        if (op === 'DECRBY') { kv.set(k, (kv.get(k) ?? 0) - Number(n)); return { result: kv.get(k) }; }
         return { result: 1 };
       });
       return { ok: true, status: 200, json: async () => out };
@@ -125,7 +127,8 @@ check('an array body is refused', Boolean(parseRequest([1, 2]).error), true);
 
 console.log('\n== the two models, and why they are two ==');
 check('ranking and tailoring use different models', RANK_MODEL !== TAILOR_MODEL, true);
-check('ranking uses the cheap fast one', RANK_MODEL, 'gemini-flash-lite-latest');
+check('ranking uses the cheap fast one, pinned', RANK_MODEL, 'gemini-3.1-flash-lite');
+check('no billed call goes to a -latest alias, whose price can move under us', [RANK_MODEL, TAILOR_MODEL].some((m) => /latest/.test(m)), false);
 check('tailoring keeps the stronger one', TAILOR_MODEL, 'gemini-2.5-flash');
 {
   const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title: 'B', company: 'Y' }]);
@@ -171,6 +174,9 @@ console.log('\n== the browser never writes the prompt ==');
   check('the tailor runs our own instruction', g.body.systemInstruction.parts[0].text, TAILOR_SYSTEM);
   check('the rank runs our own instruction', geminiRequest(parseRequest(rankBody())).body.systemInstruction.parts[0].text, RANK_SYSTEM);
   check('rank goes to the rank model', geminiRequest(parseRequest(rankBody())).model, RANK_MODEL);
+  check('the tailor\'s thinking is capped, the cost of an answer', geminiRequest(parseRequest(tailorBody())).body.generationConfig.thinkingConfig, { thinkingBudget: TAILOR_THINKING });
+  check('at 1,024 tokens, measured as good as unlimited', TAILOR_THINKING, 1024);
+  check('the rank sets no thinking (Flash-Lite does none)', 'thinkingConfig' in geminiRequest(parseRequest(rankBody())).body.generationConfig, false);
   check('the resume is in the prompt', geminiRequest(sneaky).body.contents[0].parts[0].text.includes('Flask REST API'), true);
   check('the output budget leaves room for thinking', MAX_OUTPUT_TOKENS >= 8000, true);
 }
@@ -212,7 +218,7 @@ console.log('\n== the allowance per browser ==');
   const dev = [...w.kv.entries()].find(([k]) => k.includes(':d:'));
   check('a refused request gives its count back', dev[1], FREE_PER_DAY);
   const all = w.kv.get(`ai:${istDay(NOW)}:all`);
-  check('and the site count too', all, FREE_PER_DAY);
+  check('and the site budget too (what was spent, not what was refused)', all, FREE_PER_DAY * COST_PAISE.rank);
   check('a refusal is counted', [...w.kv.keys()].some((k) => /:ai-limit:IN$/.test(k)), true);
   const other = await run(w, post(rankBody({ device: 'b'.repeat(32) })));
   check('another browser on the same network still works', other.status, 200);
@@ -242,17 +248,32 @@ console.log('\n== the network and the site caps ==');
   check('another network still works', elsewhere.status, 200);
 }
 {
+  // Rs 20 a month is 64 paise a day: two ranks (50) and not a third (75).
   const w = world({ gemini: Array(10).fill({ status: 200, text: '{"scores":[]}' }) });
-  const env = { ...ENV, AI_DAILY_CAP: '2' };
+  const env = { ...ENV, AI_MONTHLY_BUDGET_INR: '20' };
   await run(w, post(rankBody({ device: 'c'.repeat(32) })), env);
   await run(w, post(rankBody({ device: 'd'.repeat(32) }), { 'x-real-ip': '198.51.100.1' }), env);
   const third = await run(w, post(rankBody({ device: 'e'.repeat(32) }), { 'x-real-ip': '198.51.100.2' }), env);
-  check('the site cap stops everyone', third.status, 503);
+  check('the site budget stops everyone', third.status, 503);
   check('and says so', third.body.code, 'site-limit');
   check('with no third call to Google', w.calls.gemini.length, 2);
+  check('and the refused call is not charged to the day', [...w.kv.entries()].find(([k]) => k.endsWith(':all'))?.[1], 2 * COST_PAISE.rank);
 }
-check('AI_DAILY_CAP sets the site cap', siteCap({ AI_DAILY_CAP: '150' }), 150);
-check('a nonsense cap falls back to the default', [siteCap({ AI_DAILY_CAP: 'lots' }), siteCap({ AI_DAILY_CAP: '-3' }), siteCap({})], [SITE_PER_DAY, SITE_PER_DAY, SITE_PER_DAY]);
+{
+  // Rs 60 a month is 193 paise a day: one tailor (180) fits, a second does not,
+  // though seven ranks would have.
+  const w = world({ gemini: Array(10).fill({ status: 200, text: JSON.stringify({ original: {}, tailored: {} }) }) });
+  const env = { ...ENV, AI_MONTHLY_BUDGET_INR: '60' };
+  const one = await run(w, post(tailorBody({ device: 'f'.repeat(32) })), env);
+  const two = await run(w, post(tailorBody({ device: 'g'.repeat(32) }), { 'x-real-ip': '198.51.100.3' }), env);
+  check('a tailor is charged what it costs', [one.status, two.status, two.body.code], [200, 503, 'site-limit']);
+  check('a tailor costs several ranks', COST_PAISE.tailor >= 5 * COST_PAISE.rank, true);
+}
+check('the default is his Rs 1,100 a month', MONTHLY_BUDGET_INR, 1100);
+check('spread over 31 days, so no month reaches the cap', siteCap({}), Math.floor(110000 / 31));
+check('AI_MONTHLY_BUDGET_INR moves it', siteCap({ AI_MONTHLY_BUDGET_INR: '2000' }), Math.floor(200000 / 31));
+check('a nonsense budget falls back to the default', [siteCap({ AI_MONTHLY_BUDGET_INR: 'lots' }), siteCap({ AI_MONTHLY_BUDGET_INR: '-3' })], [siteCap({}), siteCap({})]);
+check('the old count-based setting is gone', /AI_DAILY_CAP/.test(readFileSync(new URL('../web/api/ai.js', import.meta.url), 'utf8')), false);
 check('the browser limit is reported first', overLimit({ dev: FREE_PER_DAY + 1, ip: 999, all: 999 }, 10), 'device');
 check('then the network', overLimit({ dev: 1, ip: PER_IP_PER_DAY + 1, all: 999 }, 10), 'ip');
 check('then the site', overLimit({ dev: 1, ip: 1, all: 11 }, 10), 'site');
@@ -282,7 +303,7 @@ console.log('\n== failures give the browser its use back ==');
   check('and keeps all five uses', out.body.remaining, FREE_PER_DAY);
   const dev = [...w.kv.entries()].find(([k]) => k.includes(':d:'));
   check('the browser count is given back', dev[1], 0);
-  check('the site count keeps it — the call was made', w.kv.get(`ai:${istDay(NOW)}:all`), 1);
+  check('the site budget keeps it — the call was made', w.kv.get(`ai:${istDay(NOW)}:all`), COST_PAISE.tailor);
 }
 {
   const w = world({ gemini: [{ status: 429, text: '' }] });

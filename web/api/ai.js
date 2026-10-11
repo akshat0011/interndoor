@@ -13,9 +13,12 @@
      - PER_IP_PER_DAY per network, so clearing site data over and over is
        bounded — wide enough for a college wifi or a mobile carrier's shared
        address,
-     - a whole-site cap (AI_DAILY_CAP, default SITE_PER_DAY), which is the
-       spend ceiling. A Google Cloud budget only ALERTS; it never stops a
-       charge, so this number is the only hard stop there is.
+     - a whole-site DAILY BUDGET in paise (AI_MONTHLY_BUDGET_INR, default
+       MONTHLY_BUDGET_INR, over 31 days), each call charged what it costs
+       (COST_PAISE: a tailor about seven ranks). It spreads the month evenly:
+       AI Studio's own monthly spend cap stops EVERY call the moment it is
+       reached, for the rest of the month, so this is what keeps the feature
+       working on the 30th.
    Ids and addresses are hashed with the day and a secret before they become
    keys, and every key expires after two days.
 
@@ -33,7 +36,7 @@
 
 import { createHash } from 'node:crypto';
 import {
-  RANK_MODEL, TAILOR_MODEL, RANK_SYSTEM, RANK_SCHEMA, TAILOR_SYSTEM, TAILOR_SCHEMA,
+  RANK_MODEL, TAILOR_MODEL, TAILOR_THINKING, RANK_SYSTEM, RANK_SCHEMA, TAILOR_SYSTEM, TAILOR_SCHEMA,
   buildRankPrompt, buildTailorPrompt,
 } from './_prompts.js';
 import {
@@ -42,7 +45,17 @@ import {
 import { REGIONS, keyFor as countKey, utcDay, TTL_SECONDS as COUNT_TTL } from './count.js';
 
 export const PER_IP_PER_DAY = 25;
-export const SITE_PER_DAY = 400;
+/* WHAT A CALL COSTS, in paise BEFORE GST, measured on billed calls on 11 Oct
+   2026 at about Rs 96 to the dollar. AI Studio's spend cap counts before GST;
+   the prepaid credit is charged the cost plus 18% GST.
+     rank    3.1 Flash-Lite, 25 roles: ~2,400 tokens in, ~850 out   ~$0.0018
+     tailor  2.5 Flash, thinking capped at 1,024: ~2,200-3,500 in,
+             ~3,700-5,500 out with thinking                       $0.012-0.018
+   Rounded UP, so the budget runs out before the money does. Re-measure when a
+   model or a price changes (usageMetadata on any response gives the tokens). */
+export const COST_PAISE = { rank: 25, tailor: 180 };
+/* His ceiling, 11 Oct 2026: "i can spend a max of 1100 inr / month". */
+export const MONTHLY_BUDGET_INR = 1100;
 const LIMIT_TTL_SECONDS = 2 * 24 * 60 * 60;
 /* A full tailor request is a resume (18k) and one clamped posting (two 12k
    fields) plus small change. Anything much past that is not this page. */
@@ -82,10 +95,13 @@ export function endpointFor(model, base = API_BASE) {
    2026). The codes and the one log line still say exactly what happened. */
 const OFF = 'The AI features are switched off right now. Ranking by skills still works.';
 
-/** The cap for the whole site, from AI_DAILY_CAP when it is a positive whole number. */
+/** Today's budget for the whole site, in paise: the month's budget (from
+ *  AI_MONTHLY_BUDGET_INR when it is a positive number) over 31 days, so even
+ *  the longest month never reaches AI Studio's monthly cap. */
 export function siteCap(env = process.env) {
-  const n = Number(env.AI_DAILY_CAP);
-  return Number.isInteger(n) && n > 0 ? n : SITE_PER_DAY;
+  const n = Number(env.AI_MONTHLY_BUDGET_INR);
+  const inr = Number.isFinite(n) && n > 0 ? n : MONTHLY_BUDGET_INR;
+  return Math.floor((inr * 100) / 31);
 }
 
 /**
@@ -139,6 +155,8 @@ export function geminiRequest(req) {
       generationConfig: {
         temperature: rank ? 0.2 : 0.4,
         maxOutputTokens: MAX_OUTPUT_TOKENS,
+        // The tailor's thinking is most of its cost; 1,024 measured as good as unlimited.
+        ...(rank ? {} : { thinkingConfig: { thinkingBudget: TAILOR_THINKING } }),
         responseMimeType: 'application/json',
         responseSchema: rank ? RANK_SCHEMA : TAILOR_SCHEMA,
       },
@@ -302,10 +320,11 @@ export async function respond(req, { env = process.env, fetchImpl = fetch, now =
 
   const t = now();
   const keys = limitKeys(istDay(t), ask.device, clientIp(req), saltFrom(env));
+  const cost = COST_PAISE[ask.task];
   const counts = await pipeline([
     ['INCR', keys.dev], ['EXPIRE', keys.dev, LIMIT_TTL_SECONDS],
     ['INCR', keys.ip], ['EXPIRE', keys.ip, LIMIT_TTL_SECONDS],
-    ['INCR', keys.all], ['EXPIRE', keys.all, LIMIT_TTL_SECONDS],
+    ['INCRBY', keys.all, cost], ['EXPIRE', keys.all, LIMIT_TTL_SECONDS],
   ], target, fetchImpl);
   if (!counts) {
     // No count, no call: an allowance that cannot be checked is not enforced.
@@ -317,7 +336,7 @@ export async function respond(req, { env = process.env, fetchImpl = fetch, now =
   if (over) {
     // Refused before anything was spent, so all three counts go back.
     await pipeline([
-      ['DECR', keys.dev], ['DECR', keys.ip], ['DECR', keys.all],
+      ['DECR', keys.dev], ['DECR', keys.ip], ['DECRBY', keys.all, cost],
       ...countCommands('ai-limit', ask.region, t),
     ], target, fetchImpl);
     return LIMITS[over]();

@@ -28,8 +28,22 @@ import { clampJob } from '../public/resumeai.js';
  *
  * `gemini-2.5-flash-lite` is NOT a candidate: Google answers
  * "no longer available to new projects" with a 404. */
-export const RANK_MODEL = 'gemini-flash-lite-latest';
+/* PINNED, 11 Oct 2026 (billing on). "gemini-flash-lite-latest" had moved, with
+ * no notice, to gemini-3.5-flash-lite: $0.30/$2.50 per million tokens, six
+ * times the output price of the model it used to mean. gemini-3.1-flash-lite
+ * is $0.25/$1.50 and ranked the same 25 roles within 9 points of it on
+ * average, same order at both ends. Never point a billed call at a -latest
+ * alias: its price can change under you.
+ *
+ * The tailor stays on 2.5 Flash with its thinking capped at TAILOR_THINKING.
+ * Measured on the same request: unlimited thinking spent 2,400-6,300 tokens
+ * on it ($0.015-0.025 a tailor, 24-42 s); 1,024 spent ~800 ($0.012, 20 s) with
+ * the same output; NO thinking broke the structure (the summary filed as a
+ * section, every skill in one group). 3.1 Flash-Lite costs half again but kept
+ * first person and filler; 3.8 Flash took 62-174 s. */
+export const RANK_MODEL = 'gemini-3.1-flash-lite';
 export const TAILOR_MODEL = 'gemini-2.5-flash';
+export const TAILOR_THINKING = 1024;
 /** Kept for callers and tests that just want "the model this talks to". */
 export const MODEL = TAILOR_MODEL;
 
