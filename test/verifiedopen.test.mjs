@@ -59,7 +59,7 @@ console.log('\n== publish holds both back, and says so ==');
   ok('the not-a-job filter is in the live chain', /\.filter\(\(\{ row \}\) => \{\s*if \(!notAJob\(row\)\) return true;/.test(pub));
   ok('both run BEFORE dedupe (so a held-back row cannot win a dedupe)',
     pub.indexOf('asksExperience(row)') < pub.indexOf('dedupePostings(jobs, supersededPairs)') && pub.indexOf('notAJob(row)') < pub.indexOf('dedupePostings(jobs, supersededPairs)'));
-  ok('every published row carries `verified`', /\.map\(\(j\) => \(\{ \.\.\.j, verified: verifiedOpen\(j\) \}\)\)/.test(pub));
+  ok('every published row carries `verified`', /\.map\(\(j\) => \(\{ \.\.\.j, verified: verifiedOpen\(j\) && !isUnsure\(j\) \}\)\)/.test(pub));
   ok('the projection carries the positive check', /row\.link_ok_at \? \{ checkedAt: row\.link_ok_at, checkedVia:/.test(pub));
 }
 

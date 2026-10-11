@@ -273,4 +273,6 @@ export function settleShelves(jobs) {
 export const announceable = (category) => category !== 'misc';
 
 /** The ids in a published jobs.json a channel may announce — for callers that start from store rows. */
-export const announceableIds = (jobs) => new Set((jobs ?? []).filter((j) => announceable(j.category)).map((j) => String(j.id)));
+/* A possibly closed role (src/jobstatus.js) is not announced either: it stays
+   on the board with a label until a recheck settles it. */
+export const announceableIds = (jobs) => new Set((jobs ?? []).filter((j) => announceable(j.category) && j.status !== 'possibly_closed').map((j) => String(j.id)));

@@ -27,6 +27,7 @@ import { regionOf, regionPath, ALL_REGIONS } from './regions.js';
 import { ENTRY_MAX_YEARS, POSTDOC_TITLE, schemaEmploymentType, FULL_TIME, entryWord, entryWordCap, entryWordTitle, splitKinds, offerPhrase, countedOffer } from './employment.js';
 import { facetGroups, facetSlug, canonicalCity, foldCity } from './facets.js';
 import { roleGroups, rolePageOf, stableRank, roleCitySlug } from './rolepages.js';
+import { isUnsure } from './jobstatus.js';
 
 export const SITE = 'https://interndoor.com';
 
@@ -939,6 +940,9 @@ export function placesOf(location, region = DEFAULT_REGION) {
  * the difference between a fact we verified and a policy we follow.
  */
 function openState(job) {
+  /* A check found evidence it may have closed (src/jobstatus.js). Said before
+     anything else: an older positive check is no longer the latest word. */
+  if (isUnsure(job)) return { tier: 'likely', label: 'May have closed', at: Number(job.statusAt) || null, how: 'unsure' };
   const at = verifiedAt(job);
   if (at) return { tier: 'verified', label: 'Open now', at, how: 'board' };
   /* A checked application route (checkedAt). LinkedIn's posting page saying it
@@ -984,7 +988,9 @@ function stillListed(job, company, region = DEFAULT_REGION) {
      confirmed four minutes earlier), which understates the very freshness
      this line exists to prove. The hub does the same, for the same reason. */
   const when = st.at ? `<time datetime="${isoDay(st.at)}">${esc(dayLabel(st.at, region))}</time>` : '';
-  const detail = st.how === 'board'
+  const detail = st.how === 'unsure'
+    ? `Our last check could not confirm this role is still open${when ? ` &middot; ${when}` : ''}. Check the posting before you apply.`
+    : st.how === 'board'
     ? `Confirmed on ${esc(company)}&rsquo;s own careers page &middot; checked ${when}`
     : st.how === 'linkedin'
       ? `The posting was still taking applications when we checked it &middot; ${when}`
@@ -2947,7 +2953,9 @@ function roleCard(job, { region = DEFAULT_REGION, locations = 1, skillPages = ne
        it exact rewrote every hub on every publish. The <time> beside it was
        already day-granular and stable. */
     ? `<span class="vfy is-verified"><i aria-hidden="true"></i>${st.how === 'link' ? 'Application page live, checked' : 'Open, confirmed'} <time datetime="${isoDay(st.at)}">${esc(dayLabel(st.at, region))}</time></span>`
-    : `<span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span>`;
+    : st.how === 'unsure'
+      ? `<span class="vfy is-likely" title="Our last check could not confirm this role is still open."><i aria-hidden="true"></i>May have closed</span>`
+      : `<span class="vfy is-likely" title="We list a role only while we believe it is still open."><i aria-hidden="true"></i>Likely open</span>`;
 
   /* A cell is WITHHELD, never guessed. This employer states no pay, no length
      and no degree, so its card carries four rows and not eight placeholders. */

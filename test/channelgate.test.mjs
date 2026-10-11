@@ -138,7 +138,7 @@ console.log('\n== THE WIRING ==');
   const wa = readFileSync(new URL('../src/whatsapp.js', import.meta.url), 'utf8');
   check('whatsapp.js imports the gate', /import \{ channelRefusal \} from '\.\/channelgate\.js';/.test(wa), true);
   check('take() asks it after the shelf and before queueing, and a held listing returns',
-    /if \(!announceable\(pub\.category\)\) \{ misc\+\+; return; \}\s*const why = channelRefusal\(pub\);\s*if \(why\) \{[^}]*return; \}\s*if \(unread\.has\(id\)\) \{ waiting\.push\(\{ code, id \}\); return; \}\s*mine\.push\(\{ job: pub, code, id \}\);/.test(wa), true);
+    /if \(!announceable\(pub\.category\)\) \{ misc\+\+; return; \}\s*(?:\/\*[\s\S]*?\*\/\s*)?if \(isUnsure\(pub\)\) \{ unsure\+\+; waiting\.push\(\{ code, id \}\); return; \}\s*const why = channelRefusal\(pub\);\s*if \(why\) \{[^}]*return; \}\s*if \(unread\.has\(id\)\) \{ waiting\.push\(\{ code, id \}\); return; \}\s*mine\.push\(\{ job: pub, code, id \}\);/.test(wa), true);
   check('one take() serves the backlog and new rows alike',
     /for \(const id of readPending\(store, code\)\) take\(/.test(wa) && /const id = String\(row\.job_id \?\? row\.id\);\s*take\(/.test(wa), true);
   check('the backlog is rewritten from what was queued, so a held id is dropped',
@@ -153,7 +153,7 @@ console.log('\n== THE REELS GET THE SAME BAR (10 Oct 2026) ==');
   const sweep = qs.slice(qs.indexOf('function autoSweep()'), qs.indexOf('const seenEmployers'));
   check('the sweep body was found', sweep.length > 500, true);
   check('the auto-sweep drops a listing below the bar, beside the shelf check',
-    /&& announceable\(j\.category\)\s*&& !channelRefusal\(j\)\s*&& !known\.has/.test(sweep), true);
+    /&& announceable\(j\.category\)\s*&& !channelRefusal\(j\)\s*&& !isUnsure\(j\)\s*&& !known\.has/.test(sweep), true);
 }
 
 console.log('\n== NOTHING GOES OUT BEFORE ITS EXPERIENCE IS READ (10 Oct 2026) ==');

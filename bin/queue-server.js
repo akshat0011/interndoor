@@ -56,6 +56,7 @@ import { resolveRowRegion } from '../src/regions.js';
 import { utmUrl } from '../src/postgen.js';
 import { announceable } from '../src/rolefocus.js';
 import { channelRefusal } from '../src/channelgate.js';
+import { isUnsure } from '../src/jobstatus.js';
 import { publishedTitle } from '../src/titles.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
@@ -920,6 +921,7 @@ function autoSweep() {
         && j.isTech !== false
         && announceable(j.category)
         && !channelRefusal(j)
+        && !isUnsure(j)
         && !known.has(String(j.id))
         && (now - (j.firstSeenAt ?? j.postedAt ?? 0)) <= maxAgeMs)
       .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));

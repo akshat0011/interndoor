@@ -151,7 +151,10 @@ console.log('\n== publish honours it: off the board, stubbed, still in the recor
 console.log('\n== wired in ==');
 {
   const run = read('bin/run.sh');
-  ok('bin/run.sh sweeps once a day, output discarded', /bin\/link-sweep\.js" --daily >> "\$LOG" 2>&1 \|\| true/.test(run));
+  /* 11 Oct 2026: the job checker (bin/job-check.js) replaced the daily sweep
+     in the schedule; this file's sweep stays for a manual full pass. */
+  ok('bin/run.sh runs the job checker every tick, output discarded', /bin\/job-check\.js" >> "\$LOG" 2>&1 \|\| true/.test(run));
+  ok('…and no longer the daily link sweep (nothing is checked twice)', !/bin\/link-sweep\.js" --daily/.test(run));
   const pkg = JSON.parse(read('package.json'));
   ok('npm run link-sweep exists', /bin\/link-sweep\.js/.test(pkg.scripts['link-sweep'] || ''));
   const runner = read('bin/link-sweep.js');
@@ -319,8 +322,8 @@ console.log('\n== published boards only, and AFTER the scan (1 Oct 2026) ==');
   ok('the runner filters through sweepCandidates', /sweepCandidates\(\s*store\.applyLinksToCheck\(/.test(runner));
   const runSh = readFileSync(new URL('../bin/run.sh', import.meta.url), 'utf8');
   const at = (re) => runSh.search(re);
-  ok('run.sh runs the sweep AFTER the scan, not before it',
-    at(/bin\/link-sweep\.js" --daily/) > at(/src\/index\.js" "\$@" --regions=home/) && at(/src\/index\.js" "\$@" --regions=home/) > 0);
+  ok('run.sh runs the checker AFTER the scan, not before it',
+    at(/bin\/job-check\.js"/) > at(/src\/index\.js" "\$@" --regions=home/) && at(/src\/index\.js" "\$@" --regions=home/) > 0);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

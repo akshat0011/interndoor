@@ -122,15 +122,16 @@ fi
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 
-# Close postings whose employer apply link has gone dead (bin/link-sweep.js),
-# at most once a day. It only marks rows closed; the NEXT scan's publish carries
-# them to the site, so this must never publish and race the scan. A dead apply
-# link is a posting nobody can apply to, and the hub said "N open" for six days
-# once before this existed.
-# AFTER THE SCAN SINCE 1 OCT 2026: it takes ~30 minutes once a day, and run
-# before the scan it held the whole slot's publish back by that much (the
-# board read "checked 55m ago"). The closes now ride the next slot's publish.
-"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/link-sweep.js" --daily >> "$LOG" 2>&1 || true
+# Is each live job still open? (bin/job-check.js, src/jobstatus.js) A slice of
+# the due checks every tick — employer pages at least daily, jobs on the
+# channels every few hours, LinkedIn's own pages at night — each recorded as a
+# signal with a weight, the job's status and confidence decided from all of
+# them. Capped at 4.5 minutes. It only marks rows; the NEXT scan's publish
+# carries closes to the site, so this must never publish and race the scan.
+# REPLACED bin/link-sweep.js --daily on 11 Oct 2026 (that one ran ~30 min once
+# a day and is kept for a manual full pass). AFTER THE SCAN, as the sweep was
+# since 1 Oct: run before it, it held the slot's publish back.
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/job-check.js" >> "$LOG" 2>&1 || true
 
 # ---------------------------------------------------------------------------
 # The weekly roundup, asked about on every scan and written once a week.

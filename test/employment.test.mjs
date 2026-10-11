@@ -133,6 +133,12 @@ console.log('\n== India writes its fresher roles differently, and every one is a
   check('SDE 1 with a space', kind('SDE 1 Fullstack Engineer'), 'fulltime');
   check('SDE I', kind('SDE I'), 'fulltime');
   check('Software Engineer I', kind('Software Engineer I - Salesforce'), 'fulltime');
+  // Swiggy's own board, 9 Oct 2026, and Amazon's spelled-out form.
+  check('Software Dev Engineer I', kind('Software Dev Engineer I'), 'fulltime');
+  check('Software Development Engineer I', kind('Software Development Engineer I - Backend'), 'fulltime');
+  check('Software Development Engineer 1', kind('Software Development Engineer 1- IOS'), 'fulltime');
+  check('Software Development Engineer II stays out', kind('Software Development Engineer II'), null);
+  check('Software Dev Engineer III stays out', kind('Software Dev Engineer III'), null);
   check('Software Engineer 1', kind('Software Engineer 1'), 'fulltime');
   check('a graduating batch year', kind('Software Engineer - 2026 Batch'), 'fulltime');
   check('"batch of" form', kind('Batch of 2025 - Software Engineers'), 'fulltime');

@@ -407,6 +407,17 @@ export class Store {
       ['display_title', 'TEXT'],
       ['discipline', 'TEXT'],
       ['title_checked_at', 'INTEGER'],
+      /* IS IT STILL OPEN, AND HOW SURE ARE WE (src/jobstatus.js, 11 Oct 2026).
+       * `status` is open | likely_open | possibly_closed | closed, decided from
+       * every check in job_checks; `status_confidence` is how sure, 0-1, of the
+       * status shown; `status_reason` the evidence in words; `next_check_at`
+       * when bin/job-check.js looks again. NULL until the first check. The
+       * closed STATE is still closed_at — status only ever says why. */
+      ['status', 'TEXT'],
+      ['status_confidence', 'REAL'],
+      ['status_reason', 'TEXT'],
+      ['status_at', 'INTEGER'],
+      ['next_check_at', 'INTEGER'],
     ]) {
       if (!jobCols.includes(name)) {
         this.db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${type}`);

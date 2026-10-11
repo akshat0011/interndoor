@@ -48,6 +48,10 @@ const EARLY_CAREER = [
   // boundary between the letters), and `\b1\b` cannot match "10".
   'software engineer i', 'software engineer 1', 'software developer i', 'software developer 1',
   'sde 1', 'sde i', 'sde1',
+  // Spelled out, and Swiggy's and Amazon's short form. "Software Dev Engineer
+  // I" on Swiggy's own board was refused on 9 Oct 2026 while "SDE I" passed.
+  'software development engineer i', 'software development engineer 1',
+  'software dev engineer i', 'software dev engineer 1',
 ];
 
 /**

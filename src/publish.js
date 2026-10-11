@@ -9,6 +9,7 @@ import { matchCompany, isBlockedCompany, employerRoleAllowed } from './config.js
 import { syncLogos, logoPathFor, logoDirSize } from './logos.js';
 import { ensureInsights } from './insights.js';
 import { writeSite, cardFacts, jobSlug, deadlinePassed, asksExperience, notAJob, isPostdoc, verifiedOpen, durationText } from './pages.js';
+import { isUnsure } from './jobstatus.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
@@ -59,7 +60,7 @@ function parseJsonArray(raw) {
   }
 }
 
-function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
+function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex, statusOn = false }) {
   const stipend = formatStipend({
     min: row.stipend_min, max: row.stipend_max,
     currency: row.stipend_currency, period: row.stipend_period,
@@ -146,6 +147,12 @@ function toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }) {
        posting page where its Apply is LinkedIn's, else the employer's page.
        Absent until a check succeeds. */
     ...(row.link_ok_at ? { checkedAt: row.link_ok_at, checkedVia: /linkedin\.com/i.test(row.apply_url || '') || !row.apply_url ? 'linkedin' : 'link' } : {}),
+    /* POSSIBLY CLOSED (src/jobstatus.js): a check found evidence it may be
+       gone, not enough to close it. Still on the board, with a label; out of
+       the index (verified false below) and off the channels; rechecked within
+       six hours. Only when config jobStatus.mode is 'on' — in shadow mode the
+       status is computed and stored and nothing here reads it. */
+    ...(statusOn && row.status === 'possibly_closed' ? { status: 'possibly_closed', statusAt: row.status_at } : {}),
     url: row.job_url,
     applyUrl: row.apply_url || row.job_url,
     // Only carried when explicitly enabled; the tailor endpoint works fine
@@ -716,7 +723,7 @@ export async function writeJobsFile(store, cfg) {
     .map(({ row, matchedNow, region }) => {
       const rc = roleCategory({ title: row.title, roleLabel: row.role_label }, cfg.roleFocus);
       return {
-        ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex }),
+        ...toPublicJob(row, { includeFullDescription, matchedNow, logoIndex, statusOn: cfg.jobStatus?.mode === 'on' }),
         /* A Software-shelf role the model reads as non-software work, AND whose
            title names such a discipline, moves to Misc (shelfMove — two signals,
            never Software from Misc). */
@@ -739,7 +746,7 @@ export async function writeJobsFile(store, cfg) {
     /* EVIDENCE IT IS STILL OPEN (pages.js verifiedOpen) — set on EVERY row,
        true or false, never left absent: jobPageIndexable reads `false` as
        "noindex, out of the sitemap and the Indexing API". 7 Oct 2026. */
-    .map((j) => ({ ...j, verified: verifiedOpen(j) }))
+    .map((j) => ({ ...j, verified: verifiedOpen(j) && !isUnsure(j) }))
     .sort((a, b) => (b.postedAt ?? 0) - (a.postedAt ?? 0));
 
   /* Superseded URLs -> the page that replaced them, per region.

@@ -1497,6 +1497,10 @@ function jobCard(job, index, group = [job], seen = false) {
      for the length of the role (8 Oct 2026). */
   if (job.duration) meta.append(el('span', null, job.duration));
   else if (expCard(job)) meta.append(el('span', null, expCard(job)));
+  /* A check found evidence it may have closed and could not confirm either
+     way (src/jobstatus.js). The card stays, says so, and is rechecked within
+     hours — hiding it would cost a reader a role that is still open. */
+  if (job.status === 'possibly_closed') meta.append(el('span', 'unsure', 'May have closed'));
   if (meta.children.length) mid.append(meta);
 
   /* Fit, when a resume is loaded. Under the facts rather than beside the role:
@@ -2083,6 +2087,7 @@ function renderDetail(job) {
   // ago" — and it never ages. On a site whose whole promise is BE EARLY, that is
   // the worst possible field to get wrong. postedText is only a fallback for a
   // row with no parsed timestamp.
+  if (job.status === 'possibly_closed') addFact('Status', 'May have closed — our last check could not confirm it is still open. Check the posting before you apply.', 'muted');
   addFact('Posted', relTime(job.postedAt) || job.postedText);
   const fullTime = kindOf(job) === 'fulltime';
   addFact(fullTime ? 'Pay' : 'Stipend', job.stipend || 'Not disclosed', job.stipend ? 'cash' : 'muted');

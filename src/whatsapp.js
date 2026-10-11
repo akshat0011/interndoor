@@ -28,6 +28,7 @@ import { releaseProfileLock } from './browser.js';
 import { entryWord } from './employment.js';
 import { announceable } from './rolefocus.js';
 import { channelRefusal } from './channelgate.js';
+import { isUnsure } from './jobstatus.js';
 import { renderCards } from './ogcard.js';
 
 /** Under the photo CAPTION's cap, which is what every post now is: measured
@@ -986,11 +987,15 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
   const mine = [];
   const seen = new Set();
   let misc = 0;
+  let unsure = 0;
   const held = new Map();
   const take = (pub, code, id) => {
     if (!pub || seen.has(id)) return;
     seen.add(id);
     if (!announceable(pub.category)) { misc++; return; }
+    /* POSSIBLY CLOSED waits on the queue, like an unread posting: it is
+       rechecked within hours and goes out if it is still open. */
+    if (isUnsure(pub)) { unsure++; waiting.push({ code, id }); return; }
     const why = channelRefusal(pub);
     if (why) { const k = why.replace(/:.*/, ''); held.set(k, (held.get(k) ?? 0) + 1); return; }
     if (unread.has(id)) { waiting.push({ code, id }); return; }
@@ -1006,6 +1011,7 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
     take(indexFor(code).get(id), code, id);
   }
   if (misc) log.info(`WhatsApp: ${misc} misc listing${misc === 1 ? '' : 's'} left to the site, not the channel.`);
+  if (unsure) log.info(`WhatsApp: ${unsure} listing${unsure === 1 ? '' : 's'} possibly closed — held until a recheck says ${unsure === 1 ? 'it is' : 'they are'} still open.`);
   const below = [...held.values()].reduce((a, b) => a + b, 0);
   if (below) log.info(`WhatsApp: ${below} listing${below === 1 ? '' : 's'} below the channel's bar left to the site (${[...held].map(([k, n]) => `${k} ${n}`).join(', ')}).`);
   if (waiting.length) log.info(`WhatsApp: ${waiting.length} listing${waiting.length === 1 ? '' : 's'} wait${waiting.length === 1 ? 's' : ''} for the posting's experience requirement to be read — next run.`);

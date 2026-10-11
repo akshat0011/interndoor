@@ -1631,5 +1631,9 @@
     "_minSeconds_note": "Shortest reel worth making. The card lays its scenes out as FRACTIONS of the total, so a short voiceover squeezes every scene - at 1.6x a brief posting ran 5.8s, which gave the CTA 0.9 seconds. That is not long enough to read INTERNDOOR.COM, let alone type it, and the CTA is the only scene that asks the viewer to do anything. The tail is padded to reach this rather than the voice being slowed back down: the pace was the complaint, and a beat of music under the CTA is not dead air, it is the pause that lets the address land.",
     "beatPause": 0.22,
     "_beatPause_note": "Silence inserted between the script's beats when they are synthesised separately. ONE LONG UTTERANCE WAS THE PROBLEM: in isolation the CTA line synthesises in 2.40s with no internal gaps at all, but inside the full script the same words came out as 'on ... InternDoor ... dot ... com' with 0.77s, 0.25s and 0.21s of silence in them, and a 1.35s hole before 'Find'. The model's pacing drifts over a long stretch and voiceInstruct does not hold it. Each line is now synthesised on its own and joined with this pause, so the gap is chosen rather than whatever the model felt like. storygasted does the same thing (its beat_pause is 0.45, longer because it is telling a story)."
+  },
+  "jobStatus": {
+    "_mode_note": "11 Oct 2026. bin/job-check.js records every check of every live job (job_checks) and decides a status with a confidence (src/jobstatus.js). 'shadow': closes only by the old link sweep's rules and nothing on the site reads the status. 'on': the status decides — closed closes, possibly closed is shown with a label, kept off WhatsApp, reels and the digest, noindexed, and rechecked within 6 hours. Read the 'would close N more' count in the run log and npm run job-status before switching.",
+    "mode": "shadow"
   }
 }
