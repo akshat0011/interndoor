@@ -92,7 +92,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=19">
+<link rel="stylesheet" href="/styles.css?v=20">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -395,7 +395,6 @@ Roles across <strong>India</strong>,
   <footer class="foot">
     <div class="wrap">
       <p>Every listing links back to its original posting. Always apply on the company's own page. Summaries are generated automatically; the linked posting is the source of truth.</p>
-      <p class="dim">Your resume is processed in memory and never stored here.</p>
       <!-- /contact is ROOT-RELATIVE and stays that way on every board. There is
            one contact page for all three, so it is deliberately NOT in
            REGION_LINKS — localiseLinks would give this link a region prefix,
@@ -516,7 +515,7 @@ Roles across <strong>India</strong>,
   <div class="modal-body">
     <section class="step" id="step-upload" aria-labelledby="upload-h">
       <h3 class="tw-h" id="upload-h" tabindex="-1">Add your resume</h3>
-      <p class="tw-p" id="upload-p">A PDF works best. It is read right here in your browser.</p>
+      <p class="tw-p" id="upload-p">A PDF works best.</p>
       <div class="drop" id="dropzone" tabindex="0" role="button" aria-label="Upload your resume PDF">
         <span class="drop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16.5V4M7 9l5-5 5 5"/><path d="M4 15v3.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V15"/></svg></span>
         <b>Drop your resume here</b>
@@ -528,17 +527,17 @@ Roles across <strong>India</strong>,
         <summary>Paste the text instead</summary>
         <textarea id="resume-paste" rows="8" aria-label="Resume text" placeholder="Paste the full text of your resume"></textarea>
       </details>
-      <p class="tw-hint" id="upload-hint">Remove your home address and any ID numbers first. Name, email, education and experience are all it needs.</p>
+      <p class="tw-hint">We don&rsquo;t store your resume.</p>
     </section>
 
     <section class="step" id="step-review" aria-labelledby="review-h" hidden>
       <h3 class="tw-h" id="review-h" tabindex="-1">Ready to tailor</h3>
-      <p class="tw-p">Google&rsquo;s AI rewrites your resume for this role. It usually takes well under a minute.</p>
+      <p class="tw-p">We rewrite your resume to fit this role, using only what is already in it. Usually under a minute.</p>
       <dl class="tw-sum">
         <div><dt>Role</dt><dd><span id="sum-role"></span></dd></div>
         <div><dt>Resume</dt><dd><span id="sum-resume"></span><button class="tw-link" type="button" data-go="upload">Change</button></dd></div>
       </dl>
-      <p class="tw-fine"><b id="ai-left">Free: 5 AI uses a day. This uses one.</b> Your resume goes through InternDoor to Google&rsquo;s AI for this one rewrite. InternDoor does not store it.</p>
+      <p class="tw-fine" id="ai-left">5 free AI uses a day.</p>
     </section>
 
     <section class="step" id="step-working" hidden>
@@ -586,6 +585,6 @@ Roles across <strong>India</strong>,
 <script defer src="/track.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/feedback.js"></script>
-<script src="/app.js?v=11" type="module"></script>
+<script src="/app.js?v=12" type="module"></script>
 </body>
 </html>

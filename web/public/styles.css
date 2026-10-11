@@ -1477,18 +1477,13 @@ html[data-boot] .boot-part {
 .paste textarea::placeholder { color: var(--ink-3); }
 .paste textarea:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
 
-.tw-hint {
-  margin: 20px 0 0; padding-left: 12px; border-left: 2px solid var(--rule-2);
-  max-width: 52ch; font-size: .8125rem; line-height: 1.5; color: var(--ink-3); text-wrap: pretty;
-}
+/* The one privacy line, said once, where the resume is handed over. Plain
+   small text: a bordered callout made it read like a warning. */
+.tw-hint { margin: 16px 0 0; font-size: .8125rem; line-height: 1.5; color: var(--ink-3); }
 
-/* The allowance and the privacy position, said ONCE, on the screen where the
-   AI is about to be used. */
-.tw-fine {
-  margin: 24px 0 0; padding-top: 16px; border-top: 1px solid var(--rule);
-  font-size: .8125rem; line-height: 1.5; color: var(--ink-3);
-}
-.tw-fine b { display: block; margin-bottom: 4px; color: var(--ink-2); font-weight: 600; }
+/* What the tailor costs: one line under the summary, on the screen where the
+   free use is spent. */
+.tw-fine { margin: 14px 2px 0; font-size: .8125rem; line-height: 1.5; color: var(--ink-2); }
 
 /* ---- screen 2: the review ---- */
 .tw-sum { margin: 22px 0 0; border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--card); }

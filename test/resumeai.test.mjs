@@ -21,8 +21,8 @@
 import { readFileSync } from 'node:fs';
 import {
   resumeNames, spellingsOf, normSkill, SKILL_ALIASES,
-  shortlist, clampJob, rankDigest, buildRankPrompt, findInventedSkills, failureFor,
-  rankWithAI, tailorWithAI, MODEL, RANK_MODEL, TAILOR_MODEL, RANK_BATCH,
+  shortlist, clampJob, rankDigest, findInventedSkills, failureFor,
+  rankWithAI, tailorWithAI, RANK_BATCH,
   AI_ENDPOINT, FREE_PER_DAY, DEVICE_STORE, DEVICE_SHAPE, ALLOWANCE_STORE, OLD_KEY_STORE,
   deviceId, allowanceLeft, rememberAllowance, forgetOldKey, istDay,
 } from '../web/public/resumeai.js';
@@ -119,11 +119,26 @@ check('unscorable roles sort last', shortlist(
 check('a short board is not padded', shortlist([{ id: 'x' }], () => 1, 40).length, 1);
 check('an empty board is empty', shortlist([], () => 1, 40), []);
 
-console.log('\n== the two models, and why they are two ==');
-check('ranking and tailoring use different models', RANK_MODEL !== TAILOR_MODEL, true);
-check('ranking uses the cheap fast one', RANK_MODEL, 'gemini-flash-lite-latest');
-check('tailoring keeps the stronger one', TAILOR_MODEL, 'gemini-2.5-flash');
-check('MODEL still names the tailor model', MODEL, TAILOR_MODEL);
+console.log('\n== the browser half names no provider ==');
+/* His call, 11 Oct 2026: to a reader this is InternDoor's AI. Every file a
+   browser downloads is readable in View Source, so the model names, the
+   prompts and the provider's host live on the server (web/api/_prompts.js). */
+{
+  const served = {
+    'resumeai.js': readFileSync(new URL('../web/public/resumeai.js', import.meta.url), 'utf8'),
+    'app.js': readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8'),
+  };
+  for (const [name, src] of Object.entries(served)) {
+    check(`${name} never says gemini`, /gemini/i.test(src), false);
+    check(`${name} never names the provider's host`, /generativelanguage|googleapis\.com\/v1/i.test(src), false);
+    // An import, not a mention: resumeai.js's header names the file in prose.
+    check(`${name} never imports the server's prompts`, /from\s+['"][^'"]*_prompts/.test(src), false);
+  }
+  check('resumeai.js carries no prompt text', /You (score|rewrite) /.test(served['resumeai.js']), false);
+  const html = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
+  const dialog = html.slice(html.indexOf('id="tailor"'), html.indexOf('<div class="snack" id="toast"'));
+  check('the dialog never names a provider', /google|gemini/i.test(dialog), false);
+}
 
 console.log('\n== WHERE THE RESUME GOES ==');
 globalThis.localStorage = fakeStorage();
@@ -281,9 +296,6 @@ check('description is clamped', clampJob(huge).description.length, 12_000);
 check('skills are clamped', clampJob(huge).skills.length, 40);
 check('a blank field becomes null, not ""', clampJob({ title: 'x', company: '   ' }).company, null);
 check('a missing job does not throw', clampJob(undefined).title, null);
-const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title: 'B', company: 'Y' }]);
-check('every role is indexed', /\[0\][\s\S]*\[1\]/.test(prompt), true);
-check('the resume is in the prompt', prompt.includes('RESUME'), true);
 const digest = rankDigest(huge);
 check('a rank digest carries no description', 'description' in digest, false);
 check('and at most twelve skills', digest.skills.length, 12);
@@ -371,8 +383,12 @@ console.log('\n== one question per screen: the resume, then tailor ==');
   check('the review offers Change on the resume', changes, 1);
   check('and it sits inside a <dd>', inDd, changes);
   check('the review says what this costs', /id="ai-left"/.test(review), true);
-  check('the privacy position is stated once in the dialog', (modal.match(/does not store it/g) || []).length, 1);
-  check('and does not claim the resume never leaves the device', /never reach|straight to Google/.test(modal), false);
+  // His call, 11 Oct 2026: one small line, not privacy text everywhere. The
+  // board's footer line went with it.
+  check('the privacy line is said once on the whole page', (html.match(/store your resume/g) || []).length, 1);
+  check('and it is on the resume screen, where the resume is handed over', section('step-upload', 'step-review').includes('store your resume'), true);
+  check('and the old footer line is gone', /processed in memory/.test(html), false);
+  check('and the old long-form privacy copy is gone', /never reach|straight to|goes through InternDoor/.test(modal), false);
   const sum = app.slice(app.indexOf('function syncReview('), app.indexOf('function setResumeText('));
   check('the review fills the allowance line', /\$\('ai-left'\)[\s\S]{0,120}allowanceText\(allowanceLeft\(\)\)/.test(sum), true);
 

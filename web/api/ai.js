@@ -3,7 +3,7 @@
    nearly every student at the point of creating a Google key.
 
    WHAT IT DOES: takes a resume plus one role (tailor) or up to RANK_BATCH role
-   digests (rank), builds the prompt ITSELF from web/public/resumeai.js, asks
+   digests (rank), builds the prompt ITSELF from ./_prompts.js, asks
    Gemini, and hands back the model's JSON. A browser never supplies a prompt,
    so the key cannot be borrowed as a general-purpose model: the most anyone
    gets out of it is a score list or a resume.
@@ -35,6 +35,8 @@ import { createHash } from 'node:crypto';
 import {
   RANK_MODEL, TAILOR_MODEL, RANK_SYSTEM, RANK_SCHEMA, TAILOR_SYSTEM, TAILOR_SCHEMA,
   buildRankPrompt, buildTailorPrompt,
+} from './_prompts.js';
+import {
   FREE_PER_DAY, MIN_RESUME_CHARS, MAX_RESUME_CHARS, RANK_BATCH, DEVICE_SHAPE, istDay,
 } from '../public/resumeai.js';
 import { REGIONS, keyFor as countKey, utcDay, TTL_SECONDS as COUNT_TTL } from './count.js';
@@ -73,6 +75,9 @@ export function endpointFor(model, base = API_BASE) {
   return url.toString();
 }
 
+/* Every message here is shown to a reader verbatim, so none of them names the
+   model's provider: to a reader this is InternDoor's AI (his call, 11 Oct
+   2026). The codes and the one log line still say exactly what happened. */
 const OFF = 'The AI features are switched off right now. Ranking by skills still works.';
 
 /** The cap for the whole site, from AI_DAILY_CAP when it is a positive whole number. */
@@ -176,9 +181,9 @@ const LIMITS = {
 const FAILURES = {
   quota: { status: 503, error: 'The AI is busy right now. Please try again in a few minutes.' },
   refused: { status: 503, error: 'The AI is not available right now. Please try again later.' },
-  trouble: { status: 502, error: 'Google’s AI is having trouble. Please try again shortly.' },
+  trouble: { status: 502, error: 'The AI is having trouble right now. Please try again shortly.' },
   timeout: { status: 504, error: 'That took too long. Please try again.' },
-  filter: { status: 422, error: 'Google’s content filter rejected this. If your resume contains anything unusual, try removing it.' },
+  filter: { status: 422, error: 'This resume could not be processed. If it contains anything unusual, try removing it.' },
   'too-long': { status: 422, error: 'That was too long to handle in one pass. Try trimming the resume to its most relevant two pages.' },
   empty: { status: 502, error: 'The AI returned no answer. Please try again, or shorten the resume.' },
   unreadable: { status: 502, error: 'The AI returned something unreadable. Please try again.' },

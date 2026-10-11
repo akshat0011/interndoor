@@ -71,13 +71,11 @@ Two rules it won't break:
   resume. Every skill in the output is checked against your original, and anything you didn't
   claim is stripped out. A tool that quietly adds Kubernetes because the job mentions Kubernetes
   is handing you a false document to send to a real employer.
-- **It never stores your resume.** Your PDF is read inside your own browser — the file itself
-  never leaves your device, and the text goes from your browser straight to Google under your own
-  key. It never passes through InternDoor. Nothing is written down, nothing is logged.
+- **It never stores your resume.** Your PDF is read inside your own browser and only its text is
+  sent, for that one request. Nothing is written down and nothing is logged.
 
-The rewriting runs on Google's Gemini with your own free API key, added once in the browser and
-kept there. Google's free tier permits Google to use submitted data to improve its models — worth
-knowing before you add a key.
+Free, with no key and no sign-up: 5 AI uses a day, shared between tailoring and reading the board
+with AI. Ranking the board by your skills is unlimited and runs on your own device.
 
 ## Right now
 
@@ -97,9 +95,9 @@ site is for.
 
 ## Built with
 
-Node.js, SQLite and Playwright, a local model (Qwen via Ollama) for the summaries, and the Gemini
-API from the reader's own browser for the resume tool — on a static site hosted by Vercel, with a
-single production dependency.
+Node.js, SQLite and Playwright, a local model (Qwen via Ollama) for the summaries, and a serverless
+function for the resume tool, on a static site hosted by Vercel with a single production
+dependency.
 
 ## A note on the data
 

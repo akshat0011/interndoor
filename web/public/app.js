@@ -73,7 +73,7 @@ const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
 import {
   resumeNames, shortlist, rankWithAI, tailorWithAI, RANK_BATCH,
   FREE_PER_DAY, allowanceLeft, forgetOldKey,
-} from './resumeai.js?v=2';
+} from './resumeai.js?v=3';
 
 const PDFJS_BASE = '/vendor/pdfjs';
 const MAX_FILE_BYTES = 5 * 1024 * 1024;
@@ -1303,7 +1303,7 @@ function safeUrl(url) {
   return /^https?:\/\//i.test(raw) ? raw : '';
 }
 
-/** Has this posting been through the Gemini pass yet? */
+/** Has this posting been through the enrichment pass yet? */
 function enriched(job) {
   return (job.bullets ?? []).length > 0;
 }
@@ -1352,7 +1352,7 @@ function titleIsGeneric(title) {
 /**
  * What the job actually is, for titles that do not say.
  *
- * Prefers Gemini's short label. Falls back to the opening of the first bullet,
+ * Prefers the enrichment's short label. Falls back to the opening of the first bullet,
  * which already describes the work — worse than a real label, but it needs no extra
  * API call and it works for every posting enriched before roleLabel existed.
  *
@@ -2171,7 +2171,7 @@ function trackBar(job) {
 let activeJob = null;
 
 /* ONE QUESTION PER SCREEN: the resume, then a review with one button. There
-   used to be a key screen between them (the reader's own Google key, 23 Sep);
+   used to be a key screen between them (the reader's own API key, 23 Sep);
    the site's key and a free daily allowance replaced it on 11 Oct 2026. Rank
    mode is the resume screen alone.
    @type {'tailor'|'rank'} */
@@ -2197,18 +2197,14 @@ function openTailor(job) {
   // [title, subtitle, resume screen lede]
   const copy = {
     tailor: ['Tailor your resume', job ? `${job.company} · ${job.title}` : '',
-      'A PDF works best. It is read right here in your browser.'],
+      'A PDF works best.'],
     rank: ['Rank the board', 'Every open role, sorted by fit with your resume',
-      'Each open role is scored against it on this device. Free, and nothing is sent anywhere.'],
+      'Every open role is scored against the skills in it.'],
   }[tailorMode];
   $('tailor-title').textContent = copy[0];
   $('tailor-job').textContent = copy[1];
   const lede = $('upload-p');
   if (lede) lede.textContent = copy[2];
-  // Ranking never leaves this device, so the advice about what to strip before
-  // sending a resume to Google would be noise there.
-  const hint = $('upload-hint');
-  if (hint) hint.hidden = tailorMode !== 'tailor';
 
   renderResume();
   // Pick up where the reader left off: a resume from an earlier role goes
@@ -2300,9 +2296,9 @@ function syncReview() {
    one the server gave this browser today; before the first use there is none,
    and the line says the rule instead of guessing a count. */
 function allowanceText(left) {
-  if (left === 0) return `You have used today's ${FREE_PER_DAY} free AI uses. They come back at midnight.`;
-  if (left === null) return `Free: ${FREE_PER_DAY} AI uses a day. This uses one.`;
-  return `${left} of ${FREE_PER_DAY} free AI uses left today. This uses one.`;
+  if (left === 0) return `You have used today's ${FREE_PER_DAY} free AI uses. More at midnight.`;
+  if (left === null) return `${FREE_PER_DAY} free AI uses a day.`;
+  return `${left} of ${FREE_PER_DAY} free AI uses left today.`;
 }
 
 /**
@@ -2474,7 +2470,7 @@ async function runTailor() {
 
   try {
     /* Through /api/ai, on the site's key: the server counts one free use,
-       builds the prompt and asks Google. It keeps nothing of the resume. */
+       builds the prompt and asks the model. It keeps nothing of the resume. */
     const tailored = await tailorWithAI({ resumeText, job: activeJob, region: REGION });
 
     state.tailored = tailored;
@@ -2519,7 +2515,7 @@ async function startAiRank() {
   const btn = document.querySelector('.rank-ai');
   const reset = () => { if (btn) { btn.disabled = false; btn.textContent = `Read the top ${RANK_BATCH} with AI →`; } };
 
-  /* ELAPSED SECONDS, NOT A FAKE PROGRESS BAR. This is ONE request and Google
+  /* ELAPSED SECONDS, NOT A FAKE PROGRESS BAR. This is ONE request and the model
      streams nothing back, so there is no completion fraction to report and
      inventing one would be a lie the reader can time. Measured at 16-25s for
      25 roles, so a still button reads as broken well before it is; a counter
@@ -2537,7 +2533,7 @@ async function startAiRank() {
       ? state.filtered
       : state.jobs.filter((j) => kindOf(j) === state.kind && catOf(j) === state.cat);
     const picked = shortlist(pool, (j) => matchFor(j)?.pct ?? null, RANK_BATCH);
-    // The server retries Google's own overload itself, inside one request.
+    // The server retries the model's own overload itself, inside one request.
     const scores = await rankWithAI({ resumeText, jobs: picked, signal: ctl.signal, region: REGION });
     if (ctl.signal.aborted) return;
     if (!scores.size) {
@@ -2756,7 +2752,7 @@ function wireControls() {
 }
 
 function wireTailor() {
-  forgetOldKey();      // the 23 Sep build stored the reader's own Google key
+  forgetOldKey();      // the 23 Sep build stored the reader's own API key
   $('tailor-close').addEventListener('click', closeTailor);
   $('tailor-backdrop').addEventListener('click', closeTailor);
   document.addEventListener('keydown', (e) => {

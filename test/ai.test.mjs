@@ -19,9 +19,10 @@ import {
   respond, parseRequest, geminiRequest, limitKeys, overLimit, siteCap, endpointFor, askGemini,
   PER_IP_PER_DAY, SITE_PER_DAY, MAX_OUTPUT_TOKENS, ATTEMPTS,
 } from '../web/api/ai.js';
+import { FREE_PER_DAY, RANK_BATCH, istDay } from '../web/public/resumeai.js';
 import {
-  FREE_PER_DAY, RANK_MODEL, TAILOR_MODEL, RANK_SYSTEM, TAILOR_SYSTEM, RANK_BATCH, istDay,
-} from '../web/public/resumeai.js';
+  RANK_MODEL, TAILOR_MODEL, RANK_SYSTEM, TAILOR_SYSTEM, buildRankPrompt,
+} from '../web/api/_prompts.js';
 import { EVENTS } from '../web/api/count.js';
 
 let pass = 0, fail = 0;
@@ -121,6 +122,16 @@ check('an oversized body is refused', Boolean(parseRequest(tailorBody({ job: { d
 check('an unknown board counts as XX', parseRequest(tailorBody({ region: 'ZZ' })).region, 'XX');
 check('a known board is kept', parseRequest(tailorBody({ region: 'in' })).region, 'IN');
 check('an array body is refused', Boolean(parseRequest([1, 2]).error), true);
+
+console.log('\n== the two models, and why they are two ==');
+check('ranking and tailoring use different models', RANK_MODEL !== TAILOR_MODEL, true);
+check('ranking uses the cheap fast one', RANK_MODEL, 'gemini-flash-lite-latest');
+check('tailoring keeps the stronger one', TAILOR_MODEL, 'gemini-2.5-flash');
+{
+  const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title: 'B', company: 'Y' }]);
+  check('every role is indexed', /\[0\][\s\S]*\[1\]/.test(prompt), true);
+  check('the resume is in the prompt', prompt.includes('RESUME'), true);
+}
 
 console.log('\n== the browser never writes the prompt ==');
 {
@@ -290,6 +301,36 @@ console.log('\n== failures give the browser its use back ==');
   const out = await askGemini({ key: KEY, model: RANK_MODEL, body: {}, fetchImpl: w.fetchImpl,
     now: () => t, sleep: async () => { t += 45_000; } });
   check('no retry past the time budget', [out.ok, w.calls.gemini.length], [false, 1]);
+}
+
+console.log('\n== a reader never sees the provider\'s name ==');
+{
+  // Every message a reader can be shown, from every way a request can end.
+  const said = [];
+  const cases = [
+    [{ GEMINI_API_KEY: '' }, []], [ENV, [{ status: 400 }]], [ENV, [{ status: 429 }]],
+    [ENV, [{ status: 500 }, { status: 500 }, { status: 500 }]],
+    [ENV, [{ status: 200, raw: { promptFeedback: { blockReason: 'SAFETY' } } }]],
+    [ENV, [{ status: 200, raw: { candidates: [{ finishReason: 'MAX_TOKENS' }] } }]],
+    [ENV, [{ status: 200, raw: { candidates: [{ finishReason: 'STOP' }] } }]],
+    [ENV, [{ status: 200, text: 'not json' }]],
+    [ENV, [{ throw: Object.assign(new Error('t'), { name: 'TimeoutError' }) }]],
+  ];
+  for (const [env, gemini] of cases) said.push((await run(world({ gemini }), post(tailorBody()), env)).body?.error);
+  said.push((await run(world({ redisDown: true }), post(tailorBody()))).body.error);
+  said.push(parseRequest(tailorBody({ device: 'x' })).error, parseRequest(tailorBody({ resume: 'x' })).error);
+  check('every case produced a message', said.every((m) => typeof m === 'string' && m.length > 10), true);
+  check('none of them names the provider', said.filter((m) => /google|gemini/i.test(m)), []);
+}
+{
+  const w = world({ gemini: Array(10).fill({ status: 200, text: '{"scores":[]}' }) });
+  for (let i = 0; i < FREE_PER_DAY; i++) await run(w, post(rankBody()));
+  const limit = await run(w, post(rankBody()));
+  check('nor does the limit message', /google|gemini/i.test(limit.body.error), false);
+}
+{
+  const ok = await run(world({ gemini: [{ status: 200, text: TAILORED }] }), post(tailorBody()));
+  check('a success carries no model name', /gemini/i.test(JSON.stringify(ok.body)), false);
 }
 
 console.log('\n== the host guard ==');
