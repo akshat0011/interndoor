@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import {
   boldSans, plainText, batchYears, sourceLabel, applyProvider, providerTip,
   jobFacts, groundPost, buildPost, tidyTech, utmUrl, telegramFor,
@@ -223,6 +224,8 @@ ok('at most five hashtags', (text.match(/(^|\s)#[A-Za-z0-9]+/g) ?? []).length <=
   ok('the channel line no longer points at the comments', !/link in the comments/i.test(b.text));
   /* India's channel is WhatsApp, which has no handle: the other variant. */
   const wa = buildPost(row(), { ...CFG, notifications: { ...CFG.notifications, whatsapp: { channels: { IN: 'https://www.whatsapp.com/channel/0029Vb0000000000000000' } } } }, null);
+  const qs = readFileSync(new URL('../bin/queue-server.js', import.meta.url), 'utf8');
+  ok('every draft warms its job page and card for LinkedIn\'s preview', /store\.saveDraft\(row\.job_id, batchId, built\.text[^\n]*\n(?:[^\n]*\n){0,12}?\s*warmPreview\(built\.text, \{ liveMs: 0 \}\)/.test(qs) && /import \{ warmPreview \} from '\.\.\/src\/whatsapp\.js';/.test(qs));
   ok('his WhatsApp line, verbatim', plainText(wa.text).split('\n').includes('📢 New internships and entry-level roles daily on our WhatsApp channel.'));
   ok('there is no separate referral comment any more', !('referral' in b));
   ok('the "work at X? say so" ask is gone', !/If you can refer for this role/.test(plainText(b.text)));

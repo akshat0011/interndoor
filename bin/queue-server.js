@@ -36,6 +36,7 @@ import { log } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage, prunePostPages } from '../src/postpage.js';
 import { renderLiCards } from '../src/licard.js';
+import { warmPreview } from '../src/whatsapp.js';
 import { companySnapshot } from '../src/companysnapshot.js';
 import { weeklyRoundup, publishedIdsFor } from '../src/weekly.js';
 import { renderWeeklyCard, MAX_LOGOS } from '../src/weeklycard.js';
@@ -308,6 +309,15 @@ async function generate(jobIds) {
       const built = buildPost(row, cfg, raw);
       const companyUrl = await companyPageFor(row);
       store.saveDraft(row.job_id, batchId, built.text, { fromModel: !!raw, dropped: built.ai.dropped, model, tip: built.ai.tip, companyUrl });
+      /* WARM THE LINK PREVIEW (11 Oct 2026). LinkedIn builds the preview card
+         from its own first fetch of the job page and its /api/og image, and
+         keeps that result for the URL. A card nobody has asked for yet is drawn
+         cold — 2.6 s measured for Sony Research India's — and that post showed
+         a title and no image while cards WhatsApp had already fetched showed
+         fine. Asking for the page and the card here, when the draft is
+         written, means LinkedIn's fetch finds it drawn. Not awaited; a
+         warm-up that fails costs nothing. */
+      warmPreview(built.text, { liveMs: 0 }).catch(() => {});
     }
 
     // The page holds the whole queue, not just this batch: he asked for one
