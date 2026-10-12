@@ -54,7 +54,7 @@
   <url><loc>https://interndoor.com/skills/mongodb</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/nlp</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/mysql</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/node-js</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/node-js</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/fastapi</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/golang</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
@@ -111,7 +111,7 @@
   <url><loc>https://interndoor.com/roles/sap-salesforce</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/cybersecurity</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/embedded-systems</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/roles/frontend-development</loc><lastmod>2026-10-07</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/roles/frontend-development</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/research</loc><lastmod>2026-10-11</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/mobile-app-development</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering-in-bengaluru</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
@@ -149,6 +149,8 @@
   <url><loc>https://interndoor.com/roles/full-stack-development-in-chennai</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/qa-testing-in-pune</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/sap-salesforce-in-pune</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4476081062</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4476078216</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/american-express-global-business-travel-product-testing-and-release-analyst-supply-marketplace-4476054666</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/pearson-apprentice-data-analytics-and-business-intelligence-4477919572</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/google-cloud-ai-engineer-english-4477906734</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
@@ -449,8 +451,6 @@
   <url><loc>https://interndoor.com/jobs/ups-intermediate-servicenow-application-developer-hrsd-and-itsm-4326730667</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ge-healthcare-electrical-intern-4476739586</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ge-healthcare-intern-4476734841</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4476717871</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4476726500</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/larsen-and-toubro-embedded-developer-4476717531</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/larsen-and-toubro-system-engineer-4476722296</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/larsen-and-toubro-application-engineer-4476713782</loc><lastmod>2026-10-07</lastmod><priority>0.8</priority></url>
@@ -1347,6 +1347,7 @@
   <url><loc>https://interndoor.com/jobs/eclerx-intern-ats-oraclecloud-fa-ewji-saasfaprod1-fa-ocs-oraclecloud-com-81650</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/microsoft-software-engineering-intern-ats-microsoft-india-1970393556911730</loc><lastmod>2026-07-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/echo-initiative-by-joveo</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/american-express-global-business-travel</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/pearson</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/google</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
@@ -1463,7 +1464,6 @@
   <url><loc>https://interndoor.com/companies/visteon-corporation</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ups</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ge-healthcare</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/echo-initiative-by-joveo</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/mufg</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/general-mills</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/rubrik</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
