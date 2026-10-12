@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478549959",
+      "url": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478549959",
+      "title": "IT Systems Engineer — Marsh",
+      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Support infrastructure, DevOps, databases, or application systems in a 24x7 environment\n• Work with AWS, Azure, Git, and PL/SQL with exposure to AI/ML tools\n• Join a hybrid team in Gurugram with three days of office work weekly",
+      "date_published": "2026-10-12T17:04:18.994Z",
+      "authors": [
+        {
+          "name": "Marsh"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/harman-india-software-engineer-validation-4476033576",
+      "url": "https://interndoor.com/jobs/harman-india-software-engineer-validation-4476033576",
+      "title": "Software Engineer - Validation — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Test automotive software and connected vehicle features for quality\n• Use DOORS, Polarion, Jama for requirement management and traceability\n• Collaborate with cross-functional teams on validation and compliance",
+      "date_published": "2026-10-12T16:52:40.688Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-host-4478556096",
+      "url": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-host-4478556096",
+      "title": "Software Engineer — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Chennai, Tamil Nadu, India\n• Engineer secure, high-performance solutions for customer-centric platforms\n• Work with mainframe tools like Endevor, Xpediter, and DB2\n• Collaborate on full lifecycle development of Tier 1 applications",
+      "date_published": "2026-10-12T16:17:47.925Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4478536884",
+      "url": "https://interndoor.com/jobs/accenture-in-india-custom-software-engineer-4478536884",
+      "title": "Custom Software Engineer — Accenture in India",
+      "content_text": "Company: Accenture in India · Location: Bengaluru, Karnataka, India\n• Develop custom software solutions using Python, DevOps, and AWS services\n• Work on API integrations, backend development, and full-stack projects\n• Collaborate with teams to design and implement application integrations",
+      "date_published": "2026-10-12T16:17:32.904Z",
+      "authors": [
+        {
+          "name": "Accenture in India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/accenture-in-india-rrn00017109-infra-tech-support-practitioner-4478544259",
       "url": "https://interndoor.com/jobs/accenture-in-india-rrn00017109-infra-tech-support-practitioner-4478544259",
       "title": "Infra Tech Support Practitioner — Accenture in India",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "WSA – Wonderful Sound for All"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-ai-llm-engineer-python-and-aws-4475685997",
-      "url": "https://interndoor.com/jobs/ust-ai-llm-engineer-python-and-aws-4475685997",
-      "title": "AI/LLM Engineer — UST",
-      "content_text": "Company: UST · Location: Kochi, Kerala, India\n• Build AI solutions using Python, LLM, RAG, and AWS to solve business problems\n• Collaborate with stakeholders to design and deploy scalable, measurable AI workflows\n• Maintain project artifacts in Git and support knowledge transfer to end users",
-      "date_published": "2026-10-12T08:43:21.173Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bt-group-data-analytics-professional-4475680882",
-      "url": "https://interndoor.com/jobs/bt-group-data-analytics-professional-4475680882",
-      "title": "Data Analytics Professional — BT Group",
-      "content_text": "Company: BT Group · Location: Greater Bengaluru Area\n• Clean, integrate, and analyze data from multiple sources\n• Build reports and dashboards using automation tools\n• Collaborate with data owners to improve governance frameworks",
-      "date_published": "2026-10-12T08:11:51.575Z",
-      "authors": [
-        {
-          "name": "BT Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/fidelity-investments-software-engineer-4478394121",
-      "url": "https://interndoor.com/jobs/fidelity-investments-software-engineer-4478394121",
-      "title": "Software engineer — Fidelity Investments",
-      "content_text": "Company: Fidelity Investments · Location: Bengaluru East, Karnataka, India\n• Develop and coordinate application platforms for fund and investment operations\n• Work with Java, Spring Boot, REST, SQL, and cloud technologies\n• Collaborate with business teams on critical investment operations requirements",
-      "date_published": "2026-10-12T06:52:40.732Z",
-      "authors": [
-        {
-          "name": "Fidelity Investments"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/onsurity-software-development-engineer-4478376815",
-      "url": "https://interndoor.com/jobs/onsurity-software-development-engineer-4478376815",
-      "title": "Software Development Engineer — Onsurity",
-      "content_text": "Company: Onsurity · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Build features in claims, wallet, subscriptions, or payments\n• Code in Java (Spring Boot), React, and Node\n• Ship a full feature and present it to the team",
-      "date_published": "2026-10-12T06:11:50.655Z",
-      "authors": [
-        {
-          "name": "Onsurity"
         }
       ]
     }
