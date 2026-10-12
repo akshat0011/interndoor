@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475672547",
+      "url": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475672547",
+      "title": "IT Apprentice — Eaton",
+      "content_text": "Company: Eaton · Location: Pune Division, Maharashtra, India\n• Facilitate scrum ceremonies and track sprint progress using jira and azure devops\n• Support product owners with backlog grooming and sprint readiness activities\n• Coordinate dynatrace onboarding and monitoring enhancements with platform teams",
+      "date_published": "2026-10-12T02:32:04.396Z",
+      "authors": [
+        {
+          "name": "Eaton"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wipro-developer-l2-4478367422",
       "url": "https://interndoor.com/jobs/wipro-developer-l2-4478367422",
       "title": "Developer L2 — Wipro",
@@ -302,18 +314,6 @@
       "authors": [
         {
           "name": "Sony Research India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649",
-      "url": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475617649",
-      "title": "Apprentice. IT. Development Program — Eaton",
-      "content_text": "Company: Eaton · Location: Pune Division, Maharashtra, India\n• Support data engineering and governance projects using Snowflake and Medallion Architecture\n• Write and optimize SQL for data transformation and analysis\n• Collaborate with cross-functional teams on data pipelines and GenAI use cases",
-      "date_published": "2026-10-10T14:33:20.761Z",
-      "authors": [
-        {
-          "name": "Eaton"
         }
       ]
     },
