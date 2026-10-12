@@ -658,7 +658,18 @@ export function reconcileTailored(data, resumeText, { job = null } = {}) {
 
   // Capitals back on tool names in what the model wrote; the reader's own
   // lines (unchanged or put back above) are left exactly as they wrote them.
-  const names = [...STANDARD_NAMES, ...O.skills.flatMap((g) => g.items), ...(Array.isArray(d.keywords) ? d.keywords : [])];
+  /* Only names shaped like a tool's: a symbol or digit (Node.js, C#, EC2), a
+     capital after the first letter (PostgreSQL, AWS), or, from the reader's
+     own skills, one word (Testcontainers). A Title-Cased phrase the model
+     lists as a keyword ("Data Systems", "Unit Testing") is a topic, and
+     respelling it put "a REST API for Data Systems" in a live answer. */
+  const toolShaped = (n, oneWordOk) => /[^A-Za-z\s]/.test(n) || /^.+[A-Z]/.test(n.replace(/\s+[A-Z]/g, ' x'))
+    || (oneWordOk && !/\s/.test(n.trim()));
+  const names = [
+    ...STANDARD_NAMES,
+    ...O.skills.flatMap((g) => g.items).filter((n) => toolShaped(String(n), true)),
+    ...(Array.isArray(d.keywords) ? d.keywords : []).filter((n) => toolShaped(String(n), false)),
+  ];
   for (const sec of T.sections) {
     for (const it of sec.items) {
       for (const b of it.bullets) {

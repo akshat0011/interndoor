@@ -73,7 +73,7 @@ const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
 import {
   resumeNames, shortlist, rankWithAI, tailorWithAI, RANK_BATCH,
   FREE_PER_DAY, allowanceLeft, isAIOwner, forgetOldKey, roleKeywords, keywordMatch,
-} from './resumeai.js?v=6';
+} from './resumeai.js?v=7';
 // Same reason as above: the PDF builder and its caller ship together.
 import { sheetModel, resumePdf, pdfFileName } from './resumepdf.js?v=2';
 

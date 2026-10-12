@@ -859,6 +859,11 @@ console.log('\n== TOOL NAMES KEEP THEIR CAPITALS ==');
   check('a rewritten line gets its capitals back', b[1], 'Built a Spring Boot service in Python');
   check('the reader\'s own unchanged line is left as they wrote it', b[0], 'wrote python scripts');
   check('so does the summary', t.tailored.summary, 'Engineer using Python and Spring Boot.');
+  // Live answer, 12 Oct 2026: the model's keyword "Data Systems" turned up as
+  // "a REST API for Data Systems". A topic phrase is not a tool name.
+  const topic = reconcileTailored({ original, tailored: { ...tailored, summary: 'Built a REST API for data systems with postgresql.' }, keywords: ['Data Systems', 'Unit Testing', 'PostgreSQL'] },
+    'K. wrote python scripts. Built a Spring service. Python, Spring Boot.');
+  check('a keyword that is a topic is not capitalised; a tool still is', topic.tailored.summary, 'Built a REST API for data systems with PostgreSQL.');
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);
