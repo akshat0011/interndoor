@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 12 Oct 2026 09:09:02 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 12 Oct 2026 09:17:27 GMT</lastBuildDate>
+  <item>
+    <title>Software Tester intern — Volody</title>
+    <link>https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4475687837</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/volody-software-tester-intern-mumbai-based-only-4475687837</guid>
+    <pubDate>Mon, 12 Oct 2026 09:17:27 GMT</pubDate>
+    <description>Company: Volody · Location: Mumbai, Maharashtra, India
+• Run manual tests, document defects, retest fixes, and maintain test records
+• Collaborate with developers and product teams on requirements and edge cases
+• Support regression testing and process improvement in a cloud-based CLM platform</description>
+  </item>
   <item>
     <title>Data Engineer — Linde@India</title>
     <link>https://interndoor.com/jobs/linde-india-data-engineer-ai-hub-4478501484</link>
@@ -146,6 +156,16 @@
 • Build scalable backend services using Python and Golang
 • Contribute to React and React Native code for product features
 • Work with product and design teams on complex user problems</description>
+  </item>
+  <item>
+    <title>Metrology Software Engineering Intern — Emerson</title>
+    <link>https://interndoor.com/jobs/emerson-metrology-software-engineering-intern-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26011734</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/emerson-metrology-software-engineering-intern-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26011734</guid>
+    <pubDate>Mon, 12 Oct 2026 00:00:00 GMT</pubDate>
+    <description>Company: Emerson · Location: DEBRECEN, HAJDÚ BIHAR, Hungary
+• Develop automated measurement systems with engineers
+• Test and debug software and hardware setups
+• Document test results and identify improvement opportunities</description>
   </item>
   <item>
     <title>CPU Compiler Intern — Nvidia</title>
@@ -487,26 +507,6 @@
 • Design and verify complex SoC subsystems with embedded processors and communication ASICs
 • Work with Verilog/VHDL, C/C++, Tcl/Perl, and Cadence tools for RTL and layout
 • Collaborate on RF/analog/mixed-signal IC design with focus on low power and signal integrity</description>
-  </item>
-  <item>
-    <title>Azure Data Platform Engineer — UST</title>
-    <link>https://interndoor.com/jobs/ust-azure-data-platform-engineer-4448755215</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ust-azure-data-platform-engineer-4448755215</guid>
-    <pubDate>Sat, 10 Oct 2026 10:03:30 GMT</pubDate>
-    <description>Company: UST · Location: Trivandrum, Kerala, India
-• Maintain and optimize Azure-based data transformation platforms
-• Use Terraform, Azure DevOps, and Databricks for cloud infrastructure
-• Collaborate with security and data teams on platform enhancements</description>
-  </item>
-  <item>
-    <title>Infra Tech Support Practitioner — Accenture services Pvt Ltd</title>
-    <link>https://interndoor.com/jobs/accenture-services-pvt-ltd-issrrn0001601-infra-tech-support-practitioner-copy-09-4477205465</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/accenture-services-pvt-ltd-issrrn0001601-infra-tech-support-practitioner-copy-09-4477205465</guid>
-    <pubDate>Sat, 10 Oct 2026 09:45:23 GMT</pubDate>
-    <description>Company: Accenture services Pvt Ltd · Location: Gurugram, Haryana, India
-• Support production systems and resolve incidents to meet service level agreements
-• Maintain communication during incident resolution and service restoration
-• Develop disaster recovery procedures and data retention practices</description>
   </item>
 </channel>
 </rss>
