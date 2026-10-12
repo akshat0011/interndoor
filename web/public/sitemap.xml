@@ -61,8 +61,8 @@
   <url><loc>https://interndoor.com/skills/perl</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/system-design</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/computer-vision</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/pandas</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/flask</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/pandas</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/spi</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/asic</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/fpga</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
@@ -156,6 +156,7 @@
   <url><loc>https://interndoor.com/jobs/eaton-apprentice-it-development-program-4475672547</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/wipro-developer-l2-4478367422</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/rippling-software-engineer-i-backend-leaning-fullstack-4478359734</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/nvidia-cpu-compiler-intern-2027-ats-workday-nvidia-wd5-nvidiaexternalcareersite-jr2027260</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/amazon-science-applied-scientist-ssg-science-4475663747</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/gsk-specialist-tech-development-4475675117</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/united-airlines-india-knowledge-center-analyst-data-scientist-4450731636</loc><lastmod>2026-10-11</lastmod><priority>0.8</priority></url>
@@ -274,7 +275,6 @@
   <url><loc>https://interndoor.com/jobs/siemens-healthineers-software-engineer-4476296165</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4469137338</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ntt-data-inc-networking-managed-services-engineer-l1-4413033085</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/razorpay-artificial-intelligence-engineer-4476290441</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/bristol-myers-squibb-analytics-engineer-i-commercialization-4477662745</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ntt-data-inc-job-posting-title-ms-engineer-vc-support-l1-4466262716</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/american-express-sranalyst-data-governance-and-mgmt-4476289417</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
@@ -1327,6 +1327,7 @@
   <url><loc>https://interndoor.com/jobs/nvidia-phd-intern-ai-ml-in-wireless-l1-l2-fall-2026-ats-workday-nvidia-wd5-nvidiaexternalcareersite-jr2024423</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/tower-research-capital-intern-ai-ml-ats-greenhouse-towerresearchcapital-8143756</loc><lastmod>2026-08-20</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/signzy-sde-1-fullstack-engineer-ats-keka-signzy-131773</loc><lastmod>2026-08-17</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/decentro-software-developer-intern-ats-keka-decentro-26116</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/handshake-software-engineer-i-international-expansion-ats-ashby-handshake-91733641-0e01-4c04-a5ce-95a7faad1d1c</loc><lastmod>2026-08-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hevo-data-sde-i-ats-lever-hevodata-6cbbe304-e065-4711-bf3e-756795d2bc2a</loc><lastmod>2026-07-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/stripe-software-engineer-intern-ats-greenhouse-stripe-8031833</loc><lastmod>2026-07-22</lastmod><priority>0.8</priority></url>
@@ -1340,6 +1341,7 @@
   <url><loc>https://interndoor.com/companies/eaton</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/wipro</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/rippling</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/nvidia</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/amazon-science</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/gsk</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/united-airlines-india-knowledge-center</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
@@ -1393,7 +1395,6 @@
   <url><loc>https://interndoor.com/companies/birlasoft</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/siemens-healthineers</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/mphasis</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/razorpay</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/bristol-myers-squibb</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/american-express</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/millennium</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
@@ -1488,7 +1489,6 @@
   <url><loc>https://interndoor.com/companies/asian-paints</loc><lastmod>2026-10-02</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/lexsi-labs</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/aditya-birla-capital</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/nvidia</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/baker-hughes</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/microsoft</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/leadsquared</loc><lastmod>2026-10-01</lastmod><priority>0.6</priority></url>
@@ -1552,6 +1552,7 @@
   <url><loc>https://interndoor.com/companies/hevo-data</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/bain-and-company</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/synchrony</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/razorpay</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/msd</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/fiserv</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/esec-forte-technologies</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
