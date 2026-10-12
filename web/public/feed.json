@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/pearson-apprentice-data-analytics-and-business-intelligence-4477919572",
+      "url": "https://interndoor.com/jobs/pearson-apprentice-data-analytics-and-business-intelligence-4477919572",
+      "title": "Data Analytics Apprentice — Pearson",
+      "content_text": "Company: Pearson · Location: Noida, Uttar Pradesh, India\n• Prepare, clean, and analyze data using Python and SQL for reporting\n• Build dashboards and reports in Power BI or Excel with accurate metrics\n• Support AI and automation projects with data preparation and testing",
+      "date_published": "2026-10-12T20:07:16.575Z",
+      "authors": [
+        {
+          "name": "Pearson"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/amazon-sde-1-4478575256",
       "url": "https://interndoor.com/jobs/amazon-sde-1-4478575256",
       "title": "SDE-1 — Amazon",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Linde@India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/setu-infosec-intern-4476001339",
-      "url": "https://interndoor.com/jobs/setu-infosec-intern-4476001339",
-      "title": "Infosec Intern — Setu",
-      "content_text": "Company: Setu · Location: Bengaluru, Karnataka, India\n• Support audit readiness by managing security questionnaires and partner agreements\n• Maintain compliance with ISO 27001, SOC2, and regulatory guidelines\n• Collaborate with engineering and customer teams on security improvements",
-      "date_published": "2026-10-12T08:58:15.735Z",
-      "authors": [
-        {
-          "name": "Setu"
         }
       ]
     }
