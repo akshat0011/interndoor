@@ -238,6 +238,7 @@
     "ASML",
     "GlobalFoundries",
     "Western Digital",
+    "Sandisk",
     "Seagate Technology",
     "Arm",
     "SiFive",
@@ -394,7 +395,8 @@
       "name": "JPMorgan Chase",
       "aliases": [
         "JP Morgan",
-        "J.P. Morgan"
+        "J.P. Morgan",
+        "JPMorganChase"
       ]
     },
     "Morgan Stanley",
