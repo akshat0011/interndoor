@@ -6,16 +6,26 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 12 Oct 2026 17:04:18 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 12 Oct 2026 19:00:05 GMT</lastBuildDate>
+  <item>
+    <title>SDE-1 — Amazon</title>
+    <link>https://interndoor.com/jobs/amazon-sde-1-4478575256</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-sde-1-4478575256</guid>
+    <pubDate>Mon, 12 Oct 2026 19:00:05 GMT</pubDate>
+    <description>Company: Amazon · Location: Hyderabad, Telangana, India · Duration: 12 months
+• Design and build scalable distributed systems for global customer impact
+• Work in agile teams with cross-functional engineers on mission-critical projects
+• Collaborate on large-scale technologies with exposure to cutting-edge solutions</description>
+  </item>
   <item>
     <title>IT Systems Engineer — Marsh</title>
-    <link>https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478549959</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478549959</guid>
-    <pubDate>Mon, 12 Oct 2026 17:04:18 GMT</pubDate>
+    <link>https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478556544</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478556544</guid>
+    <pubDate>Mon, 12 Oct 2026 17:28:11 GMT</pubDate>
     <description>Company: Marsh · Location: Gurugram, Haryana, India
 • Support infrastructure, DevOps, databases, or application systems in a 24x7 environment
-• Work with AWS, Azure, Git, and PL/SQL with exposure to AI/ML tools
-• Join a hybrid team in Gurugram with three days of office work weekly</description>
+• Use PL/SQL, Git, cloud platforms, and AI tools for IT operations and automation
+• Work in hybrid setup with three office days weekly and team collaboration</description>
   </item>
   <item>
     <title>Software Engineer - Validation — HARMAN India</title>
@@ -503,16 +513,6 @@
 • Support development of data mastering systems for syndicated loans
 • Write and maintain code in C# with Agile team practices
 • Work with developers and analysts on loan dataset automation</description>
-  </item>
-  <item>
-    <title>Technical Support Intern — WSA – Wonderful Sound for All</title>
-    <link>https://interndoor.com/jobs/wsa-wonderful-sound-for-all-technical-support-intern-product-engineering-4477507635</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/wsa-wonderful-sound-for-all-technical-support-intern-product-engineering-4477507635</guid>
-    <pubDate>Mon, 12 Oct 2026 08:51:30 GMT</pubDate>
-    <description>Company: WSA – Wonderful Sound for All · Location: Hyderabad, Telangana, India
-• Support development and QA teams with device setup, firmware management, and test environment prep
-• Use Azure DevOps, Git, and automation tools for tracking and documentation
-• Work on hearing aid products and contribute to software/firmware release processes</description>
   </item>
 </channel>
 </rss>

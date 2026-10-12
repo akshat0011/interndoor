@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791829195434,
+ "generatedAt": 1791832461051,
  "region": "IN",
  "regionName": "India",
  "count": 1327,
@@ -428,7 +428,6 @@
   "Hyderabad",
   "Hyderabad - Phoenix Aquila, India",
   "Hyderabad, India",
-  "Hyderabad, Telangana, IND",
   "Hyderabad, Telangana, India",
   "IN Bengaluru",
   "India",
@@ -492,7 +491,59 @@
  ],
  "jobs": [
   {
-   "id": "4478549959",
+   "id": "4478575256",
+   "title": "SDE-1",
+   "company": "Amazon",
+   "matchedWatchlist": "Amazon",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/amazon.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": "12 months",
+   "applicants": "73 applicants",
+   "easyApply": false,
+   "skills": [
+    "agile"
+   ],
+   "summary": "This full-time role involves designing and building scalable distributed systems that serve millions of customers. You'll work in agile teams on mission-critical projects, collaborating with experienced engineers to develop innovative technologies. Ideal for those passionate about solving complex problems at scale and contributing to impactful products.",
+   "bullets": [
+    "Design and build scalable distributed systems for global customer impact",
+    "Work in agile teams with cross-functional engineers on mission-critical projects",
+    "Collaborate on large-scale technologies with exposure to cutting-edge solutions"
+   ],
+   "roleLabel": "Distributed systems engineering",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "experience": "1+ years",
+   "expLevel": "one",
+   "expSays": "1+ years",
+   "keySkills": [
+    "distributed systems"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "10 minutes ago",
+   "postedAt": 1791831605043,
+   "firstSeenAt": 1791832205051,
+   "lastSeenAt": 1791832205051,
+   "url": "https://www.linkedin.com/jobs/view/4478575256/",
+   "applyUrl": "https://www.amazon.jobs/jobs/10561468/sde?cmpid=SPLICX0248M&utm_source=linkedin.com&utm_campaign=cxro&utm_medium=social_media&utm_content=job_posting&ss=paid",
+   "description": null,
+   "roleFingerprint": "f965fa6268",
+   "cardFacts": [
+    "Hyderabad",
+    "On-site",
+    "12 months"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4478556544",
    "title": "IT Systems Engineer",
    "slugTitle": "Engineer - IT Systems Engineering",
    "company": "Marsh",
@@ -505,7 +556,7 @@
    "workplaceType": "Hybrid",
    "stipend": null,
    "duration": null,
-   "applicants": "Be among the first 25 applicants",
+   "applicants": "26 applicants",
    "easyApply": false,
    "skills": [
     "sql",
@@ -513,11 +564,11 @@
     "azure",
     "git"
    ],
-   "summary": "This role involves supporting IT systems in a 24x7 environment, working with cloud platforms and AI tools. Ideal for students with a background in computer science or IT, seeking hands-on experience in infrastructure, DevOps, or application support.",
+   "summary": "This role involves supporting IT systems through infrastructure, DevOps, or application work in a 24x7 environment. You'll use cloud platforms and AI tools to automate operations, with a hybrid work setup requiring three office days weekly. Ideal for someone with technical skills and a willingness to adapt.",
    "bullets": [
     "Support infrastructure, DevOps, databases, or application systems in a 24x7 environment",
-    "Work with AWS, Azure, Git, and PL/SQL with exposure to AI/ML tools",
-    "Join a hybrid team in Gurugram with three days of office work weekly"
+    "Use PL/SQL, Git, cloud platforms, and AI tools for IT operations and automation",
+    "Work in hybrid setup with three office days weekly and team collaboration"
    ],
    "roleLabel": "IT Systems Support",
    "degreeLevel": "UG",
@@ -530,17 +581,18 @@
     "git",
     "aws",
     "azure",
-    "copilot"
+    "copilot",
+    "aiops"
    ],
    "stipendStatus": "unknown",
-   "postedText": "51 minutes ago",
-   "postedAt": 1791824658994,
-   "firstSeenAt": 1791827719001,
-   "lastSeenAt": 1791827719001,
-   "url": "https://www.linkedin.com/jobs/view/4478549959/",
-   "applyUrl": "https://careers.marsh.com/global/en/job/R_366578/Engineer-IT-Systems-Engineering?utm_source=linkedin&utm_medium=phenom-feeds&source=LinkedIn_Slots",
+   "postedText": "1 hour ago",
+   "postedAt": 1791826091051,
+   "firstSeenAt": 1791829691057,
+   "lastSeenAt": 1791829691057,
+   "url": "https://www.linkedin.com/jobs/view/4478556544/",
+   "applyUrl": "https://careers.marsh.com/global/en/job/R_366577/Engineer-IT-Systems-Engineering?utm_source=linkedin&utm_medium=phenom-feeds&source=LinkedIn_Slots",
    "description": null,
-   "roleFingerprint": "36d1fd750b",
+   "roleFingerprint": "c64261854c",
    "cardFacts": [
     "Gurugram",
     "Hybrid"
@@ -589,7 +641,7 @@
    "postedText": "32 minutes ago",
    "postedAt": 1791823960688,
    "firstSeenAt": 1791825880695,
-   "lastSeenAt": 1791825880695,
+   "lastSeenAt": 1791829995898,
    "url": "https://www.linkedin.com/jobs/view/4476033576/",
    "applyUrl": "https://jobsearch.harman.com/careers/searchjobs/R-53816-2026?source=LinkedIn",
    "description": null,
@@ -5133,7 +5185,7 @@
    "postedAt": 1791647238853,
    "firstSeenAt": 1791648318872,
    "lastSeenAt": 1791657202432,
-   "checkedAt": 1791818954992,
+   "checkedAt": 1791829755392,
    "checkedVia": "linkedin",
    "url": "https://www.linkedin.com/jobs/view/4478080141/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4478080141/",
@@ -7602,7 +7654,7 @@
    "postedText": "43 minutes ago",
    "postedAt": 1791571430128,
    "firstSeenAt": 1791574010134,
-   "lastSeenAt": 1791825467931,
+   "lastSeenAt": 1791829706980,
    "checkedAt": 1791821223270,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4469191491/",
@@ -56735,57 +56787,6 @@
    "verified": false
   },
   {
-   "id": "ats:amazon:IND:10561468",
-   "title": "SDE-1",
-   "company": "Amazon",
-   "matchedWatchlist": "Amazon",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/amazon.jpg",
-   "location": "Hyderabad, Telangana, IND",
-   "workplaceType": null,
-   "stipend": null,
-   "duration": "12 months",
-   "applicants": null,
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This role involves designing and building scalable systems for distributed computing environments. You'll work in agile teams to deliver high-quality software and build mission-critical tools with exposure to large-scale technologies. Ideal for those looking to make a significant impact on consumer products.",
-   "bullets": [
-    "Design scalable systems for distributed computing environments",
-    "Work with agile teams to deliver high-quality software",
-    "Build mission-critical tools with exposure to large-scale technologies"
-   ],
-   "roleLabel": "Software development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "experience": "1+ years",
-   "expLevel": "one",
-   "expSays": "1+ years",
-   "keySkills": [
-    "distributed systems"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": null,
-   "postedAt": 1790533800000,
-   "firstSeenAt": 1791793648745,
-   "lastSeenAt": 1791828913234,
-   "url": "https://www.amazon.jobs/en/jobs/10561468/sde-1",
-   "applyUrl": "https://www.amazon.jobs/en/jobs/10561468/sde-1",
-   "description": null,
-   "roleFingerprint": "975c29c52e",
-   "cardFacts": [
-    "Hyderabad",
-    "12 months"
-   ],
-   "category": "software",
-   "family": "swe",
-   "region": "IN",
-   "verified": true
-  },
-  {
    "id": "4426233569",
    "title": "Software Engineering Associate L2",
    "slugTitle": "Engineering-L2-Hyderabad-Associate-Software Engineering",
@@ -62493,7 +62494,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1791792349644,
+   "lastSeenAt": 1791830721933,
    "checkedAt": 1791801143332,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
@@ -71252,7 +71253,7 @@
    "postedText": "18 minutes ago",
    "postedAt": 1789985824793,
    "firstSeenAt": 1789986904794,
-   "lastSeenAt": 1791829020132,
+   "lastSeenAt": 1791829703943,
    "checkedAt": 1791709916149,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4467376797/",

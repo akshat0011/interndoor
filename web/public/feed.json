@@ -6,11 +6,23 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
-      "id": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478549959",
-      "url": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478549959",
+      "id": "https://interndoor.com/jobs/amazon-sde-1-4478575256",
+      "url": "https://interndoor.com/jobs/amazon-sde-1-4478575256",
+      "title": "SDE-1 — Amazon",
+      "content_text": "Company: Amazon · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Design and build scalable distributed systems for global customer impact\n• Work in agile teams with cross-functional engineers on mission-critical projects\n• Collaborate on large-scale technologies with exposure to cutting-edge solutions",
+      "date_published": "2026-10-12T19:00:05.043Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478556544",
+      "url": "https://interndoor.com/jobs/marsh-engineer-it-systems-engineering-4478556544",
       "title": "IT Systems Engineer — Marsh",
-      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Support infrastructure, DevOps, databases, or application systems in a 24x7 environment\n• Work with AWS, Azure, Git, and PL/SQL with exposure to AI/ML tools\n• Join a hybrid team in Gurugram with three days of office work weekly",
-      "date_published": "2026-10-12T17:04:18.994Z",
+      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Support infrastructure, DevOps, databases, or application systems in a 24x7 environment\n• Use PL/SQL, Git, cloud platforms, and AI tools for IT operations and automation\n• Work in hybrid setup with three office days weekly and team collaboration",
+      "date_published": "2026-10-12T17:28:11.051Z",
       "authors": [
         {
           "name": "Marsh"
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "S&P Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/wsa-wonderful-sound-for-all-technical-support-intern-product-engineering-4477507635",
-      "url": "https://interndoor.com/jobs/wsa-wonderful-sound-for-all-technical-support-intern-product-engineering-4477507635",
-      "title": "Technical Support Intern — WSA – Wonderful Sound for All",
-      "content_text": "Company: WSA – Wonderful Sound for All · Location: Hyderabad, Telangana, India\n• Support development and QA teams with device setup, firmware management, and test environment prep\n• Use Azure DevOps, Git, and automation tools for tracking and documentation\n• Work on hearing aid products and contribute to software/firmware release processes",
-      "date_published": "2026-10-12T08:51:30.115Z",
-      "authors": [
-        {
-          "name": "WSA – Wonderful Sound for All"
         }
       ]
     }
