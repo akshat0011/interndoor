@@ -1,4 +1,4 @@
-import { composeWhatsApp, composeWhatsAppGroup, groupForWhatsApp, MAX_GROUP_ROLES, findTarget, MAX_MESSAGE, readPending, writePending, pendingKey, MAX_PENDING, awaitComposer, COMPOSER_MS, COMPOSER_POLL_MS } from '../src/whatsapp.js';
+import { composeWhatsApp, composeWhatsAppGroup, groupForWhatsApp, leadRoleFirst, MAX_GROUP_ROLES, findTarget, MAX_MESSAGE, readPending, writePending, pendingKey, MAX_PENDING, awaitComposer, COMPOSER_MS, COMPOSER_POLL_MS } from '../src/whatsapp.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -568,6 +568,27 @@ console.log('\n== grouping preserves first-appearance order ==');
   check('case does not split a group', groupForWhatsApp([e('IN', 'Acme', '1'), e('IN', 'ACME', '2')]).length, 1);
   check('nothing in, nothing out', groupForWhatsApp([]), []);
   check('a null list is handled', groupForWhatsApp(null), []);
+
+  // Which role's card leads a group (12 Oct 2026, the PayPal post).
+  const r = (id, title) => ({ id, code: 'IN', job: { id, company: 'PayPal', title } });
+  const ids = (list) => leadRoleFirst(list).map((x) => x.id);
+  check('the title most roles share leads', ids([r('a', 'Site Reliability Engineer'), r('b', 'Software Engineer'), r('c', 'Software Engineer')]), ['b', 'a', 'c']);
+  check('a tie goes to the broad software title', ids([r('a', 'Site Reliability Engineer'), r('b', 'Software Engineer')]), ['b', 'a']);
+  check('and to a developer title too', ids([r('a', 'QA Analyst'), r('b', 'Backend Developer Intern')]), ['b', 'a']);
+  check('otherwise first appearance holds', ids([r('a', 'Data Analyst'), r('b', 'QA Analyst')]), ['a', 'b']);
+  check('a broad title does not beat a bigger share', ids([r('a', 'Data Engineer'), r('b', 'Data Engineer'), r('c', 'Software Engineer')]), ['a', 'b', 'c']);
+  // Two Data Engineers against two Software Engineers spelled differently:
+  // only if the spellings count as one title is it a tie for the broad title.
+  check('titles count as one whatever their case or punctuation',
+    ids([r('a', 'Data Engineer'), r('b', 'Data Engineer'), r('c', 'software engineer.'), r('d', 'Software Engineer')]), ['c', 'a', 'b', 'd']);
+  check('a frontend title is broad', ids([r('a', 'QA Analyst'), r('b', 'Frontend Intern')]), ['b', 'a']);
+  check('so is a back-end one', ids([r('a', 'QA Analyst'), r('b', 'Back-end Intern')]), ['b', 'a']);
+  check('every role is kept', ids([r('a', 'X'), r('b', 'Software Engineer'), r('c', 'Y')]).slice().sort(), ['a', 'b', 'c']);
+  check('one role is left alone', ids([r('a', 'X')]), ['a']);
+  check('nothing in, nothing out', leadRoleFirst(null), []);
+  const src = readFileSync(new URL('../src/whatsapp.js', import.meta.url), 'utf8');
+  check('the post leads each group with that role', /groupForWhatsApp\(mine\)\.map\(\(g\) => \(\{ \.\.\.g, items: leadRoleFirst\(g\.items\) \}\)\)/.test(src), true);
+  check('and its card is the first item\'s', /cards\.get\(String\(group\.items\[0\]\.id\)\)/.test(src), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);

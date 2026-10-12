@@ -149,6 +149,31 @@ export function composeWhatsAppGroup(jobs, region = regionOf('IN')) {
   return out;
 }
 
+/* WHICH ROLE LEADS A GROUP. Its card is the picture on the post and its link
+ * comes first, so it is the one that has to earn the click (his call, 12 Oct
+ * 2026, on a PayPal post led by a Site Reliability Engineer card over two
+ * Software Engineer roles: "use software engineer paypal pic here"). The
+ * title the most roles share leads, so the picture speaks for most of the
+ * post; a tie goes to a plain software engineer / developer / SDE title, the
+ * widest search there is; then first appearance. Pure, and tested by name. */
+const BROAD_TITLE = /\b(software|sde|developer|full[\s-]?stack|backend|back[\s-]end|frontend|front[\s-]end)\b/i;
+const titleKey = (job) => String(job?.title ?? '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+export function leadRoleFirst(items) {
+  const list = [...(items ?? [])];
+  if (list.length < 2) return list;
+  const count = new Map();
+  for (const e of list) count.set(titleKey(e.job), (count.get(titleKey(e.job)) ?? 0) + 1);
+  const score = (e) => [count.get(titleKey(e.job)), BROAD_TITLE.test(e.job?.title ?? '') ? 1 : 0];
+  let lead = 0;
+  for (let i = 1; i < list.length; i += 1) {
+    const [a, b] = score(list[i]);
+    const [c, d] = score(list[lead]);
+    if (a > c || (a === c && b > d)) lead = i;
+  }
+  return [list[lead], ...list.filter((_, i) => i !== lead)];
+}
+
 /**
  * Group what is about to be posted by employer, within a board.
  *
@@ -1032,14 +1057,14 @@ export async function postNewJobsWhatsApp(jobs, cfg, { store = null } = {}) {
      meant at most 8 listings a run and the rest queued; now it means at most 8
      messages, so a run carries more listings while interrupting less. */
   const cap = Math.max(1, Number(conf.maxPerRun ?? 8));
-  const groups = groupForWhatsApp(mine);
+  const groups = groupForWhatsApp(mine).map((g) => ({ ...g, items: leadRoleFirst(g.items) }));
   const batch = groups.slice(0, cap);
   const gap = Math.max(1500, Number(conf.sendGapMs ?? 6000));
 
   /* EVERY POST IS ITS CARD. Drawn before WhatsApp is opened, with the same
      renderer and into the same directory Telegram uses, so a card drawn for
      one channel is reused by the other. A group is posted with its FIRST
-     role's card — the role its first link names. A group with no card is not
+     role's card — the role its first link names, chosen by leadRoleFirst. A group with no card is not
      posted bare: it waits on the queue (his call, 30 Sep 2026). */
   const cards = await renderCards(batch.map((g) => g.items[0].job), PATHS.ogCards).catch(() => new Map());
 
