@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/quest-global-observability-engineer-with-devops-skills-4477559574",
+      "url": "https://interndoor.com/jobs/quest-global-observability-engineer-with-devops-skills-4477559574",
+      "title": "Observability Engineer — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Implement monitoring and alerting with Grafana Cloud and Prometheus\n• Deploy apps on Kubernetes/EKS and manage AWS environments\n• Automate infrastructure with Terraform and AWS CDK\n• Work in hybrid setup based in Bengaluru",
+      "date_published": "2026-10-12T11:55:49.035Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/quest-global-aws-engineer-aws-java-or-python-microservice-aidlc-4477532514",
       "url": "https://interndoor.com/jobs/quest-global-aws-engineer-aws-java-or-python-microservice-aidlc-4477532514",
       "title": "AWS Engineer — Quest Global",
@@ -587,18 +599,6 @@
       "title": "LLM Research Intern — Sony Research India",
       "content_text": "Company: Sony Research India · Location: Bengaluru, Karnataka, India\n• Research and prototype LLMs for multilingual understanding and entertainment domain adaptation\n• Collaborate with scientists on experiments, analysis, and paper contributions\n• Work on translation reasoning, reinforcement learning, and real-world data evaluation",
       "date_published": "2026-10-10T15:58:37.164Z",
-      "authors": [
-        {
-          "name": "Sony Research India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sony-research-india-data-science-intern-4478080141",
-      "url": "https://interndoor.com/jobs/sony-research-india-data-science-intern-4478080141",
-      "title": "Data Science Intern — Sony Research India",
-      "content_text": "Company: Sony Research India · Location: Bengaluru, Karnataka, India\n• Analyze massive datasets to extract insights from user interactions\n• Implement ai/ml models for video analysis and predictive algorithms\n• Collaborate with engineering and business teams to align models with kpis",
-      "date_published": "2026-10-10T15:47:18.853Z",
       "authors": [
         {
           "name": "Sony Research India"
