@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791781214080,
+ "generatedAt": 1791781428050,
  "region": "IN",
  "regionName": "India",
- "count": 1284,
- "techCount": 1284,
+ "count": 1285,
+ "techCount": 1285,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -480,6 +480,53 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4477874221",
+   "title": "Technology Development Engineer",
+   "company": "Sandisk",
+   "matchedWatchlist": "Sandisk",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/sandisk.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "86 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves developing nand memory trim and improving flash memory performance for high-density storage. The candidate will collaborate with ssd and inand teams to enhance system performance and work across process, design, and manufacturing to support product ramp.",
+   "bullets": [
+    "Develop nand memory trim and improve flash memory performance and reliability",
+    "Collaborate with ssd and inand teams to enhance system performance",
+    "Work across process, design, and manufacturing to support product ramp"
+   ],
+   "roleLabel": "Nand memory development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "nand memory",
+    "flash memory"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1791777762871,
+   "firstSeenAt": 1791781362881,
+   "lastSeenAt": 1791781362881,
+   "url": "https://www.linkedin.com/jobs/view/4477874221/",
+   "applyUrl": "https://avature.sandisk.com/Careers/JobDetail/Technology-Development-Engineer/3251?src=LinkedIn",
+   "description": null,
+   "roleFingerprint": "8ebf76c3e0",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "generic",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4477865625",
    "title": "System Design Verification Engineer Intern",
@@ -1517,7 +1564,7 @@
    "postedAt": 1791676990271,
    "firstSeenAt": 1791678010282,
    "lastSeenAt": 1791683424789,
-   "checkedAt": 1791774195301,
+   "checkedAt": 1791781319994,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4478080756/",
    "applyUrl": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/160028/?utm_medium=jobboard&utm_source=linkedin",
@@ -2926,7 +2973,7 @@
    "postedAt": 1791625128893,
    "firstSeenAt": 1791628728897,
    "lastSeenAt": 1791635860326,
-   "checkedAt": 1791774196070,
+   "checkedAt": 1791781379997,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4478034877/",
    "applyUrl": "https://www.salesforce.com/company/careers/jobs/JR359744/software-engineering-pmts-apache-kafka-terraform/",
@@ -60239,7 +60286,7 @@
    "postedText": "53 minutes ago",
    "postedAt": 1790332838205,
    "firstSeenAt": 1790336018210,
-   "lastSeenAt": 1791763213319,
+   "lastSeenAt": 1791781310551,
    "checkedAt": 1791626557772,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4461983920/",
