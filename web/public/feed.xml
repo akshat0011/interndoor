@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 12 Oct 2026 06:11:50 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 12 Oct 2026 06:52:40 GMT</lastBuildDate>
+  <item>
+    <title>Software engineer — Fidelity Investments</title>
+    <link>https://interndoor.com/jobs/fidelity-investments-software-engineer-4478394121</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/fidelity-investments-software-engineer-4478394121</guid>
+    <pubDate>Mon, 12 Oct 2026 06:52:40 GMT</pubDate>
+    <description>Company: Fidelity Investments · Location: Bengaluru East, Karnataka, India
+• Develop and coordinate application platforms for fund and investment operations
+• Work with Java, Spring Boot, REST, SQL, and cloud technologies
+• Collaborate with business teams on critical investment operations requirements</description>
+  </item>
   <item>
     <title>Software Development Engineer — Onsurity</title>
     <link>https://interndoor.com/jobs/onsurity-software-development-engineer-4478376815</link>
@@ -497,17 +507,6 @@
 • Troubleshoot customer deployment issues using AI tools and Slack
 • Design automation solutions with Python and Kubernetes
 • Collaborate with global teams on Hyperforce platform support</description>
-  </item>
-  <item>
-    <title>Database Administrator — Uffizio</title>
-    <link>https://interndoor.com/jobs/uffizio-database-administrator-dba-4477208253</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/uffizio-database-administrator-dba-4477208253</guid>
-    <pubDate>Sat, 10 Oct 2026 08:00:44 GMT</pubDate>
-    <description>Company: Uffizio · Location: Valsad, Gujarat, India
-• Monitor and optimize database performance, security, and availability
-• Work with DevOps and development teams to improve application efficiency
-• Handle backups, recovery, and production issues
-• Analyze bottlenecks and implement long-term solutions</description>
   </item>
 </channel>
 </rss>
