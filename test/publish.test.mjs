@@ -2,7 +2,7 @@ import { dedupePostings, closableFrom } from '../src/publish.js';
 /* isBlockedCompany reads a module-level list that ONLY loadConfig() fills, so
    without this the blocklist assertion below tests an empty list and passes
    against a removed gate. It did exactly that on the first run. */
-import { loadConfig } from '../src/config.js';
+import { loadConfig, isBlockedCompany, setCompanyBlocklist } from '../src/config.js';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -19,6 +19,18 @@ const row = (job_id, company, title, location, { posted = AUG, region = 'IN' } =
   ({ row: { job_id, company, title, location, posted_at: posted, first_seen_at: posted }, region });
 
 const ids = (entries) => entries.map((e) => e.row.job_id).sort();
+
+console.log('\n== a short blocklist entry is the whole name, never a fragment ==');
+{
+  // "Vr solutions" normalises to "vr". As a fragment it blocked Chevron
+  // (che-VR-on), DevRev, Nuvr and 107 more; only the employer itself may go.
+  setCompanyBlocklist(['Vr solutions', 'MedTourEasy', 'visa consult']);
+  check('the blocked employer itself is still blocked', [isBlockedCompany('Vr solutions'), isBlockedCompany('VR Solutions Pvt Ltd')], [true, true]);
+  check('Chevron is not', isBlockedCompany('Chevron'), false);
+  check('nor DevRev', isBlockedCompany('DevRev'), false);
+  check('a longer entry still matches inside a longer name', [isBlockedCompany('MedTourEasy Navi Mumbai'), isBlockedCompany('Esse India visa consultant delhi')], [true, true]);
+  setCompanyBlocklist([]);
+}
 
 console.log('\n== a country-only location folds into the same role with a real city ==');
 // Microsoft's India board writes "India, Karnataka, Bangalore" while LinkedIn

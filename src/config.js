@@ -259,11 +259,15 @@ export function setCompanyBlocklist(names) {
     .filter(Boolean);
 }
 
-/** Is this employer on the blocklist? Exported so callers can report it. */
+/** Is this employer on the blocklist? Exported so callers can report it.
+ *  A SHORT single-word entry matches exactly, never as a fragment — the rule
+ *  matchCompany already applies to watchlist terms. "Vr solutions" normalises
+ *  to "vr", and as a fragment it blocked 110 employer names, Chevron's
+ *  Bengaluru engineering role among them (found 12 Oct 2026). */
 export function isBlockedCompany(companyName) {
   const norm = normaliseCompany(companyName);
   if (!norm) return false;
-  return blocklist.some((b) => norm === b || norm.includes(b));
+  return blocklist.some((b) => norm === b || ((b.length >= 4 || b.includes(' ')) && norm.includes(b)));
 }
 
 export function matchCompany(companyName, watchlist) {
