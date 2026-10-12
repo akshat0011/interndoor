@@ -72,8 +72,8 @@ const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
  * together. Both files are hand-committed and ship in one commit. */
 import {
   resumeNames, shortlist, rankWithAI, tailorWithAI, RANK_BATCH,
-  FREE_PER_DAY, allowanceLeft, forgetOldKey, roleKeywords, keywordMatch,
-} from './resumeai.js?v=5';
+  FREE_PER_DAY, allowanceLeft, isAIOwner, forgetOldKey, roleKeywords, keywordMatch,
+} from './resumeai.js?v=6';
 // Same reason as above: the PDF builder and its caller ship together.
 import { sheetModel, resumePdf, pdfFileName } from './resumepdf.js?v=2';
 
@@ -231,7 +231,7 @@ function citiesOf(group) {
     if (!localStorage.getItem('interndoor-owner') && !/^#owner-pair=/.test(location.hash)) return;
   } catch (e) { return; }
   var s = document.createElement('script');
-  s.src = '/owner.js';
+  s.src = '/owner.js?v=2';   // v2: fetches the resume AI's owner pass
   s.defer = true;
   document.head.appendChild(s);
 })();
@@ -2348,6 +2348,7 @@ function syncReview() {
    one the server gave this browser today; before the first use there is none,
    and the line says the rule instead of guessing a count. */
 function allowanceText(left) {
+  if (isAIOwner()) return 'Owner: no daily limit in this browser.';
   if (left === 0) return `You have used today's ${FREE_PER_DAY} free AI uses. More at midnight.`;
   if (left === null) return `${FREE_PER_DAY} free AI uses a day.`;
   return `${left} of ${FREE_PER_DAY} free AI uses left today.`;
@@ -2530,6 +2531,12 @@ async function runTailor() {
     showStep('result');
     toast('Resume tailored');
   } catch (err) {
+    /* A daily limit comes back at midnight, so "Try again" would only refuse
+       again: say when instead, and offer no retry. */
+    const capped = ['limit', 'ip-limit', 'site-limit'].includes(err.code);
+    const head = $('step-error')?.querySelector('.oops b');
+    if (head) head.textContent = capped ? 'Back at midnight' : "That didn't work";
+    $('error-retry').hidden = capped;
     $('error-text').textContent = err.message;
     showStep('error');
   } finally {
@@ -3382,8 +3389,13 @@ async function init() {
   /* After the list, so they are measured where the list has pushed them. */
   reveal.watch(document.querySelectorAll('main > .signup-band, main > .foot'));
 
-  const hash = location.hash.match(/^#job-(.+)$/);
-  const target = hash && state.jobs.find((j) => j.id === hash[1]);
+  /* #job-<id> opens a role; #tailor-<id> (the job page's "Tailor my resume")
+     opens the role and the tailor for it. The id is decoded: the browser
+     percent-encodes a space in a fragment, and careers-board ids carry them. */
+  const hash = location.hash.match(/^#(job|tailor)-(.+)$/);
+  let hashId = hash?.[2];
+  try { if (hashId) hashId = decodeURIComponent(hashId); } catch { /* keep it raw */ }
+  const target = hash && state.jobs.find((j) => j.id === hashId);
   /* A ROLE IS OPENED ONLY WHEN SOMEBODY ASKS FOR ONE — by clicking, or by
      arriving on a #job- link they were given. Otherwise the pane rests on its
      own placeholder.
@@ -3400,7 +3412,8 @@ async function init() {
   if (target) {
     setKind(kindOf(target));
     setCat(catOf(target));
-    selectJob(target.id);
+    selectJob(target.id);   // also rewrites the hash to #job-, so a reload does not reopen the tailor
+    if (hash[1] === 'tailor') openTailor(target);
   }
 
   setInterval(renderFreshness, 60000);

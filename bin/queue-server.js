@@ -59,6 +59,7 @@ import { announceable } from '../src/rolefocus.js';
 import { channelRefusal } from '../src/channelgate.js';
 import { isUnsure } from '../src/jobstatus.js';
 import { publishedTitle } from '../src/titles.js';
+import { aiOwnerToken } from '../web/api/ai.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -1197,6 +1198,12 @@ const server = createServer(async (req, res) => {
         scanRunning: !!lock && Date.now() - lock < ((cfg.limits?.maxRuntimeMinutes ?? 90) + 8) * 60_000,
         postsUrl: `http://127.0.0.1:${PORT}/posts/latest`,
       });
+    }
+
+    /* The resume AI's owner pass for the paired browser (web/api/ai.js). */
+    if (path === '/api/owner/ai' && req.method === 'GET') {
+      const t = aiOwnerToken(process.env);
+      return t ? json(res, 200, { token: t }) : json(res, 503, { error: 'No counter store in .env, so no owner pass.' });
     }
 
     if (path === '/api/owner/clicks' && req.method === 'GET') {

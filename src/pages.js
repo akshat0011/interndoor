@@ -1406,7 +1406,7 @@ function imageMeta(image) {
 /* page.css is cached a day (max-age=600 plus stale-while-revalidate), so a
    change to it that the markup depends on ships with a new version here. The
    closed page, /post-a-job and /skills carry their own on top of this one. */
-const PAGE_CSS_VERSION = 'r1';
+const PAGE_CSS_VERSION = 'r2';
 
 function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=6`, scripts = '', section = '', sectionExact = false }) {
   /* `page` ONLY WHEN THE LINK IS THE PAGE YOU ARE ON. A company hub is inside
@@ -2202,6 +2202,15 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
   const applyBtn = apply
     ? `<a class="btn-apply" href="${apply}" target="_blank" rel="nofollow noopener"><span>Apply</span><em aria-hidden="true"></em></a>`
     : '';
+  /* The resume tailor lives on the board, so this is a plain link to it:
+     app.js reads #tailor-<id>, opens the role and the dialog for it. A link
+     rather than the dialog itself because the dialog, its scripts and its
+     styles are the board's, and copying them into ~1,000 job pages is a second
+     implementation to keep in step. It works with no script on this page. The
+     id is encoded (a careers-board id can carry spaces and commas) and app.js
+     decodes it. Same label and icon as the board pane's button. */
+  const tailorHref = `${regionHref('/', region)}#tailor-${encodeURIComponent(String(job.id))}`;
+  const tailorBtn = `<a class="btn-tailor" href="${esc(tailorHref)}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M12.2 11.8l-1.4 1.4M3 21l9-9"/><circle cx="15" cy="9" r="3"/></svg><span>Tailor my resume</span></a>`;
 
   // One tile per ROLE, not per posting.
   //
@@ -2362,6 +2371,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         <div class="jp-card">
           ${apply ? `<div class="jp-card-top">
             <span class="apply-glow">${applyBtn}</span>
+            ${tailorBtn}
             <p class="jp-card-note">Opens ${where} in a new tab. Free. We never ask for a fee.</p>
           </div>` : ''}
           <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from

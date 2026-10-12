@@ -25,7 +25,7 @@ import {
   hayOf, mentions, splitSkillEntry, reconcileTailored, roleKeywords, keywordMatch, keptIn, addHeadline,
   rankWithAI, tailorWithAI, RANK_BATCH,
   AI_ENDPOINT, FREE_PER_DAY, DEVICE_STORE, DEVICE_SHAPE, ALLOWANCE_STORE, OLD_KEY_STORE,
-  deviceId, allowanceLeft, rememberAllowance, forgetOldKey, istDay,
+  deviceId, allowanceLeft, rememberAllowance, forgetOldKey, istDay, AI_OWNER_STORE, isAIOwner, respell, STANDARD_NAMES,
 } from '../web/public/resumeai.js';
 
 let pass = 0, fail = 0;
@@ -158,6 +158,26 @@ check('and no key of any kind', 'key' in sentBody || JSON.stringify(sentTo.init.
 check('a rank sends no description — the prompt never reads one', 'description' in sentBody.jobs[0], false);
 check('and the role it is about', sentBody.jobs[0].title, 'SDE Intern');
 check('the server’s count is remembered for today', allowanceLeft(), 3);
+check('a reader sends no owner pass', 'x-ai-owner' in sentTo.init.headers, false);
+
+console.log('\n== THE OWNER PASS ==');
+{
+  globalThis.localStorage = fakeStorage();
+  const PASS = 'a'.repeat(64);
+  localStorage.setItem(AI_OWNER_STORE, PASS);
+  check('a stored pass makes this browser the owner', isAIOwner(), true);
+  globalThis.fetch = answer({ scores: [] }, { extra: { owner: true } });
+  await rankWithAI({ resumeText: 'x'.repeat(400), jobs: [{ id: 'j1', title: 'SDE Intern' }], region: 'IN' });
+  check('and it is sent as x-ai-owner', answer.seen.init.headers['x-ai-owner'], PASS);
+  check('in a header, never the body', JSON.parse(answer.seen.init.body).owner === undefined && !answer.seen.init.body.includes(PASS), true);
+  rememberAllowance(0);
+  check('the owner is never shown as out of uses', allowanceLeft(), null);
+  localStorage.setItem(AI_OWNER_STORE, 'not-a-pass');
+  check('a malformed pass is ignored', isAIOwner(), false);
+  globalThis.localStorage = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); } };
+  check('blocked storage is a reader, not a throw', isAIOwner(), false);
+  globalThis.localStorage = fakeStorage();
+}
 
 // The answer's shape is the 11 Oct 2026 contract: the original parsed, and the rewrite.
 const TINY = { name: 'A', sections: [{ heading: 'Projects', items: [{ id: 'i1', title: 'P', bullets: [{ id: 'i1.b1', text: 'Built it' }] }] }], skills: [] };
@@ -765,6 +785,80 @@ console.log('\n== THE HEADLINE IS THE POSTING\'S EXACT TITLE ==');
   addHeadline(none, { title: '' });
   check('no title, no headline', [none.tailored.headline, none.added.length], [undefined, 0]);
   check('the original never gets one', 'headline' in (reconcileTailored({ original: { name: 'K', sections: [], skills: [] }, tailored: { name: 'K', sections: [], skills: [] } }, 'K').original), false);
+}
+
+console.log('\n== A REWRITE MAY NOT CLAIM WHAT THE RESUME NEVER SAYS (12 Oct 2026) ==');
+{
+  // Flash-Lite's own output on a fictional resume, cut down: it turned real
+  // bullets into code reviews and Agile, and said "Skilled in C#".
+  const RES = 'Meera Krishnan. Built a Flask REST API backed by PostgreSQL for 40 warehouse staff. '
+    + 'Wrote unit tests with pytest and set up a GitHub Actions pipeline. Fixed bugs reported by the QA team. '
+    + 'Skills: Python, SQL, Flask, Git.';
+  const JOB = { title: 'Software Development Apprentice', skills: ['C#', 'Agile', 'Code Reviews', 'SQL', 'Cloud Technologies'] };
+  const original = {
+    name: 'Meera Krishnan', summary: '',
+    sections: [{ heading: 'Experience', items: [{ id: 'i1', title: 'Software Development Intern', org: 'Kavya Logistics', bullets: [
+      { id: 'i1.b1', text: 'Built a Flask REST API backed by PostgreSQL for 40 warehouse staff' },
+      { id: 'i1.b2', text: 'Wrote unit tests with pytest and set up a GitHub Actions pipeline' },
+      { id: 'i1.b3', text: 'Fixed bugs reported by the QA team' },
+    ] }] }],
+    skills: [{ group: 'Skills', items: ['Python', 'SQL', 'Flask', 'Git'] }],
+  };
+  const tailored = {
+    name: 'Meera Krishnan',
+    summary: 'Developer with a Flask REST API in production. Skilled in C# and Agile team practices. Comfortable with SQL.',
+    sections: [{ heading: 'Experience', items: [{ from: 'i1', title: 'Software Development Intern', bullets: [
+      { from: ['i1.b1'], text: 'Built a Flask REST API on SQL (PostgreSQL) for 40 warehouse staff' },
+      { from: ['i1.b2'], text: 'Performed code reviews and wrote unit tests with pytest' },
+      { from: ['i1.b3'], text: 'Fixed bugs reported by the QA team while collaborating with an Agile team' },
+      { from: [], text: 'Built internal tools in C#' },
+    ] }] }],
+    skills: [{ group: 'Skills', items: ['C#', 'Python', 'SQL', 'Flask', 'Git'] }],
+  };
+  const t = reconcileTailored({ original, tailored }, RES, { job: JOB });
+  const lines = t.tailored.sections[0].items[0].bullets.map((b) => b.text);
+  check('a rewrite naming a skill the resume has is kept', lines[0], 'Built a Flask REST API on SQL (PostgreSQL) for 40 warehouse staff');
+  check('an invented duty goes back to the reader\'s words', lines[1], 'Wrote unit tests with pytest and set up a GitHub Actions pipeline');
+  check('so does a line that adds a practice they never named', lines[2], 'Fixed bugs reported by the QA team');
+  check('a line the model ADDS is left, because it is listed as an addition', lines[3], 'Built internal tools in C#');
+  check('and it is listed', t.added.some((a) => a.kind === 'line' && a.text === 'Built internal tools in C#'), true);
+  check('a summary sentence with an unsupported claim is dropped, the rest kept', t.tailored.summary, 'Developer with a Flask REST API in production. Comfortable with SQL.');
+  check('it counts what it put back', t.grounded, 3);
+  check('an added skill stays, flagged', t.added.some((a) => a.kind === 'skill' && a.text === 'C#'), true);
+
+  const allBad = reconcileTailored({ original: { ...original, summary: 'Backend developer.' }, tailored: { ...tailored, summary: 'Skilled in C#. Agile expert.' } }, RES + ' Backend developer.', { job: JOB });
+  check('a summary that is all claims falls back to the reader\'s own', allBad.tailored.summary, 'Backend developer.');
+  const noJob = reconcileTailored({ original, tailored }, RES);
+  check('with no role there is nothing to ground against', [noJob.grounded, noJob.tailored.sections[0].items[0].bullets[1].text], [0, 'Performed code reviews and wrote unit tests with pytest']);
+
+  // And the path a reader actually takes passes the role in.
+  globalThis.localStorage = fakeStorage();
+  globalThis.fetch = answer({ original, tailored }, { remaining: 4 });
+  const live = await tailorWithAI({ resumeText: RES, job: JOB });
+  check('tailorWithAI grounds against the role', live.tailored.sections[0].items[0].bullets[1].text, 'Wrote unit tests with pytest and set up a GitHub Actions pipeline');
+}
+
+console.log('\n== TOOL NAMES KEEP THEIR CAPITALS ==');
+{
+  // Flash-Lite's own lines on a fictional resume, 12 Oct 2026.
+  check('kafka and python', respell('Built a kafka consumer in python', STANDARD_NAMES), 'Built a Kafka consumer in Python');
+  check('the longer name wins', respell('Contributed to react native code', STANDARD_NAMES), 'Contributed to React Native code');
+  check('names with dots and symbols', respell('Wrote node.js services in c# on .net with ci/cd', STANDARD_NAMES), 'Wrote Node.js services in C# on .NET with CI/CD');
+  check('a resume skill the list lacks', respell('Ran testcontainers suites', ['Testcontainers']), 'Ran Testcontainers suites');
+  check('English words that are also tools are left', respell('Handled the rest of the release, ready to go', STANDARD_NAMES), 'Handled the rest of the release, ready to go');
+  check('a name inside a longer word is left', respell('Reported on digital reactors', STANDARD_NAMES), 'Reported on digital reactors');
+  check('casing already present is never changed', respell('Used PYTHON and Python', STANDARD_NAMES), 'Used PYTHON and Python');
+  const original = { name: 'K', sections: [{ heading: 'Experience', items: [{ id: 'i1', title: 'Intern', bullets: [
+    { id: 'i1.b1', text: 'wrote python scripts' }, { id: 'i1.b2', text: 'Built a Spring service' }] }] }],
+    skills: [{ group: 'Skills', items: ['Python', 'Spring Boot'] }] };
+  const tailored = { name: 'K', summary: 'Engineer using python and spring boot.', sections: [{ heading: 'Experience', items: [{ from: 'i1', title: 'Intern', bullets: [
+    { from: ['i1.b1'], text: 'wrote python scripts' }, { from: ['i1.b2'], text: 'Built a spring boot service in python' }] }] }],
+    skills: [{ group: 'Skills', items: ['Python', 'Spring Boot'] }] };
+  const t = reconcileTailored({ original, tailored }, 'K. wrote python scripts. Built a Spring service. Python, Spring Boot.');
+  const b = t.tailored.sections[0].items[0].bullets.map((x) => x.text);
+  check('a rewritten line gets its capitals back', b[1], 'Built a Spring Boot service in Python');
+  check('the reader\'s own unchanged line is left as they wrote it', b[0], 'wrote python scripts');
+  check('so does the summary', t.tailored.summary, 'Engineer using Python and Spring Boot.');
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

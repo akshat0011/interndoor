@@ -61,6 +61,16 @@
     });
   }
 
+  /* The resume AI's owner pass: no daily limit in this browser. The helper
+     derives it (web/api/ai.js, aiOwnerToken) and resumeai.js sends it. Asked
+     once a page, so a rotated Redis token reaches the browser on its own. */
+  var AI_KEY = 'interndoor-ai-owner';
+  call('/api/owner/ai').then(function (d) {
+    if (d && /^[0-9a-f]{64}$/.test(d.token || '')) {
+      try { localStorage.setItem(AI_KEY, d.token); } catch (e) { /* storage blocked */ }
+    }
+  }, function () { /* helper off: keep what is stored */ });
+
   /* ---------------- Apply clicks per job ----------------
      How many times InternDoor's Apply buttons were pressed for each job, read
      by the helper from the counter (web/api/count.js). One request per page
@@ -319,7 +329,7 @@
     });
 
     button(bar, 'Owner off', function () {
-      try { localStorage.removeItem(KEY); } catch (e) { /* nothing stored */ }
+      try { localStorage.removeItem(KEY); localStorage.removeItem(AI_KEY); } catch (e) { /* nothing stored */ }
       document.querySelectorAll('.owner-bar, .owner-fab, .owner-clicks').forEach(function (b) { b.remove(); });
       toast('Owner controls are off in this browser.');
     }, 'owner-quiet');

@@ -167,6 +167,31 @@ check('the rail button is wrapped for its halo',
   withHttps.includes('<span class="apply-glow"><a class="btn-apply"'), true);
 check('exactly one halo wrapper', withHttps.split('apply-glow').length - 1, 1);
 
+// "Tailor my resume" beside Apply (his ask, 12 Oct 2026). It is a link to the
+// board, which opens the tailor for this role from #tailor-<id> (app.js).
+check('the rail carries one tailor link, the dock none', withHttps.split('class="btn-tailor"').length - 1, 1);
+check('it goes to the board, naming this role', withHttps.includes(`class="btn-tailor" href="/#tailor-${page.id}"`), true);
+{
+  const at = (k) => withHttps.indexOf(k);
+  check('it sits under Apply and above the line about where Apply goes',
+    at('class="apply-glow"') < at('class="btn-tailor"') && at('class="btn-tailor"') < at('class="jp-card-note"'), true);
+  check('it says what it does', /class="btn-tailor"[^]*?<span>Tailor my resume<\/span><\/a>/.test(withHttps), true);
+  const odd = renderJobPage({ ...page, id: 'ats:workday:acme:R 12,3', applyUrl: 'https://acme.wd1.myworkdayjobs.com/x/job/1' });
+  const href = (odd.match(/class="btn-tailor" href="([^"]*)"/) || [])[1] ?? '';
+  check('a careers-board id is encoded into the link', href, '/#tailor-ats%3Aworkday%3Aacme%3AR%2012%2C3');
+  // The board reads it back with the lines it actually runs.
+  const app = readFileSync(new URL('../web/public/app.js', import.meta.url), 'utf8');
+  const lift = app.match(/  const hash = location\.hash\.match\([^]*?\n  const target = [^\n]*\n/);
+  check('app.js reads #job- and #tailor- in one place', !!lift, true);
+  const resolve = (h, jobs) => new Function('location', 'state', `${lift?.[0] ?? ''}; return [hash && hash[1], target && target.id];`)({ hash: h }, { jobs });
+  const jobs = [{ id: 'ats:workday:acme:R 12,3' }, { id: '4400000000' }];
+  check('the encoded careers-board id finds its role, as a tailor', resolve(href.slice(1), jobs), ['tailor', 'ats:workday:acme:R 12,3']);
+  check('a plain #job- link still finds its role', resolve('#job-4400000000', jobs), ['job', '4400000000']);
+  check('a malformed escape does not throw', resolve('#tailor-%E0%A4%A', jobs), ['tailor', undefined]);
+  check('and #tailor- opens the tailor once the role is selected',
+    /selectJob\(target\.id\);[^\n]*\n\s*if \(hash\[1\] === 'tailor'\) openTailor\(target\);/.test(app), true);
+}
+
 console.log('\n== the page shows our summary, and only clean facts ==');
 
 // The summary is our own writing about the posting — the field was in the data

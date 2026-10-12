@@ -34,9 +34,10 @@
    function logs, so a console line quoting it IS storage. Failures log a
    status code and nothing else (the /api/apply and /api/feedback rule). */
 
-import { createHash } from 'node:crypto';
+import { createHash, timingSafeEqual } from 'node:crypto';
 import {
-  RANK_MODEL, TAILOR_MODEL, TAILOR_THINKING, RANK_SYSTEM, RANK_SCHEMA, TAILOR_SYSTEM, TAILOR_SCHEMA,
+  RANK_MODEL, TAILOR_MODEL, TAILOR_THINKING, OWNER_TAILOR_MODEL, OWNER_TAILOR_THINKING,
+  RANK_SYSTEM, RANK_SCHEMA, TAILOR_SYSTEM, TAILOR_SCHEMA, PRICE_CENTS_PER_M,
   buildRankPrompt, buildTailorPrompt,
 } from './_prompts.js';
 import {
@@ -53,9 +54,28 @@ export const PER_IP_PER_DAY = 25;
              ~3,700-5,500 out with thinking                       $0.012-0.018
    Rounded UP, so the budget runs out before the money does. Re-measure when a
    model or a price changes (usageMetadata on any response gives the tokens). */
-export const COST_PAISE = { rank: 25, tailor: 180 };
-/* His ceiling, 11 Oct 2026: "i can spend a max of 1100 inr / month". */
-export const MONTHLY_BUDGET_INR = 1100;
+export const COST_PAISE = { rank: 25, tailor: 80 };
+/* THE CHARGE ABOVE IS A RESERVATION SINCE 12 OCT 2026. It is taken before the
+   call, so concurrent calls cannot all slip under the cap, and settled after
+   from Google's own token counts (usageMetadata) at PRICE_CENTS_PER_M, so a
+   one-page resume (~38p on Flash-Lite) costs the day's budget what it cost
+   Google rather than a two-page worst case. Rupees per dollar rounded UP. */
+export const INR_PER_USD = 96;
+
+/** What one answer cost, in whole paise (rounded up), from its usageMetadata;
+ *  null when the model has no price or Google sent no counts. Pure. */
+export function actualPaise(model, usage) {
+  const price = PRICE_CENTS_PER_M[model];
+  const input = Number(usage?.promptTokenCount);
+  const output = Number(usage?.candidatesTokenCount ?? 0) + Number(usage?.thoughtsTokenCount ?? 0);
+  if (!price || !Number.isFinite(input) || !Number.isFinite(output) || input <= 0) return null;
+  const cents = (input * price.in + output * price.out) / 1e6;
+  return Math.ceil(cents * INR_PER_USD);   // cents of a dollar x rupees per dollar = paise
+}
+/* His ceiling: Rs 1,100 a month on 11 Oct 2026, raised to Rs 2,000 on 12 Oct
+   ("at least 200 tailors a day with 2k budget"). AI Studio's own monthly
+   spend cap must be at least this, or it stops every call first. */
+export const MONTHLY_BUDGET_INR = 2000;
 const LIMIT_TTL_SECONDS = 2 * 24 * 60 * 60;
 /* A full tailor request is a resume (18k) and one clamped posting (two 12k
    fields) plus small change. Anything much past that is not this page. */
@@ -142,10 +162,12 @@ export function parseRequest(body) {
 }
 
 /** The model and the request body for Google, built from our own prompts. */
-export function geminiRequest(req) {
+export function geminiRequest(req, { owner = false } = {}) {
   const rank = req.task === 'rank';
+  // The owner's tailor runs on the best writer; everyone else's on Flash-Lite.
+  const thinking = owner ? OWNER_TAILOR_THINKING : TAILOR_THINKING;
   return {
-    model: rank ? RANK_MODEL : TAILOR_MODEL,
+    model: rank ? RANK_MODEL : owner ? OWNER_TAILOR_MODEL : TAILOR_MODEL,
     body: {
       systemInstruction: { parts: [{ text: rank ? RANK_SYSTEM : TAILOR_SYSTEM }] },
       contents: [{
@@ -155,8 +177,8 @@ export function geminiRequest(req) {
       generationConfig: {
         temperature: rank ? 0.2 : 0.4,
         maxOutputTokens: MAX_OUTPUT_TOKENS,
-        // The tailor's thinking is most of its cost; 1,024 measured as good as unlimited.
-        ...(rank ? {} : { thinkingConfig: { thinkingBudget: TAILOR_THINKING } }),
+        // A thinking budget only where one is set (null: the model's default, which is none).
+        ...(rank || thinking == null ? {} : { thinkingConfig: { thinkingBudget: thinking } }),
         responseMimeType: 'application/json',
         responseSchema: rank ? RANK_SCHEMA : TAILOR_SCHEMA,
       },
@@ -253,7 +275,7 @@ export async function askGemini({ key, model, body, fetchImpl = fetch, now = Dat
   const raw = (candidate?.content?.parts ?? []).map((p) => p?.text).filter(Boolean).join('').trim();
   if (!raw) return { ok: false, reason: 'empty' };
   try {
-    return { ok: true, data: JSON.parse(raw) };
+    return { ok: true, data: JSON.parse(raw), usage: data?.usageMetadata ?? null };
   } catch {
     return { ok: false, reason: 'unreadable' };
   }
@@ -269,6 +291,26 @@ function store(env) {
  *  store's token, which is already secret and already present. */
 function saltFrom(env) {
   return env.AI_SALT || env.KV_REST_API_TOKEN || env.UPSTASH_REDIS_REST_TOKEN || 'interndoor-ai';
+}
+
+/* THE OWNER HAS NO DAILY LIMIT (his ask, 12 Oct 2026: "i am the owner provide
+   me with unlimited tailors"). His browser sends x-ai-owner, a secret derived
+   from the Redis token, which Vercel and his Mac both already hold, so no new
+   setting exists to forget. The post-queue helper on his Mac hands it to the
+   paired owner bar (bin/queue-server.js, /api/owner/ai). An owner call skips
+   the browser, network and site limits but is still CHARGED to the site's
+   daily budget: it is the same money, and AI Studio's monthly cap still stops
+   everything. Rotating the Redis token rotates this. */
+export function aiOwnerToken(env = process.env) {
+  const t = env.KV_REST_API_TOKEN || env.UPSTASH_REDIS_REST_TOKEN;
+  return t ? createHash('sha256').update(`interndoor-ai-owner|${t}`).digest('hex') : null;
+}
+
+export function isOwnerCall(req, env = process.env) {
+  const want = aiOwnerToken(env);
+  const got = req.headers?.['x-ai-owner'];
+  if (!want || typeof got !== 'string' || got.length !== want.length) return false;
+  return timingSafeEqual(Buffer.from(got), Buffer.from(want));
 }
 
 /* Vercel sets x-real-ip itself and overwrites x-forwarded-for, so neither can
@@ -298,6 +340,14 @@ async function pipeline(commands, { url, token }, fetchImpl) {
   }
 }
 
+/* Swap the reservation for what the answer really cost. Only after a
+   success: a failed call keeps its reservation, as before, because Google's
+   counts for it are unknown. A refund is a negative INCRBY. */
+async function settle(key, reserved, actual, target, fetchImpl) {
+  if (actual == null || actual === reserved) return;
+  await pipeline([['INCRBY', key, actual - reserved]], target, fetchImpl);
+}
+
 function countCommands(name, region, now) {
   const key = countKey(utcDay(now), name, region);
   return [['INCR', key], ['EXPIRE', key, COUNT_TTL]];
@@ -321,6 +371,21 @@ export async function respond(req, { env = process.env, fetchImpl = fetch, now =
   const t = now();
   const keys = limitKeys(istDay(t), ask.device, clientIp(req), saltFrom(env));
   const cost = COST_PAISE[ask.task];
+
+  if (isOwnerCall(req, env)) {
+    const charged = await pipeline([['INCRBY', keys.all, cost], ['EXPIRE', keys.all, LIMIT_TTL_SECONDS]], target, fetchImpl);
+    if (!charged) return { status: 502, body: { code: 'store', error: 'Could not record the call just now. Please try again in a moment.' } };
+    const { model, body } = geminiRequest(ask, { owner: true });
+    const out = await askGemini({ key, model, body, fetchImpl, now, sleep });
+    if (!out.ok) {
+      if (out.status) console.warn(`ai: Google answered ${out.status}`);
+      const fail = FAILURES[out.reason] ?? FAILURES.trouble;
+      return { status: fail.status, body: { code: out.reason, error: fail.error, owner: true } };
+    }
+    await settle(keys.all, cost, actualPaise(model, out.usage), target, fetchImpl);
+    return { status: 200, body: { result: out.data, owner: true } };
+  }
+
   const counts = await pipeline([
     ['INCR', keys.dev], ['EXPIRE', keys.dev, LIMIT_TTL_SECONDS],
     ['INCR', keys.ip], ['EXPIRE', keys.ip, LIMIT_TTL_SECONDS],
@@ -353,6 +418,7 @@ export async function respond(req, { env = process.env, fetchImpl = fetch, now =
     return { status: fail.status, body: { code: out.reason, error: fail.error, remaining: Math.min(FREE_PER_DAY, remaining + 1) } };
   }
 
+  await settle(keys.all, cost, actualPaise(model, out.usage), target, fetchImpl);
   await pipeline(countCommands(ask.task === 'rank' ? 'ai-rank' : 'ai-tailor', ask.region, t), target, fetchImpl);
   return { status: 200, body: { result: out.data, remaining, limit: FREE_PER_DAY } };
 }

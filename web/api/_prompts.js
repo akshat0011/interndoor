@@ -41,9 +41,33 @@ import { clampJob } from '../public/resumeai.js';
  * the same output; NO thinking broke the structure (the summary filed as a
  * section, every skill in one group). 3.1 Flash-Lite costs half again but kept
  * first person and filler; 3.8 Flash took 62-174 s. */
+/* MOVED TO 3.1 FLASH-LITE, 12 Oct 2026, his call ("at least 200 tailors a
+ * day with 2k budget"). Measured on fictional resumes against the S&P Global
+ * apprentice and Rippling backend postings: one page 2,018 tokens in / 2,349
+ * out, ~38p; two pages 2,433 / 4,649, ~73p; 6-13 s. 2.5 Flash on the one-page
+ * resume: 2,018 / 2,567 + 833 thinking, ~87p, 16 s. 2.5 Flash-Lite would be
+ * cheaper still and answers 404 to new projects. Flash-Lite INVENTS DUTIES
+ * ("Performed code reviews", "Skilled in C#" for a resume with neither), which
+ * reconcileTailored's grounding step undoes in code. No thinking: it does none
+ * by default, and the structure held without it. */
 export const RANK_MODEL = 'gemini-3.1-flash-lite';
-export const TAILOR_MODEL = 'gemini-2.5-flash';
-export const TAILOR_THINKING = 1024;
+export const TAILOR_MODEL = 'gemini-3.1-flash-lite';
+export const TAILOR_THINKING = null;   // null sends no thinkingConfig
+/* THE OWNER'S TAILOR KEEPS THE BEST WRITER (his call, 12 Oct 2026: "the best
+ * model 2.5 flash or whatever for the owner i.e me"). Same fictional two-page
+ * resume: 2.5 Flash wrote "Built a Kafka consumer in Python", Flash-Lite
+ * "Built a kafka consumer in python"; 145p and 27 s against 64p and 9 s. */
+export const OWNER_TAILOR_MODEL = 'gemini-2.5-flash';
+export const OWNER_TAILOR_THINKING = 1024;
+
+/* WHAT A MILLION TOKENS COSTS, in US cents, Google's paid-tier price sheet read
+ * 12 Oct 2026 (ai.google.dev/gemini-api/docs/pricing). Thinking tokens bill as
+ * output. Used to charge each call what it really cost (web/api/ai.js). A
+ * model missing here is charged its reservation and nothing is refunded. */
+export const PRICE_CENTS_PER_M = {
+  'gemini-3.1-flash-lite': { in: 25, out: 150 },
+  'gemini-2.5-flash': { in: 30, out: 250 },
+};
 /** Kept for callers and tests that just want "the model this talks to". */
 export const MODEL = TAILOR_MODEL;
 
@@ -142,6 +166,8 @@ THE BULLETS.
 - Keep every number exactly as written. Never add a number.
 - Rewording changes the words, never the facts: do not add scope, places, users, tools or details the line does not state.
 - Keep the size of every claim. "Helped the backend team with APIs" may become "Contributed RESTful API endpoints alongside the backend team", never "Built the backend" or "Led". Never add a duty the resume does not state (code reviews, mentoring, leading, owning, working with senior engineers or product teams).
+- Never shrink a claim either. Where the resume already says Built, Made, Wrote, Designed, Created, Cut or Reduced, keep that verb or one as strong: "Made a Next.js dashboard" never becomes "Contributed to a dashboard".
+- Write every tool, language and framework with its standard capitals (Python, Spring Boot, Kafka, React Native, PostgreSQL), never in lower case, even where the posting does.
 - One or two lines each. No first person (I, my, me, we, our).
 - Within each section, the items and bullets that matter most for this job come first.
 

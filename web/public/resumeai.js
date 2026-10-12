@@ -89,7 +89,22 @@ export function deviceId() {
    says nothing about today, so it is read as unknown rather than as a limit. */
 export const ALLOWANCE_STORE = 'interndoor-ai-left';
 
+/* The owner's pass (web/api/ai.js, isOwnerCall): written by owner.js in his
+   paired browser only, sent as x-ai-owner, and it means no daily limit. */
+export const AI_OWNER_STORE = 'interndoor-ai-owner';
+const OWNER_SHAPE = /^[0-9a-f]{64}$/;
+
+function ownerPass() {
+  try {
+    const v = localStorage.getItem(AI_OWNER_STORE);
+    return v && OWNER_SHAPE.test(v) ? v : null;
+  } catch { return null; }
+}
+
+export function isAIOwner() { return ownerPass() !== null; }
+
 export function allowanceLeft(now = Date.now()) {
+  if (isAIOwner()) return null;   // no count to show: the owner has no limit
   try {
     const kept = JSON.parse(localStorage.getItem(ALLOWANCE_STORE) || 'null');
     if (!kept || kept.day !== istDay(now)) return null;
@@ -539,7 +554,7 @@ export function resumePlainText(R) {
  * how many dropped things were put back, and how much of the input the parse
  * covered (a low number means the parse itself may have missed lines).
  */
-export function reconcileTailored(data, resumeText) {
+export function reconcileTailored(data, resumeText, { job = null } = {}) {
   const d = data && typeof data === 'object' ? data : {};
   const O = normResume(d.original);
   const T = normResume(d.tailored);
@@ -612,6 +627,47 @@ export function reconcileTailored(data, resumeText) {
       }
     }
   }
+
+  /* A REWRITE MAY NOT CLAIM WHAT THE RESUME NEVER SAYS (12 Oct 2026). The
+     model is asked to use the posting's words only for what the reader really
+     has, and the cheaper model does not hold to it: measured on a fictional
+     resume it turned "Wrote unit tests with pytest" into "Performed code
+     reviews and wrote unit tests", and its summary said "Skilled in C#" for a
+     resume with no C#. So code decides: a rewritten line naming any of the
+     role's keywords that appears nowhere in the resume goes back to the
+     reader's own words, and so does a summary sentence. A line the model ADDS
+     is left alone, because it is listed and highlighted as an addition with a
+     Remove button; a rewritten one is not, and would pass as the reader's. */
+  const terms = job ? roleKeywords(job, d.keywords) : [];
+  const claims = (text) => terms.some((kw) => mentions(hayOf(text), kw) && !mentions(hay, kw));
+  let grounded = 0;
+  for (const sec of T.sections) {
+    for (const it of sec.items) {
+      for (const b of it.bullets) {
+        if (b.added || !claims(b.text)) continue;
+        b.text = b.from.map((id) => oBullet.get(id)?.text ?? '').filter(Boolean).join(' ');
+        grounded += 1;
+      }
+    }
+  }
+  if (T.summary && claims(T.summary)) {
+    const kept = T.summary.split(/(?<=[.!?])\s+/).filter((x) => !claims(x)).join(' ').trim();
+    T.summary = kept;   // empty falls back to the reader's own below (T.summary || O.summary)
+    grounded += 1;
+  }
+
+  // Capitals back on tool names in what the model wrote; the reader's own
+  // lines (unchanged or put back above) are left exactly as they wrote them.
+  const names = [...STANDARD_NAMES, ...O.skills.flatMap((g) => g.items), ...(Array.isArray(d.keywords) ? d.keywords : [])];
+  for (const sec of T.sections) {
+    for (const it of sec.items) {
+      for (const b of it.bullets) {
+        const own = b.from.map((id) => oBullet.get(id)?.text ?? '').join(' ');
+        if (b.text !== own) b.text = respell(b.text, names);
+      }
+    }
+  }
+  if (T.summary && T.summary !== O.summary) T.summary = respell(T.summary, names);
 
   // Anything of the reader's that the rewrite dropped goes back in.
   for (const [id, { item, heading }] of oItem) {
@@ -717,11 +773,44 @@ export function reconcileTailored(data, resumeText) {
     tailored,
     added,
     restored,
+    grounded,
     coverage: src.size ? covered / src.size : 1,
     changes: strList(d.changes, 12),
     gaps: strList(d.gaps, 10),
     keywords: strList(d.keywords, 20, 60),
   };
+}
+
+/* ---------------- tool names keep their capitals ----------------
+ * Flash-Lite writes "kafka consumer in python" and "react native code" even
+ * where the resume and the prompt both capitalise them (measured 12 Oct 2026).
+ * A recruiter reads that as careless, so code puts the capitals back. Only a
+ * WHOLLY LOWER-CASE match of a known name is touched, so the reader's own
+ * casing and a sentence-initial word are never changed. Names that are also
+ * ordinary English words are never respelled: "the rest of", "to go". */
+export const STANDARD_NAMES = [
+  'Python', 'Java', 'JavaScript', 'TypeScript', 'Kotlin', 'Golang', 'C++', 'C#', '.NET', 'SQL', 'NoSQL', 'GraphQL',
+  'HTML', 'CSS', 'Tailwind CSS', 'React', 'React Native', 'Next.js', 'Node.js', 'Express.js', 'Vue.js', 'Angular',
+  'Django', 'Flask', 'FastAPI', 'Spring Boot', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Elasticsearch', 'Kafka',
+  'Airflow', 'Docker', 'Kubernetes', 'Terraform', 'Jenkins', 'Linux', 'Git', 'GitHub', 'GitHub Actions', 'GitLab',
+  'AWS', 'GCP', 'Azure', 'Firebase', 'Pandas', 'NumPy', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'Hadoop',
+  'Snowflake', 'Tableau', 'Power BI', 'Grafana', 'Prometheus', 'Selenium', 'Postman', 'Figma', 'Jira', 'REST API',
+  'RESTful APIs', 'CI/CD', 'LLM', 'LLMs', 'NLP', 'OOP', 'DSA', 'DBMS',
+];
+const NOT_A_NAME = new Set(['go', 'rest', 'express', 'spring', 'swift', 'rust', 'shell', 'excel', 'access', 'word', 'dart', 'ruby', 'spark', 'chef', 'puppet', 'ant', 'hive', 'pig', 'c', 'r']);
+const RESPELL_EDGE = 'A-Za-z0-9#+';
+
+/** Put the standard capitals back on known names written in lower case. */
+export function respell(text, names) {
+  let out = String(text ?? '');
+  const list = [...new Set(names.map((n) => String(n ?? '').trim()).filter((n) => n.length > 1 && /[A-Z]/.test(n) && !NOT_A_NAME.has(n.toLowerCase())))]
+    .sort((a, b) => b.length - a.length);
+  for (const name of list) {
+    const esc = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(?<![${RESPELL_EDGE}.])${esc}(?![${RESPELL_EDGE}])`, 'gi');
+    out = out.replace(re, (m) => (m === m.toLowerCase() && m !== name ? name : m));
+  }
+  return out;
 }
 
 /* ---------------- the role's keywords ---------------- */
@@ -794,9 +883,10 @@ export function failureFor(status) {
 async function callAI(task, fields, { signal, region } = {}) {
   let res;
   try {
+    const pass = ownerPass();
     res = await fetch(AI_ENDPOINT, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: pass ? { 'content-type': 'application/json', 'x-ai-owner': pass } : { 'content-type': 'application/json' },
       signal,
       body: JSON.stringify({ task, device: deviceId(), region, ...fields }),
     });
@@ -867,7 +957,7 @@ export function addHeadline(t, job) {
 export async function tailorWithAI({ resumeText, job, signal, region }) {
   const resume = String(resumeText).slice(0, MAX_RESUME_CHARS);
   const data = await callAI('tailor', { resume, job: clampJob(job) }, { signal, region });
-  const t = addHeadline(reconcileTailored(data, resume), job);
+  const t = addHeadline(reconcileTailored(data, resume, { job: clampJob(job) }), job);
   if (!t.tailored.sections.length && !t.tailored.skills.length) {
     throw new Error('The AI returned an empty resume. Please try again.');
   }

@@ -17,11 +17,13 @@
 import { readFileSync } from 'node:fs';
 import {
   respond, parseRequest, geminiRequest, limitKeys, overLimit, siteCap, endpointFor, askGemini,
+  aiOwnerToken, isOwnerCall, actualPaise, INR_PER_USD,
   PER_IP_PER_DAY, COST_PAISE, MONTHLY_BUDGET_INR, MAX_OUTPUT_TOKENS, ATTEMPTS, BUDGET_MS,
 } from '../web/api/ai.js';
 import { FREE_PER_DAY, RANK_BATCH, istDay } from '../web/public/resumeai.js';
 import {
-  RANK_MODEL, TAILOR_MODEL, TAILOR_THINKING, RANK_SYSTEM, TAILOR_SYSTEM, TAILOR_SCHEMA, buildRankPrompt, buildTailorPrompt,
+  RANK_MODEL, TAILOR_MODEL, TAILOR_THINKING, RANK_SYSTEM, TAILOR_SYSTEM, TAILOR_SCHEMA, buildRankPrompt, buildTailorPrompt, PRICE_CENTS_PER_M,
+  OWNER_TAILOR_MODEL, OWNER_TAILOR_THINKING,
 } from '../web/api/_prompts.js';
 import { EVENTS } from '../web/api/count.js';
 
@@ -70,7 +72,7 @@ function world({ gemini = [], redisDown = false } = {}) {
     return {
       ok: next.status >= 200 && next.status < 300,
       status: next.status,
-      json: async () => next.raw ?? ({ candidates: [{ content: { parts: [{ text: next.text }] } }] }),
+      json: async () => next.raw ?? ({ candidates: [{ content: { parts: [{ text: next.text }] } }], ...(next.usage ? { usageMetadata: next.usage } : {}) }),
     };
   };
   return { kv, calls, fetchImpl };
@@ -125,11 +127,17 @@ check('an unknown board counts as XX', parseRequest(tailorBody({ region: 'ZZ' })
 check('a known board is kept', parseRequest(tailorBody({ region: 'in' })).region, 'IN');
 check('an array body is refused', Boolean(parseRequest([1, 2]).error), true);
 
-console.log('\n== the two models, and why they are two ==');
-check('ranking and tailoring use different models', RANK_MODEL !== TAILOR_MODEL, true);
+console.log('\n== the models ==');
 check('ranking uses the cheap fast one, pinned', RANK_MODEL, 'gemini-3.1-flash-lite');
 check('no billed call goes to a -latest alias, whose price can move under us', [RANK_MODEL, TAILOR_MODEL].some((m) => /latest/.test(m)), false);
-check('tailoring keeps the stronger one', TAILOR_MODEL, 'gemini-2.5-flash');
+// 12 Oct 2026: tailoring moved to Flash-Lite too, ~38p a one-page tailor against ~87p.
+check('tailoring is on Flash-Lite, pinned', TAILOR_MODEL, 'gemini-3.1-flash-lite');
+check('every model in use has a price, so every call can be settled', [RANK_MODEL, TAILOR_MODEL, OWNER_TAILOR_MODEL].every((m) => PRICE_CENTS_PER_M[m]?.in > 0 && PRICE_CENTS_PER_M[m]?.out > 0), true);
+// His call, 12 Oct 2026: Flash-Lite for everyone, the best writer for him.
+check('the owner tailors on 2.5 Flash', OWNER_TAILOR_MODEL, 'gemini-2.5-flash');
+check('with its thinking capped as measured', OWNER_TAILOR_THINKING, 1024);
+check('the prompt forbids shrinking a strong verb', /never becomes "Contributed to/.test(TAILOR_SYSTEM), true);
+check('and asks for standard capitals on tools', /standard capitals/.test(TAILOR_SYSTEM), true);
 {
   const prompt = buildRankPrompt('RESUME', [{ title: 'A', company: 'X' }, { title: 'B', company: 'Y' }]);
   check('every role is indexed', /\[0\][\s\S]*\[1\]/.test(prompt), true);
@@ -174,8 +182,8 @@ console.log('\n== the browser never writes the prompt ==');
   check('the tailor runs our own instruction', g.body.systemInstruction.parts[0].text, TAILOR_SYSTEM);
   check('the rank runs our own instruction', geminiRequest(parseRequest(rankBody())).body.systemInstruction.parts[0].text, RANK_SYSTEM);
   check('rank goes to the rank model', geminiRequest(parseRequest(rankBody())).model, RANK_MODEL);
-  check('the tailor\'s thinking is capped, the cost of an answer', geminiRequest(parseRequest(tailorBody())).body.generationConfig.thinkingConfig, { thinkingBudget: TAILOR_THINKING });
-  check('at 1,024 tokens, measured as good as unlimited', TAILOR_THINKING, 1024);
+  check('the tailor asks for no thinking (Flash-Lite does none by default)', 'thinkingConfig' in geminiRequest(parseRequest(tailorBody())).body.generationConfig, false);
+  check('because none is set', TAILOR_THINKING, null);
   check('the rank sets no thinking (Flash-Lite does none)', 'thinkingConfig' in geminiRequest(parseRequest(rankBody())).body.generationConfig, false);
   check('the resume is in the prompt', geminiRequest(sneaky).body.contents[0].parts[0].text.includes('Flask REST API'), true);
   check('the output budget leaves room for thinking', MAX_OUTPUT_TOKENS >= 8000, true);
@@ -260,17 +268,48 @@ console.log('\n== the network and the site caps ==');
   check('and the refused call is not charged to the day', [...w.kv.entries()].find(([k]) => k.endsWith(':all'))?.[1], 2 * COST_PAISE.rank);
 }
 {
-  // Rs 60 a month is 193 paise a day: one tailor (180) fits, a second does not,
-  // though seven ranks would have.
+  // Rs 60 a month is 193 paise a day: two tailor reservations (80) fit, a
+  // third does not. These answers carry no token counts, so nothing settles.
   const w = world({ gemini: Array(10).fill({ status: 200, text: JSON.stringify({ original: {}, tailored: {} }) }) });
   const env = { ...ENV, AI_MONTHLY_BUDGET_INR: '60' };
   const one = await run(w, post(tailorBody({ device: 'f'.repeat(32) })), env);
   const two = await run(w, post(tailorBody({ device: 'g'.repeat(32) }), { 'x-real-ip': '198.51.100.3' }), env);
-  check('a tailor is charged what it costs', [one.status, two.status, two.body.code], [200, 503, 'site-limit']);
-  check('a tailor costs several ranks', COST_PAISE.tailor >= 5 * COST_PAISE.rank, true);
+  const three = await run(w, post(tailorBody({ device: 'h'.repeat(32) }), { 'x-real-ip': '198.51.100.4' }), env);
+  check('a tailor reserves what it may cost', [one.status, two.status, three.status, three.body.code], [200, 200, 503, 'site-limit']);
+  check('a tailor reserves several ranks', COST_PAISE.tailor >= 3 * COST_PAISE.rank, true);
 }
-check('the default is his Rs 1,100 a month', MONTHLY_BUDGET_INR, 1100);
-check('spread over 31 days, so no month reaches the cap', siteCap({}), Math.floor(110000 / 31));
+
+console.log('\n== each call is charged what it really cost ==');
+{
+  // The one-page fictional resume, measured 12 Oct 2026 on Flash-Lite.
+  check('2,018 in and 2,349 out on Flash-Lite is 39 paise', actualPaise('gemini-3.1-flash-lite', { promptTokenCount: 2018, candidatesTokenCount: 2349 }), 39);
+  check('thinking tokens bill as output', actualPaise('gemini-2.5-flash', { promptTokenCount: 2018, candidatesTokenCount: 2567, thoughtsTokenCount: 833 }), Math.ceil((2018 * 30 + 3400 * 250) / 1e6 * INR_PER_USD));
+  check('an unpriced model cannot be settled', actualPaise('gemini-9-ultra', { promptTokenCount: 10, candidatesTokenCount: 10 }), null);
+  check('nor can an answer with no counts', actualPaise(TAILOR_MODEL, null), null);
+  check('rounded up, never down', actualPaise(TAILOR_MODEL, { promptTokenCount: 1, candidatesTokenCount: 0 }), 1);
+
+  const tailored = JSON.stringify({ original: {}, tailored: {} });
+  const day = istDay(NOW);
+  const small = world({ gemini: [{ status: 200, text: tailored, usage: { promptTokenCount: 2018, candidatesTokenCount: 2349 } }] });
+  await run(small, post(tailorBody()));
+  check('a short resume is refunded down to its real cost', small.kv.get(`ai:${day}:all`), 39);
+  const big = world({ gemini: [{ status: 200, text: tailored, usage: { promptTokenCount: 4000, candidatesTokenCount: 8000 } }] });
+  await run(big, post(tailorBody()));
+  check('a long one is charged above its reservation', big.kv.get(`ai:${day}:all`), 125);
+  const own = world({ gemini: [{ status: 200, text: tailored, usage: { promptTokenCount: 2018, candidatesTokenCount: 2567, thoughtsTokenCount: 833 } }] });
+  await run(own, post(tailorBody(), { 'x-real-ip': '203.0.113.7', 'x-ai-owner': aiOwnerToken(ENV) }));
+  check('the owner\'s tailor goes to 2.5 Flash', own.calls.gemini[0].url.includes(OWNER_TAILOR_MODEL), true);
+  check('with its thinking budget', own.calls.gemini[0].body.generationConfig.thinkingConfig, { thinkingBudget: OWNER_TAILOR_THINKING });
+  check('and is settled at 2.5 Flash prices', own.kv.get(`ai:${day}:all`), Math.ceil((2018 * 30 + 3400 * 250) / 1e6 * INR_PER_USD));
+  const reader = world({ gemini: [{ status: 200, text: tailored }] });
+  await run(reader, post(tailorBody()));
+  check('a reader\'s tailor goes to Flash-Lite', reader.calls.gemini[0].url.includes(`/${TAILOR_MODEL}:`), true);
+  const ownRank = world({ gemini: [{ status: 200, text: '{"scores":[]}' }] });
+  await run(ownRank, post(rankBody(), { 'x-real-ip': '203.0.113.7', 'x-ai-owner': aiOwnerToken(ENV) }));
+  check('the owner\'s rank stays on the rank model', ownRank.calls.gemini[0].url.includes(`/${RANK_MODEL}:`), true);
+}
+check('the default is his Rs 2,000 a month (12 Oct 2026)', MONTHLY_BUDGET_INR, 2000);
+check('spread over 31 days, so no month reaches the cap', siteCap({}), Math.floor(200000 / 31));
 check('AI_MONTHLY_BUDGET_INR moves it', siteCap({ AI_MONTHLY_BUDGET_INR: '2000' }), Math.floor(200000 / 31));
 check('a nonsense budget falls back to the default', [siteCap({ AI_MONTHLY_BUDGET_INR: 'lots' }), siteCap({ AI_MONTHLY_BUDGET_INR: '-3' })], [siteCap({}), siteCap({})]);
 check('the old count-based setting is gone', /AI_DAILY_CAP/.test(readFileSync(new URL('../web/api/ai.js', import.meta.url), 'utf8')), false);
@@ -409,6 +448,39 @@ console.log('\n== nothing personal is logged ==');
   check('never the resume', /Priya|Flask|priya@example/.test(text), false);
   check('never the key', text.includes(KEY), false);
   check('never the address', text.includes('203.0.113.7'), false);
+}
+
+console.log('\n== the owner has no daily limit ==');
+{
+  const pass = aiOwnerToken(ENV);
+  check('the pass is a sha256 hex', /^[0-9a-f]{64}$/.test(pass ?? ''), true);
+  check('it is not the store token itself', pass === ENV.KV_REST_API_TOKEN, false);
+  check('no store token, no pass', aiOwnerToken({ GEMINI_API_KEY: KEY }), null);
+  const owner = (body) => post(body, { 'x-real-ip': '203.0.113.7', 'x-ai-owner': pass });
+  check('the right pass is the owner', isOwnerCall(owner(rankBody()), ENV), true);
+  check('a wrong pass is not', isOwnerCall(post(rankBody(), { 'x-ai-owner': 'f'.repeat(64) }), ENV), false);
+  check('a missing pass is not', isOwnerCall(post(rankBody()), ENV), false);
+  check('an empty store token never matches an empty pass', isOwnerCall(post(rankBody(), { 'x-ai-owner': '' }), {}), false);
+
+  // Past every limit at once: the browser, the network and the whole site.
+  const env = { ...ENV, AI_MONTHLY_BUDGET_INR: '20' };   // 64 paise a day: two ranks
+  const w = world({ gemini: Array.from({ length: FREE_PER_DAY + 3 }, () => ({ status: 200, text: '{"scores":[]}' })) });
+  const outs = [];
+  for (let i = 0; i < FREE_PER_DAY + 3; i += 1) outs.push(await run(w, owner(rankBody()), env));
+  check('every owner call is answered', outs.every((o) => o.status === 200), true);
+  check('and says it was the owner', outs.every((o) => o.body.owner === true), true);
+  check('no browser count is handed back', outs.some((o) => 'remaining' in o.body), false);
+  const day = istDay(NOW);
+  check('each one is charged to the site budget', w.kv.get(`ai:${day}:all`), (FREE_PER_DAY + 3) * 25);
+  check('and none to a browser or network count', [...w.kv.keys()].some((k) => /:d:|:i:/.test(k)), false);
+  const reader = await run(w, post(rankBody({ device: 'b'.repeat(32) })), env);
+  check('a reader is still refused once the budget is spent', [reader.status, reader.body.code], [503, 'site-limit']);
+  const wrong = await run(w, post(rankBody({ device: 'c'.repeat(32) }), { 'x-real-ip': '203.0.113.9', 'x-ai-owner': 'f'.repeat(64) }), env);
+  check('a guessed pass is a reader too', wrong.body.code, 'site-limit');
+
+  const down = world({ gemini: [{ status: 500, text: '' }, { status: 500, text: '' }, { status: 500, text: '' }] });
+  const failed = await run(down, owner(rankBody()), ENV);
+  check('a failed owner call says what went wrong', [failed.status, failed.body.owner, typeof failed.body.error], [502, true, 'string']);
 }
 
 console.log('\n== the wiring around it ==');

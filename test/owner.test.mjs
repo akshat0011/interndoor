@@ -226,10 +226,23 @@ for (const file of ['web/public/app.js', 'web/public/page.js']) {
   check(`${file}: the loader is present`, loader.length > 0, true);
   if (!loader) continue;
   check(`${file}: no token, no script`, inBrowser(loader).scripts, []);
-  check(`${file}: a stored token loads /owner.js`, inBrowser(loader, { stored: 'x' }).scripts, ['/owner.js']);
-  check(`${file}: a pairing link loads it too`, inBrowser(loader, { hash: '#owner-pair=abc' }).scripts, ['/owner.js']);
+  // A ?v=N cache-buster is allowed on the URL (app.js asks for ?v=2); the path is what is pinned.
+  const bare = (list) => list.map((u) => u.replace(/\?v=\d+$/, ''));
+  check(`${file}: a stored token loads /owner.js`, bare(inBrowser(loader, { stored: 'x' }).scripts), ['/owner.js']);
+  check(`${file}: a pairing link loads it too`, bare(inBrowser(loader, { hash: '#owner-pair=abc' }).scripts), ['/owner.js']);
   check(`${file}: an unrelated fragment does not`, inBrowser(loader, { hash: '#role-42' }).scripts, []);
   check(`${file}: blocked storage loads nothing and does not throw`, inBrowser(loader, { throwOnStorage: true }).scripts, []);
+}
+
+console.log('\n== THE RESUME AI OWNER PASS ==');
+{
+  const o = read('web/public/owner.js');
+  check('owner.js asks the helper for the pass', o.includes("call('/api/owner/ai')"), true);
+  check('and stores only a sha256-shaped answer', /\/\^\[0-9a-f\]\{64\}\$\/\.test\(d\.token/.test(o), true);
+  check('"Owner off" forgets the pass too', /removeItem\(KEY\);\s*localStorage\.removeItem\(AI_KEY\)/.test(o), true);
+  const q = read('bin/queue-server.js');
+  const route = q.indexOf("path === '/api/owner/ai'");
+  check('the helper serves it behind the owner checks', route > q.indexOf('const auth = ownerAuth(') && q.indexOf('const auth = ownerAuth(') > 0, true);
 }
 
 console.log('\n== AND THE OWNER SCRIPT DOES NOTHING WITHOUT A TOKEN ==');

@@ -446,6 +446,25 @@ a.chip:focus-visible { outline: 2px solid var(--live); outline-offset: 2px; }
    the sheen it used to carry are gone; see THE APPLY BUTTON in styles.css. */
 .apply-glow { display: block; }
 
+/* The resume tailor, second to Apply: same pill and width, outlined so Apply
+   keeps the only fill. It links to the board, which opens the tailor for this
+   role (src/pages.js). */
+.btn-tailor {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; height: 44px; margin-top: 10px; padding: 0 18px;
+  border: 1px solid var(--rule-2); border-radius: var(--r-pill);
+  background: none; color: var(--ink);
+  font-size: 15px; font-weight: 500; letter-spacing: -.01em;
+  text-decoration: none;
+  transition: transform var(--d-press) var(--snap), border-color .18s, background-color .18s;
+}
+.btn-tailor svg { flex: none; }
+.btn-tailor:active { transform: scale(.975); }
+.btn-tailor:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-tailor:hover { border-color: var(--ink-3); background: color-mix(in oklab, var(--ink) 5%, transparent); }
+}
+
 .jp-card-note {
   margin-top: 12px; font-size: 12px; line-height: 1.5; color: var(--ink-3);
   text-align: center;
