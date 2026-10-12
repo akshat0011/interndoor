@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838",
+      "url": "https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838",
+      "title": "Linux BSP Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Debug boot, performance, memory, power, and stability issues\n• Work with Yocto, Buildroot, Debian/Ubuntu, or Fedora builds\n• Optimize boot time, CPU, memory, and I/O performance",
+      "date_published": "2026-10-12T14:05:10.786Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-engineer-4477566908",
+      "url": "https://interndoor.com/jobs/qualcomm-engineer-4477566908",
+      "title": "Software Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Write bare-metal drivers for hardware interfaces\n• Use C/C++ and debug tools like Lauterbach\n• Work on global teams with embedded systems",
+      "date_published": "2026-10-12T14:04:56.479Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/vecmocon-software-quality-assurance-intern-ats-keka-vecmocon-166181",
       "url": "https://interndoor.com/jobs/vecmocon-software-quality-assurance-intern-ats-keka-vecmocon-166181",
       "title": "Software Quality Assurance Intern — Vecmocon",
@@ -14,6 +38,66 @@
       "authors": [
         {
           "name": "Vecmocon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4476015609",
+      "url": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4476015609",
+      "title": "Site Reliability Engineering Specialist — BT Group",
+      "content_text": "Company: BT Group · Location: Bengaluru South, Karnataka, India\n• Operate and maintain AWS cloud platform for coverage analysis and RF optimisation\n• Support production incidents, upgrades, and disaster recovery on critical analytics systems\n• Monitor platform performance and ensure SLAs are met using CloudWatch and dashboards",
+      "date_published": "2026-10-12T13:27:21.982Z",
+      "authors": [
+        {
+          "name": "BT Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/bt-group-service-reliability-engineer-4476014562",
+      "url": "https://interndoor.com/jobs/bt-group-service-reliability-engineer-4476014562",
+      "title": "Service Reliability Engineer — BT Group",
+      "content_text": "Company: BT Group · Location: Delhi, India\n• Supports network infrastructure and hardware deployment across client sites\n• Uses ticketing systems and workflows to manage tasks and priorities\n• Troubleshoots network issues and collaborates with stakeholders",
+      "date_published": "2026-10-12T13:27:18.979Z",
+      "authors": [
+        {
+          "name": "BT Group"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4476008755",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4476008755",
+      "title": "MS Engineer, Network — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor and resolve client IT issues, ensuring systems run smoothly\n• Use ITSM tools and knowledge articles to support troubleshooting\n• Work on-site in Mumbai, supporting cloud, security, and network systems",
+      "date_published": "2026-10-12T13:08:07.670Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tyson-foods-assoc-analyst-master-data-management-mdm-4467378775",
+      "url": "https://interndoor.com/jobs/tyson-foods-assoc-analyst-master-data-management-mdm-4467378775",
+      "title": "Master Data Analyst — Tyson Foods",
+      "content_text": "Company: Tyson Foods · Location: Bengaluru, Karnataka, India\n• Maintain supplier, customer, and material master data in SAP with 48-hour SLA\n• Support data quality initiatives and governance across global regions\n• Collaborate with cross-functional teams on data onboarding and remediation",
+      "date_published": "2026-10-12T13:04:41.722Z",
+      "authors": [
+        {
+          "name": "Tyson Foods"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/american-express-analyst-data-science-4477570443",
+      "url": "https://interndoor.com/jobs/american-express-analyst-data-science-4477570443",
+      "title": "Data Science Analyst — American Express",
+      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Build predictive models and recommendation systems for customer servicing\n• Work with Python, SQL, and machine learning frameworks\n• Collaborate with cross-functional teams on AI and analytics projects",
+      "date_published": "2026-10-12T13:04:03.208Z",
+      "authors": [
+        {
+          "name": "American Express"
         }
       ]
     },
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/seismic-implementation-engineer-4430570534",
-      "url": "https://interndoor.com/jobs/seismic-implementation-engineer-4430570534",
-      "title": "Implementation Engineer — Seismic",
-      "content_text": "Company: Seismic · Location: Hyderabad, Telangana, India\n• Design and implement integration solutions for enterprise clients\n• Lead projects with cross-functional teams across different geographies\n• Collaborate with product and engineering teams to deliver custom solutions",
-      "date_published": "2026-10-10T19:19:29.011Z",
-      "authors": [
-        {
-          "name": "Seismic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478064935",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478064935",
-      "title": "Dotnet Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Gurgaon, Haryana, India\n• Develop and maintain backend systems using C# and .NET Core\n• Work with microservices, RESTful APIs, and SQL databases\n• Collaborate on secure coding practices and cloud infrastructure",
-      "date_published": "2026-10-10T19:16:36.955Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-java-data-engineer-irc300002-4440234392",
-      "url": "https://interndoor.com/jobs/globallogic-java-data-engineer-irc300002-4440234392",
-      "title": "Java Data Engineer — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Bengaluru, Karnataka, India\n• Design and implement data pipelines using Kafka and Spark\n• Develop Java backend services with strong focus on API and DSA\n• Work on high-tech projects with global brands in healthcare and telecom",
-      "date_published": "2026-10-10T18:53:30.164Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-embedded-c-irc301402-4448741754",
-      "url": "https://interndoor.com/jobs/globallogic-embedded-c-irc301402-4448741754",
-      "title": "Embedded C IRC301402 — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Chennai, Tamil Nadu, India\n• Develop software for Linux-based embedded systems\n• Work with C/C++ and Linux kernel tools\n• Collaborate in a global team on high-tech projects",
-      "date_published": "2026-10-10T18:41:08.988Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-music-quality-assurance-technician-music-visual-experience-team-4468847215",
-      "url": "https://interndoor.com/jobs/amazon-music-quality-assurance-technician-music-visual-experience-team-4468847215",
-      "title": "Quality Assurance Technician — Amazon Music",
-      "content_text": "Company: Amazon Music · Location: Bengaluru, Karnataka, India\n• Test new features, write and maintain test cases, debug automation scripts\n• Use Python, Perl, Ruby for scripting; experience with Selenium/SOAPUI preferred\n• Work in a fast-paced team on music and culture products with global reach",
-      "date_published": "2026-10-10T18:19:54.631Z",
-      "authors": [
-        {
-          "name": "Amazon Music"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/valeo-engineer-testing-4469179991",
-      "url": "https://interndoor.com/jobs/valeo-engineer-testing-4469179991",
-      "title": "Test Engineer — Valeo",
-      "content_text": "Company: Valeo · Location: Chennai, Tamil Nadu, India\n• Develop test programs for hardware and software functionality\n• Collaborate with R&D on test methodology and coverage\n• Validate test equipment specs and standards across sites",
-      "date_published": "2026-10-10T16:40:45.255Z",
-      "authors": [
-        {
-          "name": "Valeo"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-it-support-associate-4459884018",
-      "url": "https://interndoor.com/jobs/amazon-it-support-associate-4459884018",
-      "title": "IT Support Associate — Amazon",
-      "content_text": "Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 3 months\n• Resolve technical issues for end-user devices like desktops, laptops, printers, and scanners\n• Support Windows and Linux operating systems with troubleshooting skills\n• Work in a global support team with rotating shift patterns in Bengaluru",
-      "date_published": "2026-10-10T16:28:54.538Z",
-      "authors": [
-        {
-          "name": "Amazon"
         }
       ]
     }

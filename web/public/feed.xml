@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 12 Oct 2026 13:37:57 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 12 Oct 2026 14:05:10 GMT</lastBuildDate>
+  <item>
+    <title>Linux BSP Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838</guid>
+    <pubDate>Mon, 12 Oct 2026 14:05:10 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Greater Hyderabad Area
+• Debug boot, performance, memory, power, and stability issues
+• Work with Yocto, Buildroot, Debian/Ubuntu, or Fedora builds
+• Optimize boot time, CPU, memory, and I/O performance</description>
+  </item>
+  <item>
+    <title>Software Engineer — Qualcomm</title>
+    <link>https://interndoor.com/jobs/qualcomm-engineer-4477566908</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-engineer-4477566908</guid>
+    <pubDate>Mon, 12 Oct 2026 14:04:56 GMT</pubDate>
+    <description>Company: Qualcomm · Location: Greater Hyderabad Area
+• Write bare-metal drivers for hardware interfaces
+• Use C/C++ and debug tools like Lauterbach
+• Work on global teams with embedded systems</description>
+  </item>
   <item>
     <title>Software Quality Assurance Intern — Vecmocon</title>
     <link>https://interndoor.com/jobs/vecmocon-software-quality-assurance-intern-ats-keka-vecmocon-166181</link>
@@ -16,6 +36,56 @@
 • Test web and mobile apps for bugs and inconsistencies
 • Create and run test cases across browsers and devices
 • Work with developers to fix issues and improve UX</description>
+  </item>
+  <item>
+    <title>Site Reliability Engineering Specialist — BT Group</title>
+    <link>https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4476015609</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4476015609</guid>
+    <pubDate>Mon, 12 Oct 2026 13:27:21 GMT</pubDate>
+    <description>Company: BT Group · Location: Bengaluru South, Karnataka, India
+• Operate and maintain AWS cloud platform for coverage analysis and RF optimisation
+• Support production incidents, upgrades, and disaster recovery on critical analytics systems
+• Monitor platform performance and ensure SLAs are met using CloudWatch and dashboards</description>
+  </item>
+  <item>
+    <title>Service Reliability Engineer — BT Group</title>
+    <link>https://interndoor.com/jobs/bt-group-service-reliability-engineer-4476014562</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/bt-group-service-reliability-engineer-4476014562</guid>
+    <pubDate>Mon, 12 Oct 2026 13:27:18 GMT</pubDate>
+    <description>Company: BT Group · Location: Delhi, India
+• Supports network infrastructure and hardware deployment across client sites
+• Uses ticketing systems and workflows to manage tasks and priorities
+• Troubleshoots network issues and collaborates with stakeholders</description>
+  </item>
+  <item>
+    <title>MS Engineer, Network — NTT DATA, Inc.</title>
+    <link>https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4476008755</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4476008755</guid>
+    <pubDate>Mon, 12 Oct 2026 13:08:07 GMT</pubDate>
+    <description>Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region
+• Monitor and resolve client IT issues, ensuring systems run smoothly
+• Use ITSM tools and knowledge articles to support troubleshooting
+• Work on-site in Mumbai, supporting cloud, security, and network systems</description>
+  </item>
+  <item>
+    <title>Master Data Analyst — Tyson Foods</title>
+    <link>https://interndoor.com/jobs/tyson-foods-assoc-analyst-master-data-management-mdm-4467378775</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/tyson-foods-assoc-analyst-master-data-management-mdm-4467378775</guid>
+    <pubDate>Mon, 12 Oct 2026 13:04:41 GMT</pubDate>
+    <description>Company: Tyson Foods · Location: Bengaluru, Karnataka, India
+• Maintain supplier, customer, and material master data in SAP with 48-hour SLA
+• Support data quality initiatives and governance across global regions
+• Collaborate with cross-functional teams on data onboarding and remediation</description>
+  </item>
+  <item>
+    <title>Data Science Analyst — American Express</title>
+    <link>https://interndoor.com/jobs/american-express-analyst-data-science-4477570443</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/american-express-analyst-data-science-4477570443</guid>
+    <pubDate>Mon, 12 Oct 2026 13:04:03 GMT</pubDate>
+    <description>Company: American Express · Location: Gurugram, Haryana, India
+• Build predictive models and recommendation systems for customer servicing
+• Work with Python, SQL, and machine learning frameworks
+• Collaborate with cross-functional teams on AI and analytics projects</description>
   </item>
   <item>
     <title>Observability Engineer — Quest Global</title>
@@ -437,76 +507,6 @@
 • Build and maintain software applications using ASP.Net
 • Work on full development cycle from design to deployment
 • Collaborate with cross-functional teams on new features</description>
-  </item>
-  <item>
-    <title>Implementation Engineer — Seismic</title>
-    <link>https://interndoor.com/jobs/seismic-implementation-engineer-4430570534</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/seismic-implementation-engineer-4430570534</guid>
-    <pubDate>Sat, 10 Oct 2026 19:19:29 GMT</pubDate>
-    <description>Company: Seismic · Location: Hyderabad, Telangana, India
-• Design and implement integration solutions for enterprise clients
-• Lead projects with cross-functional teams across different geographies
-• Collaborate with product and engineering teams to deliver custom solutions</description>
-  </item>
-  <item>
-    <title>Dotnet Developer — NTT DATA North America</title>
-    <link>https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478064935</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-north-america-dotnet-developer-4478064935</guid>
-    <pubDate>Sat, 10 Oct 2026 19:16:36 GMT</pubDate>
-    <description>Company: NTT DATA North America · Location: Gurgaon, Haryana, India
-• Develop and maintain backend systems using C# and .NET Core
-• Work with microservices, RESTful APIs, and SQL databases
-• Collaborate on secure coding practices and cloud infrastructure</description>
-  </item>
-  <item>
-    <title>Java Data Engineer — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-java-data-engineer-irc300002-4440234392</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-java-data-engineer-irc300002-4440234392</guid>
-    <pubDate>Sat, 10 Oct 2026 18:53:30 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Bengaluru, Karnataka, India
-• Design and implement data pipelines using Kafka and Spark
-• Develop Java backend services with strong focus on API and DSA
-• Work on high-tech projects with global brands in healthcare and telecom</description>
-  </item>
-  <item>
-    <title>Embedded C IRC301402 — GlobalLogic</title>
-    <link>https://interndoor.com/jobs/globallogic-embedded-c-irc301402-4448741754</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/globallogic-embedded-c-irc301402-4448741754</guid>
-    <pubDate>Sat, 10 Oct 2026 18:41:08 GMT</pubDate>
-    <description>Company: GlobalLogic · Location: Chennai, Tamil Nadu, India
-• Develop software for Linux-based embedded systems
-• Work with C/C++ and Linux kernel tools
-• Collaborate in a global team on high-tech projects</description>
-  </item>
-  <item>
-    <title>Quality Assurance Technician — Amazon Music</title>
-    <link>https://interndoor.com/jobs/amazon-music-quality-assurance-technician-music-visual-experience-team-4468847215</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-music-quality-assurance-technician-music-visual-experience-team-4468847215</guid>
-    <pubDate>Sat, 10 Oct 2026 18:19:54 GMT</pubDate>
-    <description>Company: Amazon Music · Location: Bengaluru, Karnataka, India
-• Test new features, write and maintain test cases, debug automation scripts
-• Use Python, Perl, Ruby for scripting; experience with Selenium/SOAPUI preferred
-• Work in a fast-paced team on music and culture products with global reach</description>
-  </item>
-  <item>
-    <title>Test Engineer — Valeo</title>
-    <link>https://interndoor.com/jobs/valeo-engineer-testing-4469179991</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/valeo-engineer-testing-4469179991</guid>
-    <pubDate>Sat, 10 Oct 2026 16:40:45 GMT</pubDate>
-    <description>Company: Valeo · Location: Chennai, Tamil Nadu, India
-• Develop test programs for hardware and software functionality
-• Collaborate with R&amp;D on test methodology and coverage
-• Validate test equipment specs and standards across sites</description>
-  </item>
-  <item>
-    <title>IT Support Associate — Amazon</title>
-    <link>https://interndoor.com/jobs/amazon-it-support-associate-4459884018</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-it-support-associate-4459884018</guid>
-    <pubDate>Sat, 10 Oct 2026 16:28:54 GMT</pubDate>
-    <description>Company: Amazon · Location: Bengaluru, Karnataka, India · Duration: 3 months
-• Resolve technical issues for end-user devices like desktops, laptops, printers, and scanners
-• Support Windows and Linux operating systems with troubleshooting skills
-• Work in a global support team with rotating shift patterns in Bengaluru</description>
   </item>
 </channel>
 </rss>
