@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 12 Oct 2026 05:28:37 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 12 Oct 2026 06:11:50 GMT</lastBuildDate>
+  <item>
+    <title>Software Development Engineer — Onsurity</title>
+    <link>https://interndoor.com/jobs/onsurity-software-development-engineer-4478376815</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/onsurity-software-development-engineer-4478376815</guid>
+    <pubDate>Mon, 12 Oct 2026 06:11:50 GMT</pubDate>
+    <description>Company: Onsurity · Location: Bengaluru, Karnataka, India · Duration: 6 months
+• Build features in claims, wallet, subscriptions, or payments
+• Code in Java (Spring Boot), React, and Node
+• Ship a full feature and present it to the team</description>
+  </item>
   <item>
     <title>Education &amp; Outreach Intern — Zycus</title>
     <link>https://interndoor.com/jobs/zycus-education-and-outreach-intern-birding-bharat-4478386306</link>
@@ -499,16 +509,6 @@
 • Work on mern stack projects with frontend and backend integration
 • Collaborate with senior engineers and product teams on real features
 • Contribute to code reviews and ci/cd automation workflows</description>
-  </item>
-  <item>
-    <title>Speech Recognition Intern — Sony Research India</title>
-    <link>https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/sony-research-india-speech-recognition-intern-4478019878</guid>
-    <pubDate>Sat, 10 Oct 2026 05:53:40 GMT</pubDate>
-    <description>Company: Sony Research India · Location: Bengaluru, Karnataka, India · Duration: 6 months
-• Implement speech recognition algorithms and models
-• Use Python, PyTorch, TensorFlow, and AWS
-• Work on real-time speech processing systems</description>
   </item>
 </channel>
 </rss>
