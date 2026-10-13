@@ -348,6 +348,14 @@ function withFold(text) {
   return `${esc(text.slice(0, at))}<i class="fold"></i>${esc(text.slice(at))}`;
 }
 
+/* LinkedIn's Post Inspector re-reads a page and replaces its cached card. Its
+   cache is keyed on the page's og:url, the CLEAN address, so the query (our UTM
+   tags) is dropped. */
+export function inspectorUrl(url) {
+  const clean = String(url).split(/[?#]/)[0];
+  return `https://www.linkedin.com/post-inspector/inspect/${encodeURIComponent(clean)}`;
+}
+
 function card(draft) {
   const { row, text, facts, meta } = draft;
   const comment = draft.comment ?? composeComment(facts);
@@ -418,6 +426,7 @@ function card(draft) {
     <a class="link shot-dl" hidden>Save image ↓</a>
     <a class="link" href="https://www.linkedin.com/feed/?shareActive=true" target="_blank" rel="noreferrer">Open LinkedIn ↗</a>
     ${facts.siteUrl ? `<a class="link" href="${esc(facts.siteUrl)}" target="_blank" rel="noreferrer">Job page ↗</a>` : ''}
+    ${facts.siteUrl ? `<a class="link" href="${esc(inspectorUrl(facts.siteUrl))}" target="_blank" rel="noreferrer" title="LinkedIn caches a link's card the first time it sees it; if the image was not ready then, the post shows a bare title. This makes LinkedIn read the page again — then remove the preview in the post box and paste the link again.">Refresh LinkedIn preview ↗</a>` : ''}
     ${facts.applyUrl ? `<a class="link" href="${esc(facts.applyUrl)}" target="_blank" rel="noreferrer">Original ↗</a>` : ''}
   </div>
   ${flags.map((f) => `<div class="flag">${esc(f)}</div>`).join('')}
