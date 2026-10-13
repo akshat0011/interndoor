@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Mon, 12 Oct 2026 21:55:48 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 13 Oct 2026 00:27:25 GMT</lastBuildDate>
+  <item>
+    <title>CPU Compiler Intern — NVIDIA</title>
+    <link>https://interndoor.com/jobs/nvidia-cpu-compiler-intern-2027-4477940543</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/nvidia-cpu-compiler-intern-2027-4477940543</guid>
+    <pubDate>Tue, 13 Oct 2026 00:27:25 GMT</pubDate>
+    <description>Company: NVIDIA · Location: Bengaluru, Karnataka, India
+• Design and develop optimizing compilers for AI and HPC workloads
+• Work with C++ and contribute to compiler optimization techniques
+• Collaborate with a global team on production-grade compiler software</description>
+  </item>
   <item>
     <title>Back End Developer — Echo Initiative by Joveo</title>
     <link>https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4476081062</link>
@@ -503,16 +513,6 @@
 • Implement tasks within the software development lifecycle
 • Follow internal conventions and make technical decisions
 • Collaborate with peers and project leads on code reviews</description>
-  </item>
-  <item>
-    <title>Software Engineer — PayPal</title>
-    <link>https://interndoor.com/jobs/paypal-software-engineer-4478391841</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/paypal-software-engineer-4478391841</guid>
-    <pubDate>Mon, 12 Oct 2026 10:01:16 GMT</pubDate>
-    <description>Company: PayPal · Location: Bengaluru, Karnataka, India
-• Write and test code for payment systems
-• Work with Java and Python
-• Collaborate with global teams on scalable solutions</description>
   </item>
 </channel>
 </rss>
