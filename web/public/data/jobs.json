@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791914113621,
+ "generatedAt": 1791914258485,
  "region": "IN",
  "regionName": "India",
- "count": 1289,
- "techCount": 1289,
+ "count": 1290,
+ "techCount": 1290,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -493,6 +493,61 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4478130363",
+   "title": "GCP Data Engineer",
+   "company": "Zensar Technologies",
+   "matchedWatchlist": "Zensar Technologies",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/zensar-technologies.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "24 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "gcp",
+    "terraform",
+    "ci/cd",
+    "kafka"
+   ],
+   "summary": "Design, develop, and optimize ETL/ELT pipelines using GCP-native tools (Dataflow, Dataproc, Cloud Composer/Airflow) Build and manage data warehousing solutions on BigQuery, including schema design, partitioning, and query optimization Develop data ingestion frameworks from structured and unstructured sources (batch and streaming) Implement data quality checks, monitoring, and alerting across pipelines",
+   "bullets": [
+    "Design and optimize data pipelines using GCP tools like Dataflow and BigQuery",
+    "Build data ingestion frameworks from structured and unstructured sources",
+    "Collaborate with data architects and onshore teams across time zones"
+   ],
+   "roleLabel": "Data Pipeline Engineer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "gcp",
+    "dataflow",
+    "bigquery",
+    "cloud composer",
+    "terraform"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "43 minutes ago",
+   "postedAt": 1791911582027,
+   "firstSeenAt": 1791914162039,
+   "lastSeenAt": 1791914162039,
+   "url": "https://www.linkedin.com/jobs/view/4478130363/",
+   "applyUrl": "https://fa-etvl-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/job/150602/?utm_medium=jobboard&utm_source=linkedIn",
+   "description": null,
+   "roleFingerprint": "ab4f4325e6",
+   "cardFacts": [
+    "Pune Division",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "data_eng",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4478123728",
    "title": "ILHBS Apprentice",

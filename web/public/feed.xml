@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 13 Oct 2026 16:55:57 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 13 Oct 2026 17:13:02 GMT</lastBuildDate>
+  <item>
+    <title>GCP Data Engineer — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-gcp-data-engineer-4478130363</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-gcp-data-engineer-4478130363</guid>
+    <pubDate>Tue, 13 Oct 2026 17:13:02 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Design and optimize data pipelines using GCP tools like Dataflow and BigQuery
+• Build data ingestion frameworks from structured and unstructured sources
+• Collaborate with data architects and onshore teams across time zones</description>
+  </item>
   <item>
     <title>ILHBS Apprentice — Adani Airport Holdings Ltd</title>
     <link>https://interndoor.com/jobs/adani-airport-holdings-ltd-apprentice-ilhbs-4478123728</link>
@@ -500,16 +510,6 @@
 • Design and manage secrets, certificates, and workload identities across cloud and on-premises environments
 • Use CyberArk, HashiCorp, Azure, and AWS tools for identity governance and automation
 • Collaborate with security and platform teams to build non-human identity standards and runbooks</description>
-  </item>
-  <item>
-    <title>Back End Developer — Echo Initiative by Joveo</title>
-    <link>https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4476081062</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4476081062</guid>
-    <pubDate>Mon, 12 Oct 2026 21:55:48 GMT</pubDate>
-    <description>Company: Echo Initiative by Joveo · Location: Bengaluru, Karnataka, India
-• Build greenfield ai products from whiteboard to prototype
-• Work with react, next.js, node.js, express, and databases
-• Collaborate directly with leadership from first week</description>
   </item>
 </channel>
 </rss>
