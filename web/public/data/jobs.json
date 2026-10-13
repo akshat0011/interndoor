@@ -1,5 +1,5 @@
 {
- "generatedAt": 1791910451234,
+ "generatedAt": 1791910621050,
  "region": "IN",
  "regionName": "India",
  "count": 1290,
@@ -493,6 +493,64 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4479043666",
+   "title": "Software Engineer",
+   "company": "Cisco",
+   "matchedWatchlist": "Cisco",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/cisco.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "21 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "c++",
+    "linux",
+    "git"
+   ],
+   "summary": "As a software engineer, you'll design and develop system software for cloud-managed networking devices. You'll work on L2/L3 protocols, debug complex issues, and contribute to scalable solutions. This role suits those with experience in C/C++ and Linux environments, looking to shape the future of networking technology.",
+   "bullets": [
+    "Develop networking components for L2/L3 protocols on switches",
+    "Use C/C++/Python and Linux tools for system debugging",
+    "Work on high-performance software for cloud-managed devices"
+   ],
+   "roleLabel": "Network software engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
+   "keySkills": [
+    "c",
+    "c++",
+    "python",
+    "linux",
+    "git"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "51 minutes ago",
+   "postedAt": 1791907456641,
+   "firstSeenAt": 1791910516650,
+   "lastSeenAt": 1791910516650,
+   "url": "https://www.linkedin.com/jobs/view/4479043666/",
+   "applyUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2027309EXTERNALENGLOBAL/Software-Engineer?utm_source=linkedin&utm_medium=phenom-feeds",
+   "description": null,
+   "roleFingerprint": "6067cd1f8c",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4479048209",
    "title": "Mainframe Developer",
@@ -13305,68 +13363,6 @@
    "applyUrl": "https://jobs.lever.co/brillio-2/ae3f6073-5741-42af-8b8c-1b2779bb4a8c/apply?lever-source=Job%20postings%20feed",
    "description": null,
    "roleFingerprint": "f5b7374d29",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "swe",
-   "region": "IN",
-   "verified": true
-  },
-  {
-   "id": "4477656621",
-   "title": "Software Engineer",
-   "company": "Cisco",
-   "matchedWatchlist": "Cisco",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/cisco.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "python",
-    "java",
-    "golang",
-    "data structures",
-    "algorithms",
-    "system design",
-    "agile"
-   ],
-   "summary": "This role involves building scalable cloud applications with AI tools, working on secure code, and owning projects from design to delivery. It suits students with strong CS fundamentals and experience in Java, Python, or Golang.",
-   "bullets": [
-    "Develop scalable cloud applications with AI-assisted workflows",
-    "Work on secure, privacy-focused code with team of experts",
-    "Own projects and lead features from design to completion"
-   ],
-   "roleLabel": "Cloud application development",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "experience": "0–2 years",
-   "expLevel": "fresher",
-   "expSays": "0–2 years",
-   "keySkills": [
-    "java",
-    "python",
-    "golang",
-    "ai coding assistants"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "3 minutes ago",
-   "postedAt": 1791539542748,
-   "firstSeenAt": 1791539722753,
-   "lastSeenAt": 1791553854843,
-   "checkedAt": 1791908758669,
-   "checkedVia": "link",
-   "url": "https://www.linkedin.com/jobs/view/4477656621/",
-   "applyUrl": "https://careers.cisco.com/global/en/job/CISCISGLOBAL2028048EXTERNALENGLOBAL/Software-Engineer?utm_source=linkedin&utm_medium=phenom-feeds",
-   "description": null,
-   "roleFingerprint": "58637ddf27",
    "cardFacts": [
     "Bengaluru",
     "On-site"
@@ -68998,7 +68994,7 @@
    "postedText": "25 minutes ago",
    "postedAt": 1790001827270,
    "firstSeenAt": 1790003327274,
-   "lastSeenAt": 1791907126831,
+   "lastSeenAt": 1791910541032,
    "checkedAt": 1791903613255,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4460005088/",
