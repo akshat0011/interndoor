@@ -6,6 +6,78 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/paypal-software-engineer-4478784348",
+      "url": "https://interndoor.com/jobs/paypal-software-engineer-4478784348",
+      "title": "Software Engineer — PayPal",
+      "content_text": "Company: PayPal · Location: Chennai, Tamil Nadu, India\n• Build scalable backend services using Java for SRE reliability tools\n• Collaborate with cross-functional teams to solve system reliability challenges\n• Apply AI/GenAI to automate engineering workflows and improve productivity",
+      "date_published": "2026-10-13T09:36:06.361Z",
+      "authors": [
+        {
+          "name": "PayPal"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/seagate-technology-intern-software-development-4476417181",
+      "url": "https://interndoor.com/jobs/seagate-technology-intern-software-development-4476417181",
+      "title": "Software Development Intern — Seagate Technology",
+      "content_text": "Company: Seagate Technology · Location: Pune Division, Maharashtra, India\n• Develop and debug software in C/C++ and Python for operational tools\n• Work with CI/CD and containerization tools like Jenkins and Docker\n• Collaborate with cross-functional teams on automation and data workflows",
+      "date_published": "2026-10-13T09:32:16.438Z",
+      "authors": [
+        {
+          "name": "Seagate Technology"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualys-site-reliability-engineer-4468564143",
+      "url": "https://interndoor.com/jobs/qualys-site-reliability-engineer-4468564143",
+      "title": "Site Reliability Engineer — Qualys",
+      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India\n• Maintain scalable applications and monitor system health with observability tools\n• Write automation scripts and use IaC for infrastructure management\n• Collaborate with DevOps and security teams on incident response and reliability",
+      "date_published": "2026-10-13T09:28:16.515Z",
+      "authors": [
+        {
+          "name": "Qualys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414941939",
+      "url": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414941939",
+      "title": "Backend Golang Developer — Proofpoint",
+      "content_text": "Company: Proofpoint · Location: Bengaluru, Karnataka, India\n• Build and maintain microservices using Golang for core product features\n• Work on scalable systems and distributed architectures in production\n• Collaborate with engineers across product and infrastructure teams",
+      "date_published": "2026-10-13T09:19:48.348Z",
+      "authors": [
+        {
+          "name": "Proofpoint"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-developer-4477978602",
+      "url": "https://interndoor.com/jobs/cognizant-developer-4477978602",
+      "title": "Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Develop and test map and location features for ADAS systems\n• Work with Linux and QNX for software integration in AUTOSAR\n• Maintain and debug existing and new system components",
+      "date_published": "2026-10-13T08:48:38.624Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ust-fullstack-developer-react-node-js-developer-4476408359",
+      "url": "https://interndoor.com/jobs/ust-fullstack-developer-react-node-js-developer-4476408359",
+      "title": "Full Stack Developer — UST",
+      "content_text": "Company: UST · Location: Hyderabad, Telangana, India\n• Build scalable web apps with React and Node.js\n• Use Git, CI/CD, and AI tools like Claude\n• Work on APIs, middleware, and security practices",
+      "date_published": "2026-10-13T08:43:21.079Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cloudsek-sde-intern-backend-ats-greenhouse-cloudsek-6222340004",
       "url": "https://interndoor.com/jobs/cloudsek-sde-intern-backend-ats-greenhouse-cloudsek-6222340004",
       "title": "SDE Intern - Backend — CloudSEK",
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-4477566908",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-4477566908",
-      "title": "Software Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Write bare-metal drivers for hardware interfaces\n• Use C/C++ and debug tools like Lauterbach\n• Work on global teams with embedded systems",
-      "date_published": "2026-10-12T14:04:56.479Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/vecmocon-software-quality-assurance-intern-ats-keka-vecmocon-166181",
-      "url": "https://interndoor.com/jobs/vecmocon-software-quality-assurance-intern-ats-keka-vecmocon-166181",
-      "title": "Software Quality Assurance Intern — Vecmocon",
-      "content_text": "Company: Vecmocon · Location: Noida, UP, India\n• Test web and mobile apps for bugs and inconsistencies\n• Create and run test cases across browsers and devices\n• Work with developers to fix issues and improve UX",
-      "date_published": "2026-10-12T13:37:57.273Z",
-      "authors": [
-        {
-          "name": "Vecmocon"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-oracle-developer-4478529603",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-oracle-developer-4478529603",
-      "title": "Oracle Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Noida, Uttar Pradesh, India\n• Develop and optimize PL/SQL packages and data integration workflows\n• Work with Oracle Data Integrator and enterprise data warehouses\n• Collaborate with data architects and business analysts on data solutions",
-      "date_published": "2026-10-12T13:33:01.280Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-software-development-specialist-4478529605",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-software-development-specialist-4478529605",
-      "title": "Software Development Specialist — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Install, upgrade, and maintain axway software components\n• Write scripts in shell, python, or powershell for automation\n• Manage ssl/tls certificates and access controls for security",
-      "date_published": "2026-10-12T13:30:07.551Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4476015609",
-      "url": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-specialist-4476015609",
-      "title": "Site Reliability Engineering Specialist — BT Group",
-      "content_text": "Company: BT Group · Location: Bengaluru South, Karnataka, India\n• Operate and maintain AWS cloud platform for coverage analysis and RF optimisation\n• Support production incidents, upgrades, and disaster recovery on critical analytics systems\n• Monitor platform performance and ensure SLAs are met using CloudWatch and dashboards",
-      "date_published": "2026-10-12T13:27:21.982Z",
-      "authors": [
-        {
-          "name": "BT Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bt-group-service-reliability-engineer-4476014562",
-      "url": "https://interndoor.com/jobs/bt-group-service-reliability-engineer-4476014562",
-      "title": "Service Reliability Engineer — BT Group",
-      "content_text": "Company: BT Group · Location: Delhi, India\n• Supports network infrastructure and hardware deployment across client sites\n• Uses ticketing systems and workflows to manage tasks and priorities\n• Troubleshoots network issues and collaborates with stakeholders",
-      "date_published": "2026-10-12T13:27:18.979Z",
-      "authors": [
-        {
-          "name": "BT Group"
         }
       ]
     }
