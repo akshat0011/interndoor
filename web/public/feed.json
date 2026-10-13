@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wipro-test-engineer-l1-4477963964",
+      "url": "https://interndoor.com/jobs/wipro-test-engineer-l1-4477963964",
+      "title": "Test Engineer L1 — Wipro",
+      "content_text": "Company: Wipro · Location: Gurugram, Haryana, India\n• Prepare test data and verify database checks\n• Assist with unit testing and document results\n• Work with defined guidelines and prescribed formats",
+      "date_published": "2026-10-13T07:31:42.140Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476085759",
       "url": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476085759",
       "title": "Cloud Monitoring intern — Volody",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "NTT DATA, Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tyson-foods-assoc-analyst-master-data-management-mdm-4467378775",
-      "url": "https://interndoor.com/jobs/tyson-foods-assoc-analyst-master-data-management-mdm-4467378775",
-      "title": "Master Data Analyst — Tyson Foods",
-      "content_text": "Company: Tyson Foods · Location: Bengaluru, Karnataka, India\n• Maintain supplier, customer, and material master data in SAP with 48-hour SLA\n• Support data quality initiatives and governance across global regions\n• Collaborate with cross-functional teams on data onboarding and remediation",
-      "date_published": "2026-10-12T13:04:41.722Z",
-      "authors": [
-        {
-          "name": "Tyson Foods"
         }
       ]
     }
