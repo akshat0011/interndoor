@@ -840,7 +840,7 @@ async function main() {
       const sessionReady = async () => {
         if (openRegion === account) return true;
         try {
-          await openRegionSession(account, { warm: !viaGuest });
+          await openRegionSession(account, { warm: false });
           return true;
         } catch (err) {
           /* Only a LinkedIn-level refusal is survivable this way. A browser that
@@ -1088,6 +1088,10 @@ async function main() {
           if (nav.networkError) sawNetworkFailure = true;
           if (nav.blocked) sawBlocked = true;
           await ensureHealthy(page, cfg, { context: `search "${label}" page ${pageIndex + 1}`, remainingMs: clock.remainingMs() });
+          /* NO FEED VISIT FOR THE SIGNED-IN WALK EITHER (13 Oct 2026, his call):
+             the first search page, checked by ensureHealthy above, is the
+             sign-in check. Saves one page load on the account per walk. */
+          if (navigated && !accountVerified) accountVerified = true;
           if (!navigated) {
             notes.push(`The job list never finished loading for "${label}" page ${pageIndex + 1}; skipped it.`);
             break;

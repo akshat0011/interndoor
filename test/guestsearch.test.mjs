@@ -161,8 +161,8 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
   check('both India searches walk on the classic account; the AI-search account rests',
     JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN' && e.enabled !== false).map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
     JSON.stringify([['intern', 'US'], ['fulltime', 'US']]));
-  check('and every account has a daily page-load ceiling under the 1,054 that got one flagged',
-    rawCfg.safety.accountDailyPageLoads > 0 && rawCfg.safety.accountDailyPageLoads < 1054, true);
+  check('the daily ceiling is a number (0 = off, his call 13 Oct 2026), never above the 1,054 that got one flagged',
+    Number.isFinite(rawCfg.safety.accountDailyPageLoads) && rawCfg.safety.accountDailyPageLoads >= 0 && rawCfg.safety.accountDailyPageLoads < 1054, true);
   check('live config: any search on the signed-in page says why',
     rawSearches.filter((e) => e.searchSource === 'browser').every((e) => String(e._searchSource_note ?? '').length > 40), true);
   const p = cfg.pacing.betweenGuestPages;
@@ -550,6 +550,8 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('an account on the AI search walks one page and stops, nothing opened',
     /if \(seen\.variant === 'ai'\) \{[\s\S]{0,300}?accountStop = true;\s*break;\s*\}\s*\}\s*\(\{ cards, unidentified, spanned \} = await li\.enumerateCards/.test(src), true);
   check('the surface is remembered per account', /noteVariant\(store, account, fp/.test(src), true);
+  check('a signed-in walk opens no feed; its first search page is the sign-in check',
+    /await openRegionSession\(account, \{ warm: false \}\);/.test(src) && /if \(navigated && !accountVerified\) accountVerified = true;/.test(src), true);
   check('a signed-in search whose account was last seen on the AI search uses the public search',
     /const sourceFor = \(search = \{\}\) => \{\s*const configured = searchSourceFor\(search, cfg\);\s*if \(configured !== 'browser'\) return configured;[\s\S]{0,200}?VARIANT_KEY\(search\.account \?\? search\.region \?\? 'IN'\)[\s\S]{0,80}?return seen === 'ai' \? 'guest' : configured;/.test(src), true);
   check('and that decides the walk and its early stop alike',
@@ -557,7 +559,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('a search names its account, else its region\'s', /const account = search\.account \?\? region;/.test(src), true);
   check('and the session is checked against the account, not the region', /if \(openRegion === account\) return true;/.test(src) && /if \(deadRegions\.has\(account\)\) \{/.test(src), true);
   check('a public-search session is opened without the feed',
-    /await openRegionSession\(account, \{ warm: !viaGuest \}\);/.test(src) && /if \(warm\) \{\s*await li\.warmUp\(page, cfg\);/.test(src), true);
+    /await openRegionSession\(account, \{ warm: false \}\);/.test(src) && /if \(warm\) \{\s*await li\.warmUp\(page, cfg\);/.test(src), true);
   check('and checked on the first posting it opens, before that read is trusted',
     /if \(viaGuest && !accountVerified\) \{\s*try \{\s*await assertSignedIn\(page, context, cfg\);\s*accountVerified = true;/.test(src)
       && src.indexOf('if (viaGuest && !accountVerified)') < src.indexOf('return got;'), true);
