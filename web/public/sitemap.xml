@@ -93,7 +93,7 @@
   <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/kolkata</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/kochi</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/maharashtra</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
@@ -105,7 +105,7 @@
   <url><loc>https://interndoor.com/roles/devops-cloud</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/it-support</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/roles/core-engineering</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/roles/core-engineering</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/backend-development</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/sap-salesforce</loc><lastmod>2026-10-12</lastmod><priority>0.7</priority></url>
@@ -151,6 +151,7 @@
   <url><loc>https://interndoor.com/roles/sap-salesforce-in-pune</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/jobs/amazon-web-services-aws-optical-network-development-engineer-capacity-restoration-team-4478726056</loc><lastmod>2026-10-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/nvidia-cpu-compiler-intern-2027-4477940543</loc><lastmod>2026-10-13</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/emerson-intern-power-greenfield-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26012140</loc><lastmod>2026-10-13</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/marsh-engineer-it-product-support-4478703757</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/citi-application-development-programmer-analyst-4477935200</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/moody-s-corporation-analyst-bi-and-analytics-4478595747</loc><lastmod>2026-10-12</lastmod><priority>0.8</priority></url>
@@ -834,7 +835,6 @@
   <url><loc>https://interndoor.com/jobs/electronic-arts-ea-ai-full-stack-intern-4472657639</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/flex-associate-software-engineer-4472363950</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/marvell-technology-research-intern-physical-ai-and-gpu-phd-ats-workday-marvell-wd1-marvellcareers-2604253</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://interndoor.com/jobs/emerson-intern-power-greenfield-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26011635</loc><lastmod>2026-10-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-data-engineer-4473965650</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/lowe-s-india-analyst-customer-insights-4472371028</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/pwc-acceleration-center-india-associate-onestream-implementation-finance-solutions-4472646244</loc><lastmod>2026-09-30</lastmod><priority>0.8</priority></url>
@@ -1350,6 +1350,7 @@
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/companies/amazon-web-services-aws</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/nvidia</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/emerson</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/marsh</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/citi</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/moody-s-corporation</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
@@ -1389,7 +1390,6 @@
   <url><loc>https://interndoor.com/companies/wipro</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/rippling</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/mastercard</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/emerson</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/gsk</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/united-airlines-india-knowledge-center</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/coindcx</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
