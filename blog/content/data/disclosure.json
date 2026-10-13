@@ -1,0 +1,47 @@
+{
+  "id": "disclosure",
+  "source": {
+    "label": "InternDoor postings data, September 2026 (see How we count)",
+    "url": "https://blog.interndoor.com/methodology"
+  },
+  "charts": {
+    "sep": {
+      "title": "What September’s postings told applicants",
+      "subtitle": "Share of the 425 engineering internship postings that stated each fact",
+      "unit": "percent",
+      "max": 100,
+      "label": "Fact",
+      "valueLabel": "Share of postings that stated it",
+      "highlight": [
+        "The stipend"
+      ],
+      "rows": [
+        {
+          "label": "How the work is done",
+          "value": 82,
+          "display": "82%",
+          "note": "(350 of 425)"
+        },
+        {
+          "label": "At least one skill",
+          "value": 78,
+          "display": "78%",
+          "note": "(330 of 425)"
+        },
+        {
+          "label": "How long it lasts",
+          "value": 22,
+          "display": "22%",
+          "note": "(92 of 425)"
+        },
+        {
+          "label": "The stipend",
+          "value": 4,
+          "display": "4%",
+          "note": "(18 of 425)"
+        }
+      ],
+      "note": "A fact counts as stated only when the posting itself says it. Skills and work arrangement are read from the posting text, so a posting that mentions them in passing still counts."
+    }
+  }
+}

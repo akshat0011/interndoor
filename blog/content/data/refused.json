@@ -1,0 +1,54 @@
+{
+  "id": "refused",
+  "window": {
+    "from": "2026-09-13",
+    "to": "2026-10-12"
+  },
+  "offList": {
+    "postings": 42886,
+    "employers": 18952
+  },
+  "unpaidInTitle": {
+    "postings": 276,
+    "employers": 107
+  },
+  "source": {
+    "label": "InternDoor collection records, 13 September to 12 October 2026 (see How we count)",
+    "url": "https://blog.interndoor.com/methodology"
+  },
+  "charts": {
+    "entry": {
+      "title": "Filed as entry level, but not entry level",
+      "subtitle": "India postings returned for entry-level searches that InternDoor turned away, 13 September to 12 October 2026, by reason",
+      "unit": "count",
+      "label": "Reason",
+      "valueLabel": "Postings",
+      "highlight": [
+        "Asked for two or more years"
+      ],
+      "rows": [
+        {
+          "label": "Senior, lead or principal title",
+          "value": 6119
+        },
+        {
+          "label": "Asked for two or more years",
+          "value": 1539
+        },
+        {
+          "label": "Level II or higher in the title",
+          "value": 950
+        },
+        {
+          "label": "Manager title",
+          "value": 890
+        },
+        {
+          "label": "Consultant or architect title",
+          "value": 674
+        }
+      ],
+      "note": "Counted once per posting and city. These never reached InternDoor; the counts show what an entry-level filter lets through."
+    }
+  }
+}

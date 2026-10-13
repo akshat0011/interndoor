@@ -1,4 +1,4 @@
-import { normaliseEmail, normaliseRegion, looksAutomated, rateLimit, addSubscriber, REGIONS } from '../web/api/subscribe.js';
+import handler, { normaliseEmail, normaliseRegion, looksAutomated, rateLimit, addSubscriber, REGIONS, corsHeaders, BLOG_ORIGIN } from '../web/api/subscribe.js';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -199,6 +199,57 @@ console.log('\n== the subscriber IP is what unblocks the firewall ==');
   /* fetchImpl is the FOURTH argument. Passing the IP in its place made the
      handler call the IP string as a function — caught before shipping. */
   check('the fetch impl is still the 4th argument', typeof fake, 'function');
+}
+
+
+console.log('\n== the blog, and only the blog, may call this from another origin ==');
+// blog.interndoor.com posts here from the reader's browser so the provider
+// sees the reader's own IP. A lookalike host, plain http or any other site
+// gets no CORS header, and the browser then refuses to hand it the answer.
+check('blog origin allowed', corsHeaders('https://blog.interndoor.com')['Access-Control-Allow-Origin'], 'https://blog.interndoor.com');
+check('the constant is the blog', BLOG_ORIGIN, 'https://blog.interndoor.com');
+check('lookalike host refused', corsHeaders('https://blog.interndoor.com.evil.example'), {});
+check('suffix trick refused', corsHeaders('https://evilblog.interndoor.com'), {});
+check('plain http refused', corsHeaders('http://blog.interndoor.com'), {});
+check('another site refused', corsHeaders('https://example.com'), {});
+check('the board itself needs nothing', corsHeaders('https://interndoor.com'), {});
+check('no origin, nothing', corsHeaders(undefined), {});
+
+function fakeRes() {
+  const r = { headers: {}, code: null, body: null };
+  r.setHeader = (k, v) => { r.headers[k.toLowerCase()] = v; };
+  r.status = (c) => { r.code = c; return r; };
+  r.json = (b) => { r.body = b; return r; };
+  r.end = () => r;
+  return r;
+}
+{
+  const res = fakeRes();
+  await handler({ method: 'OPTIONS', headers: { origin: BLOG_ORIGIN } }, res);
+  check('preflight from the blog: 204', res.code, 204);
+  check('preflight from the blog: origin echoed', res.headers['access-control-allow-origin'], BLOG_ORIGIN);
+  check('preflight from the blog: POST allowed', res.headers['access-control-allow-methods'], 'POST');
+  check('preflight from the blog: content-type allowed', res.headers['access-control-allow-headers'], 'content-type');
+}
+{
+  const res = fakeRes();
+  await handler({ method: 'OPTIONS', headers: { origin: 'https://example.com' } }, res);
+  check('preflight from elsewhere: still 204', res.code, 204);
+  check('preflight from elsewhere: no origin header', res.headers['access-control-allow-origin'], undefined);
+  check('preflight from elsewhere: no methods header', res.headers['access-control-allow-methods'], undefined);
+}
+{
+  /* The honeypot answer is the cheapest real POST to drive end to end: it
+     returns before any provider call, so nothing leaves this test. */
+  const res = fakeRes();
+  await handler({ method: 'POST', headers: { origin: BLOG_ORIGIN }, body: { email: 'a@b.com', region: 'IN', company: 'bot' } }, res);
+  check('POST from the blog carries the origin header', res.headers['access-control-allow-origin'], BLOG_ORIGIN);
+  check('POST from the blog: honeypot still a plain 200', [res.code, res.body], [200, { ok: true }]);
+}
+{
+  const res = fakeRes();
+  await handler({ method: 'POST', headers: { origin: 'https://example.com' }, body: { email: 'a@b.com', region: 'IN', company: 'bot' } }, res);
+  check('POST from elsewhere carries no origin header', res.headers['access-control-allow-origin'], undefined);
 }
 
 console.log(`\n${pass} passed, ${fail} failed\n`);

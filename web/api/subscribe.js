@@ -252,9 +252,30 @@ function regionPathFor(code) {
   return ({ IN: '', US: '/us', GB: '/uk', CA: '/ca' })[code] ?? '';
 }
 
+/* THE BLOG'S SIGNUP FORM CALLS THIS FROM ANOTHER ORIGIN (14 Oct 2026).
+   blog.interndoor.com is its own Vercel project, and the reader's browser
+   posts here directly rather than through the blog's host: proxied, every
+   blog signup would arrive with Vercel's address instead of the reader's, and
+   addSubscriber's ip_address is what keeps Buttondown's firewall from
+   refusing the signup. Exactly one origin is allowed, compared whole; the
+   board itself is same-origin and needs none of this. */
+export const BLOG_ORIGIN = 'https://blog.interndoor.com';
+
+export function corsHeaders(origin) {
+  if (origin !== BLOG_ORIGIN) return {};
+  return { 'Access-Control-Allow-Origin': BLOG_ORIGIN, Vary: 'Origin' };
+}
+
 export default async function handler(req, res) {
+  const cors = corsHeaders(req.headers?.origin);
+  for (const [k, v] of Object.entries(cors)) res.setHeader(k, v);
   if (req.method === 'OPTIONS') {
     res.setHeader('Allow', 'POST');
+    if (cors['Access-Control-Allow-Origin']) {
+      res.setHeader('Access-Control-Allow-Methods', 'POST');
+      res.setHeader('Access-Control-Allow-Headers', 'content-type');
+      res.setHeader('Access-Control-Max-Age', '86400');
+    }
     return res.status(204).end();
   }
   if (req.method !== 'POST') {

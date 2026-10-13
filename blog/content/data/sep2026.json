@@ -1,0 +1,289 @@
+{
+  "id": "sep2026",
+  "note": "Frozen figures copied from the September 2026 snapshot; derived figures counted over the same 425 rows on export.",
+  "rows": 425,
+  "employers": 159,
+  "source": {
+    "label": "InternDoor, Engineering internships in India: September 2026",
+    "url": "https://interndoor.com/insights/2026-09"
+  },
+  "charts": {
+    "employers": {
+      "title": "Who posted the most",
+      "subtitle": "Engineering internships posted in September 2026, the ten busiest of 159 employers",
+      "unit": "count",
+      "label": "Employer",
+      "valueLabel": "Postings",
+      "highlight": [
+        "IQVIA"
+      ],
+      "rows": [
+        {
+          "label": "IQVIA",
+          "value": 22
+        },
+        {
+          "label": "S&P Global",
+          "value": 19
+        },
+        {
+          "label": "Honeywell",
+          "value": 16
+        },
+        {
+          "label": "Kaleris",
+          "value": 15
+        },
+        {
+          "label": "Siemens",
+          "value": 12
+        },
+        {
+          "label": "NewSpace Research",
+          "value": 9
+        },
+        {
+          "label": "Microsoft",
+          "value": 8
+        },
+        {
+          "label": "Valeo",
+          "value": 8
+        },
+        {
+          "label": "eSec Forte",
+          "value": 7
+        },
+        {
+          "label": "GE HealthCare",
+          "value": 7
+        }
+      ],
+      "note": "One role posted in several cities counts once per city, so a count of postings is not a count of different jobs."
+    },
+    "tail": {
+      "title": "Most employers posted once or twice",
+      "subtitle": "The 159 employers, by how many internships each posted in September",
+      "unit": "count",
+      "label": "Postings per employer",
+      "valueLabel": "Employers",
+      "highlight": [
+        "Posted exactly one"
+      ],
+      "rows": [
+        {
+          "label": "Posted exactly one",
+          "value": 74,
+          "display": "74 employers",
+          "note": "74 postings"
+        },
+        {
+          "label": "Posted two to four",
+          "value": 63,
+          "display": "63 employers",
+          "note": "162 postings"
+        },
+        {
+          "label": "Posted five or more",
+          "value": 22,
+          "display": "22 employers",
+          "note": "189 postings"
+        }
+      ],
+      "source": {
+        "label": "InternDoor postings data, September 2026 (see How we count)",
+        "url": "https://blog.interndoor.com/methodology"
+      }
+    },
+    "cities": {
+      "title": "Where the internships were",
+      "subtitle": "Share of all 425 September postings, by city",
+      "unit": "percent",
+      "max": 100,
+      "label": "City",
+      "valueLabel": "Share of postings",
+      "highlight": [
+        "Bengaluru"
+      ],
+      "rows": [
+        {
+          "label": "Bengaluru",
+          "value": 42,
+          "display": "42%"
+        },
+        {
+          "label": "Hyderabad",
+          "value": 12,
+          "display": "12%"
+        },
+        {
+          "label": "Gurugram",
+          "value": 10,
+          "display": "10%"
+        },
+        {
+          "label": "Mumbai",
+          "value": 8,
+          "display": "8%"
+        },
+        {
+          "label": "Chennai",
+          "value": 7,
+          "display": "7%"
+        },
+        {
+          "label": "Pune",
+          "value": 6,
+          "display": "6%"
+        }
+      ],
+      "note": "Six cities shown. A posting naming several cities counts under the first."
+    },
+    "mode": {
+      "title": "Remote internships were rare",
+      "subtitle": "How the work is done, as stated on 425 September postings",
+      "unit": "percent",
+      "max": 100,
+      "label": "Work arrangement",
+      "valueLabel": "Share of postings",
+      "highlight": [
+        "Remote"
+      ],
+      "rows": [
+        {
+          "label": "On-site",
+          "value": 64,
+          "display": "64%",
+          "note": "(273)"
+        },
+        {
+          "label": "Hybrid",
+          "value": 15,
+          "display": "15%",
+          "note": "(63)"
+        },
+        {
+          "label": "Remote",
+          "value": 3,
+          "display": "3%",
+          "note": "(14)"
+        },
+        {
+          "label": "Did not say",
+          "value": 18,
+          "display": "18%",
+          "note": "(75)"
+        }
+      ],
+      "source": {
+        "label": "InternDoor postings data, September 2026 (see How we count)",
+        "url": "https://blog.interndoor.com/methodology"
+      }
+    },
+    "shelves": {
+      "title": "Mostly software",
+      "subtitle": "The 425 September postings, by the kind of engineering",
+      "unit": "count",
+      "label": "Kind of role",
+      "valueLabel": "Postings",
+      "highlight": [
+        "Software, data and AI"
+      ],
+      "rows": [
+        {
+          "label": "Software, data and AI",
+          "value": 325,
+          "note": "(76%)"
+        },
+        {
+          "label": "Hardware and embedded",
+          "value": 35,
+          "note": "(8%)"
+        },
+        {
+          "label": "Other engineering",
+          "value": 65,
+          "note": "(15%)"
+        }
+      ],
+      "note": "Sorted by InternDoor’s own reading of each title. Other engineering covers core engineering, research, IT, design and similar roles.",
+      "source": {
+        "label": "InternDoor postings data, September 2026 (see How we count)",
+        "url": "https://blog.interndoor.com/methodology"
+      }
+    },
+    "days": {
+      "title": "Weekdays, not weekends",
+      "subtitle": "The 352 September postings found within hours of going up, by the day they were posted",
+      "unit": "count",
+      "label": "Day",
+      "valueLabel": "Postings",
+      "highlight": [
+        "Tuesday"
+      ],
+      "rows": [
+        {
+          "label": "Monday",
+          "value": 34
+        },
+        {
+          "label": "Tuesday",
+          "value": 83
+        },
+        {
+          "label": "Wednesday",
+          "value": 82
+        },
+        {
+          "label": "Thursday",
+          "value": 62
+        },
+        {
+          "label": "Friday",
+          "value": 73
+        },
+        {
+          "label": "Saturday",
+          "value": 12
+        },
+        {
+          "label": "Sunday",
+          "value": 6
+        }
+      ]
+    },
+    "queue": {
+      "title": "How many had applied when we found it",
+      "subtitle": "The 333 September postings that showed an applicant count, at first sighting",
+      "unit": "percent",
+      "max": 100,
+      "label": "Applicants",
+      "valueLabel": "Share of postings",
+      "highlight": [
+        "100 or more"
+      ],
+      "rows": [
+        {
+          "label": "100 or more",
+          "value": 11,
+          "display": "11%"
+        },
+        {
+          "label": "25 to 99",
+          "value": 33,
+          "display": "33%"
+        },
+        {
+          "label": "1 to 24",
+          "value": 46,
+          "display": "46%"
+        },
+        {
+          "label": "Nobody yet",
+          "value": 9,
+          "display": "9%"
+        }
+      ]
+    }
+  }
+}

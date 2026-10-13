@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_vercel/
+
+Sitemap: https://blog.interndoor.com/sitemap.xml

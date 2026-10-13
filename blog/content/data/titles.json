@@ -1,0 +1,63 @@
+{
+  "id": "titles",
+  "window": {
+    "from": "2026-08-01",
+    "to": "2026-10-12",
+    "fullTimeFrom": "2026-09-18"
+  },
+  "internTab": {
+    "rows": 915,
+    "intern": 645,
+    "trainee": 142,
+    "apprentice": 119,
+    "associate": 24,
+    "level1": 1,
+    "graduate": 91,
+    "traineesStatingDuration": 27
+  },
+  "fullTimeTab": {
+    "rows": 1664,
+    "intern": 0,
+    "trainee": 0,
+    "apprentice": 0,
+    "associate": 95,
+    "level1": 101,
+    "graduate": 4
+  },
+  "source": {
+    "label": "InternDoor postings data, 1 August to 12 October 2026 (see How we count)",
+    "url": "https://blog.interndoor.com/methodology"
+  },
+  "charts": {
+    "intern": {
+      "title": "Words in internship titles",
+      "subtitle": "The 915 India postings InternDoor filed as internships, 1 August to 12 October 2026",
+      "unit": "count",
+      "label": "Word in the title",
+      "valueLabel": "Postings",
+      "highlight": [
+        "Trainee",
+        "Apprentice"
+      ],
+      "rows": [
+        {
+          "label": "Intern or internship",
+          "value": 645
+        },
+        {
+          "label": "Trainee",
+          "value": 142
+        },
+        {
+          "label": "Apprentice",
+          "value": 119
+        },
+        {
+          "label": "Graduate",
+          "value": 91
+        }
+      ],
+      "note": "A title can carry more than one of these words, so the rows add up to more than the total."
+    }
+  }
+}

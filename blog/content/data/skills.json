@@ -1,0 +1,175 @@
+{
+  "id": "skills",
+  "rows": 757,
+  "withSkills": 575,
+  "pythonAlsoSql": {
+    "python": 292,
+    "both": 114
+  },
+  "medianSkillsPerPosting": 5,
+  "source": {
+    "label": "InternDoor postings data, August and September 2026 (see How we count)",
+    "url": "https://blog.interndoor.com/methodology"
+  },
+  "charts": {
+    "software": {
+      "title": "Software, data and AI internships",
+      "subtitle": "Share of the 483 August and September postings that named at least one skill",
+      "unit": "percent",
+      "max": 100,
+      "label": "Skill",
+      "valueLabel": "Share of postings naming it",
+      "highlight": [
+        "Python"
+      ],
+      "rows": [
+        {
+          "label": "Python",
+          "value": 52,
+          "display": "52%",
+          "note": "(252)"
+        },
+        {
+          "label": "SQL",
+          "value": 35,
+          "display": "35%",
+          "note": "(170)"
+        },
+        {
+          "label": "Java",
+          "value": 33,
+          "display": "33%",
+          "note": "(160)"
+        },
+        {
+          "label": "Git",
+          "value": 27,
+          "display": "27%",
+          "note": "(129)"
+        },
+        {
+          "label": "AWS",
+          "value": 24,
+          "display": "24%",
+          "note": "(115)"
+        },
+        {
+          "label": "Machine learning",
+          "value": 22,
+          "display": "22%",
+          "note": "(108)"
+        },
+        {
+          "label": "Agile",
+          "value": 22,
+          "display": "22%",
+          "note": "(105)"
+        },
+        {
+          "label": "JavaScript",
+          "value": 18,
+          "display": "18%",
+          "note": "(87)"
+        },
+        {
+          "label": "Algorithms",
+          "value": 18,
+          "display": "18%",
+          "note": "(85)"
+        },
+        {
+          "label": "Azure",
+          "value": 17,
+          "display": "17%",
+          "note": "(80)"
+        },
+        {
+          "label": "Data structures",
+          "value": 16,
+          "display": "16%",
+          "note": "(75)"
+        },
+        {
+          "label": "C++",
+          "value": 15,
+          "display": "15%",
+          "note": "(74)"
+        }
+      ]
+    },
+    "hardware": {
+      "title": "Hardware and embedded internships",
+      "subtitle": "Share of the 44 August and September postings that named at least one skill",
+      "unit": "percent",
+      "max": 100,
+      "label": "Skill",
+      "valueLabel": "Share of postings naming it",
+      "highlight": [
+        "C++"
+      ],
+      "rows": [
+        {
+          "label": "C++",
+          "value": 48,
+          "display": "48%",
+          "note": "(21)"
+        },
+        {
+          "label": "Python",
+          "value": 41,
+          "display": "41%",
+          "note": "(18)"
+        },
+        {
+          "label": "PCB",
+          "value": 23,
+          "display": "23%",
+          "note": "(10)"
+        },
+        {
+          "label": "Perl",
+          "value": 18,
+          "display": "18%",
+          "note": "(8)"
+        },
+        {
+          "label": "Physical design",
+          "value": 18,
+          "display": "18%",
+          "note": "(8)"
+        },
+        {
+          "label": "Verilog",
+          "value": 18,
+          "display": "18%",
+          "note": "(8)"
+        },
+        {
+          "label": "Agile",
+          "value": 16,
+          "display": "16%",
+          "note": "(7)"
+        },
+        {
+          "label": "MATLAB",
+          "value": 16,
+          "display": "16%",
+          "note": "(7)"
+        },
+        {
+          "label": "Signal integrity",
+          "value": 16,
+          "display": "16%",
+          "note": "(7)"
+        },
+        {
+          "label": "SPI",
+          "value": 14,
+          "display": "14%",
+          "note": "(6)"
+        }
+      ],
+      "note": "Only 44 postings, so one or two postings move a skill several points. Read the order, not the decimals."
+    }
+  }
+}
