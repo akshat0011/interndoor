@@ -1328,7 +1328,7 @@
       40
     ],
     "_windowPosition_note": "Where the Brave window opens. Set to [-2400, -2400] to park it off-screen if you find it distracting - but then you would have to drag it back into view to solve a CAPTCHA.",
-    "returnFocus": false,
+    "returnFocus": true,
     "_returnFocus_note": "FALSE SINCE 13 OCT 2026, his call: \"make sure that the brave profile opens and i can see it every time, the scraper mustnt run in the background\" — Brave comes to the front at every launch and stays there. WAS TRUE: Brave always steals keyboard focus when it launches. This hands focus straight back to whatever app you were using, so a run at 12:00 does not interrupt you.",
     "disableBraveShields": true,
     "_disableBraveShields_note": "Passes --disable-brave-extension. Mostly belt-and-braces: on a fresh profile Shields has no filter lists to work from, and LinkedIn was verified to load fine either way."
