@@ -237,7 +237,7 @@ console.log('\n== src/index.js runs it once per search and pushes on a flip ==')
   check('and never throws', /\.catch\(\(\) => null\);/.test(body), true);
   check('the description resolve is guarded too', /try \{ return !!document\.querySelector\(sel\); \} catch/.test(body), true);
 
-  check('imported', /import \{ noteVariant, variantSummary \} from '\.\/searchvariant\.js'/.test(src), true);
+  check('imported', /import \{ noteVariant, variantSummary, VARIANT_KEY \} from '\.\/searchvariant\.js'/.test(src), true);
   /* ONCE PER SEARCH, on its first page — not once per page. */
   check('probed on the first page only',
     /if \(pageIndex === firstPage\) \{[\s\S]{0,200}?await li\.readVariant\(page\)/.test(src), true);

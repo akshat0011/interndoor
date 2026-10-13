@@ -26,7 +26,7 @@ import { pause, sleep, idleFidget, humanDelay, pageAlive } from './human.js';
 import { summarize } from './summarize.js';
 import { extractStipend, extractDuration, extractSkills, extractWorkplaceType, parseRelativeTime } from './extract.js';
 import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAllOlderThan, pageAgeSummary, sweepBaselineFor, renderFloorFor } from './sweeplimits.js';
-import { noteVariant, variantSummary } from './searchvariant.js';
+import { noteVariant, variantSummary, VARIANT_KEY } from './searchvariant.js';
 import { searchSourceFor, buildGuestSearchUrl, fetchGuestPageRetrying, fetchPublicPosting, guestRequestCap, GUEST_PAGE_SIZE, rereadPlan, REREAD_TAIL_PAGES } from './guestsearch.js';
 import { titleSettlesMisc } from './rolefocus.js';
 import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
@@ -470,6 +470,23 @@ async function main() {
    * override exists to walk deliberately deep after an outage, and stopping
    * early would defeat the one job it has.
    */
+  /* WHICH COLLECTOR A SEARCH USES THIS RUN. The config's choice — except that
+     a search set to walk signed in ("browser") falls back to LinkedIn's public
+     search when its account was last SEEN on the AI job search (his call, 13
+     Oct 2026: "if that account automatically shifts to ai search then from the
+     next run shift to public page method"). The run that sees the AI search
+     stops after one page (below); every run after it uses the public search
+     until the account is back on classic and search_variant:<account> is set
+     back to "classic" by hand — the public search reads no signed-in search
+     page, so it cannot notice the account returning by itself. */
+  const sourceFor = (search = {}) => {
+    const configured = searchSourceFor(search, cfg);
+    if (configured !== 'browser') return configured;
+    let seen = null;
+    try { seen = store.getSetting(VARIANT_KEY(search.account ?? search.region ?? 'IN')); } catch { /* no store, no override */ }
+    return seen === 'ai' ? 'guest' : configured;
+  };
+
   const planSweep = (region, search = {}) => {
     /* TWO SEARCHES IN ONE REGION MUST NOT SHARE A BASELINE. sweep_ok_at is a
        high-water mark of complete coverage FOR ONE WALK; India's entry-level
@@ -509,7 +526,7 @@ async function main() {
          depth (guestsearch.js) — so two all-old pages say nothing about the
          next one, and stopping there would drop fresh postings sitting behind
          them. It reads its window to the end instead. */
-      coveredHorizon: (!OVERRIDES.windowHours && baseline && searchSourceFor(search, cfg) !== 'guest') ? baseline - COVERED_MARGIN_MS : null,
+      coveredHorizon: (!OVERRIDES.windowHours && baseline && sourceFor(search) !== 'guest') ? baseline - COVERED_MARGIN_MS : null,
       baseline,
       ownBaseline,
     };
@@ -574,6 +591,33 @@ async function main() {
      with one account per region, "collection has stopped" is no longer true
      just because one of them died. */
   const deadRegions = new Map();
+
+  /* A DAILY CEILING ON PAGE LOADS PER LINKEDIN ACCOUNT (13 Oct 2026, his ask:
+     "make sure our account doesnt get restricted like it used to before").
+     Counted per account per India day in settings: every feed warm-up, every
+     signed-in search page and every posting opened. At the ceiling the account
+     walks nothing more until midnight IST (the baseline stays put, so the next
+     day's first walk covers the gap up to its maxWindowHours). The measured
+     line: LinkedIn flagged the India account the day it loaded 1,054 (25 Sep);
+     669 (23 Sep) passed. safety.accountDailyPageLoads, 0 = no ceiling. */
+  const ACCOUNT_DAILY_LOADS = Number(cfg.safety?.accountDailyPageLoads ?? 0);
+  const loadKey = (acct) => `accountLoads:${acct}:${new Date(Date.now() + 5.5 * 3_600_000).toISOString().slice(0, 10)}`;
+  const accountLoads = (acct) => Number(store.getSetting(loadKey(acct)) ?? 0) || 0;
+  const noteAccountLoad = (acct) => {
+    if (DRY_RUN) return;
+    try { store.setSetting(loadKey(acct), String(accountLoads(acct) + 1)); } catch { /* a counter is not worth a run */ }
+  };
+  const budgetWarned = new Set();
+  const overAccountBudget = (acct) => {
+    if (!(ACCOUNT_DAILY_LOADS > 0) || accountLoads(acct) < ACCOUNT_DAILY_LOADS) return false;
+    if (!budgetWarned.has(acct)) {
+      budgetWarned.add(acct);
+      const msg = `The ${acct} LinkedIn account has loaded ${accountLoads(acct)} pages today, its daily ceiling (safety.accountDailyPageLoads ${ACCOUNT_DAILY_LOADS}). It walks nothing more until midnight IST.`;
+      log.warn(msg);
+      notes.push(msg);
+    }
+    return true;
+  };
 
   try {
     /**
@@ -641,6 +685,7 @@ async function main() {
          signed-in search page still warms up, as it always did. */
       if (warm) {
         await li.warmUp(page, cfg);
+        noteAccountLoad(code);
         await ensureHealthy(page, cfg, { context: `warm-up (${code})`, remainingMs: clock.remainingMs() });
       }
       await assertSignedIn(page, context, cfg);
@@ -737,7 +782,10 @@ async function main() {
       const account = search.account ?? region;
       const { filters, coveredHorizon, baseline, ownBaseline } = planSweep(region, search);
       // Which collector finds this search's cards — see guestsearch.js.
-      const viaGuest = searchSourceFor(search, cfg) === 'guest';
+      const viaGuest = sourceFor(search) === 'guest';
+      if (viaGuest && searchSourceFor(search, cfg) === 'browser') {
+        log.warn(`${account}: this account was last seen on LinkedIn's AI job search, so "${search.label ?? search.keywords}" uses the public search this run. Back on classic? Set search_variant:${account} to "classic".`);
+      }
       // Draw each public-search page, and what became of every card on it, in
       // the Brave window — so the walk can be watched (src/scanview.js).
       const showScan = viaGuest && cfg.scanView === true;
@@ -905,6 +953,8 @@ async function main() {
       // Set when the account behind a public-search walk is found signed out
       // at its first open: the walk stops there, baseline unchanged.
       let signedOutMidWalk = false;
+      // The account reached its daily ceiling, or showed the AI search (below).
+      let accountStop = false;
       // Cards this walk OPENED, so the scan view can tell "opened, then
       // refused" from a card refused on its own text.
       const openedThisWalk = new Set();
@@ -1027,10 +1077,12 @@ async function main() {
           cards = res.cards;
         } else {
           const url = li.buildSearchUrl(search, filters, { start: pageIndex * li.RESULTS_PER_PAGE });
+          if (overAccountBudget(account)) break;
           log.info(`Page ${pageIndex + 1} — ${url}`);
 
           const nav = {};
           const navigated = await li.gotoSearch(page, url, cfg, nav);
+          noteAccountLoad(account);
           // Remembered across the whole run so the exit code can tell the
           // scheduler whether retrying in two minutes is safe.
           if (nav.networkError) sawNetworkFailure = true;
@@ -1048,7 +1100,7 @@ async function main() {
              Reported every run, so the silence is meaningful. */
           if (pageIndex === firstPage) {
             const fp = await li.readVariant(page);
-            const seen = noteVariant(store, region, fp ?? {});
+            const seen = noteVariant(store, account, fp ?? {});
             log.info(`Search surface: ${variantSummary(fp ?? {})}`);
             if (seen.changed) {
               const msg = `LinkedIn moved ${region} from the ${seen.previous} job search to the ${seen.variant} one. Card discovery is text-based and should survive; check the run's open count and the apply-link ratio before trusting it.`;
@@ -1069,6 +1121,20 @@ async function main() {
               } catch (err) {
                 log.warn(`Could not save the changed page: ${err.message}`);
               }
+            }
+            /* NEVER WALK THE AI SEARCH SIGNED IN. It ignores the date sort, so
+               the covered-ground stop never fires: on 25 Sep it walked India 36
+               pages a run on the account, and the 30 Sep trial cost 2,500-3,500
+               account loads a day against the 1,054 that got the account
+               flagged. One page is read to know, then the walk stops, nothing
+               opened, baseline unchanged. Switch the account back to classic
+               (or set this search's searchSource to "guest"). */
+            if (seen.variant === 'ai') {
+              const msg = `The ${account} LinkedIn account is on the AI job search, so "${label}" stopped after one page to protect the account. Switch it back to classic job search.`;
+              log.warn(msg);
+              notes.push(msg);
+              accountStop = true;
+              break;
             }
           }
 
@@ -1488,7 +1554,9 @@ async function main() {
             await idleFidget(page);
             // Brave can die mid-run (it crashed once under memory pressure).
             if (!(await pageAlive(page))) return { dead: true };
+            if (overAccountBudget(account)) return { budget: true };
             counters.accountOpens++;
+            noteAccountLoad(account);
             let got;
             try {
               got = { detail: await li.openAndExtract(page, card, cfg) };
@@ -1565,6 +1633,10 @@ async function main() {
             const got = await openOnAccount();
             if (got.signedOut) {
               signedOutMidWalk = true;
+              break;
+            }
+            if (got.budget) {
+              accountStop = true;
               break;
             }
             if (got.dead) {
@@ -1694,6 +1766,10 @@ async function main() {
                 signedOutMidWalk = true;
                 break;
               }
+              if (got.budget) {
+                accountStop = true;
+                break;
+              }
               if (got.dead) {
                 braveDied();
                 break searchLoop;
@@ -1794,7 +1870,7 @@ async function main() {
 
         log.info(`Page ${pageIndex + 1} done — opened ${openedOnThisPage} of ${cards.length} cards.`);
         await drawPage(true);
-        if (signedOutMidWalk || (viaGuest && guestBlocked)) break;
+        if (signedOutMidWalk || accountStop || (viaGuest && guestBlocked)) break;
 
         /* HOW FAR BACK THIS WALK HAS GOT, tracked on every page whether or not
            any stop rule is on. Only dateable cards count: parseRelativeTime

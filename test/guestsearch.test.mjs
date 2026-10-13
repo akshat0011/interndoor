@@ -158,9 +158,11 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
   const rawCfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
   check('live config: the default is the signed-in walk while the public search sleeps', cfg.searchSource, 'browser');
   check('and the config says why', String(rawCfg._searchSource_sleep_note ?? '').length > 80, true);
-  check('India full-time walks on the second account, the internships on India\'s own',
+  check('both India searches walk on the classic account; the AI-search account rests',
     JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN' && e.enabled !== false).map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
-    JSON.stringify([['intern', 'IN'], ['fulltime', 'US']]));
+    JSON.stringify([['intern', 'US'], ['fulltime', 'US']]));
+  check('and every account has a daily page-load ceiling under the 1,054 that got one flagged',
+    rawCfg.safety.accountDailyPageLoads > 0 && rawCfg.safety.accountDailyPageLoads < 1054, true);
   check('live config: any search on the signed-in page says why',
     rawSearches.filter((e) => e.searchSource === 'browser').every((e) => String(e._searchSource_note ?? '').length > 40), true);
   const p = cfg.pacing.betweenGuestPages;
@@ -443,7 +445,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   const src = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
   const lk = readFileSync(new URL('../src/linkedin.js', import.meta.url), 'utf8');
   check('the source is decided per search',
-    /const viaGuest = searchSourceFor\(search, cfg\) === 'guest';/.test(src), true);
+    /const viaGuest = sourceFor\(search\) === 'guest';/.test(src), true);
   check('discovery fetches the public page, offset in 10s, for the part being read',
     /buildGuestSearchUrl\(passSearch, filters, \{ start: pageIndex \* GUEST_PAGE_SIZE \}\)[\s\S]{0,420}?await fetchGuestPageRetrying\(url, \{/.test(src), true);
   check('the wait never eats the end of the run\'s budget',
@@ -464,7 +466,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /if \(res\.markupChanged\) \{[\s\S]{0,700}?throw new Error\(/.test(src), true);
   // Not in date order: the covered-ground stop must be off for it.
   check('no covered-ground horizon for the public search',
-    /coveredHorizon: \(!OVERRIDES\.windowHours && baseline && searchSourceFor\(search, cfg\) !== 'guest'\)/.test(src), true);
+    /coveredHorizon: \(!OVERRIDES\.windowHours && baseline && sourceFor\(search\) !== 'guest'\)/.test(src), true);
   check('the per-card staleness gate trusts the endpoint\'s own window',
     /if \(!viaGuest && postedAt && postedAt < cutoff\)/.test(src), true);
   check('a card with a real id is answered by the id, before the identity',
@@ -521,7 +523,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /const openOnAccount = async \(\) => \{\s*if \(viaGuest && !\(await sessionReady\(\)\)\) return \{ signedOut: true \};\s*await pause\(cfg\.pacing\.betweenCards\);/.test(src)
       && (src.match(/li\.openAndExtract\(page, card, cfg\)/g) ?? []).length === 1, true);
   check('a signed-out account found there ends the walk',
-    /if \(signedOutMidWalk \|\| \(viaGuest && guestBlocked\)\) break;/.test(src)
+    /if \(signedOutMidWalk \|\| accountStop \|\| \(viaGuest && guestBlocked\)\) break;/.test(src)
       && (src.match(/if \(got\.signedOut\) \{\s*signedOutMidWalk = true;\s*break;\s*\}/g) ?? []).length === 2, true);
   /* 26 Sep 2026: the public page first, the account only for a kept posting
      that has an employer link to find, and no feed visit. */
@@ -538,6 +540,20 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
       && src.indexOf('if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag))') < src.indexOf('const settledMisc = titleSettlesMisc(detail.title || card.title, cfg.roleFocus);'), true);
   check('an account that fails that open keeps the public read', /kept from the public page without the employer's link/.test(src), true);
   check('the apply-link tripwire counts only real account opens', /if \(openedOnAccount && !detail\.easyApply\) \{/.test(src), true);
+  check('a signed-in search page is checked against the ceiling before it loads, and counted after',
+    /if \(overAccountBudget\(account\)\) break;\s*log\.info\(`Page[\s\S]{0,160}?await li\.gotoSearch\(page, url, cfg, nav\);\s*noteAccountLoad\(account\);/.test(src), true);
+  check('so is every posting opened on the account',
+    /if \(overAccountBudget\(account\)\) return \{ budget: true \};\s*counters\.accountOpens\+\+;\s*noteAccountLoad\(account\);/.test(src), true);
+  check('and both open sites stop the walk at the ceiling', (src.match(/if \(got\.budget\) \{\s*accountStop = true;\s*break;/g) ?? []).length, 2);
+  check('the feed warm-up is counted', /await li\.warmUp\(page, cfg\);\s*noteAccountLoad\(code\);/.test(src), true);
+  check('a stopped walk ends the page loop', /if \(signedOutMidWalk \|\| accountStop \|\|/.test(src), true);
+  check('an account on the AI search walks one page and stops, nothing opened',
+    /if \(seen\.variant === 'ai'\) \{[\s\S]{0,300}?accountStop = true;\s*break;\s*\}\s*\}\s*\(\{ cards, unidentified, spanned \} = await li\.enumerateCards/.test(src), true);
+  check('the surface is remembered per account', /noteVariant\(store, account, fp/.test(src), true);
+  check('a signed-in search whose account was last seen on the AI search uses the public search',
+    /const sourceFor = \(search = \{\}\) => \{\s*const configured = searchSourceFor\(search, cfg\);\s*if \(configured !== 'browser'\) return configured;[\s\S]{0,200}?VARIANT_KEY\(search\.account \?\? search\.region \?\? 'IN'\)[\s\S]{0,80}?return seen === 'ai' \? 'guest' : configured;/.test(src), true);
+  check('and that decides the walk and its early stop alike',
+    /const viaGuest = sourceFor\(search\) === 'guest';/.test(src) && /sourceFor\(search\) !== 'guest'\) \? baseline - COVERED_MARGIN_MS/.test(src), true);
   check('a search names its account, else its region\'s', /const account = search\.account \?\? region;/.test(src), true);
   check('and the session is checked against the account, not the region', /if \(openRegion === account\) return true;/.test(src) && /if \(deadRegions\.has\(account\)\) \{/.test(src), true);
   check('a public-search session is opened without the feed',

@@ -981,7 +981,7 @@
   "_searches_region_note": "'region' is what a card's location falls back to when LinkedIn renders none, and it is also the key each region's own lookback window and covered-ground baseline are stored under. 'geoId' is what actually scopes the results: the redirect to /jobs/search-results/ DROPS 'location=' but keeps 'geoId', so the location string is cosmetic and the id is load-bearing. India's entry deliberately carries NO geoId - it has always come back Indian from account geo bias alone, and sending an id would change what LinkedIn returns on the collector that supplies 91% of the India board. The ids live in src/regions.js.",
   "searches": [
     {
-      "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
+      "account": "US", "_account_note": "13 Oct 2026: the India account could not be switched back to classic (it stays on the AI search, which a signed-in walk must never use), so BOTH India searches walk on the classic account (brave-profile-US), under safety.accountDailyPageLoads. The India account walks nothing and rests.", "keywords": "(intern OR internship OR trainee OR \"co-op\" OR apprentice)",
       "region": "IN",
       "enabled": true,
       "_account_note": "PAUSED 26 Sep 2026 10:45-11:25 IST after LinkedIn signed the India account out for \"a high volume of LinkedIn profile data\" (1,054 page loads on 25 Sep: 766 opens, 245 search pages, ~45 feed visits). Resumed once he had signed it back in and the account stopped doing that: postings are read on their public page first, the account opens only a kept posting with an employer link to find, and there is no feed visit (58d777f466). Each walk logs its account opens.",
@@ -1408,6 +1408,8 @@
     "_maxAttempts_note": "After this many failures a URL is retired from the queue rather than retried forever. It keeps its error text, so `npm run index-urls -- --status` still shows why."
   },
   "safety": {
+    "accountDailyPageLoads": 450,
+    "_accountDailyPageLoads_note": "Ceiling per LinkedIn account per India day on signed-in page loads (feed warm-ups, search pages, postings opened), his ask 13 Oct 2026: never get restricted again. LinkedIn flagged the India account the day it loaded 1,054 (25 Sep); 669 (23 Sep) passed; the classic walks are expected at ~300-400 a day for both India searches on one account. At the ceiling the account walks nothing until midnight IST and the run log says so. 0 = no ceiling.",
     "pauseOnChallenge": false,
     "_pauseOnChallenge_note": "TEMPORARILY OFF. true = a detected security check pauses the run, alerts you, and waits captchaWaitMinutes for a human. It was firing on pages with no CAPTCHA on them: the detector matches page TEXT as well as frames, and the challenge markers - unlike the logged-out ones - are not suppressed when the signed-in navigation is visible, so an ordinary posting containing a phrase like 'security verification' stopped a healthy run. Each false pause also held the Brave profile for 4 minutes, which is what made the FOLLOWING run die with 'Brave would not launch after 3 attempts'. With this off the run screenshots the page (screenshots/challenge-ignored-*.png) and carries on. Turn it back on once the detector is fixed - the screenshots are the evidence for that work.",
     "captchaWaitMinutes": 4,
