@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 13 Oct 2026 00:27:25 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 13 Oct 2026 01:21:32 GMT</lastBuildDate>
+  <item>
+    <title>Optical Network Development Engineer — Amazon Web Services (AWS)</title>
+    <link>https://interndoor.com/jobs/amazon-web-services-aws-optical-network-development-engineer-capacity-restoration-team-4478726056</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-web-services-aws-optical-network-development-engineer-capacity-restoration-team-4478726056</guid>
+    <pubDate>Tue, 13 Oct 2026 01:21:32 GMT</pubDate>
+    <description>Company: Amazon Web Services (AWS) · Location: Hyderabad, Telangana, India
+• Troubleshoot and restore DWDM optical capacity across backbone and metro networks
+• Develop automation scripts in Python for optical restoration and diagnostics
+• Work on optical components like ROADMs, amplifiers, and coherent optics
+• Support on-call rotations for follow-the-sun optical network coverage</description>
+  </item>
   <item>
     <title>CPU Compiler Intern — NVIDIA</title>
     <link>https://interndoor.com/jobs/nvidia-cpu-compiler-intern-2027-4477940543</link>
@@ -16,6 +27,66 @@
 • Design and develop optimizing compilers for AI and HPC workloads
 • Work with C++ and contribute to compiler optimization techniques
 • Collaborate with a global team on production-grade compiler software</description>
+  </item>
+  <item>
+    <title>IT Product Support Engineer — Marsh</title>
+    <link>https://interndoor.com/jobs/marsh-engineer-it-product-support-4478703757</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/marsh-engineer-it-product-support-4478703757</guid>
+    <pubDate>Mon, 12 Oct 2026 23:45:05 GMT</pubDate>
+    <description>Company: Marsh · Location: Gurugram, Haryana, India
+• Support IT systems and infrastructure with 24x7 rotational shifts
+• Work with DevOps, database, or application support tools
+• Complete certifications and prove technical skills before joining</description>
+  </item>
+  <item>
+    <title>Application Development Programmer Analyst — Citi</title>
+    <link>https://interndoor.com/jobs/citi-application-development-programmer-analyst-4477935200</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/citi-application-development-programmer-analyst-4477935200</guid>
+    <pubDate>Mon, 12 Oct 2026 22:57:29 GMT</pubDate>
+    <description>Company: Citi · Location: Chennai, Tamil Nadu, India
+• Write and debug code for transactional applications with low latency
+• Use java, j2ee, angular, spring, and microservices
+• Work on treasury products like fx and fixed income</description>
+  </item>
+  <item>
+    <title>Analyst-BI &amp; Analytics — Moody&#39;s Corporation</title>
+    <link>https://interndoor.com/jobs/moody-s-corporation-analyst-bi-and-analytics-4478595747</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/moody-s-corporation-analyst-bi-and-analytics-4478595747</guid>
+    <pubDate>Mon, 12 Oct 2026 22:49:50 GMT</pubDate>
+    <description>Company: Moody&#39;s Corporation · Location: Gurugram, Haryana, India
+• Build and maintain Power BI dashboards for finance reporting
+• Collaborate with data engineers and stakeholders using JIRA
+• Support data pipelines and ensure reliable reporting processes</description>
+  </item>
+  <item>
+    <title>Cyber DT&amp;P - IAM Non Human Identity - Analyst — Deloitte</title>
+    <link>https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477933227</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477933227</guid>
+    <pubDate>Mon, 12 Oct 2026 22:31:08 GMT</pubDate>
+    <description>Company: Deloitte · Location: Bengaluru, Karnataka, India
+• Design and manage secrets, certificates, and workload identities across cloud and on-premises environments
+• Use CyberArk, HashiCorp, Azure, and AWS tools to implement identity and access controls
+• Automate provisioning and compliance reporting with PowerShell, Python, and APIs</description>
+  </item>
+  <item>
+    <title>Cyber DT&amp;P - IAM Non Human Identity - Analyst — Deloitte</title>
+    <link>https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477941085</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477941085</guid>
+    <pubDate>Mon, 12 Oct 2026 22:25:50 GMT</pubDate>
+    <description>Company: Deloitte · Location: Hyderabad, Telangana, India
+• Design and manage secrets, certificates, and workload identities across cloud and on-premises environments
+• Use CyberArk, HashiCorp, Azure, and AWS tools for identity governance and automation
+• Collaborate with security and platform teams to build non-human identity standards and runbooks</description>
+  </item>
+  <item>
+    <title>Cyber DT&amp;P - IAM Non Human Identity - Analyst — Deloitte</title>
+    <link>https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477940084</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477940084</guid>
+    <pubDate>Mon, 12 Oct 2026 22:17:44 GMT</pubDate>
+    <description>Company: Deloitte · Location: Chennai, Tamil Nadu, India
+• Design and manage secrets, certificates, and workload identities across cloud and on-premises environments
+• Use CyberArk, HashiCorp, Azure, and AWS tools for identity governance and automation
+• Collaborate with security and platform teams to build non-human identity standards and runbooks</description>
   </item>
   <item>
     <title>Back End Developer — Echo Initiative by Joveo</title>
@@ -443,76 +514,6 @@
 • Design and deploy scalable cloud apps using AWS services
 • Develop microservices with Java or Python frameworks
 • Collaborate on AI integration and cloud optimization</description>
-  </item>
-  <item>
-    <title>Test Automation Engineer — HARMAN India</title>
-    <link>https://interndoor.com/jobs/harman-india-advanced-engineer-test-automation-4476009434</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/harman-india-advanced-engineer-test-automation-4476009434</guid>
-    <pubDate>Mon, 12 Oct 2026 10:52:48 GMT</pubDate>
-    <description>Company: HARMAN India · Location: Bengaluru, Karnataka, India
-• Test automotive telematics systems and connected vehicle features
-• Use CANoe, CANalyzer, and UDS protocols for diagnostics
-• Work in Agile teams on full SDLC from design to maintenance</description>
-  </item>
-  <item>
-    <title>Analyst — IQVIA</title>
-    <link>https://interndoor.com/jobs/iqvia-analyst-4477531120</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/iqvia-analyst-4477531120</guid>
-    <pubDate>Mon, 12 Oct 2026 10:50:28 GMT</pubDate>
-    <description>Company: IQVIA · Location: Bengaluru, Karnataka, India
-• Analyze marketing mix, forecasting, and customer performance data
-• Use python, r, and sas for advanced analytics projects
-• Collaborate with global stakeholders in europe and us</description>
-  </item>
-  <item>
-    <title>AI Platform and Agentic Engineer — Intel</title>
-    <link>https://interndoor.com/jobs/intel-ai-platform-and-agentic-engineer-4468716084</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/intel-ai-platform-and-agentic-engineer-4468716084</guid>
-    <pubDate>Mon, 12 Oct 2026 10:41:50 GMT</pubDate>
-    <description>Company: Intel · Location: Bengaluru, Karnataka, India
-• Build AI agents for data analysis and workflow automation across engineering domains
-• Develop secure, scalable backend services and integrate with engineering databases
-• Collaborate with cross-functional teams on AI governance and responsible tool use</description>
-  </item>
-  <item>
-    <title>Embedded Software Developer I — UST</title>
-    <link>https://interndoor.com/jobs/ust-developer-i-embedded-software-4439242234</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ust-developer-i-embedded-software-4439242234</guid>
-    <pubDate>Mon, 12 Oct 2026 10:16:41 GMT</pubDate>
-    <description>Company: UST · Location: Coimbatore, Tamil Nadu, India
-• Debug software using CAN tools and CAPL
-• Work with Python and HIL testing
-• Collaborate on secure embedded systems</description>
-  </item>
-  <item>
-    <title>SOC Analyst L1 — UST</title>
-    <link>https://interndoor.com/jobs/ust-l1-soc-analyst-4467374501</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ust-l1-soc-analyst-4467374501</guid>
-    <pubDate>Mon, 12 Oct 2026 10:05:15 GMT</pubDate>
-    <description>Company: UST · Location: Hyderabad, Telangana, India
-• Monitor system logs and network traffic for security threats
-• Investigate breaches and document findings with postmortem analysis
-• Maintain security documentation and update procedures regularly</description>
-  </item>
-  <item>
-    <title>Backend Golang Developer — Proofpoint</title>
-    <link>https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414945851</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414945851</guid>
-    <pubDate>Mon, 12 Oct 2026 10:04:42 GMT</pubDate>
-    <description>Company: Proofpoint · Location: Bengaluru, Karnataka, India
-• Build and maintain microservices using Golang for core product features
-• Work on scalable systems with focus on performance and distributed systems
-• Collaborate with engineers across product and infrastructure teams</description>
-  </item>
-  <item>
-    <title>Software Engineer — PayPal</title>
-    <link>https://interndoor.com/jobs/paypal-software-engineer-4478500551</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/paypal-software-engineer-4478500551</guid>
-    <pubDate>Mon, 12 Oct 2026 10:01:28 GMT</pubDate>
-    <description>Company: PayPal · Location: Chennai, Tamil Nadu, India
-• Implement tasks within the software development lifecycle
-• Follow internal conventions and make technical decisions
-• Collaborate with peers and project leads on code reviews</description>
   </item>
 </channel>
 </rss>
