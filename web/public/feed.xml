@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 13 Oct 2026 09:36:06 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 13 Oct 2026 10:41:16 GMT</lastBuildDate>
+  <item>
+    <title>Intern — HARMAN India</title>
+    <link>https://interndoor.com/jobs/harman-india-intern-4476426132</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/harman-india-intern-4476426132</guid>
+    <pubDate>Tue, 13 Oct 2026 10:41:16 GMT</pubDate>
+    <description>Company: HARMAN India · Location: Bengaluru, Karnataka, India
+• Develop software systems in C/C++, Linux, and embedded RTOS
+• Work on multi-layered software stacks with niche technical skills
+• Collaborate in a dynamic team on disruptive automotive technologies</description>
+  </item>
+  <item>
+    <title>AI/ML SME Intern — Newton School of Technology</title>
+    <link>https://interndoor.com/jobs/newton-school-of-technology-sme-intern-ai-ml-m-tech-4477993383</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/newton-school-of-technology-sme-intern-ai-ml-m-tech-4477993383</guid>
+    <pubDate>Tue, 13 Oct 2026 10:32:10 GMT</pubDate>
+    <description>Company: Newton School of Technology · Location: Pune District, Maharashtra, India
+• Design and deliver AI/ML courses with hands-on projects
+• Mentor students on real-world ML models and tools
+• Collaborate with faculty to shape industry-aligned curriculum</description>
+  </item>
   <item>
     <title>Software Engineer — PayPal</title>
     <link>https://interndoor.com/jobs/paypal-software-engineer-4478784348</link>
@@ -494,26 +514,6 @@
 • Design and optimize prompts for LLMs to support infra and application services
 • Build Python microservices and scripts for data processing and API integration
 • Collaborate with SMEs to create GenAI workflows with chunking and token optimization</description>
-  </item>
-  <item>
-    <title>Software Development Engineer in Test — Akamai Technologies</title>
-    <link>https://interndoor.com/jobs/akamai-technologies-software-development-engineer-in-test-4478520858</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/akamai-technologies-software-development-engineer-in-test-4478520858</guid>
-    <pubDate>Mon, 12 Oct 2026 14:15:58 GMT</pubDate>
-    <description>Company: Akamai Technologies · Location: Bengaluru, Karnataka, India
-• Write and execute test plans for data warehouse systems
-• Automate regression and performance testing with python and sql
-• Work in scrum teams on cloud and edge platform integration</description>
-  </item>
-  <item>
-    <title>Linux BSP Engineer — Qualcomm</title>
-    <link>https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838</guid>
-    <pubDate>Mon, 12 Oct 2026 14:05:10 GMT</pubDate>
-    <description>Company: Qualcomm · Location: Greater Hyderabad Area
-• Debug boot, performance, memory, power, and stability issues
-• Work with Yocto, Buildroot, Debian/Ubuntu, or Fedora builds
-• Optimize boot time, CPU, memory, and I/O performance</description>
   </item>
 </channel>
 </rss>

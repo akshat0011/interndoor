@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/harman-india-intern-4476426132",
+      "url": "https://interndoor.com/jobs/harman-india-intern-4476426132",
+      "title": "Intern — HARMAN India",
+      "content_text": "Company: HARMAN India · Location: Bengaluru, Karnataka, India\n• Develop software systems in C/C++, Linux, and embedded RTOS\n• Work on multi-layered software stacks with niche technical skills\n• Collaborate in a dynamic team on disruptive automotive technologies",
+      "date_published": "2026-10-13T10:41:16.480Z",
+      "authors": [
+        {
+          "name": "HARMAN India"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/newton-school-of-technology-sme-intern-ai-ml-m-tech-4477993383",
+      "url": "https://interndoor.com/jobs/newton-school-of-technology-sme-intern-ai-ml-m-tech-4477993383",
+      "title": "AI/ML SME Intern — Newton School of Technology",
+      "content_text": "Company: Newton School of Technology · Location: Pune District, Maharashtra, India\n• Design and deliver AI/ML courses with hands-on projects\n• Mentor students on real-world ML models and tools\n• Collaborate with faculty to shape industry-aligned curriculum",
+      "date_published": "2026-10-13T10:32:10.728Z",
+      "authors": [
+        {
+          "name": "Newton School of Technology"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/paypal-software-engineer-4478784348",
       "url": "https://interndoor.com/jobs/paypal-software-engineer-4478784348",
       "title": "Software Engineer — PayPal",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Accenture in India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/akamai-technologies-software-development-engineer-in-test-4478520858",
-      "url": "https://interndoor.com/jobs/akamai-technologies-software-development-engineer-in-test-4478520858",
-      "title": "Software Development Engineer in Test — Akamai Technologies",
-      "content_text": "Company: Akamai Technologies · Location: Bengaluru, Karnataka, India\n• Write and execute test plans for data warehouse systems\n• Automate regression and performance testing with python and sql\n• Work in scrum teams on cloud and edge platform integration",
-      "date_published": "2026-10-12T14:15:58.286Z",
-      "authors": [
-        {
-          "name": "Akamai Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838",
-      "url": "https://interndoor.com/jobs/qualcomm-linux-bsp-dev-ce-engineer-4477571838",
-      "title": "Linux BSP Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Debug boot, performance, memory, power, and stability issues\n• Work with Yocto, Buildroot, Debian/Ubuntu, or Fedora builds\n• Optimize boot time, CPU, memory, and I/O performance",
-      "date_published": "2026-10-12T14:05:10.786Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }
