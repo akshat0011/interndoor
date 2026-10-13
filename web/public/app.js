@@ -2363,6 +2363,7 @@ function allowanceText(left) {
 function setResumeText(text, label, ok = true, { busy = false } = {}) {
   state.resumeText = ok ? text : '';
   state.resumeLabel = ok ? label : '';
+  if (ok) saveResume(text, label);
   resumeNote = ok ? null : { text: label, busy };
   syncRelevance();
   renderResume();
@@ -2403,7 +2404,27 @@ function renderResume() {
   }
 }
 
+/* The resume is kept in THIS browser (localStorage) so a reader does not upload
+   it again on every visit. It never leaves the device except inside an AI call
+   the reader asks for; Remove forgets it. Every access is wrapped: a private
+   window throws on the accessor itself. */
+const RESUME_KEY = 'interndoor-resume';
+function saveResume(text, label) {
+  try { localStorage.setItem(RESUME_KEY, JSON.stringify({ text, label: label || '' })); } catch {}
+}
+function forgetResume() {
+  try { localStorage.removeItem(RESUME_KEY); } catch {}
+}
+function restoreResume() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(RESUME_KEY) || 'null'); } catch {}
+  if (saved && typeof saved.text === 'string' && saved.text.trim().length >= 200) {
+    setResumeText(saved.text, saved.label || 'Saved resume', true);
+  }
+}
+
 function clearResume() {
+  forgetResume();
   state.resumeText = '';
   state.resumeLabel = '';
   resumeNote = null;
@@ -3105,6 +3126,7 @@ function wireTailor() {
     clearTimeout(rescore);
     rescore = setTimeout(renderScore, 250);
   });
+  restoreResume();     // last, once every control it redraws is wired
 }
 
 /**
