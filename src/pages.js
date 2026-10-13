@@ -4495,14 +4495,25 @@ ${foot({
  * publish never rewrites it. Its own page.css version, because the form's
  * rules are new and page.css is cached for a day.
  */
-export const POST_JOB_VERSION = 'pj2';
+export const POST_JOB_VERSION = 'pj3';
 
 export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null } = {}) {
   const url = `${SITE}/post-a-job`;
   const mail = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('A role for InternDoor')}`;
+  /* One field: a label above, the control, an optional hint and an error line
+     the client fills (post-job.js). The error is referenced by aria-describedby
+     from the start, so a screen reader hears it the moment it is written. */
+  const field = ({ id, label, control, hint = '', span = false }) => `
+            <div class="pj-f${span ? ' pj-span' : ''}">
+              <label class="pj-l" for="pj-${id}">${label}</label>
+              ${control}
+              ${hint ? `<p class="pj-hint" id="pj-${id}-h">${hint}</p>` : ''}
+              <p class="pj-err" id="pj-${id}-e"></p>
+            </div>`;
+  const desc = (id, hint) => `aria-describedby="${hint ? `pj-${id}-h ` : ''}pj-${id}-e"`;
   return `${head({
     title: buildTitle(['Post an Internship or Entry-Level Job for Free']),
-    description: 'Post an engineering internship or entry-level job in India on InternDoor, free. Every role is checked by hand: a real company, a paid role, and applications on your own posting.',
+    description: 'Post an engineering internship or entry-level job in India on InternDoor, free and with no account. Paid roles at your own company, with applications on your own posting.',
     canonical: url,
     indexable: true,
     region,
@@ -4510,88 +4521,90 @@ export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null }
     alternatePath: null,
     scripts: '<script defer src="/post-job.js"></script>\n',
   }).replace(`href="/page.css?v=${PAGE_CSS_VERSION}"`, `href="/page.css?v=${POST_JOB_VERSION}"`)}
-<main class="page">
+<main class="page pj pj-a">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <i aria-hidden="true">&rsaquo;</i>
       <span>Post a job</span>
     </nav>
 
-    <header class="dir-hero">
-      <h1>Post an internship or entry-level job</h1>
-      <p class="hub-lede">Free, for real engineering roles in India that pay. Every submission is checked by hand before it goes on the board.</p>
-    </header>
-
-    <section class="strip">
-      <div class="strip-head"><h2>How it works</h2></div>
-      <ul class="do-list">
-        <li><b>Send the link to the role</b> on your own careers page, the job board you already use, or LinkedIn. Students apply there. InternDoor never collects applications or resumes.</li>
-        <li><b>It is checked by hand,</b> usually within a day: a real company, an engineering role, and a stipend or salary that is stated.</li>
-        <li><b>Then it goes on the board</b> with your company&rsquo;s page, where students searching for roles like it find it. If your careers page is one we can read, every new internship and entry-level role you post there is picked up automatically from then on.</li>
-        <li><b>It is free.</b> No listing fee, no paid placement, no account to create.</li>
-      </ul>
-    </section>
-
-    <section class="strip">
-      <div class="strip-head"><h2>What gets listed</h2></div>
-      <ul class="do-list">
-        <li><b>Engineering roles:</b> software, data, AI and machine learning, hardware and embedded.</li>
-        <li><b>Internships, and entry-level jobs</b> that ask for under two years of experience.</li>
-        <li><b>Paid roles only.</b> Unpaid internships, certificate-only schemes and anything that charges the applicant are turned down.</li>
-        <li><b>Your own company&rsquo;s roles.</b> Recruiters and staffing agencies posting for an unnamed client are turned down.</li>
-      </ul>
-    </section>
-
-    <section class="strip" aria-labelledby="pj-h">
-      <div class="strip-head"><h2 id="pj-h">Submit a role</h2></div>
-      <p class="pj-noscript" id="pj-noscript">This form needs JavaScript. You can also email the link to <a href="${mail}">${esc(CONTACT_EMAIL)}</a>.</p>
-      <form class="pj-form" id="pj-form" hidden novalidate>
-        <div class="pj-grid">
-          <label class="pj-f">Company name
-            <input class="pj-in" name="company" type="text" required maxlength="120" autocomplete="organization">
-          </label>
-          <label class="pj-f">Company website
-            <input class="pj-in" name="website" type="url" required maxlength="300" placeholder="https://yourcompany.com" spellcheck="false">
-          </label>
-          <label class="pj-f">Your work email
-            <input class="pj-in" name="email" type="email" required autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@yourcompany.com">
-            <span class="pj-hint">At the same domain as the website.</span>
-          </label>
-          <label class="pj-f">Link to the role
-            <input class="pj-in" name="link" type="url" required maxlength="600" placeholder="https://" spellcheck="false">
-            <span class="pj-hint">Your careers page, job board or LinkedIn posting.</span>
-          </label>
-        </div>
-        <fieldset class="pj-kind">
-          <legend>The role is</legend>
-          <label><input type="radio" name="kind" value="intern" checked> An internship</label>
-          <label><input type="radio" name="kind" value="fulltime"> An entry-level job</label>
-        </fieldset>
-        <div class="pj-pay">
-          <label class="pj-f">Stipend or salary (&#8377;)
-            <input class="pj-in" name="pay" type="text" required inputmode="numeric" placeholder="25000">
-          </label>
-          <label class="pj-f">Per
-            <select class="pj-in" name="period">
-              <option value="month">month</option>
-              <option value="year">year</option>
-            </select>
-          </label>
-        </div>
-        <label class="pj-f">Anything we should know <span class="pj-opt">(optional)</span>
-          <textarea class="pj-in" name="notes" rows="3" maxlength="1000"></textarea>
-        </label>
-        <div class="sub-hp" aria-hidden="true"><label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label></div>
-        <div class="pj-acts">
-          <button class="sub-b pj-send" type="submit">Submit for review</button>
-          <p class="sub-msg pj-msg" role="status" aria-live="polite"></p>
-        </div>
-      </form>
-      <div class="pj-done" id="pj-done" tabindex="-1" hidden>
-        <b>Received. Thank you.</b>
-        <p>Every submission is checked by hand, usually within a day. If the role fits the board it goes live, with nothing more needed from you. Questions: <a href="${mail}">${esc(CONTACT_EMAIL)}</a>.</p>
+    <div class="pj-layout">
+      <div class="pj-side">
+        <header class="pj-intro">
+          <h1>Have an engineering role to fill?</h1>
+          <p class="pj-lede">List a paid engineering internship or entry-level job at your company, in front of early-career engineers across India.</p>
+          <ul class="pj-trust">
+            <li>Free to post</li>
+            <li>No account required</li>
+          </ul>
+        </header>
       </div>
-    </section>
+
+      <section class="pj-card" aria-labelledby="pj-h">
+        <h2 id="pj-h">Submit a role</h2>
+        <p class="pj-noscript" id="pj-noscript">This form needs JavaScript. You can also email the link to <a href="${mail}">${esc(CONTACT_EMAIL)}</a>.</p>
+        <form class="pj-form" id="pj-form" hidden novalidate>
+          <fieldset class="pj-group">
+            <legend>Company details</legend>
+            <div class="pj-grid">${field({
+    id: 'company', label: 'Company name',
+    control: `<input class="pj-in" id="pj-company" name="company" type="text" required maxlength="120" autocomplete="organization" ${desc('company')}>`,
+  })}${field({
+    id: 'website', label: 'Company website',
+    control: `<input class="pj-in" id="pj-website" name="website" type="url" required maxlength="300" autocomplete="url" placeholder="https://yourcompany.com" spellcheck="false" ${desc('website')}>`,
+  })}${field({
+    id: 'email', label: 'Work email', span: true,
+    hint: 'At the same domain as your website.',
+    control: `<input class="pj-in" id="pj-email" name="email" type="email" required autocomplete="email" inputmode="email" spellcheck="false" placeholder="you@yourcompany.com" ${desc('email', true)}>`,
+  })}
+            </div>
+          </fieldset>
+          <fieldset class="pj-group">
+            <legend>Role details</legend>
+            <div class="pj-grid">${field({
+    id: 'link', label: 'Link to the role', span: true,
+    hint: 'Your careers page, job board or LinkedIn posting. Students apply there.',
+    control: `<input class="pj-in" id="pj-link" name="link" type="url" required maxlength="600" placeholder="https://" spellcheck="false" ${desc('link', true)}>`,
+  })}
+              <fieldset class="pj-f pj-kind">
+                <legend class="pj-l">Role type</legend>
+                <div class="pj-seg">
+                  <input type="radio" name="kind" value="intern" id="pj-k-intern" checked><label for="pj-k-intern">Internship</label>
+                  <input type="radio" name="kind" value="fulltime" id="pj-k-full"><label for="pj-k-full">Entry-level job</label>
+                </div>
+              </fieldset>
+              <div class="pj-f">
+                <label class="pj-l" for="pj-pay">Stipend or salary</label>
+                <div class="pj-money">
+                  <span class="pj-cur" aria-hidden="true">&#8377;</span>
+                  <input class="pj-in pj-amt" id="pj-pay" name="pay" type="text" required inputmode="numeric" autocomplete="off" placeholder="25,000" ${desc('pay')}>
+                  <label class="pj-sr" for="pj-period">Paid</label>
+                  <span class="pj-per"><select class="pj-sel" id="pj-period" name="period">
+                    <option value="month">per month</option>
+                    <option value="year">per year</option>
+                  </select></span>
+                </div>
+                <p class="pj-err" id="pj-pay-e"></p>
+              </div>${field({
+    id: 'notes', label: 'Anything we should know <span class="pj-opt">Optional</span>', span: true,
+    control: `<textarea class="pj-in pj-notes" id="pj-notes" name="notes" rows="2" maxlength="1000" ${desc('notes')}></textarea>`,
+  })}
+            </div>
+          </fieldset>
+          <div class="sub-hp" aria-hidden="true"><label>Fax<input type="text" name="fax" tabindex="-1" autocomplete="off"></label></div>
+          <div class="pj-acts">
+            <button class="pj-send" type="submit"><span class="pj-send-t">Submit role</span></button>
+            <p class="pj-assure">Free to post &middot; No account required</p>
+          </div>
+          <p class="sub-msg pj-msg" role="status" aria-live="polite"></p>
+        </form>
+        <div class="pj-done" id="pj-done" tabindex="-1" hidden>
+          <b>Received. Thank you.</b>
+          <p>If the role fits the board, it is listed with nothing more needed from you. Questions: <a href="${mail}">${esc(CONTACT_EMAIL)}</a>.</p>
+        </div>
+        <p class="pj-fine">Students apply on your own posting. InternDoor never collects applications or resumes.</p>
+      </section>
+    </div>
   </div>
 </main>
 ${foot({

@@ -1941,38 +1941,192 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 
 /* ============================================================
-   /post-a-job — the employer form (9 Oct 2026). `pj-` checked
-   against styles.css, page.css, app.js and page.js first. The
-   message line and the button reuse .sub-msg and .sub-b, whose
-   colours are measured against --bg-2 in both themes; the
-   inputs copy .sub-i's sizes (16px, or iOS zooms on focus).
-   Every grid track is minmax(0, 1fr) (§15).
+   /post-a-job — the employer form. Redesigned 13 Oct 2026 (his
+   brief: Apple-like restraint, the site's own language, the form
+   reached early). `pj-` checked against styles.css, page.css,
+   app.js and page.js first. Inputs are 16px (iOS zooms on focus
+   below that) and 46px tall; every grid track is minmax(0, 1fr)
+   (§15). The card sits on --bg-2 and its inputs on --card, so the
+   two never share a colour. Errors use --hot, darkened on the light
+   theme to the value the site already measured for .sub-msg.
    ============================================================ */
-.pj-noscript { margin: 0 0 14px; color: var(--ink-2); }
-.pj-form { display: grid; gap: 16px; max-width: 760px; }
-.pj-grid { display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 720px) { .pj-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
-.pj-f { display: grid; gap: 6px; font-weight: 600; font-size: 14px; color: var(--ink); }
-.pj-in {
-  width: 100%; min-width: 0; box-sizing: border-box;
-  padding: 11px 13px; border-radius: var(--r);
-  border: 1px solid var(--rule-2); background: var(--card); color: var(--ink);
-  font-family: var(--ui); font-size: 16px; font-weight: 400;
+.pj-layout { display: grid; gap: 40px; margin-top: 6px; }
+.pj-side { display: grid; gap: 36px; align-content: start; min-width: 0; }
+.pj-intro { max-width: 720px; }
+.pj-intro h1 {
+  margin: 14px 0 12px; font-family: var(--display); font-weight: 600;
+  font-size: var(--t-display); line-height: var(--t-display-lh); letter-spacing: var(--t-display-tr);
+  text-wrap: balance;
 }
-textarea.pj-in { resize: vertical; min-height: 84px; }
-.pj-in::placeholder { color: var(--ink-3, var(--ink-2)); opacity: .7; }
-.pj-in:focus-visible { outline: 2px solid var(--live); outline-offset: 1px; border-color: var(--live); }
-.pj-hint, .pj-opt { font-weight: 400; font-size: 13px; color: var(--ink-2); }
-.pj-kind { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; color: var(--ink); }
-.pj-kind legend { font-weight: 600; font-size: 14px; padding: 0; margin-bottom: 8px; }
-.pj-kind label { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; }
-.pj-pay { display: grid; gap: 14px; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); max-width: 420px; }
-.pj-acts { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
-.pj-acts .sub-msg { margin: 0; }
-.pj-done { max-width: 760px; padding: 18px 20px; border: 1px solid var(--rule-2); border-radius: var(--r); background: var(--card); }
-.pj-done b { display: block; font-size: 17px; margin-bottom: 6px; }
-.pj-done p { margin: 0; color: var(--ink-2); }
+.pj-lede { margin: 0; max-width: 60ch; font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+.pj-trust {
+  list-style: none; margin: 20px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 10px 22px;
+  font-size: 14px; font-weight: 500; color: var(--ink-15);
+}
+.pj-trust li { display: inline-flex; align-items: center; gap: 8px; }
+/* A tick drawn from two borders: it states a promise, so it earns a mark. */
+.pj-trust li::before {
+  content: ''; width: 9px; height: 5px; margin-top: -3px;
+  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+.pj-card {
+  max-width: 760px; padding: 28px; box-sizing: border-box;
+  border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--bg-2);
+}
+@media (max-width: 560px) { .pj-card { padding: 20px 16px; margin-inline: -4px; } }
+.pj-card > h2 { margin: 0 0 22px; font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
+.pj-noscript { margin: 0 0 14px; color: var(--ink-2); }
+.pj-form { display: grid; gap: 28px; }
+.pj-group { margin: 0; padding: 0; border: 0; min-width: 0; }
+.pj-group + .pj-group { padding-top: 24px; border-top: 1px solid var(--rule); }
+.pj-group > legend { float: left; width: 100%; padding: 0; margin-bottom: 14px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+/* A legend draws ON its fieldset's top border unless it floats; floated,
+   the divider above "Role details" stays a clean line. */
+.pj-group > .pj-grid { clear: both; }
+.pj-grid { display: grid; gap: 18px 16px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 640px) { .pj-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.pj-span { grid-column: 1 / -1; }
+.pj-f { display: grid; gap: 7px; align-content: start; min-width: 0; margin: 0; padding: 0; border: 0; }
+.pj-l { padding: 0; font-size: 14px; font-weight: 600; color: var(--ink); }
+.pj-opt { margin-left: 6px; font-size: 13px; font-weight: 400; color: var(--ink-2); }
+.pj-hint, .pj-err { margin: 0; font-size: 13px; line-height: 1.45; }
+.pj-hint { color: var(--ink-2); }
+.pj-err { color: var(--hot); }
+.pj-err:empty { display: none; }
+:root[data-theme="light"] .pj-err { color: #9a3412; }
+.pj-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.pj-in, .pj-money, .pj-seg {
+  box-sizing: border-box; height: 46px; border: 1px solid var(--rule-2);
+  border-radius: var(--r); background: var(--card); color: var(--ink);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.pj-in { width: 100%; min-width: 0; padding: 0 14px; font: 400 16px/1.25 var(--ui); }
+.pj-in::placeholder { color: var(--ink-3); opacity: 1; }
+textarea.pj-in { height: auto; min-height: 76px; max-height: 240px; padding: 12px 14px; line-height: 1.45; resize: vertical; field-sizing: content; }
+@media (hover: hover) and (pointer: fine) {
+  .pj-in:hover, .pj-money:hover, .pj-seg:hover { border-color: var(--ink-3); }
+}
+.pj-in:focus-visible, .pj-money:focus-within {
+  outline: none; border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ink) 22%, transparent);
+}
+.pj-in[aria-invalid="true"], .pj-money:has([aria-invalid="true"]) { border-color: var(--hot); }
+.pj-in[aria-invalid="true"]:focus-visible, .pj-money:has([aria-invalid="true"]):focus-within {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--hot) 28%, transparent);
+}
+
+/* Role type: two radios drawn as one segmented control. The radios stay
+   real (arrow keys, form data, screen readers); only the label is drawn. */
+.pj-kind > legend { margin-bottom: 7px; }
+.pj-seg { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 3px; }
+.pj-seg input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.pj-seg label {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: center;
+  border-radius: calc(var(--r) - 4px); font-size: 14.5px; font-weight: 500; color: var(--ink-2);
+  white-space: nowrap; cursor: pointer; transition: color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+.pj-seg input:checked + label {
+  color: var(--ink); background: color-mix(in oklab, var(--ink) 11%, var(--card));
+  box-shadow: inset 0 0 0 1px var(--rule-2);
+}
+.pj-seg input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+/* Pay: the rupee sign, the figure and the period read as one control. */
+.pj-money { position: relative; display: flex; align-items: stretch; }
+.pj-cur { display: flex; align-items: center; padding-left: 14px; font-size: 16px; color: var(--ink-2); }
+.pj-in.pj-amt {
+  flex: 1 1 0; width: 0; min-width: 0; height: 100%; padding: 0 10px 0 6px;
+  border: 0; border-radius: 0; background: transparent; box-shadow: none; font-variant-numeric: tabular-nums;
+}
+.pj-in.pj-amt:focus-visible { box-shadow: none; }
+.pj-per { position: relative; display: flex; border-left: 1px solid var(--rule-2); }
+.pj-sel {
+  appearance: none; -webkit-appearance: none; height: 100%; margin: 0;
+  padding: 0 34px 0 14px; border: 0; border-radius: 0 var(--r) var(--r) 0;
+  background: transparent; color: var(--ink); font: 500 15px var(--ui); cursor: pointer;
+}
+.pj-sel:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px; }
+.pj-sel option { background: var(--card); color: var(--ink); }
+.pj-per::after {
+  content: ''; position: absolute; right: 15px; top: 50%; width: 6px; height: 6px; pointer-events: none;
+  border-right: 1.5px solid var(--ink-2); border-bottom: 1.5px solid var(--ink-2);
+  transform: translateY(-70%) rotate(45deg);
+}
+
+.pj-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.pj-send {
+  appearance: none; height: 48px; padding: 0 26px; border-radius: var(--r-pill);
+  border: 1px solid var(--cta); background: var(--cta); color: var(--cta-ink);
+  font: 600 15.5px var(--ui); white-space: nowrap; cursor: pointer;
+  transition: transform 140ms cubic-bezier(.23, 1, .32, 1), filter 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+.pj-send:active:not(:disabled) { transform: scale(.97); }
+.pj-send:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.pj-send:disabled { opacity: .7; cursor: progress; }
+@media (hover: hover) and (pointer: fine) {
+  .pj-send:not(:disabled):hover { filter: brightness(1.06); box-shadow: 0 0 0 4px color-mix(in oklab, var(--cta) 22%, transparent); }
+}
+.pj-assure { margin: 0; font-size: 13px; color: var(--ink-2); }
+.pj-form .pj-msg { margin: -14px 0 0; }
+
+.pj-done { padding: 20px 22px; border: 1px solid var(--rule-2); border-radius: var(--r-2); background: var(--card); }
+.pj-done b { display: block; margin-bottom: 6px; font-size: 18px; font-weight: 600; }
+.pj-done p { margin: 0; line-height: 1.55; color: var(--ink-2); }
 .pj-done:focus { outline: none; }
+.pj-fine {
+  margin: 24px 0 0; padding: 18px 0 0;
+  border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.5; color: var(--ink-2);
+}
+
+/* ---- The chosen layout (1a, his pick 13 Oct 2026, over a one-column
+   version). Two columns with the form beside the introduction, and motion
+   that explains: the
+   page arrives in reading order, the role toggle slides, a wrong field
+   nudges (post-job.js), the confirmation materialises. Every movement is
+   transform, opacity or blur, under 300ms where it answers a press, and
+   none of it plays under reduced motion. */
+@media (min-width: 1024px) {
+  .pj-a .pj-layout { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 72px; align-items: start; }
+  .pj-a .pj-side { position: sticky; top: 92px; }
+  .pj-a .pj-card { max-width: none; }
+}
+.pj-a .pj-intro h1 { font-size: clamp(2.1rem, 4vw, 3.15rem); letter-spacing: -.035em; line-height: 1.04; }
+.pj-a .pj-trust { gap: 8px; }
+.pj-a .pj-trust li { padding: 6px 12px 6px 10px; border: 1px solid var(--rule-2); border-radius: var(--r-pill); background: var(--bg-2); font-size: 13.5px; }
+.pj-a .pj-card {
+  padding: 32px; background: var(--bg-2);
+  box-shadow: inset 0 1px 0 color-mix(in oklab, var(--ink) 6%, transparent), 0 40px 90px -50px rgb(0 0 0 / .65);
+}
+@media (max-width: 560px) { .pj-a .pj-card { padding: 20px 16px; } }
+.pj-a .pj-seg::before {
+  content: ''; position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px);
+  border-radius: calc(var(--r) - 4px); background: color-mix(in oklab, var(--ink) 11%, var(--card));
+  box-shadow: inset 0 0 0 1px var(--rule-2);
+  transition: transform 260ms cubic-bezier(.23, 1, .32, 1);
+}
+.pj-a .pj-seg:has(input:nth-of-type(2):checked)::before { transform: translateX(100%); }
+.pj-a .pj-seg input:checked + label { background: transparent; box-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .pj-a .pj-intro > *, .pj-a .pj-card {
+    animation: pj-rise 720ms cubic-bezier(.16, 1, .3, 1) both;
+  }
+  .pj-a .pj-intro > :nth-child(2) { animation-delay: 70ms; }
+  .pj-a .pj-intro > :nth-child(3) { animation-delay: 140ms; }
+  .pj-a .pj-card { animation-delay: 120ms; }
+  .pj-a .pj-done:not([hidden]) { animation: pj-pop 460ms cubic-bezier(.16, 1, .3, 1) both; }
+  .pj-a .pj-form[data-state="busy"] .pj-send-t { animation: pj-breathe 1.1s ease-in-out infinite; }
+}
+@keyframes pj-rise { from { opacity: 0; transform: translateY(14px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes pj-pop { from { opacity: 0; transform: translateY(6px) scale(.985); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes pj-breathe { 50% { opacity: .55; } }
+@media (prefers-reduced-motion: reduce) {
+  .pj-send:active:not(:disabled) { transform: none; }
+  .pj-a .pj-seg::before { transition: none; }
+}
 
 /* Light theme: the same darker-lime hairline as styles.css gives the board's
    actions, so a lime button keeps an edge on a white card. */

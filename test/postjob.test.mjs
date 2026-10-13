@@ -163,9 +163,17 @@ console.log('\n== THE PAGE ==');
   check('it is indexable', /noindex/.test(html), false);
   check('its canonical is itself', html.includes('<link rel="canonical" href="https://interndoor.com/post-a-job">'), true);
   check('no JobPosting markup — nothing here is a vacancy', /JobPosting/.test(html), false);
-  check('it says the role is checked by hand', /checked by hand/.test(html), true);
+  /* 13 Oct 2026 redesign, his call: no review wording on the page at all.
+     What keeps it honest instead: the confirmation is conditional, and nothing
+     says a role is listed on submit. */
+  const body = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
+  check('no review wording on the page (his call)', /review|by hand|human|approv/i.test(body), false);
+  check('the confirmation is conditional: listed only if it fits', /If the role fits the board, it is listed/.test(body), true);
   check('it never promises a role goes live on submit', /goes live (?:immediately|instantly|right away)/i.test(html), false);
-  check('it says unpaid roles are turned down', /Paid roles only/.test(html), true);
+  check('it asks for paid roles at the employer\'s own company', /a paid engineering internship or entry-level job at your company/.test(body), true);
+  check('every checked field has its error line, wired to the field', ['company', 'website', 'email', 'link', 'pay'].every((n) => new RegExp(`id="pj-${n}"[^>]*aria-describedby="[^"]*pj-${n}-e"`).test(body) && body.includes(`id="pj-${n}-e"`)), true);
+  check('the role type is two real radios', (body.match(/type="radio" name="kind"/g) ?? []).length, 2);
+  check('the period is a real select with month and year', /<select class="pj-sel" id="pj-period" name="period">\s*<option value="month">[\s\S]*?<option value="year">/.test(body), true);
   check('the done panel exists and starts hidden', /<div class="pj-done" id="pj-done" tabindex="-1" hidden>/.test(html), true);
 
   const pub = publishedPaths();
@@ -184,6 +192,9 @@ console.log('\n== THE PAGE ==');
   check('the client reveals the form', /form\.hidden = false;/.test(client), true);
   check('…posts to the endpoint', /fetch\('\/api\/post-job'/.test(client), true);
   check('…and shows the server’s own words', /say\(body\.error \|\|/.test(client), true);
+  check('…pinned to the field they are about', /var name = body\.error \? fieldFor\(body\.error\) : null;/.test(client), true);
+  check('it checks the fields before spending a request', /if \(first\) \{[\s\S]{0,900}?return;\s*\}\s*var data = \{\};/.test(client), true);
+  check('a second submit while sending does nothing', /if \(busy\) return;/.test(client) && /btn\.disabled = on;/.test(client), true);
 }
 
 console.log('\n== APPLY CLICKS PER JOB ==');
