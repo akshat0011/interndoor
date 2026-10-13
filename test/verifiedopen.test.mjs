@@ -69,7 +69,10 @@ ok('a careers-board row is open while it is live', verifiedOpen(li({ id: 'ats:gr
 ok('a positive check this week', verifiedOpen(li({ checkedAt: NOW - 2 * D }), NOW));
 ok('a positive check eight days ago is not evidence', !verifiedOpen(li({ checkedAt: NOW - CHECK_MAX_AGE_MS - D }), NOW));
 ok('first seen two days ago is', verifiedOpen(li({ firstSeenAt: NOW - 2 * D }), NOW));
-ok('first seen four days ago with no check is NOT — unknown is never open', !verifiedOpen(li({ firstSeenAt: NOW - LISTED_FRESH_MS - D }), NOW));
+ok('first seen past the grace with no check is NOT — unknown is never open', !verifiedOpen(li({ firstSeenAt: NOW - LISTED_FRESH_MS - D }), NOW));
+// 13 Oct 2026: the grace is a week, so Google, crawling ~200 pages a day, reaches a page before it flips.
+ok('the index grace is seven days', LISTED_FRESH_MS === 7 * D);
+ok('six days old with no check is still indexable', verifiedOpen(li({ firstSeenAt: NOW - 6 * D }), NOW));
 ok('a careers-board row ignores checkedAt (its board is the evidence)', checkedAt({ id: 'ats:x', checkedAt: NOW }, NOW) === null);
 ok('no firstSeenAt and no check is not open', !verifiedOpen({ id: '1' }, NOW));
 

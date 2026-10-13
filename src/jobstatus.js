@@ -51,7 +51,7 @@ export const CLOSE_AT = 0.8;                       // combined closed confidence
 export const OCCASION_MS = 6 * 3_600_000;          // same-source repeats inside this are one
 export const WINDOW_MS = 14 * 86_400_000;          // checks older than this are not read
 export const OPEN_FRESH_MS = 3 * 86_400_000;       // an open signal this recent is "open"
-export const LISTED_FRESH_MS = 3 * 86_400_000;     // pages.js LISTED_FRESH_MS — first seen this recently is open
+export const LISTED_FRESH_MS = 3 * 86_400_000;     // first seen this recently reads as open; pages.js's index grace is longer (7 days) on purpose
 export const MIN_READABLE = 500;                   // visible characters below which a page is a JS shell
 
 const H = 3_600_000;

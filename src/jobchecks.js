@@ -28,7 +28,7 @@ import { UA, hostOf, checkPosting, HOST_GAP_MS, HOST_CLOSE_CAP, CONFIRM_GAP_MS }
 import { parsePublicPosting } from './guestsearch.js';
 
 export const EMPLOYER_PER_TICK = 60;
-export const LINKEDIN_PER_TICK_NIGHT = 8;
+export const LINKEDIN_PER_TICK_NIGHT = 12;   // 8 until 13 Oct 2026; blind employer pages now share it
 export const LINKEDIN_PER_TICK_DAY = 2;
 export const LINKEDIN_GAP_MS = 6_000;
 export const LINKEDIN_PAUSE_MS = 2 * 3_600_000;
@@ -116,12 +116,17 @@ export async function fetchPage(url, { fetchImpl = fetch, timeoutMs = TIMEOUT_MS
 const isLinkedInId = (id) => /^\d{6,}$/.test(String(id));
 const isLinkedInUrl = (u) => /linkedin\.com/i.test(String(u ?? ''));
 
-/** 'employer' | 'linkedin' | null — which page tells us about this job. */
+/** 'employer' | 'linkedin' | null — which page tells us about this job.
+ *  An employer page whose last look could not see the job (a bot wall, a
+ *  timeout: Cognizant, GlobalLogic, NatWest refused every check) is asked on
+ *  LinkedIn's public posting instead, when the job has a LinkedIn id: a page
+ *  we can never confirm would otherwise go noindex however open it is
+ *  (13 Oct 2026, 116 such rows). `employerBlind` is set by bin/job-check.js. */
 export function kindOf(job) {
   const id = String(job?.id ?? job?.job_id ?? '');
   if (id.startsWith('ats:')) return null;   // its own board, re-read every poll, is the evidence
   const url = job?.applyUrl ?? job?.apply_url;
-  if (url && !isLinkedInUrl(url)) return 'employer';
+  if (url && !isLinkedInUrl(url)) return job?.employerBlind && isLinkedInId(id) ? 'linkedin' : 'employer';
   return isLinkedInId(id) ? 'linkedin' : null;
 }
 
@@ -140,7 +145,10 @@ export function planTick({ jobs = [], extra = [], hot = new Set(), now = Date.no
     if (!kind) continue;
     if (j.closedAt != null && !j.recheck) continue;
     const isHot = hot.has(String(j.id));
-    const at = j.nextCheckAt ?? nextCheckAt({ status: j.status, kind, hot: isHot, firstSeenAt: j.firstSeenAt, lastCheckAt: j.linkCheckedAt ?? null, now });
+    /* A blind employer page never asked on LinkedIn is due now: its stored
+       next look was set for (and backed off on) the page that refuses us. */
+    const switched = j.employerBlind && kind === 'linkedin' && j.applyUrl && !isLinkedInUrl(j.applyUrl) && j.linkedinCheckedAt == null;
+    const at = switched ? now : (j.nextCheckAt ?? nextCheckAt({ status: j.status, kind, hot: isHot, firstSeenAt: j.firstSeenAt, lastCheckAt: j.linkCheckedAt ?? null, now }));
     if (at == null || at > now) continue;
     const rank = j.status === 'possibly_closed' ? 0 : j.recheck ? 1 : isHot ? 2 : 3;
     due.push({ ...j, kind, hot: isHot, dueAt: at, rank });

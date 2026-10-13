@@ -20,7 +20,7 @@ import { publishedRegions, regionPath } from '../src/regions.js';
 import { announceable } from '../src/rolefocus.js';
 import { channelRefusal } from '../src/channelgate.js';
 import { ensureJobChecks, checksFor, planTick, runTick, pruneChecks, linkedinPausedUntil } from '../src/jobchecks.js';
-import { decideStatus } from '../src/jobstatus.js';
+import { decideStatus, SIGNALS } from '../src/jobstatus.js';
 
 const argv = process.argv.slice(2);
 const has = (f) => argv.includes(f);
@@ -48,12 +48,19 @@ function published() {
 
 const rowOf = store.db.prepare(`SELECT job_id, title, company, apply_url, first_seen_at, status, status_confidence, status_reason,
   status_at, next_check_at, link_checked_at, closed_at, closed_reason FROM jobs WHERE job_id = ?`);
+const lastEmployerCheck = store.db.prepare("SELECT signal FROM job_checks WHERE job_id = ? AND source = 'employer' ORDER BY checked_at DESC LIMIT 1");
+const lastLinkedinCheck = store.db.prepare("SELECT checked_at FROM job_checks WHERE job_id = ? AND source = 'linkedin' ORDER BY checked_at DESC LIMIT 1");
 const joined = (pub) => {
   const r = rowOf.get(String(pub.id));
   if (!r) return null;
+  /* Blind: the last look at the employer page could not see the job at all
+     (blocked, unreachable, unreadable). kindOf then asks LinkedIn instead. */
+  const lastEmp = lastEmployerCheck.get(String(pub.id))?.signal;
   return { id: String(pub.id), title: r.title, company: r.company, applyUrl: r.apply_url, firstSeenAt: r.first_seen_at,
     status: r.status, statusConfidence: r.status_confidence, statusReason: r.status_reason, nextCheckAt: r.next_check_at,
-    linkCheckedAt: r.link_checked_at, closedAt: r.closed_at };
+    linkCheckedAt: r.link_checked_at, closedAt: r.closed_at,
+    employerBlind: SIGNALS[lastEmp]?.dir === 'none',
+    linkedinCheckedAt: lastLinkedinCheck.get(String(pub.id))?.checked_at ?? null };
 };
 
 /* ON THE CHANNELS: a job that went (or would go) to WhatsApp in the last three

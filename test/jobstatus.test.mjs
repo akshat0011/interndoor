@@ -146,6 +146,11 @@ console.log('\n== planning a pass ==');
   ok('a careers-board row is never page-checked (its board is the evidence)', kindOf({ id: 'ats:greenhouse:x:1' }) === null);
   ok('an employer link is checked on the employer page', kindOf({ id: '4475208744', applyUrl: 'https://careers.swiggy.com/x' }) === 'employer');
   ok('a LinkedIn apply is checked on LinkedIn', kindOf({ id: '4475208744', applyUrl: 'https://www.linkedin.com/jobs/view/4475208744' }) === 'linkedin');
+  // 13 Oct 2026: an employer page that refuses us is asked on LinkedIn instead.
+  ok('a blind employer page with a LinkedIn id is asked on LinkedIn', kindOf({ id: '4475208744', applyUrl: 'https://careers.cognizant.com/x', employerBlind: true }) === 'linkedin');
+  ok('a blind employer page with no LinkedIn id stays on the employer page', kindOf({ id: 'add:cognizant:9', applyUrl: 'https://careers.cognizant.com/x', employerBlind: true }) === 'employer');
+  ok('a seeing employer page stays on the employer page', kindOf({ id: '4475208744', applyUrl: 'https://careers.cognizant.com/x', employerBlind: false }) === 'employer');
+  ok('a careers-board row is never switched', kindOf({ id: 'ats:greenhouse:x:1', applyUrl: 'https://x.com', employerBlind: true }) === null);
   const jobs = [base('1'), base('2', { status: 'possibly_closed' }), base('3'), base('ats:x:y:1'), base('5', { closedAt: night - D }), base('6', { nextCheckAt: night + H })];
   const p = planTick({ jobs, hot: new Set(['3']), now: night });
   ok('possibly closed first, then on the channels, then the rest', p.employer.map((j) => j.id).join() === '2,3,1');
@@ -153,7 +158,15 @@ console.log('\n== planning a pass ==');
   ok('a closed row owed its recheck is in', planTick({ extra: [base('7', { closedAt: night - 2 * D, recheck: true })], now: night }).employer.length === 1);
   ok('the employer budget caps the pass', planTick({ jobs: Array.from({ length: 80 }, (_, i) => base(String(i + 100))), now: night }).employer.length === 60);
   const li = Array.from({ length: 20 }, (_, i) => base(String(4400000000 + i), { applyUrl: null, nextCheckAt: night - H }));
-  ok('at night LinkedIn takes up to 8', planTick({ jobs: li, now: night }).linkedin.length === 8);
+  ok('at night LinkedIn takes up to 12', planTick({ jobs: li, now: night }).linkedin.length === 12);
+  // A blind employer page never asked on LinkedIn is due at once, whatever the
+  // backed-off time its employer checks left behind; once asked, it waits.
+  const blind = base('4400000099', { employerBlind: true, nextCheckAt: night + 3 * D, linkedinCheckedAt: null });
+  ok('a blind page never asked on LinkedIn is due now', planTick({ jobs: [blind], now: night }).linkedin.map((j) => j.id).join() === '4400000099');
+  ok('once asked on LinkedIn it keeps its schedule', planTick({ jobs: [{ ...blind, linkedinCheckedAt: night - H }], now: night }).linkedin.length === 0);
+  ok('a seeing page keeps its employer schedule', planTick({ jobs: [{ ...blind, employerBlind: false }], now: night }).employer.length === 0);
+  const src = readFileSync(new URL('../bin/job-check.js', import.meta.url), 'utf8');
+  ok('job-check marks a page blind when its last employer look saw nothing', /employerBlind: SIGNALS\[lastEmp\]\?\.dir === 'none'/.test(src) && /source = 'employer' ORDER BY checked_at DESC LIMIT 1/.test(src));
   const liDay = li.map((j) => ({ ...j, nextCheckAt: day - H }));
   ok('by day routine LinkedIn checks wait for night', planTick({ jobs: liDay, now: day }).linkedin.length === 0);
   ok('…but jobs on the channels go, two at most', planTick({ jobs: liDay, hot: new Set(liDay.map((j) => j.id)), now: day }).linkedin.length === 2);

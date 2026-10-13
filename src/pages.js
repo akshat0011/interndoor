@@ -742,8 +742,13 @@ export function checkedAt(job, now = Date.now()) {
  *  - a positive check of its application route within CHECK_MAX_AGE_MS;
  *  - being first seen within LISTED_FRESH_MS — it was in the search results
  *    that recently, and the sweep only starts on rows two days old.
+ * SEVEN DAYS SINCE 13 OCT 2026 (was three). At three, 129 of 1,334 live job
+ * pages were noindex, 62 of them under a week old, and Google, crawling ~200
+ * pages a day, reached many only after the flip: Google Jobs still showed a
+ * Cadence role with "Apply on InternDoor" while our page said noindex. The
+ * jobstatus.js constant of the same name (the status label) stays at three.
  */
-export const LISTED_FRESH_MS = 3 * 86_400_000;
+export const LISTED_FRESH_MS = 7 * 86_400_000;
 export function verifiedOpen(job, now = Date.now()) {
   if (String(job?.id ?? '').startsWith('ats:')) return true;
   if (checkedAt(job, now) != null) return true;
