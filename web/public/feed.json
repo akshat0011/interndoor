@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cloudsek-sde-intern-backend-ats-greenhouse-cloudsek-6222340004",
+      "url": "https://interndoor.com/jobs/cloudsek-sde-intern-backend-ats-greenhouse-cloudsek-6222340004",
+      "title": "SDE Intern - Backend — CloudSEK",
+      "content_text": "Company: CloudSEK · Location: Bengaluru, Karnataka, India\n• Develop and maintain backend systems for cybersecurity products using NodeJS or Go\n• Collaborate with cross-functional teams on scalable, secure software solutions\n• Debug and optimize performance of backend components in a fast-paced environment",
+      "date_published": "2026-10-13T07:35:45.000Z",
+      "authors": [
+        {
+          "name": "CloudSEK"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wipro-test-engineer-l1-4477963964",
       "url": "https://interndoor.com/jobs/wipro-test-engineer-l1-4477963964",
       "title": "Test Engineer L1 — Wipro",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "BT Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4476008755",
-      "url": "https://interndoor.com/jobs/ntt-data-inc-ms-engineer-network-4476008755",
-      "title": "MS Engineer, Network — NTT DATA, Inc.",
-      "content_text": "Company: NTT DATA, Inc. · Location: Mumbai Metropolitan Region\n• Monitor and resolve client IT issues, ensuring systems run smoothly\n• Use ITSM tools and knowledge articles to support troubleshooting\n• Work on-site in Mumbai, supporting cloud, security, and network systems",
-      "date_published": "2026-10-12T13:08:07.670Z",
-      "authors": [
-        {
-          "name": "NTT DATA, Inc."
         }
       ]
     }
