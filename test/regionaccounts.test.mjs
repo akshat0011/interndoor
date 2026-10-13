@@ -121,8 +121,8 @@ console.log('\n== ONE SIGNED-OUT ACCOUNT COSTS ONE REGION, NOT THE RUN ==');
   check('with that region on launchBrave', /launchBrave\(cfg, \{ region: code \}\)/.test(src), true);
   check('and no run-wide launch survives', /session = await launchBrave\(cfg\);/.test(src), false);
 
-  check('a signed-out region is recorded', /deadRegions\.set\(region, err\.message\)/.test(src), true);
-  check('and skipped rather than retried', /if \(deadRegions\.has\(region\)\) \{/.test(src), true);
+  check('a signed-out account is recorded', /deadRegions\.set\(account, err\.message\)/.test(src), true);
+  check('and skipped rather than retried', /if \(deadRegions\.has\(account\)\) \{/.test(src), true);
   check('the run carries on', /continue;/.test(src), true);
 
   /* ONLY a LinkedIn refusal is survivable this way. A browser that will not

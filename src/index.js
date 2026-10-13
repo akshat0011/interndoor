@@ -729,6 +729,12 @@ async function main() {
       // the run: two searches can be walking different countries with different
       // last-swept times.
       const region = search.region ?? 'IN';
+      /* WHICH LINKEDIN ACCOUNT WALKS THIS SEARCH. Normally the region's own
+         (profileFor(region)); a search may name another with `account` — since
+         13 Oct 2026 India's full-time search walks on the US account, so the
+         intern walk and the full-time walk each load one account, not both on
+         India's. The region still decides the baseline, the board and the gates. */
+      const account = search.account ?? region;
       const { filters, coveredHorizon, baseline, ownBaseline } = planSweep(region, search);
       // Which collector finds this search's cards — see guestsearch.js.
       const viaGuest = searchSourceFor(search, cfg) === 'guest';
@@ -772,7 +778,7 @@ async function main() {
        * searches to be refused again is page loads spent on an account that has
        * already said no, which is the opposite of the goal.
        */
-      if (deadRegions.has(region)) {
+      if (deadRegions.has(account)) {
         searchesDone++;
         continue;
       }
@@ -784,9 +790,9 @@ async function main() {
       /* Opens this region's account, recording a signed-out one the same way
          whether that is found here or at the first card (below). */
       const sessionReady = async () => {
-        if (openRegion === region) return true;
+        if (openRegion === account) return true;
         try {
-          await openRegionSession(region, { warm: !viaGuest });
+          await openRegionSession(account, { warm: !viaGuest });
           return true;
         } catch (err) {
           /* Only a LinkedIn-level refusal is survivable this way. A browser that
@@ -795,9 +801,9 @@ async function main() {
              region is tried in turn and the run reports a tidy `ok` having
              collected nothing. */
           if (err instanceof RunAborted && err.state === State.LOGGED_OUT) {
-            deadRegions.set(region, err.message);
-            log.error(`${region}: signed out — skipping this region and carrying on with the others.`);
-            notes.push(`The ${region} LinkedIn account is signed out, so ${region} collected nothing this run. Run \`npm run login -- --region=${region}\`.`);
+            deadRegions.set(account, err.message);
+            log.error(`${account}: signed out — skipping this region and carrying on with the others.`);
+            notes.push(`The ${account} LinkedIn account is signed out, so ${region} collected nothing on it this run. Run \`npm run login -- --region=${account}\`.`);
             return false;
           }
           throw err;
@@ -812,7 +818,7 @@ async function main() {
          spent a warm-up page load on the account for no reason. A window left
          open by a DIFFERENT region is closed for the same reason. */
       if (viaGuest && !showScan) {
-        if (session && openRegion !== region) {
+        if (session && openRegion !== account) {
           await closeBrave(session);
           session = null;
           openRegion = null;
@@ -1501,9 +1507,9 @@ async function main() {
                 log.ok(`Signed in (${region} account) — checked on the first posting it opened.`);
               } catch (err) {
                 if (!(err instanceof RunAborted && err.state === State.LOGGED_OUT)) throw err;
-                deadRegions.set(region, err.message);
-                log.error(`${region}: signed out — skipping this region and carrying on with the others.`);
-                notes.push(`The ${region} LinkedIn account is signed out, so ${region} opened nothing on it this run. Run \`npm run login -- --region=${region}\`.`);
+                deadRegions.set(account, err.message);
+                log.error(`${account}: signed out — skipping this region and carrying on with the others.`);
+                notes.push(`The ${account} LinkedIn account is signed out, so ${region} opened nothing on it this run. Run \`npm run login -- --region=${account}\`.`);
                 return { signedOut: true };
               }
             }

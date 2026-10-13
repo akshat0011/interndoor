@@ -153,7 +153,14 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
      India's AI-search trial of 30 Sep 2026 is the one that does. Read off the
      raw file, because declaredSearches drops the underscore keys. */
   const rawSearches = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches;
-  check('live config: the default is the public search', cfg.searchSource, 'guest');
+  /* The public search SLEEPS since 13 Oct 2026 (his call): the default is the
+     signed-in walk, and the switch back says why in the config itself. */
+  const rawCfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+  check('live config: the default is the signed-in walk while the public search sleeps', cfg.searchSource, 'browser');
+  check('and the config says why', String(rawCfg._searchSource_sleep_note ?? '').length > 80, true);
+  check('India full-time walks on the second account, the internships on India\'s own',
+    JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN' && e.enabled !== false).map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
+    JSON.stringify([['intern', 'IN'], ['fulltime', 'US']]));
   check('live config: any search on the signed-in page says why',
     rawSearches.filter((e) => e.searchSource === 'browser').every((e) => String(e._searchSource_note ?? '').length > 40), true);
   const p = cfg.pacing.betweenGuestPages;
@@ -509,7 +516,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   // Unless the scan view is on (test/scanview.test.mjs), when the window is
   // opened up front so there is something to watch.
   check('a public-search walk does not open its account up front',
-    /if \(viaGuest && !showScan\) \{\s*if \(session && openRegion !== region\) \{\s*await closeBrave\(session\);[\s\S]{0,120}?\}\s*\} else if \(!\(await sessionReady\(\)\)\) \{/.test(src), true);
+    /if \(viaGuest && !showScan\) \{\s*if \(session && openRegion !== account\) \{\s*await closeBrave\(session\);[\s\S]{0,120}?\}\s*\} else if \(!\(await sessionReady\(\)\)\) \{/.test(src), true);
   check('the account is opened only through openOnAccount, which asks for the session first',
     /const openOnAccount = async \(\) => \{\s*if \(viaGuest && !\(await sessionReady\(\)\)\) return \{ signedOut: true \};\s*await pause\(cfg\.pacing\.betweenCards\);/.test(src)
       && (src.match(/li\.openAndExtract\(page, card, cfg\)/g) ?? []).length === 1, true);
@@ -531,8 +538,10 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
       && src.indexOf('if (mustConfirmInternFromPane && !isInternshipTag(detail.employmentTag))') < src.indexOf('const settledMisc = titleSettlesMisc(detail.title || card.title, cfg.roleFocus);'), true);
   check('an account that fails that open keeps the public read', /kept from the public page without the employer's link/.test(src), true);
   check('the apply-link tripwire counts only real account opens', /if \(openedOnAccount && !detail\.easyApply\) \{/.test(src), true);
+  check('a search names its account, else its region\'s', /const account = search\.account \?\? region;/.test(src), true);
+  check('and the session is checked against the account, not the region', /if \(openRegion === account\) return true;/.test(src) && /if \(deadRegions\.has\(account\)\) \{/.test(src), true);
   check('a public-search session is opened without the feed',
-    /await openRegionSession\(region, \{ warm: !viaGuest \}\);/.test(src) && /if \(warm\) \{\s*await li\.warmUp\(page, cfg\);/.test(src), true);
+    /await openRegionSession\(account, \{ warm: !viaGuest \}\);/.test(src) && /if \(warm\) \{\s*await li\.warmUp\(page, cfg\);/.test(src), true);
   check('and checked on the first posting it opens, before that read is trusted',
     /if \(viaGuest && !accountVerified\) \{\s*try \{\s*await assertSignedIn\(page, context, cfg\);\s*accountVerified = true;/.test(src)
       && src.indexOf('if (viaGuest && !accountVerified)') < src.indexOf('return got;'), true);
@@ -542,7 +551,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('re-read cards are counted apart', /if \(passNo > 0\) counters\.rereadCards \+= cards\.length;/.test(src), true);
   check('and left out of the intake yield', /noteIntake\(store, \{ cards: counters\.cardsSeen - counters\.rereadCards,/.test(src), true);
   check('and is recorded as signed out, exactly like the up-front check',
-    /const sessionReady = async \(\) => \{[\s\S]{0,900}?deadRegions\.set\(region, err\.message\);[\s\S]{0,400}?return false;/.test(src), true);
+    /const sessionReady = async \(\) => \{[\s\S]{0,900}?deadRegions\.set\(account, err\.message\);[\s\S]{0,400}?return false;/.test(src), true);
   check('a walk that needed no browser still counts as a region that worked',
     /if \(viaGuest && reachedEnd && rendered && !signedOutMidWalk\) anyRegionWorked = true;/.test(src), true);
   check('the anchor href is cleaned in Node',
