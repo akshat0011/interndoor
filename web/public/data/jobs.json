@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791932035243,
+ "generatedAt": 1791932152836,
  "region": "IN",
  "regionName": "India",
- "count": 1287,
- "techCount": 1287,
+ "count": 1288,
+ "techCount": 1288,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -493,6 +493,53 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4479099923",
+   "title": "Salesforce Developer",
+   "company": "NetApp",
+   "matchedWatchlist": "NetApp",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/netapp.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "0 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "aws",
+    "azure"
+   ],
+   "summary": "This role involves developing salesforce applications for enterprise clients, focusing on cloud integration with major platforms. Ideal for students with technical skills in apex and lightning components looking for hands-on experience in enterprise software.",
+   "bullets": [
+    "Build and maintain salesforce solutions for enterprise clients",
+    "Use apex, lightning components, and salesforce api",
+    "Work on cloud integration projects with google and microsoft"
+   ],
+   "roleLabel": "Salesforce development",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": "44 minutes ago",
+   "postedAt": 1791929449993,
+   "firstSeenAt": 1791932090000,
+   "lastSeenAt": 1791932090000,
+   "url": "https://www.linkedin.com/jobs/view/4479099923/",
+   "applyUrl": "https://careers.netapp.com/job/-/-/27600/101897017648?jobPipeline=limtedlistings",
+   "description": null,
+   "roleFingerprint": "04c8fd344b",
+   "cardFacts": [
+    "Bengaluru",
+    "Hybrid"
+   ],
+   "category": "misc",
+   "family": "enterprise",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4478132758",
    "title": "Associate Software Engineer",

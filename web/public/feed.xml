@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Tue, 13 Oct 2026 18:54:34 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 13 Oct 2026 22:10:49 GMT</lastBuildDate>
+  <item>
+    <title>Salesforce Developer — NetApp</title>
+    <link>https://interndoor.com/jobs/netapp-salesforce-developer-4479099923</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/netapp-salesforce-developer-4479099923</guid>
+    <pubDate>Tue, 13 Oct 2026 22:10:49 GMT</pubDate>
+    <description>Company: NetApp · Location: Bengaluru, Karnataka, India
+• Build and maintain salesforce solutions for enterprise clients
+• Use apex, lightning components, and salesforce api
+• Work on cloud integration projects with google and microsoft</description>
+  </item>
   <item>
     <title>Associate Software Engineer — Flex</title>
     <link>https://interndoor.com/jobs/flex-associate-software-engineer-it-4478132758</link>
@@ -500,16 +510,6 @@
 • Build and maintain Power BI dashboards for finance reporting
 • Collaborate with data engineers and stakeholders using JIRA
 • Support data pipelines and ensure reliable reporting processes</description>
-  </item>
-  <item>
-    <title>Cyber DT&amp;P - IAM Non Human Identity - Analyst — Deloitte</title>
-    <link>https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477933227</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477933227</guid>
-    <pubDate>Mon, 12 Oct 2026 22:31:08 GMT</pubDate>
-    <description>Company: Deloitte · Location: Bengaluru, Karnataka, India
-• Design and manage secrets, certificates, and workload identities across cloud and on-premises environments
-• Use CyberArk, HashiCorp, Azure, and AWS tools to implement identity and access controls
-• Automate provisioning and compliance reporting with PowerShell, Python, and APIs</description>
   </item>
 </channel>
 </rss>
