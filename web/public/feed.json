@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476085759",
+      "url": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476085759",
+      "title": "Cloud Monitoring intern — Volody",
+      "content_text": "Company: Volody · Location: Mumbai, Maharashtra, India\n• Monitor cloud systems, track metrics, identify anomalies\n• Use monitoring tools, dashboards, and alerting platforms\n• Collaborate with technical and customer-facing teams\n• Document issues, escalate incidents, create SOPs",
+      "date_published": "2026-10-13T06:11:22.575Z",
+      "authors": [
+        {
+          "name": "Volody"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/american-express-analyst-data-governance-and-mgmt-4477962612",
+      "url": "https://interndoor.com/jobs/american-express-analyst-data-governance-and-mgmt-4477962612",
+      "title": "Data Governance Analyst — American Express",
+      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Monitor data quality and resolve platform issues across business units\n• Collaborate with product teams to align new use cases with data policies\n• Support data governance strategy with expertise in metadata and lineage",
+      "date_published": "2026-10-13T05:18:09.389Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/emerson-intern-power-greenfield-4478762154",
+      "url": "https://interndoor.com/jobs/emerson-intern-power-greenfield-4478762154",
+      "title": "Power Greenfield Intern — Emerson",
+      "content_text": "Company: Emerson · Location: Noida, Uttar Pradesh, India\n• Design and improve tools for engineering projects\n• Collaborate with teams to align tool needs with project goals\n• Provide training and support for tool deployment",
+      "date_published": "2026-10-13T04:51:27.391Z",
+      "authors": [
+        {
+          "name": "Emerson"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/amazon-web-services-aws-optical-network-development-engineer-capacity-restoration-team-4478726056",
       "url": "https://interndoor.com/jobs/amazon-web-services-aws-optical-network-development-engineer-capacity-restoration-team-4478726056",
       "title": "Optical Network Development Engineer — Amazon Web Services (AWS)",
@@ -26,18 +62,6 @@
       "authors": [
         {
           "name": "NVIDIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/emerson-intern-power-greenfield-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26012140",
-      "url": "https://interndoor.com/jobs/emerson-intern-power-greenfield-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26012140",
-      "title": "Power Greenfield Intern — Emerson",
-      "content_text": "Company: Emerson · Location: NOIDA, UTTAR PRADESH, India\n• Design and develop engineering tools for project efficiency\n• Collaborate with teams to align tool functionality with needs\n• Support deployment and provide user training and feedback",
-      "date_published": "2026-10-13T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Emerson"
         }
       ]
     },
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Tyson Foods"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-analyst-data-science-4477570443",
-      "url": "https://interndoor.com/jobs/american-express-analyst-data-science-4477570443",
-      "title": "Data Science Analyst — American Express",
-      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Build predictive models and recommendation systems for customer servicing\n• Work with Python, SQL, and machine learning frameworks\n• Collaborate with cross-functional teams on AI and analytics projects",
-      "date_published": "2026-10-12T13:04:03.208Z",
-      "authors": [
-        {
-          "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/quest-global-observability-engineer-with-devops-skills-4477559574",
-      "url": "https://interndoor.com/jobs/quest-global-observability-engineer-with-devops-skills-4477559574",
-      "title": "Observability Engineer — Quest Global",
-      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Implement monitoring and alerting with Grafana Cloud and Prometheus\n• Deploy apps on Kubernetes/EKS and manage AWS environments\n• Automate infrastructure with Terraform and AWS CDK\n• Work in hybrid setup based in Bengaluru",
-      "date_published": "2026-10-12T11:55:49.035Z",
-      "authors": [
-        {
-          "name": "Quest Global"
         }
       ]
     }
