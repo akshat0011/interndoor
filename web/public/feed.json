@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/kuku-ai-director-fellowship-internship-in-jaipur-bangalore-delhi-4479232426",
+      "url": "https://interndoor.com/jobs/kuku-ai-director-fellowship-internship-in-jaipur-bangalore-delhi-4479232426",
+      "title": "AI Director Fellowship Internship in Jaipur, Bangalore, Delhi — Kuku",
+      "content_text": "Company: Kuku · Location: Jaipur, Rajasthan, India\n• Create cinematic visuals from scripts using prompt engineering\n• Edit videos with high-retention techniques and cliffhanger endings\n• Refine and approve AI-generated video outputs\n• Build reusable visual prompt libraries for AI tools",
+      "date_published": "2026-10-14T00:07:08.545Z",
+      "authors": [
+        {
+          "name": "Kuku"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4479225020",
+      "url": "https://interndoor.com/jobs/hewlett-packard-enterprise-data-scientist-4479225020",
+      "title": "Data Scientist — Hewlett Packard Enterprise",
+      "content_text": "Company: Hewlett Packard Enterprise · Location: Bengaluru, Karnataka, India\n• Analyzes data sets and validates solutions for business insights\n• Uses Python, R, and analytics tools to build and test models\n• Collaborates on data visualization and user experience for analytics tools",
+      "date_published": "2026-10-13T23:51:17.722Z",
+      "authors": [
+        {
+          "name": "Hewlett Packard Enterprise"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/synopsys-inc-vulnerability-management-analyst-semiconductor-ip-4479206687",
+      "url": "https://interndoor.com/jobs/synopsys-inc-vulnerability-management-analyst-semiconductor-ip-4479206687",
+      "title": "Vulnerability Management Analyst — Synopsys Inc",
+      "content_text": "Company: Synopsys Inc · Location: Bengaluru, Karnataka, India\n• Analyze vulnerabilities in semiconductor IP and firmware, assess risk with clear assumptions\n• Use Python to build tools for analysis, intake, and reporting when existing tools fall short\n• Collaborate with design and verification teams to explain risks and agree on mitigations",
+      "date_published": "2026-10-13T22:44:34.739Z",
+      "authors": [
+        {
+          "name": "Synopsys Inc"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/netapp-salesforce-developer-4479099923",
       "url": "https://interndoor.com/jobs/netapp-salesforce-developer-4479099923",
       "title": "Salesforce Developer — NetApp",
@@ -14,6 +50,66 @@
       "authors": [
         {
           "name": "NetApp"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/jpmorganchase-data-scientist-associate-4479207240",
+      "url": "https://interndoor.com/jobs/jpmorganchase-data-scientist-associate-4479207240",
+      "title": "Data Scientist Associate — JPMorganChase",
+      "content_text": "Company: JPMorganChase · Location: Mumbai, Maharashtra, India\n• Design AI systems for investment tools using LLMs and scalable architecture\n• Build data pipelines and governance for enterprise content and AI applications\n• Collaborate with portfolio managers to translate investment processes into tech solutions",
+      "date_published": "2026-10-13T21:46:50.351Z",
+      "authors": [
+        {
+          "name": "JPMorganChase"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/s-and-p-global-associate-software-development-engineer-information-security-4478149931",
+      "url": "https://interndoor.com/jobs/s-and-p-global-associate-software-development-engineer-information-security-4478149931",
+      "title": "Software Development Engineer — S&P Global",
+      "content_text": "Company: S&P Global · Location: Hyderabad, Telangana, India\n• Assist in securing server-side development, UI frameworks, and cloud integrations\n• Use Python and open-source tools to automate security testing in CI/CD pipelines\n• Work on AI risk assessments, including vulnerabilities in LLM pipelines and cognitive workflows",
+      "date_published": "2026-10-13T21:35:48.799Z",
+      "authors": [
+        {
+          "name": "S&P Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/s-and-p-global-software-engineer-enterprise-data-management-4478155672",
+      "url": "https://interndoor.com/jobs/s-and-p-global-software-engineer-enterprise-data-management-4478155672",
+      "title": "Data Engineer — S&P Global",
+      "content_text": "Company: S&P Global · Location: Noida, Uttar Pradesh, India\n• Support data workflows for mastering, ingestion, validation, and distribution\n• Work with NeoXam, Databricks, and cloud platforms like AWS\n• Collaborate with global teams on financial data management",
+      "date_published": "2026-10-13T21:35:38.136Z",
+      "authors": [
+        {
+          "name": "S&P Global"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/sandisk-functional-analyst-genesys-and-osc-4479093665",
+      "url": "https://interndoor.com/jobs/sandisk-functional-analyst-genesys-and-osc-4479093665",
+      "title": "Functional Analyst — Sandisk",
+      "content_text": "Company: Sandisk · Location: Bengaluru, Karnataka, India\n• Analyze business needs and configure contact center systems\n• Test and optimize Genesys and Oracle Service Cloud platforms\n• Collaborate with developers and analysts to improve customer service",
+      "date_published": "2026-10-13T21:08:00.164Z",
+      "authors": [
+        {
+          "name": "Sandisk"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-techops-engineer-4479079674",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-techops-engineer-4479079674",
+      "title": "TechOps Engineer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India\n• Design and maintain AWS infrastructure for secure, scalable cloud environments\n• Automate operational tasks and support incident response for customer systems\n• Implement security controls and FinOps practices to optimize cloud costs",
+      "date_published": "2026-10-13T19:56:39.717Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
         }
       ]
     },
@@ -506,102 +602,6 @@
       "authors": [
         {
           "name": "Emerson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/amazon-web-services-aws-optical-network-development-engineer-capacity-restoration-team-4478726056",
-      "url": "https://interndoor.com/jobs/amazon-web-services-aws-optical-network-development-engineer-capacity-restoration-team-4478726056",
-      "title": "Optical Network Development Engineer — Amazon Web Services (AWS)",
-      "content_text": "Company: Amazon Web Services (AWS) · Location: Hyderabad, Telangana, India\n• Troubleshoot and restore DWDM optical capacity across backbone and metro networks\n• Develop automation scripts in Python for optical restoration and diagnostics\n• Work on optical components like ROADMs, amplifiers, and coherent optics\n• Support on-call rotations for follow-the-sun optical network coverage",
-      "date_published": "2026-10-13T01:21:32.123Z",
-      "authors": [
-        {
-          "name": "Amazon Web Services (AWS)"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nvidia-cpu-compiler-intern-2027-4477940543",
-      "url": "https://interndoor.com/jobs/nvidia-cpu-compiler-intern-2027-4477940543",
-      "title": "CPU Compiler Intern — NVIDIA",
-      "content_text": "Company: NVIDIA · Location: Bengaluru, Karnataka, India\n• Design and develop optimizing compilers for AI and HPC workloads\n• Work with C++ and contribute to compiler optimization techniques\n• Collaborate with a global team on production-grade compiler software",
-      "date_published": "2026-10-13T00:27:25.998Z",
-      "authors": [
-        {
-          "name": "NVIDIA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/salesforce-summer-2027-intern-ui-ux-designer-ats-workday-salesforce-wd12-external-career-site-jr363342",
-      "url": "https://interndoor.com/jobs/salesforce-summer-2027-intern-ui-ux-designer-ats-workday-salesforce-wd12-external-career-site-jr363342",
-      "title": "UI/UX Designer Intern — Salesforce",
-      "content_text": "Company: Salesforce · Location: India - Hyderabad · Duration: 6 months\n• Design user interfaces for financial, health, and consumer cloud products\n• Collaborate with product and engineering teams to ship high-impact features\n• Use Sketch, Photoshop, and Illustrator to create polished digital experiences",
-      "date_published": "2026-10-13T00:00:00.000Z",
-      "authors": [
-        {
-          "name": "Salesforce"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/marsh-engineer-it-product-support-4478703757",
-      "url": "https://interndoor.com/jobs/marsh-engineer-it-product-support-4478703757",
-      "title": "IT Product Support Engineer — Marsh",
-      "content_text": "Company: Marsh · Location: Gurugram, Haryana, India\n• Support IT systems and infrastructure with 24x7 rotational shifts\n• Work with DevOps, database, or application support tools\n• Complete certifications and prove technical skills before joining",
-      "date_published": "2026-10-12T23:45:05.009Z",
-      "authors": [
-        {
-          "name": "Marsh"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/citi-application-development-programmer-analyst-4477935200",
-      "url": "https://interndoor.com/jobs/citi-application-development-programmer-analyst-4477935200",
-      "title": "Application Development Programmer Analyst — Citi",
-      "content_text": "Company: Citi · Location: Chennai, Tamil Nadu, India\n• Write and debug code for transactional applications with low latency\n• Use java, j2ee, angular, spring, and microservices\n• Work on treasury products like fx and fixed income",
-      "date_published": "2026-10-12T22:57:29.480Z",
-      "authors": [
-        {
-          "name": "Citi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/moody-s-corporation-analyst-bi-and-analytics-4478595747",
-      "url": "https://interndoor.com/jobs/moody-s-corporation-analyst-bi-and-analytics-4478595747",
-      "title": "Analyst-BI & Analytics — Moody's Corporation",
-      "content_text": "Company: Moody's Corporation · Location: Gurugram, Haryana, India\n• Build and maintain Power BI dashboards for finance reporting\n• Collaborate with data engineers and stakeholders using JIRA\n• Support data pipelines and ensure reliable reporting processes",
-      "date_published": "2026-10-12T22:49:50.257Z",
-      "authors": [
-        {
-          "name": "Moody's Corporation"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477933227",
-      "url": "https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477933227",
-      "title": "Cyber DT&P - IAM Non Human Identity - Analyst — Deloitte",
-      "content_text": "Company: Deloitte · Location: Bengaluru, Karnataka, India\n• Design and manage secrets, certificates, and workload identities across cloud and on-premises environments\n• Use CyberArk, HashiCorp, Azure, and AWS tools to implement identity and access controls\n• Automate provisioning and compliance reporting with PowerShell, Python, and APIs",
-      "date_published": "2026-10-12T22:31:08.200Z",
-      "authors": [
-        {
-          "name": "Deloitte"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477941085",
-      "url": "https://interndoor.com/jobs/deloitte-cyber-dt-and-p-iam-non-human-identity-analyst-4477941085",
-      "title": "Cyber DT&P - IAM Non Human Identity - Analyst — Deloitte",
-      "content_text": "Company: Deloitte · Location: Hyderabad, Telangana, India\n• Design and manage secrets, certificates, and workload identities across cloud and on-premises environments\n• Use CyberArk, HashiCorp, Azure, and AWS tools for identity governance and automation\n• Collaborate with security and platform teams to build non-human identity standards and runbooks",
-      "date_published": "2026-10-12T22:25:50.533Z",
-      "authors": [
-        {
-          "name": "Deloitte"
         }
       ]
     }
