@@ -1,6 +1,29 @@
 {
  "jobs": [
   {
+   "id": "4479557488",
+   "company": "Bank of America",
+   "title": "Software Engineer Apprentice",
+   "slugTitle": "Apprentice",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791997932002,
+   "firstSeenAt": 1792001532006,
+   "logo": "/logos/bank-of-america.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479562187",
+   "company": "Bank of America",
+   "title": "Apprentice",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791997927335,
+   "firstSeenAt": 1792001527345,
+   "logo": "/logos/bank-of-america.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4476692230",
    "company": "Mastercard",
    "title": "Software Engineer",
@@ -48,18 +71,6 @@
    "bulletCount": 3
   },
   {
-   "id": "4479550815",
-   "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
-   "slugTitle": "Apprentice",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791994879059,
-   "firstSeenAt": 1791997879062,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
    "id": "4479552740",
    "company": "Bank of America",
    "title": "Apprentice Software Developer",
@@ -68,17 +79,6 @@
    "workplaceType": "On-site",
    "postedAt": 1791994874048,
    "firstSeenAt": 1791997874050,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479557487",
-   "company": "Bank of America",
-   "title": "Apprentice",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791994069271,
-   "firstSeenAt": 1791994369274,
    "logo": "/logos/bank-of-america.jpg",
    "bulletCount": 3
   },
@@ -375,17 +375,6 @@
    "bulletCount": 4
   },
   {
-   "id": "4479292516",
-   "company": "Impact Analytics",
-   "title": "DevOps Intern",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791971936321,
-   "firstSeenAt": 1791972596333,
-   "logo": "/logos/impact-analytics.jpg",
-   "bulletCount": 3
-  },
-  {
    "id": "4478428486",
    "company": "Genrobotics",
    "title": "Robotic Operator",
@@ -406,6 +395,16 @@
    "postedAt": 1791968782965,
    "firstSeenAt": 1791969622970,
    "logo": "/logos/micron-technology.png",
+   "bulletCount": 3
+  },
+  {
+   "id": "ats:keka:impactanalytics:92315",
+   "company": "Impact Analytics",
+   "title": "DevOps Intern",
+   "location": "Bengaluru, KA, India",
+   "postedAt": 1791968346940,
+   "firstSeenAt": 1792001308719,
+   "logo": "/logos/impact-analytics.jpg",
    "bulletCount": 3
   },
   {
