@@ -581,7 +581,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('each page\'s count of cards worth opening is kept before the limit is judged',
     /tailHits\.push\(relevantOnPage\);\s*if \(pageIndex === lastPage - 1\) \{/.test(src), true);
   check('the limit asks rereadPlan, about the part that reached it',
-    /const plan = rereadPlan\(\{ tailHits, keywords: passSearch\.keywords, passes: passNo \+ 1 \+ pendingParts\.length \}\);\s*if \(plan\.parts\) \{\s*pendingParts\.push\(\.\.\.plan\.parts\);/.test(src), true);
+    /: rereadPlan\(\{ tailHits, keywords: passSearch\.keywords, passes: passNo \+ 1 \+ pendingParts\.length \}\);\s*if \(plan\.parts\) \{\s*pendingParts\.push\(\.\.\.plan\.parts\);/.test(src), true);
   check('the end of a part moves on to the next before the walk completes',
     /if \(pendingParts\.length\) \{\s*startPart\(\);\s*pageIndex = firstPage - 1;\s*await pause\(guestPacing\(\)\);\s*continue;\s*\}\s*walkComplete = true;\s*break;/.test(src), true);
   check('so does the limit',
@@ -675,5 +675,15 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /if \(detail\.applyUrl\) detail\.applyUrl = cleanApplyUrl\(detail\.applyUrl\);/.test(lk), true);
 }
 
+
+/* His call, 15 Oct 2026: a capped walk stops at 1,000 and is never re-read
+   while config.json says rereadCapped false. */
+{
+  const idx = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
+  const cfgJ = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
+  check('config: rereadCapped is off', cfgJ.rereadCapped, false);
+  check('index.js skips rereadPlan when rereadCapped is false',
+    /const plan = cfg\.rereadCapped === false\s*\?\s*\{ reason:[^}]*\}\s*:\s*rereadPlan\(/.test(idx), true);
+}
 console.log(`\n${pass} passed, ${fail} failed\n`);
 process.exit(fail ? 1 : 0);

@@ -2075,7 +2075,10 @@ async function main() {
           if (pageIndex === lastPage - 1) {
             const read = (pageIndex + 1 - firstPage) * GUEST_PAGE_SIZE;
             const part = passNo ? ` (part ${passNo})` : '';
-            const plan = rereadPlan({ tailHits, keywords: passSearch.keywords, passes: passNo + 1 + pendingParts.length });
+            // cfg.rereadCapped false (his call, 15 Oct 2026): stop at the limit, never re-read.
+            const plan = cfg.rereadCapped === false
+              ? { reason: 're-reading a capped window is switched off (config rereadCapped)' }
+              : rereadPlan({ tailHits, keywords: passSearch.keywords, passes: passNo + 1 + pendingParts.length });
             if (plan.parts) {
               pendingParts.push(...plan.parts);
               log.warn(`"${label}"${part} reached the public search's limit after ${read} results in a ${filters.postedWithinHours}h window, and its last ${REREAD_TAIL_PAGES} pages still held ${plan.hits} card(s) worth opening — re-reading the window as ${plan.parts.length} smaller searches.`);
