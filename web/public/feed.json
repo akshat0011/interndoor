@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951",
+      "url": "https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951",
+      "title": "Software Engineer I — UST",
+      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Code enterprise wealth management software in java\n• Collaborate with architects and product owners\n• Test and document software functionality\n• Resolve defects and production issues",
+      "date_published": "2026-10-14T08:42:58.421Z",
+      "authors": [
+        {
+          "name": "UST"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/caterpillar-inc-it-analyst-applications-mlops-engineer-4479291326",
+      "url": "https://interndoor.com/jobs/caterpillar-inc-it-analyst-applications-mlops-engineer-4479291326",
+      "title": "MLOps Engineer — Caterpillar Inc.",
+      "content_text": "Company: Caterpillar Inc. · Location: Chennai, Tamil Nadu, India\n• Deploy and maintain AI applications using deep learning, neural networks, and chatbots\n• Work with data scientists and infra teams on model governance and deployment\n• Build CI/CD pipelines for ML models and manage model versioning",
+      "date_published": "2026-10-14T08:34:32.578Z",
+      "authors": [
+        {
+          "name": "Caterpillar Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nielsen-ai-ml-data-scientist-i-4476636752",
+      "url": "https://interndoor.com/jobs/nielsen-ai-ml-data-scientist-i-4476636752",
+      "title": "AI / ML Data Scientist I — Nielsen",
+      "content_text": "Company: Nielsen · Location: Bengaluru, Karnataka, India\n• Build and deploy machine learning models in production\n• Work with cloud platforms and data engineering tools\n• Collaborate with cross-functional teams on audience measurement research",
+      "date_published": "2026-10-14T08:33:35.849Z",
+      "authors": [
+        {
+          "name": "Nielsen"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720",
       "url": "https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720",
       "title": "IoT Engineering Intern — Endurance Power",
@@ -26,6 +62,18 @@
       "authors": [
         {
           "name": "Volody"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/american-express-analyst-data-analytics-agentic-4478414340",
+      "url": "https://interndoor.com/jobs/american-express-analyst-data-analytics-agentic-4478414340",
+      "title": "Data Analyst — American Express",
+      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Build GenAI solutions for customer engagement and marketing strategy\n• Use LLMs, RAG, and prompt engineering for business problem solving\n• Collaborate with cross-functional teams on scalable AI applications",
+      "date_published": "2026-10-14T06:13:00.756Z",
+      "authors": [
+        {
+          "name": "American Express"
         }
       ]
     },
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "Seagate Technology"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualys-site-reliability-engineer-4468564143",
-      "url": "https://interndoor.com/jobs/qualys-site-reliability-engineer-4468564143",
-      "title": "Site Reliability Engineer — Qualys",
-      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India\n• Maintain scalable applications and monitor system health with observability tools\n• Write automation scripts and use IaC for infrastructure management\n• Collaborate with DevOps and security teams on incident response and reliability",
-      "date_published": "2026-10-13T09:28:16.515Z",
-      "authors": [
-        {
-          "name": "Qualys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414941939",
-      "url": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414941939",
-      "title": "Backend Golang Developer — Proofpoint",
-      "content_text": "Company: Proofpoint · Location: Bengaluru, Karnataka, India\n• Build and maintain microservices using Golang for core product features\n• Work on scalable systems and distributed architectures in production\n• Collaborate with engineers across product and infrastructure teams",
-      "date_published": "2026-10-13T09:19:48.348Z",
-      "authors": [
-        {
-          "name": "Proofpoint"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-developer-4477978602",
-      "url": "https://interndoor.com/jobs/cognizant-developer-4477978602",
-      "title": "Developer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Develop and test map and location features for ADAS systems\n• Work with Linux and QNX for software integration in AUTOSAR\n• Maintain and debug existing and new system components",
-      "date_published": "2026-10-13T08:48:38.624Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-fullstack-developer-react-node-js-developer-4476408359",
-      "url": "https://interndoor.com/jobs/ust-fullstack-developer-react-node-js-developer-4476408359",
-      "title": "Full Stack Developer — UST",
-      "content_text": "Company: UST · Location: Hyderabad, Telangana, India\n• Build scalable web apps with React and Node.js\n• Use Git, CI/CD, and AI tools like Claude\n• Work on APIs, middleware, and security practices",
-      "date_published": "2026-10-13T08:43:21.079Z",
-      "authors": [
-        {
-          "name": "UST"
         }
       ]
     }

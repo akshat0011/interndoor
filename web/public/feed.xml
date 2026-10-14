@@ -6,7 +6,38 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 14 Oct 2026 06:42:56 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 14 Oct 2026 08:42:58 GMT</lastBuildDate>
+  <item>
+    <title>Software Engineer I — UST</title>
+    <link>https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951</guid>
+    <pubDate>Wed, 14 Oct 2026 08:42:58 GMT</pubDate>
+    <description>Company: UST · Location: Bengaluru, Karnataka, India
+• Code enterprise wealth management software in java
+• Collaborate with architects and product owners
+• Test and document software functionality
+• Resolve defects and production issues</description>
+  </item>
+  <item>
+    <title>MLOps Engineer — Caterpillar Inc.</title>
+    <link>https://interndoor.com/jobs/caterpillar-inc-it-analyst-applications-mlops-engineer-4479291326</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/caterpillar-inc-it-analyst-applications-mlops-engineer-4479291326</guid>
+    <pubDate>Wed, 14 Oct 2026 08:34:32 GMT</pubDate>
+    <description>Company: Caterpillar Inc. · Location: Chennai, Tamil Nadu, India
+• Deploy and maintain AI applications using deep learning, neural networks, and chatbots
+• Work with data scientists and infra teams on model governance and deployment
+• Build CI/CD pipelines for ML models and manage model versioning</description>
+  </item>
+  <item>
+    <title>AI / ML Data Scientist I — Nielsen</title>
+    <link>https://interndoor.com/jobs/nielsen-ai-ml-data-scientist-i-4476636752</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/nielsen-ai-ml-data-scientist-i-4476636752</guid>
+    <pubDate>Wed, 14 Oct 2026 08:33:35 GMT</pubDate>
+    <description>Company: Nielsen · Location: Bengaluru, Karnataka, India
+• Build and deploy machine learning models in production
+• Work with cloud platforms and data engineering tools
+• Collaborate with cross-functional teams on audience measurement research</description>
+  </item>
   <item>
     <title>IoT Engineering Intern — Endurance Power</title>
     <link>https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720</link>
@@ -26,6 +57,16 @@
 • Monitor cloud logs, alerts, and security events
 • Use siem tools to detect threats and analyze logs
 • Support incident reporting and compliance checks</description>
+  </item>
+  <item>
+    <title>Data Analyst — American Express</title>
+    <link>https://interndoor.com/jobs/american-express-analyst-data-analytics-agentic-4478414340</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/american-express-analyst-data-analytics-agentic-4478414340</guid>
+    <pubDate>Wed, 14 Oct 2026 06:13:00 GMT</pubDate>
+    <description>Company: American Express · Location: Gurugram, Haryana, India
+• Build GenAI solutions for customer engagement and marketing strategy
+• Use LLMs, RAG, and prompt engineering for business problem solving
+• Collaborate with cross-functional teams on scalable AI applications</description>
   </item>
   <item>
     <title>AI Intern — Honeywell Technologies</title>
@@ -470,46 +511,6 @@
 • Develop and debug software in C/C++ and Python for operational tools
 • Work with CI/CD and containerization tools like Jenkins and Docker
 • Collaborate with cross-functional teams on automation and data workflows</description>
-  </item>
-  <item>
-    <title>Site Reliability Engineer — Qualys</title>
-    <link>https://interndoor.com/jobs/qualys-site-reliability-engineer-4468564143</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualys-site-reliability-engineer-4468564143</guid>
-    <pubDate>Tue, 13 Oct 2026 09:28:16 GMT</pubDate>
-    <description>Company: Qualys · Location: Pune Division, Maharashtra, India
-• Maintain scalable applications and monitor system health with observability tools
-• Write automation scripts and use IaC for infrastructure management
-• Collaborate with DevOps and security teams on incident response and reliability</description>
-  </item>
-  <item>
-    <title>Backend Golang Developer — Proofpoint</title>
-    <link>https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414941939</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414941939</guid>
-    <pubDate>Tue, 13 Oct 2026 09:19:48 GMT</pubDate>
-    <description>Company: Proofpoint · Location: Bengaluru, Karnataka, India
-• Build and maintain microservices using Golang for core product features
-• Work on scalable systems and distributed architectures in production
-• Collaborate with engineers across product and infrastructure teams</description>
-  </item>
-  <item>
-    <title>Developer — Cognizant</title>
-    <link>https://interndoor.com/jobs/cognizant-developer-4477978602</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cognizant-developer-4477978602</guid>
-    <pubDate>Tue, 13 Oct 2026 08:48:38 GMT</pubDate>
-    <description>Company: Cognizant · Location: Bangalore Urban, Karnataka, India
-• Develop and test map and location features for ADAS systems
-• Work with Linux and QNX for software integration in AUTOSAR
-• Maintain and debug existing and new system components</description>
-  </item>
-  <item>
-    <title>Full Stack Developer — UST</title>
-    <link>https://interndoor.com/jobs/ust-fullstack-developer-react-node-js-developer-4476408359</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ust-fullstack-developer-react-node-js-developer-4476408359</guid>
-    <pubDate>Tue, 13 Oct 2026 08:43:21 GMT</pubDate>
-    <description>Company: UST · Location: Hyderabad, Telangana, India
-• Build scalable web apps with React and Node.js
-• Use Git, CI/CD, and AI tools like Claude
-• Work on APIs, middleware, and security practices</description>
   </item>
 </channel>
 </rss>
