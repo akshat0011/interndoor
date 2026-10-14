@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/mastercard-software-engineer-4476692230",
+      "url": "https://interndoor.com/jobs/mastercard-software-engineer-4476692230",
+      "title": "Software Engineer — Mastercard",
+      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Design develop maintain multi-technology solutions\n• Collaborate with onshore teams in agile safe environment\n• Support mission-critical payment systems in production",
+      "date_published": "2026-10-14T16:52:22.389Z",
+      "authors": [
+        {
+          "name": "Mastercard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/mastercard-software-engineer-devsecops-4476687543",
+      "url": "https://interndoor.com/jobs/mastercard-software-engineer-devsecops-4476687543",
+      "title": "DevSecOps Software Engineer — Mastercard",
+      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Support critical live systems with performance and resilience\n• Work with Ansible, Atlassian, and Linux in a SAFe Agile team\n• Design and maintain multi-technology solutions for payment platforms",
+      "date_published": "2026-10-14T16:51:48.489Z",
+      "authors": [
+        {
+          "name": "Mastercard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-java-developer-aws-4469471138",
+      "url": "https://interndoor.com/jobs/cognizant-java-developer-aws-4469471138",
+      "title": "Java Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Build and maintain backend services using Python and Java\n• Work with AWS Kubernetes Docker and automation tools\n• Collaborate with cross-functional teams on secure scalable systems",
+      "date_published": "2026-10-14T16:32:26.574Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479548792",
       "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479548792",
       "title": "Software Engineer Apprentice — Bank of America",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Standard Chartered India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/greedygame-qa-engineer-offerwall-4478409485",
-      "url": "https://interndoor.com/jobs/greedygame-qa-engineer-offerwall-4478409485",
-      "title": "QA Engineer — GreedyGame",
-      "content_text": "Company: GreedyGame · Location: Bengaluru, Karnataka, India\n• Test user flows across mobile, web, and backend systems\n• Use Postman/Swagger for API testing and validate responses\n• Collaborate with developers and product teams on issues",
-      "date_published": "2026-10-14T05:29:42.172Z",
-      "authors": [
-        {
-          "name": "GreedyGame"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mphasis-test-engineer-4478184878",
-      "url": "https://interndoor.com/jobs/mphasis-test-engineer-4478184878",
-      "title": "Test Engineer — Mphasis",
-      "content_text": "Company: Mphasis · Location: Navi Mumbai, Maharashtra, India\n• Execute test cases for retail banking applications\n• Use selenium and jira for test execution\n• Work with cross-functional teams on product development",
-      "date_published": "2026-10-14T02:31:25.878Z",
-      "authors": [
-        {
-          "name": "Mphasis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/jabil-axi-test-engineer-4476276275",
-      "url": "https://interndoor.com/jobs/jabil-axi-test-engineer-4476276275",
-      "title": "Test Engineer — Jabil",
-      "content_text": "Company: Jabil · Location: Pune District, Maharashtra, India\n• Design and maintain test procedures for electronic circuit boards\n• Use AXI inspection tools and understand HIP defect detection\n• Work with quality standards and product test specifications",
-      "date_published": "2026-10-14T02:30:52.035Z",
-      "authors": [
-        {
-          "name": "Jabil"
         }
       ]
     }

@@ -1,6 +1,41 @@
 {
  "jobs": [
   {
+   "id": "4476692230",
+   "company": "Mastercard",
+   "title": "Software Engineer",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1791996742389,
+   "firstSeenAt": 1791998242402,
+   "logo": "/logos/mastercard.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4476687543",
+   "company": "Mastercard",
+   "title": "DevSecOps Software Engineer",
+   "slugTitle": "Software Engineer (DevSecOps)",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1791996708489,
+   "firstSeenAt": 1791998268494,
+   "logo": "/logos/mastercard.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4469471138",
+   "company": "Cognizant",
+   "title": "Java Developer",
+   "slugTitle": "Java Developer(AWS)",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1791995546574,
+   "firstSeenAt": 1791998246577,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479548792",
    "company": "Bank of America",
    "title": "Software Engineer Apprentice",
@@ -416,40 +451,6 @@
    "postedAt": 1791966493220,
    "firstSeenAt": 1791970093226,
    "logo": "/logos/zycus.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4478414701",
-   "company": "Blue Silicon Infotech",
-   "title": "Functional Test Engineer",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791966049174,
-   "firstSeenAt": 1791969649180,
-   "logo": "/logos/blue-silicon-infotech.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4478412659",
-   "company": "Tata Consultancy Services",
-   "title": "Datacenter Network Engineer",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791963017541,
-   "firstSeenAt": 1791970217544,
-   "logo": "/logos/tata-consultancy-services.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4478407717",
-   "company": "JUSPAY",
-   "title": "React Native Software Engineer",
-   "slugTitle": "Software Development Engineer – Frontend (React Native)",
-   "location": "Mumbai, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791962922449,
-   "firstSeenAt": 1791970122453,
-   "logo": "/logos/juspay.jpg",
    "bulletCount": 3
   }
  ]
