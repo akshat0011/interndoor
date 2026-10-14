@@ -234,7 +234,7 @@ console.log('\n== a 429 is waited out, minutes at a time, and the same page aske
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 100_000 });
   check('a wait the run cannot afford is not started', [r.blocked, r.retries, slept.splice(0)], [true, 0, []]);
   s = seq([[429, '']]);
-  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 250_000 });
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 200_000 });
   // 2 min fits; 2 + 2 does not.
   check('and the budget counts every wait so far', [r.retries, slept.splice(0)], [1, [120_000]]);
 
