@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
+      "title": "AI engineer Advisor — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Build AI applications using LLMs, RAG, and agentic workflows\n• Develop APIs, microservices, and secure integrations for enterprise systems\n• Implement AI guardrails, security, and observability frameworks",
+      "date_published": "2026-10-14T13:23:23.971Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-z3-python-developer-4479527838",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-z3-python-developer-4479527838",
+      "title": "Python Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Write clean Python code for backend and serverless apps\n• Build scalable systems on AWS with Lambda, DynamoDB, and S3\n• Maintain CI/CD pipelines with Jenkins or CodePipeline\n• Work on secure, high-availability cloud architectures",
+      "date_published": "2026-10-14T13:23:18.638Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4479532629",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4479532629",
+      "title": "QA Engineer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Validate data pipelines and platform integrations in databricks\n• Automate testing and track defects across analytics solutions\n• Work on end-to-end testing with sql and pySpark validation",
+      "date_published": "2026-10-14T13:23:13.608Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-react-java-developer-4479544006",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-react-java-developer-4479544006",
+      "title": "React Java Developer — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Chennai, Tamil Nadu, India\n• Build responsive UIs with React, JavaScript, and CSS for enterprise apps\n• Develop Java REST APIs with Spring Boot for secure, scalable systems\n• Collaborate with UX and backend teams on agile projects in Chennai",
+      "date_published": "2026-10-14T13:23:08.998Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-north-america-programming-language-knowledge-java-4479542018",
+      "url": "https://interndoor.com/jobs/ntt-data-north-america-programming-language-knowledge-java-4479542018",
+      "title": "Programming language knowledge - Java — NTT DATA North America",
+      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Design and operate secure migration platform from OBSv2 to AWS S3\n• Use Step Functions, Lambda, Fargate, and rclone for orchestration\n• Build observability with CloudWatch and governance for bandwidth control",
+      "date_published": "2026-10-14T13:22:51.217Z",
+      "authors": [
+        {
+          "name": "NTT DATA North America"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950",
       "url": "https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950",
       "title": "Java Developer — Birlasoft",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "S&P Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/s-and-p-global-software-engineer-enterprise-data-management-4478155672",
-      "url": "https://interndoor.com/jobs/s-and-p-global-software-engineer-enterprise-data-management-4478155672",
-      "title": "Data Engineer — S&P Global",
-      "content_text": "Company: S&P Global · Location: Noida, Uttar Pradesh, India\n• Support data workflows for mastering, ingestion, validation, and distribution\n• Work with NeoXam, Databricks, and cloud platforms like AWS\n• Collaborate with global teams on financial data management",
-      "date_published": "2026-10-13T21:35:38.136Z",
-      "authors": [
-        {
-          "name": "S&P Global"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/sandisk-functional-analyst-genesys-and-osc-4479093665",
-      "url": "https://interndoor.com/jobs/sandisk-functional-analyst-genesys-and-osc-4479093665",
-      "title": "Functional Analyst — Sandisk",
-      "content_text": "Company: Sandisk · Location: Bengaluru, Karnataka, India\n• Analyze business needs and configure contact center systems\n• Test and optimize Genesys and Oracle Service Cloud platforms\n• Collaborate with developers and analysts to improve customer service",
-      "date_published": "2026-10-13T21:08:00.164Z",
-      "authors": [
-        {
-          "name": "Sandisk"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-techops-engineer-4479079674",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-techops-engineer-4479079674",
-      "title": "TechOps Engineer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bengaluru, Karnataka, India\n• Design and maintain AWS infrastructure for secure, scalable cloud environments\n• Automate operational tasks and support incident response for customer systems\n• Implement security controls and FinOps practices to optimize cloud costs",
-      "date_published": "2026-10-13T19:56:39.717Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ey-devops-engineer-4478134822",
-      "url": "https://interndoor.com/jobs/ey-devops-engineer-4478134822",
-      "title": "DevOps Engineer — EY",
-      "content_text": "Company: EY · Location: Kochi, Kerala, India\n• Support infrastructure, deployment pipelines, and operational processes for enterprise applications\n• Implement CI/CD pipelines, monitoring, and automation for scalable cloud environments\n• Collaborate with cross-functional teams on security, compliance, and system optimization",
-      "date_published": "2026-10-13T19:32:30.591Z",
-      "authors": [
-        {
-          "name": "EY"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ey-devops-engineer-4478141672",
-      "url": "https://interndoor.com/jobs/ey-devops-engineer-4478141672",
-      "title": "DevOps Engineer — EY",
-      "content_text": "Company: EY · Location: Trivandrum, Kerala, India\n• Support infrastructure, deployment pipelines, and operational processes for enterprise applications\n• Use CI/CD, monitoring tools, and automation to improve reliability and efficiency\n• Collaborate with cross-functional teams on cloud, security, and compliance requirements",
-      "date_published": "2026-10-13T19:32:09.433Z",
-      "authors": [
-        {
-          "name": "EY"
         }
       ]
     }
