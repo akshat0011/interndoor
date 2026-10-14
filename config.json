@@ -1043,7 +1043,8 @@
     }
   ],
   "recovery": {
-    "enabled": true,
+    "enabled": false,
+    "_off_note": "OFF, his call 15 Oct 2026: \"no more recovery runs, it just puts our ip at more risk for no real benefit\". Measured on its two nights: internships 2 new from ~100 public-search pages with 8 rate-limit waits; a manual full-time run 10 new in 31 min (9 posted 3-13h earlier). He judged the extra public-search load on the home IP not worth it. true turns the 04:00 run back on.",
     "hour": 4,
     "timeZone": "Asia/Kolkata",
     "windowHours": 24,

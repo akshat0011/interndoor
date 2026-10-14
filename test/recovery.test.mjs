@@ -36,7 +36,9 @@ console.log('\n== the slot ==');
   check('window defaults to 24h', recoveryConfig({ recovery: { enabled: true, hour: 4 } }).windowHours, 24);
   check('the key', RECOVERY_KEY, 'recovery_day');
   const live = JSON.parse(read('config.json')).recovery;
-  check('live config: on, 04:00 IST, 24h window', [live.enabled, live.hour, live.timeZone, live.windowHours], [true, 4, 'Asia/Kolkata', 24]);
+  // OFF since 15 Oct 2026 (his call); a pause must carry its reason, like a paused search.
+  check('live config: off, with a written reason', [live.enabled, String(live._off_note ?? '').length > 80], [false, true]);
+  check('live config: 04:00 IST, 24h window if turned back on', [live.hour, live.timeZone, live.windowHours], [4, 'Asia/Kolkata', 24]);
   check('live config says why', String(live._note ?? '').length > 80, true);
 }
 
