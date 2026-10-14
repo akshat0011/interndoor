@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791994912013,
+ "generatedAt": 1791995207910,
  "region": "IN",
  "regionName": "India",
- "count": 1337,
- "techCount": 1337,
+ "count": 1338,
+ "techCount": 1338,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -762,6 +762,222 @@
    ],
    "category": "software",
    "family": "generic",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4469446423",
+   "title": "SDET",
+   "company": "CoinDCX",
+   "matchedWatchlist": "CoinDCX",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/coindcx.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 100 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "java",
+    "aws",
+    "jenkins",
+    "git",
+    "agile"
+   ],
+   "summary": "This role involves developing and maintaining automated test scripts for mobile and API features using tools like Appium and Rest Assured. Ideal for someone with experience in test automation frameworks and a passion for quality assurance in a fast-paced fintech environment.",
+   "bullets": [
+    "Write and debug automated tests for new features and maintain existing scripts",
+    "Use appium, rest assured, testng, maven, git, and jenkins for automation",
+    "Generate reports on mobile and api automation coverage and present to stakeholders"
+   ],
+   "roleLabel": "Software Testing",
+   "degreeLevel": null,
+   "degreeText": null,
+   "experience": "1–4 years",
+   "expLevel": "one",
+   "expSays": "1–4 years",
+   "keySkills": [
+    "appium",
+    "rest assured",
+    "testng",
+    "maven",
+    "git",
+    "jenkins"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "29 minutes ago",
+   "postedAt": 1791993285630,
+   "firstSeenAt": 1791995025639,
+   "lastSeenAt": 1791995025639,
+   "url": "https://www.linkedin.com/jobs/view/4469446423/",
+   "applyUrl": "https://careers.coindcx.com/opportunities/openings?src=linkedin&p=eyJwYWdlVHlwZSI6ImpkIiwiY3ZTb3VyY2UiOiJjYXJlZXJzIiwicmVxSWQiOjE3NzAsInJlcXVlc3RlciI6eyJpZCI6IiIsImNvZGUiOiIiLCJuYW1lIjoiIn0sInBhZ2UiOiJjYXJlZXJzIiwiYnVmaWx0ZXIiOi0xLCJjdXN0b21GaWVsZHMiOnt9fQ%3D%3D",
+   "description": null,
+   "roleFingerprint": "57c3aa62ed",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "qa",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4479559114",
+   "title": "Software Engineer",
+   "company": "NatWest Group",
+   "matchedWatchlist": "NatWest",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/natwest-group.jpg",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "65 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "agile"
+   ],
+   "summary": "This role involves developing secure, high-performance software for customer-centric solutions. You'll work with DevOps and Agile tools across the full development lifecycle, collaborating with engineers and architects on complex systems. Ideal for those with experience in multiple programming languages and a background in solving complex technical problems.",
+   "bullets": [
+    "Build secure, high-performance software for customer-centric solutions",
+    "Work with DevOps and Agile tools across full development lifecycle",
+    "Collaborate with engineers and architects on complex systems"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "devops",
+    "agile",
+    "multiple programming languages",
+    "bug tracking tools",
+    "testing tools"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "49 minutes ago",
+   "postedAt": 1791992090452,
+   "firstSeenAt": 1791995030455,
+   "lastSeenAt": 1791995030455,
+   "url": "https://www.linkedin.com/jobs/view/4479559114/",
+   "applyUrl": "https://jobs.natwestgroup.com/jobs/18356825-software-engineer?tm_job=R-00286610-OTHLOC-IND-5FGUR021&tm_event=view&tm_company=861&bid=56",
+   "description": null,
+   "roleFingerprint": "8ef7eb2d09",
+   "cardFacts": [
+    "Gurugram",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4479547584",
+   "title": "Software Engineer",
+   "company": "NatWest Group",
+   "matchedWatchlist": "NatWest",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/natwest-group.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "99 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "agile"
+   ],
+   "summary": "This role involves building and maintaining secure, high-performance software solutions for customer needs. You'll work in permanent teams across the full software life cycle, using DevOps, Agile, and multiple programming languages. Ideal for someone with experience in complex software development and a background in solving analytical and numerical problems.",
+   "bullets": [
+    "Engineer secure, high-performance software for customer-centric solutions",
+    "Work in permanent teams across full software life cycle",
+    "Use devops, agile, and multiple programming languages"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "devops",
+    "agile",
+    "multiple programming languages",
+    "bug tracking tools",
+    "wikis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "50 minutes ago",
+   "postedAt": 1791992082362,
+   "firstSeenAt": 1791995082365,
+   "lastSeenAt": 1791995082365,
+   "url": "https://www.linkedin.com/jobs/view/4479547584/",
+   "applyUrl": "https://jobs.natwestgroup.com/jobs/18356824-software-engineer?tm_job=R-00286610&tm_event=view&tm_company=861&bid=56",
+   "description": null,
+   "roleFingerprint": "8ef7eb2d09",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4479548564",
+   "title": "Software Engineer",
+   "company": "NatWest Group",
+   "matchedWatchlist": "NatWest",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/natwest-group.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "43 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "agile"
+   ],
+   "summary": "This role involves building and maintaining secure, high-performance software solutions for customer needs. You'll work in permanent teams across the full software life cycle, using DevOps, Agile, and multiple programming languages. It suits those with experience in complex software development and a background in solving analytical and numerical problems.",
+   "bullets": [
+    "Engineer secure, high-performance software for customer-centric solutions",
+    "Work in permanent teams across full software life cycle",
+    "Use devops, agile, and multiple programming languages"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "devops",
+    "agile",
+    "multiple programming languages",
+    "bug tracking tools",
+    "wikis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "50 minutes ago",
+   "postedAt": 1791992059572,
+   "firstSeenAt": 1791995059577,
+   "lastSeenAt": 1791995059577,
+   "url": "https://www.linkedin.com/jobs/view/4479548564/",
+   "applyUrl": "https://jobs.natwestgroup.com/jobs/18356826-software-engineer?tm_job=R-00286610-OTHLOC-IND-5FCHE051&tm_event=view&tm_company=861&bid=56",
+   "description": null,
+   "roleFingerprint": "8ef7eb2d09",
+   "cardFacts": [
+    "Chennai",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
    "region": "IN",
    "verified": true
   },
@@ -23606,58 +23822,6 @@
    "verified": true
   },
   {
-   "id": "4476763883",
-   "title": "Software Engineer",
-   "company": "NatWest Group",
-   "matchedWatchlist": "NatWest",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/natwest-group.jpg",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "agile"
-   ],
-   "summary": "This role involves designing and maintaining secure, high-performance software solutions for customer-centric platforms. You'll work with devops, agile, and multiple programming languages, collaborating on full lifecycle software development across teams. Ideal for experienced software engineers seeking to advance their careers in a dynamic environment.",
-   "bullets": [
-    "Engineer secure, high-performance solutions for customer-centric platforms",
-    "Work with devops, agile, and multiple programming languages",
-    "Collaborate on full lifecycle software development across teams"
-   ],
-   "roleLabel": "Software engineering",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "devops",
-    "agile",
-    "multiple programming languages",
-    "software design",
-    "testing tools"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "6 minutes ago",
-   "postedAt": 1791386567957,
-   "firstSeenAt": 1791386927962,
-   "lastSeenAt": 1791395778288,
-   "url": "https://www.linkedin.com/jobs/view/4476763883/",
-   "applyUrl": "https://jobs.natwestgroup.com/jobs/18314891-software-engineer?tm_job=R-00286239&tm_event=view&tm_company=861&bid=56",
-   "description": null,
-   "roleFingerprint": "8ef7eb2d09",
-   "cardFacts": [
-    "Gurugram",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "swe",
-   "region": "IN",
-   "verified": false
-  },
-  {
    "id": "4467994309",
    "title": "Full Stack Developer",
    "company": "Jefferies",
@@ -43093,112 +43257,6 @@
    "family": "security",
    "region": "IN",
    "verified": true
-  },
-  {
-   "id": "4474340098",
-   "title": "Software Engineer",
-   "company": "NatWest Group",
-   "matchedWatchlist": "NatWest",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/natwest-group.jpg",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "sql",
-    "azure",
-    "agile"
-   ],
-   "summary": "This role involves developing and maintaining software solutions for customer-focused systems. You'll work with Microsoft Dynamics 365 and Azure tools, collaborating in permanent teams across the software lifecycle. Ideal for experienced engineers with a background in complex problem-solving and system integrations.",
-   "bullets": [
-    "Engineering software and tools for customer-centric solutions",
-    "Working with Microsoft Dynamics 365 and Azure integration services",
-    "Collaborating in permanent teams across the software lifecycle"
-   ],
-   "roleLabel": "Software engineering",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "microsoft dynamics 365",
-    "azure integration services",
-    "devops",
-    "agile methodology"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "10 minutes ago",
-   "postedAt": 1790868127164,
-   "firstSeenAt": 1790868727169,
-   "lastSeenAt": 1790875197279,
-   "url": "https://www.linkedin.com/jobs/view/4474340098/",
-   "applyUrl": "https://jobs.natwestgroup.com/jobs/18036748-software-engineer?tm_job=R-00282539&tm_event=view&tm_company=861&bid=56",
-   "description": null,
-   "roleFingerprint": "77731ab1f8",
-   "cardFacts": [
-    "Bengaluru",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "swe",
-   "region": "IN",
-   "verified": false
-  },
-  {
-   "id": "4474330411",
-   "title": "Software Engineer",
-   "company": "NatWest Group",
-   "matchedWatchlist": "NatWest",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "fulltime",
-   "logo": "/logos/natwest-group.jpg",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "sql",
-    "azure",
-    "agile"
-   ],
-   "summary": "This role involves developing and maintaining software solutions for customer-focused systems. You'll work with Microsoft Dynamics 365 and Azure tools, collaborating in permanent teams across the software lifecycle. Ideal for those with experience in complex system integrations and DevOps practices.",
-   "bullets": [
-    "Engineering software and tools for customer-centric solutions",
-    "Working with Microsoft Dynamics 365 and Azure integration tools",
-    "Collaborating in permanent teams across the software lifecycle"
-   ],
-   "roleLabel": "Software engineering",
-   "degreeLevel": null,
-   "degreeText": null,
-   "keySkills": [
-    "microsoft dynamics 365",
-    "azure integration services",
-    "devops",
-    "agile methodology"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "8 minutes ago",
-   "postedAt": 1790868125016,
-   "firstSeenAt": 1790868605018,
-   "lastSeenAt": 1790875070815,
-   "url": "https://www.linkedin.com/jobs/view/4474330411/",
-   "applyUrl": "https://jobs.natwestgroup.com/jobs/18036750-software-engineer?tm_job=R-00282539-OTHLOC-IND-5FCHE051&tm_event=view&tm_company=861&bid=56",
-   "description": null,
-   "roleFingerprint": "77731ab1f8",
-   "cardFacts": [
-    "Chennai",
-    "On-site"
-   ],
-   "category": "software",
-   "family": "swe",
-   "region": "IN",
-   "verified": false
   },
   {
    "id": "4455922074",
