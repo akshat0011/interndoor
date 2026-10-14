@@ -11,7 +11,7 @@ import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log, startRunLog, istTime } from './logger.js';
 import { Store, REFUSED_AFTER_OPEN } from './store.js';
 import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } from './browser.js';
-import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
+import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State, isHardLimit, sleepUnlessStopped, RATE_LIMIT_RETRY_MS } from './guard.js';
 import * as li from './linkedin.js';
 import { resolveSearches, scopeSearches, scopeKind } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs, extractFacts, cleanTitles } from './ollama.js';
@@ -185,6 +185,22 @@ function loadEnv() {
  * capped per run, and it stops the moment the run is out of time, so it can
  * only ever use the slack left over after the actual scan.
  */
+/* The backfill is optional clean-up after the walk, so a rate limit there
+   ends the backfill (the rest wait for the next run) instead of the run, and
+   never sets the 24h cooldown. A restricted account still ends the run. */
+async function backfillHealthy(page, cfg, clock, row) {
+  try {
+    await ensureHealthy(page, cfg, { context: `backfill ${row.job_id}`, remainingMs: clock.remainingMs() });
+    return true;
+  } catch (err) {
+    if (err instanceof RunAborted && err.state === State.RATE_LIMITED && !isHardLimit(err.evidence)) {
+      log.warn('LinkedIn rate-limited the description backfill — the rest are left for the next run.');
+      return false;
+    }
+    throw err;
+  }
+}
+
 async function backfillDescriptions(page, store, cfg, clock, counters) {
   const limit = cfg.enrich?.backfillPerRun ?? 6;
   if (limit <= 0) return;
@@ -209,11 +225,11 @@ async function backfillDescriptions(page, store, cfg, clock, counters) {
     } catch (err) {
       counters.failedDetails++;
       log.warn(`Could not backfill "${row.title}" — ${err.message.split('\n')[0]}`);
-      await ensureHealthy(page, cfg, { context: `backfill ${row.job_id}`, remainingMs: clock.remainingMs() });
+      if (!(await backfillHealthy(page, cfg, clock, row))) break;
       continue;
     }
 
-    await ensureHealthy(page, cfg, { context: `backfill ${row.job_id}`, remainingMs: clock.remainingMs() });
+    if (!(await backfillHealthy(page, cfg, clock, row))) break;
 
     const description = detail.description || '';
     if (description.length <= 200) {
@@ -843,6 +859,23 @@ async function main() {
           await showScanView(p, renderScanDocument(`InternDoor scan — run ${runId}`, [renderWaitingSection(text), ...scanLog.slice(0, 1)], { live: true, stoppable: true, stopping: stopPressed }));
         })().catch(() => {});
       };
+      /* A rate limit on the SIGNED-IN account is waited out and asked again
+         every 2 minutes until it answers or he presses stop (his rule, 14 Oct
+         2026). Handed to ensureHealthy as `persist`. */
+      const rateWaitLine = (where, waitMs, attempt, why = 'rate limiting') => {
+        const at = istTime(new Date(Date.now() + waitMs)).slice(0, 5);
+        log.warn(`LinkedIn is ${why} the ${account} account at ${where} — asking again at ${at} (in ${Math.round(waitMs / 60_000)} min, attempt ${attempt}). The scan keeps going until LinkedIn answers or you press stop.`);
+        showWaiting(`${where}: LinkedIn is ${why} the ${account} account. Asking again at ${at} (attempt ${attempt}). The scan keeps going until it answers or you press stop.`);
+      };
+      const ratePersist = (retryUrl) => ({
+        retryUrl: retryUrl || undefined,
+        shouldStop: stopNow,
+        onLoad: () => noteAccountLoad(account),
+        onWait: ({ attempt, waitMs, context }) => {
+          sawBlocked = true;
+          rateWaitLine(context, waitMs, attempt);
+        },
+      });
 
       // A search may run less often than the loop ticks.
       //
@@ -1059,6 +1092,7 @@ async function main() {
         let unidentified = [];
         let spanned = 0;
         let pageUrl = '';
+        let browserPageUrl = '';
         if (viaGuest) {
           /* THE PUBLIC SEARCH — no page load on the account, and nothing on
              screen to fingerprint, scroll or guard: one request, parsed in
@@ -1147,14 +1181,26 @@ async function main() {
           if (overAccountBudget(account)) break;
           log.info(`Page ${pageIndex + 1} — ${url}`);
 
-          const nav = {};
-          const navigated = await li.gotoSearch(page, url, cfg, nav);
-          noteAccountLoad(account);
-          // Remembered across the whole run so the exit code can tell the
-          // scheduler whether retrying in two minutes is safe.
-          if (nav.networkError) sawNetworkFailure = true;
-          if (nav.blocked) sawBlocked = true;
-          await ensureHealthy(page, cfg, { context: `search "${label}" page ${pageIndex + 1}`, remainingMs: clock.remainingMs() });
+          browserPageUrl = url;
+          let nav = {};
+          let navigated = false;
+          /* An HTTP 429/999 or an unreachable network on the search page is
+             asked again every 2 minutes, never a reason to end the walk. */
+          for (let attempt = 1; ; attempt++) {
+            nav = {};
+            navigated = await li.gotoSearch(page, url, cfg, nav);
+            noteAccountLoad(account);
+            // Remembered across the whole run so the exit code can tell the
+            // scheduler whether retrying in two minutes is safe.
+            if (nav.networkError) sawNetworkFailure = true;
+            if (nav.blocked) sawBlocked = true;
+            if (!nav.blocked && !nav.networkError) break;
+            rateWaitLine(`"${label}" page ${pageIndex + 1}`, RATE_LIMIT_RETRY_MS, attempt, nav.blocked ? 'rate limiting' : 'unreachable for');
+            if (await sleepUnlessStopped(RATE_LIMIT_RETRY_MS, stopNow)) {
+              throw new RunAborted(State.STOPPED, `Stopped by you while waiting on "${label}" page ${pageIndex + 1}`);
+            }
+          }
+          await ensureHealthy(page, cfg, { context: `search "${label}" page ${pageIndex + 1}`, remainingMs: clock.remainingMs(), persist: ratePersist(url) });
           /* NO FEED VISIT FOR THE SIGNED-IN WALK EITHER (13 Oct 2026, his call):
              the first search page, checked by ensureHealthy above, is the
              sign-in check. Saves one page load on the account per walk. */
@@ -1724,7 +1770,7 @@ async function main() {
             if (got.error) {
               counters.failedDetails++;
               log.warn(`Could not read "${card.title}" — ${got.error.message.split('\n')[0]}`);
-              await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs() });
+              await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs(), persist: ratePersist(card.jobId ? li.jobUrl(card.jobId) : browserPageUrl) });
               continue;
             }
             detail = got.detail;
@@ -1754,7 +1800,7 @@ async function main() {
             if (!detail.unopenable) {
               log.warn(`Opened "${card.title}" at ${card.company} but no job id appeared — skipping it this run.`);
             }
-            await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs() });
+            await ensureHealthy(page, cfg, { context: `card ${card.key}`, remainingMs: clock.remainingMs(), persist: ratePersist(card.jobId ? li.jobUrl(card.jobId) : browserPageUrl) });
             continue;
           }
 
@@ -1865,7 +1911,7 @@ async function main() {
             }
           }
 
-          if (openedOnAccount) await ensureHealthy(page, cfg, { context: `job ${jobId}`, remainingMs: clock.remainingMs() });
+          if (openedOnAccount) await ensureHealthy(page, cfg, { context: `job ${jobId}`, remainingMs: clock.remainingMs(), persist: ratePersist(li.jobUrl(jobId)) });
           counters.detailsExtracted++;
           openedOnThisPage++;
 
@@ -2188,7 +2234,7 @@ async function main() {
     }
   } catch (err) {
     if (err instanceof RunAborted) {
-      status = counters.newJobs > 0 ? 'partial' : 'aborted';
+      status = counters.newJobs > 0 || err.state === State.STOPPED ? 'partial' : 'aborted';
       fatalError = err.message;
       abortState = err.state;
 
@@ -2203,6 +2249,7 @@ async function main() {
       notes.push(
         err.state === State.CHALLENGE ? 'A LinkedIn security check went unsolved, so the scan stopped early. Whatever was found before that is below.'
         : err.state === State.LOGGED_OUT ? 'The LinkedIn session expired mid-run. Run `npm run login` to sign in again.'
+        : err.state === State.STOPPED ? 'Stopped by you while LinkedIn was rate limiting us. Everything found before the stop was kept and published; the next run re-covers the rest of the window.'
         : err.state === State.BROWSER_GONE ? 'The browser closed part way through, so the scan stopped there. Nothing to do with LinkedIn — usually the window was closed by hand, or a second run started and took the profile. Whatever was collected first was kept.'
         : 'LinkedIn started rate limiting, so the scan stopped early to protect the account.',
       );

@@ -156,7 +156,7 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
   /* The public search slept 13-14 Oct 2026 and is BACK since 14 Oct (his
      call: "switch back to public page search"); the config says why. */
   const rawCfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
-  check('live config: discovery is the public search again', cfg.searchSource, 'guest');
+  check('live config: discovery is the signed-in browser search again (14 Oct 2026, his call)', cfg.searchSource, 'browser');
   check('and the config says why', String(rawCfg._searchSource_sleep_note ?? '').length > 80, true);
   check('both India searches walk on the classic account; the AI-search account rests',
     JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN').map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
@@ -640,7 +640,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('an account that fails that open keeps the public read', /kept from the public page without the employer's link/.test(src), true);
   check('the apply-link tripwire counts only real account opens', /if \(openedOnAccount && !detail\.easyApply\) \{/.test(src), true);
   check('a signed-in search page is checked against the ceiling before it loads, and counted after',
-    /if \(overAccountBudget\(account\)\) break;\s*log\.info\(`Page[\s\S]{0,160}?await li\.gotoSearch\(page, url, cfg, nav\);\s*noteAccountLoad\(account\);/.test(src), true);
+    /if \(overAccountBudget\(account\)\) break;\s*log\.info\(`Page[\s\S]{0,900}?await li\.gotoSearch\(page, url, cfg, nav\);\s*noteAccountLoad\(account\);/.test(src), true);
   check('so is every posting opened on the account',
     /if \(overAccountBudget\(account\)\) return \{ budget: true \};\s*counters\.accountOpens\+\+;\s*noteAccountLoad\(account\);/.test(src), true);
   check('and both open sites stop the walk at the ceiling', (src.match(/if \(got\.budget\) \{\s*accountStop = true;\s*break;/g) ?? []).length, 2);

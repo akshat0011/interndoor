@@ -20,7 +20,31 @@ export const State = {
   // the account at all. Reporting a crashed Brave as a block sent a run's
   // postmortem looking for a ban that never happened.
   BROWSER_GONE: 'browser_gone',
+  // He pressed "Save what was found so far and stop" while a rate limit was
+  // being waited out (src/scanstop.js). Not a fault and not LinkedIn's doing.
+  STOPPED: 'stopped',
 };
+
+/* A RATE LIMIT ON THE SIGNED-IN WALK IS WAITED OUT, NEVER A REASON TO STOP
+   (his rule, 14 Oct 2026: "if rate limit hits keep retrying but never stop the
+   scrape"; waits never over 2 minutes). The page is asked for again every
+   RATE_LIMIT_RETRY_MS until it answers or he presses stop. A RESTRICTED account
+   or LinkedIn's commercial-use limit is different: no amount of waiting lifts
+   either inside a run, so those still end it. */
+export const RATE_LIMIT_RETRY_MS = 120_000;
+const HARD_LIMIT = /restricted|monthly|weekly|commercial/i;
+export const isHardLimit = (evidence) => HARD_LIMIT.test(String(evidence ?? ''));
+
+/** Sleep in 3-second slices; true when a stop was pressed meanwhile. */
+export async function sleepUnlessStopped(ms, shouldStop = () => false, slice = 3_000) {
+  const until = Date.now() + ms;
+  for (;;) {
+    if (shouldStop()) return true;
+    const left = until - Date.now();
+    if (left <= 0) return false;
+    await sleep(Math.min(slice, left));
+  }
+}
 
 export class RunAborted extends Error {
   constructor(state, message) {
@@ -229,10 +253,41 @@ async function waitForHuman(page, evidence, { waitMinutes = 12, notifications })
  * Check the page and handle whatever we find.
  * Returns normally when it is safe to carry on; throws RunAborted otherwise.
  */
-export async function ensureHealthy(page, cfg, { context = 'page', remainingMs = null } = {}) {
+export async function ensureHealthy(page, cfg, { context = 'page', remainingMs = null, persist = null } = {}) {
   const { state, evidence } = await classify(page);
 
   if (state === State.OK) return;
+
+  /* `persist` = { shouldStop, onWait, onLoad, retryUrl, waitMs }: wait out a
+     rate limit and load the page again, for as long as it takes. */
+  if (state === State.RATE_LIMITED && persist && !isHardLimit(evidence)) {
+    await shoot(page, 'rate-limited');
+    const waitMs = persist.waitMs ?? RATE_LIMIT_RETRY_MS;
+    for (let attempt = 1; ; attempt++) {
+      persist.onWait?.({ attempt, waitMs, evidence, context });
+      if (await sleepUnlessStopped(waitMs, persist.shouldStop)) {
+        throw new RunAborted(State.STOPPED, `Stopped by you while LinkedIn was rate limiting us at ${context}`);
+      }
+      // The URL may now BE the error page (/error/429), so go back to the one
+      // we asked for when the caller knows it.
+      let target = persist.retryUrl;
+      try { target ||= page.url(); } catch { /* gone: classify says so */ }
+      try {
+        if (target) await page.goto(target, { waitUntil: 'domcontentloaded' });
+      } catch (err) {
+        log.warn(`Asking again at ${context} did not load: ${String(err?.message ?? err).split('\n')[0]}`);
+      }
+      persist.onLoad?.();
+      const again = await classify(page);
+      if (again.state === State.OK) {
+        log.ok(`LinkedIn answered again at ${context} after ${attempt} wait(s) — carrying on.`);
+        return;
+      }
+      if (again.state !== State.RATE_LIMITED || isHardLimit(again.evidence)) {
+        return ensureHealthy(page, cfg, { context, remainingMs, persist });
+      }
+    }
+  }
 
   if (state === State.CHALLENGE) {
     // Escape hatch for false positives. The detector reads page *text* as well
@@ -302,7 +357,9 @@ export async function ensureHealthy(page, cfg, { context = 'page', remainingMs =
         { sound: 'Basso' },
       );
     }
-    throw new RunAborted(State.RATE_LIMITED, `Rate limited at ${context}`);
+    const err = new RunAborted(State.RATE_LIMITED, `Rate limited at ${context}`);
+    err.evidence = evidence;
+    throw err;
   }
 
   log.warn(`Unhealthy page state "${state}" at ${context} (${evidence})`);
