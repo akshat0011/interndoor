@@ -652,7 +652,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('a signed-in walk opens no feed; its first search page is the sign-in check',
     /await openRegionSession\(account, \{ warm: false \}\);/.test(src) && /if \(navigated && !accountVerified\) accountVerified = true;/.test(src), true);
   check('a signed-in search whose account was last seen on the AI search uses the public search',
-    /const sourceFor = \(search = \{\}\) => \{\s*const configured = searchSourceFor\(search, cfg\);\s*if \(configured !== 'browser'\) return configured;[\s\S]{0,200}?VARIANT_KEY\(search\.account \?\? search\.region \?\? 'IN'\)[\s\S]{0,80}?return seen === 'ai' \? 'guest' : configured;/.test(src), true);
+    /const sourceFor = \(search = \{\}\) => \{\s*if \(OVERRIDES\.searchSource\) return OVERRIDES\.searchSource;\s*const configured = searchSourceFor\(search, cfg\);\s*if \(configured !== 'browser'\) return configured;[\s\S]{0,200}?VARIANT_KEY\(search\.account \?\? search\.region \?\? 'IN'\)[\s\S]{0,80}?return seen === 'ai' \? 'guest' : configured;/.test(src), true);
   check('and that decides the walk and its early stop alike',
     /const viaGuest = sourceFor\(search\) === 'guest';/.test(src) && /sourceFor\(search\) !== 'guest'\) \? baseline - COVERED_MARGIN_MS/.test(src), true);
   check('a search names its account, else its region\'s', /const account = search\.account \?\? region;/.test(src), true);

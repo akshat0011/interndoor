@@ -112,15 +112,41 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [ATS EXIT $ATS_STATUS]" >> "$LOG"
 # US search. A US/UK/CA search back on needs it back.
 # One press of the scan view's stop button stops BOTH phases of this tick
 # (src/scanstop.js): each phase honours a stop made at or after this moment.
+# THE NIGHTLY RECOVERY SLOT (14 Oct 2026, his call; src/recovery.js). Once a
+# night, in the quietest hour (config.json recovery.hour, 04:00 IST), both
+# phases read LinkedIn's PUBLIC search over a 24h window instead of the hourly
+# signed-in walk, to recover anything it missed ("recover"). For the rest of
+# that hour no LinkedIn walk runs at all ("hold"), so the last signed-in walk
+# is in the hour before and the next one in the hour after. Any other answer,
+# or none, is a normal tick: only an exact "recover" or "hold" changes it.
+SLOT_LINE="$("$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/recovery-slot.js" 2>> "$LOG" | tail -n 1)"
+read -r SCAN_SLOT RECOVERY_HOURS <<< "$SLOT_LINE"
+case "$RECOVERY_HOURS" in ''|*[!0-9]*) RECOVERY_HOURS=24 ;; esac
+PHASE_ARGS=()
+if [ "$SCAN_SLOT" = "recover" ]; then
+  PHASE_ARGS=(--recovery --source=guest "--window-hours=$RECOVERY_HOURS")
+  echo "$(date '+%Y-%m-%d %H:%M:%S') [RECOVERY] nightly public-search recovery, ${RECOVERY_HOURS}h window, both phases" >> "$LOG"
+fi
+
+STATUS=0
+if [ "$SCAN_SLOT" = "hold" ]; then
+  echo "$(date '+%Y-%m-%d %H:%M:%S') [HOLD] tonight's recovery already ran this hour — no LinkedIn walk until the hour ends" >> "$LOG"
+else
 export INTERNDOOR_TICK_AT="$(($(date +%s) * 1000))"
-"$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home --kind=intern >> "$LOG" 2>&1
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home --kind=intern ${PHASE_ARGS[@]+"${PHASE_ARGS[@]}"} >> "$LOG" 2>&1
 STATUS=$?
 echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT intern $STATUS]" >> "$LOG"
 if [ "$STATUS" -ne 75 ]; then
-  "$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home --kind=fulltime >> "$LOG" 2>&1
+  "$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home --kind=fulltime ${PHASE_ARGS[@]+"${PHASE_ARGS[@]}"} >> "$LOG" 2>&1
   FT_STATUS=$?
   echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT fulltime $FT_STATUS]" >> "$LOG"
   if [ "$STATUS" -eq 0 ] && [ "$FT_STATUS" -ne 75 ]; then STATUS=$FT_STATUS; fi
+fi
+# A recovery that reached LinkedIn counts as tonight's; one stopped by a dead
+# network (75) is tried again on the next tick of the same hour.
+if [ "$SCAN_SLOT" = "recover" ] && [ "$STATUS" -ne 75 ]; then
+  "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/recovery-slot.js" --done >> "$LOG" 2>&1 || true
+fi
 fi
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"

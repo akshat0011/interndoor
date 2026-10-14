@@ -73,6 +73,10 @@ const KIND_SCOPE = [...ARGS].map((a) => a.match(/^--kind=(.+)$/)?.[1]).find(Bool
  *   --start-page=15    begin pagination at page 15 (start=350), to resume a
  *                      backfill that stopped partway rather than re-walking
  *                      the pages already covered
+ *   --source=guest     walk every search on LinkedIn's public search (or
+ *                      =browser, the signed-in one) whatever config.json says
+ *   --recovery         the nightly recovery walk (bin/run.sh, src/recovery.js):
+ *                      moves no baseline, so the hourly walks keep their own
  */
 function numArg(name) {
   for (const a of ARGS) {
@@ -98,7 +102,15 @@ const OVERRIDES = {
   maxPages: numArg('max-pages'),
   maxDetails: numArg('max-details'),
   maxMinutes: numArg('max-minutes'),
+  searchSource: ['guest', 'browser'].includes(strArg('source')) ? strArg('source') : null,
 };
+
+/* THE NIGHTLY RECOVERY WALK (his call, 14 Oct 2026; src/recovery.js). It reads
+   a 24h window on the public search to recover what the hourly signed-in walks
+   missed, and it must not move their baselines: the public search is unsorted
+   and stops at 1,000 results, so a completed recovery walk is no claim that
+   every hour of the window was read. */
+const RECOVERY = ARGS.has('--recovery');
 
 function makeRunId() {
   return new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
@@ -536,6 +548,7 @@ async function main() {
      back to "classic" by hand — the public search reads no signed-in search
      page, so it cannot notice the account returning by itself. */
   const sourceFor = (search = {}) => {
+    if (OVERRIDES.searchSource) return OVERRIDES.searchSource;
     const configured = searchSourceFor(search, cfg);
     if (configured !== 'browser') return configured;
     let seen = null;
@@ -843,7 +856,7 @@ async function main() {
       const { filters, coveredHorizon, baseline, ownBaseline } = planSweep(region, search);
       // Which collector finds this search's cards — see guestsearch.js.
       const viaGuest = sourceFor(search) === 'guest';
-      if (viaGuest && searchSourceFor(search, cfg) === 'browser') {
+      if (viaGuest && !OVERRIDES.searchSource && searchSourceFor(search, cfg) === 'browser') {
         log.warn(`${account}: this account was last seen on LinkedIn's AI job search, so "${search.label ?? search.keywords}" uses the public search this run. Back on classic? Set search_variant:${account} to "classic".`);
       }
       // Draw each public-search page, and what became of every card on it, in
@@ -2173,7 +2186,9 @@ async function main() {
          account beside a quiet one would read as "every account signed out". */
       if (viaGuest && reachedEnd && rendered && !signedOutMidWalk) anyRegionWorked = true;
 
-      if (!DRY_RUN && reachedEnd && rendered && sweepMark) {
+      if (RECOVERY && reachedEnd && rendered) {
+        log.ok(`${region} recovery read — ${cardsHere} cards across ${pagesHere} page(s); the hourly walk's baseline is left as it was.`);
+      } else if (!DRY_RUN && reachedEnd && rendered && sweepMark) {
         store.markRegionSweep(search.sweepKey ?? region, sweepMark);
         log.ok(`${region} swept — ${cardsHere} cards across ${pagesHere} page(s).`);
       } else if (!DRY_RUN && reachedEnd && rendered && cappedOnOwnLimit) {
@@ -2491,7 +2506,10 @@ async function main() {
      on first reads; a re-read of a capped window is mostly the filler past the
      limit, and on 26 Sep one US re-read of 4,730 cards fired "INTAKE HAS
      COLLAPSED" while intake was fine. */
-  await noteIntake(store, { cards: counters.cardsSeen - counters.rereadCards, newJobs: counters.newJobs, status });
+  /* THE NIGHTLY RECOVERY IS LEFT OUT ENTIRELY: it re-reads a whole day that
+     the hourly walks already hold, so its yield is near zero by design and
+     would read as a collector that has stopped finding anything. */
+  if (!RECOVERY) await noteIntake(store, { cards: counters.cardsSeen - counters.rereadCards, newJobs: counters.newJobs, status });
 
   /* An expired session is the one failure that stops every board at once, and
      guard.js only banners the Mac for it. See src/sessionalert.js. */
