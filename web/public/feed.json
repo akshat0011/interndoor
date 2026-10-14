@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/newspace-research-intern-software-development-ats-keka-newspace-144497",
+      "url": "https://interndoor.com/jobs/newspace-research-intern-software-development-ats-keka-newspace-144497",
+      "title": "Software Development Intern — NewSpace Research",
+      "content_text": "Company: NewSpace Research · Location: Bangalore, KA, India",
+      "date_published": "2026-10-14T12:33:12.287Z",
+      "authors": [
+        {
+          "name": "NewSpace Research"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479298963",
       "url": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479298963",
       "title": "Intern Bachelors Hardware Eng — Honeywell Technologies",
@@ -390,6 +402,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/stryker-intern-ats-workday-stryker-wd1-strykercareers-r575744",
+      "url": "https://interndoor.com/jobs/stryker-intern-ats-workday-stryker-wd1-strykercareers-r575744",
+      "title": "Intern — Stryker",
+      "content_text": "Company: Stryker · Location: Gurugram, India\n• Support packaging design, testing, and documentation for medical devices\n• Use CAD tools and Excel for technical drawings and data analysis\n• Collaborate with cross-functional teams on packaging improvements",
+      "date_published": "2026-10-14T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "Stryker"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/emerson-software-engineer-trainee-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26009291",
       "url": "https://interndoor.com/jobs/emerson-software-engineer-trainee-ats-oraclecloud-hdjq-fa-us2-oraclecloud-com-26009291",
       "title": "Software Engineer Trainee — Emerson",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mphasis-mainframe-developer-mumbai-4479048209",
-      "url": "https://interndoor.com/jobs/mphasis-mainframe-developer-mumbai-4479048209",
-      "title": "Mainframe Developer — Mphasis",
-      "content_text": "Company: Mphasis · Location: Mumbai, Maharashtra, India\n• Design and maintain database solutions using Mainframe IMS\n• Implement best practices for data integrity and security\n• Collaborate with cross-functional teams on technical specs",
-      "date_published": "2026-10-13T15:39:28.749Z",
-      "authors": [
-        {
-          "name": "Mphasis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-data-engineer-4479044437",
-      "url": "https://interndoor.com/jobs/natwest-group-data-engineer-4479044437",
-      "title": "Data Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Build, maintain, test and optimise scalable data architecture\n• Extract, transform, and load data for analysts and scientists\n• Collaborate with tech and architecture teams on data solutions",
-      "date_published": "2026-10-13T15:35:09.928Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
         }
       ]
     }
