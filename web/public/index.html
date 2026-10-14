@@ -92,7 +92,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css?v=23">
+<link rel="stylesheet" href="/styles.css?v=24">
 
 <!-- Vercel Web Analytics. The dashboard hands you `import { Analytics } from
      "@vercel/analytics/next"`, which is the React build and cannot work here: there is
@@ -255,14 +255,19 @@ Roles across <strong>India</strong>,
            full-time roles — so they are labelled rather than filed as
            internships, and the reader switches. Server-rendered as real
            buttons; app.js binds them. -->
-      <!-- HIDDEN, AND THE BADGES ARE EMPTY, until the data lands. renderTotal()
+      <!-- INVISIBLE, AND THE BADGES ARE EMPTY, until the data lands. renderTotal()
            fills them and decides whether this control belongs on the board at
            all. Shipped visible with a hardcoded 0 they read "Internships 0 /
            Full-time 0" for the whole of the first paint, which on a slow
            connection is a board that looks empty rather than one that is
            loading — the worst possible first frame for a site whose promise is
-           that it is full of fresh roles. -->
-      <div class="seg" id="seg-kind" role="tablist" aria-label="Role type" aria-live="polite" hidden>
+           that it is full of fresh roles.
+           is-pending (visibility: hidden in styles.css), NOT the hidden
+           attribute: hidden took the row out of layout, so the search box and
+           filters jumped down when the data arrived. That one jump scored a
+           layout shift of 0.228 on a phone, over twice Google's 0.1 limit
+           (14 Oct 2026). Invisible keeps the space reserved. -->
+      <div class="seg is-pending" id="seg-kind" role="tablist" aria-label="Role type" aria-live="polite">
         <button class="seg-b" id="tab-intern" type="button" role="tab" aria-selected="true" data-kind="intern">Internships <b id="n-intern"></b></button>
         <button class="seg-b" id="tab-fulltime" type="button" role="tab" aria-selected="false" data-kind="fulltime">Full-time <b id="n-fulltime"></b></button>
       </div>
@@ -614,6 +619,6 @@ Roles across <strong>India</strong>,
 <script defer src="/track.js"></script>
 <script defer src="/subscribe.js"></script>
 <script defer src="/feedback.js"></script>
-<script src="/app.js?v=17" type="module"></script>
+<script src="/app.js?v=18" type="module"></script>
 </body>
 </html>

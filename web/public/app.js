@@ -948,7 +948,12 @@ function renderTotal() {
   // Hide the whole control when a region has no full-time roles at all — a tab
   // that only ever shows "nothing here" is worse than no tab.
   const seg = $('seg-kind');
-  if (seg) seg.hidden = !counts.fulltime;
+  if (seg) {
+    seg.hidden = !counts.fulltime;
+    // The template ships it invisible but laid out (is-pending), so showing it
+    // moves nothing below it. See index.html.
+    seg.classList.remove('is-pending');
+  }
   const legacy = $('n-total');
   if (legacy) legacy.textContent = state.jobs.length;
   renderTabNews();

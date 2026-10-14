@@ -40,6 +40,42 @@ function jobsFileFor(region) {
   return join(PUBLIC_DIR, ...(region.slug ? [region.slug] : []), 'data', 'jobs.json');
 }
 
+/** The small feed beside it that job pages read for their "just landed" strip. */
+function freshFileFor(region) {
+  return join(PUBLIC_DIR, ...(region.slug ? [region.slug] : []), 'data', 'fresh.json');
+}
+
+/** How many of the newest roles fresh.json carries. A page shows 6 after
+ *  dropping its own posting and the employer's other roles already on it. */
+export const FRESH_FEED_SIZE = 40;
+
+/**
+ * The "just landed" strip's feed: the newest roles worth a tile, with only the
+ * fields a tile draws (14 Oct 2026). Job pages used to download the whole
+ * board, 2.6 MB raw and 417 KB compressed, about 78% of a job page's weight,
+ * to show six of them. The filter and the order are page.js's own, moved here,
+ * so the strip picks what it always picked.
+ */
+export function freshFeed(rows, size = FRESH_FEED_SIZE) {
+  const at = (j) => j.postedAt || j.firstSeenAt || 0;
+  return rows
+    .filter((j) => j.isTech !== false && (j.bullets || []).length >= 2)
+    .sort((a, b) => at(b) - at(a))
+    .slice(0, size)
+    .map((j) => ({
+      id: j.id,
+      company: j.company,
+      title: j.title,
+      ...(j.slugTitle ? { slugTitle: j.slugTitle } : {}),
+      location: j.location,
+      ...(j.workplaceType ? { workplaceType: j.workplaceType } : {}),
+      ...(j.postedAt ? { postedAt: j.postedAt } : {}),
+      ...(j.firstSeenAt ? { firstSeenAt: j.firstSeenAt } : {}),
+      ...(j.logo ? { logo: j.logo } : {}),
+      bulletCount: j.bullets.length,
+    }));
+}
+
 /**
  * Shape a stored job into what the public site shows.
  *
@@ -926,6 +962,7 @@ export async function writeJobsFile(store, cfg) {
     const file = jobsFileFor(region);
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, `${JSON.stringify(payload, null, 1)}\n`);
+    writeFileSync(freshFileFor(region), `${JSON.stringify({ jobs: freshFeed(regionJobs) }, null, 1)}\n`);
     written.push({ region, count: regionJobs.length, techCount, path: file });
   }
 

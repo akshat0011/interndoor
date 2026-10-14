@@ -380,9 +380,12 @@ dressAges(document);
 
 /* Kept out of the HTML on purpose. Baking the newest roles into every job page
    would rewrite all ~130 of them every time one arrived, and the repo is
-   public — so this reads the same jobs.json the homepage does. The links that
-   matter for crawling (the employer's other roles, the hub, the directory) are
-   in the HTML; this strip is for the reader. */
+   public. The links that matter for crawling (the employer's other roles, the
+   hub, the directory) are in the HTML; this strip is for the reader.
+   It reads data/fresh.json, the newest 40 roles with only a tile's fields,
+   written by publish beside jobs.json (14 Oct 2026). It read the whole board
+   before, 417 KB compressed to draw six tiles. A page still naming jobs.json
+   in its data-feed works too: the filter below reads either shape. */
 
 // Duplicated from src/pages.js and app.js. test/pages.test.mjs pins all three
 // against each other, because a drift here links to a 404.
@@ -446,8 +449,8 @@ function tileHtml(job, prefix = '') {
   // filling its "just landed" rail from India's board would be showing roles
   // the reader cannot take — and linking them under /us/, where they 404.
   // Falls back to the root so an older cached page behaves as it always did.
-  const feed = strip.dataset.feed || '/data/jobs.json';
-  const prefix = feed.replace(/\/data\/jobs\.json$/, '');
+  const feed = strip.dataset.feed || '/data/fresh.json';
+  const prefix = feed.replace(/\/data\/(?:jobs|fresh)\.json$/, '');
 
   let jobs;
   try {
@@ -472,7 +475,7 @@ function tileHtml(job, prefix = '') {
   }
 
   const picks = jobs
-    .filter((j) => j.isTech !== false && (j.bullets || []).length >= 2)
+    .filter((j) => j.isTech !== false && (j.bulletCount ?? (j.bullets || []).length) >= 2)
     .filter((j) => !shown.has(jobPageSlug(j)))
     .sort((a, b) => (b.postedAt || b.firstSeenAt || 0) - (a.postedAt || a.firstSeenAt || 0))
     .slice(0, 6);

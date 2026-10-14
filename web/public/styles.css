@@ -816,6 +816,12 @@ html[data-boot] .boot-part {
   display: inline-flex; align-items: center; gap: 8px;
   transition: color .16s, background .16s; border-radius: var(--r-pill); }
 .seg-b + .seg-b { border-left: 0; }
+/* The role-type tabs wait for the data INVISIBLE rather than hidden, so the
+   row keeps its space and nothing below it moves when they appear (index.html,
+   14 Oct 2026). The empty badges hold roughly a count's width for the same
+   reason: on a wide screen the search box sits beside these tabs. */
+#seg-kind.is-pending { visibility: hidden; }
+#seg-kind.is-pending .seg-b b { min-width: calc(4ch + 14px); }
 .seg-b b {
   font-family: var(--mono); font-size: 12px; font-weight: 500;
   padding: 1px 7px; border-radius: var(--r-pill); background: var(--card-2); color: var(--ink-3);

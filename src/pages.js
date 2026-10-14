@@ -31,6 +31,13 @@ import { isUnsure } from './jobstatus.js';
 
 export const SITE = 'https://interndoor.com';
 
+/* InternDoor as the publisher of a page, pointing at the homepage's
+   Organization by @id and naming itself so a page read on its own still says
+   who published it. Job and company pages carried only the EMPLOYER's
+   organization, which left a reader of the markup (an AI crawler, an SEO
+   audit) with no publisher at all (14 Oct 2026). */
+const PUBLISHER = { '@type': 'Organization', '@id': `${SITE}/#organization`, name: 'InternDoor', url: `${SITE}/`, logo: `${SITE}/logo-512.png` };
+
 /**
  * Every page is rendered FOR a region, and India is the default.
  *
@@ -567,6 +574,10 @@ const DAY = 86_400_000;
 function dayLabel(ms, region = DEFAULT_REGION) {
   if (!ms) return '';
   return new Date(ms).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: region.timeZone });
+}
+/** "2026-10-14" for a <time datetime>, in the region's own zone so it names the same day dayLabel() prints. */
+function regionDay(ms, region = DEFAULT_REGION) {
+  return new Date(ms).toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: region.timeZone });
 }
 function isoDay(ms) {
   return ms ? new Date(ms).toISOString().slice(0, 10) : '';
@@ -1453,7 +1464,7 @@ ${imageMeta(image)}<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/page.css?v=${PAGE_CSS_VERSION}">
 ${extraLd}<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <script defer src="/track.js"></script>
-<script defer src="/page.js?v=4"></script>
+<script defer src="/page.js?v=5"></script>
 ${scripts}<script defer src="/subscribe.js"></script>
 <script defer src="/gtag.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -2285,6 +2296,15 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
         { '@type': 'ListItem', position: 2, name: job.company, item: regionUrl(`/companies/${companySlug(job.company)}`, region) },
         { '@type': 'ListItem', position: 3, name: job.title },
       ],
+    })}</script>\n`
+      /* Last, so the posting stays the first block (above). A WebPage, not a
+         publisher on the JobPosting: JobPosting has no publisher property. */
+      + `<script type="application/ld+json">${jsonLd({
+      '@context': 'https://schema.org/',
+      '@type': 'WebPage',
+      '@id': url,
+      url,
+      publisher: PUBLISHER,
     })}</script>\n`,
   })}
 <main class="page">
@@ -2451,7 +2471,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
       <div class="tiles">${similar.map((j) => tile(j, { region })).join('')}</div>
     </section>` : ''}
 
-    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
+    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/fresh.json', region)}">
       <div class="strip-head">
         <h2>Just landed on InternDoor</h2>
         <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
@@ -3531,6 +3551,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     '@type': 'CollectionPage',
     url,
     name: `${company} ${kindsWord} ${region.inName}`,
+    publisher: PUBLISHER,
     about: {
       '@type': 'Organization',
       name: company,
@@ -3627,7 +3648,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
     </section>` : ''}
 
 
-    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
+    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/fresh.json', region)}">
       <div class="strip-head">
         <h2>Just landed on InternDoor</h2>
         <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
@@ -5601,6 +5622,14 @@ function roleQa(def, ins, region, where, { byCity = true } = {}) {
 function roleBody({ rows, ins, def, region, where, heading, crumbs, lede, cityHref, skillPages, links = '', related = '', byCity = true }) {
   const internTiles = roleTiles(ins.interns, region);
   const fullTiles = roleTiles(ins.fullTime, region);
+  /* WHEN THE NEWEST ROLE ON THIS PAGE WAS LISTED, shown as "Updated" at the
+     end of the summary (14 Oct 2026). Not a sixth facts cell: it wrapped onto
+     a row of its own and left an empty grey band beside it at desktop width. AI answer engines cite these pages and weigh a visible date; this
+     one moves only when a newer role arrives, which rewrites the page anyway,
+     so it adds no churn (§10). A clock date would rewrite every role page
+     every day. It can understate a later change (a role closing), never
+     overstate one. */
+  const updated = rows.reduce((m, j) => Math.max(m, j.firstSeenAt || j.postedAt || 0), 0);
   const facts = [
     ['Open now', String(rows.length)],
     ins.interns.length ? ['Internships', String(ins.interns.length)] : null,
@@ -5622,7 +5651,7 @@ function roleBody({ rows, ins, def, region, where, heading, crumbs, lede, cityHr
       ${crumbs}
     </nav>
     <h1>${esc(heading)}</h1>
-    <p class="summary">${esc(lede)} Every listing links to the original posting.</p>
+    <p class="summary">${esc(lede)} Every listing links to the original posting.${updated ? ` Updated <time datetime="${regionDay(updated, region)}">${esc(dayLabel(updated, region))}</time>.` : ''}</p>
     <dl class="cp-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>
     ${links}
 
@@ -5661,6 +5690,10 @@ function roleBody({ rows, ins, def, region, where, heading, crumbs, lede, cityHr
 </main>`;
 }
 
+/* The trail's first link reads "Jobs" on every role page (the facet crumbs'
+   word since 19 Sep), so the markup says Jobs too: a breadcrumb whose markup
+   and visible trail disagree is what an SEO audit flagged on /roles
+   (14 Oct 2026). */
 function roleCrumbLd(items) {
   return `<script type="application/ld+json">${jsonLd({
     '@context': 'https://schema.org/',
@@ -5701,7 +5734,7 @@ export function renderRolePage(group, { region = DEFAULT_REGION, roles = [], com
     canonical: regionUrl(path, region),
     indexable: true,
     region,
-    extraLd: roleCrumbLd([['Home', regionUrl('/', region)], ['Roles', regionUrl('/roles/', region)], [def.name, null]]),
+    extraLd: roleCrumbLd([['Jobs', regionUrl('/', region)], ['Roles', regionUrl('/roles/', region)], [def.name, null]]),
   })}
 ${roleBody({
     rows, ins, def, region, where, lede, cityHref, skillPages, links, related,
@@ -5744,7 +5777,7 @@ export function renderRoleCityPage(combo, { region = DEFAULT_REGION, combos = []
     canonical: regionUrl(path, region),
     indexable: true,
     region,
-    extraLd: roleCrumbLd([['Home', regionUrl('/', region)], ['Roles', regionUrl('/roles/', region)],
+    extraLd: roleCrumbLd([['Jobs', regionUrl('/', region)], ['Roles', regionUrl('/roles/', region)],
       [def.name, regionUrl(`/roles/${combo.roleSlug}`, region)], [city, null]]),
   })}
 ${roleBody({
@@ -5769,7 +5802,7 @@ export function renderRoleIndex(roles = [], combos = [], { region = DEFAULT_REGI
     /* Thin until there is something to browse, like the facet indexes. */
     indexable: roles.length >= 3,
     region,
-    extraLd: roleCrumbLd([['Home', regionUrl('/', region)], ['Roles', null]]),
+    extraLd: roleCrumbLd([['Jobs', regionUrl('/', region)], ['Roles', null]]),
   })}
 <main class="page">
   <div class="wrap">
@@ -6079,7 +6112,7 @@ function renderClosedRole({ company, hubSlug, region, closedOn, past = null, ope
       </aside>
     </div>
 
-    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/jobs.json', region)}">
+    <section class="strip" id="fresh" hidden data-feed="${regionHref('/data/fresh.json', region)}">
       <div class="strip-head">
         <h2>Just landed on InternDoor</h2>
         <a class="strip-more" href="${regionHref('/', region)}">See all live roles →</a>
