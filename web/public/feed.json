@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ibm-software-developer-intern-4476673482",
+      "url": "https://interndoor.com/jobs/ibm-software-developer-intern-4476673482",
+      "title": "Software Developer Intern — IBM",
+      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Develop and test software solutions using go, java, python and cloud platforms\n• Work on high-profile automation projects with cross-functional stakeholders\n• Collaborate on test-driven development and api-driven interfaces",
+      "date_published": "2026-10-14T14:41:57.878Z",
+      "authors": [
+        {
+          "name": "IBM"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
       "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
       "title": "AI engineer Advisor — NTT DATA North America",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "JPMorganChase"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/s-and-p-global-associate-software-development-engineer-information-security-4478149931",
-      "url": "https://interndoor.com/jobs/s-and-p-global-associate-software-development-engineer-information-security-4478149931",
-      "title": "Software Development Engineer — S&P Global",
-      "content_text": "Company: S&P Global · Location: Hyderabad, Telangana, India\n• Assist in securing server-side development, UI frameworks, and cloud integrations\n• Use Python and open-source tools to automate security testing in CI/CD pipelines\n• Work on AI risk assessments, including vulnerabilities in LLM pipelines and cognitive workflows",
-      "date_published": "2026-10-13T21:35:48.799Z",
-      "authors": [
-        {
-          "name": "S&P Global"
         }
       ]
     }
