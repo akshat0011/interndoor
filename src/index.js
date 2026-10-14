@@ -8,7 +8,7 @@ import { isInternshipTag, entryLevelTitleRefusal, admitEntryLevel, INTERN, inter
 import { join, dirname } from 'node:path';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { ensureDirs, PATHS, ROOT } from './paths.js';
-import { log } from './logger.js';
+import { log, startRunLog, istTime } from './logger.js';
 import { Store, REFUSED_AFTER_OPEN } from './store.js';
 import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } from './browser.js';
 import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State } from './guard.js';
@@ -29,7 +29,8 @@ import { pageCapFor, openCapFor, titleCapFor, titleKey, staleCutoffFor, pageIsAl
 import { noteVariant, variantSummary, VARIANT_KEY } from './searchvariant.js';
 import { searchSourceFor, buildGuestSearchUrl, fetchGuestPageRetrying, fetchPublicPosting, guestRequestCap, GUEST_PAGE_SIZE, rereadPlan, REREAD_TAIL_PAGES } from './guestsearch.js';
 import { titleSettlesMisc } from './rolefocus.js';
-import { outcomeFor, renderScanSection, renderScanDocument, showScanView } from './scanview.js';
+import { outcomeFor, renderScanSection, renderScanDocument, renderWaitingSection, showScanView } from './scanview.js';
+import { requestStop, stopRequestedSince, stopSince } from './scanstop.js';
 import { buildReport, writeReport } from './report.js';
 import { publish } from './publish.js';
 import { notify, open as openFile, pushToPhone } from './notify.js';
@@ -140,9 +141,6 @@ const COVERED_PAGES_BEFORE_STOP = 2;
  */
 const CARDS_PER_PAGE_FLOOR = 5;
 
-/* Waiting out a public-search 429 never eats into the last ten minutes of the
-   run's budget: the opens, enrichment and publish still need them. */
-const BLOCK_WAIT_RESERVE_MS = 10 * 60_000;
 /* After a 429 that was waited out, public-search requests are spaced wider for
    the rest of the run — doubled per block, to at most this. */
 const GUEST_MAX_SLOWDOWN = 4;
@@ -367,6 +365,9 @@ async function main() {
 
   const runId = makeRunId();
   const store = new Store();
+  const what = KIND_SCOPE === 'intern' ? 'India internships' : KIND_SCOPE === 'fulltime' ? 'India full-time' : 'all searches';
+  const runLogPath = startRunLog(runId, `InternDoor scan — ${what} — run ${runId}${SCHEDULED ? ' (scheduled)' : ' (started by hand)'}`);
+  if (runLogPath) log.info(`Readable log for this run: ${runLogPath} (also at http://127.0.0.1:4322/log/latest)`);
 
   // Refuse to start while another run holds the lock. Hourly slots plus a
   // 45-minute budget leave little headroom, and two runs would fight over the
@@ -423,6 +424,36 @@ async function main() {
   // Writing the timestamp first makes the window as small as SQLite's own
   // write, so the second run reads a held lock and stands down properly.
   store.setSetting(LOCK_KEY, Date.now());
+  /* THE LOCK IS A HEARTBEAT NOW. A run no longer stops on its own clock (it
+     waits out LinkedIn for as long as it takes — his rule, 14 Oct 2026), so a
+     lock stamped once would be called stale at maxRuntimeMinutes + 8 while
+     the run is still alive. Re-stamped every minute; a crashed run stops
+     stamping and is cleared as before. */
+  const lockBeat = setInterval(() => {
+    try { store.setSetting(LOCK_KEY, Date.now()); } catch { /* closing */ }
+  }, 60_000);
+  lockBeat.unref?.();
+
+  /* "Save what was found so far and stop" (src/scanstop.js): the ONLY thing
+     that ends discovery early. Once seen it stays seen. */
+  const STOP_SINCE = stopSince(process.env, Date.now());
+  let stopPressed = false;
+  const stopNow = () => stopPressed || (stopPressed = stopRequestedSince(store, STOP_SINCE));
+  const stopArmed = new WeakSet();
+  const armStopButton = async (p) => {
+    if (!p || stopArmed.has(p)) return;
+    stopArmed.add(p);
+    try {
+      await p.exposeFunction('interndoorStop', () => {
+        if (!stopPressed) {
+          stopPressed = true;
+          requestStop(store);
+          log.warn('Stop pressed in the scan view — saving what was found so far and stopping.');
+        }
+        return true;
+      });
+    } catch { /* already exposed on this page */ }
+  };
 
   // Land at a slightly different minute each day rather than exactly 12:00:00.
   if (SCHEDULED && !DRY_RUN && cfg.pacing.startupJitter) {
@@ -767,6 +798,10 @@ async function main() {
 
     searchLoop:
     for (const [searchIndex, search] of ordered.entries()) {
+      if (stopNow()) {
+        log.info('Stopped by you — no further searches this run.');
+        break;
+      }
       if (perRun > 0 && walked >= perRun) {
         log.info(`Walked ${walked} search${walked === 1 ? '' : 'es'} — the rest are first in the queue next run.`);
         break;
@@ -798,6 +833,16 @@ async function main() {
       // Draw each public-search page, and what became of every card on it, in
       // the Brave window — so the walk can be watched (src/scanview.js).
       const showScan = viaGuest && cfg.scanView === true;
+      /* While LinkedIn makes us wait, say so in the window (it read as "stuck
+         on page 11"), with the stop button. Fire and forget. */
+      const showWaiting = (text) => {
+        if (!showScan || !page) return;
+        const p = page;
+        void (async () => {
+          await armStopButton(p);
+          await showScanView(p, renderScanDocument(`InternDoor scan — run ${runId}`, [renderWaitingSection(text), ...scanLog.slice(0, 1)], { live: true, stoppable: true, stopping: stopPressed }));
+        })().catch(() => {});
+      };
 
       // A search may run less often than the loop ticks.
       //
@@ -994,9 +1039,12 @@ async function main() {
         // A run overran its 12-minute budget by five minutes because both the
         // slow goto and the stall that followed happened before execution ever
         // reached a card, so nothing ever asked whether there was time left.
-        if (clock.exceeded()) {
-          notes.push('Ran out of time partway through, so this scan stopped early. The next run resumes from here.');
-          log.warn(`Out of time after ${clock.elapsedSeconds()}s — stopping the scan.`);
+        /* NO TIME LIMIT ON THE WALK (his rule, 14 Oct 2026: "it should never
+           stop a run ever unless i click a save so far and stop button").
+           maxRuntimeMinutes now only sizes a CAPTCHA wait (ensureHealthy). */
+        if (stopNow()) {
+          notes.push('Stopped by you partway through. Everything found before the stop was kept and published; the next run re-covers the rest of the window.');
+          log.warn(`Stopped by you after ${clock.elapsedSeconds()}s — saving what was found so far.`);
           status = 'partial';
           break searchLoop;
         }
@@ -1019,21 +1067,30 @@ async function main() {
           const url = buildGuestSearchUrl(passSearch, filters, { start: pageIndex * GUEST_PAGE_SIZE });
           log.info(`Page ${pageIndex + 1} — ${url}`);
           pageUrl = url;
-          /* A 429 is waited out and the SAME page asked for again, so the walk
-             resumes where it was refused (fetchGuestPageRetrying). The wait
-             never eats into the last BLOCK_WAIT_RESERVE_MS of the run's budget,
-             which the opens and the rest of the run still need. */
+          /* NEVER GIVEN UP ON: a 429, a 999, a network error or a 5xx is
+             asked again every 2 minutes until it answers or he presses stop. */
           const res = await fetchGuestPageRetrying(url, {
             ...(PATIENT ? { waits: PATIENT_WAITS_MS } : {}),
-            budgetMs: clock.remainingMs() - BLOCK_WAIT_RESERVE_MS,
-            onWait: ({ attempt, of, waitMs }) => {
-              sawBlocked = true;
-              log.warn(`LinkedIn's public job search rate-limited us (HTTP 429) on "${label}" page ${pageIndex + 1} — waiting ${Math.round(waitMs / 60_000)} min and asking again (${attempt} of ${of}).`);
+            persist: true,
+            persistServerErrors: true,
+            shouldStop: stopNow,
+            onWait: ({ attempt, waitMs, status: st, network, error }) => {
+              if (network) sawNetworkFailure = true;
+              else sawBlocked = true;
+              const why = network ? `could not be reached (${error})` : `rate-limited us (HTTP ${st})`;
+              log.warn(`LinkedIn's public job search ${why} on "${label}" page ${pageIndex + 1} — asking again at ${istTime(new Date(Date.now() + waitMs)).slice(0, 5)} (in ${Math.round(waitMs / 60_000)} min, attempt ${attempt}). The scan keeps going until LinkedIn answers or you press stop.`);
+              showWaiting(`Page ${pageIndex + 1} of "${label}": LinkedIn ${network ? 'could not be reached' : `rate-limited us (HTTP ${st})`}. Asking again at ${istTime(new Date(Date.now() + waitMs)).slice(0, 5)} (attempt ${attempt}). The scan keeps going until it answers or you press stop.`);
             },
-            onServerError: ({ status, attempt, of, waitMs }) => {
-              log.warn(`Public search answered HTTP ${status} for "${label}" page ${pageIndex + 1} — asking again in ${Math.round(waitMs / 1000)}s (${attempt} of ${of}).`);
+            onServerError: ({ status, attempt, waitMs }) => {
+              log.warn(`Public search answered HTTP ${status} for "${label}" page ${pageIndex + 1} — asking again in ${waitMs >= 60_000 ? `${Math.round(waitMs / 60_000)} min` : `${Math.round(waitMs / 1000)}s`} (attempt ${attempt}).`);
             },
           });
+          if (res.stopped) {
+            notes.push(`Stopped by you on "${label}" page ${pageIndex + 1}. Everything found before the stop was kept and published; the next run re-covers the rest of the window.`);
+            log.warn(`Stopped by you on "${label}" page ${pageIndex + 1} — saving what was found so far.`);
+            status = 'partial';
+            break searchLoop;
+          }
           if (res.retries && (res.cards || res.end)) {
             guestPace = Math.min(guestPace * 2, GUEST_MAX_SLOWDOWN);
             log.ok(`The public search answered again after ${Math.round(res.waitedMs / 60_000)} min — carrying on from page ${pageIndex + 1}, every later request this run spaced ${guestPace}x wider.`);
@@ -1200,11 +1257,12 @@ async function main() {
             cards, outcomes, done,
             totals: { cards: counters.cardsSeen, opened: counters.detailsExtracted, saved: counters.newJobs },
           });
-          await showScanView(page, renderScanDocument(`InternDoor scan — run ${runId}`, [section], { live: true }));
+          await armStopButton(page);
+          await showScanView(page, renderScanDocument(`InternDoor scan — run ${runId}`, [section], { live: true, stoppable: true, stopping: stopPressed }));
           if (!done) return;
           scanLog.unshift(section);
           try {
-            const doc = renderScanDocument(`InternDoor scan — run ${runId} (newest page first)`, scanLog);
+            const doc = renderScanDocument(`InternDoor scan — run ${runId} (newest page first)`, scanLog, { stoppable: true, stopping: stopPressed });
             await mkdir(dirname(scanLogFile), { recursive: true });
             await writeFile(scanLogFile, doc, 'utf8');
             await writeFile(join(dirname(scanLogFile), 'latest.html'), doc, 'utf8');
@@ -1216,7 +1274,7 @@ async function main() {
         await drawPage(false);
 
         for (const card of cards) {
-          if (clock.exceeded() || counters.detailsExtracted >= cfg.limits.maxDetailsPerRun) break;
+          if (stopNow() || counters.detailsExtracted >= cfg.limits.maxDetailsPerRun) break;
           if (!card.key) continue;
           if (card.jobId) {
             if (walkSeen.has(card.jobId)) continue;
@@ -1614,15 +1672,20 @@ async function main() {
           if (viaGuest && card.jobId) {
             const pub = await fetchPublicPosting(card.jobId, {
               ...(PATIENT ? { waits: PATIENT_WAITS_MS } : {}),
-              budgetMs: clock.remainingMs() - BLOCK_WAIT_RESERVE_MS,
-              onWait: ({ attempt, of, waitMs }) => {
-                sawBlocked = true;
-                log.warn(`LinkedIn's public posting page rate-limited us (HTTP 429) — waiting ${Math.round(waitMs / 60_000)} min and asking again (${attempt} of ${of}).`);
+              persist: true,
+              shouldStop: stopNow,
+              onWait: ({ attempt, waitMs, status: st, network, error }) => {
+                if (network) sawNetworkFailure = true;
+                else sawBlocked = true;
+                const why = network ? `could not be reached (${error})` : `rate-limited us (HTTP ${st})`;
+                log.warn(`LinkedIn's public posting page for ${card.jobId} ${why} — asking again at ${istTime(new Date(Date.now() + waitMs)).slice(0, 5)} (in ${Math.round(waitMs / 60_000)} min, attempt ${attempt}).`);
+                showWaiting(`Reading posting ${card.jobId} on "${label}" page ${pageIndex + 1}: LinkedIn ${network ? 'could not be reached' : `rate-limited us (HTTP ${st})`}. Asking again at ${istTime(new Date(Date.now() + waitMs)).slice(0, 5)} (attempt ${attempt}).`);
               },
               onServerError: ({ status, attempt, of, waitMs }) => {
                 log.warn(`  The public page for ${card.jobId} answered HTTP ${status} — asking again in ${Math.round(waitMs / 1000)}s (${attempt} of ${of}).`);
               },
             });
+            if (pub.stopped) break;
             await pause(guestPacing());
             if (pub.detail) {
               publicRead = pub.detail;
@@ -2623,6 +2686,7 @@ async function main() {
 
   if (!DRY_RUN) await readPostingFacts(store, cfg);
 
+  clearInterval(lockBeat);
   store.setSetting(LOCK_KEY, 0);
   store.close();
   // A run that reached no page because the machine had no working network is
@@ -2638,7 +2702,7 @@ async function main() {
   // retrying into a 429 is how a session gets restricted.
   const EXIT_RETRY_SOON = 75;
   const retrySoon = !DRY_RUN && counters.pagesScanned === 0
-    && (sawNetworkFailure || braveLaunchFailed) && !sawBlocked;
+    && (sawNetworkFailure || braveLaunchFailed) && !sawBlocked && !stopPressed;
   if (retrySoon) {
     log.warn('This run reached no page because the network was down — asking the scheduler to retry shortly rather than wait out the interval.');
   }

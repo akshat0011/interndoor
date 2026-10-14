@@ -61,7 +61,8 @@ const STYLE = `
   td.logo img, .nologo { width: 40px; height: 40px; object-fit: contain; display: inline-block; background: #f0f0f0; }
   .title { font-weight: 600; } .sub { color: #555; font-size: 13px; }
   .id { color: #888; font: 12px ui-monospace, monospace; user-select: all; }
-  .badge { color: #fff; border-radius: 4px; padding: 3px 8px; font-size: 12px; }`;
+  .badge { color: #fff; border-radius: 4px; padding: 3px 8px; font-size: 12px; }
+  .stop { margin: 12px 0; } #stop-btn { font: inherit; font-weight: 600; padding: 8px 14px; border-radius: 6px; border: 1px solid #b91c1c; background: #fff; color: #b91c1c; cursor: pointer; } #stop-btn[disabled] { cursor: default; color: #555; border-color: #999; } #stop-msg { color: #555; }`;
 
 /** One page of results: header, what was requested, and every card. */
 export function renderScanSection({ region, label, pageNo, url, windowHours, cards = [], outcomes = [], totals = {}, done = false, at = new Date() }) {
@@ -86,12 +87,55 @@ export function renderScanSection({ region, label, pageNo, url, windowHours, car
 </section>`;
 }
 
+/** A wait on LinkedIn, drawn above the last page so the window never looks stuck. */
+export function renderWaitingSection(text, at = new Date()) {
+  return `<section>
+<h2>Waiting on LinkedIn</h2>
+<p class="meta">${esc(text)}</p>
+<p class="meta">${esc(at.toISOString().replace('T', ' ').slice(0, 19))} UTC</p>
+</section>`;
+}
+
+/* The stop button. Two clicks, not a confirm(): Playwright dismisses a dialog
+   nobody handles, so confirm() would always answer "cancel" in the scan's own
+   Brave. In that window it calls the function the scan exposed; served by the
+   queue server it posts to /api/scan/stop. */
+const STOP_SCRIPT = `(() => {
+  const b = document.getElementById('stop-btn'), m = document.getElementById('stop-msg');
+  if (!b) return;
+  let armed = false;
+  b.addEventListener('click', async () => {
+    if (!armed) { armed = true; b.textContent = 'Click again to stop the scan'; return; }
+    b.disabled = true;
+    m.textContent = 'Stopping…';
+    try {
+      if (typeof window.interndoorStop === 'function') await window.interndoorStop();
+      else {
+        const r = await fetch('/api/scan/stop', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(j.error || 'HTTP ' + r.status);
+      }
+      m.textContent = 'Stopping. Everything found so far is kept, enriched and published.';
+    } catch (e) {
+      m.textContent = 'Could not stop: ' + e.message;
+      b.disabled = false; armed = false; b.textContent = 'Save what was found so far and stop';
+    }
+  });
+})();`;
+
 /** A whole document around one or more sections. */
-export function renderScanDocument(title, sections, { live = false } = {}) {
+export function renderScanDocument(title, sections, { live = false, stoppable = false, stopping = false } = {}) {
+  const stop = stopping
+    ? '<p class="stop">Stop requested. Everything found so far is being kept, enriched and published.</p>'
+    : stoppable
+      ? '<p class="stop"><button id="stop-btn" type="button">Save what was found so far and stop</button> <span id="stop-msg"></span></p>'
+      : '';
   return `<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)}</title><style>${STYLE}</style></head><body>
 <h1>${esc(title)}</h1>
-${live ? '<p class="warn">This is the scraper\'s own browser. Do not click or type in it while a scan is running — copy an id or URL into another browser instead.</p>' : ''}
+${live ? '<p class="warn">This is the scraper\'s own browser. Do not click or type in it while a scan is running (the stop button is the one exception) — copy an id or URL into another browser instead.</p>' : ''}
+${stop}
 ${sections.join('\n')}
+${stoppable && !stopping ? `<script>${STOP_SCRIPT}</script>` : ''}
 </body></html>`;
 }
 

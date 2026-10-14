@@ -255,6 +255,10 @@ export const GUEST_BLOCK_WAITS_MS = [120_000, 120_000, 120_000];
 
 /** A Retry-After longer than this is not waited out inside a run. */
 const MAX_BLOCK_WAIT_MS = 2 * 60_000;
+/** With `persist`, the gap between asks once the planned waits are used up. */
+export const GUEST_RETRY_EVERY_MS = 2 * 60_000;
+/** How often a wait looks for a stop request. */
+const STOP_POLL_MS = 3_000;
 
 /**
  * A 5xx is LinkedIn's server failing ONE request, not a limit, so it is asked
@@ -272,11 +276,15 @@ export const GUEST_SERVER_ERROR_WAITS_MS = [5_000, 20_000];
  * SAME page again, so a walk resumes where it was refused instead of being
  * abandoned.
  *
- *  - ONLY a 429. LinkedIn's 999 is its "you look like a bot" answer, and asking
- *    again is how that becomes a longer ban; it is returned at once.
+ *  - A 429 only — unless `persist` (his rule, 14 Oct 2026: "it should never
+ *    stop a run ever unless i click save so far and stop"). With `persist` a
+ *    429, a 999 and a network error are asked again every 2 minutes for as
+ *    long as it takes, and with `persistServerErrors` a 5xx too. Only
+ *    `shouldStop()` (the scan view's stop button) or `budgetMs` ends it, and
+ *    the answer then carries `stopped: true`.
  *  - A wait the run cannot afford (`budgetMs`) is not started: the block is
  *    returned and the caller stops discovery, exactly as before.
- *  - A Retry-After longer than the planned wait is honoured, up to 15 minutes.
+ *  - A Retry-After longer than the planned wait is honoured, up to 2 minutes.
  *  - A 5xx is asked again after GUEST_SERVER_ERROR_WAITS_MS (seconds), counted
  *    in `serverRetries`, never in `retries` — `retries` means "we were limited".
  *
@@ -291,30 +299,55 @@ export async function fetchGuestPageRetrying(url, {
   serverWaits = GUEST_SERVER_ERROR_WAITS_MS,
   onServerError = () => {},
   parse = 'cards',
+  persist = false,
+  persistServerErrors = false,
+  shouldStop = null,
 } = {}) {
   let res = await fetchGuestPage(url, { fetchImpl, parse });
   let retries = 0;
   let waitedMs = 0;
   let serverRetries = 0;
+  let netRetries = 0;
+  const every = waits[waits.length - 1] ?? GUEST_RETRY_EVERY_MS;
+  /* Sleeps in short slices so a stop pressed mid-wait is honoured within
+     seconds. With no shouldStop it is one sleep, exactly as before. */
+  const nap = async (ms) => {
+    if (!shouldStop) { await sleep(ms); return ms; }
+    let t = 0;
+    while (t < ms && !shouldStop()) {
+      const slice = Math.min(STOP_POLL_MS, ms - t);
+      await sleep(slice);
+      t += slice;
+    }
+    return t;
+  };
   for (;;) {
-    if (res.blocked && res.status === 429 && retries < waits.length) {
-      const ms = Math.min(MAX_BLOCK_WAIT_MS, Math.max(waits[retries], res.retryAfterMs ?? 0));
+    let ms;
+    const limited = res.blocked && (res.status === 429 || (persist && res.status === 999));
+    if (limited && (persist || retries < waits.length)) {
+      ms = Math.min(MAX_BLOCK_WAIT_MS, Math.max(waits[Math.min(retries, waits.length - 1)], res.retryAfterMs ?? 0));
       if (waitedMs + ms > budgetMs) break;
-      onWait({ attempt: retries + 1, of: waits.length, waitMs: ms });
-      await sleep(ms);
-      waitedMs += ms;
+      if (shouldStop?.()) return { ...res, stopped: true, retries, waitedMs, serverRetries, netRetries };
+      onWait({ attempt: retries + 1, of: persist ? null : waits.length, waitMs: ms, status: res.status });
       retries++;
-    } else if (res.failed && res.status >= 500 && serverRetries < serverWaits.length) {
-      const ms = serverWaits[serverRetries];
+    } else if (res.failed && res.status >= 500 && (serverRetries < serverWaits.length || (persist && persistServerErrors))) {
+      ms = serverRetries < serverWaits.length ? serverWaits[serverRetries] : every;
       if (waitedMs + ms > budgetMs) break;
-      onServerError({ status: res.status, attempt: serverRetries + 1, of: serverWaits.length, waitMs: ms });
-      await sleep(ms);
-      waitedMs += ms;
+      if (shouldStop?.()) return { ...res, stopped: true, retries, waitedMs, serverRetries, netRetries };
+      onServerError({ status: res.status, attempt: serverRetries + 1, of: persist && persistServerErrors ? null : serverWaits.length, waitMs: ms });
       serverRetries++;
+    } else if (persist && res.networkError) {
+      ms = every;
+      if (waitedMs + ms > budgetMs) break;
+      if (shouldStop?.()) return { ...res, stopped: true, retries, waitedMs, serverRetries, netRetries };
+      onWait({ attempt: netRetries + 1, of: null, waitMs: ms, network: true, error: res.error });
+      netRetries++;
     } else break;
+    waitedMs += await nap(ms);
+    if (shouldStop?.()) return { ...res, stopped: true, retries, waitedMs, serverRetries, netRetries };
     res = await fetchGuestPage(url, { fetchImpl, parse });
   }
-  return { ...res, retries, waitedMs, serverRetries };
+  return { ...res, retries, waitedMs, serverRetries, netRetries };
 }
 
 /**

@@ -252,7 +252,7 @@ console.log('\n== a 429 is waited out, minutes at a time, and the same page aske
   s = seq([[429, ''], [429, ''], [200, PAGE_OK]]);
   await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, onWait: (w) => told.push(w) });
   slept.splice(0);
-  check('each wait is announced before it starts', told, [{ attempt: 1, of: 3, waitMs: 120_000 }, { attempt: 2, of: 3, waitMs: 120_000 }]);
+  check('each wait is announced before it starts', told, [{ attempt: 1, of: 3, waitMs: 120_000, status: 429 }, { attempt: 2, of: 3, waitMs: 120_000, status: 429 }]);
 
   s = seq([[200, PAGE_OK]]);
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
@@ -438,6 +438,78 @@ check('"... see more" too', stripExpanderLabel('Apply today ... see more'), 'App
 check('a sentence ending in "more" is kept', stripExpanderLabel('We want to hear more'), 'We want to hear more');
 check('only at the end', stripExpanderLabel('… more of the same, every day'), '… more of the same, every day');
 
+console.log('\n== persist: never give up until stopped ==');
+const PAGE_OK = PAGE;
+{
+  const slept = [];
+  const sleep = async (ms) => { slept.push(ms); };
+  const answers = (list) => { let i = 0; return async () => {
+    const a = list[Math.min(i++, list.length - 1)];
+    if (a === 'net') throw new Error('getaddrinfo ENOTFOUND');
+    return { status: a[0], text: async () => a[1], headers: { get: () => null } };
+  }; };
+  const many = (n, a) => Array(n).fill(a);
+  let r = await fetchGuestPageRetrying('u', { fetchImpl: answers([...many(9, [429, '']), [200, PAGE_OK]]), sleep, persist: true });
+  check('a 429 is asked again past the planned waits, every 2 minutes', [r.retries, !!r.cards, slept.every((m) => m === 120_000), slept.length], [9, true, true, 9]);
+  slept.length = 0;
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([[999, ''], [200, PAGE_OK]]), sleep, persist: true });
+  check('with persist a 999 is asked again too', [r.retries, !!r.cards], [1, true]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([[999, '']]), sleep });
+  check('without persist a 999 still returns at once', [r.blocked, r.retries], [true, 0]);
+  slept.length = 0;
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers(['net', 'net', [200, PAGE_OK]]), sleep, persist: true });
+  check('a network error is asked again every 2 minutes', [r.netRetries, !!r.cards, slept], [2, true, [120_000, 120_000]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers(['net']), sleep });
+  check('without persist a network error returns at once', [r.networkError, r.netRetries], [true, 0]);
+  slept.length = 0;
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([...many(5, [500, '']), [200, PAGE_OK]]), sleep, persist: true, persistServerErrors: true });
+  check('with persistServerErrors a 5xx is asked again past its short waits', [r.serverRetries, !!r.cards, slept], [5, true, [5_000, 20_000, 120_000, 120_000, 120_000]]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([...many(5, [500, ''])]), sleep, persist: true });
+  check('a 5xx is NOT persisted on unless asked (a posting falls back to the account)', [r.failed, r.serverRetries], [true, 2]);
+
+  // The stop: pressed before a wait, and pressed in the middle of one.
+  let stop = false;
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([[429, '']]), sleep, persist: true, shouldStop: () => stop || (stop = true, false) });
+  check('a stop pressed during a wait ends it within seconds, and says so', [r.stopped, r.retries], [true, 1]);
+  slept.length = 0;
+  let calls = 0;
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([[429, '']]), sleep, persist: true, shouldStop: () => ++calls > 3 });
+  check('a wait is slept in short slices so the stop is seen', [r.stopped, slept.every((m) => m <= 3_000), slept.length > 0], [true, true, true]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([[429, '']]), sleep, persist: true, shouldStop: () => true });
+  check('already stopped: no wait is started', [r.stopped, r.retries, r.blocked], [true, 0, true]);
+  r = await fetchGuestPageRetrying('u', { fetchImpl: answers([[200, PAGE_OK]]), sleep, persist: true, shouldStop: () => true });
+  check('a page that answers is returned even after a stop', [!!r.cards, !!r.stopped], [true, false]);
+}
+
+{
+  const { requestStop, stopRequestedSince, stopSince, STOP_KEY } = await import('../src/scanstop.js');
+  const mem = new Map();
+  const store = { getSetting: (k) => mem.get(k) ?? null, setSetting: (k, v) => mem.set(k, String(v)) };
+  check('no request, no stop', stopRequestedSince(store, 1000), false);
+  requestStop(store, 5000);
+  check('a request at or after the start stops the scan', [stopRequestedSince(store, 5000), stopRequestedSince(store, 4000)], [true, true]);
+  check('an older request never stops a later scan', stopRequestedSince(store, 6000), false);
+  check('it is one settings key', mem.get(STOP_KEY), '5000');
+  check('the tick stamp is the start when it is sane', stopSince({ INTERNDOOR_TICK_AT: '1000' }, 2000), 1000);
+  check('a hand run (no tick) starts at its own start', stopSince({}, 2000), 2000);
+  check('a tick stamp in the future is ignored', stopSince({ INTERNDOOR_TICK_AT: '3000' }, 2000), 2000);
+}
+
+{
+  const { renderScanDocument, renderWaitingSection } = await import('../src/scanview.js');
+  const live = renderScanDocument('t', [], { live: true, stoppable: true });
+  check('the live view carries the stop button and its script', /id="stop-btn"/.test(live) && /<script>/.test(live), true);
+  const js = live.match(/<script>([\s\S]*?)<\/script>/)?.[1] ?? '';
+  let parses = true; try { new Function(js); } catch { parses = false; }
+  check('its script parses', js.length > 100 && parses, true);
+  check('it never uses confirm() (Playwright dismisses dialogs)', /confirm\(/.test(js), false);
+  check('it calls the scan in its own window, else the helper', /window\.interndoorStop/.test(js) && /\/api\/scan\/stop/.test(js), true);
+  const done = renderScanDocument('t', [], { stoppable: true, stopping: true });
+  check('once stopped, no button and no script', [/id="stop-btn"/.test(done), /<script>/.test(done), /Stop requested/.test(done)], [false, false, true]);
+  check('a plain document has no button', /id="stop-btn"/.test(renderScanDocument('t', [])), false);
+  check('the wait line escapes what it is given', renderWaitingSection('<b>x</b>').includes('&lt;b&gt;'), true);
+}
+
 console.log('\n== the wiring in index.js and linkedin.js ==');
 {
   /* index.js executes on import, so these read the source. Each pins one
@@ -448,8 +520,22 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     /const viaGuest = sourceFor\(search\) === 'guest';/.test(src), true);
   check('discovery fetches the public page, offset in 10s, for the part being read',
     /buildGuestSearchUrl\(passSearch, filters, \{ start: pageIndex \* GUEST_PAGE_SIZE \}\)[\s\S]{0,420}?await fetchGuestPageRetrying\(url, \{/.test(src), true);
-  check('the wait never eats the end of the run\'s budget',
-    /fetchGuestPageRetrying\(url, \{\s*(?:\.\.\.\(PATIENT \? \{ waits: PATIENT_WAITS_MS \} : \{\}\),\s*)?budgetMs: clock\.remainingMs\(\) - BLOCK_WAIT_RESERVE_MS,/.test(src), true);
+  /* NEVER STOPS ON ITS OWN (his rule, 14 Oct 2026): both calls persist and
+     answer only to the stop button, never to the run's clock. */
+  check('the search page persists and answers only to the stop button',
+    /fetchGuestPageRetrying\(url, \{[\s\S]{0,120}?persist: true,\s*persistServerErrors: true,\s*shouldStop: stopNow,/.test(src), true);
+  check('the public posting page persists and answers only to the stop button',
+    /fetchPublicPosting\(card\.jobId, \{[\s\S]{0,120}?persist: true,\s*shouldStop: stopNow,/.test(src), true);
+  check('no wait is cut short by the run\'s clock', /budgetMs: clock/.test(src), false);
+  check('the walk is not ended by the run\'s clock', /clock\.exceeded\(\)/.test(src.slice(src.indexOf('searchLoop:'))), false);
+  check('a stop ends the walk and keeps what was found',
+    /if \(res\.stopped\) \{[\s\S]{0,400}?status = 'partial';\s*break searchLoop;/.test(src), true);
+  check('a stopped run is never fast-retried', /!sawBlocked && !stopPressed;/.test(src), true);
+  check('the lock is a heartbeat while the run lives',
+    /setInterval\(\(\) => \{\s*try \{ store\.setSetting\(LOCK_KEY, Date\.now\(\)\); \}/.test(src)
+      && /clearInterval\(lockBeat\);\s*store\.setSetting\(LOCK_KEY, 0\);/.test(src), true);
+  check('run.sh stamps the tick so one press stops both phases',
+    /export INTERNDOOR_TICK_AT=[\s\S]{0,200}--kind=intern/.test(readFileSync(new URL('../bin/run.sh', import.meta.url), 'utf8')), true);
   /* --patient (14 Oct 2026): a hand-run catch-up waits longer, and only a hand
      run. A scheduled tick waiting two hours would hold the lock over four. */
   check('--patient is a flag a person passes, nothing else turns it on',
@@ -464,7 +550,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
     check('--patient waits about two hours in all, 2 minutes at a time', total > 3_600_000 && total <= 3 * 3_600_000, true);
   }
   check('a 429 waited out still counts as a block for the exit code (no fast retry)',
-    /onWait: \(\{ attempt, of, waitMs \}\) => \{\s*sawBlocked = true;/.test(src), true);
+    /onWait: \(\{ attempt, waitMs, status: st, network, error \}\) => \{\s*if \(network\) sawNetworkFailure = true;\s*else sawBlocked = true;/.test(src), true);
   check('a 429 that answered again slows every later request this run',
     /if \(res\.retries && \(res\.cards \|\| res\.end\)\) \{\s*guestPace = Math\.min\(guestPace \* 2, GUEST_MAX_SLOWDOWN\);/.test(src), true);
   check('the public walk is paced through the slowdown',

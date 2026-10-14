@@ -110,6 +110,9 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [ATS EXIT $ATS_STATUS]" >> "$LOG"
 # THE REST-OF-WORLD PHASE (--regions=-home) IS GONE: India is the only board
 # since 30 Sep, and that phase only ever wrote an empty run row for the paused
 # US search. A US/UK/CA search back on needs it back.
+# One press of the scan view's stop button stops BOTH phases of this tick
+# (src/scanstop.js): each phase honours a stop made at or after this moment.
+export INTERNDOOR_TICK_AT="$(($(date +%s) * 1000))"
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/src/index.js" "$@" --regions=home --kind=intern >> "$LOG" 2>&1
 STATUS=$?
 echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT intern $STATUS]" >> "$LOG"

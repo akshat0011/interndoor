@@ -29,10 +29,10 @@ import { Store } from '../src/store.js';
 import { fetchGuestPage, parsePublicPosting, publicPostingUrl } from '../src/guestsearch.js';
 import { loadConfig } from '../src/config.js';
 import { PATHS, storygastedRoot } from '../src/paths.js';
-import { readdirSync, unlinkSync } from 'node:fs';
+import { readdirSync, unlinkSync, statSync } from 'node:fs';
 import { renderReportIndex, runIdFromFile, companiesIn, jobCountIn, INDEX_LIMIT } from '../src/reportindex.js';
 import { postableRegion } from '../src/postregions.js';
-import { log } from '../src/logger.js';
+import { log, runLogDir } from '../src/logger.js';
 import { buildPost, jobFacts, composeCombined } from '../src/postgen.js';
 import { buildPostsPage, writePostsPage, prunePostPages } from '../src/postpage.js';
 import { renderLiCards } from '../src/licard.js';
@@ -60,6 +60,8 @@ import { channelRefusal } from '../src/channelgate.js';
 import { isUnsure } from '../src/jobstatus.js';
 import { publishedTitle } from '../src/titles.js';
 import { aiOwnerToken } from '../web/api/ai.js';
+import { requestStop } from '../src/scanstop.js';
+import { renderRunLogPage, renderRunLogIndex } from '../src/runlogpage.js';
 import { spawn } from 'node:child_process';
 import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -1297,6 +1299,16 @@ const server = createServer(async (req, res) => {
 
   if (req.method === 'POST' && !sameOrigin(req)) return json(res, 403, { error: 'cross-origin requests are refused' });
 
+  /* The scan view's "Save what was found so far and stop" (src/scanstop.js).
+     Refused when no scan holds the lock, so a press on an old page is honest. */
+  if (path === '/api/scan/stop' && req.method === 'POST') {
+    const lock = Number(store.getSetting('run_started_at') ?? 0);
+    if (!lock || Date.now() - lock > 5 * 60_000) return json(res, 409, { error: 'no scan is running' });
+    requestStop(store);
+    log.warn('Stop pressed on /scan — the running scan saves what it found and stops.');
+    return json(res, 200, { ok: true });
+  }
+
   if (path === '/api/health') {
     return json(res, 200, { ok: true, ...store.queueCounts(), generating: !!running && !running.finishedAt });
   }
@@ -1520,6 +1532,29 @@ const server = createServer(async (req, res) => {
     const id = decodeURIComponent(path.slice('/scan/'.length)) || 'latest';
     if (!SAFE_ID.test(id)) return html(res, 400, '<h1>400</h1>');
     return sendFile(res, join(PATHS.reports, 'scans', `${id}.html`), `No scan view stored for ${id} — it is written only when config scanView is true.`);
+  }
+
+  /* THE READABLE RUN LOGS (src/logger.js startRunLog, src/runlogpage.js):
+     /log lists them, /log/latest is the newest, /log/<runId> any one. */
+  if (path === '/log' || path === '/log/' || path.startsWith('/log/')) {
+    const dir = runLogDir();
+    let files = [];
+    try { files = readdirSync(dir).filter((f) => f.endsWith('.txt')).sort().reverse(); } catch { /* none yet */ }
+    const id = decodeURIComponent(path.slice('/log/'.length));
+    if (!id) {
+      const entries = files.slice(0, 150).map((f) => {
+        const first = (() => { try { return readFileSync(join(dir, f), 'utf8').split('\n')[0]; } catch { return f; } })();
+        return { id: f.slice(0, -4), title: first || f };
+      });
+      return html(res, 200, renderRunLogIndex(entries));
+    }
+    const name = id === 'latest' ? files[0]?.slice(0, -4) : id;
+    if (!name || !SAFE_ID.test(name)) return html(res, 404, '<h1>No run log yet</h1><p>They start with the next scan.</p>');
+    const file = join(dir, `${name}.txt`);
+    if (!existsSync(file)) return html(res, 404, `<h1>No run log for ${name}</h1>`);
+    const lock = Number(store.getSetting('run_started_at') ?? 0);
+    const running = name === files[0]?.slice(0, -4) && !!lock && Date.now() - lock < 5 * 60_000;
+    return html(res, 200, renderRunLogPage(readFileSync(file, 'utf8'), { name, mtimeMs: statSync(file).mtimeMs, running }));
   }
 
   if (path === '/report/latest') {
