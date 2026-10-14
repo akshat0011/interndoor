@@ -1,6 +1,17 @@
 {
  "jobs": [
   {
+   "id": "4478801649",
+   "company": "Citi",
+   "title": "Java Fullstack Developer",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792016828396,
+   "firstSeenAt": 1792020428403,
+   "logo": "/logos/citi.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479705399",
    "company": "Vanguard",
    "title": "AI Application Engineer",
@@ -9,6 +20,40 @@
    "postedAt": 1792011006472,
    "firstSeenAt": 1792012266481,
    "logo": "/logos/vanguard.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478494415",
+   "company": "Google",
+   "title": "Salesforce Application Engineer",
+   "slugTitle": "Salesforce Application Engineer, YouTube",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792006493439,
+   "firstSeenAt": 1792020893447,
+   "logo": "/logos/google.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4470923679",
+   "company": "Amazon",
+   "title": "Applied Scientist I",
+   "slugTitle": "Applied Scientist I, Amazon Shipping",
+   "location": "Gurugram, Haryana, India",
+   "postedAt": 1792003656648,
+   "firstSeenAt": 1792021656650,
+   "logo": "/logos/amazon.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4469425685",
+   "company": "GlobalLogic",
+   "title": "Python Backend Developer",
+   "slugTitle": "Python Backend Developer IRC305016",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792003626442,
+   "firstSeenAt": 1792021626446,
+   "logo": "/logos/globallogic.jpg",
    "bulletCount": 3
   },
   {
@@ -77,6 +122,29 @@
    "postedAt": 1791996708489,
    "firstSeenAt": 1791998268494,
    "logo": "/logos/mastercard.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4433668208",
+   "company": "GlobalLogic",
+   "title": "C++ Developer IRC281591",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791996378481,
+   "firstSeenAt": 1792021578485,
+   "logo": "/logos/globallogic.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4460239636",
+   "company": "GlobalLogic",
+   "title": "SRE Developer",
+   "slugTitle": "SRE Developer IRC302530",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791996211334,
+   "firstSeenAt": 1792021411338,
+   "logo": "/logos/globallogic.jpg",
    "bulletCount": 3
   },
   {
@@ -215,6 +283,17 @@
    "bulletCount": 3
   },
   {
+   "id": "4476679049",
+   "company": "BT Group",
+   "title": "Site Reliability Engineering Associate 3",
+   "location": "Delhi, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1791984976912,
+   "firstSeenAt": 1792020976917,
+   "logo": "/logos/bt-group.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479526831",
    "company": "NTT DATA North America",
    "title": "AI engineer Advisor",
@@ -341,6 +420,26 @@
    "bulletCount": 3
   },
   {
+   "id": "4460009646",
+   "company": "Qualcomm",
+   "title": "Camera Firmware Engineer",
+   "location": "Greater Hyderabad Area",
+   "postedAt": 1791977293673,
+   "firstSeenAt": 1792020493678,
+   "logo": "/logos/qualcomm.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478435517",
+   "company": "Goldman Sachs",
+   "title": "The Core Engineering-L2-Bengaluru-Associate-Software Engineering",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1791977269508,
+   "firstSeenAt": 1792020469512,
+   "logo": "/logos/goldman-sachs.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4478445181",
    "company": "Bizom",
    "title": "Junior DevOps Engineer",
@@ -350,107 +449,6 @@
    "firstSeenAt": 1791976523561,
    "logo": "/logos/bizom.jpg",
    "bulletCount": 3
-  },
-  {
-   "id": "4478426910",
-   "company": "Quest Global",
-   "title": "Manual Tester",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791975695469,
-   "firstSeenAt": 1791976535471,
-   "logo": "/logos/quest-global.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476659326",
-   "company": "HARMAN India",
-   "title": "Intern",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1791975195459,
-   "firstSeenAt": 1791976215468,
-   "logo": "/logos/harman-india.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4478427837",
-   "company": "ACADEMY",
-   "title": "Paid Internship",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791974743254,
-   "firstSeenAt": 1791976243261,
-   "logo": "/logos/academy.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4470919008",
-   "company": "Mphasis",
-   "title": "Java Developer",
-   "slugTitle": "Java AWS Developer-CCB Ramp up - Cards-Bangalore",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791974620166,
-   "firstSeenAt": 1791976540170,
-   "logo": "/logos/mphasis.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479506198",
-   "company": "Hitachi Energy",
-   "title": "Software Developer",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791972198737,
-   "firstSeenAt": 1791972918745,
-   "logo": "/logos/hitachi-energy.jpg",
-   "bulletCount": 4
-  },
-  {
-   "id": "4478428486",
-   "company": "Genrobotics",
-   "title": "Robotic Operator",
-   "slugTitle": "Robotic Operator ( G Gaiter )- Fresher",
-   "location": "Nashik, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791969927611,
-   "firstSeenAt": 1791970047621,
-   "logo": "/logos/genrobotics.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4442057772",
-   "company": "Micron Technology",
-   "title": "Design engineer",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791968782965,
-   "firstSeenAt": 1791969622970,
-   "logo": "/logos/micron-technology.png",
-   "bulletCount": 3
-  },
-  {
-   "id": "ats:keka:impactanalytics:92315",
-   "company": "Impact Analytics",
-   "title": "DevOps Intern",
-   "location": "Bengaluru, KA, India",
-   "postedAt": 1791968346940,
-   "firstSeenAt": 1792001308719,
-   "logo": "/logos/impact-analytics.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476633951",
-   "company": "UST",
-   "title": "Software Engineer I",
-   "slugTitle": "Specialist I - Software Engineering",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791967378421,
-   "firstSeenAt": 1791967738423,
-   "logo": "/logos/ust.jpg",
-   "bulletCount": 4
   }
  ]
 }

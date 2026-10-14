@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/citi-java-fullstack-developer-4478801649",
+      "url": "https://interndoor.com/jobs/citi-java-fullstack-developer-4478801649",
+      "title": "Java Fullstack Developer — Citi",
+      "content_text": "Company: Citi · Location: Chennai, Tamil Nadu, India\n• Write and debug code for business applications using Java, Spring, and JavaScript\n• Collaborate with teams to design and implement system enhancements\n• Test and optimize applications on UNIX platforms with Oracle or Sybase",
+      "date_published": "2026-10-14T22:27:08.396Z",
+      "authors": [
+        {
+          "name": "Citi"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/vanguard-ai-application-engineer-4479705399",
       "url": "https://interndoor.com/jobs/vanguard-ai-application-engineer-4479705399",
       "title": "AI Application Engineer — Vanguard",
@@ -14,6 +26,42 @@
       "authors": [
         {
           "name": "Vanguard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/google-salesforce-application-engineer-youtube-4478494415",
+      "url": "https://interndoor.com/jobs/google-salesforce-application-engineer-youtube-4478494415",
+      "title": "Salesforce Application Engineer — Google",
+      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India\n• Build Salesforce features with Apex, LWC, Flows, and SOQL\n• Integrate Salesforce with internal and third-party platforms\n• Collaborate with product leads and business owners",
+      "date_published": "2026-10-14T19:34:53.439Z",
+      "authors": [
+        {
+          "name": "Google"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/amazon-applied-scientist-i-amazon-shipping-4470923679",
+      "url": "https://interndoor.com/jobs/amazon-applied-scientist-i-amazon-shipping-4470923679",
+      "title": "Applied Scientist I — Amazon",
+      "content_text": "Company: Amazon · Location: Gurugram, Haryana, India\n• Design and deploy machine learning models for logistics optimization\n• Work with Java, Python, SQL, and RDBMS systems\n• Collaborate with cross-functional teams on global transportation systems",
+      "date_published": "2026-10-14T18:47:36.648Z",
+      "authors": [
+        {
+          "name": "Amazon"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-python-backend-developer-irc305016-4469425685",
+      "url": "https://interndoor.com/jobs/globallogic-python-backend-developer-irc305016-4469425685",
+      "title": "Python Backend Developer — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Bengaluru, Karnataka, India\n• Develop and maintain backend systems using Python, Tornado, and RESTful APIs\n• Work on payment processing and subscription management in a microservices architecture\n• Collaborate with teams on software design, testing, and integration using PostgreSQL and Redis",
+      "date_published": "2026-10-14T18:47:06.442Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
         }
       ]
     },
@@ -86,6 +134,30 @@
       "authors": [
         {
           "name": "Mastercard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-c-developer-irc281591-4433668208",
+      "url": "https://interndoor.com/jobs/globallogic-c-developer-irc281591-4433668208",
+      "title": "C++ Developer IRC281591 — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Chennai, Tamil Nadu, India\n• Develop software for Linux-based embedded systems\n• Work with C/C++ and Linux kernel tools\n• Collaborate in a global team on high-tech projects",
+      "date_published": "2026-10-14T16:46:18.481Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/globallogic-sre-developer-irc302530-4460239636",
+      "url": "https://interndoor.com/jobs/globallogic-sre-developer-irc302530-4460239636",
+      "title": "SRE Developer — GlobalLogic",
+      "content_text": "Company: GlobalLogic · Location: Bengaluru, Karnataka, India\n• Troubleshoot production issues and customer outages using Linux, SQL, and automation scripts\n• Write scripts to automate fixes and prevent recurring problems in legacy systems\n• Analyze logs and perform root cause analysis for complex technical incidents",
+      "date_published": "2026-10-14T16:43:31.334Z",
+      "authors": [
+        {
+          "name": "GlobalLogic"
         }
       ]
     },
@@ -234,6 +306,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-associate-3-4476679049",
+      "url": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-associate-3-4476679049",
+      "title": "Site Reliability Engineering Associate 3 — BT Group",
+      "content_text": "Company: BT Group · Location: Delhi, India\n• Supports automation of software delivery using AWS, GitOps, and container tech\n• Helps build monitoring systems for system reliability and uptime\n• Collaborates with sales and support for performance planning",
+      "date_published": "2026-10-14T13:36:16.912Z",
+      "authors": [
+        {
+          "name": "BT Group"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
       "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
       "title": "AI engineer Advisor — NTT DATA North America",
@@ -378,6 +462,30 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/qualcomm-camera-firmware-engineer-4460009646",
+      "url": "https://interndoor.com/jobs/qualcomm-camera-firmware-engineer-4460009646",
+      "title": "Camera Firmware Engineer — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop camera firmware for Qualcomm chipsets using C/C++ on RTOS\n• Collaborate with cross-functional teams on hardware and software integration\n• Influence camera architecture for power/performance in future products",
+      "date_published": "2026-10-14T11:28:13.673Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517",
+      "url": "https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517",
+      "title": "The Core Engineering-L2-Bengaluru-Associate-Software Engineering — Goldman Sachs",
+      "content_text": "Company: Goldman Sachs · Location: Bengaluru, Karnataka, India\n• Manage production services through monitoring and system health checks\n• Use automation and observability tools like Prometheus and Kubernetes\n• Work on reliability metrics and incident management in a compliance-focused team",
+      "date_published": "2026-10-14T11:27:49.508Z",
+      "authors": [
+        {
+          "name": "Goldman Sachs"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bizom-junior-devops-engineer-4478445181",
       "url": "https://interndoor.com/jobs/bizom-junior-devops-engineer-4478445181",
       "title": "Junior DevOps Engineer — Bizom",
@@ -438,6 +546,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414942939",
+      "url": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414942939",
+      "title": "Backend Golang Developer — Proofpoint",
+      "content_text": "Company: Proofpoint · Location: Bengaluru, Karnataka, India\n• Build and maintain microservices in Go for core product features\n• Work on scalable systems with focus on performance and reliability\n• Collaborate with engineers across product and infrastructure teams",
+      "date_published": "2026-10-14T10:24:39.548Z",
+      "authors": [
+        {
+          "name": "Proofpoint"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/hitachi-energy-software-developer-4479506198",
       "url": "https://interndoor.com/jobs/hitachi-energy-software-developer-4479506198",
       "title": "Software Developer — Hitachi Energy",
@@ -482,126 +602,6 @@
       "authors": [
         {
           "name": "Impact Analytics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951",
-      "url": "https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951",
-      "title": "Software Engineer I — UST",
-      "content_text": "Company: UST · Location: Bengaluru, Karnataka, India\n• Code enterprise wealth management software in java\n• Collaborate with architects and product owners\n• Test and document software functionality\n• Resolve defects and production issues",
-      "date_published": "2026-10-14T08:42:58.421Z",
-      "authors": [
-        {
-          "name": "UST"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/caterpillar-inc-it-analyst-applications-mlops-engineer-4479291326",
-      "url": "https://interndoor.com/jobs/caterpillar-inc-it-analyst-applications-mlops-engineer-4479291326",
-      "title": "MLOps Engineer — Caterpillar Inc.",
-      "content_text": "Company: Caterpillar Inc. · Location: Chennai, Tamil Nadu, India\n• Deploy and maintain AI applications using deep learning, neural networks, and chatbots\n• Work with data scientists and infra teams on model governance and deployment\n• Build CI/CD pipelines for ML models and manage model versioning",
-      "date_published": "2026-10-14T08:34:32.578Z",
-      "authors": [
-        {
-          "name": "Caterpillar Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nielsen-ai-ml-data-scientist-i-4476636752",
-      "url": "https://interndoor.com/jobs/nielsen-ai-ml-data-scientist-i-4476636752",
-      "title": "AI / ML Data Scientist I — Nielsen",
-      "content_text": "Company: Nielsen · Location: Bengaluru, Karnataka, India\n• Build and deploy machine learning models in production\n• Work with cloud platforms and data engineering tools\n• Collaborate with cross-functional teams on audience measurement research",
-      "date_published": "2026-10-14T08:33:35.849Z",
-      "authors": [
-        {
-          "name": "Nielsen"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zycus-ai-native-full-stack-java-developer-4479285372",
-      "url": "https://interndoor.com/jobs/zycus-ai-native-full-stack-java-developer-4479285372",
-      "title": "AI-Native Full Stack Java Developer — Zycus",
-      "content_text": "Company: Zycus · Location: Mumbai, Maharashtra, India\n• Build scalable backend systems using Java\n• Collaborate with AI tools like Cursor and Copilot\n• Participate in a 5-hour hackathon to build a working system",
-      "date_published": "2026-10-14T08:28:13.220Z",
-      "authors": [
-        {
-          "name": "Zycus"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/blue-silicon-infotech-functional-test-engineer-4478414701",
-      "url": "https://interndoor.com/jobs/blue-silicon-infotech-functional-test-engineer-4478414701",
-      "title": "Functional Test Engineer — Blue Silicon Infotech",
-      "content_text": "Company: Blue Silicon Infotech · Location: Chennai, Tamil Nadu, India\n• Execute test cases for web and apps\n• Report and track software defects\n• Collaborate with developers and QA team",
-      "date_published": "2026-10-14T08:20:49.174Z",
-      "authors": [
-        {
-          "name": "Blue Silicon Infotech"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tata-consultancy-services-datacenter-network-engineer-4478412659",
-      "url": "https://interndoor.com/jobs/tata-consultancy-services-datacenter-network-engineer-4478412659",
-      "title": "Datacenter Network Engineer — Tata Consultancy Services",
-      "content_text": "Company: Tata Consultancy Services · Location: Chennai, Tamil Nadu, India\n• Design and implement high-performance data center networks\n• Work with Cisco ACI, Nexus, and SDWAN technologies\n• Lead architecture reviews and support implementation teams",
-      "date_published": "2026-10-14T07:30:17.541Z",
-      "authors": [
-        {
-          "name": "Tata Consultancy Services"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/juspay-software-development-engineer-frontend-react-native-4478407717",
-      "url": "https://interndoor.com/jobs/juspay-software-development-engineer-frontend-react-native-4478407717",
-      "title": "React Native Software Engineer — JUSPAY",
-      "content_text": "Company: JUSPAY · Location: Mumbai, Maharashtra, India\n• Build mobile apps with react native and javascript\n• Work on cross-platform ui and app architecture\n• Integrate restful apis and optimize performance",
-      "date_published": "2026-10-14T07:28:42.449Z",
-      "authors": [
-        {
-          "name": "JUSPAY"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720",
-      "url": "https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720",
-      "title": "IoT Engineering Intern — Endurance Power",
-      "content_text": "Company: Endurance Power · Location: India\n• Build a real-time solar and battery monitoring system using ESP32\n• Develop firmware and dashboard for data collection and visualization\n• Test prototype under real-world conditions and document results",
-      "date_published": "2026-10-14T06:42:56.183Z",
-      "authors": [
-        {
-          "name": "Endurance Power"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476636309",
-      "url": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476636309",
-      "title": "Cloud Monitoring intern — Volody",
-      "content_text": "Company: Volody · Location: Mumbai, Maharashtra, India\n• Monitor cloud logs, alerts, and security events\n• Use siem tools to detect threats and analyze logs\n• Support incident reporting and compliance checks",
-      "date_published": "2026-10-14T06:30:58.788Z",
-      "authors": [
-        {
-          "name": "Volody"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/american-express-analyst-data-analytics-agentic-4478414340",
-      "url": "https://interndoor.com/jobs/american-express-analyst-data-analytics-agentic-4478414340",
-      "title": "Data Analyst — American Express",
-      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Build GenAI solutions for customer engagement and marketing strategy\n• Use LLMs, RAG, and prompt engineering for business problem solving\n• Collaborate with cross-functional teams on scalable AI applications",
-      "date_published": "2026-10-14T06:13:00.756Z",
-      "authors": [
-        {
-          "name": "American Express"
         }
       ]
     }
