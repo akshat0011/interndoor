@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/vanguard-ai-application-engineer-4479705399",
+      "url": "https://interndoor.com/jobs/vanguard-ai-application-engineer-4479705399",
+      "title": "AI Application Engineer — Vanguard",
+      "content_text": "Company: Vanguard · Location: Hyderabad, Telangana, India\n• Design and build AI applications for large user bases\n• Work with AWS, GitHub, and cloud-native tools\n• Collaborate with stakeholders to solve complex problems",
+      "date_published": "2026-10-14T20:50:06.472Z",
+      "authors": [
+        {
+          "name": "Vanguard"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-stibo-mdm-developer-4478809097",
+      "url": "https://interndoor.com/jobs/cognizant-stibo-mdm-developer-4478809097",
+      "title": "Stibo MDM Developer — Cognizant",
+      "content_text": "Company: Cognizant · Location: Bangalore Urban, Karnataka, India\n• Configure data models and business rules for global product workflows\n• Integrate stibo with erp and analytics platforms using apis\n• Optimize data workflows to reduce manual effort and improve compliance",
+      "date_published": "2026-10-14T20:49:10.688Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/atkinsr-alis-apprentice-4479572729",
       "url": "https://interndoor.com/jobs/atkinsr-alis-apprentice-4479572729",
       "title": "Apprentice — AtkinsRéalis",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4479266664",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4479266664",
-      "title": "AI Intern — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Analyze industrial data to improve automation systems\n• Use python and machine learning tools for predictive modeling\n• Work with cross-functional teams on real-world projects",
-      "date_published": "2026-10-14T06:02:14.048Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/capgemini-storage-support-virtualization-san-nas-storage-provisioning-4479268328",
-      "url": "https://interndoor.com/jobs/capgemini-storage-support-virtualization-san-nas-storage-provisioning-4479268328",
-      "title": "Storage Support, Virtualization, SAN/NAS storage provisioning — Capgemini",
-      "content_text": "Company: Capgemini · Location: Hyderabad, Telangana, India\n• Support storage systems like SAN/NAS for industrial operations\n• Work on procurement, supply chain, and facilities engineering\n• Collaborate with customers and teams on project changes",
-      "date_published": "2026-10-14T05:29:51.645Z",
-      "authors": [
-        {
-          "name": "Capgemini"
         }
       ]
     }

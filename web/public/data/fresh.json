@@ -1,6 +1,28 @@
 {
  "jobs": [
   {
+   "id": "4479705399",
+   "company": "Vanguard",
+   "title": "AI Application Engineer",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792011006472,
+   "firstSeenAt": 1792012266481,
+   "logo": "/logos/vanguard.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478809097",
+   "company": "Cognizant",
+   "title": "Stibo MDM Developer",
+   "location": "Bangalore Urban, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792010950688,
+   "firstSeenAt": 1792012270691,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479572729",
    "company": "AtkinsRéalis",
    "title": "Apprentice",
@@ -429,28 +451,6 @@
    "firstSeenAt": 1791967738423,
    "logo": "/logos/ust.jpg",
    "bulletCount": 4
-  },
-  {
-   "id": "4479291326",
-   "company": "Caterpillar Inc.",
-   "title": "MLOps Engineer",
-   "slugTitle": "IT Analyst Applications (MLOps Engineer)",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791966872578,
-   "firstSeenAt": 1791968012587,
-   "logo": "/logos/caterpillar-inc.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476636752",
-   "company": "Nielsen",
-   "title": "AI / ML Data Scientist I",
-   "location": "Bengaluru, Karnataka, India",
-   "postedAt": 1791966815849,
-   "firstSeenAt": 1791967715854,
-   "logo": "/logos/nielsen.jpg",
-   "bulletCount": 3
   }
  ]
 }
