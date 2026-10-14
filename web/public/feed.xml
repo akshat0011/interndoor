@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 14 Oct 2026 08:42:58 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 14 Oct 2026 09:14:12 GMT</lastBuildDate>
+  <item>
+    <title>Manual Test Engineer — Siemens Healthineers</title>
+    <link>https://interndoor.com/jobs/siemens-healthineers-manual-test-engineer-4476640789</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/siemens-healthineers-manual-test-engineer-4476640789</guid>
+    <pubDate>Wed, 14 Oct 2026 09:14:12 GMT</pubDate>
+    <description>Company: Siemens Healthineers · Location: Bengaluru, Karnataka, India
+• Execute manual tests across sdlc stages
+• Track defects using jira or bugzilla
+• Write detailed test cases and scenarios</description>
+  </item>
+  <item>
+    <title>Design engineer — Micron Technology</title>
+    <link>https://interndoor.com/jobs/micron-technology-design-engineer-4442057772</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/micron-technology-design-engineer-4442057772</guid>
+    <pubDate>Wed, 14 Oct 2026 09:06:22 GMT</pubDate>
+    <description>Company: Micron Technology · Location: Hyderabad, Telangana, India
+• Design and validate on-chip controller and mixed signal circuitry in NAND flash chips
+• Rtl design, firmware development, and full-chip verilog validation
+• Work with ncsim, design compiler, formality, and prime time tools</description>
+  </item>
   <item>
     <title>Software Engineer I — UST</title>
     <link>https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951</link>
@@ -37,6 +57,16 @@
 • Build and deploy machine learning models in production
 • Work with cloud platforms and data engineering tools
 • Collaborate with cross-functional teams on audience measurement research</description>
+  </item>
+  <item>
+    <title>Functional Test Engineer — Blue Silicon Infotech</title>
+    <link>https://interndoor.com/jobs/blue-silicon-infotech-functional-test-engineer-4478414701</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/blue-silicon-infotech-functional-test-engineer-4478414701</guid>
+    <pubDate>Wed, 14 Oct 2026 08:20:49 GMT</pubDate>
+    <description>Company: Blue Silicon Infotech · Location: Chennai, Tamil Nadu, India
+• Execute test cases for web and apps
+• Report and track software defects
+• Collaborate with developers and QA team</description>
   </item>
   <item>
     <title>IoT Engineering Intern — Endurance Power</title>
@@ -481,36 +511,6 @@
 • Design mysql schemas and optimize queries
 • Mentor junior engineers and review code
 • Integrate frontend with backend services</description>
-  </item>
-  <item>
-    <title>AI/ML SME Intern — Newton School of Technology</title>
-    <link>https://interndoor.com/jobs/newton-school-of-technology-sme-intern-ai-ml-m-tech-4477993383</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/newton-school-of-technology-sme-intern-ai-ml-m-tech-4477993383</guid>
-    <pubDate>Tue, 13 Oct 2026 10:32:10 GMT</pubDate>
-    <description>Company: Newton School of Technology · Location: Pune District, Maharashtra, India
-• Design and deliver AI/ML courses with hands-on projects
-• Mentor students on real-world ML models and tools
-• Collaborate with faculty to shape industry-aligned curriculum</description>
-  </item>
-  <item>
-    <title>Software Engineer — PayPal</title>
-    <link>https://interndoor.com/jobs/paypal-software-engineer-4478784348</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/paypal-software-engineer-4478784348</guid>
-    <pubDate>Tue, 13 Oct 2026 09:36:06 GMT</pubDate>
-    <description>Company: PayPal · Location: Chennai, Tamil Nadu, India
-• Build scalable backend services using Java for SRE reliability tools
-• Collaborate with cross-functional teams to solve system reliability challenges
-• Apply AI/GenAI to automate engineering workflows and improve productivity</description>
-  </item>
-  <item>
-    <title>Software Development Intern — Seagate Technology</title>
-    <link>https://interndoor.com/jobs/seagate-technology-intern-software-development-4476417181</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/seagate-technology-intern-software-development-4476417181</guid>
-    <pubDate>Tue, 13 Oct 2026 09:32:16 GMT</pubDate>
-    <description>Company: Seagate Technology · Location: Pune Division, Maharashtra, India
-• Develop and debug software in C/C++ and Python for operational tools
-• Work with CI/CD and containerization tools like Jenkins and Docker
-• Collaborate with cross-functional teams on automation and data workflows</description>
   </item>
 </channel>
 </rss>

@@ -58,7 +58,7 @@
   <url><loc>https://interndoor.com/skills/express</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/mysql</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/golang</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/perl</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/perl</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/computer-vision</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/system-design</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pandas</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
@@ -68,29 +68,29 @@
   <url><loc>https://interndoor.com/skills/i2c</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/fpga</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/matlab</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/verilog</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/vue</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/django</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/kotlin</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/ruby</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/verilog</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/embedded-c</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/oop</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/redis</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/rtl</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/rtos</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/uart</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/autosar</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/pcb</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/rtl</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/scikit-learn</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/numpy</loc><lastmod>2026-10-07</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/physical-design</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/skills/tcl</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/swift</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/skills/tcl</loc><lastmod>2026-10-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/skills/graphql</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/bengaluru</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/chennai</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/pune</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/locations/hyderabad</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/gurugram</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/mumbai</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/locations/noida</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
@@ -101,11 +101,11 @@
   <url><loc>https://interndoor.com/roles/software-engineering</loc><lastmod>2026-10-14</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning</loc><lastmod>2026-10-14</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/data-engineering-analytics</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/roles/qa-testing</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/roles/qa-testing</loc><lastmod>2026-10-14</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/devops-cloud</loc><lastmod>2026-10-14</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/it-support</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/full-stack-development</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
-  <url><loc>https://interndoor.com/roles/core-engineering</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
+  <url><loc>https://interndoor.com/roles/core-engineering</loc><lastmod>2026-10-14</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware</loc><lastmod>2026-10-14</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/backend-development</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
   <url><loc>https://interndoor.com/roles/sap-salesforce</loc><lastmod>2026-10-13</lastmod><priority>0.7</priority></url>
@@ -122,11 +122,11 @@
   <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-pune</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/devops-cloud-in-bengaluru</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering-in-hyderabad</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/roles/qa-testing-in-bengaluru</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/qa-testing-in-bengaluru</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/vlsi-hardware-in-bengaluru</loc><lastmod>2026-10-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/roles/qa-testing-in-chennai</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-gurugram</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/ai-machine-learning-in-hyderabad</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/roles/qa-testing-in-chennai</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/backend-development-in-bengaluru</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/data-engineering-analytics-in-gurugram</loc><lastmod>2026-10-13</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/it-support-in-bengaluru</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
@@ -148,9 +148,12 @@
   <url><loc>https://interndoor.com/roles/qa-testing-in-pune</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/sap-salesforce-in-pune</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/roles/software-engineering-in-mumbai</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/jobs/siemens-healthineers-manual-test-engineer-4476640789</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/micron-technology-design-engineer-4442057772</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/ust-specialist-i-software-engineering-4476633951</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/caterpillar-inc-it-analyst-applications-mlops-engineer-4479291326</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/nielsen-ai-ml-data-scientist-i-4476636752</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/jobs/blue-silicon-infotech-functional-test-engineer-4478414701</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476636309</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/american-express-analyst-data-analytics-agentic-4478414340</loc><lastmod>2026-10-14</lastmod><priority>0.8</priority></url>
@@ -1368,6 +1371,8 @@
   <url><loc>https://interndoor.com/jobs/eclerx-intern-ats-oraclecloud-fa-ewji-saasfaprod1-fa-ocs-oraclecloud-com-81650</loc><lastmod>2026-07-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/microsoft-software-engineering-intern-ats-microsoft-india-1970393556911730</loc><lastmod>2026-07-01</lastmod><priority>0.8</priority></url>
   <url><loc>https://interndoor.com/jobs/glance-ux-design-intern-ats-greenhouse-glance-7916115</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://interndoor.com/companies/siemens-healthineers</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://interndoor.com/companies/micron-technology</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ust</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/caterpillar-inc</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/volody</loc><lastmod>2026-10-14</lastmod><priority>0.6</priority></url>
@@ -1441,7 +1446,6 @@
   <url><loc>https://interndoor.com/companies/sony-research-india</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/nationwide</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/accenture-services-pvt-ltd</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/micron-technology</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/salesforce-ad</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/uffizio</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/heads-up-for-tails</loc><lastmod>2026-10-10</lastmod><priority>0.6</priority></url>
@@ -1462,7 +1466,6 @@
   <url><loc>https://interndoor.com/companies/national-technology-centre-for-ports-waterways-and-coasts-ntcpwc</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/oceaneering</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/birlasoft</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
-  <url><loc>https://interndoor.com/companies/siemens-healthineers</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/bristol-myers-squibb</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/millennium</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://interndoor.com/companies/ericsson</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
