@@ -251,10 +251,10 @@ export function retryAfterMsOf(value, now = Date.now()) {
  * never more than 17 minutes in all; one that outlasts that still stops
  * discovery for the run.
  */
-export const GUEST_BLOCK_WAITS_MS = [120_000, 300_000, 600_000];
+export const GUEST_BLOCK_WAITS_MS = [120_000, 120_000, 120_000];
 
 /** A Retry-After longer than this is not waited out inside a run. */
-const MAX_BLOCK_WAIT_MS = 15 * 60_000;
+const MAX_BLOCK_WAIT_MS = 2 * 60_000;
 
 /**
  * A 5xx is LinkedIn's server failing ONE request, not a limit, so it is asked

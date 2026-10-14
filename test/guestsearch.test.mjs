@@ -213,7 +213,7 @@ console.log('\n== a 429 is waited out, minutes at a time, and the same page aske
   };
   const slept = [];
   const sleep = async (ms) => { slept.push(ms); };
-  check('the waits are 2, 5 and 10 minutes', GUEST_BLOCK_WAITS_MS, [120_000, 300_000, 600_000]);
+  check('the waits are 2 minutes each, never longer', GUEST_BLOCK_WAITS_MS, [120_000, 120_000, 120_000]);
 
   let s = seq([[429, ''], [200, PAGE_OK]]);
   let r = await fetchGuestPageRetrying('https://x/p?start=70', { fetchImpl: s.impl, sleep });
@@ -224,7 +224,7 @@ console.log('\n== a 429 is waited out, minutes at a time, and the same page aske
   s = seq([[429, '']]);
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
   check('a 429 that outlasts every wait is still a block', [r.blocked, r.status, r.retries], [true, 429, 3]);
-  check('after 2, 5 and 10 minutes, and four asks in all', [slept.splice(0), s.asked.length], [[120_000, 300_000, 600_000], 4]);
+  check('after 2 minutes each, and four asks in all', [slept.splice(0), s.asked.length], [[120_000, 120_000, 120_000], 4]);
 
   s = seq([[999, '']]);
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
@@ -234,16 +234,16 @@ console.log('\n== a 429 is waited out, minutes at a time, and the same page aske
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 100_000 });
   check('a wait the run cannot afford is not started', [r.blocked, r.retries, slept.splice(0)], [true, 0, []]);
   s = seq([[429, '']]);
-  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 350_000 });
-  // 2 min fits; 2 + 5 does not, though 5 alone would.
+  r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, budgetMs: 250_000 });
+  // 2 min fits; 2 + 2 does not.
   check('and the budget counts every wait so far', [r.retries, slept.splice(0)], [1, [120_000]]);
 
   s = seq([[429, '', { 'retry-after': '400' }], [200, PAGE_OK]]);
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
-  check('a longer Retry-After is honoured', slept.splice(0), [400_000]);
+  check('a longer Retry-After is capped at 2 minutes', slept.splice(0), [120_000]);
   s = seq([[429, '', { 'retry-after': '7200' }], [200, PAGE_OK]]);
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
-  check('up to 15 minutes', slept.splice(0), [900_000]);
+  check('even a long one', slept.splice(0), [120_000]);
   s = seq([[429, '', { 'retry-after': '5' }], [200, PAGE_OK]]);
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
   check('a shorter one never shortens the planned wait', slept.splice(0), [120_000]);
@@ -252,7 +252,7 @@ console.log('\n== a 429 is waited out, minutes at a time, and the same page aske
   s = seq([[429, ''], [429, ''], [200, PAGE_OK]]);
   await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep, onWait: (w) => told.push(w) });
   slept.splice(0);
-  check('each wait is announced before it starts', told, [{ attempt: 1, of: 3, waitMs: 120_000 }, { attempt: 2, of: 3, waitMs: 300_000 }]);
+  check('each wait is announced before it starts', told, [{ attempt: 1, of: 3, waitMs: 120_000 }, { attempt: 2, of: 3, waitMs: 120_000 }]);
 
   s = seq([[200, PAGE_OK]]);
   r = await fetchGuestPageRetrying('u', { fetchImpl: s.impl, sleep });
@@ -459,9 +459,9 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('the scheduled run never passes --patient',
     /--patient/.test(readFileSync(new URL('../bin/run.sh', import.meta.url), 'utf8')), false);
   {
-    const m = src.match(/const PATIENT_WAITS_MS = \[120_000, 300_000, 600_000, \.\.\.Array\((\d+)\)\.fill\(900_000\)\];/);
-    const total = m ? 1_020_000 + Number(m[1]) * 900_000 : 0;
-    check('--patient waits about two hours in all, never forever', total > 3_600_000 && total <= 3 * 3_600_000, true);
+    const m = src.match(/const PATIENT_WAITS_MS = Array\((\d+)\)\.fill\(120_000\);/);
+    const total = m ? Number(m[1]) * 120_000 : 0;
+    check('--patient waits about two hours in all, 2 minutes at a time', total > 3_600_000 && total <= 3 * 3_600_000, true);
   }
   check('a 429 waited out still counts as a block for the exit code (no fast retry)',
     /onWait: \(\{ attempt, of, waitMs \}\) => \{\s*sawBlocked = true;/.test(src), true);

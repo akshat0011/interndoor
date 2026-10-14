@@ -92,7 +92,7 @@ for (const s of searches.filter((x) => x.employment === 'fulltime')) {
        the IP — see its _interval_note in config.json. */
     /* The intern walk every tick; the full-time walk every 2 hours (his call,
        13 Oct 2026; hourly from 1 Oct), in its own phase. */
-    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, s.employment === 'fulltime' ? 60 : null);
+    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, s.employment === 'fulltime' ? 120 : null);
   } else {
     ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
   }

@@ -47,7 +47,7 @@ const NO_OPEN = ARGS.has('--no-open');
    two hours holds the run lock over four ticks. Pair it with --max-minutes,
    because no wait is started that would eat the last 10 minutes of the run. */
 const PATIENT = ARGS.has('--patient');
-const PATIENT_WAITS_MS = [120_000, 300_000, 600_000, ...Array(8).fill(900_000)];
+const PATIENT_WAITS_MS = Array(70).fill(120_000);
 /** Set by bin/run.sh so scheduled runs can behave slightly differently. */
 const SCHEDULED = ARGS.has('--scheduled');
 /** Which regions this scan walks — see scopeSearches. bin/run.sh passes
