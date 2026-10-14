@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 14 Oct 2026 00:15:58 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 14 Oct 2026 06:42:56 GMT</lastBuildDate>
+  <item>
+    <title>IoT Engineering Intern — Endurance Power</title>
+    <link>https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/endurance-power-iot-engineering-intern-4478408720</guid>
+    <pubDate>Wed, 14 Oct 2026 06:42:56 GMT</pubDate>
+    <description>Company: Endurance Power · Location: India
+• Build a real-time solar and battery monitoring system using ESP32
+• Develop firmware and dashboard for data collection and visualization
+• Test prototype under real-world conditions and document results</description>
+  </item>
+  <item>
+    <title>Cloud Monitoring intern — Volody</title>
+    <link>https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476636309</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-candidates-only-4476636309</guid>
+    <pubDate>Wed, 14 Oct 2026 06:30:58 GMT</pubDate>
+    <description>Company: Volody · Location: Mumbai, Maharashtra, India
+• Monitor cloud logs, alerts, and security events
+• Use siem tools to detect threats and analyze logs
+• Support incident reporting and compliance checks</description>
+  </item>
+  <item>
+    <title>AI Intern — Honeywell Technologies</title>
+    <link>https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4479266664</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4479266664</guid>
+    <pubDate>Wed, 14 Oct 2026 06:02:14 GMT</pubDate>
+    <description>Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India
+• Analyze industrial data to improve automation systems
+• Use python and machine learning tools for predictive modeling
+• Work with cross-functional teams on real-world projects</description>
+  </item>
   <item>
     <title>AI Director Fellowship Internship in Jaipur, Bangalore, Delhi — Kuku</title>
     <link>https://interndoor.com/jobs/kuku-ai-director-fellowship-internship-in-jaipur-bangalore-delhi-4479222737</link>
@@ -331,16 +361,6 @@
 • Collaborate on API integrations and DevOps pipelines</description>
   </item>
   <item>
-    <title>AI Intern — Honeywell Technologies</title>
-    <link>https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4478789654</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-ai-4478789654</guid>
-    <pubDate>Tue, 13 Oct 2026 12:17:50 GMT</pubDate>
-    <description>Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India
-• Analyze industrial data using ai tools
-• Work with python and machine learning frameworks
-• Collaborate with engineers on automation projects</description>
-  </item>
-  <item>
     <title>Software Engineering Intern — Honeywell Technologies</title>
     <link>https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-software-eng-4479000109</link>
     <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-software-eng-4479000109</guid>
@@ -490,26 +510,6 @@
 • Build scalable web apps with React and Node.js
 • Use Git, CI/CD, and AI tools like Claude
 • Work on APIs, middleware, and security practices</description>
-  </item>
-  <item>
-    <title>SDE Intern - Backend — CloudSEK</title>
-    <link>https://interndoor.com/jobs/cloudsek-sde-intern-backend-ats-greenhouse-cloudsek-6222340004</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cloudsek-sde-intern-backend-ats-greenhouse-cloudsek-6222340004</guid>
-    <pubDate>Tue, 13 Oct 2026 07:35:45 GMT</pubDate>
-    <description>Company: CloudSEK · Location: Bengaluru, Karnataka, India
-• Develop and maintain backend systems for cybersecurity products using NodeJS or Go
-• Collaborate with cross-functional teams on scalable, secure software solutions
-• Debug and optimize performance of backend components in a fast-paced environment</description>
-  </item>
-  <item>
-    <title>Test Engineer L1 — Wipro</title>
-    <link>https://interndoor.com/jobs/wipro-test-engineer-l1-4477963964</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/wipro-test-engineer-l1-4477963964</guid>
-    <pubDate>Tue, 13 Oct 2026 07:31:42 GMT</pubDate>
-    <description>Company: Wipro · Location: Gurugram, Haryana, India
-• Prepare test data and verify database checks
-• Assist with unit testing and document results
-• Work with defined guidelines and prescribed formats</description>
   </item>
 </channel>
 </rss>
