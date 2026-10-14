@@ -292,7 +292,8 @@ export function titleMinYears(title) {
  *     Temporary are not the role a fresher is looking for; a missing chip is
  *     refused for the same reason the intern path refuses it: the card got in
  *     on the promise the pane would settle it;
- *   - LinkedIn's seniority chip, when it is there, must say Entry level;
+ *   - LinkedIn's seniority chip, when it is there, must say Entry level or
+ *     Associate (Associate since 14 Oct 2026);
  *   - the prose must not demand ENTRY_MAX_YEARS or more.
  *
  * Returns { kind, reason }: kind 'intern' | 'fulltime' | null, reason set when
@@ -306,7 +307,12 @@ export function admitEntryLevel({ title, employmentTag, seniorityTag, descriptio
   if (!/^full[-\s]?time$/i.test(String(employmentTag ?? '').trim())) {
     return { kind: null, reason: `entry-level: LinkedIn tags it ${employmentTag ?? 'nothing'}` };
   }
-  if (seniorityTag && !/^entry[-\s]?level$/i.test(String(seniorityTag).trim())) {
+  /* Entry level OR Associate (14 Oct 2026, his call): many Indian employers
+     mark SDE-1 and junior roles "Associate" — Juspay, Angel One SDE-1,
+     Ubisoft "Junior R&D Engineer" were refused on it, 336 postings from 101
+     employers in 14 days. The title and years rules below still refuse an
+     experienced role whatever its label says. */
+  if (seniorityTag && !/^(?:entry[-\s]?level|associate)$/i.test(String(seniorityTag).trim())) {
     return { kind: null, reason: `entry-level: LinkedIn says ${seniorityTag}` };
   }
   const floor = experienceFloor(description);

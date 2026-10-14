@@ -190,7 +190,10 @@ console.log('\n== admitEntryLevel: the facet said entry level; does anything dis
   check('a Contract chip is refused', admitEntryLevel({ ...base, employmentTag: 'Contract' }), { kind: null, reason: 'entry-level: LinkedIn tags it Contract' });
   check('a MISSING employment chip is refused — no tag settles nothing', admitEntryLevel({ ...base, employmentTag: null }).reason, 'entry-level: LinkedIn tags it nothing');
   check('a seniority chip that is not Entry level is refused', admitEntryLevel({ ...base, seniorityTag: 'Mid-Senior level' }), { kind: null, reason: 'entry-level: LinkedIn says Mid-Senior level' });
-  check('Associate seniority is refused too', admitEntryLevel({ ...base, seniorityTag: 'Associate' }).kind, null);
+  check('Associate seniority is admitted (14 Oct 2026)', admitEntryLevel({ ...base, seniorityTag: 'Associate' }).kind, 'fulltime');
+  check('Associate with 2+ years asked is still refused', admitEntryLevel({ ...base, seniorityTag: 'Associate', description: 'You bring 3+ years of experience.' }).kind, null);
+  check('Associate on a senior title is still refused', admitEntryLevel({ ...base, title: 'Senior Software Engineer', seniorityTag: 'Associate' }).kind, null);
+  check('a word containing associate is not the label', admitEntryLevel({ ...base, seniorityTag: 'Associate Director' }).kind, null);
   check('a missing seniority chip is accepted — the facet already said it', admitEntryLevel({ ...base, seniorityTag: null }).kind, 'fulltime');
   check(`prose demanding ${ENTRY_MAX_YEARS}+ years is refused`, admitEntryLevel({ ...base, description: '3+ years of Java' }), { kind: null, reason: 'entry-level: asks 3+ years' });
   check('exactly the limit is refused', admitEntryLevel({ ...base, description: `minimum ${ENTRY_MAX_YEARS} years` }).kind, null);
