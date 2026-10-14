@@ -136,6 +136,13 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [EXIT $STATUS]" >> "$LOG"
 # since 1 Oct: run before it, it held the slot's publish back.
 "$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/job-check.js" >> "$LOG" 2>&1 || true
 
+# Articles Distribb published to /api/distribb become blog posts here: images
+# downloaded, blog/content/posts/<slug>.html written, the blog built and
+# verified, committed by path and pushed (bin/distribb-import.js). AFTER the
+# scan phases, never beside them: both commit in this checkout. Quick when the
+# inbox has nothing new (one Redis read).
+"$NODE" --no-warnings=ExperimentalWarning "$HERE/bin/distribb-import.js" >> "$LOG" 2>&1 || true
+
 # ---------------------------------------------------------------------------
 # The weekly roundup, asked about on every scan and written once a week.
 #

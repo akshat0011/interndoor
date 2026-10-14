@@ -257,7 +257,10 @@ const waIn = JSON.stringify(cfg).match(/"IN":\s*"(https:\/\/whatsapp\.com\/chann
 check('the WhatsApp link is the channel in config.json', WHATSAPP_URL, waIn);
 check('the email form posts to the endpoint that allows this origin', [SUBSCRIBE_ENDPOINT, BLOG_ORIGIN], ['https://interndoor.com/api/subscribe', SITE]);
 check('the theme key is the board’s', /localStorage\.getItem\('theme'\)/.test(THEME_SCRIPT) && readFileSync(join(ROOT, 'src', 'pages.js'), 'utf8').includes(THEME_SCRIPT), true);
-check('the posts name no listing source', readdirSync(join(ROOT, 'blog', 'content', 'posts')).every((f) => !/\b(linkedin|greenhouse|lever\.co|ashby|workday|smartrecruiters|naukri|scrap(e|ed|ing|er))\b/i.test(readFileSync(join(ROOT, 'blog', 'content', 'posts', f), 'utf8'))), true);
+/* Hand-written posts only: imported (.html) articles are written to the AI
+   instructions in Distribb, which carry the same rule, and a test that read
+   them would fail the suite on content nobody here wrote. */
+check('the posts name no listing source', readdirSync(join(ROOT, 'blog', 'content', 'posts')).filter((f) => f.endsWith('.md')).every((f) => !/\b(linkedin|greenhouse|lever\.co|ashby|workday|smartrecruiters|naukri|scrap(e|ed|ing|er))\b/i.test(readFileSync(join(ROOT, 'blog', 'content', 'posts', f), 'utf8'))), true);
 check('the pages name no listing source', ['about', 'methodology'].every((f) => !/\b(linkedin|greenhouse|lever|ashby|workday|smartrecruiters|scrap(e|ed|ing|er))\b/i.test(readFileSync(join(ROOT, 'blog', 'content', 'pages', `${f}.md`), 'utf8'))), true);
 check('a category is written for every category that has posts', Object.keys(CATEGORIES).every((c) => !res.posts.some((p) => p.category === c) || existsSync(join(outA, c, 'index.html'))), true);
 {

@@ -78,6 +78,7 @@ const server = createServer(async (req, res) => {
     '/api/feedback': './api/feedback.js',
     '/api/gone': './api/gone.js',
     '/api/post-job': './api/post-job.js',
+    '/api/distribb': './api/distribb.js',
   };
   if (API[url.pathname]) {
     try {

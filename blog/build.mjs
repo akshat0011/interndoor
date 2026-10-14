@@ -15,6 +15,7 @@ import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, write
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderMarkdown, MarkdownError } from './lib/markdown.mjs';
+import { cleanArticleHtml } from './lib/htmlpost.mjs';
 import { parseFrontmatter, loadPosts, readingMinutes, validDate, ContentError } from './lib/content.mjs';
 import { loadDatasets, renderChart } from './lib/charts.mjs';
 import {
@@ -100,7 +101,12 @@ export async function build(opts = {}) {
       reservedIds: ['main', 'sources', 'further-h', 'related-h', 'toc-h', 'sub-post-h', 'sub-post-email', 'sub-post-msg', 'sub-post-fine'],
     };
     let r;
-    try { r = renderMarkdown(p.body, ctx); } catch (e) { throw new MarkdownError(`${p.file}: ${e.message}`); }
+    if (p.format === 'html') {
+      r = cleanArticleHtml(p.body, { reservedIds: ctx.reservedIds });
+      for (const href of r.links) ctx.checkLink(href);
+    } else {
+      try { r = renderMarkdown(p.body, ctx); } catch (e) { throw new MarkdownError(`${p.file}: ${e.message}`); }
+    }
     for (const s of p.sources) if (s.url.startsWith(MAIN)) mainLinks.add(s.url);
     for (const f of p.further) if (f.url.startsWith(MAIN)) mainLinks.add(f.url);
     rendered.set(p.slug, { ...r, citations, minutes: readingMinutes(r.words) });
@@ -117,6 +123,9 @@ export async function build(opts = {}) {
   mkdirSync(o.outDir, { recursive: true });
   for (const f of readdirSync(o.outDir)) if (f !== 'og') rmSync(join(o.outDir, f), { recursive: true, force: true });
   if (existsSync(o.staticDir)) cpSync(o.staticDir, o.outDir, { recursive: true });
+  /* Images an imported article carries, downloaded by bin/distribb-import.js. */
+  const mediaDir = join(o.contentDir, 'media');
+  if (existsSync(mediaDir)) cpSync(mediaDir, join(o.outDir, 'media'), { recursive: true });
   write(o.outDir, 'blog.css', css);
   write(o.outDir, 'blog.js', js);
 

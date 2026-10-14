@@ -105,7 +105,8 @@ export function validatePost(data, file) {
     if (DASH.test(JSON.stringify(v))) fail(`an em or en dash in "${k}". Use a colon, a comma or a hyphen.`);
   }
   const known = new Set(['title', 'seoTitle', 'slug', 'description', 'dek', 'category', 'tags', 'published', 'updated',
-    'draft', 'noindex', 'featured', 'figure', 'figureLabel', 'lead', 'sources', 'related', 'further', 'toc']);
+    'draft', 'noindex', 'featured', 'figure', 'figureLabel', 'lead', 'sources', 'related', 'further', 'toc',
+    'image', 'imageAlt', 'imageWidth', 'imageHeight', 'origin', 'originId']);
   for (const k of Object.keys(data)) if (!known.has(k)) fail(`unknown field "${k}".`);
 
   if (!isText(data.title) || data.title.length > 110) fail('a title of 1 to 110 characters is required.');
@@ -128,6 +129,20 @@ export function validatePost(data, file) {
   for (const k of ['draft', 'noindex', 'featured', 'toc']) {
     if (data[k] !== undefined && typeof data[k] !== 'boolean') fail(`${k} must be true or false.`);
   }
+
+  /* A lead image is a file this site serves (img-src is 'self'), with words
+     saying what it shows. Imported posts carry one; hand-written posts may. */
+  if (data.image !== undefined) {
+    if (!/^\/media\/[a-z0-9][a-z0-9/_.-]*\.(?:png|jpe?g|webp|gif|avif)$/.test(String(data.image)) || String(data.image).includes('..')) {
+      fail('image must be a /media/... path to a png, jpg, webp, gif or avif file.');
+    }
+    if (!isText(data.imageAlt)) fail('an image needs imageAlt: words saying what it shows.');
+  } else if (data.imageAlt !== undefined) fail('imageAlt without an image.');
+  for (const k of ['imageWidth', 'imageHeight']) {
+    if (data[k] !== undefined && !/^[1-9]\d{0,4}$/.test(String(data[k]))) fail(`${k} must be a whole number of pixels.`);
+  }
+  if (data.origin !== undefined && data.origin !== 'distribb') fail('origin, when set, is "distribb".');
+  if (data.originId !== undefined && !/^[\w.:-]{1,80}$/.test(String(data.originId))) fail('originId is a short id.');
 
   const sources = data.sources ?? [];
   if (!Array.isArray(sources)) fail('sources must be a list.');
@@ -171,13 +186,15 @@ export function loadPosts(dir, { today, includeDrafts = false } = {}) {
   const posts = [];
   const skipped = [];
   const slugs = new Map();
-  for (const f of readdirSync(dir).filter((x) => x.endsWith('.md')).sort()) {
+  /* .md is hand-written Markdown; .html is an imported article (front matter
+     plus a body lib/htmlpost.mjs cleans on every build). */
+  for (const f of readdirSync(dir).filter((x) => x.endsWith('.md') || x.endsWith('.html')).sort()) {
     const { data, body } = parseFrontmatter(readFileSync(join(dir, f), 'utf8'), f);
     const post = validatePost(data, f);
     if (slugs.has(post.slug)) throw new ContentError(`${f}: slug "${post.slug}" is already used by ${slugs.get(post.slug)}.`);
     slugs.set(post.slug, f);
     if (!includeDrafts && (post.draft || (today && post.published > today))) { skipped.push({ file: f, why: post.draft ? 'draft' : 'scheduled' }); continue; }
-    posts.push({ ...post, file: f, body });
+    posts.push({ ...post, file: f, body, format: f.endsWith('.html') ? 'html' : 'md' });
   }
   posts.sort((a, b) => (b.published.localeCompare(a.published)) || a.title.localeCompare(b.title));
   /* Against the PUBLISHED set: a related link to a draft would be a link to a

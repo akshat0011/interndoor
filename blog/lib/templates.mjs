@@ -286,6 +286,7 @@ ${metaLine(p, minutes, { by: true })}
 ${shareBar(p)}
 </div>
 </header>
+${p.image ? `<figure class="post-hero"><img src="${esc(p.image)}" alt="${esc(p.imageAlt)}"${p.imageWidth && p.imageHeight ? ` width="${esc(p.imageWidth)}" height="${esc(p.imageHeight)}"` : ''} decoding="async" fetchpriority="high"></figure>` : ''}
 <div class="post-grid${toc ? ' has-toc' : ''}">
 ${toc ? `<aside class="toc" aria-labelledby="toc-h"><p class="toc-h" id="toc-h">On this page</p><nav aria-labelledby="toc-h">${tocList}</nav></aside>` : ''}
 <article class="prose">

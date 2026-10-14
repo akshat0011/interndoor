@@ -96,7 +96,11 @@ export function vercelJson() {
     $schema: 'https://openapi.vercel.sh/vercel.json',
     framework: null,
     outputDirectory: 'public',
-    ignoreCommand: 'git diff --quiet HEAD^ HEAD -- .',
+    /* Skip the build only when nothing under blog/ changed since the LAST
+       DEPLOYED commit. Comparing HEAD with HEAD^ alone skipped an imported post
+       whenever a scheduler publish landed on top of it in the same push. The
+       previous sha can be missing from Vercel's shallow clone; then fall back. */
+    ignoreCommand: 'if git cat-file -e "$VERCEL_GIT_PREVIOUS_SHA^{commit}" 2>/dev/null; then git diff --quiet "$VERCEL_GIT_PREVIOUS_SHA" HEAD -- .; else git diff --quiet HEAD^ HEAD -- .; fi',
     cleanUrls: true,
     trailingSlash: false,
     headers: [
