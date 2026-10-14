@@ -153,10 +153,10 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
      India's AI-search trial of 30 Sep 2026 is the one that does. Read off the
      raw file, because declaredSearches drops the underscore keys. */
   const rawSearches = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches;
-  /* The public search SLEEPS since 13 Oct 2026 (his call): the default is the
-     signed-in walk, and the switch back says why in the config itself. */
+  /* The public search slept 13-14 Oct 2026 and is BACK since 14 Oct (his
+     call: "switch back to public page search"); the config says why. */
   const rawCfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
-  check('live config: the default is the signed-in walk while the public search sleeps', cfg.searchSource, 'browser');
+  check('live config: discovery is the public search again', cfg.searchSource, 'guest');
   check('and the config says why', String(rawCfg._searchSource_sleep_note ?? '').length > 80, true);
   check('both India searches walk on the classic account; the AI-search account rests',
     JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN' && e.enabled !== false).map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
@@ -449,7 +449,20 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('discovery fetches the public page, offset in 10s, for the part being read',
     /buildGuestSearchUrl\(passSearch, filters, \{ start: pageIndex \* GUEST_PAGE_SIZE \}\)[\s\S]{0,420}?await fetchGuestPageRetrying\(url, \{/.test(src), true);
   check('the wait never eats the end of the run\'s budget',
-    /fetchGuestPageRetrying\(url, \{\s*budgetMs: clock\.remainingMs\(\) - BLOCK_WAIT_RESERVE_MS,/.test(src), true);
+    /fetchGuestPageRetrying\(url, \{\s*(?:\.\.\.\(PATIENT \? \{ waits: PATIENT_WAITS_MS \} : \{\}\),\s*)?budgetMs: clock\.remainingMs\(\) - BLOCK_WAIT_RESERVE_MS,/.test(src), true);
+  /* --patient (14 Oct 2026): a hand-run catch-up waits longer, and only a hand
+     run. A scheduled tick waiting two hours would hold the lock over four. */
+  check('--patient is a flag a person passes, nothing else turns it on',
+    /const PATIENT = ARGS\.has\('--patient'\);/.test(src), true);
+  check('--patient lengthens both waits: the search page and the public posting page',
+    (src.match(/\.\.\.\(PATIENT \? \{ waits: PATIENT_WAITS_MS \} : \{\}\)/g) ?? []).length, 2);
+  check('the scheduled run never passes --patient',
+    /--patient/.test(readFileSync(new URL('../bin/run.sh', import.meta.url), 'utf8')), false);
+  {
+    const m = src.match(/const PATIENT_WAITS_MS = \[120_000, 300_000, 600_000, \.\.\.Array\((\d+)\)\.fill\(900_000\)\];/);
+    const total = m ? 1_020_000 + Number(m[1]) * 900_000 : 0;
+    check('--patient waits about two hours in all, never forever', total > 3_600_000 && total <= 3 * 3_600_000, true);
+  }
   check('a 429 waited out still counts as a block for the exit code (no fast retry)',
     /onWait: \(\{ attempt, of, waitMs \}\) => \{\s*sawBlocked = true;/.test(src), true);
   check('a 429 that answered again slows every later request this run',

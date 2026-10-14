@@ -40,6 +40,14 @@ import { reportTarget } from './postqueue.js';
 const ARGS = new Set(process.argv.slice(2));
 const DRY_RUN = ARGS.has('--dry-run');
 const NO_OPEN = ARGS.has('--no-open');
+/* --patient: a hand-run catch-up waits a public-search 429 out for up to
+   ~2.3 hours (2, 5, 10, then 15-minute waits) instead of giving up after the
+   third wait, his call 14 Oct 2026 ("even if it rate limits us wait and try
+   again dont cancel the run"). Scheduled runs never pass it: a tick that waits
+   two hours holds the run lock over four ticks. Pair it with --max-minutes,
+   because no wait is started that would eat the last 10 minutes of the run. */
+const PATIENT = ARGS.has('--patient');
+const PATIENT_WAITS_MS = [120_000, 300_000, 600_000, ...Array(8).fill(900_000)];
 /** Set by bin/run.sh so scheduled runs can behave slightly differently. */
 const SCHEDULED = ARGS.has('--scheduled');
 /** Which regions this scan walks — see scopeSearches. bin/run.sh passes
@@ -59,6 +67,7 @@ const KIND_SCOPE = [...ARGS].map((a) => a.match(/^--kind=(.+)$/)?.[1]).find(Bool
  *   --max-pages=40     pages per search
  *   --max-details=200  jobs opened this run
  *   --max-minutes=100  wall-clock budget
+ *   --patient          wait out public-search 429s for up to ~2.3h (manual catch-ups)
  *   --sort=relevance   order by LinkedIn's relevance instead of newest-first
  *   --start-page=15    begin pagination at page 15 (start=350), to resume a
  *                      backfill that stopped partway rather than re-walking
@@ -1015,6 +1024,7 @@ async function main() {
              never eats into the last BLOCK_WAIT_RESERVE_MS of the run's budget,
              which the opens and the rest of the run still need. */
           const res = await fetchGuestPageRetrying(url, {
+            ...(PATIENT ? { waits: PATIENT_WAITS_MS } : {}),
             budgetMs: clock.remainingMs() - BLOCK_WAIT_RESERVE_MS,
             onWait: ({ attempt, of, waitMs }) => {
               sawBlocked = true;
@@ -1603,6 +1613,7 @@ async function main() {
           let publicRead = null;
           if (viaGuest && card.jobId) {
             const pub = await fetchPublicPosting(card.jobId, {
+              ...(PATIENT ? { waits: PATIENT_WAITS_MS } : {}),
               budgetMs: clock.remainingMs() - BLOCK_WAIT_RESERVE_MS,
               onWait: ({ attempt, of, waitMs }) => {
                 sawBlocked = true;
