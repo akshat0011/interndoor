@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791972843462,
+ "generatedAt": 1791973011117,
  "region": "IN",
  "regionName": "India",
- "count": 1321,
- "techCount": 1321,
+ "count": 1322,
+ "techCount": 1322,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -163,6 +163,7 @@
   "Hewlett Packard Enterprise",
   "HighLevel",
   "Hilton",
+  "Hitachi Energy",
   "Hitachi High-Tech Corporation",
   "Hitachi Solutions India Pvt Ltd",
   "Hitachi Vantara",
@@ -501,6 +502,70 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4479506198",
+   "title": "Software Developer",
+   "company": "Hitachi Energy",
+   "matchedWatchlist": "Hitachi",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/hitachi-energy.jpg",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "36 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "javascript",
+    "typescript",
+    "sql",
+    "react",
+    "django",
+    "flask",
+    "fastapi",
+    "azure",
+    "ci/cd",
+    "git",
+    "postgresql"
+   ],
+   "summary": "Design, develop, test, and maintain responsive full stack web applications using Python and modern frontend technologies. Develop secure and scalable backend services and RESTful APIs using Flask, FastAPI, or Django. Build reusable user interfaces using React, JavaScript or TypeScript, HTML5, and CSS3. Design and optimize relational database schemas, SQL queries, and data-access layers using Microsoft SQL Server or PostgreSQL.",
+   "bullets": [
+    "Develop full stack web apps with Python and frontend tools",
+    "Use Flask, FastAPI, Django, React, and SQL Server/PostgreSQL",
+    "Work on secure APIs, testing, and CI/CD pipelines",
+    "Collaborate on design, code reviews, and documentation"
+   ],
+   "roleLabel": "Full Stack Developer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "react",
+    "sql server",
+    "git",
+    "azure devops"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "12 minutes ago",
+   "postedAt": 1791972198737,
+   "firstSeenAt": 1791972918745,
+   "lastSeenAt": 1791972918745,
+   "url": "https://www.linkedin.com/jobs/view/4479506198/",
+   "applyUrl": "https://www.hitachienergy.com/careers/open-jobs/details/JID3-220788?source=LinkedIn",
+   "description": null,
+   "roleFingerprint": "71a6b14e3b",
+   "cardFacts": [
+    "Chennai",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4479292516",
    "title": "DevOps Intern",

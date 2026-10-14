@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/hitachi-energy-software-developer-4479506198",
+      "url": "https://interndoor.com/jobs/hitachi-energy-software-developer-4479506198",
+      "title": "Software Developer — Hitachi Energy",
+      "content_text": "Company: Hitachi Energy · Location: Chennai, Tamil Nadu, India\n• Develop full stack web apps with Python and frontend tools\n• Use Flask, FastAPI, Django, React, and SQL Server/PostgreSQL\n• Work on secure APIs, testing, and CI/CD pipelines\n• Collaborate on design, code reviews, and documentation",
+      "date_published": "2026-10-14T10:03:18.737Z",
+      "authors": [
+        {
+          "name": "Hitachi Energy"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/impact-analytics-devops-intern-4479292516",
       "url": "https://interndoor.com/jobs/impact-analytics-devops-intern-4479292516",
       "title": "DevOps Intern — Impact Analytics",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "MetLife"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mks-inc-2027-spring-computer-science-engineer-undergraduate-intern-4476455122",
-      "url": "https://interndoor.com/jobs/mks-inc-2027-spring-computer-science-engineer-undergraduate-intern-4476455122",
-      "title": "Computer Science Engineer Intern — MKS Inc.",
-      "content_text": "Company: MKS Inc. · Location: Gurgaon, Haryana, India\n• Support ERP/SAP development with business teams and IT staff\n• Work with Service Now, SQL, JavaScript, and Git\n• Write user manuals and test new software applications",
-      "date_published": "2026-10-13T13:42:37.203Z",
-      "authors": [
-        {
-          "name": "MKS Inc."
         }
       ]
     }
