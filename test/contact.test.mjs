@@ -22,7 +22,7 @@ import { mkdtempSync, rmSync, existsSync, readFileSync, writeFileSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { renderContactPage, renderAboutPage, writePages, CONTACT_EMAIL, PREFERRED_SOURCE_URL } from '../src/pages.js';
+import { renderContactPage, renderAboutPage, writePages, CONTACT_EMAIL, PREFERRED_SOURCE_URL, BLOG_URL } from '../src/pages.js';
 import { publishedPaths } from '../src/publish.js';
 import { regionOf } from '../src/regions.js';
 
@@ -260,6 +260,25 @@ console.log('\n== the "preferred source on Google" badge (1 Oct 2026) ==');
   const cssVersion = (html) => Number((html.match(/\/styles\.css\?v=(\d+)/) || [])[1] || 0);
   check('the board loads the stylesheet version that has the rule', cssVersion(board) >= 18, true);
   check('and so do generated pages', cssVersion(page) >= 18, true);
+}
+
+console.log('\n== THE BLOG LINK (14 Oct 2026) ==');
+{
+  /* blog.interndoor.com is a separate Vercel project, so the link is an
+     ABSOLUTE URL in every footer. Routed through regionHref it would become
+     /us/https://... on a US render; added to REGION_LINKS the same. */
+  check('BLOG_URL is the blog host', BLOG_URL, 'https://blog.interndoor.com/');
+  const aboutIN = renderAboutPage({ region: IN });
+  const aboutUS = renderAboutPage({ region: US });
+  ok('the generated footer links the blog', aboutIN.includes(`<a href="${BLOG_URL}">Blog</a>`));
+  ok('and a US render links the same absolute URL', aboutUS.includes(`<a href="${BLOG_URL}">Blog</a>`));
+  check('never region-prefixed', /href="\/(us|uk|ca)\/[^"]*blog/i.test(aboutUS), false);
+  ok('/about names the blog in its own body', aboutIN.includes(`on the <a href="${BLOG_URL}">InternDoor Blog</a>`));
+  const boardHtml = readFileSync(new URL('../web/public/index.html', import.meta.url), 'utf8');
+  const footAt = boardHtml.indexOf('<footer class="foot">');
+  const boardFoot = boardHtml.slice(footAt, boardHtml.indexOf('</footer>', footAt));
+  ok('the board footer was found', footAt > 0 && boardFoot.length > 200);
+  ok("the board's own footer links the blog", boardFoot.includes(`<a href="${BLOG_URL}">InternDoor Blog</a>`));
 }
 
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);

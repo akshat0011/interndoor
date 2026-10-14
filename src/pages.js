@@ -1662,7 +1662,7 @@ function foot({ headline, sub, region = DEFAULT_REGION, signup = true }) {
          renderContactPage — so a root-relative href is what resolves from
          /uk/jobs/… as well as from /. Wrapping it in regionHref would point at
          /us/contact, which is not written and never will be. -->
-    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/insights', region)}">Monthly reports</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/post-a-job">Post a job</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
+    <p class="dim"><a href="${regionHref('/', region)}">Home</a> · <a href="${regionHref('/companies/', region)}">All companies</a> · <a href="${regionHref('/roles/', region)}">By role</a> · <a href="${regionHref('/skills/', region)}">By skill</a> · <a href="${regionHref('/locations/', region)}">By city</a> · <a href="${regionHref('/report', region)}">The numbers</a> · <a href="${regionHref('/insights', region)}">Monthly reports</a> · <a href="${BLOG_URL}">Blog</a> · <a href="${regionHref('/alerts', region)}">Alerts</a> · <a href="${regionHref('/applications', region)}">My applications</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/post-a-job">Post a job</a> · <a href="${regionHref('/feed.xml', region)}">RSS</a></p>
     ${preferredSourceLink()}
   </div>
 </footer>
@@ -4266,6 +4266,10 @@ ${foot({
  * domain. A second spelling of it anywhere is a mailbox nobody reads.
  */
 export const CONTACT_EMAIL = 'akshat@interndoor.com';
+
+// The editorial site, a separate Vercel project (blog/, its own README). An
+// absolute URL on purpose: it is not a region page, so never regionHref it.
+export const BLOG_URL = 'https://blog.interndoor.com/';
 /** The brand's LinkedIn company page (vanity `interndoorhq`), for Organization sameAs. */
 export const ORG_LINKEDIN = 'https://www.linkedin.com/company/interndoorhq/';
 
@@ -4470,6 +4474,7 @@ export function renderAboutPage({ region = DEFAULT_REGION, alternates = null } =
     <section class="trk-priv">
       <h2>Get new roles as they open</h2>
       <p>Join the <a href="/alerts">WhatsApp channel or the daily email</a> to hear about new listings the day they appear. For anything else (a wrong listing, a removal, a placement cell), <a href="/contact">write to InternDoor</a>.</p>
+      <p>Monthly reports and guides built from these listings are on the <a href="${BLOG_URL}">InternDoor Blog</a>.</p>
     </section>
   </div>
 </main>
