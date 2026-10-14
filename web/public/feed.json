@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bizom-junior-devops-engineer-4478445181",
+      "url": "https://interndoor.com/jobs/bizom-junior-devops-engineer-4478445181",
+      "title": "Junior DevOps Engineer — Bizom",
+      "content_text": "Company: Bizom · Location: Bengaluru, Karnataka, India\n• Maintain and optimize software infrastructure for enterprise projects\n• Implement security protocols and automate deployment pipelines\n• Work with AWS, Jenkins, Terraform, and containerization tools",
+      "date_published": "2026-10-14T11:12:23.546Z",
+      "authors": [
+        {
+          "name": "Bizom"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/quest-global-manual-tester-4478426910",
+      "url": "https://interndoor.com/jobs/quest-global-manual-tester-4478426910",
+      "title": "Manual Tester — Quest Global",
+      "content_text": "Company: Quest Global · Location: Bengaluru, Karnataka, India\n• Execute manual and automated tests to find software bugs and ensure quality\n• Write test cases and reports, collaborate with developers, use defect tracking tools\n• Work in agile environment with Python/Java coding skills and medical device testing experience",
+      "date_published": "2026-10-14T11:01:35.469Z",
+      "authors": [
+        {
+          "name": "Quest Global"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/harman-india-intern-4476659326",
       "url": "https://interndoor.com/jobs/harman-india-intern-4476659326",
       "title": "Intern — HARMAN India",
@@ -26,6 +50,18 @@
       "authors": [
         {
           "name": "ACADEMY"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4470919008",
+      "url": "https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4470919008",
+      "title": "Java Developer — Mphasis",
+      "content_text": "Company: Mphasis · Location: Bengaluru, Karnataka, India\n• Develop and maintain Java-based microservices for scalable applications\n• Work with Docker, Kubernetes, and AWS for cloud deployment\n• Collaborate on full development lifecycle from planning to deployment",
+      "date_published": "2026-10-14T10:43:40.166Z",
+      "authors": [
+        {
+          "name": "Mphasis"
         }
       ]
     },
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Leidos"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/baker-hughes-engineer-1-research-and-technology-development-electrical-4478109190",
-      "url": "https://interndoor.com/jobs/baker-hughes-engineer-1-research-and-technology-development-electrical-4478109190",
-      "title": "Engineer 1, Research and Technology Development - Electrical — Baker Hughes",
-      "content_text": "Company: Baker Hughes · Location: Pune District, Maharashtra, India\n• Support electronic subsystems from design to testing and commercial release\n• Use Altium for PCBA layout and CAD for simulation and modeling\n• Collaborate with Houston and Farnborough teams on assigned projects",
-      "date_published": "2026-10-13T14:58:43.192Z",
-      "authors": [
-        {
-          "name": "Baker Hughes"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4479032702",
-      "url": "https://interndoor.com/jobs/infineon-technologies-young-graduate-trainee-4479032702",
-      "title": "Young Graduate Trainee — Infineon Technologies",
-      "content_text": "Company: Infineon Technologies · Location: Bengaluru East, Karnataka, India\n• Debug silicon and test hardware on ATE platforms\n• Write test programs in C/C++ and Python/Perl\n• Optimize test time and reduce manufacturing costs",
-      "date_published": "2026-10-13T14:53:20.503Z",
-      "authors": [
-        {
-          "name": "Infineon Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-validation-engineer-4469934653",
-      "url": "https://interndoor.com/jobs/ge-vernova-validation-engineer-4469934653",
-      "title": "Validation Engineer — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Hyderabad, Telangana, India\n• Design and test real-time software for industrial devices like motors and valves\n• Work with embedded systems and real-time operating environments\n• Collaborate with clients and internal teams on technical solutions",
-      "date_published": "2026-10-13T14:00:38.877Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
         }
       ]
     }
