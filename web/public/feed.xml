@@ -6,7 +6,37 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Wed, 14 Oct 2026 12:36:01 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 14 Oct 2026 12:55:36 GMT</lastBuildDate>
+  <item>
+    <title>Java Developer — Birlasoft</title>
+    <link>https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950</guid>
+    <pubDate>Wed, 14 Oct 2026 12:55:36 GMT</pubDate>
+    <description>Company: Birlasoft · Location: Greater Bengaluru Area
+• Design and implement secure scalable restful apis with spring boot and github copilot
+• Work with devops and product teams on cloud deployments using docker and azure
+• Own services from design to production with on-call support optional</description>
+  </item>
+  <item>
+    <title>Identity &amp; Access Management — MUFG</title>
+    <link>https://interndoor.com/jobs/mufg-identity-and-access-management-4479526167</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/mufg-identity-and-access-management-4479526167</guid>
+    <pubDate>Wed, 14 Oct 2026 12:51:41 GMT</pubDate>
+    <description>Company: MUFG · Location: Greater Bengaluru Area
+• Design and implement IAM systems for secure access control
+• Support user provisioning, authentication, and access governance
+• Troubleshoot IAM systems and ensure compliance with security policies</description>
+  </item>
+  <item>
+    <title>Big Data Engineer — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-big-data-hadoop-4451666609</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-big-data-hadoop-4451666609</guid>
+    <pubDate>Wed, 14 Oct 2026 12:45:48 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Develop big data pipelines using Spark and Scala
+• Leverage functional programming and OOP principles
+• Work on scalable data processing solutions</description>
+  </item>
   <item>
     <title>Software Engineer Intern — Vahan.ai</title>
     <link>https://interndoor.com/jobs/vahan-ai-software-engineer-intern-4479506937</link>
@@ -478,36 +508,6 @@
 • Support infrastructure, deployment pipelines, and operational processes for enterprise applications
 • Use CI/CD, monitoring tools, and automation to improve reliability and efficiency
 • Collaborate with cross-functional teams on cloud, security, and compliance requirements</description>
-  </item>
-  <item>
-    <title>Associate Software Engineer — Flex</title>
-    <link>https://interndoor.com/jobs/flex-associate-software-engineer-it-4478132758</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/flex-associate-software-engineer-it-4478132758</guid>
-    <pubDate>Tue, 13 Oct 2026 18:54:34 GMT</pubDate>
-    <description>Company: Flex · Location: Chennai, Tamil Nadu, India
-• Support development and automation projects using AI, data analytics, and cloud technologies
-• Work on digital transformation initiatives with cross-functional global teams
-• Apply logical thinking to solve technical and operational challenges</description>
-  </item>
-  <item>
-    <title>GCP Data Engineer — Zensar Technologies</title>
-    <link>https://interndoor.com/jobs/zensar-technologies-gcp-data-engineer-4478130363</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-gcp-data-engineer-4478130363</guid>
-    <pubDate>Tue, 13 Oct 2026 17:13:02 GMT</pubDate>
-    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
-• Design and optimize data pipelines using GCP tools like Dataflow and BigQuery
-• Build data ingestion frameworks from structured and unstructured sources
-• Collaborate with data architects and onshore teams across time zones</description>
-  </item>
-  <item>
-    <title>Software Engineer — Cisco</title>
-    <link>https://interndoor.com/jobs/cisco-software-engineer-4479043666</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/cisco-software-engineer-4479043666</guid>
-    <pubDate>Tue, 13 Oct 2026 16:04:16 GMT</pubDate>
-    <description>Company: Cisco · Location: Bengaluru, Karnataka, India
-• Develop networking components for L2/L3 protocols on switches
-• Use C/C++/Python and Linux tools for system debugging
-• Work on high-performance software for cloud-managed devices</description>
   </item>
 </channel>
 </rss>

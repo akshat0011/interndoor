@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950",
+      "url": "https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950",
+      "title": "Java Developer — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and implement secure scalable restful apis with spring boot and github copilot\n• Work with devops and product teams on cloud deployments using docker and azure\n• Own services from design to production with on-call support optional",
+      "date_published": "2026-10-14T12:55:36.320Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/mufg-identity-and-access-management-4479526167",
+      "url": "https://interndoor.com/jobs/mufg-identity-and-access-management-4479526167",
+      "title": "Identity & Access Management — MUFG",
+      "content_text": "Company: MUFG · Location: Greater Bengaluru Area\n• Design and implement IAM systems for secure access control\n• Support user provisioning, authentication, and access governance\n• Troubleshoot IAM systems and ensure compliance with security policies",
+      "date_published": "2026-10-14T12:51:41.189Z",
+      "authors": [
+        {
+          "name": "MUFG"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-big-data-hadoop-4451666609",
+      "url": "https://interndoor.com/jobs/zensar-technologies-big-data-hadoop-4451666609",
+      "title": "Big Data Engineer — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Develop big data pipelines using Spark and Scala\n• Leverage functional programming and OOP principles\n• Work on scalable data processing solutions",
+      "date_published": "2026-10-14T12:45:48.176Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/vahan-ai-software-engineer-intern-4479506937",
       "url": "https://interndoor.com/jobs/vahan-ai-software-engineer-intern-4479506937",
       "title": "Software Engineer Intern — Vahan.ai",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "EY"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/flex-associate-software-engineer-it-4478132758",
-      "url": "https://interndoor.com/jobs/flex-associate-software-engineer-it-4478132758",
-      "title": "Associate Software Engineer — Flex",
-      "content_text": "Company: Flex · Location: Chennai, Tamil Nadu, India\n• Support development and automation projects using AI, data analytics, and cloud technologies\n• Work on digital transformation initiatives with cross-functional global teams\n• Apply logical thinking to solve technical and operational challenges",
-      "date_published": "2026-10-13T18:54:34.340Z",
-      "authors": [
-        {
-          "name": "Flex"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-gcp-data-engineer-4478130363",
-      "url": "https://interndoor.com/jobs/zensar-technologies-gcp-data-engineer-4478130363",
-      "title": "GCP Data Engineer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Design and optimize data pipelines using GCP tools like Dataflow and BigQuery\n• Build data ingestion frameworks from structured and unstructured sources\n• Collaborate with data architects and onshore teams across time zones",
-      "date_published": "2026-10-13T17:13:02.027Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cisco-software-engineer-4479043666",
-      "url": "https://interndoor.com/jobs/cisco-software-engineer-4479043666",
-      "title": "Software Engineer — Cisco",
-      "content_text": "Company: Cisco · Location: Bengaluru, Karnataka, India\n• Develop networking components for L2/L3 protocols on switches\n• Use C/C++/Python and Linux tools for system debugging\n• Work on high-performance software for cloud-managed devices",
-      "date_published": "2026-10-13T16:04:16.641Z",
-      "authors": [
-        {
-          "name": "Cisco"
         }
       ]
     }
