@@ -6,9 +6,21 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/impact-analytics-devops-intern-4479292516",
+      "url": "https://interndoor.com/jobs/impact-analytics-devops-intern-4479292516",
+      "title": "DevOps Intern — Impact Analytics",
+      "content_text": "Company: Impact Analytics · Location: Bengaluru, Karnataka, India\n• Monitor cloud infrastructure and troubleshoot application issues\n• Support CI/CD pipelines and deployment automation\n• Collaborate with DevOps teams on operational activities",
+      "date_published": "2026-10-14T09:58:56.321Z",
+      "authors": [
+        {
+          "name": "Impact Analytics"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/genrobotics-robotic-operator-g-gaiter-fresher-4478428486",
       "url": "https://interndoor.com/jobs/genrobotics-robotic-operator-g-gaiter-fresher-4478428486",
-      "title": "Robotic Operator ( G Gaiter )- Fresher — Genrobotics",
+      "title": "Robotic Operator — Genrobotics",
       "content_text": "Company: Genrobotics · Location: Nashik, Maharashtra, India\n• Operate and maintain robotic devices during therapy sessions\n• Perform routine checks and report device performance and patient progress\n• Support patients during sessions with safety and comfort in mind",
       "date_published": "2026-10-14T09:25:27.611Z",
       "authors": [
@@ -116,7 +128,7 @@
     {
       "id": "https://interndoor.com/jobs/juspay-software-development-engineer-frontend-react-native-4478407717",
       "url": "https://interndoor.com/jobs/juspay-software-development-engineer-frontend-react-native-4478407717",
-      "title": "Software Development Engineer – Frontend (React Native) — JUSPAY",
+      "title": "React Native Software Engineer — JUSPAY",
       "content_text": "Company: JUSPAY · Location: Mumbai, Maharashtra, India\n• Build mobile apps with react native and javascript\n• Work on cross-platform ui and app architecture\n• Integrate restful apis and optimize performance",
       "date_published": "2026-10-14T07:28:42.449Z",
       "authors": [
@@ -200,7 +212,7 @@
     {
       "id": "https://interndoor.com/jobs/greedygame-qa-engineer-offerwall-4478409485",
       "url": "https://interndoor.com/jobs/greedygame-qa-engineer-offerwall-4478409485",
-      "title": "QA Engineer [Offerwall] — GreedyGame",
+      "title": "QA Engineer — GreedyGame",
       "content_text": "Company: GreedyGame · Location: Bengaluru, Karnataka, India\n• Test user flows across mobile, web, and backend systems\n• Use Postman/Swagger for API testing and validate responses\n• Collaborate with developers and product teams on issues",
       "date_published": "2026-10-14T05:29:42.172Z",
       "authors": [
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "MKS Inc."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/global-payments-inc-associate-information-security-analyst-4470441241",
-      "url": "https://interndoor.com/jobs/global-payments-inc-associate-information-security-analyst-4470441241",
-      "title": "Associate Information Security Analyst — Global Payments Inc.",
-      "content_text": "Company: Global Payments Inc. · Location: Pune/Pimpri-Chinchwad Area\n• Monitors complex systems for threats using intrusion detection software\n• Reviews security logs and triages events with close supervision\n• Configures security systems like firewalls and SIEM tools\n• Learns incident response and containment under senior guidance",
-      "date_published": "2026-10-13T13:40:55.929Z",
-      "authors": [
-        {
-          "name": "Global Payments Inc."
         }
       ]
     }
