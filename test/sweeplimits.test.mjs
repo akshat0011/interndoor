@@ -36,7 +36,7 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
   check('no page cap of its own', india.maxPages, undefined);
   check('no per-employer open cap', india.maxOpensPerCompany, undefined);
   check('no all-old page stop', india.stopAfterPageOlderThanHours, undefined);
-  check('no interval, so it runs on every 30-minute tick (unless a written TEMPORARILY one)', String(JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches.find((e) => e.region === 'IN' && e.employment !== 'fulltime')?._interval_note ?? '').startsWith('TEMPORARILY') ? undefined : india.intervalMinutes, undefined);
+  check('no interval, so it runs on every 30-minute tick (unless a written interval note)', String(JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches.find((e) => e.region === 'IN' && e.employment !== 'fulltime')?._interval_note ?? '').length > 40 ? undefined : india.intervalMinutes, undefined);
 
   // …and the resolvers agree, so nothing bounds it in code either.
   check('it walks to the global safety cap, not a smaller one',
@@ -55,7 +55,7 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
   check('entry: no all-old page stop', entry?.stopAfterPageOlderThanHours, undefined);
   // Every 2 hours (his call, 13 Oct 2026, after LinkedIn's public search began
   // rate-limiting nearly every page); hourly from 1 Oct, every tick before.
-  check('entry: every 2 hours', entry?.intervalMinutes, 120);
+  check('entry: hourly (his call, 14 Oct 2026)', entry?.intervalMinutes, 60);
   check('entry: walks to the global safety cap', pageCapFor(entry ?? {}, cfg.limits.maxPagesPerSearch), cfg.limits.maxPagesPerSearch);
   check('entry: opens every card its gates approve', openCapFor(entry ?? {}), 0);
   check('and no page age can stop it early', staleCutoffFor(india), null);

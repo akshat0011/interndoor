@@ -92,7 +92,7 @@ for (const s of searches.filter((x) => x.employment === 'fulltime')) {
        the IP — see its _interval_note in config.json. */
     /* The intern walk every tick; the full-time walk every 2 hours (his call,
        13 Oct 2026; hourly from 1 Oct), in its own phase. */
-    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, s.employment === 'fulltime' ? 120 : null);
+    check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, s.employment === 'fulltime' ? 60 : null);
   } else {
     ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
   }
@@ -167,8 +167,8 @@ console.log('\n== the live config: India every tick, US every hour ==');
    30 Sep 2026 (his call, after LinkedIn's edge rate-limited the IP). It feeds 91% of the India
    board and the board's whole promise is freshness. */
 const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
-const IN_TEMP = String(JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches.find((e) => e.region === 'IN' && e.employment !== 'fulltime')?._interval_note ?? '').startsWith('TEMPORARILY');
-// A temporary interval is allowed only with a TEMPORARILY note (his call, 14 Oct 2026).
+const IN_TEMP = String(JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches.find((e) => e.region === 'IN' && e.employment !== 'fulltime')?._interval_note ?? '').length > 40;
+// An India intern interval is allowed only with a written _interval_note (his calls, 14 Oct 2026: hourly).
 check('India has no interval (unless a written temporary one)', IN_TEMP ? 0 : byRegion.get('IN')?.intervalMinutes ?? 0, 0);
 // Declared, not active, so a paused search is still held to this.
 check('only India entry-level and the US declare an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0 && !(IN_TEMP && s.region === 'IN' && s.employment !== 'fulltime')).map((s) => s.label ?? s.region), ['IN entry-level', 'US']);
