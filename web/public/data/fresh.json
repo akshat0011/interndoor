@@ -23,6 +23,17 @@
    "bulletCount": 3
   },
   {
+   "id": "4476696037",
+   "company": "HARMAN India",
+   "title": "Students / Trainees",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791999797648,
+   "firstSeenAt": 1792017797656,
+   "logo": "/logos/harman-india.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479557488",
    "company": "Bank of America",
    "title": "Software Engineer Apprentice",
@@ -440,18 +451,6 @@
    "firstSeenAt": 1791967738423,
    "logo": "/logos/ust.jpg",
    "bulletCount": 4
-  },
-  {
-   "id": "4479291326",
-   "company": "Caterpillar Inc.",
-   "title": "MLOps Engineer",
-   "slugTitle": "IT Analyst Applications (MLOps Engineer)",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791966872578,
-   "firstSeenAt": 1791968012587,
-   "logo": "/logos/caterpillar-inc.jpg",
-   "bulletCount": 3
   }
  ]
 }
