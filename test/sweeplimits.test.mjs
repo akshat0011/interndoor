@@ -36,7 +36,7 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
   check('no page cap of its own', india.maxPages, undefined);
   check('no per-employer open cap', india.maxOpensPerCompany, undefined);
   check('no all-old page stop', india.stopAfterPageOlderThanHours, undefined);
-  check('no interval, so it runs on every 30-minute tick', india.intervalMinutes, undefined);
+  check('no interval, so it runs on every 30-minute tick (unless a written TEMPORARILY one)', String(JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches.find((e) => e.region === 'IN' && e.employment !== 'fulltime')?._interval_note ?? '').startsWith('TEMPORARILY') ? undefined : india.intervalMinutes, undefined);
 
   // …and the resolvers agree, so nothing bounds it in code either.
   check('it walks to the global safety cap, not a smaller one',

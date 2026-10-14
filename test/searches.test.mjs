@@ -167,11 +167,13 @@ console.log('\n== the live config: India every tick, US every hour ==');
    30 Sep 2026 (his call, after LinkedIn's edge rate-limited the IP). It feeds 91% of the India
    board and the board's whole promise is freshness. */
 const byDeclared = new Map(cfg.declaredSearches.map((s) => [s.region, s]));
-check('India has no interval', byRegion.get('IN')?.intervalMinutes ?? 0, 0);
+const IN_TEMP = String(JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches.find((e) => e.region === 'IN' && e.employment !== 'fulltime')?._interval_note ?? '').startsWith('TEMPORARILY');
+// A temporary interval is allowed only with a TEMPORARILY note (his call, 14 Oct 2026).
+check('India has no interval (unless a written temporary one)', IN_TEMP ? 0 : byRegion.get('IN')?.intervalMinutes ?? 0, 0);
 // Declared, not active, so a paused search is still held to this.
-check('only India entry-level and the US declare an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0).map((s) => s.label ?? s.region), ['IN entry-level', 'US']);
+check('only India entry-level and the US declare an interval', cfg.declaredSearches.filter((s) => Number(s.intervalMinutes ?? 0) > 0 && !(IN_TEMP && s.region === 'IN' && s.employment !== 'fulltime')).map((s) => s.label ?? s.region), ['IN entry-level', 'US']);
 check('US runs hourly', byDeclared.get('US')?.intervalMinutes, 60);
-ok('India is due on any tick', due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
+ok('India is due on any tick', IN_TEMP || due(agoMin(30), byRegion.get('IN')?.intervalMinutes ?? 0));
 ok('US is not due 30m after its sweep', !due(agoMin(30), byDeclared.get('US')?.intervalMinutes));
 ok('US is due 60m after its sweep', due(agoMin(60), byDeclared.get('US')?.intervalMinutes));
 /* The due check deliberately fires a little early — ticks drift, so demanding
@@ -271,7 +273,7 @@ console.log('\n== a search can be PAUSED without being deleted ==');
      that were about the MECHANISM and had no opinion on US at all. Derive the
      expectation from the file and it holds either way — including when nothing
      is paused, which is the state this project is normally in. */
-  const paused = raw.searches.filter((e) => e.enabled === false).map((e) => e.region);
+  const paused = raw.searches.filter((e) => e.enabled === false).map((e) => e.label ?? e.region);
   const active = raw.searches.filter((e) => e.enabled !== false).map((e) => e.region);
   check('every disabled search is dropped from the active list',
     cfg.searches.map((s) => s.region), active);
@@ -279,7 +281,7 @@ console.log('\n== a search can be PAUSED without being deleted ==');
     cfg.declaredSearches.map((s) => s.region), raw.searches.map((e) => e.region));
   check('and reported, so a pause cannot be silently forgotten', cfg.pausedSearches, paused);
   check('the two lists cannot overlap',
-    cfg.searches.some((s) => cfg.pausedSearches.includes(s.region)), false);
+    cfg.searches.some((s) => cfg.pausedSearches.includes(s.label ?? s.region)), false);
 
   /* AND THE RUN SAYS SO OUT LOUD. A region that silently stops collecting looks
      exactly like a region with no supply, and this repo has already spent a day
@@ -315,7 +317,7 @@ console.log('\n== NOTHING DONE TO THE US MAY DISTURB INDIA ==');
       || JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8')).searches
         .some((e) => e.region === 'IN' && e.enabled === false && String(e._paused_note ?? '').length > 40), true);
   check('it still sends no geoId', india.geoId, null);
-  check('and still runs on every tick', india.intervalMinutes ?? 0, 0);
+  check('and still runs on every tick (unless a written temporary interval)', IN_TEMP ? 0 : india.intervalMinutes ?? 0, 0);
   ok('its URL is still geoId-free', !buildSearchUrl(india, cfg.filters, { start: 0 }).includes('geoId='));
 }
 

@@ -176,7 +176,7 @@ export function loadConfig() {
      times and still reported success. Mechanism tests read this; tests about
      what is running now read `cfg.searches`. */
   cfg.declaredSearches = declared;
-  cfg.pausedSearches = declared.filter((s) => !s.enabled).map((s) => s.region);
+  cfg.pausedSearches = declared.filter((s) => !s.enabled).map((s) => s.label ?? s.region);
   cfg.searches = declared.filter((s) => s.enabled);
 
   cfg.titleTerms = (cfg.matching.titleMustMatch || []).map((t) => t.toLowerCase());

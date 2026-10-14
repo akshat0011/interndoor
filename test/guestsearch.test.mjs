@@ -159,7 +159,7 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
   check('live config: discovery is the public search again', cfg.searchSource, 'guest');
   check('and the config says why', String(rawCfg._searchSource_sleep_note ?? '').length > 80, true);
   check('both India searches walk on the classic account; the AI-search account rests',
-    JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN' && e.enabled !== false).map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
+    JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN').map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
     JSON.stringify([['intern', 'US'], ['fulltime', 'US']]));
   check('the daily ceiling is a number (0 = off, his call 13 Oct 2026), never above the 1,054 that got one flagged',
     Number.isFinite(rawCfg.safety.accountDailyPageLoads) && rawCfg.safety.accountDailyPageLoads >= 0 && rawCfg.safety.accountDailyPageLoads < 1054, true);
