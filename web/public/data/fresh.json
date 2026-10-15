@@ -147,39 +147,6 @@
    "bulletCount": 3
   },
   {
-   "id": "4479887181",
-   "company": "Bank of America",
-   "title": "Data Engineer Apprentice",
-   "slugTitle": "Data Engineer - Apprentice",
-   "location": "Hyderabad, Telangana, India",
-   "postedAt": 1792083609078,
-   "firstSeenAt": 1792090809083,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479891120",
-   "company": "Bank of America",
-   "title": "Data Engineer Apprentice",
-   "slugTitle": "Data Engineer - Apprentice",
-   "location": "Gurugram, Haryana, India",
-   "postedAt": 1792083591510,
-   "firstSeenAt": 1792090791515,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479875782",
-   "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
-   "slugTitle": "Software Engineer- Apprentice",
-   "location": "Gurugram, Haryana, India",
-   "postedAt": 1792083570930,
-   "firstSeenAt": 1792090770934,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
    "id": "4479135270",
    "company": "Deloitte",
    "title": "Business Solution Analyst",
@@ -200,28 +167,6 @@
    "postedAt": 1792083013406,
    "firstSeenAt": 1792093813409,
    "logo": "/logos/kotak-mahindra-bank.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479882368",
-   "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
-   "slugTitle": "Software Engineer- Apprentice",
-   "location": "Chennai, Tamil Nadu, India",
-   "postedAt": 1792082766661,
-   "firstSeenAt": 1792089966664,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479872992",
-   "company": "Bank of America",
-   "title": "Data Engineer Apprentice",
-   "slugTitle": "Data Engineer - Apprentice",
-   "location": "Chennai, Tamil Nadu, India",
-   "postedAt": 1792082745446,
-   "firstSeenAt": 1792089945448,
-   "logo": "/logos/bank-of-america.jpg",
    "bulletCount": 3
   },
   {
@@ -370,7 +315,8 @@
   {
    "id": "4479830361",
    "company": "Merck Healthcare",
-   "title": "Data Engineer - Snowflakes Developer",
+   "title": "Data Engineer",
+   "slugTitle": "Data Engineer - Snowflakes Developer",
    "location": "Bengaluru, Karnataka, India",
    "workplaceType": "On-site",
    "postedAt": 1792068596023,
@@ -381,7 +327,8 @@
   {
    "id": "4479832117",
    "company": "Microsoft",
-   "title": "Software Engineering IC2",
+   "title": "Software Engineer IC2",
+   "slugTitle": "Software Engineering IC2",
    "location": "Hyderabad, Telangana, India",
    "workplaceType": "Hybrid",
    "postedAt": 1792068246116,
@@ -392,7 +339,8 @@
   {
    "id": "4479817812",
    "company": "Microsoft",
-   "title": "Software Engineering",
+   "title": "Software Engineer",
+   "slugTitle": "Software Engineering",
    "location": "Hyderabad, Telangana, India",
    "workplaceType": "On-site",
    "postedAt": 1792068221544,
@@ -442,6 +390,62 @@
    "workplaceType": "On-site",
    "postedAt": 1792065830305,
    "firstSeenAt": 1792068530307,
+   "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479820513",
+   "company": "Honeywell Technologies",
+   "title": "Intern Bachelors AI Eng",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065828709,
+   "firstSeenAt": 1792068468711,
+   "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479821514",
+   "company": "Honeywell Technologies",
+   "title": "Software Engineering Intern",
+   "slugTitle": "Intern Bachelors Software Eng",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065827261,
+   "firstSeenAt": 1792068587264,
+   "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479820517",
+   "company": "Honeywell Technologies",
+   "title": "Intern Bachelors Hardware Eng",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065821791,
+   "firstSeenAt": 1792067921793,
+   "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479824399",
+   "company": "Honeywell Technologies",
+   "title": "Intern Bachelors Electrical Eng",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065818653,
+   "firstSeenAt": 1792068158660,
+   "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479815642",
+   "company": "Honeywell Technologies",
+   "title": "Intern Bachelors Embedded Eng",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065817324,
+   "firstSeenAt": 1792068517327,
    "logo": "/logos/honeywell-technologies.jpg",
    "bulletCount": 3
   }
