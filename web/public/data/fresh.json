@@ -93,30 +93,6 @@
    "bulletCount": 3
   },
   {
-   "id": "4467626080",
-   "company": "Qualys",
-   "title": "Site Reliability Engineer",
-   "slugTitle": "Site Reliability Engineer, Cloud Platform",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792056074391,
-   "firstSeenAt": 1792058174400,
-   "logo": "/logos/qualys.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469705927",
-   "company": "Gartner",
-   "title": "Security Engineer",
-   "slugTitle": "Security Engineer- Penetration Testing",
-   "location": "Gurgaon, Haryana, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792055869811,
-   "firstSeenAt": 1792059469819,
-   "logo": "/logos/gartner.png",
-   "bulletCount": 3
-  },
-  {
    "id": "4470920225",
    "company": "Hitachi Vantara",
    "title": "Cloud Engineer",
@@ -454,6 +430,28 @@
    "postedAt": 1791999797648,
    "firstSeenAt": 1792017797656,
    "logo": "/logos/harman-india.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479562187",
+   "company": "Bank of America",
+   "title": "Apprentice",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791997927335,
+   "firstSeenAt": 1792001527345,
+   "logo": "/logos/bank-of-america.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4476692230",
+   "company": "Mastercard",
+   "title": "Software Engineer",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1791996742389,
+   "firstSeenAt": 1791998242402,
+   "logo": "/logos/mastercard.jpg",
    "bulletCount": 3
   }
  ]

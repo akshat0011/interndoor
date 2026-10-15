@@ -102,30 +102,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/qualys-site-reliability-engineer-cloud-platform-4467626080",
-      "url": "https://interndoor.com/jobs/qualys-site-reliability-engineer-cloud-platform-4467626080",
-      "title": "Site Reliability Engineer — Qualys",
-      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India\n• Monitor and troubleshoot cloud-native systems, Kubernetes, Spark, Kafka, and data platforms\n• Automate operational tasks with Python, Bash, Go, and CI/CD pipelines\n• Participate in on-call rotations and incident response for production services",
-      "date_published": "2026-10-15T09:21:14.391Z",
-      "authors": [
-        {
-          "name": "Qualys"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/gartner-security-engineer-penetration-testing-4469705927",
-      "url": "https://interndoor.com/jobs/gartner-security-engineer-penetration-testing-4469705927",
-      "title": "Security Engineer — Gartner",
-      "content_text": "Company: Gartner · Location: Gurgaon, Haryana, India\n• Support third-party penetration testing, vulnerability reviews, and remediation tracking\n• Use tools like Burp Suite and Nmap to identify security weaknesses and misconfigurations\n• Collaborate with security and engineering teams to improve internal testing programs",
-      "date_published": "2026-10-15T09:17:49.811Z",
-      "authors": [
-        {
-          "name": "Gartner"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/hitachi-vantara-cloudengineer-4470920225",
       "url": "https://interndoor.com/jobs/hitachi-vantara-cloudengineer-4470920225",
       "title": "Cloud Engineer — Hitachi Vantara",
@@ -602,6 +578,30 @@
       "authors": [
         {
           "name": "Bank of America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/coindcx-sdet-4469446423",
+      "url": "https://interndoor.com/jobs/coindcx-sdet-4469446423",
+      "title": "SDET — CoinDCX",
+      "content_text": "Company: CoinDCX · Location: Bengaluru, Karnataka, India\n• Write and debug automated tests for new features and maintain existing scripts\n• Use appium, rest assured, testng, maven, git, and jenkins for automation\n• Generate reports on mobile and api automation coverage and present to stakeholders",
+      "date_published": "2026-10-14T15:54:45.630Z",
+      "authors": [
+        {
+          "name": "CoinDCX"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/natwest-group-software-engineer-4479559114",
+      "url": "https://interndoor.com/jobs/natwest-group-software-engineer-4479559114",
+      "title": "Software Engineer — NatWest Group",
+      "content_text": "Company: NatWest Group · Location: Gurugram, Haryana, India\n• Build secure, high-performance software for customer-centric solutions\n• Work with DevOps and Agile tools across full development lifecycle\n• Collaborate with engineers and architects on complex systems",
+      "date_published": "2026-10-14T15:34:50.452Z",
+      "authors": [
+        {
+          "name": "NatWest Group"
         }
       ]
     }
