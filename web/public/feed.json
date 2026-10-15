@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038",
+      "url": "https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038",
+      "title": "Application Engineering Intern — GoKwik",
+      "content_text": "Company: GoKwik · Location: Bangalore, KA, India\n• Build and enhance backend services using node.js and nestjs\n• Work with postgresql, mongodb, redis, kafka, and aws\n• Contribute to scalable systems and real production code",
+      "date_published": "2026-10-15T10:04:03.673Z",
+      "authors": [
+        {
+          "name": "GoKwik"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855744",
+      "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855744",
+      "title": "Automation Engineer - SDET I — Deloitte",
+      "content_text": "Company: Deloitte · Location: Chennai, Tamil Nadu, India\n• Build and maintain automation frameworks for cloud and web apps\n• Work with Python, Selenium, and CI/CD tools like Jenkins\n• Collaborate with Agile teams on quality and test strategies",
+      "date_published": "2026-10-15T09:44:29.379Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855747",
+      "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855747",
+      "title": "Automation Engineer - SDET I — Deloitte",
+      "content_text": "Company: Deloitte · Location: Pune Division, Maharashtra, India\n• Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools\n• Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms\n• Mentor QA team members and drive quality best practices in a fast-paced environment",
+      "date_published": "2026-10-15T09:44:17.810Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/mondel-z-international-taste-the-future-tech-trainee-mds-4479795962",
       "url": "https://interndoor.com/jobs/mondel-z-international-taste-the-future-tech-trainee-mds-4479795962",
       "title": "Tech Trainee — Mondelēz International",
@@ -30,6 +66,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/clearwater-analytics-analyst-qa-analyst-4442036053",
+      "url": "https://interndoor.com/jobs/clearwater-analytics-analyst-qa-analyst-4442036053",
+      "title": "QA Analyst — Clearwater Analytics",
+      "content_text": "Company: Clearwater Analytics · Location: Mumbai Metropolitan Region · Duration: 6 months\n• Design and execute test cases for complex financial systems\n• Use Selenium/Playwright for automation and JUnit/TestNG for frameworks\n• Collaborate with developers on defect resolution and test coverage",
+      "date_published": "2026-10-15T09:27:20.681Z",
+      "authors": [
+        {
+          "name": "Clearwater Analytics"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/valency-networks-private-limited-c-developer-intern-4477060964",
       "url": "https://interndoor.com/jobs/valency-networks-private-limited-c-developer-intern-4477060964",
       "title": "C++ Developer Intern — Valency Networks Private Limited",
@@ -38,6 +86,54 @@
       "authors": [
         {
           "name": "Valency Networks Private Limited"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/gartner-security-analyst-vulnerability-management-4469718219",
+      "url": "https://interndoor.com/jobs/gartner-security-analyst-vulnerability-management-4469718219",
+      "title": "Security Analyst — Gartner",
+      "content_text": "Company: Gartner · Location: Gurgaon, Haryana, India\n• Review and prioritize security vulnerabilities across cloud platforms\n• Collaborate with teams to implement and validate remediation strategies\n• Develop automation and documentation to enhance security processes",
+      "date_published": "2026-10-15T09:24:56.924Z",
+      "authors": [
+        {
+          "name": "Gartner"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualys-site-reliability-engineer-cloud-platform-4467626080",
+      "url": "https://interndoor.com/jobs/qualys-site-reliability-engineer-cloud-platform-4467626080",
+      "title": "Site Reliability Engineer, Cloud Platform — Qualys",
+      "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India\n• Monitor and troubleshoot cloud-native systems, Kubernetes, Spark, Kafka, and data platforms\n• Automate operational tasks with Python, Bash, Go, and CI/CD pipelines\n• Participate in on-call rotations and incident response for production services",
+      "date_published": "2026-10-15T09:21:14.391Z",
+      "authors": [
+        {
+          "name": "Qualys"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/gartner-security-engineer-penetration-testing-4469705927",
+      "url": "https://interndoor.com/jobs/gartner-security-engineer-penetration-testing-4469705927",
+      "title": "Security Engineer — Gartner",
+      "content_text": "Company: Gartner · Location: Gurgaon, Haryana, India\n• Support third-party penetration testing, vulnerability reviews, and remediation tracking\n• Use tools like Burp Suite and Nmap to identify security weaknesses and misconfigurations\n• Collaborate with security and engineering teams to improve internal testing programs",
+      "date_published": "2026-10-15T09:17:49.811Z",
+      "authors": [
+        {
+          "name": "Gartner"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/hitachi-vantara-cloudengineer-4470920225",
+      "url": "https://interndoor.com/jobs/hitachi-vantara-cloudengineer-4470920225",
+      "title": "Cloud Engineer — Hitachi Vantara",
+      "content_text": "Company: Hitachi Vantara · Location: Hyderabad, Telangana, India\n• Maintain Azure cloud infrastructure with VMs, AD, storage, networking, and logic apps\n• Automate deployments using Azure DevOps and manage AKS clusters\n• Monitor and secure cloud apps with tools like Datadog and Prometheus\n• Provide 24x7 on-call support for OS, network, and monitoring tools",
+      "date_published": "2026-10-15T09:13:55.383Z",
+      "authors": [
+        {
+          "name": "Hitachi Vantara"
         }
       ]
     },
@@ -78,6 +174,42 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/synchrony-analyst-analytics-data-quality-developer-4479789697",
+      "url": "https://interndoor.com/jobs/synchrony-analyst-analytics-data-quality-developer-4479789697",
+      "title": "Data Quality Analyst — Synchrony",
+      "content_text": "Company: Synchrony · Location: Hyderabad, Telangana, India\n• Design and maintain data quality processes for customer and business data\n• Use tools like Informatica, Tableau, and SQL to manage data issues\n• Collaborate with cross-functional teams on data governance and reporting",
+      "date_published": "2026-10-15T08:28:26.009Z",
+      "authors": [
+        {
+          "name": "Synchrony"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4477062321",
+      "url": "https://interndoor.com/jobs/echo-initiative-by-joveo-frontend-developer-4477062321",
+      "title": "Frontend Developer — Echo Initiative by Joveo",
+      "content_text": "Company: Echo Initiative by Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Ship full stack with react, next.js, node.js, and express\n• Collaborate directly with leadership from first week",
+      "date_published": "2026-10-15T07:55:23.492Z",
+      "authors": [
+        {
+          "name": "Echo Initiative by Joveo"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4477064199",
+      "url": "https://interndoor.com/jobs/echo-initiative-by-joveo-back-end-developer-4477064199",
+      "title": "Back End Developer — Echo Initiative by Joveo",
+      "content_text": "Company: Echo Initiative by Joveo · Location: Bengaluru, Karnataka, India\n• Build greenfield ai products from whiteboard to prototype\n• Work with react, next.js, node.js, express, and databases\n• Collaborate with leadership from first week",
+      "date_published": "2026-10-15T07:55:08.373Z",
+      "authors": [
+        {
+          "name": "Echo Initiative by Joveo"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wolters-kluwer-data-scientist-ai-ops-4478846770",
       "url": "https://interndoor.com/jobs/wolters-kluwer-data-scientist-ai-ops-4478846770",
       "title": "AI Ops Data Scientist — Wolters Kluwer",
@@ -86,6 +218,18 @@
       "authors": [
         {
           "name": "Wolters Kluwer"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-java-api-developer-4478845457",
+      "url": "https://interndoor.com/jobs/birlasoft-java-api-developer-4478845457",
+      "title": "Java API Developer — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and implement secure scalable restful apis with spring boot\n• Work with devops and product teams on backend services for web and mobile apps\n• Write clean testable code with unit and integration tests\n• Deploy to cloud with docker and kubernetes",
+      "date_published": "2026-10-15T06:04:12.847Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
         }
       ]
     },
@@ -162,6 +306,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/nuvama-group-quantitative-researcher-4477019489",
+      "url": "https://interndoor.com/jobs/nuvama-group-quantitative-researcher-4477019489",
+      "title": "Quantitative Researcher — Nuvama Group",
+      "content_text": "Company: Nuvama Group · Location: Mumbai, Maharashtra, India\n• Build and test trading strategies using market and alternative data\n• Apply stats, ml, and econometrics to find predictive signals\n• Work with traders to turn research into live strategies",
+      "date_published": "2026-10-15T00:35:21.838Z",
+      "authors": [
+        {
+          "name": "Nuvama Group"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479731293",
       "url": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479731293",
       "title": "Intern Bachelors Hardware Eng — Honeywell Technologies",
@@ -210,6 +366,42 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/ge-vernova-intern-ats-workday-gevernova-wd5-vernova-externalsite-r5050740",
+      "url": "https://interndoor.com/jobs/ge-vernova-intern-ats-workday-gevernova-wd5-vernova-externalsite-r5050740",
+      "title": "Intern — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Bengaluru\n• Design and develop research experiments in time series analysis, machine vision, and deep learning\n• Implement ai/ml algorithms in python with pytorch, tensorflow, or similar frameworks\n• Analyze and validate models for time series and visual data across diverse datasets",
+      "date_published": "2026-10-15T00:00:00.000Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tech-snap-cloud-and-devops-intern-graduate-program-4478806863",
+      "url": "https://interndoor.com/jobs/tech-snap-cloud-and-devops-intern-graduate-program-4478806863",
+      "title": "Cloud & DevOps Intern (Graduate Program) — Tech Snap",
+      "content_text": "Company: Tech Snap · Location: India · Duration: 3-6 months\n• Automate build pipelines with GitHub Actions\n• Containerize apps with Docker and Helm\n• Monitor systems with Prometheus and Grafana",
+      "date_published": "2026-10-14T23:55:53.829Z",
+      "authors": [
+        {
+          "name": "Tech Snap"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tech-snap-frontend-engineering-intern-pre-placement-offer-4478813731",
+      "url": "https://interndoor.com/jobs/tech-snap-frontend-engineering-intern-pre-placement-offer-4478813731",
+      "title": "Frontend Engineering Intern (Pre-Placement Offer) — Tech Snap",
+      "content_text": "Company: Tech Snap · Location: India · Duration: 6 months\n• Build reusable ui components in react and tailwind css\n• Integrate rest apis for user auth and transaction tables\n• Write clean code with tests and review feedback",
+      "date_published": "2026-10-14T23:55:38.884Z",
+      "authors": [
+        {
+          "name": "Tech Snap"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/citi-java-fullstack-developer-4478801649",
       "url": "https://interndoor.com/jobs/citi-java-fullstack-developer-4478801649",
       "title": "Java Fullstack Developer — Citi",
@@ -234,6 +426,18 @@
       ]
     },
     {
+      "id": "https://interndoor.com/jobs/akamai-technologies-python-developer-4479584364",
+      "url": "https://interndoor.com/jobs/akamai-technologies-python-developer-4479584364",
+      "title": "Python Developer — Akamai Technologies",
+      "content_text": "Company: Akamai Technologies · Location: Bengaluru, Karnataka, India\n• Design systems for automated network workflows and observability\n• Work with Python/JavaScript, Kubernetes, and cloud-native tools\n• Collaborate with Architecture and Engineering on global infrastructure",
+      "date_published": "2026-10-14T19:59:22.008Z",
+      "authors": [
+        {
+          "name": "Akamai Technologies"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/google-salesforce-application-engineer-youtube-4478494415",
       "url": "https://interndoor.com/jobs/google-salesforce-application-engineer-youtube-4478494415",
       "title": "Salesforce Application Engineer — Google",
@@ -242,6 +446,18 @@
       "authors": [
         {
           "name": "Google"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/flex-engineer-test-programming-4478474785",
+      "url": "https://interndoor.com/jobs/flex-engineer-test-programming-4478474785",
+      "title": "Engineer –Test Programming — Flex",
+      "content_text": "Company: Flex · Location: Chennai, Tamil Nadu, India\n• Write and maintain python scripts for testing systems and hardware\n• Work with git, ci/cd, and automation frameworks\n• Collaborate with engineering and operations teams on test strategies",
+      "date_published": "2026-10-14T19:09:28.819Z",
+      "authors": [
+        {
+          "name": "Flex"
         }
       ]
     },
@@ -366,30 +582,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479550813",
-      "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479550813",
-      "title": "Apprentice Software Developer — Bank of America",
-      "content_text": "Company: Bank of America · Location: Hyderabad, Telangana, India\n• Develop software solutions meeting compliance and functional needs\n• Work with global teams on banking systems and tech platforms\n• Use Python, SQL, Spark, and data tools for analysis and integration",
-      "date_published": "2026-10-14T16:21:24.458Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479555549",
-      "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479555549",
-      "title": "Software Engineer Apprentice — Bank of America",
-      "content_text": "Company: Bank of America · Location: Mumbai Metropolitan Region\n• Develop software solutions meeting compliance and performance standards\n• Work with global teams on banking systems and data platforms\n• Use Python, SQL, Spark, and cloud tools in real projects",
-      "date_published": "2026-10-14T16:21:08.967Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479557487",
       "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479557487",
       "title": "Apprentice — Bank of America",
@@ -402,206 +594,14 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/coindcx-sdet-4469446423",
-      "url": "https://interndoor.com/jobs/coindcx-sdet-4469446423",
-      "title": "SDET — CoinDCX",
-      "content_text": "Company: CoinDCX · Location: Bengaluru, Karnataka, India\n• Write and debug automated tests for new features and maintain existing scripts\n• Use appium, rest assured, testng, maven, git, and jenkins for automation\n• Generate reports on mobile and api automation coverage and present to stakeholders",
-      "date_published": "2026-10-14T15:54:45.630Z",
+      "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551773",
+      "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551773",
+      "title": "Apprentice Software Developer — Bank of America",
+      "content_text": "Company: Bank of America · Location: Hyderabad, Telangana, India\n• Develop software solutions meeting compliance and functional needs\n• Work with global teams on banking systems and tech platforms\n• Use Python, SQL, Spark, and data tools for analysis and integration",
+      "date_published": "2026-10-14T16:07:13.813Z",
       "authors": [
         {
-          "name": "CoinDCX"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-software-engineer-4479559114",
-      "url": "https://interndoor.com/jobs/natwest-group-software-engineer-4479559114",
-      "title": "Software Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Gurugram, Haryana, India\n• Build secure, high-performance software for customer-centric solutions\n• Work with DevOps and Agile tools across full development lifecycle\n• Collaborate with engineers and architects on complex systems",
-      "date_published": "2026-10-14T15:34:50.452Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-software-engineer-4479547584",
-      "url": "https://interndoor.com/jobs/natwest-group-software-engineer-4479547584",
-      "title": "Software Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Engineer secure, high-performance software for customer-centric solutions\n• Work in permanent teams across full software life cycle\n• Use devops, agile, and multiple programming languages",
-      "date_published": "2026-10-14T15:34:42.362Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-software-engineer-4479548564",
-      "url": "https://interndoor.com/jobs/natwest-group-software-engineer-4479548564",
-      "title": "Software Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Chennai, Tamil Nadu, India\n• Engineer secure, high-performance software for customer-centric solutions\n• Work in permanent teams across full software life cycle\n• Use devops, agile, and multiple programming languages",
-      "date_published": "2026-10-14T15:34:19.572Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-software-engineer-4476684173",
-      "url": "https://interndoor.com/jobs/ibm-software-engineer-4476684173",
-      "title": "Software Engineer — IBM",
-      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Develop systems software for mainframes, cloud platforms, and storage solutions\n• Work with C, C++, Java, Python, and cloud technologies like Kubernetes\n• Collaborate with global teams on product design, testing, and support",
-      "date_published": "2026-10-14T14:42:03.345Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ibm-software-developer-intern-4476673482",
-      "url": "https://interndoor.com/jobs/ibm-software-developer-intern-4476673482",
-      "title": "Software Developer Intern — IBM",
-      "content_text": "Company: IBM · Location: Bengaluru, Karnataka, India\n• Develop and test software solutions using go, java, python and cloud platforms\n• Work on high-profile automation projects with cross-functional stakeholders\n• Collaborate on test-driven development and api-driven interfaces",
-      "date_published": "2026-10-14T14:41:57.878Z",
-      "authors": [
-        {
-          "name": "IBM"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-data-engineer-4479548290",
-      "url": "https://interndoor.com/jobs/natwest-group-data-engineer-4479548290",
-      "title": "Data Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Bengaluru, Karnataka, India\n• Build, maintain, test and optimise scalable data architecture\n• Develop data solutions for analysts and scientists\n• Collaborate with core technology and architecture teams",
-      "date_published": "2026-10-14T14:39:09.041Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-data-engineer-4479544475",
-      "url": "https://interndoor.com/jobs/natwest-group-data-engineer-4479544475",
-      "title": "Data Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Gurugram, Haryana, India\n• Build, maintain, test and optimise scalable data architecture\n• Extract, transform, and load data for analysts and scientists\n• Collaborate with tech and architecture teams on data solutions\n• Advocate for data structure changes in product development",
-      "date_published": "2026-10-14T14:37:33.961Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-programming-language-knowledge-java-4479541036",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-programming-language-knowledge-java-4479541036",
-      "title": "Programming language knowledge - Java — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Migrate on-prem databases to AWS using DMS, SCT, RDS, and EC2\n• Automate deployments with Terraform and tune post-migration performance\n• Leverage AI tools for SQL translation and migration script debugging",
-      "date_published": "2026-10-14T14:16:43.897Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-associate-3-4476679049",
-      "url": "https://interndoor.com/jobs/bt-group-site-reliability-engineering-associate-3-4476679049",
-      "title": "Site Reliability Engineering Associate 3 — BT Group",
-      "content_text": "Company: BT Group · Location: Delhi, India\n• Supports automation of software delivery using AWS, GitOps, and container tech\n• Helps build monitoring systems for system reliability and uptime\n• Collaborates with sales and support for performance planning",
-      "date_published": "2026-10-14T13:36:16.912Z",
-      "authors": [
-        {
-          "name": "BT Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-ai-engineer-advisor-4479526831",
-      "title": "AI engineer Advisor — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Build AI applications using LLMs, RAG, and agentic workflows\n• Develop APIs, microservices, and secure integrations for enterprise systems\n• Implement AI guardrails, security, and observability frameworks",
-      "date_published": "2026-10-14T13:23:23.971Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-z3-python-developer-4479527838",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-z3-python-developer-4479527838",
-      "title": "Python Developer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Write clean Python code for backend and serverless apps\n• Build scalable systems on AWS with Lambda, DynamoDB, and S3\n• Maintain CI/CD pipelines with Jenkins or CodePipeline\n• Work on secure, high-availability cloud architectures",
-      "date_published": "2026-10-14T13:23:18.638Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4479532629",
-      "url": "https://interndoor.com/jobs/ntt-data-north-america-qa-engineer-4479532629",
-      "title": "QA Engineer — NTT DATA North America",
-      "content_text": "Company: NTT DATA North America · Location: Bangalore Urban, Karnataka, India\n• Validate data pipelines and platform integrations in databricks\n• Automate testing and track defects across analytics solutions\n• Work on end-to-end testing with sql and pySpark validation",
-      "date_published": "2026-10-14T13:23:13.608Z",
-      "authors": [
-        {
-          "name": "NTT DATA North America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950",
-      "url": "https://interndoor.com/jobs/birlasoft-java-ghcp-developer-4469427950",
-      "title": "Java Developer — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and implement secure scalable restful apis with spring boot and github copilot\n• Work with devops and product teams on cloud deployments using docker and azure\n• Own services from design to production with on-call support optional",
-      "date_published": "2026-10-14T12:55:36.320Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/edmo-software-engineer-intern-4478448455",
-      "url": "https://interndoor.com/jobs/edmo-software-engineer-intern-4478448455",
-      "title": "Software Engineer Intern — EDMO",
-      "content_text": "Company: EDMO · Location: Pune Division, Maharashtra, India · Duration: 6 months\n• Develop and maintain web and mobile applications\n• Use Python, Node.js, JavaScript, and Git\n• Work on real-world projects with potential full-time conversion",
-      "date_published": "2026-10-14T12:55:04.296Z",
-      "authors": [
-        {
-          "name": "EDMO"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mufg-identity-and-access-management-4479526167",
-      "url": "https://interndoor.com/jobs/mufg-identity-and-access-management-4479526167",
-      "title": "Identity & Access Management — MUFG",
-      "content_text": "Company: MUFG · Location: Greater Bengaluru Area\n• Design and implement IAM systems for secure access control\n• Support user provisioning, authentication, and access governance\n• Troubleshoot IAM systems and ensure compliance with security policies",
-      "date_published": "2026-10-14T12:51:41.189Z",
-      "authors": [
-        {
-          "name": "MUFG"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/zensar-technologies-big-data-hadoop-4451666609",
-      "url": "https://interndoor.com/jobs/zensar-technologies-big-data-hadoop-4451666609",
-      "title": "Big Data Engineer — Zensar Technologies",
-      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Develop big data pipelines using Spark and Scala\n• Leverage functional programming and OOP principles\n• Work on scalable data processing solutions",
-      "date_published": "2026-10-14T12:45:48.176Z",
-      "authors": [
-        {
-          "name": "Zensar Technologies"
+          "name": "Bank of America"
         }
       ]
     }

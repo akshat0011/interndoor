@@ -1,6 +1,37 @@
 {
  "jobs": [
   {
+   "id": "ats:keka:gokwik:164038",
+   "company": "GoKwik",
+   "title": "Application Engineering Intern",
+   "slugTitle": "Intern - Application Engineering",
+   "location": "Bangalore, KA, India",
+   "postedAt": 1792058643673,
+   "firstSeenAt": 1792059160725,
+   "logo": "/logos/gokwik.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478855744",
+   "company": "Deloitte",
+   "title": "Automation Engineer - SDET I",
+   "location": "Chennai, Tamil Nadu, India",
+   "postedAt": 1792057469379,
+   "firstSeenAt": 1792058429386,
+   "logo": "/logos/deloitte.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478855747",
+   "company": "Deloitte",
+   "title": "Automation Engineer - SDET I",
+   "location": "Pune Division, Maharashtra, India",
+   "postedAt": 1792057457810,
+   "firstSeenAt": 1792058417815,
+   "logo": "/logos/deloitte.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479795962",
    "company": "Mondelēz International",
    "title": "Tech Trainee",
@@ -25,6 +56,18 @@
    "bulletCount": 3
   },
   {
+   "id": "4442036053",
+   "company": "Clearwater Analytics",
+   "title": "QA Analyst",
+   "slugTitle": "Analyst, QA Analyst",
+   "location": "Mumbai Metropolitan Region",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792056440681,
+   "firstSeenAt": 1792060040685,
+   "logo": "/logos/clearwater-analytics.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477060964",
    "company": "Valency Networks Private Limited",
    "title": "C++ Developer Intern",
@@ -34,6 +77,53 @@
    "firstSeenAt": 1792057526286,
    "logo": "/logos/valency-networks-private-limited.jpg",
    "bulletCount": 3
+  },
+  {
+   "id": "4469718219",
+   "company": "Gartner",
+   "title": "Security Analyst",
+   "slugTitle": "Security Analyst - Vulnerability management",
+   "location": "Gurgaon, Haryana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792056296924,
+   "firstSeenAt": 1792059896929,
+   "logo": "/logos/gartner.png",
+   "bulletCount": 3
+  },
+  {
+   "id": "4467626080",
+   "company": "Qualys",
+   "title": "Site Reliability Engineer, Cloud Platform",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792056074391,
+   "firstSeenAt": 1792058174400,
+   "logo": "/logos/qualys.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4469705927",
+   "company": "Gartner",
+   "title": "Security Engineer",
+   "slugTitle": "Security Engineer- Penetration Testing",
+   "location": "Gurgaon, Haryana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792055869811,
+   "firstSeenAt": 1792059469819,
+   "logo": "/logos/gartner.png",
+   "bulletCount": 3
+  },
+  {
+   "id": "4470920225",
+   "company": "Hitachi Vantara",
+   "title": "Cloud Engineer",
+   "slugTitle": "CloudEngineer",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792055635383,
+   "firstSeenAt": 1792059235388,
+   "logo": "/logos/hitachi-vantara.jpg",
+   "bulletCount": 4
   },
   {
    "id": "4479803494",
@@ -71,6 +161,39 @@
    "bulletCount": 3
   },
   {
+   "id": "4479789697",
+   "company": "Synchrony",
+   "title": "Data Quality Analyst",
+   "slugTitle": "Analyst, Analytics - Data Quality Developer",
+   "location": "Hyderabad, Telangana, India",
+   "postedAt": 1792052906009,
+   "firstSeenAt": 1792060106012,
+   "logo": "/logos/synchrony.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477062321",
+   "company": "Echo Initiative by Joveo",
+   "title": "Frontend Developer",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792050923492,
+   "firstSeenAt": 1792058123495,
+   "logo": "/logos/echo-initiative-by-joveo.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477064199",
+   "company": "Echo Initiative by Joveo",
+   "title": "Back End Developer",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792050908373,
+   "firstSeenAt": 1792058108386,
+   "logo": "/logos/echo-initiative-by-joveo.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4478846770",
    "company": "Wolters Kluwer",
    "title": "AI Ops Data Scientist",
@@ -81,6 +204,17 @@
    "firstSeenAt": 1792050501817,
    "logo": "/logos/wolters-kluwer.jpg",
    "bulletCount": 3
+  },
+  {
+   "id": "4478845457",
+   "company": "Birlasoft",
+   "title": "Java API Developer",
+   "location": "Greater Bengaluru Area",
+   "workplaceType": "On-site",
+   "postedAt": 1792044252847,
+   "firstSeenAt": 1792058652853,
+   "logo": "/logos/birlasoft.jpg",
+   "bulletCount": 4
   },
   {
    "id": "4477050482",
@@ -141,6 +275,16 @@
    "bulletCount": 3
   },
   {
+   "id": "4477019489",
+   "company": "Nuvama Group",
+   "title": "Quantitative Researcher",
+   "location": "Mumbai, Maharashtra, India",
+   "postedAt": 1792024521838,
+   "firstSeenAt": 1792060521841,
+   "logo": "/logos/nuvama-group.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479731293",
    "company": "Honeywell Technologies",
    "title": "Intern Bachelors Hardware Eng",
@@ -186,6 +330,38 @@
    "bulletCount": 3
   },
   {
+   "id": "ats:workday:gevernova:wd5:Vernova_ExternalSite:R5050740",
+   "company": "GE Vernova",
+   "title": "Intern",
+   "location": "Bengaluru",
+   "postedAt": 1792022400000,
+   "firstSeenAt": 1792059262557,
+   "logo": "/logos/ge-vernova.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478806863",
+   "company": "Tech Snap",
+   "title": "Cloud & DevOps Intern (Graduate Program)",
+   "location": "India",
+   "workplaceType": "Remote",
+   "postedAt": 1792022153829,
+   "firstSeenAt": 1792058153840,
+   "logo": "/logos/tech-snap.png",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478813731",
+   "company": "Tech Snap",
+   "title": "Frontend Engineering Intern (Pre-Placement Offer)",
+   "location": "India",
+   "workplaceType": "Remote",
+   "postedAt": 1792022138884,
+   "firstSeenAt": 1792058138892,
+   "logo": "/logos/tech-snap.png",
+   "bulletCount": 3
+  },
+  {
    "id": "4478801649",
    "company": "Citi",
    "title": "Java Fullstack Developer",
@@ -208,6 +384,17 @@
    "bulletCount": 3
   },
   {
+   "id": "4479584364",
+   "company": "Akamai Technologies",
+   "title": "Python Developer",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Remote",
+   "postedAt": 1792007962008,
+   "firstSeenAt": 1792058362016,
+   "logo": "/logos/akamai-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4478494415",
    "company": "Google",
    "title": "Salesforce Application Engineer",
@@ -216,6 +403,17 @@
    "postedAt": 1792006493439,
    "firstSeenAt": 1792020893447,
    "logo": "/logos/google.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4478474785",
+   "company": "Flex",
+   "title": "Engineer –Test Programming",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792004968819,
+   "firstSeenAt": 1792058968826,
+   "logo": "/logos/flex.jpg",
    "bulletCount": 3
   },
   {
@@ -251,209 +449,6 @@
    "firstSeenAt": 1792005038334,
    "logo": "/logos/atkinsr-alis.jpg",
    "bulletCount": 3
-  },
-  {
-   "id": "4476696037",
-   "company": "HARMAN India",
-   "title": "Students / Trainees",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791999797648,
-   "firstSeenAt": 1792017797656,
-   "logo": "/logos/harman-india.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479562187",
-   "company": "Bank of America",
-   "title": "Apprentice",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791997927335,
-   "firstSeenAt": 1792001527345,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476692230",
-   "company": "Mastercard",
-   "title": "Software Engineer",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1791996742389,
-   "firstSeenAt": 1791998242402,
-   "logo": "/logos/mastercard.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476687543",
-   "company": "Mastercard",
-   "title": "DevSecOps Software Engineer",
-   "slugTitle": "Software Engineer (DevSecOps)",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1791996708489,
-   "firstSeenAt": 1791998268494,
-   "logo": "/logos/mastercard.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4433668208",
-   "company": "GlobalLogic",
-   "title": "C++ Developer IRC281591",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791996378481,
-   "firstSeenAt": 1792021578485,
-   "logo": "/logos/globallogic.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4460239636",
-   "company": "GlobalLogic",
-   "title": "SRE Developer",
-   "slugTitle": "SRE Developer IRC302530",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791996211334,
-   "firstSeenAt": 1792021411338,
-   "logo": "/logos/globallogic.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469471138",
-   "company": "Cognizant",
-   "title": "Java Developer",
-   "slugTitle": "Java Developer(AWS)",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1791995546574,
-   "firstSeenAt": 1791998246577,
-   "logo": "/logos/cognizant.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479550813",
-   "company": "Bank of America",
-   "title": "Apprentice Software Developer",
-   "slugTitle": "Apprentice",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791994884458,
-   "firstSeenAt": 1791997884461,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479555549",
-   "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
-   "slugTitle": "Apprentice",
-   "location": "Mumbai Metropolitan Region",
-   "workplaceType": "On-site",
-   "postedAt": 1791994868967,
-   "firstSeenAt": 1791997868975,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479557487",
-   "company": "Bank of America",
-   "title": "Apprentice",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791994069271,
-   "firstSeenAt": 1791994369274,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469446423",
-   "company": "CoinDCX",
-   "title": "SDET",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791993285630,
-   "firstSeenAt": 1791995025639,
-   "logo": "/logos/coindcx.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479559114",
-   "company": "NatWest Group",
-   "title": "Software Engineer",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791992090452,
-   "firstSeenAt": 1791995030455,
-   "logo": "/logos/natwest-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479547584",
-   "company": "NatWest Group",
-   "title": "Software Engineer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791992082362,
-   "firstSeenAt": 1791995082365,
-   "logo": "/logos/natwest-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479548564",
-   "company": "NatWest Group",
-   "title": "Software Engineer",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791992059572,
-   "firstSeenAt": 1791995059577,
-   "logo": "/logos/natwest-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476684173",
-   "company": "IBM",
-   "title": "Software Engineer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1791988923345,
-   "firstSeenAt": 1791990903354,
-   "logo": "/logos/ibm.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476673482",
-   "company": "IBM",
-   "title": "Software Developer Intern",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1791988917878,
-   "firstSeenAt": 1791990597883,
-   "logo": "/logos/ibm.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479548290",
-   "company": "NatWest Group",
-   "title": "Data Engineer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791988749041,
-   "firstSeenAt": 1791990909044,
-   "logo": "/logos/natwest-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479544475",
-   "company": "NatWest Group",
-   "title": "Data Engineer",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791988653961,
-   "firstSeenAt": 1791990933974,
-   "logo": "/logos/natwest-group.jpg",
-   "bulletCount": 4
   }
  ]
 }
