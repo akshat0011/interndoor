@@ -1,9 +1,9 @@
 {
- "generatedAt": 1792057705201,
+ "generatedAt": 1792058025897,
  "region": "IN",
  "regionName": "India",
- "count": 1356,
- "techCount": 1356,
+ "count": 1358,
+ "techCount": 1358,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -662,6 +662,113 @@
    "verified": true
   },
   {
+   "id": "4479803494",
+   "title": "Test Automation Engineer",
+   "slugTitle": "HiL/SiL Test execution with Test Automation using Python / Perl",
+   "company": "Capgemini Engineering",
+   "matchedWatchlist": "Capgemini",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/capgemini-engineering.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "12 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "matlab",
+    "ci/cd",
+    "perl",
+    "simulink"
+   ],
+   "summary": "This role involves testing embedded systems using HiL/SiL methods. You'll automate tests with Python or Perl and work with automotive protocols. Ideal for someone with experience in ECU validation and test automation tools.",
+   "bullets": [
+    "Execute HiL/SiL tests for embedded systems",
+    "Use Python/Perl for test automation",
+    "Work with CAN/CAN FD/UDS protocols",
+    "Collaborate on automotive validation projects"
+   ],
+   "roleLabel": "Test Automation",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "python",
+    "perl",
+    "can",
+    "can fd",
+    "uds diagnostics"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "48 minutes ago",
+   "postedAt": 1792054983089,
+   "firstSeenAt": 1792057863101,
+   "lastSeenAt": 1792057863101,
+   "url": "https://www.linkedin.com/jobs/view/4479803494/",
+   "applyUrl": "https://www.capgemini.com/jobs/533656-en_GB_SAPBTP/HiL/SiL-Test-execution-with-Test-Automation-using-Python-/-Perl",
+   "description": null,
+   "roleFingerprint": "c9c974ebbd",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "qa",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4479802524",
+   "title": "NX open Developer",
+   "company": "Capgemini Engineering",
+   "matchedWatchlist": "Capgemini",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/capgemini-engineering.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "2 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "system design"
+   ],
+   "summary": "This role involves designing and developing engineered systems and products, focusing on systems engineering and product design. You will work on complex projects, collaborate with customers, and contribute to team efforts. Ideal for someone with a strong foundation in engineering principles and a passion for innovative design.",
+   "bullets": [
+    "Design and develop engineered systems and products",
+    "Work on systems engineering and product design",
+    "Collaborate with customers and team members"
+   ],
+   "roleLabel": "Systems Engineering",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "systems engineering",
+    "product design"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "50 minutes ago",
+   "postedAt": 1792054899377,
+   "firstSeenAt": 1792057899382,
+   "lastSeenAt": 1792057899382,
+   "url": "https://www.linkedin.com/jobs/view/4479802524/",
+   "applyUrl": "https://www.capgemini.com/jobs/574218-en_GB_SAPBTP/NX-open-Developer",
+   "description": null,
+   "roleFingerprint": "5b8a88a083",
+   "cardFacts": [
+    "Bengaluru",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4479808070",
    "title": "Data Analyst Intern",
    "slugTitle": "Intern - CI&A Data Analyst",
@@ -761,7 +868,7 @@
    "postedText": "10 minutes ago",
    "postedAt": 1792049901810,
    "firstSeenAt": 1792050501817,
-   "lastSeenAt": 1792054197804,
+   "lastSeenAt": 1792057899406,
    "url": "https://www.linkedin.com/jobs/view/4478846770/",
    "applyUrl": "https://wk.wd3.myworkdayjobs.com/External/job/Data-Scientist---AI-Ops_R0060443-1?source=LinkedIn_Posting",
    "description": null,

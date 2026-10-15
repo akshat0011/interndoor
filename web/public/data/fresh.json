@@ -36,6 +36,29 @@
    "bulletCount": 3
   },
   {
+   "id": "4479803494",
+   "company": "Capgemini Engineering",
+   "title": "Test Automation Engineer",
+   "slugTitle": "HiL/SiL Test execution with Test Automation using Python / Perl",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792054983089,
+   "firstSeenAt": 1792057863101,
+   "logo": "/logos/capgemini-engineering.jpg",
+   "bulletCount": 4
+  },
+  {
+   "id": "4479802524",
+   "company": "Capgemini Engineering",
+   "title": "NX open Developer",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792054899377,
+   "firstSeenAt": 1792057899382,
+   "logo": "/logos/capgemini-engineering.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479808070",
    "company": "Eli Lilly and Company",
    "title": "Data Analyst Intern",
@@ -431,28 +454,6 @@
    "firstSeenAt": 1791990933974,
    "logo": "/logos/natwest-group.jpg",
    "bulletCount": 4
-  },
-  {
-   "id": "4479541036",
-   "company": "NTT DATA North America",
-   "title": "Programming language knowledge - Java",
-   "location": "Bangalore Urban, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791987403897,
-   "firstSeenAt": 1791991003904,
-   "logo": "/logos/ntt-data-north-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476679049",
-   "company": "BT Group",
-   "title": "Site Reliability Engineering Associate 3",
-   "location": "Delhi, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1791984976912,
-   "firstSeenAt": 1792020976917,
-   "logo": "/logos/bt-group.jpg",
-   "bulletCount": 3
   }
  ]
 }
