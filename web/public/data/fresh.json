@@ -1,6 +1,41 @@
 {
  "jobs": [
   {
+   "id": "4479795962",
+   "company": "Mondelēz International",
+   "title": "Tech Trainee",
+   "slugTitle": "Taste The Future - Tech Trainee, MDS",
+   "location": "Mumbai Metropolitan Region",
+   "workplaceType": "On-site",
+   "postedAt": 1792057211052,
+   "firstSeenAt": 1792057511060,
+   "logo": "/logos/mondel-z-international.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477074268",
+   "company": "Volody",
+   "title": "Software tester intern",
+   "slugTitle": "Software tester intern (Mumbai based only)",
+   "location": "Goregaon, Maharashtra, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792056678781,
+   "firstSeenAt": 1792057518787,
+   "logo": "/logos/volody.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477060964",
+   "company": "Valency Networks Private Limited",
+   "title": "C++ Developer Intern",
+   "location": "Pune City, Maharashtra, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792056386280,
+   "firstSeenAt": 1792057526286,
+   "logo": "/logos/valency-networks-private-limited.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479808070",
    "company": "Eli Lilly and Company",
    "title": "Data Analyst Intern",
@@ -275,26 +310,26 @@
    "bulletCount": 3
   },
   {
-   "id": "4479548792",
+   "id": "4479550813",
    "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
+   "title": "Apprentice Software Developer",
    "slugTitle": "Apprentice",
    "location": "Hyderabad, Telangana, India",
    "workplaceType": "On-site",
-   "postedAt": 1791994889633,
-   "firstSeenAt": 1791997889636,
+   "postedAt": 1791994884458,
+   "firstSeenAt": 1791997884461,
    "logo": "/logos/bank-of-america.jpg",
    "bulletCount": 3
   },
   {
-   "id": "4479552740",
+   "id": "4479555549",
    "company": "Bank of America",
-   "title": "Apprentice Software Developer",
+   "title": "Software Engineer Apprentice",
    "slugTitle": "Apprentice",
    "location": "Mumbai Metropolitan Region",
    "workplaceType": "On-site",
-   "postedAt": 1791994874048,
-   "firstSeenAt": 1791997874050,
+   "postedAt": 1791994868967,
+   "firstSeenAt": 1791997868975,
    "logo": "/logos/bank-of-america.jpg",
    "bulletCount": 3
   },
@@ -417,41 +452,6 @@
    "postedAt": 1791984976912,
    "firstSeenAt": 1792020976917,
    "logo": "/logos/bt-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479526831",
-   "company": "NTT DATA North America",
-   "title": "AI engineer Advisor",
-   "slugTitle": "AI engineer - Advisor",
-   "location": "Bangalore Urban, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791984203971,
-   "firstSeenAt": 1791987383973,
-   "logo": "/logos/ntt-data-north-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479527838",
-   "company": "NTT DATA North America",
-   "title": "Python Developer",
-   "slugTitle": "Z3_Python Developer",
-   "location": "Bangalore Urban, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791984198638,
-   "firstSeenAt": 1791987378641,
-   "logo": "/logos/ntt-data-north-america.jpg",
-   "bulletCount": 4
-  },
-  {
-   "id": "4479532629",
-   "company": "NTT DATA North America",
-   "title": "QA Engineer",
-   "location": "Bangalore Urban, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791984193608,
-   "firstSeenAt": 1791987373616,
-   "logo": "/logos/ntt-data-north-america.jpg",
    "bulletCount": 3
   }
  ]
