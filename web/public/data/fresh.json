@@ -13,17 +13,6 @@
    "bulletCount": 4
   },
   {
-   "id": "4477044634",
-   "company": "Meta Infotech Limited",
-   "title": "Identity Security Engineer",
-   "location": "Mumbai, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792041013169,
-   "firstSeenAt": 1792043353182,
-   "logo": "/logos/meta-infotech-limited.jpg",
-   "bulletCount": 3
-  },
-  {
    "id": "4477034970",
    "company": "Meta",
    "title": "ASIC Engineer Intern",
@@ -112,17 +101,6 @@
    "postedAt": 1792022680358,
    "firstSeenAt": 1792023880363,
    "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4478801977",
-   "company": "Ingersoll Rand Compressor Systems & Services",
-   "title": "Modern Workplace Engineer",
-   "location": "Bangalore Urban, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792020429979,
-   "firstSeenAt": 1792022409991,
-   "logo": "/logos/ingersoll-rand-compressor-systems-and-services.jpg",
    "bulletCount": 3
   },
   {
@@ -451,6 +429,29 @@
    "postedAt": 1791984193608,
    "firstSeenAt": 1791987373616,
    "logo": "/logos/ntt-data-north-america.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479544006",
+   "company": "NTT DATA North America",
+   "title": "React Java Developer",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791984188998,
+   "firstSeenAt": 1791987309010,
+   "logo": "/logos/ntt-data-north-america.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4469427950",
+   "company": "Birlasoft",
+   "title": "Java Developer",
+   "slugTitle": "Java GHCP Developer",
+   "location": "Greater Bengaluru Area",
+   "workplaceType": "On-site",
+   "postedAt": 1791982536320,
+   "firstSeenAt": 1791983616324,
+   "logo": "/logos/birlasoft.jpg",
    "bulletCount": 3
   }
  ]
