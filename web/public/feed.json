@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/meta-asic-engineer-intern-implementation-4477034970",
+      "url": "https://interndoor.com/jobs/meta-asic-engineer-intern-implementation-4477034970",
+      "title": "ASIC Engineer Intern — Meta",
+      "content_text": "Company: Meta · Location: Bengaluru, Karnataka, India\n• Implement accelerators for data center workloads using state-of-the-art tools\n• Optimize RTL for IPs to achieve best PPA with scripting and analysis\n• Support EDA infrastructure and simulation accelerators for post-Silicon validation",
+      "date_published": "2026-10-15T03:19:25.007Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/meta-asic-engineer-intern-design-verification-4477041539",
+      "url": "https://interndoor.com/jobs/meta-asic-engineer-intern-design-verification-4477041539",
+      "title": "ASIC Engineer Intern — Meta",
+      "content_text": "Company: Meta · Location: Bengaluru, Karnataka, India\n• Write tests and scripts to verify complex hardware designs\n• Use systemverilog/uvm for simulation and debugging\n• Work with teams to improve verification processes",
+      "date_published": "2026-10-15T03:19:20.736Z",
+      "authors": [
+        {
+          "name": "Meta"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479730741",
       "url": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479730741",
       "title": "Trainee Technology — Bajaj Finserv",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/academy-paid-internship-4478427837",
-      "url": "https://interndoor.com/jobs/academy-paid-internship-4478427837",
-      "title": "Paid Internship — ACADEMY",
-      "content_text": "Company: ACADEMY · Location: Bengaluru, Karnataka, India · Duration: 6 months\n• Develop AI/ML models, IoT software, or automation systems\n• Work with Python, C++, or embedded systems tools\n• Receive certificate and PPO opportunities for top interns",
-      "date_published": "2026-10-14T10:45:43.254Z",
-      "authors": [
-        {
-          "name": "ACADEMY"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4470919008",
-      "url": "https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4470919008",
-      "title": "Java Developer — Mphasis",
-      "content_text": "Company: Mphasis · Location: Bengaluru, Karnataka, India\n• Develop and maintain Java-based microservices for scalable applications\n• Work with Docker, Kubernetes, and AWS for cloud deployment\n• Collaborate on full development lifecycle from planning to deployment",
-      "date_published": "2026-10-14T10:43:40.166Z",
-      "authors": [
-        {
-          "name": "Mphasis"
         }
       ]
     }

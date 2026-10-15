@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 15 Oct 2026 01:24:46 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 03:19:25 GMT</lastBuildDate>
+  <item>
+    <title>ASIC Engineer Intern — Meta</title>
+    <link>https://interndoor.com/jobs/meta-asic-engineer-intern-implementation-4477034970</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/meta-asic-engineer-intern-implementation-4477034970</guid>
+    <pubDate>Thu, 15 Oct 2026 03:19:25 GMT</pubDate>
+    <description>Company: Meta · Location: Bengaluru, Karnataka, India
+• Implement accelerators for data center workloads using state-of-the-art tools
+• Optimize RTL for IPs to achieve best PPA with scripting and analysis
+• Support EDA infrastructure and simulation accelerators for post-Silicon validation</description>
+  </item>
+  <item>
+    <title>ASIC Engineer Intern — Meta</title>
+    <link>https://interndoor.com/jobs/meta-asic-engineer-intern-design-verification-4477041539</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/meta-asic-engineer-intern-design-verification-4477041539</guid>
+    <pubDate>Thu, 15 Oct 2026 03:19:20 GMT</pubDate>
+    <description>Company: Meta · Location: Bengaluru, Karnataka, India
+• Write tests and scripts to verify complex hardware designs
+• Use systemverilog/uvm for simulation and debugging
+• Work with teams to improve verification processes</description>
+  </item>
   <item>
     <title>Trainee Technology — Bajaj Finserv</title>
     <link>https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479730741</link>
@@ -483,26 +503,6 @@
 • Work on embedded systems, Android, C++, and Linux software development
 • Participate in code analysis, unit testing, and software quality assurance
 • Collaborate in a fast-paced team on cutting-edge automotive tech projects</description>
-  </item>
-  <item>
-    <title>Paid Internship — ACADEMY</title>
-    <link>https://interndoor.com/jobs/academy-paid-internship-4478427837</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/academy-paid-internship-4478427837</guid>
-    <pubDate>Wed, 14 Oct 2026 10:45:43 GMT</pubDate>
-    <description>Company: ACADEMY · Location: Bengaluru, Karnataka, India · Duration: 6 months
-• Develop AI/ML models, IoT software, or automation systems
-• Work with Python, C++, or embedded systems tools
-• Receive certificate and PPO opportunities for top interns</description>
-  </item>
-  <item>
-    <title>Java Developer — Mphasis</title>
-    <link>https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4470919008</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/mphasis-java-aws-developer-ccb-ramp-up-cards-bangalore-4470919008</guid>
-    <pubDate>Wed, 14 Oct 2026 10:43:40 GMT</pubDate>
-    <description>Company: Mphasis · Location: Bengaluru, Karnataka, India
-• Develop and maintain Java-based microservices for scalable applications
-• Work with Docker, Kubernetes, and AWS for cloud deployment
-• Collaborate on full development lifecycle from planning to deployment</description>
   </item>
 </channel>
 </rss>
