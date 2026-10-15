@@ -1,9 +1,9 @@
 {
- "generatedAt": 1792035984285,
+ "generatedAt": 1792036146339,
  "region": "IN",
  "regionName": "India",
- "count": 1352,
- "techCount": 1352,
+ "count": 1353,
+ "techCount": 1353,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -624,6 +624,55 @@
    "verified": true
   },
   {
+   "id": "4479754639",
+   "title": "Products & Systems Engineer",
+   "company": "Capgemini Engineering",
+   "matchedWatchlist": "Capgemini",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/capgemini-engineering.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "6 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "system design"
+   ],
+   "summary": "This role involves designing and developing engineered systems and products, focusing on safety, reliability, and environmental impact. You'll work closely with customers and teams to evolve products throughout their lifecycle. Ideal for someone passionate about engineering and product design.",
+   "bullets": [
+    "Design and develop engineered systems and products",
+    "Work on safety, reliability, and environmental impact",
+    "Collaborate with customers and team on product evolution"
+   ],
+   "roleLabel": "Systems Engineer",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "systems engineering",
+    "product design"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "45 minutes ago",
+   "postedAt": 1792033366836,
+   "firstSeenAt": 1792036066873,
+   "lastSeenAt": 1792036066873,
+   "url": "https://www.linkedin.com/jobs/view/4479754639/",
+   "applyUrl": "https://www.capgemini.com/jobs/548115-en_GB_SAPBTP/Products-&-Systems-Engineer",
+   "description": null,
+   "roleFingerprint": "5b8a88a083",
+   "cardFacts": [
+    "Pune Division",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "systems",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4477034245",
    "title": "Salesforce Developer",
    "company": "NetApp",
@@ -657,7 +706,7 @@
    "postedText": "56 minutes ago",
    "postedAt": 1792031976424,
    "firstSeenAt": 1792035336446,
-   "lastSeenAt": 1792035336446,
+   "lastSeenAt": 1792036066949,
    "url": "https://www.linkedin.com/jobs/view/4477034245/",
    "applyUrl": "https://www.linkedin.com/jobs/view/4477034245/",
    "description": null,
