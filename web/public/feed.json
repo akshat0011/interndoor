@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/eli-lilly-and-company-intern-ci-and-a-data-analyst-4479808070",
+      "url": "https://interndoor.com/jobs/eli-lilly-and-company-intern-ci-and-a-data-analyst-4479808070",
+      "title": "Data Analyst Intern — Eli Lilly and Company",
+      "content_text": "Company: Eli Lilly and Company · Location: Bengaluru East, Karnataka, India\n• Build governed datasets and dashboards using Databricks and Power BI\n• Use SQL and Generative AI to analyze commercial data and deliver insights\n• Collaborate with global teams to support brand and market strategies",
+      "date_published": "2026-10-15T08:29:49.634Z",
+      "authors": [
+        {
+          "name": "Eli Lilly and Company"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/wolters-kluwer-data-scientist-ai-ops-4478846770",
       "url": "https://interndoor.com/jobs/wolters-kluwer-data-scientist-ai-ops-4478846770",
       "title": "AI Ops Data Scientist — Wolters Kluwer",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Capgemini"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-camera-firmware-engineer-4460009646",
-      "url": "https://interndoor.com/jobs/qualcomm-camera-firmware-engineer-4460009646",
-      "title": "Camera Firmware Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Develop camera firmware for Qualcomm chipsets using C/C++ on RTOS\n• Collaborate with cross-functional teams on hardware and software integration\n• Influence camera architecture for power/performance in future products",
-      "date_published": "2026-10-14T11:28:13.673Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }

@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 15 Oct 2026 07:38:21 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 08:29:49 GMT</lastBuildDate>
+  <item>
+    <title>Data Analyst Intern — Eli Lilly and Company</title>
+    <link>https://interndoor.com/jobs/eli-lilly-and-company-intern-ci-and-a-data-analyst-4479808070</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/eli-lilly-and-company-intern-ci-and-a-data-analyst-4479808070</guid>
+    <pubDate>Thu, 15 Oct 2026 08:29:49 GMT</pubDate>
+    <description>Company: Eli Lilly and Company · Location: Bengaluru East, Karnataka, India
+• Build governed datasets and dashboards using Databricks and Power BI
+• Use SQL and Generative AI to analyze commercial data and deliver insights
+• Collaborate with global teams to support brand and market strategies</description>
+  </item>
   <item>
     <title>AI Ops Data Scientist — Wolters Kluwer</title>
     <link>https://interndoor.com/jobs/wolters-kluwer-data-scientist-ai-ops-4478846770</link>
@@ -494,16 +504,6 @@
 • Develops and tests Guidewire PolicyCenter configurations and integrations
 • Works in Agile teams with senior developers and product owners
 • Uses Gosu, REST services, and CI/CD pipelines</description>
-  </item>
-  <item>
-    <title>Camera Firmware Engineer — Qualcomm</title>
-    <link>https://interndoor.com/jobs/qualcomm-camera-firmware-engineer-4460009646</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-camera-firmware-engineer-4460009646</guid>
-    <pubDate>Wed, 14 Oct 2026 11:28:13 GMT</pubDate>
-    <description>Company: Qualcomm · Location: Greater Hyderabad Area
-• Develop camera firmware for Qualcomm chipsets using C/C++ on RTOS
-• Collaborate with cross-functional teams on hardware and software integration
-• Influence camera architecture for power/performance in future products</description>
   </item>
 </channel>
 </rss>
