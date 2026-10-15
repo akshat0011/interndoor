@@ -1,6 +1,86 @@
 {
  "jobs": [
   {
+   "id": "4480136483",
+   "company": "Bristol Myers Squibb",
+   "title": "Analytics Engineer I",
+   "slugTitle": "Analytics Engineer I, Commercialization",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792093974179,
+   "firstSeenAt": 1792095474182,
+   "logo": "/logos/bristol-myers-squibb.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4440185497",
+   "company": "Mastercard",
+   "title": "Implementation Specialist",
+   "slugTitle": "Specialist, Implementation",
+   "location": "Pune Division, Maharashtra, India",
+   "postedAt": 1792091484041,
+   "firstSeenAt": 1792095084051,
+   "logo": "/logos/mastercard.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4447198260",
+   "company": "Cognizant",
+   "title": "Technical Frontier Educator",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792090173832,
+   "firstSeenAt": 1792093773838,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4470981601",
+   "company": "Veradigm®",
+   "title": "Systems Engineer",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792086923342,
+   "firstSeenAt": 1792094123347,
+   "logo": "/logos/veradigm.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479149206",
+   "company": "Birlasoft",
+   "title": "QA Tester",
+   "slugTitle": "GWCC QA Tester - Technical Specialist-Testing Services",
+   "location": "Noida, Uttar Pradesh, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792085306636,
+   "firstSeenAt": 1792096106636,
+   "logo": "/logos/birlasoft.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479131719",
+   "company": "Birlasoft",
+   "title": "Testing Services Technical Specialist",
+   "slugTitle": "GWCC Technical Specialist-Testing Services",
+   "location": "Noida, Uttar Pradesh, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792085255694,
+   "firstSeenAt": 1792096055695,
+   "logo": "/logos/birlasoft.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4443345346",
+   "company": "Cisco",
+   "title": "Systems Engineer",
+   "slugTitle": "Technical Projects Systems Engineer",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792084926327,
+   "firstSeenAt": 1792095726333,
+   "logo": "/logos/cisco.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479889173",
    "company": "Volvo Group",
    "title": "Graduate Apprentice Trainee",
@@ -77,6 +157,28 @@
    "bulletCount": 3
   },
   {
+   "id": "4479135270",
+   "company": "Deloitte",
+   "title": "Business Solution Analyst",
+   "slugTitle": "BTA - Business Solution Analyst – Global Employer Services Technology Center",
+   "location": "Hyderabad, Telangana, India",
+   "postedAt": 1792083481779,
+   "firstSeenAt": 1792094281782,
+   "logo": "/logos/deloitte.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477306497",
+   "company": "Kotak Mahindra Bank",
+   "title": "Application Developer-I_SUPPORT SERVICES_0748_1368_1095351",
+   "location": "Mumbai Metropolitan Region",
+   "workplaceType": "On-site",
+   "postedAt": 1792083013406,
+   "firstSeenAt": 1792093813409,
+   "logo": "/logos/kotak-mahindra-bank.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479882368",
    "company": "Bank of America",
    "title": "Software Engineer- Apprentice",
@@ -95,6 +197,27 @@
    "firstSeenAt": 1792089945448,
    "logo": "/logos/bank-of-america.jpg",
    "bulletCount": 3
+  },
+  {
+   "id": "4462451140",
+   "company": "Amazon",
+   "title": "SDE-1 (FTC)",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792082614041,
+   "firstSeenAt": 1792093414045,
+   "logo": "/logos/amazon.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4462808267",
+   "company": "PwC Acceleration Center India",
+   "title": "Cyber R&R - ER&CS - Data Analytics - Associate - HYD/BLR/KOL/MUM",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792082430301,
+   "firstSeenAt": 1792093230309,
+   "logo": "/logos/pwc-acceleration-center-india.jpg",
+   "bulletCount": 4
   },
   {
    "id": "4477307249",
@@ -314,126 +437,6 @@
    "postedAt": 1792065827261,
    "firstSeenAt": 1792068587264,
    "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479820517",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Hardware Eng",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065821791,
-   "firstSeenAt": 1792067921793,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479824399",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Electrical Eng",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065818653,
-   "firstSeenAt": 1792068158660,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479815642",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Embedded Eng",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065817324,
-   "firstSeenAt": 1792068517327,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479816585",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Electrical Eng",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065796685,
-   "firstSeenAt": 1792068316688,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469329278",
-   "company": "KLA",
-   "title": "Software Quality Engineer",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065677254,
-   "firstSeenAt": 1792069277265,
-   "logo": "/logos/kla.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479814493",
-   "company": "GE Vernova",
-   "title": "Services Specialist",
-   "location": "Noida, Uttar Pradesh, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792063387275,
-   "firstSeenAt": 1792063987277,
-   "logo": "/logos/ge-vernova.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4460611060",
-   "company": "Qualcomm",
-   "title": "Engineer - Audio DSP",
-   "location": "Greater Hyderabad Area",
-   "postedAt": 1792063252794,
-   "firstSeenAt": 1792063372806,
-   "logo": "/logos/qualcomm.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4478879051",
-   "company": "Birlasoft",
-   "title": "Java API Developer",
-   "location": "Greater Bengaluru Area",
-   "workplaceType": "On-site",
-   "postedAt": 1792062615955,
-   "firstSeenAt": 1792063455961,
-   "logo": "/logos/birlasoft.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469334996",
-   "company": "NTT DATA, Inc.",
-   "title": "Junior Engineer",
-   "slugTitle": "Junior Engineer - DW Technology",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792061704673,
-   "firstSeenAt": 1792065304678,
-   "logo": "/logos/ntt-data-inc.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477072671",
-   "company": "Tyson Foods",
-   "title": "Developer Data Engineering",
-   "location": "Bengaluru, Karnataka, India",
-   "postedAt": 1792061233136,
-   "firstSeenAt": 1792063393139,
-   "logo": "/logos/tyson-foods.png",
-   "bulletCount": 4
-  },
-  {
-   "id": "4442708013",
-   "company": "Emerson",
-   "title": "Product Security Engineer",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792060749665,
-   "firstSeenAt": 1792064349669,
-   "logo": "/logos/emerson.jpg",
    "bulletCount": 3
   }
  ]
