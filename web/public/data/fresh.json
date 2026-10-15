@@ -1,6 +1,29 @@
 {
  "jobs": [
   {
+   "id": "4477087709",
+   "company": "TMRW House of Brands",
+   "title": "Product Internship",
+   "slugTitle": "Product Internship (6 Month)",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792073959876,
+   "firstSeenAt": 1792074799880,
+   "logo": "/logos/tmrw-house-of-brands.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479836443",
+   "company": "GE HealthCare",
+   "title": "Graduate Engineer Trainee",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792071907714,
+   "firstSeenAt": 1792075507727,
+   "logo": "/logos/ge-healthcare.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4409900494",
    "company": "Ericsson",
    "title": "DevSecOps Engineer",
@@ -22,12 +45,12 @@
    "bulletCount": 3
   },
   {
-   "id": "4477076777",
+   "id": "ats:smartrecruiters:swiggy:6000000001491502",
    "company": "Swiggy",
    "title": "Software Dev Engineer I",
-   "location": "Bengaluru, Karnataka, India",
-   "postedAt": 1792068629268,
-   "firstSeenAt": 1792069409271,
+   "location": "Bengaluru, in",
+   "postedAt": 1792068601036,
+   "firstSeenAt": 1792074306515,
    "logo": "/logos/swiggy.jpg",
    "bulletCount": 3
   },
@@ -419,29 +442,6 @@
    "postedAt": 1792050923492,
    "firstSeenAt": 1792058123495,
    "logo": "/logos/echo-initiative-by-joveo.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477064199",
-   "company": "Echo Initiative by Joveo",
-   "title": "Back End Developer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792050908373,
-   "firstSeenAt": 1792058108386,
-   "logo": "/logos/echo-initiative-by-joveo.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4478846770",
-   "company": "Wolters Kluwer",
-   "title": "AI Ops Data Scientist",
-   "slugTitle": "Data Scientist - AI Ops",
-   "location": "Pune/Pimpri-Chinchwad Area",
-   "workplaceType": "On-site",
-   "postedAt": 1792049901810,
-   "firstSeenAt": 1792050501817,
-   "logo": "/logos/wolters-kluwer.jpg",
    "bulletCount": 3
   }
  ]
