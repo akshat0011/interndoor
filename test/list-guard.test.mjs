@@ -17,7 +17,8 @@
  * after one page of 20. The discriminator is that a selector break cannot
  * render 24 cards on page 1 and 0 on page 2.
  */
-import { assertListRendered } from '../src/guard.js';
+import { assertListRendered, tailVerdict } from '../src/guard.js';
+import { readFileSync } from 'node:fs';
 
 let pass = 0, fail = 0;
 function check(label, actual, expected) {
@@ -95,6 +96,28 @@ console.log('\n== the flag defaults to the strict behaviour ==');
   // Omitted entirely: a caller that has not been updated must still get the alarm.
   const r = await run('913 results\nSoftware Engineer Intern', 0, {});
   check('missing flag still throws', typeof r.threw, 'string');
+}
+
+/* A PAGE THAT NEVER DREW ITS LIST IS NOT THE END (15 Oct 2026). The 08:53 IST
+   internship walk read 19 cards on page 1, met a listless page 2, called it
+   the end and moved its baseline. */
+console.log('\n== a zero-card page after a good one ==');
+check('cards on the page: read them', tailVerdict({ cards: 5, renderedEarlierPage: true, listFound: false }), 'cards');
+check('page 1 empty: the old guard decides', tailVerdict({ cards: 0, renderedEarlierPage: false, listFound: false }), 'first');
+check('the list drew but held no cards: the real tail page, the end', tailVerdict({ cards: 0, renderedEarlierPage: true, listFound: true }), 'end');
+check('LinkedIn says there are no results: the end', tailVerdict({ cards: 0, renderedEarlierPage: true, listFound: false, saysNoResults: true }), 'end');
+check('no list and no "no results": it never loaded', tailVerdict({ cards: 0, renderedEarlierPage: true, listFound: false, saysNoResults: false }), 'unrendered');
+{
+  const idx = readFileSync(new URL('../src/index.js', import.meta.url), 'utf8');
+  const li = readFileSync(new URL('../src/linkedin.js', import.meta.url), 'utf8');
+  check('enumerateCards reports whether the list was there', /return \{ cards, unidentified, spanned, listFound: Boolean\(listSelector\) \};/.test(li), true);
+  check('ten reloads per failed page (his number)', /const UNRENDERED_RETRIES = 10;/.test(idx), true);
+  check('the walk reloads while the page is unrendered',
+    /for \(let retry = 1; retry <= UNRENDERED_RETRIES && await verdict\(\) === 'unrendered'; retry\+\+\) \{[\s\S]{0,400}?li\.gotoSearch\(page, url, cfg, \{\}\);[\s\S]{0,120}?li\.enumerateCards\(page, cfg\)/.test(idx), true);
+  check('a page still unrendered leaves the walk UNFINISHED (break, never walkComplete)',
+    /if \(failed\) break;/.test(idx) && !/failed[^\n]*walkComplete = true/.test(idx), true);
+  check('every failed page notifies him, on the Mac and the phone',
+    /if \(reloads\) \{[\s\S]{0,1200}?notify\(title, msg[\s\S]{0,200}?pushToPhone\(title, msg/.test(idx), true);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

@@ -652,7 +652,7 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('the feed warm-up is counted', /await li\.warmUp\(page, cfg\);\s*noteAccountLoad\(code\);/.test(src), true);
   check('a stopped walk ends the page loop', /if \(signedOutMidWalk \|\| accountStop \|\|/.test(src), true);
   check('an account on the AI search walks one page and stops, nothing opened',
-    /if \(seen\.variant === 'ai'\) \{[\s\S]{0,300}?accountStop = true;\s*break;\s*\}\s*\}\s*\(\{ cards, unidentified, spanned \} = await li\.enumerateCards/.test(src), true);
+    /if \(seen\.variant === 'ai'\) \{[\s\S]{0,300}?accountStop = true;\s*break;\s*\}\s*\}\s*\(\{ cards, unidentified, spanned, listFound \} = await li\.enumerateCards/.test(src), true);
   check('the surface is remembered per account', /noteVariant\(store, account, fp/.test(src), true);
   check('a signed-in walk opens no feed; its first search page is the sign-in check',
     /await openRegionSession\(account, \{ warm: false \}\);/.test(src) && /if \(navigated && !accountVerified\) accountVerified = true;/.test(src), true);

@@ -404,6 +404,31 @@ export async function assertSignedIn(page, context, cfg) {
   throw new RunAborted(State.LOGGED_OUT, `Not signed in (${why}) — run \`npm run login\``);
 }
 
+/** Whether the page on screen says there are no results (LinkedIn's own wording; curly apostrophes folded first). */
+export async function pageSaysNoResults(page) {
+  return page.evaluate(() => {
+    const t = (document.body?.innerText ?? '').replace(/[\u2018\u2019]/g, "'");
+    return /no matching jobs found|no results found|couldn'?t find|0 results|try a different search/i.test(t);
+  }).catch(() => false);
+}
+
+/**
+ * What a page of ZERO cards means, after an earlier page of the same search
+ * drew some (15 Oct 2026). LinkedIn's real tail page still draws its results
+ * list (padded with "Top job picks") or says it has no results, and either is
+ * the end. A page that drew NO list and says nothing never loaded: on 15 Oct
+ * the 08:53 IST internship walk read page 1 (19 cards, with a Next button),
+ * met a listless page 2, called it the end and moved its baseline, so the
+ * rest of that window was never read. 'unrendered' is reloaded, and if it
+ * stays so the walk is left unfinished, which keeps the baseline.
+ */
+export function tailVerdict({ cards = 0, renderedEarlierPage = false, listFound = true, saysNoResults = false } = {}) {
+  if (cards > 0) return 'cards';
+  if (!renderedEarlierPage) return 'first';
+  if (listFound || saysNoResults) return 'end';
+  return 'unrendered';
+}
+
 /**
  * Sanity check that the job list actually rendered. If LinkedIn changes its
  * markup, selectors silently return zero results — which looks identical to
@@ -435,14 +460,10 @@ export async function assertListRendered(page, cardCount, { pageIndex, searchLab
   }
 
   const shot = await shoot(page, 'empty-list');
-  const emptyState = await page.evaluate(() => {
-    // Curly quotes normalised to straight first. LinkedIn writes "couldn’t"
-    // with U+2019, so `couldn'?t find` never matched the very page it was
-    // written for — the guard would have called a genuine no-results page a
-    // markup break. Same for every other apostrophe in this list.
-    const t = (document.body?.innerText ?? '').replace(/[‘’]/g, "'");
-    return /no matching jobs found|no results found|couldn'?t find|0 results|try a different search/i.test(t);
-  }).catch(() => false);
+  // Curly quotes are folded to straight first (pageSaysNoResults). LinkedIn
+  // writes "couldn’t" with U+2019, so `couldn'?t find` never matched the very
+  // page it was written for.
+  const emptyState = await pageSaysNoResults(page);
 
   if (emptyState) {
     log.info(`LinkedIn reports genuinely no results for "${searchLabel}" page ${pageIndex}.`);

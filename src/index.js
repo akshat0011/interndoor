@@ -11,7 +11,7 @@ import { ensureDirs, PATHS, ROOT } from './paths.js';
 import { log, startRunLog, istTime } from './logger.js';
 import { Store, REFUSED_AFTER_OPEN } from './store.js';
 import { launchBrave, closeBrave, releaseAllProfileLocks, hasSessionProfile } from './browser.js';
-import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State, isHardLimit, sleepUnlessStopped, RATE_LIMIT_RETRY_MS } from './guard.js';
+import { ensureHealthy, assertSignedIn, assertListRendered, RunAborted, State, isHardLimit, sleepUnlessStopped, RATE_LIMIT_RETRY_MS, tailVerdict, pageSaysNoResults } from './guard.js';
 import * as li from './linkedin.js';
 import { resolveSearches, scopeSearches, scopeKind } from './searches.js';
 import { classifyRoles, classifyFromDescriptions, enrichJobs, extractFacts, cleanTitles } from './ollama.js';
@@ -41,6 +41,8 @@ import { reportTarget } from './postqueue.js';
 const ARGS = new Set(process.argv.slice(2));
 const DRY_RUN = ARGS.has('--dry-run');
 const NO_OPEN = ARGS.has('--no-open');
+/** Reloads of a search page that drew no results list before the walk is left unfinished. */
+const UNRENDERED_RETRIES = 10;
 /* --patient: a hand-run catch-up waits a public-search 429 out for up to
    ~2.3 hours (2, 5, 10, then 15-minute waits) instead of giving up after the
    third wait, his call 14 Oct 2026 ("even if it rate limits us wait and try
@@ -1106,6 +1108,7 @@ async function main() {
         let cards;
         let unidentified = [];
         let spanned = 0;
+        let listFound = true;
         let pageUrl = '';
         let browserPageUrl = '';
         if (viaGuest) {
@@ -1270,7 +1273,34 @@ async function main() {
             }
           }
 
-          ({ cards, unidentified, spanned } = await li.enumerateCards(page, cfg));
+          ({ cards, unidentified, spanned, listFound } = await li.enumerateCards(page, cfg));
+          /* A PAGE THAT NEVER DREW ITS LIST IS NOT THE END (tailVerdict in
+             guard.js, 15 Oct 2026). Loaded again up to twice; if it still draws
+             nothing the walk stops UNFINISHED, so the baseline stays and the
+             next run's window reaches back over what was not read. */
+          const verdict = async () => tailVerdict({ cards: cards.length, renderedEarlierPage, listFound, saysNoResults: !cards.length && await pageSaysNoResults(page) });
+          let reloads = 0;
+          for (let retry = 1; retry <= UNRENDERED_RETRIES && await verdict() === 'unrendered'; retry++) {
+            reloads = retry;
+            log.warn(`"${label}" page ${pageIndex + 1} drew no results list — loading it again (${retry} of ${UNRENDERED_RETRIES}).`);
+            await pause(cfg.pacing.betweenPages ?? [3000, 6000]);
+            await li.gotoSearch(page, url, cfg, {});
+            noteAccountLoad(account);
+            ({ cards, unidentified, spanned, listFound } = await li.enumerateCards(page, cfg));
+          }
+          if (reloads) {
+            /* One notification per failed page, his ask (15 Oct 2026): whether a
+               reload brought it back, or the walk was left unfinished. */
+            const failed = await verdict() === 'unrendered';
+            const msg = failed
+              ? `"${label}" page ${pageIndex + 1} never drew its results list after ${UNRENDERED_RETRIES} reloads — walk left unfinished, baseline unchanged, the next run reads this window again.`
+              : `"${label}" page ${pageIndex + 1} drew no results list at first; reload ${reloads} brought it back (${cards.length} cards).`;
+            if (failed) { log.warn(msg); notes.push(msg); } else log.info(msg);
+            const title = failed ? 'Search page would not load' : 'Search page needed a reload';
+            notify(title, msg, { sound: failed ? 'Basso' : 'Ping' }).catch(() => {});
+            pushToPhone(title, msg, { tags: [failed ? 'warning' : 'arrows_counterclockwise'], priority: failed ? 4 : 3 }).catch(() => {});
+            if (failed) break;
+          }
           if (spanned) {
             // One element holding two postings. Its id is refused rather than
             // guessed (scanCardsInPage), so the card falls to the identity path

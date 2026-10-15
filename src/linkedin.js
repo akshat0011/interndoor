@@ -1034,7 +1034,8 @@ export async function enumerateCards(page, cfg) {
     });
   });
 
-  return { cards, unidentified, spanned };
+  // listFound: whether the results column itself was on the page (tailVerdict in guard.js).
+  return { cards, unidentified, spanned, listFound: Boolean(listSelector) };
 }
 
 /**
