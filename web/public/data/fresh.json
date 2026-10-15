@@ -1,6 +1,29 @@
 {
  "jobs": [
   {
+   "id": "4479170801",
+   "company": "Citi",
+   "title": "Application Development Programmer Analyst",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792101147740,
+   "firstSeenAt": 1792101507752,
+   "logo": "/logos/citi.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479178269",
+   "company": "Citi",
+   "title": "AI Engineer",
+   "slugTitle": "Specialized Analytics Ld Anlst - C13 - BANGALORE",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792101112569,
+   "firstSeenAt": 1792101712597,
+   "logo": "/logos/citi.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4480136483",
    "company": "Bristol Myers Squibb",
    "title": "Analytics Engineer I",
@@ -419,29 +442,6 @@
    "workplaceType": "On-site",
    "postedAt": 1792065830305,
    "firstSeenAt": 1792068530307,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479820513",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors AI Eng",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065828709,
-   "firstSeenAt": 1792068468711,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479821514",
-   "company": "Honeywell Technologies",
-   "title": "Software Engineering Intern",
-   "slugTitle": "Intern Bachelors Software Eng",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065827261,
-   "firstSeenAt": 1792068587264,
    "logo": "/logos/honeywell-technologies.jpg",
    "bulletCount": 3
   }
