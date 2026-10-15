@@ -24,6 +24,7 @@ import { search, searchConfigured, MAX_PER_QUERY } from '../src/websearch.js';
 import { ingestUrl } from '../src/ingest.js';
 import { enrichJobs } from '../src/ollama.js';
 import { writeJobsFile } from '../src/publish.js';
+import { forceExitSoon } from '../src/forceexit.js';
 
 const ROOT = join(import.meta.dirname, '..');
 try { process.loadEnvFile(join(ROOT, '.env')); } catch { /* optional */ }
@@ -134,3 +135,6 @@ if (stored.length && !DRY_RUN) {
 if (!DRY_RUN) store.setSetting(SETTING, today);
 log.ok(`Web discovery done: ${stored.length} new posting(s). Lifetime: ${JSON.stringify(store.discoveryStats())}`);
 store.close();
+
+// Done: end even if something is still open (src/forceexit.js).
+forceExitSoon();

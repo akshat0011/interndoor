@@ -37,6 +37,7 @@ import { notify, open as openFile, pushToPhone } from './notify.js';
 import { alertOnSessionLoss } from './sessionalert.js';
 import { noteIntake } from './intake.js';
 import { reportTarget } from './postqueue.js';
+import { forceExitSoon } from './forceexit.js';
 
 const ARGS = new Set(process.argv.slice(2));
 const DRY_RUN = ARGS.has('--dry-run');
@@ -2816,4 +2817,4 @@ async function main() {
 main().catch((err) => {
   log.error(`Unhandled: ${err.stack ?? err.message}`);
   process.exitCode = 1;
-});
+}).finally(() => forceExitSoon({ say: (msg) => log.warn(msg) }));

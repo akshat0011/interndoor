@@ -25,6 +25,7 @@ import { discover, discoverViaCareersPage, discoverViaHomepage, PROVIDER_NAMES, 
 import { boardsFromApplyLinks } from '../src/applyboards.js';
 import { loadConfig } from '../src/config.js';
 import { log } from '../src/logger.js';
+import { forceExitSoon } from '../src/forceexit.js';
 
 const ARGS = process.argv.slice(2);
 const has = (f) => ARGS.includes(f);
@@ -189,3 +190,6 @@ for (const [p, n] of [...byProvider.entries()].sort((a, b) => b[1] - a[1])) {
 }
 console.log('\nStored in the company_ats table. Run bin/poll-ats.js to collect postings.');
 store.close();
+
+// Done: end even if something is still open (src/forceexit.js).
+forceExitSoon();

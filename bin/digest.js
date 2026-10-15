@@ -27,6 +27,7 @@ import { buildDigest, digestDue, dayKey, sendStatus } from '../src/digest.js';
 import { announceableIds } from '../src/rolefocus.js';
 import { regionOf, regionPath, resolveRowRegion } from '../src/regions.js';
 import { PATHS } from '../src/paths.js';
+import { forceExitSoon } from '../src/forceexit.js';
 
 try { process.loadEnvFile(join(PATHS.root, '.env')); } catch { /* optional */ }
 
@@ -136,3 +137,6 @@ if (!res.ok) {
 
 store.setSetting(settingKey, dayKey(Date.now(), zone));
 log.ok(`Digest: ${mode === 'send' ? 'sent' : 'drafted'} "${mail.subject}" (${mail.shown} of ${mail.count} roles).`);
+
+// Done: end even if something is still open (src/forceexit.js).
+forceExitSoon();

@@ -26,6 +26,7 @@ import { Store } from '../src/store.js';
 import { parseAtsLink } from '../src/ats.js';
 import { ROOT } from '../src/paths.js';
 import { approveSubmission, linkedinJobId } from '../src/employerjobs.js';
+import { forceExitSoon } from '../src/forceexit.js';
 
 process.chdir(ROOT);
 if (existsSync('.env')) {
@@ -163,3 +164,6 @@ console.log(`\n${shown.length} submission${shown.length === 1 ? '' : 's'}${ARGS.
 for (const e of shown) console.log(describe(e));
 console.log('─'.repeat(72));
 console.log('\nApprove: npm run submissions -- --approve <id>     Reject: npm run submissions -- --reject <id> --reason "…"\n');
+
+// Done: end even if something is still open (src/forceexit.js).
+forceExitSoon();

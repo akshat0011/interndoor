@@ -27,6 +27,7 @@ import { cleanArticleHtml } from '../blog/lib/htmlpost.mjs';
 import { parseFrontmatter } from '../blog/lib/content.mjs';
 import { mapArticle, buildPost, postFile, imageInfo, mediaName, istDay } from '../src/distribbimport.js';
 import { notify, pushToPhone } from '../src/notify.js';
+import { forceExitSoon } from '../src/forceexit.js';
 
 process.chdir(ROOT);
 if (existsSync('.env')) {
@@ -268,4 +269,4 @@ async function alert(failed) {
   await pushToPhone('Blog import: article held back', body, { tags: 'warning' }).catch(() => {});
 }
 
-main().catch((e) => { say(`failed: ${e.message}`); process.exitCode = 1; });
+main().catch((e) => { say(`failed: ${e.message}`); process.exitCode = 1; }).finally(() => forceExitSoon());

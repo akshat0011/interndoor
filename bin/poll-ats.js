@@ -26,6 +26,7 @@ import { employmentType, INTERN } from '../src/employment.js';
 import { summarize } from '../src/summarize.js';
 import { publish } from '../src/publish.js';
 import { log } from '../src/logger.js';
+import { forceExitSoon } from '../src/forceexit.js';
 
 const ARGS = process.argv.slice(2);
 const has = (f) => ARGS.includes(f);
@@ -385,3 +386,6 @@ if (DRY_RUN) {
 }
 
 store.close();
+
+// Done: end even if something is still open (src/forceexit.js).
+forceExitSoon();

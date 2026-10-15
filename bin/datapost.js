@@ -27,6 +27,7 @@ import { queueBase, queueServerUp } from '../src/postqueue.js';
 import { regionOf } from '../src/regions.js';
 import { PATHS } from '../src/paths.js';
 import { join } from 'node:path';
+import { forceExitSoon } from '../src/forceexit.js';
 
 const FORCE = process.argv.includes('--force');
 const DRY_RUN = process.argv.includes('--dry-run');
@@ -107,3 +108,6 @@ if (!NO_OPEN && file) {
   const url = (await queueServerUp(cfg)) ? `${queueBase(cfg)}/data/latest` : file;
   await openFile(url);
 }
+
+// Done: end even if something is still open (src/forceexit.js).
+forceExitSoon();
