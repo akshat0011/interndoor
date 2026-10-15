@@ -551,9 +551,11 @@ async function main() {
     if (OVERRIDES.searchSource) return OVERRIDES.searchSource;
     const configured = searchSourceFor(search, cfg);
     if (configured !== 'browser') return configured;
-    let seen = null;
-    try { seen = store.getSetting(VARIANT_KEY(search.account ?? search.region ?? 'IN')); } catch { /* no store, no override */ }
-    return seen === 'ai' ? 'guest' : configured;
+    // NEVER the public search (his rule, 15 Oct 2026). An account that shows
+    // LinkedIn's AI search used to fall back to the public search here; now it
+    // stays signed in, and the AI-search guard below stops that walk after one
+    // page until the account is back on classic.
+    return configured;
   };
 
   const planSweep = (region, search = {}) => {

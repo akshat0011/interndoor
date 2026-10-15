@@ -163,14 +163,11 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
     JSON.stringify([['intern', 'US'], ['fulltime', 'US']]));
   check('the daily ceiling is a number (0 = off, his call 13 Oct 2026), never above the 1,054 that got one flagged',
     Number.isFinite(rawCfg.safety.accountDailyPageLoads) && rawCfg.safety.accountDailyPageLoads >= 0 && rawCfg.safety.accountDailyPageLoads < 1054, true);
-  /* His call, 15 Oct 2026: the hourly full-time walk discovers on the public
-     search (the signed-in one never showed 10 roles the public one found);
-     the internship walk stays signed in. */
-  check('live config: the full-time walk reads the public search, and says why',
-    rawSearches.filter((e) => e.region === 'IN' && e.employment === 'fulltime').map((e) => [e.searchSource, String(e._searchSource_note ?? '').length > 80]),
-    [['guest', true]]);
-  check('the internship walk stays on the signed-in search',
-    rawSearches.filter((e) => e.region === 'IN' && e.employment !== 'fulltime').map((e) => searchSourceFor(e, rawCfg)), ['browser']);
+  /* His rule, 15 Oct 2026: "no public search ever, always logged in search". */
+  check('live config: every search walks the signed-in search',
+    rawSearches.map((e) => searchSourceFor(e, rawCfg)).every((x) => x === 'browser'), true);
+  check('no search names the public search', rawSearches.some((e) => e.searchSource === 'guest'), false);
+  check('and the config says why', String(rawCfg._never_public_note ?? '').length > 80, true);
   check('live config: any search on the signed-in page says why',
     rawSearches.filter((e) => e.searchSource === 'browser').every((e) => String(e._searchSource_note ?? '').length > 40), true);
   const p = cfg.pacing.betweenGuestPages;
@@ -659,8 +656,9 @@ console.log('\n== the wiring in index.js and linkedin.js ==');
   check('the surface is remembered per account', /noteVariant\(store, account, fp/.test(src), true);
   check('a signed-in walk opens no feed; its first search page is the sign-in check',
     /await openRegionSession\(account, \{ warm: false \}\);/.test(src) && /if \(navigated && !accountVerified\) accountVerified = true;/.test(src), true);
-  check('a signed-in search whose account was last seen on the AI search uses the public search',
-    /const sourceFor = \(search = \{\}\) => \{\s*if \(OVERRIDES\.searchSource\) return OVERRIDES\.searchSource;\s*const configured = searchSourceFor\(search, cfg\);\s*if \(configured !== 'browser'\) return configured;[\s\S]{0,200}?VARIANT_KEY\(search\.account \?\? search\.region \?\? 'IN'\)[\s\S]{0,80}?return seen === 'ai' \? 'guest' : configured;/.test(src), true);
+  check('an account on the AI search NEVER falls back to the public search (his rule, 15 Oct 2026)',
+    /const sourceFor = \(search = \{\}\) => \{\s*if \(OVERRIDES\.searchSource\) return OVERRIDES\.searchSource;\s*const configured = searchSourceFor\(search, cfg\);\s*if \(configured !== 'browser'\) return configured;(?:\s*\/\/[^\n]*)*\s*return configured;\s*\};/.test(src)
+      && !/'guest' : configured/.test(src), true);
   check('and that decides the walk and its early stop alike',
     /const viaGuest = sourceFor\(search\) === 'guest';/.test(src) && /sourceFor\(search\) !== 'guest'\) \? baseline - COVERED_MARGIN_MS/.test(src), true);
   check('a search names its account, else its region\'s', /const account = search\.account \?\? region;/.test(src), true);
