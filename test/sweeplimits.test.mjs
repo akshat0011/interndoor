@@ -53,9 +53,9 @@ console.log('\n== INDIA IS UNLIMITED, AND THAT IS THE POINT ==');
   check('entry: no page cap of its own', entry?.maxPages, undefined);
   check('entry: no per-employer open cap', entry?.maxOpensPerCompany, undefined);
   check('entry: no all-old page stop', entry?.stopAfterPageOlderThanHours, undefined);
-  // Every 2 hours (his call, 13 Oct 2026, after LinkedIn's public search began
-  // rate-limiting nearly every page); hourly from 1 Oct, every tick before.
-  check('entry: hourly (his call, 14 Oct 2026)', entry?.intervalMinutes, 60);
+  // Hourly on the public search (his call, 15 Oct 2026 evening: "switch the
+  // full-time search to every hour (2h windows)"); every 2 hours that afternoon.
+  check('entry: hourly (his call, 15 Oct 2026 evening)', entry?.intervalMinutes, 60);
   check('entry: walks to the global safety cap', pageCapFor(entry ?? {}, cfg.limits.maxPagesPerSearch), cfg.limits.maxPagesPerSearch);
   check('entry: opens every card its gates approve', openCapFor(entry ?? {}), 0);
   check('and no page age can stop it early', staleCutoffFor(india), null);

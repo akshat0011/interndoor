@@ -156,18 +156,20 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
   /* The public search slept 13-14 Oct 2026 and is BACK since 14 Oct (his
      call: "switch back to public page search"); the config says why. */
   const rawCfg = JSON.parse(readFileSync(new URL('../config.json', import.meta.url), 'utf8'));
-  check('live config: discovery is the signed-in browser search again (14 Oct 2026, his call)', cfg.searchSource, 'browser');
+  check('live config: discovery is the public search again (15 Oct 2026, his call)', cfg.searchSource, 'guest');
   check('and the config says why', String(rawCfg._searchSource_sleep_note ?? '').length > 80, true);
   check('both India searches walk on the classic account; the AI-search account rests',
     JSON.stringify(rawCfg.searches.filter((e) => e.region === 'IN').map((e) => [e.employment ?? 'intern', e.account ?? 'IN'])),
     JSON.stringify([['intern', 'US'], ['fulltime', 'US']]));
   check('the daily ceiling is a number (0 = off, his call 13 Oct 2026), never above the 1,054 that got one flagged',
     Number.isFinite(rawCfg.safety.accountDailyPageLoads) && rawCfg.safety.accountDailyPageLoads >= 0 && rawCfg.safety.accountDailyPageLoads < 1054, true);
-  /* His rule, 15 Oct 2026: "no public search ever, always logged in search". */
-  check('live config: every search walks the signed-in search',
-    rawSearches.map((e) => searchSourceFor(e, rawCfg)).every((x) => x === 'browser'), true);
-  check('no search names the public search', rawSearches.some((e) => e.searchSource === 'guest'), false);
-  check('and the config says why', String(rawCfg._never_public_note ?? '').length > 80, true);
+  /* His call, 15 Oct 2026, after a public-search test of each walk: "okay we
+     switch back to public search, internships every 1 hour and full time
+     every 2 hours". It replaces the same morning's "no public search ever". */
+  check('live config: every India search walks the public search',
+    rawSearches.filter((e) => e.region === 'IN').map((e) => searchSourceFor(e, rawCfg)).every((x) => x === 'guest'), true);
+  check('and the config says why', String(rawCfg._public_again_note ?? '').length > 80, true);
+  check('the never-public rule is gone, not left to contradict it', '_never_public_note' in rawCfg, false);
   check('live config: any search on the signed-in page says why',
     rawSearches.filter((e) => e.searchSource === 'browser').every((e) => String(e._searchSource_note ?? '').length > 40), true);
   const p = cfg.pacing.betweenGuestPages;

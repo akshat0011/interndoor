@@ -90,8 +90,9 @@ for (const s of searches.filter((x) => x.employment === 'fulltime')) {
        walk hourly since 30 Sep 2026 ("should we move internships every 30
        mins but full time to every 1 hour"), after LinkedIn's edge rate-limited
        the IP — see its _interval_note in config.json. */
-    /* The intern walk every tick; the full-time walk every 2 hours (his call,
-       13 Oct 2026; hourly from 1 Oct), in its own phase. */
+    /* The full-time walk every hour on the public search (his call, 15 Oct
+       2026 evening: 2h windows, about half the requests per walk), in its
+       own phase. */
     check(`${s.label ?? 'intern'}: cadence`, s.intervalMinutes ?? null, s.employment === 'fulltime' ? 60 : null);
   } else {
     ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
