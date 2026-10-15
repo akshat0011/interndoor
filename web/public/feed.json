@@ -150,42 +150,6 @@
       ]
     },
     {
-      "id": "https://interndoor.com/jobs/bank-of-america-software-engineer-apprentice-4479889162",
-      "url": "https://interndoor.com/jobs/bank-of-america-software-engineer-apprentice-4479889162",
-      "title": "Software Engineer Apprentice — Bank of America",
-      "content_text": "Company: Bank of America · Location: Mumbai Metropolitan Region\n• Develop software solutions meeting compliance and performance standards\n• Work with global teams on banking systems and cloud technologies\n• Contribute to CI/CD processes and technical documentation",
-      "date_published": "2026-10-15T17:01:27.165Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bank-of-america-data-engineer-apprentice-4479882366",
-      "url": "https://interndoor.com/jobs/bank-of-america-data-engineer-apprentice-4479882366",
-      "title": "Data Engineer Apprentice — Bank of America",
-      "content_text": "Company: Bank of America · Location: Mumbai Metropolitan Region\n• Develop data pipelines to transform and control operational and analytical data systems\n• Work with Hadoop, Spark, Hive, Python, SQL, and Tableau\n• Collaborate on global teams to ensure data management standards and compliance",
-      "date_published": "2026-10-15T17:01:06.227Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bank-of-america-software-engineer-apprentice-4479893090",
-      "url": "https://interndoor.com/jobs/bank-of-america-software-engineer-apprentice-4479893090",
-      "title": "Software Engineer Apprentice — Bank of America",
-      "content_text": "Company: Bank of America · Location: Hyderabad, Telangana, India\n• Develop software solutions meeting compliance and performance standards\n• Work with global teams on banking systems and cloud technologies\n• Contribute to CI/CD processes and integration testing",
-      "date_published": "2026-10-15T17:00:36.519Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
       "id": "https://interndoor.com/jobs/deloitte-bta-business-solution-analyst-global-employer-services-technology-cent-4479135270",
       "url": "https://interndoor.com/jobs/deloitte-bta-business-solution-analyst-global-employer-services-technology-cent-4479135270",
       "title": "Business Solution Analyst — Deloitte",
@@ -602,6 +566,42 @@
       "authors": [
         {
           "name": "Emerson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478869405",
+      "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478869405",
+      "title": "Automation Engineer - SDET I — Deloitte",
+      "content_text": "Company: Deloitte · Location: Hyderabad, Telangana, India\n• Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools\n• Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms\n• Mentor peers and resolve automation challenges in a fast-paced, cross-functional environment",
+      "date_published": "2026-10-15T10:30:59.041Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478850932",
+      "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478850932",
+      "title": "Automation Engineer - SDET I — Deloitte",
+      "content_text": "Company: Deloitte · Location: Bengaluru, Karnataka, India\n• Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools\n• Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms\n• Mentor QA team members and integrate AI tools like GitHub Copilot to improve test automation",
+      "date_published": "2026-10-15T10:28:38.667Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038",
+      "url": "https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038",
+      "title": "Application Engineering Intern — GoKwik",
+      "content_text": "Company: GoKwik · Location: Bangalore, KA, India\n• Build and enhance backend services using node.js and nestjs\n• Work with postgresql, mongodb, redis, kafka, and aws\n• Contribute to scalable systems and real production code",
+      "date_published": "2026-10-15T10:04:03.673Z",
+      "authors": [
+        {
+          "name": "GoKwik"
         }
       ]
     }

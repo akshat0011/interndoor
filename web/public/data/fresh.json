@@ -114,39 +114,6 @@
    "bulletCount": 3
   },
   {
-   "id": "4479889162",
-   "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
-   "slugTitle": "Software Engineer- Apprentice",
-   "location": "Mumbai Metropolitan Region",
-   "postedAt": 1792083687165,
-   "firstSeenAt": 1792090887167,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479882366",
-   "company": "Bank of America",
-   "title": "Data Engineer Apprentice",
-   "slugTitle": "Data Engineer - Apprentice",
-   "location": "Mumbai Metropolitan Region",
-   "postedAt": 1792083666227,
-   "firstSeenAt": 1792090866229,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479893090",
-   "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
-   "slugTitle": "Software Engineer- Apprentice",
-   "location": "Hyderabad, Telangana, India",
-   "postedAt": 1792083636519,
-   "firstSeenAt": 1792090836523,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
    "id": "4479135270",
    "company": "Deloitte",
    "title": "Business Solution Analyst",
@@ -447,6 +414,39 @@
    "postedAt": 1792065817324,
    "firstSeenAt": 1792068517327,
    "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479816585",
+   "company": "Honeywell Technologies",
+   "title": "Intern Bachelors Electrical Eng",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065796685,
+   "firstSeenAt": 1792068316688,
+   "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4469329278",
+   "company": "KLA",
+   "title": "Software Quality Engineer",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065677254,
+   "firstSeenAt": 1792069277265,
+   "logo": "/logos/kla.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479814493",
+   "company": "GE Vernova",
+   "title": "Services Specialist",
+   "location": "Noida, Uttar Pradesh, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792063387275,
+   "firstSeenAt": 1792063987277,
+   "logo": "/logos/ge-vernova.jpg",
    "bulletCount": 3
   }
  ]
