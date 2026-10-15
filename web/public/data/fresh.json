@@ -1,6 +1,18 @@
 {
  "jobs": [
   {
+   "id": "4477050482",
+   "company": "Valency Networks Private Limited",
+   "title": "Cybersecurity Analyst Intern",
+   "slugTitle": "Cybersecurity Analyst Intern - VAPT, Penetration Tester",
+   "location": "Pune City, Maharashtra, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792043091754,
+   "firstSeenAt": 1792043151769,
+   "logo": "/logos/valency-networks-private-limited.jpg",
+   "bulletCount": 4
+  },
+  {
    "id": "4477034970",
    "company": "Meta",
    "title": "ASIC Engineer Intern",
@@ -439,18 +451,6 @@
    "postedAt": 1791984188998,
    "firstSeenAt": 1791987309010,
    "logo": "/logos/ntt-data-north-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469427950",
-   "company": "Birlasoft",
-   "title": "Java Developer",
-   "slugTitle": "Java GHCP Developer",
-   "location": "Greater Bengaluru Area",
-   "workplaceType": "On-site",
-   "postedAt": 1791982536320,
-   "firstSeenAt": 1791983616324,
-   "logo": "/logos/birlasoft.jpg",
    "bulletCount": 3
   }
  ]

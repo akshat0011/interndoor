@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 15 Oct 2026 03:19:25 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 05:44:51 GMT</lastBuildDate>
+  <item>
+    <title>Cybersecurity Analyst Intern — Valency Networks Private Limited</title>
+    <link>https://interndoor.com/jobs/valency-networks-private-limited-cybersecurity-analyst-intern-vapt-penetration-tester-4477050482</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/valency-networks-private-limited-cybersecurity-analyst-intern-vapt-penetration-tester-4477050482</guid>
+    <pubDate>Thu, 15 Oct 2026 05:44:51 GMT</pubDate>
+    <description>Company: Valency Networks Private Limited · Location: Pune City, Maharashtra, India · Duration: 6 months
+• Perform VAPT on web apps, APIs, networks, and OS
+• Use Burp Suite, Nmap, OWASP ZAP, and Postman
+• Document findings with evidence and remediation
+• Work from Pune office, 9:30 AM to 5:30 PM</description>
+  </item>
   <item>
     <title>ASIC Engineer Intern — Meta</title>
     <link>https://interndoor.com/jobs/meta-asic-engineer-intern-implementation-4477034970</link>
@@ -493,16 +504,6 @@
 • Develop camera firmware for Qualcomm chipsets using C/C++ on RTOS
 • Collaborate with cross-functional teams on hardware and software integration
 • Influence camera architecture for power/performance in future products</description>
-  </item>
-  <item>
-    <title>The Core Engineering-L2-Bengaluru-Associate-Software Engineering — Goldman Sachs</title>
-    <link>https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517</guid>
-    <pubDate>Wed, 14 Oct 2026 11:27:49 GMT</pubDate>
-    <description>Company: Goldman Sachs · Location: Bengaluru, Karnataka, India
-• Manage production services through monitoring and system health checks
-• Use automation and observability tools like Prometheus and Kubernetes
-• Work on reliability metrics and incident management in a compliance-focused team</description>
   </item>
 </channel>
 </rss>

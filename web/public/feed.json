@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/valency-networks-private-limited-cybersecurity-analyst-intern-vapt-penetration-tester-4477050482",
+      "url": "https://interndoor.com/jobs/valency-networks-private-limited-cybersecurity-analyst-intern-vapt-penetration-tester-4477050482",
+      "title": "Cybersecurity Analyst Intern — Valency Networks Private Limited",
+      "content_text": "Company: Valency Networks Private Limited · Location: Pune City, Maharashtra, India · Duration: 6 months\n• Perform VAPT on web apps, APIs, networks, and OS\n• Use Burp Suite, Nmap, OWASP ZAP, and Postman\n• Document findings with evidence and remediation\n• Work from Pune office, 9:30 AM to 5:30 PM",
+      "date_published": "2026-10-15T05:44:51.754Z",
+      "authors": [
+        {
+          "name": "Valency Networks Private Limited"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/meta-asic-engineer-intern-implementation-4477034970",
       "url": "https://interndoor.com/jobs/meta-asic-engineer-intern-implementation-4477034970",
       "title": "ASIC Engineer Intern — Meta",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517",
-      "url": "https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517",
-      "title": "The Core Engineering-L2-Bengaluru-Associate-Software Engineering — Goldman Sachs",
-      "content_text": "Company: Goldman Sachs · Location: Bengaluru, Karnataka, India\n• Manage production services through monitoring and system health checks\n• Use automation and observability tools like Prometheus and Kubernetes\n• Work on reliability metrics and incident management in a compliance-focused team",
-      "date_published": "2026-10-14T11:27:49.508Z",
-      "authors": [
-        {
-          "name": "Goldman Sachs"
         }
       ]
     }
