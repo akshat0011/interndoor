@@ -194,18 +194,6 @@
    "bulletCount": 3
   },
   {
-   "id": "4479557488",
-   "company": "Bank of America",
-   "title": "Software Engineer Apprentice",
-   "slugTitle": "Apprentice",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1791997932002,
-   "firstSeenAt": 1792001532006,
-   "logo": "/logos/bank-of-america.jpg",
-   "bulletCount": 3
-  },
-  {
    "id": "4479562187",
    "company": "Bank of America",
    "title": "Apprentice",
@@ -295,6 +283,17 @@
    "workplaceType": "On-site",
    "postedAt": 1791994874048,
    "firstSeenAt": 1791997874050,
+   "logo": "/logos/bank-of-america.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479557487",
+   "company": "Bank of America",
+   "title": "Apprentice",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791994069271,
+   "firstSeenAt": 1791994369274,
    "logo": "/logos/bank-of-america.jpg",
    "bulletCount": 3
   },
