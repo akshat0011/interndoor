@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479731689",
+      "url": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479731689",
+      "title": "Trainee Technology — Bajaj Finserv",
+      "content_text": "Company: Bajaj Finserv · Location: Pune Division, Maharashtra, India",
+      "date_published": "2026-10-15T00:31:34.956Z",
+      "authors": [
+        {
+          "name": "Bajaj Finserv"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479731293",
       "url": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479731293",
       "title": "Intern Bachelors Hardware Eng — Honeywell Technologies",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Mphasis"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414942939",
-      "url": "https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414942939",
-      "title": "Backend Golang Developer — Proofpoint",
-      "content_text": "Company: Proofpoint · Location: Bengaluru, Karnataka, India\n• Build and maintain microservices in Go for core product features\n• Work on scalable systems with focus on performance and reliability\n• Collaborate with engineers across product and infrastructure teams",
-      "date_published": "2026-10-14T10:24:39.548Z",
-      "authors": [
-        {
-          "name": "Proofpoint"
         }
       ]
     }

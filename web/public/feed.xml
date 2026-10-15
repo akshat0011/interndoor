@@ -6,7 +6,14 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 15 Oct 2026 00:05:17 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 00:31:34 GMT</lastBuildDate>
+  <item>
+    <title>Trainee Technology — Bajaj Finserv</title>
+    <link>https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479731689</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479731689</guid>
+    <pubDate>Thu, 15 Oct 2026 00:31:34 GMT</pubDate>
+    <description>Company: Bajaj Finserv · Location: Pune Division, Maharashtra, India</description>
+  </item>
   <item>
     <title>Intern Bachelors Hardware Eng — Honeywell Technologies</title>
     <link>https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479731293</link>
@@ -496,16 +503,6 @@
 • Develop and maintain Java-based microservices for scalable applications
 • Work with Docker, Kubernetes, and AWS for cloud deployment
 • Collaborate on full development lifecycle from planning to deployment</description>
-  </item>
-  <item>
-    <title>Backend Golang Developer — Proofpoint</title>
-    <link>https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414942939</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/proofpoint-backend-golang-developer-4414942939</guid>
-    <pubDate>Wed, 14 Oct 2026 10:24:39 GMT</pubDate>
-    <description>Company: Proofpoint · Location: Bengaluru, Karnataka, India
-• Build and maintain microservices in Go for core product features
-• Work on scalable systems with focus on performance and reliability
-• Collaborate with engineers across product and infrastructure teams</description>
   </item>
 </channel>
 </rss>
