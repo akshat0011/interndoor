@@ -1,9 +1,9 @@
 {
- "generatedAt": 1792050436325,
+ "generatedAt": 1792050678915,
  "region": "IN",
  "regionName": "India",
- "count": 1353,
- "techCount": 1353,
+ "count": 1354,
+ "techCount": 1354,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -507,6 +507,63 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4478846770",
+   "title": "AI Ops Data Scientist",
+   "slugTitle": "Data Scientist - AI Ops",
+   "company": "Wolters Kluwer",
+   "matchedWatchlist": "Wolters Kluwer",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/wolters-kluwer.jpg",
+   "location": "Pune/Pimpri-Chinchwad Area",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "11 people clicked apply",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "machine learning",
+    "generative ai",
+    "rag"
+   ],
+   "summary": "This role involves maintaining and improving AI and GenAI systems in production, working with clients and teams to ensure reliable and compliant solutions. It suits someone with experience in generative AI and a strong background in data science.",
+   "bullets": [
+    "Troubleshoot and enhance AI and GenAI applications in production",
+    "Work with customers and cross-functional teams on AI solutions",
+    "Support model validation, compliance, and release management"
+   ],
+   "roleLabel": "AI Operations",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "generative ai",
+    "python",
+    "machine learning",
+    "sql",
+    "ai operations"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "10 minutes ago",
+   "postedAt": 1792049901810,
+   "firstSeenAt": 1792050501817,
+   "lastSeenAt": 1792050501817,
+   "url": "https://www.linkedin.com/jobs/view/4478846770/",
+   "applyUrl": "https://wk.wd3.myworkdayjobs.com/External/job/Data-Scientist---AI-Ops_R0060443-1?source=LinkedIn_Posting",
+   "description": null,
+   "roleFingerprint": "5961cf8a4b",
+   "cardFacts": [
+    "Pune/Pimpri-Chinchwad Area",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "ai_ml",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4477050482",
    "title": "Cybersecurity Analyst Intern",

@@ -1,6 +1,18 @@
 {
  "jobs": [
   {
+   "id": "4478846770",
+   "company": "Wolters Kluwer",
+   "title": "AI Ops Data Scientist",
+   "slugTitle": "Data Scientist - AI Ops",
+   "location": "Pune/Pimpri-Chinchwad Area",
+   "workplaceType": "On-site",
+   "postedAt": 1792049901810,
+   "firstSeenAt": 1792050501817,
+   "logo": "/logos/wolters-kluwer.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477050482",
    "company": "Valency Networks Private Limited",
    "title": "Cybersecurity Analyst Intern",
@@ -440,18 +452,6 @@
    "postedAt": 1791984188998,
    "firstSeenAt": 1791987309010,
    "logo": "/logos/ntt-data-north-america.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469427950",
-   "company": "Birlasoft",
-   "title": "Java Developer",
-   "slugTitle": "Java GHCP Developer",
-   "location": "Greater Bengaluru Area",
-   "workplaceType": "On-site",
-   "postedAt": 1791982536320,
-   "firstSeenAt": 1791983616324,
-   "logo": "/logos/birlasoft.jpg",
    "bulletCount": 3
   }
  ]

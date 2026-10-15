@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wolters-kluwer-data-scientist-ai-ops-4478846770",
+      "url": "https://interndoor.com/jobs/wolters-kluwer-data-scientist-ai-ops-4478846770",
+      "title": "AI Ops Data Scientist — Wolters Kluwer",
+      "content_text": "Company: Wolters Kluwer · Location: Pune/Pimpri-Chinchwad Area\n• Troubleshoot and enhance AI and GenAI applications in production\n• Work with customers and cross-functional teams on AI solutions\n• Support model validation, compliance, and release management",
+      "date_published": "2026-10-15T07:38:21.810Z",
+      "authors": [
+        {
+          "name": "Wolters Kluwer"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/valency-networks-private-limited-cybersecurity-analyst-intern-vapt-penetration-tester-4477050482",
       "url": "https://interndoor.com/jobs/valency-networks-private-limited-cybersecurity-analyst-intern-vapt-penetration-tester-4477050482",
       "title": "Cybersecurity Analyst Intern — Valency Networks Private Limited",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Qualcomm"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517",
-      "url": "https://interndoor.com/jobs/goldman-sachs-the-core-engineering-l2-bengaluru-associate-software-engineering-4478435517",
-      "title": "The Core Engineering-L2-Bengaluru-Associate-Software Engineering — Goldman Sachs",
-      "content_text": "Company: Goldman Sachs · Location: Bengaluru, Karnataka, India\n• Manage production services through monitoring and system health checks\n• Use automation and observability tools like Prometheus and Kubernetes\n• Work on reliability metrics and incident management in a compliance-focused team",
-      "date_published": "2026-10-14T11:27:49.508Z",
-      "authors": [
-        {
-          "name": "Goldman Sachs"
         }
       ]
     }
