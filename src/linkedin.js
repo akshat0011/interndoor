@@ -297,6 +297,14 @@ export async function gotoSearch(page, url, cfg, outcome = {}) {
  */
 function scanCardsInPage() {
   const MARK = /Be an early applicant|Actively reviewing applicants|\d+\s+(minute|hour|day|week)s?\s+ago/i;
+  /* A PROMOTED OR VIEWED CARD CARRIES NO AGE (15 Oct 2026). LinkedIn prints
+     "Promoted" or "Viewed" where the "3 hours ago" goes, so a finder keyed on
+     the age alone never saw those cards: the signed-in walk read ~19 of the 25
+     cards a page, and big employers promote their postings. The whole of the
+     element's text must be the status ("Viewed · Promoted" too), so the detail
+     pane's "Promoted by hirer" line is never a card's marker. */
+  const STATUS = /^(?:Viewed|Promoted)(?:\s*[·•]\s*(?:Viewed|Promoted|Easy Apply))*$/i;
+  const isMark = (e) => MARK.test(e.textContent ?? '') || STATUS.test((e.textContent ?? '').trim());
   const linesOf = (el) => (el.innerText ?? '').split('\n').map((l) => l.trim()).filter(Boolean);
 
   // The innermost elements carrying a recency marker; each sits inside exactly
@@ -312,7 +320,7 @@ function scanCardsInPage() {
   // Innermost-match subsumes the old leaf rule — a matching leaf has no
   // matching descendant — so both shapes are covered and an A/B rollback needs
   // no further change here.
-  const matching = [...document.querySelectorAll('*')].filter((e) => MARK.test(e.textContent ?? ''));
+  const matching = [...document.querySelectorAll('*')].filter(isMark);
   const marks = matching.filter((e) => !matching.some((o) => o !== e && e.contains(o)));
 
   const found = new Set();
