@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/t-v-s-d-intern-4477307249",
+      "url": "https://interndoor.com/jobs/t-v-s-d-intern-4477307249",
+      "title": "Intern — TÜV SÜD",
+      "content_text": "Company: TÜV SÜD · Location: Matar, Gujarat, India\n• Test web and mobile apps using low-code tools\n• Work with databases and data structures daily\n• Based in Baroda, Gujarat, India",
+      "date_published": "2026-10-15T15:28:02.348Z",
+      "authors": [
+        {
+          "name": "TÜV SÜD"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/arm-platform-engineer-4469735592",
+      "url": "https://interndoor.com/jobs/arm-platform-engineer-4469735592",
+      "title": "Platform Engineer — Arm",
+      "content_text": "Company: Arm · Location: Bengaluru, Karnataka, India\n• Maintain and improve Kubernetes-based infrastructure for cloud environments\n• Use Terraform, Ansible, and scripting for automation and reliability\n• Collaborate with engineering teams to design and deploy platform capabilities",
+      "date_published": "2026-10-15T14:47:39.095Z",
+      "authors": [
+        {
+          "name": "Arm"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/tmrw-house-of-brands-product-internship-6-month-4477087709",
       "url": "https://interndoor.com/jobs/tmrw-house-of-brands-product-internship-6-month-4477087709",
       "title": "Product Internship — TMRW House of Brands",
@@ -14,6 +38,54 @@
       "authors": [
         {
           "name": "TMRW House of Brands"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/bnp-paribas-python-developer-4479838631",
+      "url": "https://interndoor.com/jobs/bnp-paribas-python-developer-4479838631",
+      "title": "Python Developer — BNP Paribas",
+      "content_text": "Company: BNP Paribas · Location: Mumbai, Maharashtra, India\n• Maintain and improve Python components in risk systems\n• Use pandas, SQL, Git, and CI/CD tools like Jenkins\n• Work with London-based developers on complex projects",
+      "date_published": "2026-10-15T14:15:55.903Z",
+      "authors": [
+        {
+          "name": "BNP Paribas"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/metlife-software-platform-engineer-i-4479833818",
+      "url": "https://interndoor.com/jobs/metlife-software-platform-engineer-i-4479833818",
+      "title": "Software Platform Engineer I — MetLife",
+      "content_text": "Company: MetLife · Location: Pune Division, Maharashtra, India\n• Develop and maintain Java-based microservices and REST APIs using Spring Boot\n• Implement cloud-native solutions with Microsoft Azure and containerization tools\n• Collaborate with cross-functional teams in Agile and DevOps environments",
+      "date_published": "2026-10-15T14:07:24.393Z",
+      "authors": [
+        {
+          "name": "MetLife"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/salesforce-software-engineering-amts-4479834644",
+      "url": "https://interndoor.com/jobs/salesforce-software-engineering-amts-4479834644",
+      "title": "Software Engineering AMTS — Salesforce",
+      "content_text": "Company: Salesforce · Location: Bengaluru, Karnataka, India · Duration: 12 months\n• Build and scale products used by millions globally\n• Work with AI tools and LLM code assistants\n• Collaborate with engineers and product teams",
+      "date_published": "2026-10-15T14:05:01.270Z",
+      "authors": [
+        {
+          "name": "Salesforce"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/salesforce-software-engineering-amts-4479831678",
+      "url": "https://interndoor.com/jobs/salesforce-software-engineering-amts-4479831678",
+      "title": "Software Engineering AMTS — Salesforce",
+      "content_text": "Company: Salesforce · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Build scalable products and improve development processes\n• Collaborate with engineers, product managers, and UX experts\n• Write tests and automate metrics for high-quality code",
+      "date_published": "2026-10-15T14:04:35.768Z",
+      "authors": [
+        {
+          "name": "Salesforce"
         }
       ]
     },
@@ -530,78 +602,6 @@
       "authors": [
         {
           "name": "Meta"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/meta-asic-engineer-intern-design-verification-4477041539",
-      "url": "https://interndoor.com/jobs/meta-asic-engineer-intern-design-verification-4477041539",
-      "title": "ASIC Engineer Intern — Meta",
-      "content_text": "Company: Meta · Location: Bengaluru, Karnataka, India\n• Write tests and scripts to verify complex hardware designs\n• Use systemverilog/uvm for simulation and debugging\n• Work with teams to improve verification processes",
-      "date_published": "2026-10-15T03:19:20.736Z",
-      "authors": [
-        {
-          "name": "Meta"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/capgemini-engineering-products-and-systems-engineer-4479754639",
-      "url": "https://interndoor.com/jobs/capgemini-engineering-products-and-systems-engineer-4479754639",
-      "title": "Products & Systems Engineer — Capgemini Engineering",
-      "content_text": "Company: Capgemini Engineering · Location: Pune Division, Maharashtra, India\n• Design and develop engineered systems and products\n• Work on safety, reliability, and environmental impact\n• Collaborate with customers and team on product evolution",
-      "date_published": "2026-10-15T03:02:46.836Z",
-      "authors": [
-        {
-          "name": "Capgemini Engineering"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/netapp-salesforce-developer-4477034245",
-      "url": "https://interndoor.com/jobs/netapp-salesforce-developer-4477034245",
-      "title": "Salesforce Developer — NetApp",
-      "content_text": "Company: NetApp · Location: Bengaluru, Karnataka, India\n• Build and maintain salesforce solutions for enterprise customers\n• Use apex, lightning components, and salesforce api\n• Work on cloud integration and data management projects",
-      "date_published": "2026-10-15T02:39:36.424Z",
-      "authors": [
-        {
-          "name": "NetApp"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479730741",
-      "url": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4479730741",
-      "title": "Trainee Technology — Bajaj Finserv",
-      "content_text": "Company: Bajaj Finserv · Location: Pune Division, Maharashtra, India",
-      "date_published": "2026-10-15T01:24:46.379Z",
-      "authors": [
-        {
-          "name": "Bajaj Finserv"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/nuvama-group-quantitative-researcher-4477019489",
-      "url": "https://interndoor.com/jobs/nuvama-group-quantitative-researcher-4477019489",
-      "title": "Quantitative Researcher — Nuvama Group",
-      "content_text": "Company: Nuvama Group · Location: Mumbai, Maharashtra, India\n• Build and test trading strategies using market and alternative data\n• Apply stats, ml, and econometrics to find predictive signals\n• Work with traders to turn research into live strategies",
-      "date_published": "2026-10-15T00:35:21.838Z",
-      "authors": [
-        {
-          "name": "Nuvama Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479731293",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-hardware-eng-4479731293",
-      "title": "Intern Bachelors Hardware Eng — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Madurai, Tamil Nadu, India\n• Support hardware design with schematic capture and pcb layout\n• Test and validate hardware systems with engineering team\n• Work on real-world projects with experienced engineers",
-      "date_published": "2026-10-15T00:05:17.465Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
         }
       ]
     }

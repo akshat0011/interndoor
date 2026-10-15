@@ -1,6 +1,28 @@
 {
  "jobs": [
   {
+   "id": "4477307249",
+   "company": "TÜV SÜD",
+   "title": "Intern",
+   "location": "Matar, Gujarat, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792078082348,
+   "firstSeenAt": 1792078322354,
+   "logo": "/logos/t-v-s-d.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4469735592",
+   "company": "Arm",
+   "title": "Platform Engineer",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792075659095,
+   "firstSeenAt": 1792077339102,
+   "logo": "/logos/arm.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477087709",
    "company": "TMRW House of Brands",
    "title": "Product Internship",
@@ -10,6 +32,50 @@
    "postedAt": 1792073959876,
    "firstSeenAt": 1792074799880,
    "logo": "/logos/tmrw-house-of-brands.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479838631",
+   "company": "BNP Paribas",
+   "title": "Python Developer",
+   "location": "Mumbai, Maharashtra, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792073755903,
+   "firstSeenAt": 1792077355909,
+   "logo": "/logos/bnp-paribas.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479833818",
+   "company": "MetLife",
+   "title": "Software Platform Engineer I",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792073244393,
+   "firstSeenAt": 1792076844401,
+   "logo": "/logos/metlife.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479834644",
+   "company": "Salesforce",
+   "title": "Software Engineering AMTS",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792073101270,
+   "firstSeenAt": 1792076701279,
+   "logo": "/logos/salesforce.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479831678",
+   "company": "Salesforce",
+   "title": "Software Engineering AMTS",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792073075768,
+   "firstSeenAt": 1792076675783,
+   "logo": "/logos/salesforce.jpg",
    "bulletCount": 3
   },
   {
@@ -372,76 +438,6 @@
    "postedAt": 1792056386280,
    "firstSeenAt": 1792057526286,
    "logo": "/logos/valency-networks-private-limited.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469718219",
-   "company": "Gartner",
-   "title": "Security Analyst",
-   "slugTitle": "Security Analyst - Vulnerability management",
-   "location": "Gurgaon, Haryana, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792056296924,
-   "firstSeenAt": 1792059896929,
-   "logo": "/logos/gartner.png",
-   "bulletCount": 3
-  },
-  {
-   "id": "4470920225",
-   "company": "Hitachi Vantara",
-   "title": "Cloud Engineer",
-   "slugTitle": "CloudEngineer",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792055635383,
-   "firstSeenAt": 1792059235388,
-   "logo": "/logos/hitachi-vantara.jpg",
-   "bulletCount": 4
-  },
-  {
-   "id": "4479803494",
-   "company": "Capgemini Engineering",
-   "title": "Test Automation Engineer",
-   "slugTitle": "HiL/SiL Test execution with Test Automation using Python / Perl",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792054983089,
-   "firstSeenAt": 1792057863101,
-   "logo": "/logos/capgemini-engineering.jpg",
-   "bulletCount": 4
-  },
-  {
-   "id": "4479808070",
-   "company": "Eli Lilly and Company",
-   "title": "Data Analyst Intern",
-   "slugTitle": "Intern - CI&A Data Analyst",
-   "location": "Bengaluru East, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792052989634,
-   "firstSeenAt": 1792053889642,
-   "logo": "/logos/eli-lilly-and-company.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479789697",
-   "company": "Synchrony",
-   "title": "Data Quality Analyst",
-   "slugTitle": "Analyst, Analytics - Data Quality Developer",
-   "location": "Hyderabad, Telangana, India",
-   "postedAt": 1792052906009,
-   "firstSeenAt": 1792060106012,
-   "logo": "/logos/synchrony.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477062321",
-   "company": "Echo Initiative by Joveo",
-   "title": "Frontend Developer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792050923492,
-   "firstSeenAt": 1792058123495,
-   "logo": "/logos/echo-initiative-by-joveo.jpg",
    "bulletCount": 3
   }
  ]
