@@ -163,6 +163,14 @@ check('an unknown value is the signed-in page, not a guess', searchSourceFor({},
     JSON.stringify([['intern', 'US'], ['fulltime', 'US']]));
   check('the daily ceiling is a number (0 = off, his call 13 Oct 2026), never above the 1,054 that got one flagged',
     Number.isFinite(rawCfg.safety.accountDailyPageLoads) && rawCfg.safety.accountDailyPageLoads >= 0 && rawCfg.safety.accountDailyPageLoads < 1054, true);
+  /* His call, 15 Oct 2026: the hourly full-time walk discovers on the public
+     search (the signed-in one never showed 10 roles the public one found);
+     the internship walk stays signed in. */
+  check('live config: the full-time walk reads the public search, and says why',
+    rawSearches.filter((e) => e.region === 'IN' && e.employment === 'fulltime').map((e) => [e.searchSource, String(e._searchSource_note ?? '').length > 80]),
+    [['guest', true]]);
+  check('the internship walk stays on the signed-in search',
+    rawSearches.filter((e) => e.region === 'IN' && e.employment !== 'fulltime').map((e) => searchSourceFor(e, rawCfg)), ['browser']);
   check('live config: any search on the signed-in page says why',
     rawSearches.filter((e) => e.searchSource === 'browser').every((e) => String(e._searchSource_note ?? '').length > 40), true);
   const p = cfg.pacing.betweenGuestPages;
