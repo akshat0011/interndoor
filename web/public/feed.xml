@@ -6,7 +6,79 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 15 Oct 2026 12:19:31 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 13:04:21 GMT</lastBuildDate>
+  <item>
+    <title>DevSecOps Engineer — Ericsson</title>
+    <link>https://interndoor.com/jobs/ericsson-devsecops-engineer-4409900494</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/ericsson-devsecops-engineer-4409900494</guid>
+    <pubDate>Thu, 15 Oct 2026 13:04:21 GMT</pubDate>
+    <description>Company: Ericsson · Location: Bengaluru, Karnataka, India
+• Design and develop backend services and APIs in go
+• Build cloud-native apps and microservices on kubernetes
+• Integrate observability with open telemetry and prometheus
+• Collaborate with global teams on scalable platform solutions</description>
+  </item>
+  <item>
+    <title>Software Engineering MTS — Salesforce</title>
+    <link>https://interndoor.com/jobs/salesforce-software-engineering-mts-4479841124</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/salesforce-software-engineering-mts-4479841124</guid>
+    <pubDate>Thu, 15 Oct 2026 12:54:40 GMT</pubDate>
+    <description>Company: Salesforce · Location: Hyderabad, Telangana, India · Duration: 12 months
+• Build and maintain web apps, APIs, and microservices for global community products
+• Manage cloud infrastructure with Terraform and AWS, optimize CI/CD pipelines
+• Collaborate with engineers, product managers, and UX designers on cross-functional projects</description>
+  </item>
+  <item>
+    <title>Software Dev Engineer I — Swiggy</title>
+    <link>https://interndoor.com/jobs/swiggy-software-dev-engineer-i-4477076777</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/swiggy-software-dev-engineer-i-4477076777</guid>
+    <pubDate>Thu, 15 Oct 2026 12:50:29 GMT</pubDate>
+    <description>Company: Swiggy · Location: Bengaluru, Karnataka, India
+• Develop user-facing features and apps
+• Write clean, reusable code with typescript
+• Optimize app speed and scalability</description>
+  </item>
+  <item>
+    <title>Data Engineer - Snowflakes Developer — Merck Healthcare</title>
+    <link>https://interndoor.com/jobs/merck-healthcare-data-engineer-snowflakes-developer-4479830361</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/merck-healthcare-data-engineer-snowflakes-developer-4479830361</guid>
+    <pubDate>Thu, 15 Oct 2026 12:49:56 GMT</pubDate>
+    <description>Company: Merck Healthcare · Location: Bengaluru, Karnataka, India
+• Build and optimize cloud data structures using Snowflake
+• Write and test SQL queries for data transformation
+• Collaborate with senior engineers on pipeline development
+• Maintain database performance and cost efficiency</description>
+  </item>
+  <item>
+    <title>Software Engineering IC2 — Microsoft</title>
+    <link>https://interndoor.com/jobs/microsoft-software-engineering-ic2-4479832117</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/microsoft-software-engineering-ic2-4479832117</guid>
+    <pubDate>Thu, 15 Oct 2026 12:44:06 GMT</pubDate>
+    <description>Company: Microsoft · Location: Hyderabad, Telangana, India
+• Build backend services and data pipelines for telemetry and diagnostics
+• Analyze device performance metrics and customer impact signals
+• Collaborate on Windows Fundamentals improvements across hardware and software</description>
+  </item>
+  <item>
+    <title>Software Engineering — Microsoft</title>
+    <link>https://interndoor.com/jobs/microsoft-software-engineering-4479817812</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/microsoft-software-engineering-4479817812</guid>
+    <pubDate>Thu, 15 Oct 2026 12:43:41 GMT</pubDate>
+    <description>Company: Microsoft · Location: Hyderabad, Telangana, India
+• Build backend services and data pipelines for telemetry and diagnostics
+• Analyze Windows device performance and reliability using telemetry data
+• Collaborate with engineers on service reliability and data quality</description>
+  </item>
+  <item>
+    <title>Software Engineer, PhD, Google Cloud Platform — Google</title>
+    <link>https://interndoor.com/jobs/google-software-engineer-phd-google-cloud-platform-4442647974</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/google-software-engineer-phd-google-cloud-platform-4442647974</guid>
+    <pubDate>Thu, 15 Oct 2026 12:21:38 GMT</pubDate>
+    <description>Company: Google · Location: Bengaluru, Karnataka, India
+• Design and develop scalable distributed systems for hybrid cloud networking
+• Collaborate with product management and SRE teams on GCP projects
+• Implement secure, reliable systems with AI/ML for operational insights</description>
+  </item>
   <item>
     <title>Intern - Application Engineering — GoKwik</title>
     <link>https://interndoor.com/jobs/gokwik-intern-application-engineering-4479105578</link>
@@ -96,6 +168,16 @@
 • Support engineering projects through research and testing of electrical systems
 • Collaborate with cross-functional teams on real-world development
 • Work with engineering software and tools in a global tech environment</description>
+  </item>
+  <item>
+    <title>Software Quality Engineer — KLA</title>
+    <link>https://interndoor.com/jobs/kla-software-quality-engineer-4469329278</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/kla-software-quality-engineer-4469329278</guid>
+    <pubDate>Thu, 15 Oct 2026 12:01:17 GMT</pubDate>
+    <description>Company: KLA · Location: Chennai, Tamil Nadu, India
+• Build frameworks and tools for desktop, web, API, and system testing
+• Use C#, Java, Python, and AI to improve testability and quality
+• Integrate automated tests into CI/CD pipelines with Jenkins or Azure DevOps</description>
   </item>
   <item>
     <title>Services Specialist — GE Vernova</title>
@@ -427,86 +509,6 @@
 • Support hardware design with schematic capture and pcb layout
 • Test and validate hardware systems with engineering team
 • Work on real-world projects with experienced professionals</description>
-  </item>
-  <item>
-    <title>Intern — GE Vernova</title>
-    <link>https://interndoor.com/jobs/ge-vernova-intern-ats-workday-gevernova-wd5-vernova-externalsite-r5050740</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ge-vernova-intern-ats-workday-gevernova-wd5-vernova-externalsite-r5050740</guid>
-    <pubDate>Thu, 15 Oct 2026 00:00:00 GMT</pubDate>
-    <description>Company: GE Vernova · Location: Bengaluru
-• Design and develop research experiments in time series analysis, machine vision, and deep learning
-• Implement ai/ml algorithms in python with pytorch, tensorflow, or similar frameworks
-• Analyze and validate models for time series and visual data across diverse datasets</description>
-  </item>
-  <item>
-    <title>Cloud &amp; DevOps Intern — Tech Snap</title>
-    <link>https://interndoor.com/jobs/tech-snap-cloud-and-devops-intern-graduate-program-4478806863</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/tech-snap-cloud-and-devops-intern-graduate-program-4478806863</guid>
-    <pubDate>Wed, 14 Oct 2026 23:55:53 GMT</pubDate>
-    <description>Company: Tech Snap · Location: India · Duration: 3-6 months
-• Automate build pipelines with GitHub Actions
-• Containerize apps with Docker and Helm
-• Monitor systems with Prometheus and Grafana</description>
-  </item>
-  <item>
-    <title>Frontend Engineering Intern — Tech Snap</title>
-    <link>https://interndoor.com/jobs/tech-snap-frontend-engineering-intern-pre-placement-offer-4478813731</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/tech-snap-frontend-engineering-intern-pre-placement-offer-4478813731</guid>
-    <pubDate>Wed, 14 Oct 2026 23:55:38 GMT</pubDate>
-    <description>Company: Tech Snap · Location: India · Duration: 6 months
-• Build reusable ui components in react and tailwind css
-• Integrate rest apis for user auth and transaction tables
-• Write clean code with tests and review feedback</description>
-  </item>
-  <item>
-    <title>Java Fullstack Developer — Citi</title>
-    <link>https://interndoor.com/jobs/citi-java-fullstack-developer-4478801649</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/citi-java-fullstack-developer-4478801649</guid>
-    <pubDate>Wed, 14 Oct 2026 22:27:08 GMT</pubDate>
-    <description>Company: Citi · Location: Chennai, Tamil Nadu, India
-• Write and debug code for business applications using Java, Spring, and JavaScript
-• Collaborate with teams to design and implement system enhancements
-• Test and optimize applications on UNIX platforms with Oracle or Sybase</description>
-  </item>
-  <item>
-    <title>AI Application Engineer — Vanguard</title>
-    <link>https://interndoor.com/jobs/vanguard-ai-application-engineer-4479705399</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/vanguard-ai-application-engineer-4479705399</guid>
-    <pubDate>Wed, 14 Oct 2026 20:50:06 GMT</pubDate>
-    <description>Company: Vanguard · Location: Hyderabad, Telangana, India
-• Design and build AI applications for large user bases
-• Work with AWS, GitHub, and cloud-native tools
-• Collaborate with stakeholders to solve complex problems</description>
-  </item>
-  <item>
-    <title>Python Developer — Akamai Technologies</title>
-    <link>https://interndoor.com/jobs/akamai-technologies-python-developer-4479584364</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/akamai-technologies-python-developer-4479584364</guid>
-    <pubDate>Wed, 14 Oct 2026 19:59:22 GMT</pubDate>
-    <description>Company: Akamai Technologies · Location: Bengaluru, Karnataka, India
-• Design systems for automated network workflows and observability
-• Work with Python/JavaScript, Kubernetes, and cloud-native tools
-• Collaborate with Architecture and Engineering on global infrastructure</description>
-  </item>
-  <item>
-    <title>Salesforce Application Engineer — Google</title>
-    <link>https://interndoor.com/jobs/google-salesforce-application-engineer-youtube-4478494415</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/google-salesforce-application-engineer-youtube-4478494415</guid>
-    <pubDate>Wed, 14 Oct 2026 19:34:53 GMT</pubDate>
-    <description>Company: Google · Location: Bengaluru, Karnataka, India
-• Build Salesforce features with Apex, LWC, Flows, and SOQL
-• Integrate Salesforce with internal and third-party platforms
-• Collaborate with product leads and business owners</description>
-  </item>
-  <item>
-    <title>Test Engineer — Flex</title>
-    <link>https://interndoor.com/jobs/flex-engineer-test-programming-4478474785</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/flex-engineer-test-programming-4478474785</guid>
-    <pubDate>Wed, 14 Oct 2026 19:09:28 GMT</pubDate>
-    <description>Company: Flex · Location: Chennai, Tamil Nadu, India
-• Write and maintain python scripts for testing systems and hardware
-• Work with git, ci/cd, and automation frameworks
-• Collaborate with engineering and operations teams on test strategies</description>
   </item>
 </channel>
 </rss>

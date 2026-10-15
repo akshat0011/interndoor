@@ -1,6 +1,81 @@
 {
  "jobs": [
   {
+   "id": "4409900494",
+   "company": "Ericsson",
+   "title": "DevSecOps Engineer",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792069461018,
+   "firstSeenAt": 1792070061023,
+   "logo": "/logos/ericsson.jpg",
+   "bulletCount": 4
+  },
+  {
+   "id": "4479841124",
+   "company": "Salesforce",
+   "title": "Software Engineering MTS",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792068880098,
+   "firstSeenAt": 1792069900106,
+   "logo": "/logos/salesforce.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477076777",
+   "company": "Swiggy",
+   "title": "Software Dev Engineer I",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792068629268,
+   "firstSeenAt": 1792069409271,
+   "logo": "/logos/swiggy.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479830361",
+   "company": "Merck Healthcare",
+   "title": "Data Engineer - Snowflakes Developer",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792068596023,
+   "firstSeenAt": 1792069256027,
+   "logo": "/logos/merck-healthcare.jpg",
+   "bulletCount": 4
+  },
+  {
+   "id": "4479832117",
+   "company": "Microsoft",
+   "title": "Software Engineering IC2",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792068246116,
+   "firstSeenAt": 1792069266119,
+   "logo": "/logos/microsoft.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479817812",
+   "company": "Microsoft",
+   "title": "Software Engineering",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792068221544,
+   "firstSeenAt": 1792069241568,
+   "logo": "/logos/microsoft.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4442647974",
+   "company": "Google",
+   "title": "Software Engineer, PhD, Google Cloud Platform",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792066898460,
+   "firstSeenAt": 1792069478466,
+   "logo": "/logos/google.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479105578",
    "company": "GoKwik",
    "title": "Intern - Application Engineering",
@@ -98,6 +173,17 @@
    "postedAt": 1792065796685,
    "firstSeenAt": 1792068316688,
    "logo": "/logos/honeywell-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4469329278",
+   "company": "KLA",
+   "title": "Software Quality Engineer",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792065677254,
+   "firstSeenAt": 1792069277265,
+   "logo": "/logos/kla.jpg",
    "bulletCount": 3
   },
   {
@@ -356,97 +442,6 @@
    "postedAt": 1792049901810,
    "firstSeenAt": 1792050501817,
    "logo": "/logos/wolters-kluwer.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477050482",
-   "company": "Valency Networks Private Limited",
-   "title": "Cybersecurity Analyst Intern",
-   "slugTitle": "Cybersecurity Analyst Intern - VAPT, Penetration Tester",
-   "location": "Pune City, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792043091754,
-   "firstSeenAt": 1792043151769,
-   "logo": "/logos/valency-networks-private-limited.jpg",
-   "bulletCount": 4
-  },
-  {
-   "id": "4477034970",
-   "company": "Meta",
-   "title": "ASIC Engineer Intern",
-   "slugTitle": "ASIC Engineer Intern, Implementation",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792034365007,
-   "firstSeenAt": 1792034665010,
-   "logo": "/logos/meta.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477041539",
-   "company": "Meta",
-   "title": "ASIC Engineer Intern",
-   "slugTitle": "ASIC Engineer Intern, Design Verification",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792034360736,
-   "firstSeenAt": 1792034660745,
-   "logo": "/logos/meta.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479754639",
-   "company": "Capgemini Engineering",
-   "title": "Products & Systems Engineer",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792033366836,
-   "firstSeenAt": 1792036066873,
-   "logo": "/logos/capgemini-engineering.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477034245",
-   "company": "NetApp",
-   "title": "Salesforce Developer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792031976424,
-   "firstSeenAt": 1792035336446,
-   "logo": "/logos/netapp.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477019489",
-   "company": "Nuvama Group",
-   "title": "Quantitative Researcher",
-   "location": "Mumbai, Maharashtra, India",
-   "postedAt": 1792024521838,
-   "firstSeenAt": 1792060521841,
-   "logo": "/logos/nuvama-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479731293",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Hardware Eng",
-   "location": "Madurai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792022717465,
-   "firstSeenAt": 1792023857469,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479715871",
-   "company": "Honeywell Technologies",
-   "title": "AI Intern",
-   "slugTitle": "Intern Bachelors AI",
-   "location": "Madurai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792022717354,
-   "firstSeenAt": 1792023917355,
-   "logo": "/logos/honeywell-technologies.jpg",
    "bulletCount": 3
   }
  ]
