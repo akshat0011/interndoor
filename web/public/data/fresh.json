@@ -14,7 +14,8 @@
   {
    "id": "4478855744",
    "company": "Deloitte",
-   "title": "Automation Engineer - SDET I",
+   "title": "Automation Engineer I",
+   "slugTitle": "Automation Engineer - SDET I",
    "location": "Chennai, Tamil Nadu, India",
    "postedAt": 1792057469379,
    "firstSeenAt": 1792058429386,
@@ -24,7 +25,8 @@
   {
    "id": "4478855747",
    "company": "Deloitte",
-   "title": "Automation Engineer - SDET I",
+   "title": "Automation Engineer I",
+   "slugTitle": "Automation Engineer - SDET I",
    "location": "Pune Division, Maharashtra, India",
    "postedAt": 1792057457810,
    "firstSeenAt": 1792058417815,
@@ -93,7 +95,8 @@
   {
    "id": "4467626080",
    "company": "Qualys",
-   "title": "Site Reliability Engineer, Cloud Platform",
+   "title": "Site Reliability Engineer",
+   "slugTitle": "Site Reliability Engineer, Cloud Platform",
    "location": "Pune Division, Maharashtra, India",
    "workplaceType": "Hybrid",
    "postedAt": 1792056074391,
@@ -136,17 +139,6 @@
    "firstSeenAt": 1792057863101,
    "logo": "/logos/capgemini-engineering.jpg",
    "bulletCount": 4
-  },
-  {
-   "id": "4479802524",
-   "company": "Capgemini Engineering",
-   "title": "NX open Developer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792054899377,
-   "firstSeenAt": 1792057899382,
-   "logo": "/logos/capgemini-engineering.jpg",
-   "bulletCount": 3
   },
   {
    "id": "4479808070",
@@ -342,7 +334,8 @@
   {
    "id": "4478806863",
    "company": "Tech Snap",
-   "title": "Cloud & DevOps Intern (Graduate Program)",
+   "title": "Cloud & DevOps Intern",
+   "slugTitle": "Cloud & DevOps Intern (Graduate Program)",
    "location": "India",
    "workplaceType": "Remote",
    "postedAt": 1792022153829,
@@ -353,7 +346,8 @@
   {
    "id": "4478813731",
    "company": "Tech Snap",
-   "title": "Frontend Engineering Intern (Pre-Placement Offer)",
+   "title": "Frontend Engineering Intern",
+   "slugTitle": "Frontend Engineering Intern (Pre-Placement Offer)",
    "location": "India",
    "workplaceType": "Remote",
    "postedAt": 1792022138884,
@@ -408,7 +402,8 @@
   {
    "id": "4478474785",
    "company": "Flex",
-   "title": "Engineer –Test Programming",
+   "title": "Test Engineer",
+   "slugTitle": "Engineer –Test Programming",
    "location": "Chennai, Tamil Nadu, India",
    "workplaceType": "On-site",
    "postedAt": 1792004968819,
@@ -448,6 +443,17 @@
    "postedAt": 1792003358327,
    "firstSeenAt": 1792005038334,
    "logo": "/logos/atkinsr-alis.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4476696037",
+   "company": "HARMAN India",
+   "title": "Students / Trainees",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1791999797648,
+   "firstSeenAt": 1792017797656,
+   "logo": "/logos/harman-india.jpg",
    "bulletCount": 3
   }
  ]

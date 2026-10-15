@@ -20,7 +20,7 @@
     {
       "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855744",
       "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855744",
-      "title": "Automation Engineer - SDET I — Deloitte",
+      "title": "Automation Engineer I — Deloitte",
       "content_text": "Company: Deloitte · Location: Chennai, Tamil Nadu, India\n• Build and maintain automation frameworks for cloud and web apps\n• Work with Python, Selenium, and CI/CD tools like Jenkins\n• Collaborate with Agile teams on quality and test strategies",
       "date_published": "2026-10-15T09:44:29.379Z",
       "authors": [
@@ -32,7 +32,7 @@
     {
       "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855747",
       "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478855747",
-      "title": "Automation Engineer - SDET I — Deloitte",
+      "title": "Automation Engineer I — Deloitte",
       "content_text": "Company: Deloitte · Location: Pune Division, Maharashtra, India\n• Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools\n• Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms\n• Mentor QA team members and drive quality best practices in a fast-paced environment",
       "date_published": "2026-10-15T09:44:17.810Z",
       "authors": [
@@ -104,7 +104,7 @@
     {
       "id": "https://interndoor.com/jobs/qualys-site-reliability-engineer-cloud-platform-4467626080",
       "url": "https://interndoor.com/jobs/qualys-site-reliability-engineer-cloud-platform-4467626080",
-      "title": "Site Reliability Engineer, Cloud Platform — Qualys",
+      "title": "Site Reliability Engineer — Qualys",
       "content_text": "Company: Qualys · Location: Pune Division, Maharashtra, India\n• Monitor and troubleshoot cloud-native systems, Kubernetes, Spark, Kafka, and data platforms\n• Automate operational tasks with Python, Bash, Go, and CI/CD pipelines\n• Participate in on-call rotations and incident response for production services",
       "date_published": "2026-10-15T09:21:14.391Z",
       "authors": [
@@ -143,18 +143,6 @@
       "title": "Test Automation Engineer — Capgemini Engineering",
       "content_text": "Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India\n• Execute HiL/SiL tests for embedded systems\n• Use Python/Perl for test automation\n• Work with CAN/CAN FD/UDS protocols\n• Collaborate on automotive validation projects",
       "date_published": "2026-10-15T09:03:03.089Z",
-      "authors": [
-        {
-          "name": "Capgemini Engineering"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/capgemini-engineering-nx-open-developer-4479802524",
-      "url": "https://interndoor.com/jobs/capgemini-engineering-nx-open-developer-4479802524",
-      "title": "NX open Developer — Capgemini Engineering",
-      "content_text": "Company: Capgemini Engineering · Location: Bengaluru, Karnataka, India\n• Design and develop engineered systems and products\n• Work on systems engineering and product design\n• Collaborate with customers and team members",
-      "date_published": "2026-10-15T09:01:39.377Z",
       "authors": [
         {
           "name": "Capgemini Engineering"
@@ -380,7 +368,7 @@
     {
       "id": "https://interndoor.com/jobs/tech-snap-cloud-and-devops-intern-graduate-program-4478806863",
       "url": "https://interndoor.com/jobs/tech-snap-cloud-and-devops-intern-graduate-program-4478806863",
-      "title": "Cloud & DevOps Intern (Graduate Program) — Tech Snap",
+      "title": "Cloud & DevOps Intern — Tech Snap",
       "content_text": "Company: Tech Snap · Location: India · Duration: 3-6 months\n• Automate build pipelines with GitHub Actions\n• Containerize apps with Docker and Helm\n• Monitor systems with Prometheus and Grafana",
       "date_published": "2026-10-14T23:55:53.829Z",
       "authors": [
@@ -392,7 +380,7 @@
     {
       "id": "https://interndoor.com/jobs/tech-snap-frontend-engineering-intern-pre-placement-offer-4478813731",
       "url": "https://interndoor.com/jobs/tech-snap-frontend-engineering-intern-pre-placement-offer-4478813731",
-      "title": "Frontend Engineering Intern (Pre-Placement Offer) — Tech Snap",
+      "title": "Frontend Engineering Intern — Tech Snap",
       "content_text": "Company: Tech Snap · Location: India · Duration: 6 months\n• Build reusable ui components in react and tailwind css\n• Integrate rest apis for user auth and transaction tables\n• Write clean code with tests and review feedback",
       "date_published": "2026-10-14T23:55:38.884Z",
       "authors": [
@@ -452,7 +440,7 @@
     {
       "id": "https://interndoor.com/jobs/flex-engineer-test-programming-4478474785",
       "url": "https://interndoor.com/jobs/flex-engineer-test-programming-4478474785",
-      "title": "Engineer –Test Programming — Flex",
+      "title": "Test Engineer — Flex",
       "content_text": "Company: Flex · Location: Chennai, Tamil Nadu, India\n• Write and maintain python scripts for testing systems and hardware\n• Work with git, ci/cd, and automation frameworks\n• Collaborate with engineering and operations teams on test strategies",
       "date_published": "2026-10-14T19:09:28.819Z",
       "authors": [
@@ -599,6 +587,18 @@
       "title": "Apprentice Software Developer — Bank of America",
       "content_text": "Company: Bank of America · Location: Hyderabad, Telangana, India\n• Develop software solutions meeting compliance and functional needs\n• Work with global teams on banking systems and tech platforms\n• Use Python, SQL, Spark, and data tools for analysis and integration",
       "date_published": "2026-10-14T16:07:13.813Z",
+      "authors": [
+        {
+          "name": "Bank of America"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551772",
+      "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551772",
+      "title": "Apprentice Software Developer — Bank of America",
+      "content_text": "Company: Bank of America · Location: Mumbai Metropolitan Region\n• Develop software solutions meeting compliance and technical requirements\n• Work with global teams on banking systems and data platforms\n• Use Python, SQL, Spark, and cloud tools in real projects",
+      "date_published": "2026-10-14T16:07:04.074Z",
       "authors": [
         {
           "name": "Bank of America"
