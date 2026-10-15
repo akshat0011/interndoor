@@ -6,6 +6,102 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/ge-vernova-services-specialist-4479814493",
+      "url": "https://interndoor.com/jobs/ge-vernova-services-specialist-4479814493",
+      "title": "Services Specialist — GE Vernova",
+      "content_text": "Company: GE Vernova · Location: Noida, Uttar Pradesh, India\n• Install, configure, and troubleshoot software systems for internal and external clients\n• Work with databases and scripts to customize solutions for grid management projects\n• Travel to customer sites and collaborate with design teams on AEMS/ADMS systems",
+      "date_published": "2026-10-15T11:23:07.275Z",
+      "authors": [
+        {
+          "name": "GE Vernova"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/qualcomm-engineer-audio-dsp-4460611060",
+      "url": "https://interndoor.com/jobs/qualcomm-engineer-audio-dsp-4460611060",
+      "title": "Engineer - Audio DSP — Qualcomm",
+      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Optimize dsp code for performance and memory\n• Develop audio frameworks and interface drivers\n• Collaborate with cross-functional teams on audio use cases",
+      "date_published": "2026-10-15T11:20:52.794Z",
+      "authors": [
+        {
+          "name": "Qualcomm"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/birlasoft-java-api-developer-4478879051",
+      "url": "https://interndoor.com/jobs/birlasoft-java-api-developer-4478879051",
+      "title": "Java API Developer — Birlasoft",
+      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and build secure scalable restful apis with spring boot and java\n• Implement api security with oauth2 jwt and rate limiting\n• Collaborate in agile teams and own services end to end",
+      "date_published": "2026-10-15T11:10:15.955Z",
+      "authors": [
+        {
+          "name": "Birlasoft"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ntt-data-inc-junior-engineer-dw-technology-4469334996",
+      "url": "https://interndoor.com/jobs/ntt-data-inc-junior-engineer-dw-technology-4469334996",
+      "title": "Junior Engineer — NTT DATA, Inc.",
+      "content_text": "Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India\n• Support installation and break/fix events for less complex networking tasks\n• Work with senior engineers and the implementation team on client projects\n• Develop skills in routing, switching, and wireless technologies",
+      "date_published": "2026-10-15T10:55:04.673Z",
+      "authors": [
+        {
+          "name": "NTT DATA, Inc."
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/tyson-foods-developer-data-engineering-4477072671",
+      "url": "https://interndoor.com/jobs/tyson-foods-developer-data-engineering-4477072671",
+      "title": "Developer Data Engineering — Tyson Foods",
+      "content_text": "Company: Tyson Foods · Location: Bengaluru, Karnataka, India\n• Design and optimize data pipelines using sql and scripting\n• Develop etl processes and data warehousing solutions\n• Build data visualization tools and dashboards\n• Collaborate with stakeholders on data solutions",
+      "date_published": "2026-10-15T10:47:13.136Z",
+      "authors": [
+        {
+          "name": "Tyson Foods"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/emerson-product-security-engineer-4442708013",
+      "url": "https://interndoor.com/jobs/emerson-product-security-engineer-4442708013",
+      "title": "Product Security Engineer — Emerson",
+      "content_text": "Company: Emerson · Location: Pune Division, Maharashtra, India\n• Assess product security risks and design embedded software modules\n• Work with RTOS and protocols like SPI, I2C, and RS232\n• Support compliance with EU CRA and IEC standards",
+      "date_published": "2026-10-15T10:39:09.665Z",
+      "authors": [
+        {
+          "name": "Emerson"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478869405",
+      "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478869405",
+      "title": "Automation Engineer - SDET I — Deloitte",
+      "content_text": "Company: Deloitte · Location: Hyderabad, Telangana, India\n• Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools\n• Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms\n• Mentor peers and resolve automation challenges in a fast-paced, cross-functional environment",
+      "date_published": "2026-10-15T10:30:59.041Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478850932",
+      "url": "https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478850932",
+      "title": "Automation Engineer - SDET I — Deloitte",
+      "content_text": "Company: Deloitte · Location: Bengaluru, Karnataka, India\n• Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools\n• Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms\n• Mentor QA team members and integrate AI tools like GitHub Copilot to improve test automation",
+      "date_published": "2026-10-15T10:28:38.667Z",
+      "authors": [
+        {
+          "name": "Deloitte"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038",
       "url": "https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038",
       "title": "Application Engineering Intern — GoKwik",
@@ -182,18 +278,6 @@
       "authors": [
         {
           "name": "Wolters Kluwer"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-java-api-developer-4478845457",
-      "url": "https://interndoor.com/jobs/birlasoft-java-api-developer-4478845457",
-      "title": "Java API Developer — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Bengaluru Area\n• Design and implement secure scalable restful apis with spring boot\n• Work with devops and product teams on backend services for web and mobile apps\n• Write clean testable code with unit and integration tests\n• Deploy to cloud with docker and kubernetes",
-      "date_published": "2026-10-15T06:04:12.847Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
         }
       ]
     },
@@ -518,90 +602,6 @@
       "authors": [
         {
           "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/globallogic-sre-developer-irc302530-4460239636",
-      "url": "https://interndoor.com/jobs/globallogic-sre-developer-irc302530-4460239636",
-      "title": "SRE Developer — GlobalLogic",
-      "content_text": "Company: GlobalLogic · Location: Bengaluru, Karnataka, India\n• Troubleshoot production issues and customer outages using Linux, SQL, and automation scripts\n• Write scripts to automate fixes and prevent recurring problems in legacy systems\n• Analyze logs and perform root cause analysis for complex technical incidents",
-      "date_published": "2026-10-14T16:43:31.334Z",
-      "authors": [
-        {
-          "name": "GlobalLogic"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-java-developer-aws-4469471138",
-      "url": "https://interndoor.com/jobs/cognizant-java-developer-aws-4469471138",
-      "title": "Java Developer — Cognizant",
-      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Build and maintain backend services using Python and Java\n• Work with AWS Kubernetes Docker and automation tools\n• Collaborate with cross-functional teams on secure scalable systems",
-      "date_published": "2026-10-14T16:32:26.574Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479557487",
-      "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479557487",
-      "title": "Apprentice — Bank of America",
-      "content_text": "Company: Bank of America · Location: Chennai, Tamil Nadu, India\n• Support core infrastructure for bank operations, including networks, cloud, and mainframe systems\n• Work with global teams on production support, incident management, and system monitoring\n• Based in Chennai, India, with potential for rotation across multiple locations",
-      "date_published": "2026-10-14T16:07:49.271Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551773",
-      "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551773",
-      "title": "Apprentice Software Developer — Bank of America",
-      "content_text": "Company: Bank of America · Location: Hyderabad, Telangana, India\n• Develop software solutions meeting compliance and functional needs\n• Work with global teams on banking systems and tech platforms\n• Use Python, SQL, Spark, and data tools for analysis and integration",
-      "date_published": "2026-10-14T16:07:13.813Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551772",
-      "url": "https://interndoor.com/jobs/bank-of-america-apprentice-4479551772",
-      "title": "Apprentice Software Developer — Bank of America",
-      "content_text": "Company: Bank of America · Location: Mumbai Metropolitan Region\n• Develop software solutions meeting compliance and technical requirements\n• Work with global teams on banking systems and data platforms\n• Use Python, SQL, Spark, and cloud tools in real projects",
-      "date_published": "2026-10-14T16:07:04.074Z",
-      "authors": [
-        {
-          "name": "Bank of America"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/coindcx-sdet-4469446423",
-      "url": "https://interndoor.com/jobs/coindcx-sdet-4469446423",
-      "title": "SDET — CoinDCX",
-      "content_text": "Company: CoinDCX · Location: Bengaluru, Karnataka, India\n• Write and debug automated tests for new features and maintain existing scripts\n• Use appium, rest assured, testng, maven, git, and jenkins for automation\n• Generate reports on mobile and api automation coverage and present to stakeholders",
-      "date_published": "2026-10-14T15:54:45.630Z",
-      "authors": [
-        {
-          "name": "CoinDCX"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-software-engineer-4479559114",
-      "url": "https://interndoor.com/jobs/natwest-group-software-engineer-4479559114",
-      "title": "Software Engineer — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Gurugram, Haryana, India\n• Build secure, high-performance software for customer-centric solutions\n• Work with DevOps and Agile tools across full development lifecycle\n• Collaborate with engineers and architects on complex systems",
-      "date_published": "2026-10-14T15:34:50.452Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
         }
       ]
     }
