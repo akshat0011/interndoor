@@ -98,6 +98,26 @@ for (const s of searches.filter((x) => x.employment === 'fulltime')) {
     ok(`${s.region} ${s.label ?? 'entry'}: capped (maxPages)`, Number(s.maxPages) > 0);
   }
 }
+
+console.log('\n== India walks read 2h windows, however long the gap ==');
+/* His call, 16 Oct 2026: "2h window only, we dont want to be stuck in a
+   recovery runs loop". A 4h window after the 15 Oct outage read 50+ pages
+   with 17 rate-limit waits; with a 2h cap an outage loses the older part of
+   the gap instead of making the next walks bigger. Built the way index.js's
+   planSweep builds it, off config.json itself. */
+const inWalks = searches.filter((x) => x.region === 'IN');
+check('both India searches are checked', inWalks.length, 2);
+for (const s of inWalks) {
+  const f = {
+    ...cfg.filters,
+    ...(s.minWindowHours != null ? { minWindowHours: s.minWindowHours } : {}),
+    ...(s.windowMarginHours != null ? { windowMarginHours: s.windowMarginHours } : {}),
+    ...(s.maxWindowHours != null ? { maxWindowHours: s.maxWindowHours } : {}),
+  };
+  const at = Date.now();
+  check(`${s.label ?? 'IN intern'}: 2h window after an hourly gap`, resolveWindowHours(at - 3_600_000, f, at), 2);
+  check(`${s.label ?? 'IN intern'}: still 2h after a 6h outage`, resolveWindowHours(at - 6 * 3_600_000, f, at), 2);
+}
 check('India has an entry-level search', searches.some((s) => s.region === 'IN' && s.employment === 'fulltime'), true);
 ok('the intern walk carries NO experience facet', !buildSearchUrl(internWalk('IN'), { postedWithinHours: 2 }).includes('f_E='));
 
