@@ -64,7 +64,13 @@ let failed = 0;
 let session;
 
 try {
-  session = await launchBrave(cfg);
+  /* The account the India searches walk on (their `account`), not India's own
+     profile: that profile's cookies were made unreadable on 13 Oct 2026, and
+     both India searches open postings on the US account. --account=XX overrides. */
+  const account = ARGS.find((a) => a.startsWith('--account='))?.split('=')[1]?.toUpperCase()
+    ?? cfg.searches?.find((s) => s.region === 'IN')?.account ?? 'IN';
+  log.info(`Opening on the ${account} account.`);
+  session = await launchBrave(cfg, { region: account });
   const { page, context } = session;
   await li.warmUp(page, cfg);
   await assertSignedIn(page, context, cfg);
