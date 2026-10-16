@@ -6,7 +6,24 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Thu, 15 Oct 2026 21:52:27 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 15 Oct 2026 23:00:54 GMT</lastBuildDate>
+  <item>
+    <title>Full Stack Software Engineer — A.P. Moller - Maersk</title>
+    <link>https://interndoor.com/jobs/a-p-moller-maersk-software-engineer-full-stack-4480163835</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/a-p-moller-maersk-software-engineer-full-stack-4480163835</guid>
+    <pubDate>Thu, 15 Oct 2026 23:00:54 GMT</pubDate>
+    <description>Company: A.P. Moller - Maersk · Location: Bengaluru, Karnataka, India
+• Build full-stack features from prototype to production, working across front-end and back-end
+• Use Java/Kotlin, Spring Boot, Vue, and cloud platforms like AWS/GCP for scalable services
+• Collaborate with product and UX teams to design data-driven visibility tools for logistics</description>
+  </item>
+  <item>
+    <title>DevOps Engineer — Dentsu Global Services</title>
+    <link>https://interndoor.com/jobs/dentsu-global-services-devops-engineer-4479184222</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/dentsu-global-services-devops-engineer-4479184222</guid>
+    <pubDate>Thu, 15 Oct 2026 23:00:39 GMT</pubDate>
+    <description>Company: Dentsu Global Services · Location: Pune/Pimpri-Chinchwad Area</description>
+  </item>
   <item>
     <title>Application Development Programmer Analyst — Citi</title>
     <link>https://interndoor.com/jobs/citi-application-development-programmer-analyst-4479170801</link>
@@ -484,26 +501,6 @@
 • Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools
 • Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms
 • Mentor peers and resolve automation challenges in a fast-paced, cross-functional environment</description>
-  </item>
-  <item>
-    <title>Automation Engineer - SDET I — Deloitte</title>
-    <link>https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478850932</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/deloitte-automation-engineer-sdet-i-4478850932</guid>
-    <pubDate>Thu, 15 Oct 2026 10:28:38 GMT</pubDate>
-    <description>Company: Deloitte · Location: Bengaluru, Karnataka, India
-• Build and maintain automation frameworks for cloud and web apps using Python, Selenium, and CI/CD tools
-• Collaborate with Agile teams to ensure high-quality software delivery across analytics platforms
-• Mentor QA team members and integrate AI tools like GitHub Copilot to improve test automation</description>
-  </item>
-  <item>
-    <title>Application Engineering Intern — GoKwik</title>
-    <link>https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/gokwik-intern-application-engineering-ats-keka-gokwik-164038</guid>
-    <pubDate>Thu, 15 Oct 2026 10:04:03 GMT</pubDate>
-    <description>Company: GoKwik · Location: Bangalore, KA, India
-• Build and enhance backend services using node.js and nestjs
-• Work with postgresql, mongodb, redis, kafka, and aws
-• Contribute to scalable systems and real production code</description>
   </item>
 </channel>
 </rss>
