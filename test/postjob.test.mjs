@@ -259,6 +259,15 @@ console.log('\n== THE OWNER SEES THE CLICKS ON THE SITE ==');
   let threw = false;
   try { await fetchDayHashes({ url: 'u', token: 't' }, ['k'], async () => ({ ok: false, status: 401, json: async () => ({ error: 'Unauthorized' }) })); } catch { threw = true; }
   check('a store that refuses throws, never reads as zero clicks', threw, true);
+  let tries = 0;
+  const flaky = async () => { tries += 1; if (tries === 1) throw new TypeError('fetch failed', { cause: { code: 'ECONNRESET' } }); return { ok: true, json: async () => [{ result: ['x-1', '2'] }] }; };
+  let second = null;
+  try { second = await fetchDayHashes({ url: 'u', token: 't' }, ['k'], flaky); } catch { /* checked below */ }
+  check('a request that never reached the store is asked once more', [tries, second ? [...second[0]] : 'threw'], [2, [['x-1', 2]]]);
+  let why = '';
+  tries = 0;
+  try { await fetchDayHashes({ url: 'u', token: 't' }, ['k'], async () => { tries += 1; throw new TypeError('fetch failed', { cause: { code: 'ENOTFOUND' } }); }); } catch (e) { why = e.message; }
+  check('…and a second failure names why, not just "fetch failed"', [tries, why], [2, 'the counter store could not be reached (ENOTFOUND)']);
 
   const server = read('bin/queue-server.js');
   const authAt = server.indexOf('const auth = ownerAuth(req,');

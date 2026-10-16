@@ -82,11 +82,22 @@ export function clickWindows(days) {
  * mean "could not ask".
  */
 export async function fetchDayHashes({ url, token }, keys, fetchImpl = fetch) {
-  const res = await fetchImpl(`${url}/pipeline`, {
+  const ask = () => fetchImpl(`${url}/pipeline`, {
     method: 'POST',
     headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
     body: JSON.stringify(keys.map((k) => ['HGETALL', k])),
   });
+  /* A request that never reached the store is asked once more, and if it
+     fails again the error names why. Node's own message is only "fetch
+     failed", which is all the owner's dialog said on 16 Oct 2026 while a
+     fresh process reached the store at once. */
+  let res;
+  try { res = await ask(); } catch {
+    try { res = await ask(); } catch (err) {
+      const why = err?.cause?.code || err?.cause?.message || err?.message || 'unknown error';
+      throw new Error(`the counter store could not be reached (${why})`);
+    }
+  }
   if (!res.ok) throw new Error(`the counter store answered ${res.status}`);
   const answers = await res.json();
   /* By key, not by answer: the windows are positional, so a short answer must
