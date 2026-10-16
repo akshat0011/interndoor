@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/tcs-python-developer-trainee-4479114937",
+      "url": "https://interndoor.com/jobs/tcs-python-developer-trainee-4479114937",
+      "title": "Python Developer trainee — TCS",
+      "content_text": "Company: TCS · Location: Ahmedabad, Gujarat, India\n• Develop backend systems using python and fastapi\n• Work with sql and mysql databases\n• Contribute to rest api projects using github",
+      "date_published": "2026-10-16T03:33:00.374Z",
+      "authors": [
+        {
+          "name": "TCS"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/kirloskar-electric-company-ltd-quality-assurance-engineer-4479124589",
       "url": "https://interndoor.com/jobs/kirloskar-electric-company-ltd-quality-assurance-engineer-4479124589",
       "title": "Quality Assurance Engineer — KIRLOSKAR ELECTRIC COMPANY LTD.",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "KLA"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-vernova-services-specialist-4479814493",
-      "url": "https://interndoor.com/jobs/ge-vernova-services-specialist-4479814493",
-      "title": "Services Specialist — GE Vernova",
-      "content_text": "Company: GE Vernova · Location: Noida, Uttar Pradesh, India\n• Install, configure, and troubleshoot software systems for internal and external clients\n• Work with databases and scripts to customize solutions for grid management projects\n• Travel to customer sites and collaborate with design teams on AEMS/ADMS systems",
-      "date_published": "2026-10-15T11:23:07.275Z",
-      "authors": [
-        {
-          "name": "GE Vernova"
         }
       ]
     }
