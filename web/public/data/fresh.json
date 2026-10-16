@@ -1,6 +1,28 @@
 {
  "jobs": [
   {
+   "id": "4477736314",
+   "company": "Amazon Science",
+   "title": "Applied Scientist",
+   "slugTitle": "Applied Scientist, Alexa Sensitive Content Intelligence (ASCI)",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792189911106,
+   "firstSeenAt": 1792193511111,
+   "logo": "/logos/amazon-science.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480556601",
+   "company": "Synchrony",
+   "title": "Analyst, HPA Monitoring Analyst, Information Security (L9)",
+   "location": "Pune Division, Maharashtra, India",
+   "postedAt": 1792189615003,
+   "firstSeenAt": 1792193215018,
+   "logo": "/logos/synchrony.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477740111",
    "company": "Eaton",
    "title": "IT Apprentice",
@@ -419,27 +441,6 @@
    "postedAt": 1792144126087,
    "firstSeenAt": 1792145386126,
    "logo": "/logos/arctic-wolf.png",
-   "bulletCount": 3
-  },
-  {
-   "id": "4443151549",
-   "company": "Clearwater Analytics",
-   "title": "Data Flow Engineer",
-   "location": "Mumbai Metropolitan Region",
-   "postedAt": 1792143691108,
-   "firstSeenAt": 1792146211116,
-   "logo": "/logos/clearwater-analytics.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480354033",
-   "company": "SalesForce-ad",
-   "title": "Software Engineering AMTS",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792142356987,
-   "firstSeenAt": 1792143436997,
-   "logo": "/logos/salesforce-ad.jpg",
    "bulletCount": 3
   }
  ]
