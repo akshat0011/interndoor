@@ -1,6 +1,81 @@
 {
  "jobs": [
   {
+   "id": "4480304766",
+   "company": "NatWest Group",
+   "title": "Software Engineer B7",
+   "slugTitle": "WoW Software Engineer B7 - AI (CCX Platform)",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792123966790,
+   "firstSeenAt": 1792127566795,
+   "logo": "/logos/natwest-group.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4475270176",
+   "company": "Barclays",
+   "title": "Software Engineer - PBI Data Analytics",
+   "location": "Pune Division, Maharashtra, India",
+   "postedAt": 1792123951270,
+   "firstSeenAt": 1792127551277,
+   "logo": "/logos/barclays.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4475258668",
+   "company": "Barclays",
+   "title": "Cloud Data Engineer",
+   "location": "Pune Division, Maharashtra, India",
+   "postedAt": 1792123939794,
+   "firstSeenAt": 1792127539803,
+   "logo": "/logos/barclays.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479309841",
+   "company": "BiteSpeed",
+   "title": "AI Video Creator - Intern",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792123929433,
+   "firstSeenAt": 1792127529439,
+   "logo": "/logos/bitespeed.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480309617",
+   "company": "NatWest Group",
+   "title": "WoW Software Engineer B7 - AI (CCX Platform)",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792123925612,
+   "firstSeenAt": 1792127525615,
+   "logo": "/logos/natwest-group.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480322208",
+   "company": "Fluence",
+   "title": "Intern Engineer – Software Quality & Automation",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792123907687,
+   "firstSeenAt": 1792127507693,
+   "logo": "/logos/fluence.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479326067",
+   "company": "Lexsi Labs",
+   "title": "AI Agent Engineer Intern",
+   "location": "Mumbai Metropolitan Region",
+   "workplaceType": "Remote",
+   "postedAt": 1792123898396,
+   "firstSeenAt": 1792127498406,
+   "logo": "/logos/lexsi-labs.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477359193",
    "company": "Barclays",
    "title": "Test Engineer",
@@ -368,88 +443,6 @@
    "postedAt": 1792068601036,
    "firstSeenAt": 1792074306515,
    "logo": "/logos/swiggy.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479830361",
-   "company": "Merck Healthcare",
-   "title": "Data Engineer",
-   "slugTitle": "Data Engineer - Snowflakes Developer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792068596023,
-   "firstSeenAt": 1792069256027,
-   "logo": "/logos/merck-healthcare.jpg",
-   "bulletCount": 4
-  },
-  {
-   "id": "4479832117",
-   "company": "Microsoft",
-   "title": "Software Engineer IC2",
-   "slugTitle": "Software Engineering IC2",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792068246116,
-   "firstSeenAt": 1792069266119,
-   "logo": "/logos/microsoft.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479817812",
-   "company": "Microsoft",
-   "title": "Software Engineer",
-   "slugTitle": "Software Engineering",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792068221544,
-   "firstSeenAt": 1792069241568,
-   "logo": "/logos/microsoft.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4442647974",
-   "company": "Google",
-   "title": "Software Engineer, PhD",
-   "slugTitle": "Software Engineer, PhD, Google Cloud Platform",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792066898460,
-   "firstSeenAt": 1792069478466,
-   "logo": "/logos/google.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479105578",
-   "company": "GoKwik",
-   "title": "Application Engineering Intern",
-   "slugTitle": "Intern - Application Engineering",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792066771079,
-   "firstSeenAt": 1792067911087,
-   "logo": "/logos/gokwik.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479829064",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors AI Eng",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065832865,
-   "firstSeenAt": 1792068292868,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479817557",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Embedded Eng",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065830305,
-   "firstSeenAt": 1792068530307,
-   "logo": "/logos/honeywell-technologies.jpg",
    "bulletCount": 3
   }
  ]
