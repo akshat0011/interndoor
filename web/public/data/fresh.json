@@ -13,14 +13,14 @@
    "bulletCount": 3
   },
   {
-   "id": "4479368378",
-   "company": "ALTEN India",
-   "title": "Engineering Trainee",
-   "slugTitle": "Graduate Engineering Trainee",
-   "location": "Pune District, Maharashtra, India",
-   "postedAt": 1792159117926,
-   "firstSeenAt": 1792161097929,
-   "logo": "/logos/alten-india.jpg",
+   "id": "4480379123",
+   "company": "Larsen & Toubro",
+   "title": "Quantum Computing Associate",
+   "location": "Greater Chennai Area",
+   "workplaceType": "On-site",
+   "postedAt": 1792159807935,
+   "firstSeenAt": 1792163407943,
+   "logo": "/logos/larsen-and-toubro.jpg",
    "bulletCount": 3
   },
   {
@@ -32,6 +32,17 @@
    "postedAt": 1792157014248,
    "firstSeenAt": 1792160254253,
    "logo": "/logos/iqvia.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480364557",
+   "company": "Deutsche Bank",
+   "title": "Site Reliability Engineer",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792156660598,
+   "firstSeenAt": 1792163860603,
+   "logo": "/logos/deutsche-bank.jpg",
    "bulletCount": 3
   },
   {
@@ -424,17 +435,6 @@
    "postedAt": 1792121580374,
    "firstSeenAt": 1792122120378,
    "logo": "/logos/tcs.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479124589",
-   "company": "KIRLOSKAR ELECTRIC COMPANY LTD.",
-   "title": "Quality Assurance Engineer",
-   "location": "Greater Bengaluru Area",
-   "workplaceType": "On-site",
-   "postedAt": 1792120282145,
-   "firstSeenAt": 1792120342161,
-   "logo": "/logos/kirloskar-electric-company-ltd.jpg",
    "bulletCount": 3
   }
  ]
