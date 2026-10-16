@@ -12,6 +12,38 @@
    "bulletCount": 3
   },
   {
+   "id": "4479360386",
+   "company": "Kapiva",
+   "title": "Data Analyst",
+   "slugTitle": "Data Analyst - Central Analytics",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792154111545,
+   "firstSeenAt": 1792157471547,
+   "logo": "/logos/kapiva.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479368023",
+   "company": "L & T Case Equipment Private Limited",
+   "title": "Quantum Computing Associate",
+   "location": "Greater Chennai Area",
+   "workplaceType": "On-site",
+   "postedAt": 1792152879528,
+   "firstSeenAt": 1792156479532,
+   "logo": "/logos/l-and-t-case-equipment-private-limited.png",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479361205",
+   "company": "Zensar Technologies",
+   "title": "Java AWS Developer",
+   "location": "Hyderabad, Telangana, India",
+   "postedAt": 1792152839857,
+   "firstSeenAt": 1792156439867,
+   "logo": "/logos/zensar-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479359324",
    "company": "American Express",
    "title": "Software Engineer I",
@@ -402,39 +434,6 @@
    "postedAt": 1792109297329,
    "firstSeenAt": 1792112897337,
    "logo": "/logos/zensar-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "ats:workday:morningstar:wd5:morningstar:REQ-058839",
-   "company": "Morningstar",
-   "title": "Apprentice",
-   "location": "Mumbai",
-   "postedAt": 1792108800000,
-   "firstSeenAt": 1792134501766,
-   "logo": "/logos/morningstar.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480163835",
-   "company": "A.P. Moller - Maersk",
-   "title": "Full Stack Software Engineer",
-   "slugTitle": "Software Engineer (Full Stack",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792105254314,
-   "firstSeenAt": 1792108854397,
-   "logo": "/logos/a-p-moller-maersk.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479170801",
-   "company": "Citi",
-   "title": "Application Development Programmer Analyst",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792101147740,
-   "firstSeenAt": 1792101507752,
-   "logo": "/logos/citi.jpg",
    "bulletCount": 3
   }
  ]
