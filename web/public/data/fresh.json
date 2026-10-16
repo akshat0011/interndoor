@@ -1,6 +1,27 @@
 {
  "jobs": [
   {
+   "id": "4480178664",
+   "company": "Amazon",
+   "title": "SoC Validation Engineer, Amazon Devices",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792112369458,
+   "firstSeenAt": 1792113449466,
+   "logo": "/logos/amazon.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479185213",
+   "company": "Zensar Technologies",
+   "title": "DevOps Engineer (AI Platform)",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792109297329,
+   "firstSeenAt": 1792112897337,
+   "logo": "/logos/zensar-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4480163835",
    "company": "A.P. Moller - Maersk",
    "title": "Full Stack Software Engineer",
@@ -427,28 +448,6 @@
    "postedAt": 1792065817324,
    "firstSeenAt": 1792068517327,
    "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479816585",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Electrical Eng",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065796685,
-   "firstSeenAt": 1792068316688,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4469329278",
-   "company": "KLA",
-   "title": "Software Quality Engineer",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065677254,
-   "firstSeenAt": 1792069277265,
-   "logo": "/logos/kla.jpg",
    "bulletCount": 3
   }
  ]

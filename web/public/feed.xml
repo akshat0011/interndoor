@@ -6,13 +6,40 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 16 Oct 2026 00:32:02 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 16 Oct 2026 00:59:29 GMT</lastBuildDate>
+  <item>
+    <title>SoC Validation Engineer, Amazon Devices — Amazon</title>
+    <link>https://interndoor.com/jobs/amazon-soc-validation-engineer-amazon-devices-4480178664</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/amazon-soc-validation-engineer-amazon-devices-4480178664</guid>
+    <pubDate>Fri, 16 Oct 2026 00:59:29 GMT</pubDate>
+    <description>Company: Amazon · Location: Bengaluru, Karnataka, India
+• Develop test plans and environments for SoC validation across emulation and prototyping platforms
+• Work with RTL designers and software teams to debug and automate silicon bring-up processes
+• Create baremetal drivers and test infrastructure for next-gen SoCs in pre-silicon and post-silicon phases</description>
+  </item>
   <item>
     <title>Trainee Technology — Bajaj Finserv</title>
     <link>https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4480178944</link>
     <guid isPermaLink="true">https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4480178944</guid>
     <pubDate>Fri, 16 Oct 2026 00:32:02 GMT</pubDate>
     <description>Company: Bajaj Finserv · Location: Pune Division, Maharashtra, India</description>
+  </item>
+  <item>
+    <title>Cohesity is looking for a Resident Engineer contractor to support one of our US based customers. — Cohesity</title>
+    <link>https://interndoor.com/jobs/cohesity-cohesity-is-looking-for-a-resident-engineer-contractor-to-support-one--4479197526</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/cohesity-cohesity-is-looking-for-a-resident-engineer-contractor-to-support-one--4479197526</guid>
+    <pubDate>Fri, 16 Oct 2026 00:20:15 GMT</pubDate>
+    <description>Company: Cohesity · Location: India</description>
+  </item>
+  <item>
+    <title>DevOps Engineer (AI Platform) — Zensar Technologies</title>
+    <link>https://interndoor.com/jobs/zensar-technologies-devops-engineer-ai-platform-4479185213</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/zensar-technologies-devops-engineer-ai-platform-4479185213</guid>
+    <pubDate>Fri, 16 Oct 2026 00:08:17 GMT</pubDate>
+    <description>Company: Zensar Technologies · Location: Pune Division, Maharashtra, India
+• Deploy and manage AI models across environments
+• Use terraform and kubernetes for infrastructure
+• Work on scalable and secure deployment systems</description>
   </item>
   <item>
     <title>Full Stack Software Engineer — A.P. Moller - Maersk</title>
@@ -467,37 +494,6 @@
 • Design and build secure scalable restful apis with spring boot and java
 • Implement api security with oauth2 jwt and rate limiting
 • Collaborate in agile teams and own services end to end</description>
-  </item>
-  <item>
-    <title>Junior Engineer — NTT DATA, Inc.</title>
-    <link>https://interndoor.com/jobs/ntt-data-inc-junior-engineer-dw-technology-4469334996</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/ntt-data-inc-junior-engineer-dw-technology-4469334996</guid>
-    <pubDate>Thu, 15 Oct 2026 10:55:04 GMT</pubDate>
-    <description>Company: NTT DATA, Inc. · Location: Bengaluru East, Karnataka, India
-• Support installation and break/fix events for less complex networking tasks
-• Work with senior engineers and the implementation team on client projects
-• Develop skills in routing, switching, and wireless technologies</description>
-  </item>
-  <item>
-    <title>Developer Data Engineering — Tyson Foods</title>
-    <link>https://interndoor.com/jobs/tyson-foods-developer-data-engineering-4477072671</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/tyson-foods-developer-data-engineering-4477072671</guid>
-    <pubDate>Thu, 15 Oct 2026 10:47:13 GMT</pubDate>
-    <description>Company: Tyson Foods · Location: Bengaluru, Karnataka, India
-• Design and optimize data pipelines using sql and scripting
-• Develop etl processes and data warehousing solutions
-• Build data visualization tools and dashboards
-• Collaborate with stakeholders on data solutions</description>
-  </item>
-  <item>
-    <title>Product Security Engineer — Emerson</title>
-    <link>https://interndoor.com/jobs/emerson-product-security-engineer-4442708013</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/emerson-product-security-engineer-4442708013</guid>
-    <pubDate>Thu, 15 Oct 2026 10:39:09 GMT</pubDate>
-    <description>Company: Emerson · Location: Pune Division, Maharashtra, India
-• Assess product security risks and design embedded software modules
-• Work with RTOS and protocols like SPI, I2C, and RS232
-• Support compliance with EU CRA and IEC standards</description>
   </item>
 </channel>
 </rss>
