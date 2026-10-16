@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/dun-and-bradstreet-india-data-engineer-4477363709",
+      "url": "https://interndoor.com/jobs/dun-and-bradstreet-india-data-engineer-4477363709",
+      "title": "Data Engineer — Dun & Bradstreet India",
+      "content_text": "Company: Dun & Bradstreet India · Location: Hyderabad, Telangana, India\n• Write sql/python code for data tools and pipelines\n• Maintain and improve data workflows and automation\n• Evaluate data sources for ai and research workflows\n• Support operational tasks and database administration",
+      "date_published": "2026-10-16T07:49:54.468Z",
+      "authors": [
+        {
+          "name": "Dun & Bradstreet India"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/tata-consultancy-services-java-developer-4479331548",
       "url": "https://interndoor.com/jobs/tata-consultancy-services-java-developer-4479331548",
       "title": "Java Developer — Tata Consultancy Services",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Swiggy"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/merck-healthcare-data-engineer-snowflakes-developer-4479830361",
-      "url": "https://interndoor.com/jobs/merck-healthcare-data-engineer-snowflakes-developer-4479830361",
-      "title": "Data Engineer — Merck Healthcare",
-      "content_text": "Company: Merck Healthcare · Location: Bengaluru, Karnataka, India\n• Build and optimize cloud data structures using Snowflake\n• Write and test SQL queries for data transformation\n• Collaborate with senior engineers on pipeline development\n• Maintain database performance and cost efficiency",
-      "date_published": "2026-10-15T12:49:56.023Z",
-      "authors": [
-        {
-          "name": "Merck Healthcare"
         }
       ]
     }

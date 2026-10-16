@@ -6,7 +6,18 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 16 Oct 2026 07:32:36 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 16 Oct 2026 07:49:54 GMT</lastBuildDate>
+  <item>
+    <title>Data Engineer — Dun &amp; Bradstreet India</title>
+    <link>https://interndoor.com/jobs/dun-and-bradstreet-india-data-engineer-4477363709</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/dun-and-bradstreet-india-data-engineer-4477363709</guid>
+    <pubDate>Fri, 16 Oct 2026 07:49:54 GMT</pubDate>
+    <description>Company: Dun &amp; Bradstreet India · Location: Hyderabad, Telangana, India
+• Write sql/python code for data tools and pipelines
+• Maintain and improve data workflows and automation
+• Evaluate data sources for ai and research workflows
+• Support operational tasks and database administration</description>
+  </item>
   <item>
     <title>Java Developer — Tata Consultancy Services</title>
     <link>https://interndoor.com/jobs/tata-consultancy-services-java-developer-4479331548</link>
@@ -483,17 +494,6 @@
 • Develop user-facing features and apps
 • Write clean, reusable code with typescript
 • Optimize app performance across devices</description>
-  </item>
-  <item>
-    <title>Data Engineer — Merck Healthcare</title>
-    <link>https://interndoor.com/jobs/merck-healthcare-data-engineer-snowflakes-developer-4479830361</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/merck-healthcare-data-engineer-snowflakes-developer-4479830361</guid>
-    <pubDate>Thu, 15 Oct 2026 12:49:56 GMT</pubDate>
-    <description>Company: Merck Healthcare · Location: Bengaluru, Karnataka, India
-• Build and optimize cloud data structures using Snowflake
-• Write and test SQL queries for data transformation
-• Collaborate with senior engineers on pipeline development
-• Maintain database performance and cost efficiency</description>
   </item>
 </channel>
 </rss>
