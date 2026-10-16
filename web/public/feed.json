@@ -6,6 +6,66 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/paypal-software-engineer-back-end-4480350162",
+      "url": "https://interndoor.com/jobs/paypal-software-engineer-back-end-4480350162",
+      "title": "Software Engineer, Back End — PayPal",
+      "content_text": "Company: PayPal · Location: Bengaluru, Karnataka, India\n• Write and maintain backend systems for payment processing\n• Use java and kotlin with spring framework\n• Work on high-traffic global payment infrastructure",
+      "date_published": "2026-10-16T09:36:37.628Z",
+      "authors": [
+        {
+          "name": "PayPal"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/salesforce-ad-software-engineering-amts-4480354033",
+      "url": "https://interndoor.com/jobs/salesforce-ad-software-engineering-amts-4480354033",
+      "title": "Software Engineering AMTS — SalesForce-ad",
+      "content_text": "Company: SalesForce-ad · Location: Hyderabad, Telangana, India\n• Design, build, and test scalable cloud products used by millions\n• Work with engineers, product managers, and UX experts on real projects\n• Use AI tools like Gemini and Cursor to improve code and workflows",
+      "date_published": "2026-10-16T09:19:16.987Z",
+      "authors": [
+        {
+          "name": "SalesForce-ad"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/salesforce-ad-software-engineering-mts-4480342593",
+      "url": "https://interndoor.com/jobs/salesforce-ad-software-engineering-mts-4480342593",
+      "title": "Software Engineer — SalesForce-ad",
+      "content_text": "Company: SalesForce-ad · Location: Hyderabad, Telangana, India\n• Build and maintain web apps, APIs, and microservices for global community products\n• Manage cloud infrastructure with terraform and aws, optimize ci/cd workflows\n• Work with cross-functional teams on feature development and user experience",
+      "date_published": "2026-10-16T09:18:41.251Z",
+      "authors": [
+        {
+          "name": "SalesForce-ad"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/idfy-product-support-engineer-4480335572",
+      "url": "https://interndoor.com/jobs/idfy-product-support-engineer-4480335572",
+      "title": "Product Support Engineer — IDfy",
+      "content_text": "Company: IDfy · Location: Mumbai Metropolitan Region\n• Review test strategies and ensure all testing types are covered\n• Define and execute manual and automation testing strategies\n• Ensure development tasks meet quality criteria through testing and issue tracking",
+      "date_published": "2026-10-16T08:19:17.336Z",
+      "authors": [
+        {
+          "name": "IDfy"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/razorpay-data-analyst-business-finance-4480324915",
+      "url": "https://interndoor.com/jobs/razorpay-data-analyst-business-finance-4480324915",
+      "title": "Data Analyst, Business Finance — Razorpay",
+      "content_text": "Company: Razorpay · Location: Bengaluru, Karnataka, India\n• Support finance team with data analysis, automation, and AI workflows\n• Use SQL, Python, and AI tools to build reports and ensure data accuracy\n• Work on improving financial processes with a focus on automation and insights",
+      "date_published": "2026-10-16T08:19:07.240Z",
+      "authors": [
+        {
+          "name": "Razorpay"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/dun-and-bradstreet-india-data-engineer-4477363709",
       "url": "https://interndoor.com/jobs/dun-and-bradstreet-india-data-engineer-4477363709",
       "title": "Data Engineer — Dun & Bradstreet India",
@@ -542,66 +602,6 @@
       "authors": [
         {
           "name": "Salesforce"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/salesforce-software-engineering-amts-4479831678",
-      "url": "https://interndoor.com/jobs/salesforce-software-engineering-amts-4479831678",
-      "title": "Software Engineering AMTS — Salesforce",
-      "content_text": "Company: Salesforce · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Build scalable products and improve development processes\n• Collaborate with engineers, product managers, and UX experts\n• Write tests and automate metrics for high-quality code",
-      "date_published": "2026-10-15T14:04:35.768Z",
-      "authors": [
-        {
-          "name": "Salesforce"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ge-healthcare-graduate-engineer-trainee-4479836443",
-      "url": "https://interndoor.com/jobs/ge-healthcare-graduate-engineer-trainee-4479836443",
-      "title": "Graduate Engineer Trainee — GE HealthCare",
-      "content_text": "Company: GE HealthCare · Location: Bengaluru, Karnataka, India\n• Design and develop electronic hardware for high-frequency high-voltage generators used in x-ray systems\n• Use cadence tools for circuit simulation, pcb design, and component selection\n• Collaborate on field data analysis, design changes, and test setup development",
-      "date_published": "2026-10-15T13:45:07.714Z",
-      "authors": [
-        {
-          "name": "GE HealthCare"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/ericsson-devsecops-engineer-4409900494",
-      "url": "https://interndoor.com/jobs/ericsson-devsecops-engineer-4409900494",
-      "title": "DevSecOps Engineer — Ericsson",
-      "content_text": "Company: Ericsson · Location: Bengaluru, Karnataka, India\n• Design and develop backend services and APIs in go\n• Build cloud-native apps and microservices on kubernetes\n• Integrate observability with open telemetry and prometheus\n• Collaborate with global teams on scalable platform solutions",
-      "date_published": "2026-10-15T13:04:21.018Z",
-      "authors": [
-        {
-          "name": "Ericsson"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/salesforce-software-engineering-mts-4479841124",
-      "url": "https://interndoor.com/jobs/salesforce-software-engineering-mts-4479841124",
-      "title": "Software Engineer — Salesforce",
-      "content_text": "Company: Salesforce · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Build and maintain web apps, APIs, and microservices for global community products\n• Manage cloud infrastructure with Terraform and AWS, optimize CI/CD pipelines\n• Collaborate with engineers, product managers, and UX designers on cross-functional projects",
-      "date_published": "2026-10-15T12:54:40.098Z",
-      "authors": [
-        {
-          "name": "Salesforce"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/swiggy-software-dev-engineer-i-ats-smartrecruiters-swiggy-6000000001491502",
-      "url": "https://interndoor.com/jobs/swiggy-software-dev-engineer-i-ats-smartrecruiters-swiggy-6000000001491502",
-      "title": "Software Dev Engineer I — Swiggy",
-      "content_text": "Company: Swiggy · Location: Bengaluru, in\n• Develop user-facing features and apps\n• Write clean, reusable code with typescript\n• Optimize app performance across devices",
-      "date_published": "2026-10-15T12:50:01.036Z",
-      "authors": [
-        {
-          "name": "Swiggy"
         }
       ]
     }
