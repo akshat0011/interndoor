@@ -1,6 +1,117 @@
 {
  "jobs": [
   {
+   "id": "4462780909",
+   "company": "Cognizant",
+   "title": "GeoSpatial Analyst MAP",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792171618755,
+   "firstSeenAt": 1792171978759,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480513543",
+   "company": "Johnson & Johnson Innovative Medicine",
+   "title": "Scientist Pharmacometrics Support - Hyderabad",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792170189516,
+   "firstSeenAt": 1792171269523,
+   "logo": "/logos/johnson-and-johnson-innovative-medicine.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477709403",
+   "company": "Echo Initiative by Joveo",
+   "title": "Diversity & Belonging Specialist",
+   "location": "India",
+   "workplaceType": "Remote",
+   "postedAt": 1792169064167,
+   "firstSeenAt": 1792170384171,
+   "logo": "/logos/echo-initiative-by-joveo.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480397829",
+   "company": "Capgemini Engineering",
+   "title": "MBD",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792168902820,
+   "firstSeenAt": 1792170402825,
+   "logo": "/logos/capgemini-engineering.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477398808",
+   "company": "NetApp",
+   "title": "Salesforce Developer & Administrator",
+   "slugTitle": "Certinia (formerly FinancialForce) Salesforce Developer & Administrator",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792168875859,
+   "firstSeenAt": 1792172475863,
+   "logo": "/logos/netapp.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479384368",
+   "company": "Cognizant",
+   "title": "DevOps Engineer",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792168360216,
+   "firstSeenAt": 1792171660221,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479381495",
+   "company": "Cognizant",
+   "title": "Data Analyst",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792168327378,
+   "firstSeenAt": 1792170967383,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479384365",
+   "company": "Cognizant",
+   "title": "Agent-Orch. Software Engr",
+   "location": "Chennai, Tamil Nadu, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792168307600,
+   "firstSeenAt": 1792171607602,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 4
+  },
+  {
+   "id": "4416064535",
+   "company": "Aditya Birla Capital",
+   "title": "Software Engineer",
+   "location": "Maharashtra, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792167201489,
+   "firstSeenAt": 1792170801492,
+   "logo": "/logos/aditya-birla-capital.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4476668530",
+   "company": "Vodafone",
+   "title": "TDM Engineer - VOIS",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792163145120,
+   "firstSeenAt": 1792170345129,
+   "logo": "/logos/vodafone.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477388709",
    "company": "Reveation Labs",
    "title": "Software Engineer Intern",
@@ -21,17 +132,6 @@
    "postedAt": 1792159807935,
    "firstSeenAt": 1792163407943,
    "logo": "/logos/larsen-and-toubro.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479359606",
-   "company": "IQVIA",
-   "title": "Analyst",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792157014248,
-   "firstSeenAt": 1792160254253,
-   "logo": "/logos/iqvia.jpg",
    "bulletCount": 3
   },
   {
@@ -65,17 +165,6 @@
    "postedAt": 1792154111545,
    "firstSeenAt": 1792157471547,
    "logo": "/logos/kapiva.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479368023",
-   "company": "L & T Case Equipment Private Limited",
-   "title": "Quantum Computing Associate",
-   "location": "Greater Chennai Area",
-   "workplaceType": "On-site",
-   "postedAt": 1792152879528,
-   "firstSeenAt": 1792156479532,
-   "logo": "/logos/l-and-t-case-equipment-private-limited.png",
    "bulletCount": 3
   },
   {
@@ -347,95 +436,6 @@
    "postedAt": 1792130659271,
    "firstSeenAt": 1792131679284,
    "logo": "/logos/oceaneering.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480304766",
-   "company": "NatWest Group",
-   "title": "Software Engineer B7",
-   "slugTitle": "WoW Software Engineer B7 - AI (CCX Platform)",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792123966790,
-   "firstSeenAt": 1792127566795,
-   "logo": "/logos/natwest-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4475270176",
-   "company": "Barclays",
-   "title": "Software Engineer - PBI Data Analytics",
-   "location": "Pune Division, Maharashtra, India",
-   "postedAt": 1792123951270,
-   "firstSeenAt": 1792127551277,
-   "logo": "/logos/barclays.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4475258668",
-   "company": "Barclays",
-   "title": "Cloud Data Engineer",
-   "location": "Pune Division, Maharashtra, India",
-   "postedAt": 1792123939794,
-   "firstSeenAt": 1792127539803,
-   "logo": "/logos/barclays.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480309617",
-   "company": "NatWest Group",
-   "title": "Software Engineer B7",
-   "slugTitle": "WoW Software Engineer B7 - AI (CCX Platform)",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792123925612,
-   "firstSeenAt": 1792127525615,
-   "logo": "/logos/natwest-group.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479326067",
-   "company": "Lexsi Labs",
-   "title": "AI Agent Engineer Intern",
-   "location": "Mumbai Metropolitan Region",
-   "workplaceType": "Remote",
-   "postedAt": 1792123898396,
-   "firstSeenAt": 1792127498406,
-   "logo": "/logos/lexsi-labs.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477359193",
-   "company": "Barclays",
-   "title": "Test Engineer",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792121850143,
-   "firstSeenAt": 1792124610153,
-   "logo": "/logos/barclays.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477360123",
-   "company": "Barclays",
-   "title": "Full Stack Java developer",
-   "slugTitle": "Full Stack Java designer/developer",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792121836752,
-   "firstSeenAt": 1792124656759,
-   "logo": "/logos/barclays.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479114937",
-   "company": "TCS",
-   "title": "Python Developer trainee",
-   "location": "Ahmedabad, Gujarat, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792121580374,
-   "firstSeenAt": 1792122120378,
-   "logo": "/logos/tcs.jpg",
    "bulletCount": 3
   }
  ]
