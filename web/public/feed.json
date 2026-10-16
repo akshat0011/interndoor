@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/american-express-business-analyst-data-analytics-4479600509",
+      "url": "https://interndoor.com/jobs/american-express-business-analyst-data-analytics-4479600509",
+      "title": "Business Analyst — American Express",
+      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Analyze data to create insights that improve offer adoption and customer satisfaction\n• Use python, sql, and hive to build solutions for global marketing teams\n• Collaborate with international partners across multiple business units",
+      "date_published": "2026-10-16T18:38:10.844Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/ey-cyber-triage-and-forensic-junior-analyst-4468527260",
+      "url": "https://interndoor.com/jobs/ey-cyber-triage-and-forensic-junior-analyst-4468527260",
+      "title": "Cyber Triage And Forensic Junior Analyst — EY",
+      "content_text": "Company: EY · Location: Trivandrum, Kerala, India\n• Monitor and analyze security logs/alerts for real-time incident detection\n• Investigate and resolve security events with technical expertise\n• Collaborate on incident response and improve security procedures",
+      "date_published": "2026-10-16T18:37:40.191Z",
+      "authors": [
+        {
+          "name": "EY"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/cognizant-java-fullstack-developer-with-angular-graphql-4434156786",
+      "url": "https://interndoor.com/jobs/cognizant-java-fullstack-developer-with-angular-graphql-4434156786",
+      "title": "Java fullstack developer with Angular + Graphql — Cognizant",
+      "content_text": "Company: Cognizant · Location: Noida, Uttar Pradesh, India\n• Build scalable backend services with core java and java 21\n• Develop angular apps for responsive user experiences\n• Design graphql schemas for efficient data access\n• Work with hybrid teams on global enterprise platforms",
+      "date_published": "2026-10-16T17:59:27.068Z",
+      "authors": [
+        {
+          "name": "Cognizant"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/cognizant-geospatial-analyst-map-4462780909",
       "url": "https://interndoor.com/jobs/cognizant-geospatial-analyst-map-4462780909",
       "title": "GeoSpatial Analyst — Cognizant",
@@ -26,18 +62,6 @@
       "authors": [
         {
           "name": "Johnson & Johnson Innovative Medicine"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/echo-initiative-by-joveo-diversity-and-belonging-specialist-4477709403",
-      "url": "https://interndoor.com/jobs/echo-initiative-by-joveo-diversity-and-belonging-specialist-4477709403",
-      "title": "Diversity & Belonging Specialist — Echo Initiative by Joveo",
-      "content_text": "Company: Echo Initiative by Joveo · Location: India\n• Collaborate with product managers and engineers on new features\n• Maintain and optimize cloud environments and IT infrastructure\n• Develop testing protocols and resolve technical issues",
-      "date_published": "2026-10-16T16:44:24.167Z",
-      "authors": [
-        {
-          "name": "Echo Initiative by Joveo"
         }
       ]
     },
@@ -83,18 +107,6 @@
       "title": "Data Analyst — Cognizant",
       "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Design data pipelines and generative ai workflows using python and langgraph\n• Collaborate with cross-functional teams to deliver insights and automation\n• Mentor junior analysts and ensure reliable, ethical data solutions",
       "date_published": "2026-10-16T16:32:07.378Z",
-      "authors": [
-        {
-          "name": "Cognizant"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-agent-orch-software-engr-4479384365",
-      "url": "https://interndoor.com/jobs/cognizant-agent-orch-software-engr-4479384365",
-      "title": "Agent-Orch. Software Engr — Cognizant",
-      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Design and implement data orchestration workflows for finance analytics\n• Work with Snowflake Cortex Code and core Snowflake for secure data processing\n• Collaborate with cross-functional teams in hybrid environments\n• Optimize SQL and pipelines for large-scale financial reporting",
-      "date_published": "2026-10-16T16:31:47.600Z",
       "authors": [
         {
           "name": "Cognizant"
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "KIRLOSKAR ELECTRIC COMPANY LTD."
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4479199838",
-      "url": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4479199838",
-      "title": "AI Research Internship — Lexsi Labs",
-      "content_text": "Company: Lexsi Labs · Location: Mumbai Metropolitan Region · Duration: 6 months\n• Develop open-source tools for alignment, explainability, and model robustness\n• Work on cutting-edge AI research with real-world industry applications\n• Potential for full-time conversion and co-authorship on research papers",
-      "date_published": "2026-10-16T02:35:07.938Z",
-      "authors": [
-        {
-          "name": "Lexsi Labs"
         }
       ]
     }

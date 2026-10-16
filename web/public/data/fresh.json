@@ -1,6 +1,39 @@
 {
  "jobs": [
   {
+   "id": "4479600509",
+   "company": "American Express",
+   "title": "Business Analyst",
+   "slugTitle": "Business Analyst-Data Analytics",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792175890844,
+   "firstSeenAt": 1792177450849,
+   "logo": "/logos/american-express.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4468527260",
+   "company": "EY",
+   "title": "Cyber Triage And Forensic Junior Analyst",
+   "location": "Trivandrum, Kerala, India",
+   "postedAt": 1792175860191,
+   "firstSeenAt": 1792176400209,
+   "logo": "/logos/ey.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4434156786",
+   "company": "Cognizant",
+   "title": "Java fullstack developer with Angular + Graphql",
+   "location": "Noida, Uttar Pradesh, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792173567068,
+   "firstSeenAt": 1792177167073,
+   "logo": "/logos/cognizant.jpg",
+   "bulletCount": 4
+  },
+  {
    "id": "4462780909",
    "company": "Cognizant",
    "title": "GeoSpatial Analyst",
@@ -21,17 +54,6 @@
    "postedAt": 1792170189516,
    "firstSeenAt": 1792171269523,
    "logo": "/logos/johnson-and-johnson-innovative-medicine.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477709403",
-   "company": "Echo Initiative by Joveo",
-   "title": "Diversity & Belonging Specialist",
-   "location": "India",
-   "workplaceType": "Remote",
-   "postedAt": 1792169064167,
-   "firstSeenAt": 1792170384171,
-   "logo": "/logos/echo-initiative-by-joveo.jpg",
    "bulletCount": 3
   },
   {
@@ -78,17 +100,6 @@
    "firstSeenAt": 1792170967383,
    "logo": "/logos/cognizant.jpg",
    "bulletCount": 3
-  },
-  {
-   "id": "4479384365",
-   "company": "Cognizant",
-   "title": "Agent-Orch. Software Engr",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792168307600,
-   "firstSeenAt": 1792171607602,
-   "logo": "/logos/cognizant.jpg",
-   "bulletCount": 4
   },
   {
    "id": "4416064535",
@@ -425,18 +436,6 @@
    "postedAt": 1792135408549,
    "firstSeenAt": 1792135948558,
    "logo": "/logos/snapmint.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480334117",
-   "company": "Oceaneering",
-   "title": "Technical Support Apprentice",
-   "slugTitle": "Apprentice-Technical Support Engineer",
-   "location": "Chandigarh, Chandigarh, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792130659271,
-   "firstSeenAt": 1792131679284,
-   "logo": "/logos/oceaneering.jpg",
    "bulletCount": 3
   }
  ]
