@@ -1,6 +1,48 @@
 {
  "jobs": [
   {
+   "id": "4477740111",
+   "company": "Eaton",
+   "title": "Apprentice. IT. Development Program",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792188707687,
+   "firstSeenAt": 1792189307703,
+   "logo": "/logos/eaton.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480562265",
+   "company": "Synchrony",
+   "title": "Analyst, HPA Monitoring Analyst, Information Security (L9)",
+   "location": "Hyderabad, Telangana, India",
+   "postedAt": 1792187850756,
+   "firstSeenAt": 1792190010760,
+   "logo": "/logos/synchrony.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480546855",
+   "company": "Synchrony",
+   "title": "Analyst, HPA Monitoring Analyst, Information Security (L9)",
+   "location": "Delhi, Delhi, India",
+   "postedAt": 1792187841628,
+   "firstSeenAt": 1792189881634,
+   "logo": "/logos/synchrony.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4480551752",
+   "company": "Synchrony",
+   "title": "Information Security Analyst",
+   "slugTitle": "Analyst, HPA Monitoring Analyst, Information Security (L9)",
+   "location": "Kolkata, West Bengal, India",
+   "postedAt": 1792187798370,
+   "firstSeenAt": 1792190198374,
+   "logo": "/logos/synchrony.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4480533513",
    "company": "GitLab",
    "title": "Intermediate Backend Engineer - Code Security",
@@ -396,50 +438,6 @@
    "firstSeenAt": 1792143436997,
    "logo": "/logos/salesforce-ad.jpg",
    "bulletCount": 3
-  },
-  {
-   "id": "4480342593",
-   "company": "SalesForce-ad",
-   "title": "Software Engineer",
-   "slugTitle": "Software Engineering MTS",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792142321251,
-   "firstSeenAt": 1792143641254,
-   "logo": "/logos/salesforce-ad.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479351055",
-   "company": "Tata Consultancy Services",
-   "title": "Oracle Fusion OIC",
-   "location": "Chennai, Tamil Nadu, India",
-   "postedAt": 1792141420589,
-   "firstSeenAt": 1792148620595,
-   "logo": "/logos/tata-consultancy-services.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480335572",
-   "company": "IDfy",
-   "title": "Product Support Engineer",
-   "location": "Mumbai Metropolitan Region",
-   "workplaceType": "On-site",
-   "postedAt": 1792138757336,
-   "firstSeenAt": 1792142357341,
-   "logo": "/logos/idfy.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477363709",
-   "company": "Dun & Bradstreet India",
-   "title": "Data Engineer",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792136994468,
-   "firstSeenAt": 1792139694483,
-   "logo": "/logos/dun-and-bradstreet-india.jpg",
-   "bulletCount": 4
   }
  ]
 }

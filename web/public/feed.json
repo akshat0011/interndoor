@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4477740111",
+      "url": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4477740111",
+      "title": "Apprentice. IT. Development Program — Eaton",
+      "content_text": "Company: Eaton · Location: Pune Division, Maharashtra, India\n• Build dashboards, reports, and content for digital workplace platforms\n• Support knowledge management, training, and user engagement initiatives\n• Coordinate events, track metrics, and analyze adoption of digital tools",
+      "date_published": "2026-10-16T22:11:47.687Z",
+      "authors": [
+        {
+          "name": "Eaton"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/synchrony-analyst-hpa-monitoring-analyst-information-security-l9-4480562265",
+      "url": "https://interndoor.com/jobs/synchrony-analyst-hpa-monitoring-analyst-information-security-l9-4480562265",
+      "title": "Analyst, HPA Monitoring Analyst, Information Security (L9) — Synchrony",
+      "content_text": "Company: Synchrony · Location: Hyderabad, Telangana, India · Duration: 12 months\n• Monitor and investigate security alerts for privileged accounts\n• Analyze security telemetry in splunk to identify unauthorized activity\n• Collaborate with security and tech teams to resolve and improve monitoring",
+      "date_published": "2026-10-16T21:57:30.756Z",
+      "authors": [
+        {
+          "name": "Synchrony"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/synchrony-analyst-hpa-monitoring-analyst-information-security-l9-4480546855",
+      "url": "https://interndoor.com/jobs/synchrony-analyst-hpa-monitoring-analyst-information-security-l9-4480546855",
+      "title": "Analyst, HPA Monitoring Analyst, Information Security (L9) — Synchrony",
+      "content_text": "Company: Synchrony · Location: Delhi, Delhi, India · Duration: 12 months\n• Monitor and investigate security alerts for privileged access\n• Analyze security telemetry in splunk to identify unauthorized activity\n• Collaborate with security and tech teams to resolve and improve monitoring",
+      "date_published": "2026-10-16T21:57:21.628Z",
+      "authors": [
+        {
+          "name": "Synchrony"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/synchrony-analyst-hpa-monitoring-analyst-information-security-l9-4480551752",
+      "url": "https://interndoor.com/jobs/synchrony-analyst-hpa-monitoring-analyst-information-security-l9-4480551752",
+      "title": "Information Security Analyst — Synchrony",
+      "content_text": "Company: Synchrony · Location: Kolkata, West Bengal, India · Duration: 12 months\n• Monitor and investigate security alerts for privileged access\n• Analyze security telemetry in splunk to identify unauthorized activity\n• Collaborate with security and tech teams to resolve and improve monitoring",
+      "date_published": "2026-10-16T21:56:38.370Z",
+      "authors": [
+        {
+          "name": "Synchrony"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/gitlab-intermediate-backend-engineer-code-security-4480533513",
       "url": "https://interndoor.com/jobs/gitlab-intermediate-backend-engineer-code-security-4480533513",
       "title": "Intermediate Backend Engineer - Code Security — GitLab",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-software-engineer-pbi-data-analytics-4475270176",
-      "url": "https://interndoor.com/jobs/barclays-software-engineer-pbi-data-analytics-4475270176",
-      "title": "Software Engineer - PBI Data Analytics — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Build and optimize Power BI data models, dashboards, and reports using DAX and Power Query\n• Collaborate with data engineers and stakeholders to design scalable analytics solutions\n• Work with Snowflake or SQL Server to manage data pipelines and governance",
-      "date_published": "2026-10-16T04:12:31.270Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-cloud-data-engineer-4475258668",
-      "url": "https://interndoor.com/jobs/barclays-cloud-data-engineer-4475258668",
-      "title": "Cloud Data Engineer — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Design and build scalable AWS data platforms and analytics systems\n• Use SQL, Python, PySpark, and AWS services like Glue and S3\n• Collaborate with data architects and analysts on secure data pipelines",
-      "date_published": "2026-10-16T04:12:19.794Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-b7-ai-ccx-platform-4480309617",
-      "url": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-b7-ai-ccx-platform-4480309617",
-      "title": "Software Engineer B7 — NatWest Group",
-      "content_text": "Company: NatWest Group · Location: Chennai, Tamil Nadu, India\n• Engineer software and tools for customer-centric platforms\n• Work with devops and agile tools across full development lifecycle\n• Collaborate with architects and analysts on complex systems",
-      "date_published": "2026-10-16T04:12:05.612Z",
-      "authors": [
-        {
-          "name": "NatWest Group"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/lexsi-labs-ai-agent-engineer-intern-4479326067",
-      "url": "https://interndoor.com/jobs/lexsi-labs-ai-agent-engineer-intern-4479326067",
-      "title": "AI Agent Engineer Intern — Lexsi Labs",
-      "content_text": "Company: Lexsi Labs · Location: Mumbai Metropolitan Region\n• Build agentic systems that reason over workflows and interact with data tools\n• Work on research, product, or applied AI projects with real-world impact\n• Collaborate with research and engineering teams on enterprise AI challenges",
-      "date_published": "2026-10-16T04:11:38.396Z",
-      "authors": [
-        {
-          "name": "Lexsi Labs"
         }
       ]
     }

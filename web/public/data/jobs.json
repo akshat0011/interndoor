@@ -1,9 +1,9 @@
 {
- "generatedAt": 1792189226775,
+ "generatedAt": 1792190360109,
  "region": "IN",
  "regionName": "India",
- "count": 1410,
- "techCount": 1410,
+ "count": 1413,
+ "techCount": 1413,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -516,6 +516,199 @@
   "gurgaon"
  ],
  "jobs": [
+  {
+   "id": "4477740111",
+   "title": "Apprentice. IT. Development Program",
+   "company": "Eaton",
+   "matchedWatchlist": "Eaton Corporation",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "intern",
+   "logo": "/logos/eaton.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves creating dashboards, reports, and content for digital workplace platforms. You'll support knowledge management, training, and user engagement initiatives. You'll coordinate events, track metrics, and analyze adoption of digital tools.",
+   "bullets": [
+    "Build dashboards, reports, and content for digital workplace platforms",
+    "Support knowledge management, training, and user engagement initiatives",
+    "Coordinate events, track metrics, and analyze adoption of digital tools"
+   ],
+   "roleLabel": "Digital Workplace Support",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "microsoft 365",
+    "sharepoint",
+    "viva engage"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "10 minutes ago",
+   "postedAt": 1792188707687,
+   "firstSeenAt": 1792189307703,
+   "lastSeenAt": 1792189307703,
+   "url": "https://www.linkedin.com/jobs/view/4477740111/",
+   "applyUrl": "https://eaton.eightfold.ai/careers/job/687239705711?utm_source=linkedin&domain=eaton.com",
+   "description": null,
+   "roleFingerprint": "ee257bc6a3",
+   "cardFacts": [
+    "Pune Division",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "generic",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4480562265",
+   "title": "Analyst, HPA Monitoring Analyst, Information Security (L9)",
+   "company": "Synchrony",
+   "matchedWatchlist": "Synchrony",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/synchrony.jpg",
+   "location": "Hyderabad, Telangana, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "12 months",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves monitoring and investigating security alerts related to privileged access. The analyst will use splunk to analyze security data, identify potential threats, and work with teams to resolve issues and enhance monitoring processes. It suits someone with experience in security monitoring and splunk analysis.",
+   "bullets": [
+    "Monitor and investigate security alerts for privileged accounts",
+    "Analyze security telemetry in splunk to identify unauthorized activity",
+    "Collaborate with security and tech teams to resolve and improve monitoring"
+   ],
+   "roleLabel": "Security Monitoring Analyst",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "splunk",
+    "security monitoring",
+    "siem analysis"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "36 minutes ago",
+   "postedAt": 1792187850756,
+   "firstSeenAt": 1792190010760,
+   "lastSeenAt": 1792190010760,
+   "url": "https://www.linkedin.com/jobs/view/4480562265/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4480562265/",
+   "description": null,
+   "roleFingerprint": "89e2318ae3",
+   "cardFacts": [
+    "Hyderabad",
+    "12 months"
+   ],
+   "category": "misc",
+   "family": "secops",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4480546855",
+   "title": "Analyst, HPA Monitoring Analyst, Information Security (L9)",
+   "company": "Synchrony",
+   "matchedWatchlist": "Synchrony",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/synchrony.jpg",
+   "location": "Delhi, Delhi, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "12 months",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves monitoring and investigating security alerts related to privileged access and elevated permissions. The analyst will use splunk to analyze security data, identify potential threats, and work with cross-functional teams to resolve issues and enhance monitoring processes. It suits someone with experience in security operations and splunk analysis.",
+   "bullets": [
+    "Monitor and investigate security alerts for privileged access",
+    "Analyze security telemetry in splunk to identify unauthorized activity",
+    "Collaborate with security and tech teams to resolve and improve monitoring"
+   ],
+   "roleLabel": "Security Monitoring Analyst",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "splunk",
+    "siem analysis",
+    "security monitoring"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "34 minutes ago",
+   "postedAt": 1792187841628,
+   "firstSeenAt": 1792189881634,
+   "lastSeenAt": 1792189881634,
+   "url": "https://www.linkedin.com/jobs/view/4480546855/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4480546855/",
+   "description": null,
+   "roleFingerprint": "89e2318ae3",
+   "cardFacts": [
+    "Delhi",
+    "12 months"
+   ],
+   "category": "misc",
+   "family": "secops",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4480551752",
+   "title": "Information Security Analyst",
+   "slugTitle": "Analyst, HPA Monitoring Analyst, Information Security (L9)",
+   "company": "Synchrony",
+   "matchedWatchlist": "Synchrony",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/synchrony.jpg",
+   "location": "Kolkata, West Bengal, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": "12 months",
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves monitoring and investigating security alerts related to privileged access and elevated permissions. The analyst will use splunk to analyze security data, identify potential threats, and work with cross-functional teams to resolve issues and enhance monitoring processes. It suits someone with experience in security operations and splunk analysis.",
+   "bullets": [
+    "Monitor and investigate security alerts for privileged access",
+    "Analyze security telemetry in splunk to identify unauthorized activity",
+    "Collaborate with security and tech teams to resolve and improve monitoring"
+   ],
+   "roleLabel": "Security Monitoring Analyst",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "splunk",
+    "siem analysis",
+    "security monitoring"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "40 minutes ago",
+   "postedAt": 1792187798370,
+   "firstSeenAt": 1792190198374,
+   "lastSeenAt": 1792190198374,
+   "url": "https://www.linkedin.com/jobs/view/4480551752/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4480551752/",
+   "description": null,
+   "roleFingerprint": "89e2318ae3",
+   "cardFacts": [
+    "Kolkata",
+    "12 months"
+   ],
+   "category": "misc",
+   "family": "secops",
+   "region": "IN",
+   "verified": true
+  },
   {
    "id": "4480533513",
    "title": "Intermediate Backend Engineer - Code Security",
@@ -16537,64 +16730,6 @@
    "verified": true
   },
   {
-   "id": "4475672547",
-   "title": "IT Apprentice",
-   "slugTitle": "Apprentice. IT. Development Program",
-   "company": "Eaton",
-   "matchedWatchlist": "Eaton Corporation",
-   "isTech": true,
-   "roleSource": "model-enrich",
-   "employmentType": "intern",
-   "logo": "/logos/eaton.jpg",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "stipend": null,
-   "duration": null,
-   "applicants": "Be among the first 25 applicants",
-   "easyApply": false,
-   "skills": [
-    "azure",
-    "agile",
-    "excel"
-   ],
-   "summary": "This role supports agile delivery teams focused on observability and service reliability. The apprentice scrum master facilitates ceremonies, tracks progress, and collaborates with product owners and platform teams to improve operational efficiency. Ideal for early-career professionals with agile experience and interest in it operations.",
-   "bullets": [
-    "Facilitate scrum ceremonies and track sprint progress using jira and azure devops",
-    "Support product owners with backlog grooming and sprint readiness activities",
-    "Coordinate dynatrace onboarding and monitoring enhancements with platform teams"
-   ],
-   "roleLabel": "Scrum Master Support",
-   "degreeLevel": "UG",
-   "degreeText": null,
-   "experience": "0–2 years",
-   "keySkills": [
-    "agile",
-    "scrum",
-    "kanban",
-    "jira",
-    "azure devops"
-   ],
-   "stipendStatus": "unknown",
-   "postedText": "27 minutes ago",
-   "postedAt": 1791772324396,
-   "firstSeenAt": 1791773944405,
-   "lastSeenAt": 1791779406220,
-   "checkedAt": 1792150799679,
-   "checkedVia": "link",
-   "url": "https://www.linkedin.com/jobs/view/4475672547/",
-   "applyUrl": "https://eaton.eightfold.ai/careers/job/687239425748?utm_source=linkedin&domain=eaton.com",
-   "description": null,
-   "roleFingerprint": "2fb23e0b00",
-   "cardFacts": [
-    "Pune Division",
-    "Hybrid"
-   ],
-   "category": "software",
-   "family": "generic",
-   "region": "IN",
-   "verified": true
-  },
-  {
    "id": "4478367422",
    "title": "Developer L2",
    "slugTitle": "DEVELOPER L2",
@@ -19664,7 +19799,7 @@
    "category": "software",
    "family": "backend",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4476865281",
@@ -19722,7 +19857,7 @@
    "category": "software",
    "family": "devops",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4476856495",
@@ -19776,7 +19911,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4476845653",
