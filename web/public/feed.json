@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/kirloskar-electric-company-ltd-quality-assurance-engineer-4479124589",
+      "url": "https://interndoor.com/jobs/kirloskar-electric-company-ltd-quality-assurance-engineer-4479124589",
+      "title": "Quality Assurance Engineer — KIRLOSKAR ELECTRIC COMPANY LTD.",
+      "content_text": "Company: KIRLOSKAR ELECTRIC COMPANY LTD. · Location: Greater Bengaluru Area\n• Execute manual tests to validate software performance and reliability\n• Track defects and collaborate with dev teams to resolve issues\n• Maintain test documentation and support release testing processes",
+      "date_published": "2026-10-16T03:11:22.145Z",
+      "authors": [
+        {
+          "name": "KIRLOSKAR ELECTRIC COMPANY LTD."
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4479199838",
       "url": "https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4479199838",
       "title": "AI Research Internship — Lexsi Labs",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "GE Vernova"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/qualcomm-engineer-audio-dsp-4460611060",
-      "url": "https://interndoor.com/jobs/qualcomm-engineer-audio-dsp-4460611060",
-      "title": "Audio DSP Engineer — Qualcomm",
-      "content_text": "Company: Qualcomm · Location: Greater Hyderabad Area\n• Optimize dsp code for performance and memory\n• Develop audio frameworks and interface drivers\n• Collaborate with cross-functional teams on audio use cases",
-      "date_published": "2026-10-15T11:20:52.794Z",
-      "authors": [
-        {
-          "name": "Qualcomm"
         }
       ]
     }

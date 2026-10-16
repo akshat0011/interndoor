@@ -1,6 +1,17 @@
 {
  "jobs": [
   {
+   "id": "4479124589",
+   "company": "KIRLOSKAR ELECTRIC COMPANY LTD.",
+   "title": "Quality Assurance Engineer",
+   "location": "Greater Bengaluru Area",
+   "workplaceType": "On-site",
+   "postedAt": 1792120282145,
+   "firstSeenAt": 1792120342161,
+   "logo": "/logos/kirloskar-electric-company-ltd.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479199838",
    "company": "Lexsi Labs",
    "title": "AI Research Internship",
@@ -438,17 +449,6 @@
    "workplaceType": "On-site",
    "postedAt": 1792065821791,
    "firstSeenAt": 1792067921793,
-   "logo": "/logos/honeywell-technologies.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479824399",
-   "company": "Honeywell Technologies",
-   "title": "Intern Bachelors Electrical Eng",
-   "location": "Hyderabad, Telangana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792065818653,
-   "firstSeenAt": 1792068158660,
    "logo": "/logos/honeywell-technologies.jpg",
    "bulletCount": 3
   }

@@ -1,9 +1,9 @@
 {
- "generatedAt": 1792120270417,
+ "generatedAt": 1792120618039,
  "region": "IN",
  "regionName": "India",
- "count": 1390,
- "techCount": 1390,
+ "count": 1391,
+ "techCount": 1391,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -197,6 +197,7 @@
   "Jefferies",
   "Johnson & Johnson Innovative Medicine",
   "Johnson Controls",
+  "KIRLOSKAR ELECTRIC COMPANY LTD.",
   "KLA",
   "Kaleris",
   "KeyValue",
@@ -508,6 +509,52 @@
  ],
  "jobs": [
   {
+   "id": "4479124589",
+   "title": "Quality Assurance Engineer",
+   "company": "KIRLOSKAR ELECTRIC COMPANY LTD.",
+   "matchedWatchlist": "Kirloskar",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/kirloskar-electric-company-ltd.jpg",
+   "location": "Greater Bengaluru Area",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": true,
+   "skills": [],
+   "summary": "This full-time role involves testing software for engineering and industrial solutions. You will design test cases, execute manual tests, and ensure quality standards are met. Ideal for someone with a background in software testing and a keen eye for detail.",
+   "bullets": [
+    "Execute manual tests to validate software performance and reliability",
+    "Track defects and collaborate with dev teams to resolve issues",
+    "Maintain test documentation and support release testing processes"
+   ],
+   "roleLabel": "Quality Assurance Engineer",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "manual testing"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 minute ago",
+   "postedAt": 1792120282145,
+   "firstSeenAt": 1792120342161,
+   "lastSeenAt": 1792120342161,
+   "url": "https://www.linkedin.com/jobs/view/4479124589/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4479124589/",
+   "description": null,
+   "roleFingerprint": "02c7e0b8b6",
+   "cardFacts": [
+    "Greater Bengaluru Area",
+    "On-site"
+   ],
+   "category": "software",
+   "family": "qa",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4479199838",
    "title": "AI Research Internship",
    "company": "Lexsi Labs",
@@ -552,7 +599,7 @@
    "postedText": "6 minutes ago",
    "postedAt": 1792118107938,
    "firstSeenAt": 1792118467946,
-   "lastSeenAt": 1792118467946,
+   "lastSeenAt": 1792120310979,
    "url": "https://www.linkedin.com/jobs/view/4479199838/",
    "applyUrl": "https://easyapply.jobs/r/tGxV3gt27qrI5t3M0jzV",
    "description": null,
