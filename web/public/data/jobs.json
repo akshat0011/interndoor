@@ -1,9 +1,9 @@
 {
- "generatedAt": 1792178669594,
+ "generatedAt": 1792180772485,
  "region": "IN",
  "regionName": "India",
- "count": 1412,
- "techCount": 1412,
+ "count": 1415,
+ "techCount": 1415,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -72,6 +72,7 @@
   "Capgemini",
   "Capgemini Engineering",
   "Cardinal Health",
+  "Cargill",
   "Caterpillar Inc.",
   "Celonis",
   "Cencora",
@@ -634,6 +635,109 @@
    "verified": true
   },
   {
+   "id": "4479386818",
+   "title": "Automation Engineer I",
+   "company": "Air Arabia",
+   "matchedWatchlist": "Air Arabia",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/air-arabia.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "55 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "ci/cd",
+    "git",
+    "nlp",
+    "pandas",
+    "llm"
+   ],
+   "summary": "This role involves developing intelligent automation solutions to streamline business processes. You will build RPA bots, integrate AI tools, and work with cross-functional teams to design scalable workflows. Ideal for an early-career engineer with Python and RPA experience.",
+   "bullets": [
+    "Build and maintain RPA bots using Automation Anywhere and Python",
+    "Integrate AI tools for document processing and API-driven automation",
+    "Collaborate with cross-functional teams to design digital workflows"
+   ],
+   "roleLabel": "RPA Development",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "experience": "0–4 years",
+   "expLevel": "fresher",
+   "expSays": "0–4 years",
+   "keySkills": [
+    "python",
+    "automation anywhere",
+    "unify apps",
+    "sql"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1792175116737,
+   "firstSeenAt": 1792178716743,
+   "lastSeenAt": 1792178716743,
+   "url": "https://www.linkedin.com/jobs/view/4479386818/",
+   "applyUrl": "https://www.airarabiagroupcareers.com/gb/en/job/18201/Automation-Engineer-I?src=LinkedIn",
+   "description": null,
+   "roleFingerprint": "98f4dc8bdd",
+   "cardFacts": [
+    "Pune Division"
+   ],
+   "category": "software",
+   "family": "generic",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4477712538",
+   "title": "Software Engineer I-1",
+   "company": "Mastercard",
+   "matchedWatchlist": "Mastercard",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/mastercard.jpg",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This full-time role involves developing and maintaining secure software solutions for Mastercard's global payment systems. You'll write code, test applications, and collaborate with international teams to ensure compliance and efficiency. Ideal for a recent graduate with a background in computer science or related fields looking to contribute to a large-scale financial technology platform.",
+   "bullets": [
+    "Write, test, and maintain secure software systems for payment platforms",
+    "Use java, python, and cloud technologies in a global payment network",
+    "Work on cross-functional teams with global stakeholders"
+   ],
+   "roleLabel": "Software engineering",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [],
+   "stipendStatus": "unknown",
+   "postedText": "1 hour ago",
+   "postedAt": 1792175106379,
+   "firstSeenAt": 1792178706393,
+   "lastSeenAt": 1792178706393,
+   "url": "https://www.linkedin.com/jobs/view/4477712538/",
+   "applyUrl": "https://careers.mastercard.com/us/en/job/MASRUSR293576EXTERNALENUS/Software-Engineer-I-1?utm_source=linkedin&utm_medium=phenom-feeds&source=LINKEDIN",
+   "description": null,
+   "roleFingerprint": "88169d8d6f",
+   "cardFacts": [
+    "Pune Division",
+    "Hybrid"
+   ],
+   "category": "software",
+   "family": "swe",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4434156786",
    "title": "Java fullstack developer",
    "slugTitle": "Java fullstack developer with Angular + Graphql",
@@ -687,6 +791,63 @@
    ],
    "category": "software",
    "family": "fullstack",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4469794403",
+   "title": "Data Analyst",
+   "slugTitle": "Data Analyst - Corporate Audit",
+   "company": "Cargill",
+   "matchedWatchlist": "Cargill",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/cargill.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "python",
+    "sql",
+    "llm",
+    "agile",
+    "tableau",
+    "power bi"
+   ],
+   "summary": "This role involves analyzing financial and IT data to identify risks and control gaps. You'll use tools like Power BI, Tableau, SQL, and Python to create reports and insights that support audit objectives. Ideal for someone with experience in data analytics and a background in finance or IT.",
+   "bullets": [
+    "Analyzes financial and IT data to identify risks and control gaps",
+    "Uses Power BI, Tableau, SQL, and Python for reporting and analysis",
+    "Works with audit teams to translate data into actionable findings"
+   ],
+   "roleLabel": "Data Audit Analyst",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "power bi",
+    "tableau",
+    "sql",
+    "python",
+    "sap"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "2 hours ago",
+   "postedAt": 1792172355408,
+   "firstSeenAt": 1792179555413,
+   "lastSeenAt": 1792179555413,
+   "url": "https://www.linkedin.com/jobs/view/4469794403/",
+   "applyUrl": "https://careers.cargill.com/en/job/-/-/23251/101076020688",
+   "description": null,
+   "roleFingerprint": "805ef69147",
+   "cardFacts": [
+    "Bengaluru"
+   ],
+   "category": "software",
+   "family": "data_eng",
    "region": "IN",
    "verified": true
   },
@@ -831,7 +992,7 @@
    "postedText": "25 minutes ago",
    "postedAt": 1792168902820,
    "firstSeenAt": 1792170402825,
-   "lastSeenAt": 1792175808757,
+   "lastSeenAt": 1792179721719,
    "url": "https://www.linkedin.com/jobs/view/4480397829/",
    "applyUrl": "https://www.capgemini.com/jobs/517854-en_GB_SAPBTP/MBD",
    "description": null,
@@ -20060,7 +20221,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4476843407",
@@ -20171,7 +20332,7 @@
    "category": "software",
    "family": "other",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4450342403",
@@ -20227,7 +20388,7 @@
    "category": "software",
    "family": "generic",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4449374994",
@@ -20288,7 +20449,7 @@
    "category": "software",
    "family": "devops",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4449393133",
@@ -20346,7 +20507,7 @@
    "category": "software",
    "family": "devops",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4467865576",
@@ -20399,7 +20560,7 @@
    "category": "misc",
    "family": "analytics",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4467882209",
@@ -20464,7 +20625,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4449375888",
@@ -20527,7 +20688,7 @@
    "category": "software",
    "family": "devops",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4431447090",
@@ -20582,7 +20743,7 @@
    "category": "software",
    "family": "qa",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4469191491",
@@ -20703,7 +20864,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4467882208",
@@ -20764,7 +20925,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4477851038",
@@ -20932,7 +21093,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4467801660",
@@ -21057,7 +21218,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4476835221",
@@ -23125,7 +23286,7 @@
    "postedText": "2 minutes ago",
    "postedAt": 1791546693639,
    "firstSeenAt": 1791546813643,
-   "lastSeenAt": 1792174960595,
+   "lastSeenAt": 1792178845696,
    "checkedAt": 1792106918391,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4476296165/",
@@ -68066,7 +68227,7 @@
    "postedText": "18 minutes ago",
    "postedAt": 1790359591624,
    "firstSeenAt": 1790360671631,
-   "lastSeenAt": 1790371457456,
+   "lastSeenAt": 1792178971327,
    "checkedAt": 1792160931537,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4450488965/",

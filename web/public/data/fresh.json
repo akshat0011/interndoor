@@ -23,6 +23,27 @@
    "bulletCount": 3
   },
   {
+   "id": "4479386818",
+   "company": "Air Arabia",
+   "title": "Automation Engineer I",
+   "location": "Pune Division, Maharashtra, India",
+   "postedAt": 1792175116737,
+   "firstSeenAt": 1792178716743,
+   "logo": "/logos/air-arabia.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477712538",
+   "company": "Mastercard",
+   "title": "Software Engineer I-1",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792175106379,
+   "firstSeenAt": 1792178706393,
+   "logo": "/logos/mastercard.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4434156786",
    "company": "Cognizant",
    "title": "Java fullstack developer",
@@ -33,6 +54,17 @@
    "firstSeenAt": 1792177167073,
    "logo": "/logos/cognizant.jpg",
    "bulletCount": 4
+  },
+  {
+   "id": "4469794403",
+   "company": "Cargill",
+   "title": "Data Analyst",
+   "slugTitle": "Data Analyst - Corporate Audit",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792172355408,
+   "firstSeenAt": 1792179555413,
+   "logo": "/logos/cargill.jpg",
+   "bulletCount": 3
   },
   {
    "id": "4462780909",
@@ -405,38 +437,6 @@
    "postedAt": 1792136670597,
    "firstSeenAt": 1792140270609,
    "logo": "/logos/bitespeed.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479331548",
-   "company": "Tata Consultancy Services",
-   "title": "Java Developer",
-   "location": "Chennai, Tamil Nadu, India",
-   "postedAt": 1792135956121,
-   "firstSeenAt": 1792136136123,
-   "logo": "/logos/tata-consultancy-services.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479321965",
-   "company": "Intel",
-   "title": "AI Performance Engineer",
-   "slugTitle": "LLM & Agentic AI Performance Engineer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792135743722,
-   "firstSeenAt": 1792136163730,
-   "logo": "/logos/intel.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4468375854",
-   "company": "Snapmint",
-   "title": "Information Technology Administrator",
-   "location": "Jaipur, Rajasthan, India",
-   "postedAt": 1792135408549,
-   "firstSeenAt": 1792135948558,
-   "logo": "/logos/snapmint.jpg",
    "bulletCount": 3
   }
  ]
