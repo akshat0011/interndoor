@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 16 Oct 2026 00:59:29 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 16 Oct 2026 02:35:07 GMT</lastBuildDate>
+  <item>
+    <title>AI Research Internship — Lexsi Labs</title>
+    <link>https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4479199838</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/lexsi-labs-ai-research-internship-4479199838</guid>
+    <pubDate>Fri, 16 Oct 2026 02:35:07 GMT</pubDate>
+    <description>Company: Lexsi Labs · Location: Mumbai Metropolitan Region · Duration: 6 months
+• Develop open-source tools for alignment, explainability, and model robustness
+• Work on cutting-edge AI research with real-world industry applications
+• Potential for full-time conversion and co-authorship on research papers</description>
+  </item>
   <item>
     <title>SoC Validation Engineer — Amazon</title>
     <link>https://interndoor.com/jobs/amazon-soc-validation-engineer-amazon-devices-4480178664</link>
@@ -476,7 +486,7 @@
 • Travel to customer sites and collaborate with design teams on AEMS/ADMS systems</description>
   </item>
   <item>
-    <title>Engineer - Audio DSP — Qualcomm</title>
+    <title>Audio DSP Engineer — Qualcomm</title>
     <link>https://interndoor.com/jobs/qualcomm-engineer-audio-dsp-4460611060</link>
     <guid isPermaLink="true">https://interndoor.com/jobs/qualcomm-engineer-audio-dsp-4460611060</guid>
     <pubDate>Thu, 15 Oct 2026 11:20:52 GMT</pubDate>
@@ -484,16 +494,6 @@
 • Optimize dsp code for performance and memory
 • Develop audio frameworks and interface drivers
 • Collaborate with cross-functional teams on audio use cases</description>
-  </item>
-  <item>
-    <title>Java API Developer — Birlasoft</title>
-    <link>https://interndoor.com/jobs/birlasoft-java-api-developer-4478879051</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/birlasoft-java-api-developer-4478879051</guid>
-    <pubDate>Thu, 15 Oct 2026 11:10:15 GMT</pubDate>
-    <description>Company: Birlasoft · Location: Greater Bengaluru Area
-• Design and build secure scalable restful apis with spring boot and java
-• Implement api security with oauth2 jwt and rate limiting
-• Collaborate in agile teams and own services end to end</description>
   </item>
 </channel>
 </rss>
