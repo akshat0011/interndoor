@@ -1,6 +1,18 @@
 {
  "jobs": [
   {
+   "id": "4480334117",
+   "company": "Oceaneering",
+   "title": "Technical Support Apprentice",
+   "slugTitle": "Apprentice-Technical Support Engineer",
+   "location": "Chandigarh, Chandigarh, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792130659271,
+   "firstSeenAt": 1792131679284,
+   "logo": "/logos/oceaneering.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4480304766",
    "company": "NatWest Group",
    "title": "Software Engineer B7",
@@ -434,16 +446,6 @@
    "postedAt": 1792068880098,
    "firstSeenAt": 1792069900106,
    "logo": "/logos/salesforce.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "ats:smartrecruiters:swiggy:6000000001491502",
-   "company": "Swiggy",
-   "title": "Software Dev Engineer I",
-   "location": "Bengaluru, in",
-   "postedAt": 1792068601036,
-   "firstSeenAt": 1792074306515,
-   "logo": "/logos/swiggy.jpg",
    "bulletCount": 3
   }
  ]

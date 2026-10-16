@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/oceaneering-apprentice-technical-support-engineer-4480334117",
+      "url": "https://interndoor.com/jobs/oceaneering-apprentice-technical-support-engineer-4480334117",
+      "title": "Technical Support Apprentice — Oceaneering",
+      "content_text": "Company: Oceaneering · Location: Chandigarh, Chandigarh, India\n• Support technical queries for ROV, Survey, C-NAV, and AGV equipment\n• Use helpdesk and knowledge base software for database management\n• Prepare customized reports for management",
+      "date_published": "2026-10-16T06:04:19.271Z",
+      "authors": [
+        {
+          "name": "Oceaneering"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-b7-ai-ccx-platform-4480304766",
       "url": "https://interndoor.com/jobs/natwest-group-wow-software-engineer-b7-ai-ccx-platform-4480304766",
       "title": "Software Engineer B7 — NatWest Group",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Google"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/gokwik-intern-application-engineering-4479105578",
-      "url": "https://interndoor.com/jobs/gokwik-intern-application-engineering-4479105578",
-      "title": "Application Engineering Intern — GoKwik",
-      "content_text": "Company: GoKwik · Location: Gurugram, Haryana, India\n• Build and enhance backend services using node.js and nestjs\n• Work with postgresql, mongodb, redis, kafka, and aws\n• Contribute to scalable systems and real production code",
-      "date_published": "2026-10-15T12:19:31.079Z",
-      "authors": [
-        {
-          "name": "GoKwik"
         }
       ]
     }

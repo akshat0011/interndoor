@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 16 Oct 2026 04:12:46 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 16 Oct 2026 06:04:19 GMT</lastBuildDate>
+  <item>
+    <title>Technical Support Apprentice — Oceaneering</title>
+    <link>https://interndoor.com/jobs/oceaneering-apprentice-technical-support-engineer-4480334117</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/oceaneering-apprentice-technical-support-engineer-4480334117</guid>
+    <pubDate>Fri, 16 Oct 2026 06:04:19 GMT</pubDate>
+    <description>Company: Oceaneering · Location: Chandigarh, Chandigarh, India
+• Support technical queries for ROV, Survey, C-NAV, and AGV equipment
+• Use helpdesk and knowledge base software for database management
+• Prepare customized reports for management</description>
+  </item>
   <item>
     <title>Software Engineer B7 — NatWest Group</title>
     <link>https://interndoor.com/jobs/natwest-group-wow-software-engineer-b7-ai-ccx-platform-4480304766</link>
@@ -484,16 +494,6 @@
 • Design and develop scalable distributed systems for hybrid cloud networking
 • Collaborate with product management and SRE teams on GCP projects
 • Implement secure, reliable systems with AI/ML for operational insights</description>
-  </item>
-  <item>
-    <title>Application Engineering Intern — GoKwik</title>
-    <link>https://interndoor.com/jobs/gokwik-intern-application-engineering-4479105578</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/gokwik-intern-application-engineering-4479105578</guid>
-    <pubDate>Thu, 15 Oct 2026 12:19:31 GMT</pubDate>
-    <description>Company: GoKwik · Location: Gurugram, Haryana, India
-• Build and enhance backend services using node.js and nestjs
-• Work with postgresql, mongodb, redis, kafka, and aws
-• Contribute to scalable systems and real production code</description>
   </item>
 </channel>
 </rss>
