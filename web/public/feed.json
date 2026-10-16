@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/tata-consultancy-services-java-developer-4479331548",
+      "url": "https://interndoor.com/jobs/tata-consultancy-services-java-developer-4479331548",
+      "title": "Java Developer — Tata Consultancy Services",
+      "content_text": "Company: Tata Consultancy Services · Location: Chennai, Tamil Nadu, India\n• Develop and maintain scalable enterprise applications using Java and Spring Boot\n• Design RESTful APIs and integrate with third-party systems\n• Collaborate on architecture and contribute to application design decisions",
+      "date_published": "2026-10-16T07:32:36.121Z",
+      "authors": [
+        {
+          "name": "Tata Consultancy Services"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/intel-llm-and-agentic-ai-performance-engineer-4479321965",
+      "url": "https://interndoor.com/jobs/intel-llm-and-agentic-ai-performance-engineer-4479321965",
+      "title": "AI Performance Engineer — Intel",
+      "content_text": "Company: Intel · Location: Bengaluru, Karnataka, India\n• Optimize LLM and Agentic AI workloads across software and hardware stack\n• Work with vLLM, SGLang, TGI, and tools like VTune and perf\n• Collaborate with open-source communities and Intel platform teams",
+      "date_published": "2026-10-16T07:29:03.722Z",
+      "authors": [
+        {
+          "name": "Intel"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/snapmint-information-technology-administrator-4468375854",
+      "url": "https://interndoor.com/jobs/snapmint-information-technology-administrator-4468375854",
+      "title": "Information Technology Administrator — Snapmint",
+      "content_text": "Company: Snapmint · Location: Jaipur, Rajasthan, India\n• Manage IT assets, security, and user access across Windows, macOS, and Linux\n• Use JumpCloud, Kaspersky, and Safetica for device management and compliance\n• Provide desktop support and coordinate with vendors and finance teams",
+      "date_published": "2026-10-16T07:23:28.549Z",
+      "authors": [
+        {
+          "name": "Snapmint"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/oceaneering-apprentice-technical-support-engineer-4480334117",
       "url": "https://interndoor.com/jobs/oceaneering-apprentice-technical-support-engineer-4480334117",
       "title": "Technical Support Apprentice — Oceaneering",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Merck Healthcare"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/microsoft-software-engineering-ic2-4479832117",
-      "url": "https://interndoor.com/jobs/microsoft-software-engineering-ic2-4479832117",
-      "title": "Software Engineer IC2 — Microsoft",
-      "content_text": "Company: Microsoft · Location: Hyderabad, Telangana, India\n• Build backend services and data pipelines for telemetry and diagnostics\n• Analyze device performance metrics and customer impact signals\n• Collaborate on Windows Fundamentals improvements across hardware and software",
-      "date_published": "2026-10-15T12:44:06.116Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/microsoft-software-engineering-4479817812",
-      "url": "https://interndoor.com/jobs/microsoft-software-engineering-4479817812",
-      "title": "Software Engineer — Microsoft",
-      "content_text": "Company: Microsoft · Location: Hyderabad, Telangana, India\n• Build backend services and data pipelines for telemetry and diagnostics\n• Analyze Windows device performance and reliability using telemetry data\n• Collaborate with engineers on service reliability and data quality",
-      "date_published": "2026-10-15T12:43:41.544Z",
-      "authors": [
-        {
-          "name": "Microsoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/google-software-engineer-phd-google-cloud-platform-4442647974",
-      "url": "https://interndoor.com/jobs/google-software-engineer-phd-google-cloud-platform-4442647974",
-      "title": "Software Engineer, PhD — Google",
-      "content_text": "Company: Google · Location: Bengaluru, Karnataka, India\n• Design and develop scalable distributed systems for hybrid cloud networking\n• Collaborate with product management and SRE teams on GCP projects\n• Implement secure, reliable systems with AI/ML for operational insights",
-      "date_published": "2026-10-15T12:21:38.460Z",
-      "authors": [
-        {
-          "name": "Google"
         }
       ]
     }
