@@ -1,6 +1,17 @@
 {
  "jobs": [
   {
+   "id": "4480533513",
+   "company": "GitLab",
+   "title": "Intermediate Backend Engineer - Code Security",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Remote",
+   "postedAt": 1792178569126,
+   "firstSeenAt": 1792181989138,
+   "logo": "/logos/gitlab.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479600509",
    "company": "American Express",
    "title": "Business Analyst",
@@ -428,16 +439,6 @@
    "firstSeenAt": 1792139694483,
    "logo": "/logos/dun-and-bradstreet-india.jpg",
    "bulletCount": 4
-  },
-  {
-   "id": "4480332583",
-   "company": "BiteSpeed",
-   "title": "AI Video Creator Intern",
-   "location": "Bengaluru, Karnataka, India",
-   "postedAt": 1792136670597,
-   "firstSeenAt": 1792140270609,
-   "logo": "/logos/bitespeed.jpg",
-   "bulletCount": 3
   }
  ]
 }

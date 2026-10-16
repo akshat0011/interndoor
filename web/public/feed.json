@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/gitlab-intermediate-backend-engineer-code-security-4480533513",
+      "url": "https://interndoor.com/jobs/gitlab-intermediate-backend-engineer-code-security-4480533513",
+      "title": "Intermediate Backend Engineer - Code Security — GitLab",
+      "content_text": "Company: GitLab · Location: Bengaluru, Karnataka, India\n• Develop secure parsing for dependency manifests and SBOMs\n• Build analyzers combining AI and deterministic analysis\n• Contribute to CI jobs and AI agent workflows",
+      "date_published": "2026-10-16T19:22:49.126Z",
+      "authors": [
+        {
+          "name": "GitLab"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/american-express-business-analyst-data-analytics-4479600509",
       "url": "https://interndoor.com/jobs/american-express-business-analyst-data-analytics-4479600509",
       "title": "Business Analyst — American Express",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Lexsi Labs"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-test-engineer-4477359193",
-      "url": "https://interndoor.com/jobs/barclays-test-engineer-4477359193",
-      "title": "Test Engineer — Barclays",
-      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Execute functional, regression, and automation testing for banking systems\n• Use Selenium, Cucumber, and Git for test automation and version control\n• Collaborate with cross-functional teams in Pune or Chennai",
-      "date_published": "2026-10-16T03:37:30.143Z",
-      "authors": [
-        {
-          "name": "Barclays"
         }
       ]
     }

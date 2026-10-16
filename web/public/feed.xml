@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 16 Oct 2026 18:38:10 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 16 Oct 2026 19:22:49 GMT</lastBuildDate>
+  <item>
+    <title>Intermediate Backend Engineer - Code Security — GitLab</title>
+    <link>https://interndoor.com/jobs/gitlab-intermediate-backend-engineer-code-security-4480533513</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/gitlab-intermediate-backend-engineer-code-security-4480533513</guid>
+    <pubDate>Fri, 16 Oct 2026 19:22:49 GMT</pubDate>
+    <description>Company: GitLab · Location: Bengaluru, Karnataka, India
+• Develop secure parsing for dependency manifests and SBOMs
+• Build analyzers combining AI and deterministic analysis
+• Contribute to CI jobs and AI agent workflows</description>
+  </item>
   <item>
     <title>Business Analyst — American Express</title>
     <link>https://interndoor.com/jobs/american-express-business-analyst-data-analytics-4479600509</link>
@@ -499,16 +509,6 @@
 • Build agentic systems that reason over workflows and interact with data tools
 • Work on research, product, or applied AI projects with real-world impact
 • Collaborate with research and engineering teams on enterprise AI challenges</description>
-  </item>
-  <item>
-    <title>Test Engineer — Barclays</title>
-    <link>https://interndoor.com/jobs/barclays-test-engineer-4477359193</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-test-engineer-4477359193</guid>
-    <pubDate>Fri, 16 Oct 2026 03:37:30 GMT</pubDate>
-    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
-• Execute functional, regression, and automation testing for banking systems
-• Use Selenium, Cucumber, and Git for test automation and version control
-• Collaborate with cross-functional teams in Pune or Chennai</description>
   </item>
 </channel>
 </rss>
