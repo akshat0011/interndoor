@@ -1,6 +1,29 @@
 {
  "jobs": [
   {
+   "id": "4477388709",
+   "company": "Reveation Labs",
+   "title": "Software Engineer Intern",
+   "slugTitle": "Software Engineer Intern (WordPress, .NET)",
+   "location": "India",
+   "workplaceType": "Remote",
+   "postedAt": 1792160161639,
+   "firstSeenAt": 1792160461646,
+   "logo": "/logos/reveation-labs.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479359606",
+   "company": "IQVIA",
+   "title": "Analyst",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792157014248,
+   "firstSeenAt": 1792160254253,
+   "logo": "/logos/iqvia.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477396229",
    "company": "Piramal Pharma Ltd",
    "title": "Graduate Engineer Trainee",
@@ -40,6 +63,17 @@
    "location": "Hyderabad, Telangana, India",
    "postedAt": 1792152839857,
    "firstSeenAt": 1792156439867,
+   "logo": "/logos/zensar-technologies.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479362133",
+   "company": "Zensar Technologies",
+   "title": "AI Forward Deployed Engineer (Offshore)",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792152408312,
+   "firstSeenAt": 1792159608325,
    "logo": "/logos/zensar-technologies.jpg",
    "bulletCount": 3
   },
@@ -400,40 +434,6 @@
    "postedAt": 1792120282145,
    "firstSeenAt": 1792120342161,
    "logo": "/logos/kirloskar-electric-company-ltd.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479199838",
-   "company": "Lexsi Labs",
-   "title": "AI Research Internship",
-   "location": "Mumbai Metropolitan Region",
-   "workplaceType": "Remote",
-   "postedAt": 1792118107938,
-   "firstSeenAt": 1792118467946,
-   "logo": "/logos/lexsi-labs.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480178664",
-   "company": "Amazon",
-   "title": "SoC Validation Engineer",
-   "slugTitle": "SoC Validation Engineer, Amazon Devices",
-   "location": "Bengaluru, Karnataka, India",
-   "postedAt": 1792112369458,
-   "firstSeenAt": 1792113449466,
-   "logo": "/logos/amazon.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479185213",
-   "company": "Zensar Technologies",
-   "title": "DevOps Engineer",
-   "slugTitle": "DevOps Engineer (AI Platform)",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792109297329,
-   "firstSeenAt": 1792112897337,
-   "logo": "/logos/zensar-technologies.jpg",
    "bulletCount": 3
   }
  ]

@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/reveation-labs-software-engineer-intern-wordpress-net-4477388709",
+      "url": "https://interndoor.com/jobs/reveation-labs-software-engineer-intern-wordpress-net-4477388709",
+      "title": "Software Engineer Intern — Reveation Labs",
+      "content_text": "Company: Reveation Labs · Location: India\n• Build responsive websites with wordpress, html, css, and javascript\n• Work with elementor and bootstrap for frontend development\n• Collaborate with designers and developers on real-world projects",
+      "date_published": "2026-10-16T14:16:01.639Z",
+      "authors": [
+        {
+          "name": "Reveation Labs"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/iqvia-analyst-4479359606",
+      "url": "https://interndoor.com/jobs/iqvia-analyst-4479359606",
+      "title": "Analyst — IQVIA",
+      "content_text": "Company: IQVIA · Location: Bengaluru, Karnataka, India\n• Analyze marketing mix, forecasting, and customer performance data\n• Use python, r, and sas for advanced analytics projects\n• Collaborate with global stakeholders in europe and us",
+      "date_published": "2026-10-16T13:23:34.248Z",
+      "authors": [
+        {
+          "name": "IQVIA"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/piramal-pharma-ltd-graduate-engineer-trainee-4477396229",
       "url": "https://interndoor.com/jobs/piramal-pharma-ltd-graduate-engineer-trainee-4477396229",
       "title": "Graduate Engineer Trainee — Piramal Pharma Ltd",
@@ -47,6 +71,18 @@
       "title": "Java AWS Developer — Zensar Technologies",
       "content_text": "Company: Zensar Technologies · Location: Hyderabad, Telangana, India\n• Develop backend applications using Core Java and Spring Boot\n• Deploy and support services on AWS with CI/CD tools\n• Troubleshoot concurrency issues and performance bottlenecks",
       "date_published": "2026-10-16T12:13:59.857Z",
+      "authors": [
+        {
+          "name": "Zensar Technologies"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/zensar-technologies-ai-forward-deployed-engineer-offshore-4479362133",
+      "url": "https://interndoor.com/jobs/zensar-technologies-ai-forward-deployed-engineer-offshore-4479362133",
+      "title": "AI Forward Deployed Engineer (Offshore) — Zensar Technologies",
+      "content_text": "Company: Zensar Technologies · Location: Pune Division, Maharashtra, India\n• Build and deploy AI/ML solutions with LLMs, RAG, and APIs\n• Integrate with enterprise systems and optimize for performance\n• Collaborate with cross-functional teams on scalable, secure systems",
+      "date_published": "2026-10-16T12:06:48.312Z",
       "authors": [
         {
           "name": "Zensar Technologies"
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Citi"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bristol-myers-squibb-analytics-engineer-i-commercialization-4480136483",
-      "url": "https://interndoor.com/jobs/bristol-myers-squibb-analytics-engineer-i-commercialization-4480136483",
-      "title": "Analytics Engineer I — Bristol Myers Squibb",
-      "content_text": "Company: Bristol Myers Squibb · Location: Hyderabad, Telangana, India\n• Build analytics-ready datasets and transformation logic for commercial reporting\n• Work with Databricks, SQL, and Python on pharma data including claims and sales\n• Collaborate with business teams on data governance and dashboard requirements",
-      "date_published": "2026-10-15T19:52:54.179Z",
-      "authors": [
-        {
-          "name": "Bristol Myers Squibb"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/mastercard-specialist-implementation-4440185497",
-      "url": "https://interndoor.com/jobs/mastercard-specialist-implementation-4440185497",
-      "title": "Implementation Specialist — Mastercard",
-      "content_text": "Company: Mastercard · Location: Pune Division, Maharashtra, India\n• Support financial institutions in testing Mastercard payment systems globally\n• Collaborate with customers on implementation of new release codes\n• Manage multiple projects across key markets and services",
-      "date_published": "2026-10-15T19:11:24.041Z",
-      "authors": [
-        {
-          "name": "Mastercard"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/cognizant-technical-frontier-educator-4447198260",
-      "url": "https://interndoor.com/jobs/cognizant-technical-frontier-educator-4447198260",
-      "title": "Technical Frontier Educator — Cognizant",
-      "content_text": "Company: Cognizant · Location: Chennai, Tamil Nadu, India\n• Design full stack learning journeys with hands-on labs and simulations\n• Deliver trainings through live coding and architecture walkthroughs\n• Coach associates from learning to client readiness with feedback",
-      "date_published": "2026-10-15T18:49:33.832Z",
-      "authors": [
-        {
-          "name": "Cognizant"
         }
       ]
     }
