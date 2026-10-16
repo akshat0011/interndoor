@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/american-express-software-engineer-i-4479359324",
+      "url": "https://interndoor.com/jobs/american-express-software-engineer-i-4479359324",
+      "title": "Software Engineer I — American Express",
+      "content_text": "Company: American Express · Location: Gurugram, Haryana, India\n• Build full-stack apps with Python, React, and AI/ML\n• Work with VMware, Nutanix, and enterprise databases\n• Collaborate with engineers and architects on scalable systems",
+      "date_published": "2026-10-16T11:59:54.353Z",
+      "authors": [
+        {
+          "name": "American Express"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4479352446",
       "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4479352446",
       "title": "App Development Technical Specialist — Birlasoft",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Veradigm®"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-gwcc-qa-tester-technical-specialist-testing-services-4479149206",
-      "url": "https://interndoor.com/jobs/birlasoft-gwcc-qa-tester-technical-specialist-testing-services-4479149206",
-      "title": "QA Tester — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Noida, Uttar Pradesh, India\n• Test insurance software for accuracy and reliability\n• Use functional and integration testing tools\n• Work with business and tech teams on projects",
-      "date_published": "2026-10-15T17:28:26.636Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
         }
       ]
     }

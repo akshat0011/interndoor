@@ -1,6 +1,17 @@
 {
  "jobs": [
   {
+   "id": "4479359324",
+   "company": "American Express",
+   "title": "Software Engineer I",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792151994353,
+   "firstSeenAt": 1792152714366,
+   "logo": "/logos/american-express.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479352446",
    "company": "Birlasoft",
    "title": "App Development Technical Specialist",
@@ -422,18 +433,6 @@
    "workplaceType": "Hybrid",
    "postedAt": 1792101147740,
    "firstSeenAt": 1792101507752,
-   "logo": "/logos/citi.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479178269",
-   "company": "Citi",
-   "title": "AI Engineer",
-   "slugTitle": "Specialized Analytics Ld Anlst - C13 - BANGALORE",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792101112569,
-   "firstSeenAt": 1792101712597,
    "logo": "/logos/citi.jpg",
    "bulletCount": 3
   }
