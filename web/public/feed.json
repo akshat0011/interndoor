@@ -6,6 +6,30 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/barclays-test-engineer-4477359193",
+      "url": "https://interndoor.com/jobs/barclays-test-engineer-4477359193",
+      "title": "Test Engineer — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Execute functional, regression, and automation testing for banking systems\n• Use Selenium, Cucumber, and Git for test automation and version control\n• Collaborate with cross-functional teams in Pune or Chennai",
+      "date_published": "2026-10-16T03:37:30.143Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/barclays-full-stack-java-designer-developer-4477360123",
+      "url": "https://interndoor.com/jobs/barclays-full-stack-java-designer-developer-4477360123",
+      "title": "Full Stack Java developer — Barclays",
+      "content_text": "Company: Barclays · Location: Pune Division, Maharashtra, India\n• Design and develop Java applications using Spring Boot and Java 17+\n• Collaborate with cross-functional teams on scalable, secure software solutions\n• Work in Agile environments with JIRA, GitLab, and IntelliJ IDEA",
+      "date_published": "2026-10-16T03:37:16.752Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/tcs-python-developer-trainee-4479114937",
       "url": "https://interndoor.com/jobs/tcs-python-developer-trainee-4479114937",
       "title": "Python Developer trainee — TCS",
@@ -578,30 +602,6 @@
       "authors": [
         {
           "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-electrical-eng-4479816585",
-      "url": "https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-electrical-eng-4479816585",
-      "title": "Intern Bachelors Electrical Eng — Honeywell Technologies",
-      "content_text": "Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India\n• Support engineering projects through research and testing of electrical systems\n• Collaborate with cross-functional teams on real-world development\n• Work with engineering software and tools in a global tech environment",
-      "date_published": "2026-10-15T12:03:16.685Z",
-      "authors": [
-        {
-          "name": "Honeywell Technologies"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/kla-software-quality-engineer-4469329278",
-      "url": "https://interndoor.com/jobs/kla-software-quality-engineer-4469329278",
-      "title": "Software Quality Engineer — KLA",
-      "content_text": "Company: KLA · Location: Chennai, Tamil Nadu, India\n• Build frameworks and tools for desktop, web, API, and system testing\n• Use C#, Java, Python, and AI to improve testability and quality\n• Integrate automated tests into CI/CD pipelines with Jenkins or Azure DevOps",
-      "date_published": "2026-10-15T12:01:17.254Z",
-      "authors": [
-        {
-          "name": "KLA"
         }
       ]
     }

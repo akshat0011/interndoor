@@ -6,7 +6,27 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 16 Oct 2026 03:33:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 16 Oct 2026 03:37:30 GMT</lastBuildDate>
+  <item>
+    <title>Test Engineer — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-test-engineer-4477359193</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-test-engineer-4477359193</guid>
+    <pubDate>Fri, 16 Oct 2026 03:37:30 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Execute functional, regression, and automation testing for banking systems
+• Use Selenium, Cucumber, and Git for test automation and version control
+• Collaborate with cross-functional teams in Pune or Chennai</description>
+  </item>
+  <item>
+    <title>Full Stack Java developer — Barclays</title>
+    <link>https://interndoor.com/jobs/barclays-full-stack-java-designer-developer-4477360123</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/barclays-full-stack-java-designer-developer-4477360123</guid>
+    <pubDate>Fri, 16 Oct 2026 03:37:16 GMT</pubDate>
+    <description>Company: Barclays · Location: Pune Division, Maharashtra, India
+• Design and develop Java applications using Spring Boot and Java 17+
+• Collaborate with cross-functional teams on scalable, secure software solutions
+• Work in Agile environments with JIRA, GitLab, and IntelliJ IDEA</description>
+  </item>
   <item>
     <title>Python Developer trainee — TCS</title>
     <link>https://interndoor.com/jobs/tcs-python-developer-trainee-4479114937</link>
@@ -474,26 +494,6 @@
 • Design and develop embedded software and firmware
 • Work with engineers on real projects and code reviews
 • Debug systems and contribute to technical documentation</description>
-  </item>
-  <item>
-    <title>Intern Bachelors Electrical Eng — Honeywell Technologies</title>
-    <link>https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-electrical-eng-4479816585</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/honeywell-technologies-intern-bachelors-electrical-eng-4479816585</guid>
-    <pubDate>Thu, 15 Oct 2026 12:03:16 GMT</pubDate>
-    <description>Company: Honeywell Technologies · Location: Bengaluru, Karnataka, India
-• Support engineering projects through research and testing of electrical systems
-• Collaborate with cross-functional teams on real-world development
-• Work with engineering software and tools in a global tech environment</description>
-  </item>
-  <item>
-    <title>Software Quality Engineer — KLA</title>
-    <link>https://interndoor.com/jobs/kla-software-quality-engineer-4469329278</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/kla-software-quality-engineer-4469329278</guid>
-    <pubDate>Thu, 15 Oct 2026 12:01:17 GMT</pubDate>
-    <description>Company: KLA · Location: Chennai, Tamil Nadu, India
-• Build frameworks and tools for desktop, web, API, and system testing
-• Use C#, Java, Python, and AI to improve testability and quality
-• Integrate automated tests into CI/CD pipelines with Jenkins or Azure DevOps</description>
   </item>
 </channel>
 </rss>
