@@ -6,35 +6,35 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/nestack-technologies-pvt-ltd-robotics-prototyping-intern-emp-rwcymd",
+      "url": "https://interndoor.com/jobs/nestack-technologies-pvt-ltd-robotics-prototyping-intern-emp-rwcymd",
+      "title": "Robotics Prototyping Intern — Nestack Technologies Pvt Ltd",
+      "content_text": "Company: Nestack Technologies Pvt Ltd · Location: Hyderabad, Telangana, India\n• Build and test walking robot prototypes from design to deployment\n• Use Python, C/C++, ROS, and DYNAMIXEL for hardware and software\n• Work on-site in Hyderabad with an engineering team on a real project",
+      "date_published": "2026-10-17T14:44:11.303Z",
+      "authors": [
+        {
+          "name": "Nestack Technologies Pvt Ltd"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/nestack-technologies-pvt-ltd-software-developer-intern-emp-3huken",
+      "url": "https://interndoor.com/jobs/nestack-technologies-pvt-ltd-software-developer-intern-emp-3huken",
+      "title": "Software Developer Intern — Nestack Technologies Pvt Ltd",
+      "content_text": "Company: Nestack Technologies Pvt Ltd · Location: Hyderabad, Telangana, India · Duration: 6 months\n• Build full-stack applications and deploy mvp projects\n• Work with python, javascript, react, node.js, and cloud platforms\n• Receive mentorship and real-world project experience",
+      "date_published": "2026-10-17T14:44:11.303Z",
+      "authors": [
+        {
+          "name": "Nestack Technologies Pvt Ltd"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/barclays-api-infrastructure-engineer-ba4-4477770933",
       "url": "https://interndoor.com/jobs/barclays-api-infrastructure-engineer-ba4-4477770933",
       "title": "API Infrastructure Engineer - BA4 — Barclays",
       "content_text": "Company: Barclays · Location: Bengaluru, Karnataka, India\n• Build and maintain scalable infrastructure using Terraform, Ansible, and cloud platforms\n• Collaborate with cross-functional teams to design secure and reliable systems\n• Automate processes and optimize CI/CD pipelines for efficient deployments",
       "date_published": "2026-10-17T13:32:00.502Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-infrastructure-engineer-ba4-4477782474",
-      "url": "https://interndoor.com/jobs/barclays-infrastructure-engineer-ba4-4477782474",
-      "title": "Infrastructure Engineer - BA4 — Barclays",
-      "content_text": "Company: Barclays · Location: Bengaluru, Karnataka, India\n• Build and maintain scalable infrastructure using Terraform, Ansible, and cloud platforms\n• Automate systems, manage CI/CD pipelines, and ensure secure, reliable operations\n• Collaborate with cross-functional teams on digital solutions and compliance requirements",
-      "date_published": "2026-10-17T13:31:46.080Z",
-      "authors": [
-        {
-          "name": "Barclays"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/barclays-buk-tesco-bank-core-banking-infrastructure-engineer-ba4-4477777733",
-      "url": "https://interndoor.com/jobs/barclays-buk-tesco-bank-core-banking-infrastructure-engineer-ba4-4477777733",
-      "title": "Core Banking Infrastructure Engineer — Barclays",
-      "content_text": "Company: Barclays · Location: Bengaluru, Karnataka, India\n• Support core banking apps with L2/L3 troubleshooting, SLA adherence, and incident resolution\n• Implement CI/CD automation using GitLab, Jenkins, Nexus, and Kubernetes\n• Maintain system resilience through change management, release control, and root cause analysis",
-      "date_published": "2026-10-17T13:31:43.935Z",
       "authors": [
         {
           "name": "Barclays"
