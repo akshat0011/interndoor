@@ -685,7 +685,7 @@ console.log('\n== the card, the pane and the result (11 Oct 2026) ==');
   }
   check('the pane can be shared', /shareRole\(job, pageHref\)/.test(pane), true);
   check('its actions are pinned to the foot', /const cta = el\('div', 'p-cta'\)[\s\S]*d\.append\(cta\)/.test(pane), true);
-  check('the tailor there is a secondary button, not a banner', /const tailorBtn = el\('button', 'alt'\)/.test(pane), true);
+  check('the tailor there is a secondary button, not a banner', /const tailorBtn = el\('button', 'alt(?: p-tailor)?'\)/.test(pane), true);
   check('the pinned bar sticks to the bottom', /\.p-cta \{[^}]*position: sticky; bottom: 0/.test(css), true);
   check('on a phone the overlay scrolls, not the pane', /\.pane \{[^}]*overflow: visible[^}]*\}/.test(css), true);
 

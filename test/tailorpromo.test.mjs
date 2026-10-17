@@ -56,10 +56,21 @@ console.log('\n== when it shows ==');
 console.log('\n== where it goes ==');
 {
   const list = lift('renderList');
-  ok('only when no resume ranks the board (the rank bar owns that slot)', /\} else if \(tailorPromoDue\(\) && split\.ordered\[0\]\?\.\[0\]\) \{\s*frag\.append\(tailorPromo\(split\.ordered\[0\]\[0\]\)\);/.test(list));
+  ok('only when no resume ranks the board (the rank bar owns that slot)', /\} else if \(tailorPromoDue\(\)\) \{\s*frag\.append\(tailorPromo\(\)\);/.test(list));
   const promo = lift('tailorPromo');
-  ok('its button tailors to the role it is given', /go\.addEventListener\('click', \(\) => \{ countEvent\('tlp-click'\); openTailor\(job\); \}\);/.test(promo));
-  ok('and names that role to a screen reader', /`Tailor your resume to \$\{job\.title\} at \$\{job\.company\}`/.test(promo));
+  /* HIS RULE, 17 Oct 2026: the candidate chooses the role. The promo was first
+     wired to tailor to the newest role on the board; it must never open the
+     tailor itself, and is given no role to open it with. */
+  ok('the promo is given no role', /^function tailorPromo\(\) \{/.test(promo));
+  ok('and never opens the tailor itself', !/openTailor\(/.test(promo));
+  ok('its button puts the list into picking mode', /action = el\('button', 'tlp-go', 'Choose a role'\);/.test(promo) && /countEvent\('tlp-click'\); setPicking\(true\);/.test(promo));
+  ok('picking says what to do and offers a way out', /'Choose the role to tailor for'/.test(promo) && /'Press Tailor resume on the role you want\. Search or filter above to find it\.'/.test(promo) && /el\('button', 'tlp-cancel', 'Cancel'\)/.test(promo) && /setPicking\(false\)/.test(promo));
+  const pick = lift('setPicking');
+  ok('picking lights the buttons from <html>, so the open role\'s pane button lights too', /document\.documentElement\.classList\.toggle\('tl-picking', picking\)/.test(pick));
+  ok('and moves a keyboard reader to the first role\'s button', /querySelector\('#joblist \.row \.tl-b'\)\?\.focus\(\{ preventScroll: true \}\)/.test(pick));
+  ok('choosing a role ends picking', /if \(picking\) setPicking\(false\);/.test(lift('openTailor')));
+  ok('Escape ends it, unless the dialog is open', /e\.key !== 'Escape' \|\| !picking/.test(app) && /if \(\$\('tailor'\) && !\$\('tailor'\)\.hidden\) return;/.test(app));
+  ok('the pane\'s own Tailor button can light up too', /el\('button', 'alt p-tailor'\)/.test(app));
   ok('the cross remembers when, counts, and removes the block', /localStorage\.setItem\(TLP_OFF_STORE, String\(Date\.now\(\)\)\)/.test(promo) && /countEvent\('tlp-dismiss'\)/.test(promo) && /li\.remove\(\)/.test(promo));
   ok('the cross has a name', /'aria-label', 'Hide this suggestion'/.test(promo));
   ok('shown is counted once a page, not once a redraw', /if \(!tailorPromo\.counted\) \{ tailorPromo\.counted = true; countEvent\('tlp-shown'\); \}/.test(promo));
@@ -101,6 +112,8 @@ console.log('\n== how it looks ==');
   ok('nothing in it recedes by opacity', !/opacity/.test([rule('.tl-promo'), rule('.tlp-txt span'), rule('.tlp-x')].join('')));
   ok('the card button reads at full strength now', /\.tl-b \{ color: var\(--ink\); border-color: var\(--rule-2\); font-weight: 600; \}/.test(css));
   ok('on a phone the button takes the full width', /@media \(max-width: 640px\) \{[^@]*\.tlp-go \{ grid-column: 1 \/ -1; width: 100%; \}/.test(css));
+  ok('picking lights every Tailor button', /\.tl-picking \.tl-b, \.tl-picking \.p-tailor \{\s*border-color: var\(--cta\)/.test(css));
+  ok('and the pulse stops for a reader who asks for less motion', /@media \(prefers-reduced-motion: no-preference\) \{\s*\.tl-picking \.tl-b, \.tl-picking \.p-tailor \{ animation: tl-pick/.test(css));
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

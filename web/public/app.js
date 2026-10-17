@@ -1883,8 +1883,8 @@ function renderList() {
       bar.append(go);
     }
     frag.append(bar);
-  } else if (tailorPromoDue() && split.ordered[0]?.[0]) {
-    frag.append(tailorPromo(split.ordered[0][0]));
+  } else if (tailorPromoDue()) {
+    frag.append(tailorPromo());
   }
 
   /* THE LIST IS WINDOWED. Every group used to get a card on first paint, which
@@ -1906,8 +1906,9 @@ function renderList() {
    Tailor resume button since 11 Oct, quiet beside Apply on purpose, and 60-80
    readers a day found it out of ~900 visits. This says what it does, once, at
    the top of the list, to a reader who has never tailored and has no resume
-   on the board. Its button tailors to the first role below it, so one press
-   shows the whole thing working on a real posting.
+   on the board. Its button never picks a role for the reader (see PICKING
+   below): it was first wired to tailor to the newest role, and he caught it
+   the same day.
    Gone for good after a first tailor (TAILORED_STORE), and for TLP_QUIET_DAYS
    after the cross. Counted (tlp-shown, tlp-click, tlp-dismiss, tailor-open)
    so whether it works is measured, not guessed. */
@@ -1931,18 +1932,53 @@ function countEvent(name, tries = 0) {
   if (tries < 20) setTimeout(() => countEvent(name, tries + 1), 500);
 }
 
-function tailorPromo(job) {
-  const li = el('li', 'tl-promo');
+/* PICKING (17 Oct 2026, his catch: the promo's button tailored to whatever
+   role happened to be newest. "We should let the candidate choose a role
+   first and then we tailor for that role.") The button puts the list into
+   picking mode instead: every Tailor resume button lights up, the promo says
+   to press it on the role you want, and search and filters still work,
+   because the list IS the role picker. The dialog opens only for the role the
+   reader pressed (openTailor ends picking). Cancel, the cross or Escape leave
+   it. The class sits on <html> so the open role's own button lights too. */
+let picking = false;
+function setPicking(on) {
+  picking = !!on;
+  document.documentElement.classList.toggle('tl-picking', picking);
+  const promo = document.querySelector('.tl-promo');
+  if (promo) promo.replaceWith(tailorPromo());
+  if (!picking) return;
+  const now = document.querySelector('.tl-promo');
+  const calm = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  now?.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+  /* A keyboard reader lands on the first role's button, not back at the top. */
+  document.querySelector('#joblist .row .tl-b')?.focus({ preventScroll: true });
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape' || !picking) return;
+  if ($('tailor') && !$('tailor').hidden) return;   // the dialog's own Escape
+  setPicking(false);
+});
+
+function tailorPromo() {
+  const li = el('li', picking ? 'tl-promo is-picking' : 'tl-promo');
   const ico = el('span', 'tlp-ico');
   ico.insertAdjacentHTML('afterbegin', TAILOR_ART);
   const txt = el('div', 'tlp-txt');
-  txt.append(el('b', null, 'Tailor your resume to any role, free'));
-  txt.append(el('span', null,
-    `Recruiters search resumes for a role's exact words. We add them to yours in seconds, keep everything you wrote, and you download a PDF. ${FREE_PER_DAY.tailor} a day.`));
-  const go = el('button', 'tlp-go', 'Tailor my resume');
-  go.type = 'button';
-  go.setAttribute('aria-label', `Tailor your resume to ${job.title} at ${job.company}`);
-  go.addEventListener('click', () => { countEvent('tlp-click'); openTailor(job); });
+  let action;
+  if (picking) {
+    txt.append(el('b', null, 'Choose the role to tailor for'));
+    txt.append(el('span', null, 'Press Tailor resume on the role you want. Search or filter above to find it.'));
+    action = el('button', 'tlp-cancel', 'Cancel');
+    action.type = 'button';
+    action.addEventListener('click', () => setPicking(false));
+  } else {
+    txt.append(el('b', null, 'Tailor your resume to any role, free'));
+    txt.append(el('span', null,
+      `Pick a role and we add the words recruiters search for to your resume in seconds, keep everything you wrote, and you download a PDF. ${FREE_PER_DAY.tailor} a day.`));
+    action = el('button', 'tlp-go', 'Choose a role');
+    action.type = 'button';
+    action.addEventListener('click', () => { countEvent('tlp-click'); setPicking(true); });
+  }
   const x = el('button', 'tlp-x');
   x.type = 'button';
   x.setAttribute('aria-label', 'Hide this suggestion');
@@ -1950,9 +1986,11 @@ function tailorPromo(job) {
   x.addEventListener('click', () => {
     try { localStorage.setItem(TLP_OFF_STORE, String(Date.now())); } catch { /* still hidden for this page */ }
     countEvent('tlp-dismiss');
+    picking = false;
+    document.documentElement.classList.remove('tl-picking');
     li.remove();
   });
-  li.append(ico, txt, go, x);
+  li.append(ico, txt, action, x);
   if (!tailorPromo.counted) { tailorPromo.counted = true; countEvent('tlp-shown'); }
   return li;
 }
@@ -2236,7 +2274,7 @@ function renderDetail(job) {
      however far the reader has scrolled. Apply leads; the tailor sits beside
      it as a secondary button, not a banner. */
   const cta = el('div', 'p-cta');
-  const tailorBtn = el('button', 'alt');
+  const tailorBtn = el('button', 'alt p-tailor');
   tailorBtn.type = 'button';
   tailorBtn.insertAdjacentHTML('afterbegin', tailorMark(16));
   tailorBtn.append(document.createTextNode('Tailor my resume'));
@@ -2325,6 +2363,7 @@ function openTailor(job) {
   activeJob = job;
   tailorMode = job ? 'tailor' : 'rank';
   if (job) countEvent('tailor-open');
+  if (picking) setPicking(false);   // the reader chose: picking is done
 
   // [title, subtitle, resume screen lede]
   const copy = {

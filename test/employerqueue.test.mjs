@@ -10,7 +10,7 @@
 import { readFileSync } from 'node:fs';
 import { checksFor, renderEmployerQueue, renderEmployerList, groupSubmissions, ago, fetchSubmissions, readDecisions, outreachNote, employerEmail } from '../src/employerqueue.js';
 import { pitchNumbers, roundedText, floorTo, lastDays } from '../src/employerpitch.js';
-import { loadConfig } from '../src/config.js';
+import { loadConfig, matchCompany } from '../src/config.js';
 
 let pass = 0, fail = 0;
 const ok = (label, cond, extra = '') => {
@@ -29,7 +29,11 @@ const sub = (over = {}) => ({
 
 console.log('\n== the checks ==');
 {
-  const c = checksFor(sub(), cfg.watchlist);
+  /* A name no watchlist term can match. Not Nestack: it has been on the
+     watchlist since its approval on 17 Oct 2026, which is how this check first
+     failed (a live-data fixture, the §8 hiring-record lesson again). */
+  ok('the stand-in employer really is new', matchCompany('Quillfern Robotics Pvt Ltd', cfg.watchlist) === null);
+  const c = checksFor(sub({ company: 'Quillfern Robotics Pvt Ltd' }), cfg.watchlist);
   ok('a new employer is flagged for a look', c.some((x) => x.level === 'warn' && /New employer/.test(x.text)));
   ok('a link off the employer\'s own domain is flagged', c.some((x) => x.level === 'warn' && /neilp\.nestack\.ai, not nestack\.com/.test(x.text)));
   const gh = checksFor(sub({ link: 'https://boards.greenhouse.io/stripe/jobs/123', website: 'https://stripe.com' }), cfg.watchlist);

@@ -1822,6 +1822,31 @@ html[data-boot] .boot-part {
   .tlp-ico { width: 40px; height: 40px; }
   .tlp-go { grid-column: 1 / -1; width: 100%; }
 }
+/* PICKING (app.js setPicking): the list is the role picker, so every Tailor
+   resume button lights up until the reader presses one. The pulse is the
+   only moving thing and stops for a reader who asks for less motion. */
+.tl-promo { scroll-margin-top: calc(var(--stack-h, 64px) + 16px); }
+.tl-promo.is-picking { border-color: color-mix(in oklab, var(--cta) 55%, var(--rule-2)); }
+.tlp-cancel {
+  height: 40px; padding: 0 18px; border-radius: 999px; white-space: nowrap; cursor: pointer;
+  font-family: var(--ui); font-size: 14px; font-weight: 600;
+  background: none; color: var(--ink); border: 1px solid var(--rule-2);
+  transition: border-color .22s var(--ease-out);
+}
+.tlp-cancel:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.tl-picking .tl-b, .tl-picking .p-tailor {
+  border-color: var(--cta); color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--cta) 24%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tl-picking .tl-b, .tl-picking .p-tailor { animation: tl-pick 1.8s var(--ease-out) infinite; }
+}
+@keyframes tl-pick {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in oklab, var(--cta) 24%, transparent); }
+  50% { box-shadow: 0 0 0 7px color-mix(in oklab, var(--cta) 6%, transparent); }
+}
+@media (hover: hover) and (pointer: fine) { .tlp-cancel:hover { border-color: var(--ink-2); } }
+@media (max-width: 640px) { .tlp-cancel { grid-column: 1 / -1; width: 100%; } }
 /* Edge to edge on a phone, like the cards around it (.row under 600px). */
 @media (max-width: 600px) {
   .tl-promo { border-radius: 0; padding-left: max(var(--s4), env(safe-area-inset-left)); }
