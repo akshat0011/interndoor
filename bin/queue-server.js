@@ -68,7 +68,7 @@ import { tmpdir } from 'node:os';
 import { watchJob, postWatchTick } from '../src/postwatch.js';
 import { clickWindows, fetchDayHashes, TRACKED_SINCE } from '../src/jobclicks.js';
 import { jobKeyFor, utcDay } from '../web/api/count.js';
-import { fetchSubmissions, readDecisions, renderEmployerQueue } from '../src/employerqueue.js';
+import { fetchSubmissions, readDecisions, renderEmployerQueue, renderEmployerList } from '../src/employerqueue.js';
 import { pitchNumbers } from '../src/employerpitch.js';
 
 const cfg = loadConfig();
@@ -1311,6 +1311,12 @@ const server = createServer(async (req, res) => {
     let submissions = [];
     let error = null;
     try { submissions = await fetchSubmissions(kv); } catch (err) { error = err.message; }
+    /* The page swaps in a fresh list every minute; the list alone is enough
+       and costs one Redis read, not the pitch's as well. */
+    if (url.searchParams.get('fragment') === '1') {
+      if (error) return json(res, 502, { error });
+      return json(res, 200, { ...renderEmployerList({ submissions, decisions: readDecisions(store), watchlist: loadConfig().watchlist }), updatedAt: Date.now() });
+    }
     let liveRoles = 0;
     try { liveRoles = (JSON.parse(readFileSync(regionJobsFile('IN'), 'utf8')).jobs ?? []).length; } catch { /* no board file */ }
     const pitch = await pitchNumbers({ ...kv, region: 'IN', liveRoles });

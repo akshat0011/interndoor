@@ -8,7 +8,7 @@
  * happened, so every rounding here is DOWN, and the word is "Apply clicks".
  */
 import { readFileSync } from 'node:fs';
-import { checksFor, renderEmployerQueue, fetchSubmissions, readDecisions, outreachNote } from '../src/employerqueue.js';
+import { checksFor, renderEmployerQueue, renderEmployerList, groupSubmissions, ago, fetchSubmissions, readDecisions, outreachNote } from '../src/employerqueue.js';
 import { pitchNumbers, roundedText, floorTo, lastDays } from '../src/employerpitch.js';
 import { loadConfig } from '../src/config.js';
 
@@ -43,11 +43,13 @@ console.log('\n== the checks ==');
 console.log('\n== the page ==');
 {
   const page = renderEmployerQueue({ submissions: [sub(), sub({ id: 'zzz999', company: 'Done Co' })], decisions: { zzz999: { status: 'rejected', at: '2026-10-13T00:00:00Z', reason: 'pay too low' } }, watchlist: cfg.watchlist });
-  ok('counts what is waiting', /1 waiting for your decision/.test(page));
+  ok('the tabs count each status', /data-count="waiting">1</.test(page) && /data-count="rejected">1</.test(page) && /data-count="approved">0</.test(page) && /data-count="all">2</.test(page));
+  ok('the tab title carries the waiting count', /<title>\(1\) Employer queue/.test(page));
+  ok('every card says its status for the tabs', /id="s-abc123" data-status="waiting"/.test(page) && /id="s-zzz999" data-status="rejected"/.test(page));
   ok('a waiting submission has both buttons', /data-act="approve" data-id="abc123"/.test(page) && /data-act="reject" data-id="abc123"/.test(page));
   ok('a decided one has none', !/data-act="approve" data-id="zzz999"/.test(page));
   ok('and shows its decision and reason', /Rejected/.test(page) && /pay too low/.test(page));
-  ok('pay is in rupees per period', /Internship · ₹12,000 per month/.test(page));
+  ok('pay is in rupees per period', /<span class="kind">Internship<\/span><span class="pay">₹12,000 per month<\/span>/.test(page));
   const stop = renderEmployerQueue({ submissions: [sub({ company: blocked })], watchlist: cfg.watchlist });
   ok('a blocklisted employer cannot be approved from the page', /data-act="approve" data-id="abc123" disabled/.test(stop));
   const evil = renderEmployerQueue({ submissions: [sub({ company: '<script>alert(1)</script>', link: 'javascript:alert(1)', notes: '<img src=x onerror=alert(1)>' })], watchlist: cfg.watchlist });
@@ -56,7 +58,7 @@ console.log('\n== the page ==');
   const empty = renderEmployerQueue({ submissions: [], watchlist: cfg.watchlist });
   ok('an empty queue says so plainly', /Nothing waiting/.test(empty) && /No employer has sent a role/.test(empty));
   const pitched = renderEmployerQueue({ submissions: [], watchlist: cfg.watchlist, pitch: { applyPerDayText: '2,000+', applyWeekText: '15,000+', liveRoles: 1407 } });
-  ok('the numbers to quote are on the page', /2,000\+<\/b> Apply clicks a day/.test(pitched) && /15,000\+/.test(pitched));
+  ok('the numbers to quote are on the page', /<b>2,000\+<\/b><span>Apply clicks a day<\/span>/.test(pitched) && /<b>15,000\+<\/b>/.test(pitched) && /<b>1,407<\/b><span>Live roles/.test(pitched));
   const visible = pitched.replace(/<style>[\s\S]*?<\/style>|<script>[\s\S]*?<\/script>/g, '').replace(/"[^"]*"/g, '');
   ok('and reminds him never to say applicants', /never "applicants"/.test(pitched) || /never/.test(visible));
   ok('with a note to send an employer, from the same figures', /A note to send an employer/.test(pitched) && /Candidates pressed Apply 15,000\+ times on our listings in the last 7 days, across 1,407 live roles\./.test(pitched));
@@ -64,6 +66,36 @@ console.log('\n== the page ==');
   ok('no figures, no note', outreachNote(null) === null && !/A note to send/.test(renderEmployerQueue({ watchlist: cfg.watchlist })));
   ok('the page carries no em dash', !/—/.test(page.replace(/<script>[\s\S]*?<\/script>/, '')));
   ok('decisions go to the helper\'s own endpoint, as JSON', /fetch\('\/api\/employers\/decide', \{ method: 'POST', headers: \{ 'content-type': 'application\/json' \}/.test(page));
+}
+
+console.log('\n== organized ==');
+{
+  const NOW = Date.parse('2026-10-17T10:00:00Z');
+  const subs = [
+    sub({ id: 'a1', at: '2026-10-12T03:12:00Z', company: 'Nestack Technologies Pvt Ltd', website: 'https://nestack.com/' }),
+    sub({ id: 'a2', at: '2026-10-12T03:12:20Z', company: 'Nestack Technologies', website: 'https://www.nestack.com' }),
+    sub({ id: 'b1', at: '2026-10-13T07:31:00Z', company: 'Multispace ai', website: 'https://www.multispaceai.com/' }),
+  ];
+  const g = groupSubmissions(subs);
+  ok('one employer sending two roles is one group', g.length === 2 && g.find((x) => x.items.length === 2)?.items.map((e) => e.id).join() === 'a2,a1');
+  ok('the newest employer comes first', g[0].items[0].id === 'b1');
+  const { html, counts } = renderEmployerList({ submissions: subs, decisions: { a1: { status: 'approved', role: 'stored' } }, watchlist: cfg.watchlist, now: NOW });
+  ok('counts each status', counts.waiting === 2 && counts.approved === 1 && counts.rejected === 0 && counts.all === 3);
+  ok('a group knows which statuses it holds', /<section class="grp" data-statuses="waiting approved">/.test(html));
+  ok('a waiting card says how long it has waited', /Waiting 5 days ago/.test(html));
+  ok('an approved role says what happens next', /Role stored\. It goes live with the next scan&#39;s publish\./.test(html));
+  ok('a role that was not stored says what to do', /npm run add-url/.test(renderEmployerList({ submissions: [subs[2]], decisions: { b1: { status: 'approved', role: 'failed' } }, watchlist: cfg.watchlist }).html));
+  ok('cards are searchable by company, email and link', /data-find="[^"]*multispace ai[^"]*info@|data-find="[^"]*contact@nestack\.com[^"]*neilp\.nestack\.ai/.test(html));
+  ok('ago reads like a person', ago('2026-10-17T09:59:30Z', NOW) === 'just now' && ago('2026-10-17T09:20:00Z', NOW) === '40 min ago' && ago('2026-10-17T04:00:00Z', NOW) === '6 h ago' && ago('2026-10-16T08:00:00Z', NOW) === '1 day ago');
+  const blockedPage = renderEmployerQueue({ submissions: [sub({ company: blocked })], watchlist: cfg.watchlist });
+  ok('a blocklisted Approve is marked so the refresh does not read it as busy', /disabled data-stop>Approve/.test(blockedPage) && /button\[disabled\]:not\(\[data-stop\]\)/.test(blockedPage));
+  const page = renderEmployerQueue({ submissions: subs, watchlist: cfg.watchlist });
+  ok('it refreshes its own list every minute', /setInterval\(refresh, 60000\)/.test(page) && /fetch\('\/employers\?fragment=1'/.test(page));
+  ok('but never over a reason being typed or a decision on its way', /function busy\(\)/.test(page) && /if \(!force && busy\(\)\) return;/.test(page));
+  ok('and again when the tab comes back', /visibilitychange[\s\S]{0,60}refresh\(\)/.test(page));
+  ok('the tab is kept in the address', /history\.replaceState\(null, '', '#' \+ state\.tab\)/.test(page));
+  const qs = read('bin/queue-server.js');
+  ok('the helper answers the refresh with the list alone', /searchParams\.get\('fragment'\) === '1'/.test(qs) && /renderEmployerList\(\{ submissions, decisions: readDecisions\(store\)/.test(qs));
 }
 
 console.log('\n== reading the store ==');
