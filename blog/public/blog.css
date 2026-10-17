@@ -51,6 +51,10 @@
   --measure: 40rem;   /* ~68 characters of Geist at 18px */
   --wide:    52rem;   /* figures and tables may run wider than the text */
   --bar-h:   62px;
+  /* The homepage's one vertical rhythm: each section is --home-gap tall at
+     both ends, and a section heading sits --home-head above its content. */
+  --home-gap:  3rem;
+  --home-head: 1.5rem;
 
   --snap:     cubic-bezier(.2,.9,.25,1);
   --ease-out: cubic-bezier(.16,1,.3,1);
@@ -207,6 +211,7 @@ time, .meta, .row-date, .row-side, .fig-meta, .val, .m-stat b { font-variant-num
 .kicker {
   display: inline-block; font-size: .875rem; font-weight: 500; color: var(--accent);
   text-decoration: none; letter-spacing: -.005em;
+  padding: 3px 0; margin: -3px 0;   /* a 24px target with no change to the layout */
 }
 .kicker:hover { text-decoration: underline; text-underline-offset: .2em; }
 .meta { display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: var(--mono); font-size: .8125rem; color: var(--ink-3); }
@@ -215,6 +220,8 @@ time, .meta, .row-date, .row-side, .fig-meta, .val, .m-stat b { font-variant-num
 .more {
   display: inline-flex; align-items: center; gap: 6px; font-size: .875rem; font-weight: 500;
   color: var(--ink-2); text-decoration: none; white-space: nowrap;
+  padding: 3px 0; margin: -3px 0;   /* a 24px target with no change to the layout */
+  transition: color .2s;
 }
 .more:hover { color: var(--ink); }
 .more svg { transition: transform .25s var(--ease-out); }
@@ -236,46 +243,77 @@ time, .meta, .row-date, .row-side, .fig-meta, .val, .m-stat b { font-variant-num
 
 /* ------------------------------------------------------------------- home */
 
-.home .intro { padding: 3.6rem 0 2.6rem; max-width: 46rem; }
-.intro h1 { font-size: clamp(1.6rem, 1.15rem + 1.6vw, 2.25rem); line-height: 1.12; letter-spacing: -.03em; }
-.intro p { margin-top: 1.1rem; font-size: 1.125rem; line-height: 1.55; color: var(--ink-2); max-width: 44rem; }
+.home .intro { padding: 3rem 0 2.25rem; max-width: 46rem; }
+.intro h1 { font-size: clamp(1.6rem, 1.15rem + 1.6vw, 2.25rem); line-height: 1.12; letter-spacing: -.03em; text-wrap: balance; }
+.intro p { margin-top: 1rem; font-size: 1.125rem; line-height: 1.55; color: var(--ink-2); max-width: 44rem; }
 
-.lead {
-  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 4rem;
-  padding: 3rem 0 3.5rem; border-top: 1px solid var(--rule);
+/* The featured report and what it found sit in ONE card, so the number on
+   the right is plainly this report's (his call, 17 Oct 2026: the page read as
+   "a soup" of numbers and titles). A short label above says what the card is,
+   another names the right-hand panel. The whole card opens the report through
+   one empty link layer laid over it; the button sits above that layer. */
+.lead { padding: 2.25rem 0 var(--home-gap); border-top: 1px solid var(--rule); }
+.sec-k { margin-bottom: .9rem; font-size: .875rem; font-weight: 500; color: var(--accent); }
+.lead-card {
+  position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2); overflow: hidden;
+  transition: border-color .2s;
 }
-.lead-title { margin-top: .9rem; font-size: clamp(2rem, 1.2rem + 2.6vw, 3.25rem); line-height: 1.08; letter-spacing: -.033em; }
+.lead-card:hover, .lead-card:focus-within { border-color: var(--rule-2); }
+.lead-copy { padding: 2rem 2.25rem 2.25rem; }
+.lead-title { font-size: clamp(1.75rem, 1.15rem + 2vw, 2.6rem); line-height: 1.1; letter-spacing: -.03em; text-wrap: balance; }
 .lead-title a { text-decoration: none; }
-.lead-title a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .12em; text-decoration-color: var(--ink-3); }
-.lead-dek { margin-top: 1.1rem; font-size: 1.125rem; line-height: 1.55; color: var(--ink-2); max-width: 36rem; }
-.lead .meta { margin-top: 1.3rem; }
-.lead-go { margin-top: 1.8rem; }
-.lead-visual { align-self: end; }
-.lead-figure { display: grid; gap: .4rem; margin-bottom: 1.6rem; }
-.lead-num { font-size: clamp(4.5rem, 3rem + 4vw, 6.75rem); font-weight: 600; letter-spacing: -.055em; line-height: .86; }
-.lead-num-label { font-size: 1rem; color: var(--ink-2); max-width: 22rem; }
+.lead-cover { position: absolute; inset: 0; border-radius: inherit; }
+.lead-copy .lead-go { position: relative; z-index: 1; }
+.lead-card:hover .lead-title a, .lead-title a:focus-visible {
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .12em; text-decoration-color: var(--ink-3);
+}
+.lead-dek { margin-top: 1rem; font-size: 1.0625rem; line-height: 1.6; color: var(--ink-2); max-width: 36rem; text-wrap: pretty; }
+.lead .meta { margin-top: 1.1rem; }
+.lead-go { margin-top: 1.5rem; }
+.lead-visual { padding: 2rem 2.25rem 2.25rem; background: var(--bg-2); border-left: 1px solid var(--rule); }
+.lead-k { margin-bottom: .8rem; font-size: .8125rem; font-weight: 500; color: var(--ink-3); }
+.lead-figure { display: grid; gap: .45rem; padding-bottom: 1.3rem; margin-bottom: 1.3rem; border-bottom: 1px solid var(--rule); }
+.lead-num { font-size: clamp(2.75rem, 2.2rem + 1.6vw, 3.75rem); font-weight: 600; letter-spacing: -.05em; line-height: .9; font-variant-numeric: tabular-nums; }
+.lead-num-label { font-size: .9375rem; line-height: 1.5; color: var(--ink-2); max-width: 22rem; }
 
-.block { padding: 3.5rem 0; border-top: 1px solid var(--rule); }
-.block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.8rem; }
+.block { padding: var(--home-gap) 0; border-top: 1px solid var(--rule); }
+.block-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1rem; margin-bottom: var(--home-head); }
 .block h2 { font-size: 1.5rem; letter-spacing: -.025em; }
-.block-lede { margin: -.8rem 0 1.6rem; color: var(--ink-2); max-width: 44rem; }
+.block-lede { margin: -.6rem 0 1.4rem; color: var(--ink-2); max-width: 44rem; }
 
-.figs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.fig-item { padding: .4rem 2.5rem 0 0; }
-.fig-item + .fig-item { padding: .4rem 0 0 2.5rem; border-left: 1px solid var(--rule); }
-.fig-link { display: grid; gap: .55rem; text-decoration: none; }
-.fig-num { font-size: clamp(3rem, 2.2rem + 2vw, 4.25rem); font-weight: 600; letter-spacing: -.05em; line-height: .9; }
-.fig-label { font-size: .9375rem; color: var(--ink-2); max-width: 26rem; }
-.fig-title { margin-top: .9rem; font-size: 1.25rem; line-height: 1.3; letter-spacing: -.02em; }
+/* More reports: one card per report. The title comes first, so the reader
+   knows what the card is about before any number; the number below it is in
+   its own panel, labelled as that report's key finding; the footer says when,
+   how long, and that the card opens. The grid is told the count, so three
+   reports are three cards in a row. */
+.figs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+.figs-2, .figs-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.figs-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fig-link {
+  display: flex; flex-direction: column; gap: 1rem; height: 100%; padding: 1.4rem 1.4rem 1.25rem;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--r-2);
+  text-decoration: none; transition: border-color .2s, background-color .2s;
+}
+.fig-link:hover, .fig-link:focus-visible { border-color: var(--rule-2); background: var(--card-2); }
+.fig-title { font-size: 1.125rem; line-height: 1.32; letter-spacing: -.015em; text-wrap: balance; }
+.fig-stat { display: grid; gap: .3rem; padding: .85rem 1rem 1rem; border-radius: 10px; background: var(--bg-2); }
+.fig-stat-k { font-size: .75rem; font-weight: 500; color: var(--ink-3); }
+.fig-num { font-size: 2rem; font-weight: 600; letter-spacing: -.04em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.fig-label { font-size: .875rem; line-height: 1.45; color: var(--ink-2); }
+.fig-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: .2rem; }
 .fig-meta { font-family: var(--mono); font-size: .8125rem; color: var(--ink-3); }
+.fig-go { display: inline-flex; align-items: center; gap: 6px; font-size: .875rem; font-weight: 500; color: var(--ink); }
+.fig-arrow { color: var(--ink-2); transition: transform .25s var(--ease-out), color .2s; }
+.fig-link:hover .fig-arrow, .fig-link:focus-visible .fig-arrow { transform: translateX(3px); color: var(--ink); }
 .fig-title span, .row-title span {
   text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1.5px;
   text-underline-offset: .18em; transition: text-decoration-color .2s;
 }
-.fig-link:hover .fig-title span, .row-link:hover .row-title span { text-decoration-color: var(--ink-3); }
+.fig-link:hover .fig-title span, .fig-link:focus-visible .fig-title span,
+.row-link:hover .row-title span, .row-link:focus-visible .row-title span { text-decoration-color: var(--ink-3); }
 
-.block-split { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem; }
-.block-side p { margin: .8rem 0 1.2rem; color: var(--ink-2); max-width: 22rem; }
+/* Guides: heading on top, then one row per guide, each row one link. */
 
 /* A post as a row: date, title and standfirst, then what it is. */
 .rows { border-bottom: 1px solid var(--rule); }
@@ -285,16 +323,16 @@ time, .meta, .row-date, .row-side, .fig-meta, .val, .m-stat b { font-variant-num
   padding: 1.35rem .25rem; text-decoration: none; border-radius: 4px;
   transition: background-color .2s;
 }
-.row-link:hover { background: color-mix(in oklab, var(--card) 70%, transparent); }
+.row-link:hover, .row-link:focus-visible { background: color-mix(in oklab, var(--card) 70%, transparent); }
 .row-date { font-family: var(--mono); font-size: .8125rem; color: var(--ink-3); }
-.row-main { display: grid; gap: .4rem; }
-.row-title { font-size: 1.125rem; line-height: 1.32; letter-spacing: -.015em; }
-.row-dek { color: var(--ink-2); font-size: .9375rem; line-height: 1.5; max-width: 40rem; }
+.row-main { display: grid; gap: .45rem; }
+.row-title { font-size: 1.125rem; line-height: 1.32; letter-spacing: -.015em; text-wrap: balance; }
+.row-dek { color: var(--ink-2); font-size: .9375rem; line-height: 1.55; max-width: 40rem; }
 .row-side { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: .8125rem; color: var(--ink-3); white-space: nowrap; }
 .row-arrow { color: var(--ink-3); transition: transform .25s var(--ease-out), color .2s; }
-.row-link:hover .row-arrow { transform: translateX(3px); color: var(--ink); }
-.block-split .row-link { grid-template-columns: minmax(0, 1fr) auto; }
-.block-split .row-date { display: none; }
+.row-link:hover .row-arrow, .row-link:focus-visible .row-arrow { transform: translateX(3px); color: var(--ink); }
+.block-guides .row-link { grid-template-columns: minmax(0, 1fr) auto; column-gap: 2rem; padding: 1.25rem .75rem; margin: 0 -.75rem; }
+.block-guides .row-date { display: none; }
 
 .month-list { border-bottom: 1px solid var(--rule); }
 .month-list li { border-top: 1px solid var(--rule); }
@@ -490,8 +528,12 @@ time, .meta, .row-date, .row-side, .fig-meta, .val, .m-stat b { font-variant-num
 .chart-note { margin-top: .9rem !important; font-size: .875rem; line-height: 1.55; color: var(--ink-3); }
 .chart-src { margin-top: .5rem !important; font-size: .8125rem; color: var(--ink-3); }
 .chart-src a { color: var(--ink-2) !important; }
-.chart-mini .bars th { width: 40%; font-size: .875rem; }
-.chart-mini .track { padding-right: 3.6rem; }
+.chart-mini { margin: 0; }
+.chart-mini .bars th { width: 36%; font-size: .875rem; }
+/* On the homepage the figure sits in its own right-aligned column, so the
+   percentages read down one line instead of following each bar's tip. */
+.chart-mini .track { display: grid; grid-template-columns: minmax(0, 1fr) 3rem; gap: .75rem; padding-right: 0; }
+.chart-mini .val { text-align: right; font-variant-numeric: tabular-nums; }
 .chart-mini .chart-head { margin-bottom: .7rem; }
 .chart-mini .chart-title { font-size: .9375rem; }
 
@@ -581,24 +623,33 @@ time, .meta, .row-date, .row-side, .fig-meta, .val, .m-stat b { font-variant-num
 .foot-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .foot-cols h2 { font-size: .8125rem; font-weight: 500; color: var(--ink-2); letter-spacing: 0; margin-bottom: .8rem; }
 .foot-cols li { margin: .45rem 0; }
-.foot-cols a { color: var(--ink-3); text-decoration: none; overflow-wrap: anywhere; }
+.foot-cols a { display: inline-block; padding: 3px 0; margin: -3px 0; color: var(--ink-3); text-decoration: none; overflow-wrap: anywhere; transition: color .2s; }
 .foot-cols a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: .18em; }
 .foot-fine { padding: 1.2rem 0 2.4rem; border-top: 1px solid var(--rule); font-size: .8125rem; }
 
 /* ------------------------------------------------------------- responsive */
 
+@media (max-width: 1023px) {
+  .figs-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figs-3 > :last-child { grid-column: 1 / -1; }
+}
 @media (max-width: 960px) {
-  .lead { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
-  .block-split { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
+  .lead-card { grid-template-columns: minmax(0, 1fr); }
+  .lead-visual { border-left: 0; border-top: 1px solid var(--rule); }
   .sub { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; padding: 2rem; }
   .foot-in { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 }
+@media (max-width: 639px) {
+  .figs-2, .figs-3, .figs-4 { grid-template-columns: minmax(0, 1fr); }
+  .figs-3 > :last-child { grid-column: auto; }
+}
 @media (max-width: 720px) {
-  .home .intro { padding: 2.6rem 0 2rem; }
-  .figs { grid-template-columns: minmax(0, 1fr); }
-  .fig-item, .fig-item + .fig-item { padding: 1.6rem 0; border-left: 0; }
-  .fig-item + .fig-item { border-top: 1px solid var(--rule); }
+  :root { --home-gap: 2.5rem; }
+  .home .intro { padding: 2.4rem 0 1.8rem; }
   .row-link { grid-template-columns: minmax(0, 1fr); gap: .5rem; padding: 1.2rem .1rem; }
+  .block-guides .row-link { grid-template-columns: minmax(0, 1fr); row-gap: .6rem; }
+  .lead-copy, .lead-visual { padding: 1.5rem 1.35rem 1.6rem; }
+  .fig-link { padding: 1.25rem 1.2rem 1.15rem; }
   .row-date { order: 2; }
   .row-side { order: 3; }
   .row-arrow { display: none; }
@@ -644,6 +695,9 @@ time, .meta, .row-date, .row-side, .fig-meta, .val, .m-stat b { font-variant-num
 .fx-in { animation: fx-in .7s var(--ease-out) both; }
 @media (prefers-reduced-motion: reduce) {
   .fx-wait { opacity: 1; }
+  .fig-link:hover .fig-arrow, .fig-link:focus-visible .fig-arrow,
+  .row-link:hover .row-arrow, .row-link:focus-visible .row-arrow,
+  .more:hover svg, .go:hover svg, .pill-link:hover svg { transform: none; }
   .s-sweep { animation: none; }
   .chart.is-armed .cbar { transform: none; }
   .chart.is-armed .val, .chart.is-armed .val-n { opacity: 1; }

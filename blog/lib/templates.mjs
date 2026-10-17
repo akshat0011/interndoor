@@ -171,9 +171,9 @@ export function postRow(p, minutes, { heading = 'h3' } = {}) {
 function figureItem(p, minutes) {
   return `<article class="fig-item">
 <a class="fig-link" href="${postPath(p)}">
-${p.figure ? `<span class="fig-num">${esc(p.figure)}</span><span class="fig-label">${t(p.figureLabel)}</span>` : ''}
 <h3 class="fig-title"><span>${t(p.title)}</span></h3>
-<span class="fig-meta">${shortDate(p.published)} · ${minutes} min read</span>
+${p.figure ? `<span class="fig-stat"><span class="fig-stat-k">Key finding</span><span class="fig-num">${esc(p.figure)}</span><span class="fig-label">${t(p.figureLabel)}</span></span>` : ''}
+<span class="fig-foot"><span class="fig-meta">${shortDate(p.published)} · ${minutes} min read</span><span class="fig-go">Read${icon('arrowRight', 15, 'fig-arrow')}</span></span>
 </a>
 </article>`;
 }
@@ -352,26 +352,32 @@ export function homePage({ posts, minutesOf, lead, leadChart, months, cats, asse
   });
 
   const leadHtml = lead ? `<section class="lead" aria-labelledby="lead-h">
+<p class="sec-k">Latest report</p>
+<div class="lead-card">
 <div class="lead-copy">
-${catLabel(lead)}
 <h2 class="lead-title" id="lead-h"><a href="${postPath(lead)}">${t(lead.title)}</a></h2>
 <p class="lead-dek">${t(lead.dek)}</p>
 ${metaLine(lead, minutesOf(lead))}
 <a class="go lead-go" href="${postPath(lead)}">Read the report${icon('arrowRight', 16)}</a>
 </div>
 <div class="lead-visual">
+<p class="lead-k">From this report</p>
 ${lead.figure ? `<p class="lead-figure"><span class="lead-num">${esc(lead.figure)}</span><span class="lead-num-label">${t(lead.figureLabel)}</span></p>` : ''}
 ${leadChart ?? ''}
+</div>
+<a class="lead-cover" href="${postPath(lead)}" tabindex="-1" aria-hidden="true"></a>
 </div>
 </section>` : '';
 
   const reportsHtml = reports.length ? `<section class="block" aria-labelledby="research-h">
-<div class="block-head"><h2 id="research-h">More research</h2><a class="more" href="/reports">All reports${icon('arrowRight', 15)}</a></div>
-<div class="figs">${reports.slice(0, 4).map((p) => figureItem(p, minutesOf(p))).join('\n')}</div>
+<div class="block-head"><h2 id="research-h">More reports</h2><a class="more" href="/reports">All reports${icon('arrowRight', 15)}</a></div>
+<p class="block-lede">Each card is one report. The number on it is that report's main finding.</p>
+<div class="figs figs-${Math.min(reports.length, 4)}">${reports.slice(0, 4).map((p) => figureItem(p, minutesOf(p))).join('\n')}</div>
 </section>` : '';
 
-  const guidesHtml = guides.length ? `<section class="block block-split" aria-labelledby="guides-h">
-<div class="block-side"><h2 id="guides-h">Guides</h2><p>Practical answers for applicants, checked against the postings we track.</p><a class="more" href="/guides">All guides${icon('arrowRight', 15)}</a></div>
+  const guidesHtml = guides.length ? `<section class="block block-guides" aria-labelledby="guides-h">
+<div class="block-head"><h2 id="guides-h">Guides for applicants</h2><a class="more" href="/guides">All guides${icon('arrowRight', 15)}</a></div>
+<p class="block-lede">Practical answers, checked against the postings we track.</p>
 <ol class="rows">${guides.slice(0, 6).map((p) => postRow(p, minutesOf(p))).join('\n')}</ol>
 </section>` : '';
 
