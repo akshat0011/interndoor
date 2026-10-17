@@ -1,6 +1,17 @@
 {
  "jobs": [
   {
+   "id": "4477791297",
+   "company": "Tata Institute of Fundamental Research (TIFR) Hyderabad",
+   "title": "Research Fellow",
+   "slugTitle": "Junior Research Fellows/Project Students",
+   "location": "Hyderabad, Telangana, India",
+   "postedAt": 1792253789510,
+   "firstSeenAt": 1792257149525,
+   "logo": "/logos/tata-institute-of-fundamental-research-tifr-hyderabad.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479693271",
    "company": "Zensar Technologies",
    "title": "Game Annotation",
@@ -437,17 +448,6 @@
    "postedAt": 1792168875859,
    "firstSeenAt": 1792172475863,
    "logo": "/logos/netapp.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479384368",
-   "company": "Cognizant",
-   "title": "DevOps Engineer",
-   "location": "Chennai, Tamil Nadu, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792168360216,
-   "firstSeenAt": 1792171660221,
-   "logo": "/logos/cognizant.jpg",
    "bulletCount": 3
   }
  ]
