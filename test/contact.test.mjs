@@ -279,6 +279,17 @@ console.log('\n== THE BLOG LINK (14 Oct 2026) ==');
   const boardFoot = boardHtml.slice(footAt, boardHtml.indexOf('</footer>', footAt));
   ok('the board footer was found', footAt > 0 && boardFoot.length > 200);
   ok("the board's own footer links the blog", boardFoot.includes(`<a href="${BLOG_URL}">InternDoor Blog</a>`));
+  /* And the masthead (17 Oct 2026): the board's own nav and every generated
+     page's, after Skills, absolute, never marked current. */
+  const navOf = (html) => { const at = html.indexOf('<nav class="bar-nav"'); return at < 0 ? '' : html.slice(at, html.indexOf('</nav>', at)); };
+  const boardNav = navOf(boardHtml);
+  ok('the board masthead was found', boardNav.length > 50);
+  ok("the board's masthead links the blog last", /Skills<\/a>\s*<a href="https:\/\/blog\.interndoor\.com\/">Blog<\/a>\s*$/.test(boardNav));
+  for (const [name, html] of [['an India page', aboutIN], ['a US page', aboutUS]]) {
+    const nav = navOf(html);
+    ok(`${name}'s masthead links the blog after Skills`, /Skills<\/a>\s*<a href="https:\/\/blog\.interndoor\.com\/">Blog<\/a>\s*$/.test(nav));
+    check(`…and never marks it current (${name})`, /blog\.interndoor\.com\/"[^>]*aria-current/.test(nav), false);
+  }
 }
 
 console.log(`\n${fail === 0 ? 'PASS' : 'FAIL'}  ${pass} passing, ${fail} failing`);

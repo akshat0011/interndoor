@@ -1490,11 +1490,14 @@ ${scripts}<script defer src="/subscribe.js"></script>
          page you are on would give the homepage a two-item nav and every other
          page a three-item one, so the remaining links move as you navigate and
          the reader loses the position they had learned. aria-current is the
-         answer to "where am I"; absence is not. -->
+         answer to "where am I"; absence is not. Blog is a separate host
+         (blog.interndoor.com, 17 Oct 2026, his ask), so it is an absolute URL,
+         never regionHref'd, never current; measured to fit 760-1440px. -->
     <nav class="bar-nav" aria-label="Sections">
       <a href="${regionHref('/', region)}"${here('internships')}>Jobs</a>
       <a href="${regionHref('/companies/', region)}"${here('companies')}>Companies</a>
       <a href="${regionHref('/skills/', region)}"${here('skills')}>Skills</a>
+      <a href="${BLOG_URL}">Blog</a>
     </nav>
 
     <div class="bar-right">
