@@ -6,6 +6,54 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/barclays-api-infrastructure-engineer-ba4-4477770933",
+      "url": "https://interndoor.com/jobs/barclays-api-infrastructure-engineer-ba4-4477770933",
+      "title": "API Infrastructure Engineer - BA4 — Barclays",
+      "content_text": "Company: Barclays · Location: Bengaluru, Karnataka, India\n• Build and maintain scalable infrastructure using Terraform, Ansible, and cloud platforms\n• Collaborate with cross-functional teams to design secure and reliable systems\n• Automate processes and optimize CI/CD pipelines for efficient deployments",
+      "date_published": "2026-10-17T13:32:00.502Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/barclays-infrastructure-engineer-ba4-4477782474",
+      "url": "https://interndoor.com/jobs/barclays-infrastructure-engineer-ba4-4477782474",
+      "title": "Infrastructure Engineer - BA4 — Barclays",
+      "content_text": "Company: Barclays · Location: Bengaluru, Karnataka, India\n• Build and maintain scalable infrastructure using Terraform, Ansible, and cloud platforms\n• Automate systems, manage CI/CD pipelines, and ensure secure, reliable operations\n• Collaborate with cross-functional teams on digital solutions and compliance requirements",
+      "date_published": "2026-10-17T13:31:46.080Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/barclays-buk-tesco-bank-core-banking-infrastructure-engineer-ba4-4477777733",
+      "url": "https://interndoor.com/jobs/barclays-buk-tesco-bank-core-banking-infrastructure-engineer-ba4-4477777733",
+      "title": "Core Banking Infrastructure Engineer — Barclays",
+      "content_text": "Company: Barclays · Location: Bengaluru, Karnataka, India\n• Support core banking apps with L2/L3 troubleshooting, SLA adherence, and incident resolution\n• Implement CI/CD automation using GitLab, Jenkins, Nexus, and Kubernetes\n• Maintain system resilience through change management, release control, and root cause analysis",
+      "date_published": "2026-10-17T13:31:43.935Z",
+      "authors": [
+        {
+          "name": "Barclays"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/siterecon-jr-gis-cartographers-cartographers-immediate-joiners-4477783418",
+      "url": "https://interndoor.com/jobs/siterecon-jr-gis-cartographers-cartographers-immediate-joiners-4477783418",
+      "title": "Jr. GIS Cartographers/Cartographers (Immediate Joiners) — SiteRecon",
+      "content_text": "Company: SiteRecon · Location: Noida, Uttar Pradesh, India\n• Create and update digital maps using QGIS and ArcGIS\n• Digitize geographic features from satellite and aerial data\n• Collaborate on geospatial projects with team members",
+      "date_published": "2026-10-17T13:18:54.860Z",
+      "authors": [
+        {
+          "name": "SiteRecon"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4477780427",
       "url": "https://interndoor.com/jobs/eaton-apprentice-it-development-program-4477780427",
       "title": "IT Apprentice — Eaton",
@@ -554,54 +602,6 @@
       "authors": [
         {
           "name": "American Express"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4479352446",
-      "url": "https://interndoor.com/jobs/birlasoft-technical-specialist-app-development-4479352446",
-      "title": "App Development Technical Specialist — Birlasoft",
-      "content_text": "Company: Birlasoft · Location: Greater Hyderabad Area\n• Debug legacy code, fix defects, and refactor systems without disrupting existing features\n• Lead team, mentor juniors, and manage offshore production monitoring\n• Work with QA, DevOps, and business teams to resolve issues and deliver updates",
-      "date_published": "2026-10-16T11:23:55.305Z",
-      "authors": [
-        {
-          "name": "Birlasoft"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/harman-india-intern-4477386320",
-      "url": "https://interndoor.com/jobs/harman-india-intern-4477386320",
-      "title": "Software Engineering Intern — HARMAN India",
-      "content_text": "Company: HARMAN India · Location: Pimpri Chinchwad, Maharashtra, India\n• Develop software systems using Java, Kotlin, and Android\n• Perform unit testing with Google Test Framework and static code analysis\n• Work on in-vehicle infotainment and safety technologies",
-      "date_published": "2026-10-16T11:00:34.090Z",
-      "authors": [
-        {
-          "name": "HARMAN India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/united-airlines-india-knowledge-center-associate-engineer-digital-technology-sdet-qa-4480355347",
-      "url": "https://interndoor.com/jobs/united-airlines-india-knowledge-center-associate-engineer-digital-technology-sdet-qa-4480355347",
-      "title": "Associate Engineer - Digital Technology (SDET/QA) — United Airlines India Knowledge Center",
-      "content_text": "Company: United Airlines India Knowledge Center · Location: Gurugram, Haryana, India\n• Write automated tests for web, API, and service-based apps\n• Use selenium, playwright, or similar tools\n• Work in agile teams on scalable tech solutions",
-      "date_published": "2026-10-16T10:56:08.264Z",
-      "authors": [
-        {
-          "name": "United Airlines India Knowledge Center"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/emerson-software-engineer-1-4480362128",
-      "url": "https://interndoor.com/jobs/emerson-software-engineer-1-4480362128",
-      "title": "Software Engineer 1 — Emerson",
-      "content_text": "Company: Emerson · Location: Pune Division, Maharashtra, India\n• Test HART, FF, PROFIBUS field devices with DeltaV/AMS systems\n• Write test plans and log issues in a database\n• Report test metrics to lead regularly",
-      "date_published": "2026-10-16T10:42:02.412Z",
-      "authors": [
-        {
-          "name": "Emerson"
         }
       ]
     }

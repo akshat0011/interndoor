@@ -1,6 +1,50 @@
 {
  "jobs": [
   {
+   "id": "4477770933",
+   "company": "Barclays",
+   "title": "API Infrastructure Engineer - BA4",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792243920502,
+   "firstSeenAt": 1792246140509,
+   "logo": "/logos/barclays.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477782474",
+   "company": "Barclays",
+   "title": "Infrastructure Engineer - BA4",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792243906080,
+   "firstSeenAt": 1792246186085,
+   "logo": "/logos/barclays.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477777733",
+   "company": "Barclays",
+   "title": "Core Banking Infrastructure Engineer",
+   "slugTitle": "BUK TESCO Bank - Core Banking Infrastructure Engineer - BA4",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792243903935,
+   "firstSeenAt": 1792247263941,
+   "logo": "/logos/barclays.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477783418",
+   "company": "SiteRecon",
+   "title": "Jr. GIS Cartographers/Cartographers (Immediate Joiners)",
+   "location": "Noida, Uttar Pradesh, India",
+   "postedAt": 1792243134860,
+   "firstSeenAt": 1792246734870,
+   "logo": "/logos/siterecon.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477780427",
    "company": "Eaton",
    "title": "IT Apprentice",
@@ -404,51 +448,6 @@
    "postedAt": 1792168327378,
    "firstSeenAt": 1792170967383,
    "logo": "/logos/cognizant.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4416064535",
-   "company": "Aditya Birla Capital",
-   "title": "Software Engineer",
-   "location": "Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792167201489,
-   "firstSeenAt": 1792170801492,
-   "logo": "/logos/aditya-birla-capital.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4476668530",
-   "company": "Vodafone",
-   "title": "TDM Engineer - VOIS",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792163145120,
-   "firstSeenAt": 1792170345129,
-   "logo": "/logos/vodafone.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477388709",
-   "company": "Reveation Labs",
-   "title": "Software Engineer Intern",
-   "slugTitle": "Software Engineer Intern (WordPress, .NET)",
-   "location": "India",
-   "workplaceType": "Remote",
-   "postedAt": 1792160161639,
-   "firstSeenAt": 1792160461646,
-   "logo": "/logos/reveation-labs.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480379123",
-   "company": "Larsen & Toubro",
-   "title": "Quantum Computing Associate",
-   "location": "Greater Chennai Area",
-   "workplaceType": "On-site",
-   "postedAt": 1792159807935,
-   "firstSeenAt": 1792163407943,
-   "logo": "/logos/larsen-and-toubro.jpg",
    "bulletCount": 3
   }
  ]
