@@ -135,6 +135,9 @@ function vocabulary(raw) {
   return v;
 }
 
+/** A person's word and the discipline it comes from. */
+const PERSON_FORM = { developer: 'development', analyst: 'analytics', scientist: 'science', manager: 'management', designer: 'design' };
+const NAMES_A_PERSON = /\b(engineer|engr|developer|dev|analyst|scientist|specialist|consultant|architect|designer|programmer|tester|administrator|admin|associate|manager|mgr|lead|researcher|technician|executive|officer|sde|sdet|intern|trainee|apprentice)\b/i;
 /** Joining words the model may use though the title does not ("Data Processing with Python"). */
 const CONNECTORS = new Set(['and', 'of', 'for', 'in', 'the', 'a', 'to', 'with', 'on']);
 const INTERN_WORD = /\b(intern|internship|trainee|apprentice|apprenticeship|co-?op)\b/i;
@@ -156,12 +159,22 @@ const LEVEL_OTHER = /\b(L[1-4])\b|\b(?:engineer|engr|developer|scientist|associa
    Engineer - Backend 2" and "- Backend 3" are different grades, and the
    model dropped both numbers into one "Backend Associate Engineer". */
 const LEVEL_TRAILING = /[\s\-–]([1-4])\s*$/;
+/* L1-L4 IS NOT A LEVEL THE CLEAN TITLE MUST KEEP (15 Oct 2026). In these
+   titles it is the support tier (Goldman's "The Core Engineering-L2-Bengaluru-
+   Associate-Software Engineering", NTT's "Managed Services Engineer (L1)"),
+   and requiring it refused every clean title the model wrote for them, so the
+   board showed the posting's raw title instead. He renamed the Goldman one
+   by hand to "Software Engineering Associate". It may stay; it need not.
+   Only where the code stands in its own segment ("-L2-", "(L1)", "- L2"):
+   written bare after the role ("DEVELOPER L2") it is Wipro's grade, a role
+   asking 1-3 years, and it stays. */
+const tierOnly = (token, raw) => new RegExp(`[(\\[\\-–—|,_]\\s*${token}(?=\\s*(?:[)\\]\\-–—|,_/]|$))`, 'i').test(String(raw));
 function keepsLevel(clean, raw) {
   const s = String(raw ?? '');
   const r = s.match(LEVEL_ROMAN);
   const o = s.match(LEVEL_OTHER) ?? s.match(LEVEL_TRAILING);
   const token = r && (!o || r.index <= o.index) ? r[1] : (o?.[1] ?? o?.[2]);
-  if (!token) return true;
+  if (!token || (/^L[1-4]$/i.test(token) && tierOnly(token, s))) return true;
   return new RegExp(`(^|[^A-Za-z0-9])${token}(?=$|[^A-Za-z0-9])`, /^[IV]+$/.test(token) ? '' : 'i').test(clean);
 }
 /** An internal grade the title carried and the clean title must drop: "Data Engineer 11". */
@@ -259,6 +272,10 @@ export function groundTitle(clean, raw, company = '', { discipline = null } = {}
     if (CONNECTORS.has(n)) continue;
     const stem = n.length >= 4 && [...vocab.keys()].some((r) => r.startsWith(n) && r.length - n.length <= 4);
     if (stem) continue;
+    // The person who does a discipline the title names ("C++ Desktop Application
+    // Development" -> Developer), only where the title names no person of its own:
+    // "Business Operations Specialist - Data Analytics" is not a Data Analyst.
+    if (PERSON_FORM[n] && vocab.has(PERSON_FORM[n]) && !NAMES_A_PERSON.test(String(raw))) continue;
     if (STANDARD_WORDS.has(n)) { added.push(n); continue; }
     return null;
   }

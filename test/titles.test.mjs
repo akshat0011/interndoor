@@ -43,7 +43,17 @@ check('an internship that stops saying so', groundTitle('Full Stack Developer', 
 check('a role that stops saying what it is', groundTitle('Application', 'Application Engineering Services - Support'), null);
 // Real India titles, 30 Sep: a grade of two or higher must survive.
 check('a level 2 kept by digit', groundTitle('Software Development Associate', 'Software Engineering & Development, Associate 2'), null);
-check('a level 2 kept by L-code', groundTitle('Software Engineering Associate', 'Engineering-L2-Hyderabad-Associate-Software Engineering'), null);
+// An L-code is a support tier here, not a grade (his call, 15 Oct 2026: the
+// Goldman title should read "Software Engineering Associate").
+check('an L-code may go', groundTitle('Software Engineering Associate', 'Engineering-L2-Hyderabad-Associate-Software Engineering'), 'Software Engineering Associate');
+check('the Goldman title as the model wrote it', groundTitle('Software Engineer Associate', 'The Core Engineering-L2-Bengaluru-Associate-Software Engineering', 'Goldman Sachs', { discipline: 'devops_cloud_sre' }), 'Software Engineer Associate');
+check('a support tier may go', groundTitle('Security Managed Services Engineer', 'Security Managed Services Engineer (L1)'), 'Security Managed Services Engineer');
+check('and after a dash', groundTitle('SOC Engineer', 'SOC Engineer - L2'), 'SOC Engineer');
+check('a grade written bare after the role stays', groundTitle('Developer', 'DEVELOPER L2'), null);
+check('Wipro\'s grade, with the role kept', groundTitle('Software Engineer', 'SOFTWARE ENGINEER L2'), null);
+check('the person who does a discipline the title names', groundTitle('C++ Desktop Application Developer', 'C++ Desktop Application Development (Windows)'), 'C++ Desktop Application Developer');
+check('but not over a person the title already names', groundTitle('Data Analyst', 'Business Operations Specialist - Data Analytics', '', { discipline: 'business_sales_marketing_ops' }), null);
+check('nor over an abbreviated one', groundTitle('AI Scientist', 'Dist Engr-AI Science', '', { discipline: 'machine_learning_ai' }), null);
 check('a roman II kept', groundTitle('Platform Engineer', 'Platform Engineer II'), null);
 check('the level may stay', groundTitle('Software Development Associate 2', 'Software Engineering & Development, Associate 2'), 'Software Development Associate 2');
 // 10 Oct 2026, his ask: level 1 stays too ("Applied Scientist I").

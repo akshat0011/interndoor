@@ -22,7 +22,7 @@ import { readFileSync } from 'node:fs';
 import {
   resumeNames, spellingsOf, normSkill, SKILL_ALIASES,
   shortlist, clampJob, rankDigest, failureFor,
-  hayOf, mentions, splitSkillEntry, reconcileTailored, roleKeywords, keywordMatch, keptIn, addHeadline,
+  hayOf, mentions, splitSkillEntry, reconcileTailored, roleKeywords, keywordMatch, keptIn, addHeadline, roleHeadline, tidyContact, supportsSkill, withoutTerm, headingCase,
   rankWithAI, tailorWithAI, RANK_BATCH,
   AI_ENDPOINT, FREE_PER_DAY, DEVICE_STORE, DEVICE_SHAPE, ALLOWANCE_STORE, OLD_KEY_STORE,
   deviceId, allowanceLeft, rememberAllowance, forgetOldKey, istDay, AI_OWNER_STORE, isAIOwner, respell, STANDARD_NAMES,
@@ -157,7 +157,8 @@ check('with the board', sentBody.region, 'IN');
 check('and no key of any kind', 'key' in sentBody || JSON.stringify(sentTo.init.headers).toLowerCase().includes('goog'), false);
 check('a rank sends no description — the prompt never reads one', 'description' in sentBody.jobs[0], false);
 check('and the role it is about', sentBody.jobs[0].title, 'SDE Intern');
-check('the server’s count is remembered for today', allowanceLeft(), 3);
+check('the server’s count is remembered for today, as AI reads', allowanceLeft(Date.now(), 'rank'), 3);
+check('and leaves the tailor count alone', allowanceLeft(Date.now(), 'tailor'), null);
 check('a reader sends no owner pass', 'x-ai-owner' in sentTo.init.headers, false);
 
 console.log('\n== THE OWNER PASS ==');
@@ -186,7 +187,8 @@ await tailorWithAI({ resumeText: 'x'.repeat(400), job: { title: 'T', description
 sentBody = JSON.parse(answer.seen.init.body);
 check('a tailor is a tailor', sentBody.task, 'tailor');
 check('and carries the role’s description', sentBody.job.description, 'about the role');
-check('the new count replaces the old one', allowanceLeft(), 2);
+check('a tailor’s count is kept as tailors', allowanceLeft(), 2);
+check('and is not written as AI reads', allowanceLeft(Date.now(), 'rank'), null);
 
 console.log('\n== the browser id ==');
 globalThis.localStorage = fakeStorage();
@@ -211,7 +213,11 @@ rememberAllowance(0, T);
 check('zero is remembered as zero', allowanceLeft(T), 0);
 check('yesterday’s zero says nothing about today', allowanceLeft(T + 86_400_000), null);
 rememberAllowance(99, T);
-check('a number over the limit is held to it', allowanceLeft(T), FREE_PER_DAY);
+check('a number over the limit is held to it', allowanceLeft(T), FREE_PER_DAY.tailor);
+rememberAllowance(99, T, 'rank');
+check('and AI reads to theirs', allowanceLeft(T, 'rank'), FREE_PER_DAY.rank);
+localStorage.setItem(ALLOWANCE_STORE, JSON.stringify({ day: istDay(T), left: 4 }));
+check('an old five-a-day count reads as unknown, not as four tailors', allowanceLeft(T), null);
 check('a nonsense number is refused', rememberAllowance('lots', T), false);
 localStorage.setItem(ALLOWANCE_STORE, '{not json');
 check('a damaged record reads as unknown', allowanceLeft(T), null);
@@ -273,9 +279,10 @@ console.log('\n== failures say something a student can act on ==');
   try { await rankWithAI({ resumeText: 'x'.repeat(400), jobs: three }); } catch (err) { caught = err; }
   check('the server’s own words are shown', caught?.message, said);
   check('with its code', caught?.code, 'limit');
-  check('and the spent allowance is remembered', allowanceLeft(), 0);
+  check('and the spent allowance is remembered, for AI reads', allowanceLeft(Date.now(), 'rank'), 0);
+  check('which leaves the tailors alone', allowanceLeft(), null);
 
-  for (const [status, want] of [[429, /free AI uses/], [504, /too long/], [500, /not available/], [502, /not available/]]) {
+  for (const [status, want] of [[429, /2 free resume tailors/], [504, /too long/], [500, /not available/], [502, /not available/]]) {
     globalThis.fetch = async () => ({ ok: false, status, json: async () => { throw new Error('not json'); } });
     let msg = '';
     try { await tailorWithAI({ resumeText: 'x'.repeat(400), job: { title: 'X' } }); } catch (err) { msg = err.message; }
@@ -292,6 +299,7 @@ console.log('\n== failures say something a student can act on ==');
   // Readable words, not a TypeError from reading .skills off nothing.
   check('a 200 with no result is not a success', /not available/.test(msg), true);
   check('failureFor never returns empty', failureFor(418).length > 0, true);
+  check('a spent AI read says AI reads', /free AI reads/.test(failureFor(429, 'rank')), true);
 }
 
 console.log('\n== skills are read one by one, never as whole lines ==');
@@ -401,11 +409,19 @@ function keepsEverything(t) {
 {
   // The exact shape that used to wipe a skills section.
   const T = fullTailored();
+  T.skills = ['Programming: Python, JavaScript, C++', 'Tools: Git, Docker, Containerization'];
+  const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T, added: [{ text: 'Containerization', why: 'The role asks for it.' }] }, RESUME_TEXT);
+  check('a whole skills line is read as its skills', allSkills(t.tailored), ['Python', 'JavaScript', 'C++', 'Git', 'Docker', 'Containerization']);
+  check('only the new one is an addition', t.added.map((a) => [a.kind, a.text, a.why]), [['skill', 'Containerization', 'The role asks for it.']]);
+  check('and it is marked in the resume', t.tailored.skills[1].items.find((x) => x.text === 'Containerization').added, true);
+}
+{
+  // An addition the resume does not support is not written in (15 Oct 2026).
+  const T = fullTailored();
   T.skills = ['Programming: Python, JavaScript, C++', 'Tools: Git, Docker, PyTorch'];
   const t = reconcileTailored({ original: clone(ORIGINAL), tailored: T, added: [{ text: 'PyTorch', why: 'The role asks for it.' }] }, RESUME_TEXT);
-  check('a whole skills line is read as its skills', allSkills(t.tailored), ['Python', 'JavaScript', 'C++', 'Git', 'Docker', 'PyTorch']);
-  check('only the new one is an addition', t.added.map((a) => [a.kind, a.text, a.why]), [['skill', 'PyTorch', 'The role asks for it.']]);
-  check('and it is marked in the resume', t.tailored.skills[1].items.find((x) => x.text === 'PyTorch').added, true);
+  check('a skill the resume never shows is not added', allSkills(t.tailored), ['Python', 'JavaScript', 'C++', 'Git', 'Docker']);
+  check('and is not listed as an addition', t.added, []);
 }
 {
   const T = fullTailored();
@@ -517,8 +533,8 @@ console.log('\n== the tailor hears the whole role ==');
 {
   const raw = { original: clone(ORIGINAL), tailored: (() => { const T = fullTailored(); T.skills = [{ group: 'Programming', items: ['Python'] }]; return T; })() };
   globalThis.fetch = answer(raw);
-  const t = await tailorWithAI({ resumeText: RESUME_TEXT, job: { title: 'X' } });
-  check('the real call sets the posting\'s title as the headline', [t.tailored.headline, t.added[0]?.key], ['X', 'headline']);
+  const t = await tailorWithAI({ resumeText: RESUME_TEXT, job: { title: 'Backend Developer Intern' } });
+  check('the real call sets the role as the headline', [t.tailored.headline, t.added[0]?.key], ['Backend Developer', 'headline']);
   check('tailorWithAI returns the reconciled resume', keepsEverything(t), []);
   globalThis.fetch = answer({ original: {}, tailored: {} });
   await returns('an empty answer is an error, not a blank resume',
@@ -582,7 +598,7 @@ console.log('\n== one question per screen: the resume, then tailor ==');
   check('one function owns every primary button', prim.length > 200, true);
   check('Continue needs a resume', /next\.disabled = !haveResume;/.test(prim), true);
   check('Tailor needs a resume and a free use left', /go\.disabled = !haveResume \|\| spent;/.test(prim), true);
-  check('spent means the server said zero', /const spent = allowanceLeft\(\) === 0;/.test(prim), true);
+  check('spent means the server said zero', /const spent = allowanceLeft\(Date\.now\(\), 'tailor'\) === 0;/.test(prim), true);
   check('and says why when it cannot', /'Back tomorrow'/.test(prim), true);
   check('ranking by skills is never gated', /tailorMode === 'tailor' \? 'Continue' : 'Rank the board'/.test(prim), true);
   check('the progress bar follows the gate', /\bsyncSteps\(\);/.test(prim), true);
@@ -601,7 +617,7 @@ console.log('\n== one question per screen: the resume, then tailor ==');
   check('and re-checks the gate afterwards', /finally \{[\s\S]{0,120}syncPrimary\(\);/.test(run), true);
   const rank = app.slice(app.indexOf('async function startAiRank('), app.indexOf('function syncPrimary('));
   check('an AI rank names its board', /rankWithAI\(\{ resumeText, jobs: picked, signal: ctl\.signal, region: REGION \}\)/.test(rank), true);
-  check('a spent allowance greys the rank button', /allowanceLeft\(\) === 0 && btn\) \{\s*btn\.disabled = true;/.test(rank), true);
+  check('a spent allowance greys the rank button', /allowanceLeft\(Date\.now\(\), 'rank'\) === 0 && btn\) \{\s*btn\.disabled = true;/.test(rank), true);
   const bar = app.slice(app.indexOf("const go = el('button', 'rank-ai'") - 200, app.indexOf("go.addEventListener('click', startAiRank)"));
   check('the rank bar does not offer what will be refused', /go\.disabled = spent;/.test(bar), true);
 
@@ -628,7 +644,7 @@ console.log('\n== one question per screen: the resume, then tailor ==');
   check('and the old footer line is gone', /processed in memory/.test(html), false);
   check('and the old long-form privacy copy is gone', /never reach|straight to|goes through InternDoor/.test(modal), false);
   const sum = app.slice(app.indexOf('function syncReview('), app.indexOf('function setResumeText('));
-  check('the review fills the allowance line', /\$\('ai-left'\)[\s\S]{0,120}allowanceText\(allowanceLeft\(\)\)/.test(sum), true);
+  check('the review fills the allowance line', /\$\('ai-left'\)[\s\S]{0,120}allowanceText\(allowanceLeft\(Date\.now\(\), 'tailor'\)\)/.test(sum), true);
 
   check('a disabled primary looks unpressable', /\.go\[disabled\]/.test(css), true);
   const dis = css.slice(css.indexOf('.go[disabled]'), css.indexOf('}', css.indexOf('.go[disabled]')));
@@ -691,7 +707,7 @@ console.log('\n== the card, the pane and the result (11 Oct 2026) ==');
 
   const print = css.slice(css.indexOf('@media print'));
   check('print leaves out the bar and the side panel', /\.rs-bar, \.rs-side/.test(print), true);
-  check('and the highlight on additions', /\.sheet \.r-add \{ background: none; \}/.test(print), true);
+  check('an addition carries no highlight in the sheet (his call, 15 Oct 2026)', /\.r-add\s*\{/.test(css), false);
   check('the close button is big enough to hit', /\.modal\.tw #tailor-close \{ width: 40px; height: 40px;/.test(css), true);
 }
 
@@ -754,7 +770,7 @@ console.log('\n== A RESPELLED SKILL IS KEPT; A DIFFERENT TOOL IS NOT ==');
     tailored: { name: 'K', sections: [{ heading: 'Skills', items: [{ title: 'Skills', bullets: [] }] }, { heading: 'Technical Skills', items: [{ title: 'Technical Skills', bullets: [] }, { title: 'Kotlin', bullets: [] }] }], skills: [{ group: 'Languages', items: ['Python'] }] },
     added: [],
   };
-  const t = reconcileTailored(data, 'K\nLanguages: Python');
+  const t = reconcileTailored(data, 'K\nLanguages: Python\nBuilt an Android app in Kotlin.');
   const all = t.tailored.skills.flatMap((g) => g.items.map((x) => x.text));
   check('the word "Skills" under a Skills heading is not a skill', all.includes('Skills') || all.includes('Technical Skills'), false);
   check('a real skill filed the same way still is', all.includes('Kotlin'), true);
@@ -773,18 +789,186 @@ console.log('\n== THE PLACE OR LINK BESIDE AN ENTRY IS A FACT ==');
   check('and comes back with an item that was put back', lost.tailored.sections[0].items[0].where, 'Pune, India');
 }
 
-console.log('\n== THE HEADLINE IS THE POSTING\'S EXACT TITLE ==');
+console.log('\n== THE HEADLINE IS THE ROLE, NOT THE POSTING\'S TITLE (15 Oct 2026) ==');
 {
   const t = { tailored: { name: 'K' }, added: [{ key: 'a1', kind: 'skill', text: 'MERN Stack' }] };
   addHeadline(t, { title: '  Software Engineering Intern  ' });
-  check('set word for word from the role', t.tailored.headline, 'Software Engineering Intern');
+  check('his example: Software Engineering Intern is a Software Engineer', t.tailored.headline, 'Software Engineer');
   check('listed first among the additions, removable like any', t.added.map((a) => [a.key, a.kind]), [['headline', 'headline'], ['a1', 'skill']]);
   addHeadline(t, { title: 'Software Engineering Intern' });
   check('listed once however often it is set', t.added.filter((a) => a.key === 'headline').length, 1);
   const none = { tailored: { name: 'K' }, added: [] };
   addHeadline(none, { title: '' });
   check('no title, no headline', [none.tailored.headline, none.added.length], [undefined, 0]);
+  const bare = { tailored: { name: 'K' }, added: [] };
+  addHeadline(bare, { title: 'Summer Internship 2026' });
+  check('a title naming no role, no headline', [bare.tailored.headline, bare.added.length], [undefined, 0]);
   check('the original never gets one', 'headline' in (reconcileTailored({ original: { name: 'K', sections: [], skills: [] }, tailored: { name: 'K', sections: [], skills: [] } }, 'K').original), false);
+  const s = { tailored: { name: 'K', summary: 'Application Engineering Intern with experience building backend services.' }, added: [] };
+  addHeadline(s, { title: 'Application Engineering Intern' });
+  check('a summary that opens with the posting\'s title names the role instead', s.tailored.summary, 'Application Engineer with experience building backend services.');
+  const same = { tailored: { name: 'K', summary: 'Data Engineer who built pipelines.' }, added: [] };
+  addHeadline(same, { title: 'Data Engineer' });
+  check('a title that is already the role leaves the summary alone', same.tailored.summary, 'Data Engineer who built pipelines.');
+
+  const roles = [
+    // his examples
+    ['Software Engineering Intern', 'Software Engineer'],
+    ['Application Engineering Intern', 'Application Engineer'],
+    ['SDE-1', 'Software Development Engineer'],
+    // short forms spelled out, the person and not the discipline
+    ['SDE Intern', 'Software Development Engineer'],
+    ['SDET Intern', 'Software Development Engineer in Test'],
+    ['SRE Intern', 'Site Reliability Engineer'],
+    ['Software Dev Engineer I', 'Software Development Engineer'],
+    ['Data Science Intern', 'Data Scientist'],
+    ['Data Analytics Intern', 'Data Analyst'],
+    ['Product Management Intern', 'Product Manager'],
+    ['UI/UX Design Intern', 'UI/UX Designer'],
+    ['VLSI Design Intern', 'VLSI Design Engineer'],
+    ['QA Testing Intern', 'QA Tester'],
+    ['Software Engineering & Development Intern', 'Software Engineer'],
+    ['Research and Development Intern', 'R&D Engineer'],
+    // a field with no person in it takes the trade's
+    ['Full Stack Intern', 'Full Stack Developer'],
+    ['Spring Boot Intern', 'Spring Boot Developer'],
+    ['AI/ML Intern', 'AI/ML Engineer'],
+    ['Software Intern', 'Software Engineer'],
+    // the programme, year, level, code and team go
+    ['Graduate Engineer Trainee (GET)', 'Graduate Engineer'],
+    ['Trainee Software Engineer', 'Software Engineer'],
+    ['Summer 2027 Intern – Software Engineering', 'Software Engineer'],
+    ['Intern (Software Engineering)', 'Software Engineer'],
+    ['Intern - Product Management', 'Product Manager'],
+    ['Applied Scientist I, Ads Trust Science', 'Applied Scientist'],
+    ['Software Development Engineer I, L4', 'Software Development Engineer'],
+    ['Software Engineer B7', 'Software Engineer'],
+    ['C++ Developer IRC281591', 'C++ Developer'],
+    ['AWS Data Engineer Returnship', 'AWS Data Engineer'],
+    ['Systems Engineer Specialist', 'Systems Engineer'],
+    ['Software Engineer, Associate', 'Software Engineer'],
+    ['New Grad Software Engineer', 'Software Engineer'],
+    ['Campus Graduate Masters Summer Internship - Data Engineer', 'Data Engineer'],
+    ['Spring 2027 Software Engineer Co-op', 'Software Engineer'],
+    ['software engineering intern', 'Software Engineer'],
+    // the poster's own role words stay
+    ['Associate Software Engineer', 'Associate Software Engineer'],
+    ['Member of Technical Staff Intern', 'Member of Technical Staff'],
+    ['Java Spring Boot Developer Intern', 'Java Spring Boot Developer'],
+    ['Programmer Analyst Trainee', 'Programmer Analyst'],
+    // no role named, or only a bare word: no headline
+    ['Summer Internship 2026', ''],
+    ['Technology Intern', ''],
+    ['Engineering Intern', ''],
+    ['Developer Intern', ''],
+  ];
+  for (const [title, want] of roles) check(`role of "${title}"`, roleHeadline(title), want);
+}
+
+console.log('\n== SKILLS KEEP THE READER\'S OWN GROUPS; ADDITIONS MUST BE SUPPORTED (15 Oct 2026) ==');
+{
+  // The reader's model on a fictional resume: it merged the reader's four
+  // groups into two of its own, left MySQL stranded, and added four skills the
+  // resume never shows.
+  const O = { name: 'R', sections: [], skills: [
+    { group: 'Languages', items: ['Java', 'Python', 'JavaScript', 'SQL'] },
+    { group: 'Frameworks', items: ['React', 'Node.js', 'Express.js', 'Spring Boot'] },
+    { group: 'Databases', items: ['MySQL', 'MongoDB'] },
+    { group: 'Tools', items: ['Git', 'Docker', 'Postman'] },
+  ] };
+  const T = { name: 'R', sections: [], skills: [
+    { group: 'Technical Skills', items: ['Node.js', 'MongoDB', 'PostgreSQL', 'AWS', 'JavaScript', 'TypeScript', 'Redis', 'Kafka'] },
+    { group: 'Additional Skills', items: ['Java', 'Python', 'SQL', 'React', 'Express.js', 'Spring Boot', 'Git', 'Docker', 'Postman'] },
+  ] };
+  const text = 'R Languages: Java, Python, JavaScript, SQL Frameworks: React, Node.js, Express.js, Spring Boot Databases: MySQL, MongoDB Tools: Git, Docker, Postman Cut load time by adding Redis caching.';
+  const t = reconcileTailored({ original: O, tailored: T }, text);
+  check('the lead group, then the reader\'s own groups in their own order', t.tailored.skills.map((g) => [g.group, g.items.map((x) => x.text)]), [
+    ['Technical Skills', ['Node.js', 'MongoDB', 'JavaScript', 'Redis']],
+    ['Languages', ['Java', 'Python', 'SQL']],
+    ['Frameworks', ['React', 'Express.js', 'Spring Boot']],
+    ['Databases', ['MySQL']],
+    ['Tools', ['Git', 'Docker', 'Postman']],
+  ]);
+  check('Redis is in the resume\'s own words, so it leads and is no addition; Kafka, AWS, TypeScript and PostgreSQL are not written in', t.added, []);
+  const E = { name: 'S', sections: [], skills: [{ group: 'Programming', items: ['C', 'Embedded C', 'Python'] }, { group: 'Hardware', items: ['STM32', 'ESP32'] }] };
+  const fake = reconcileTailored({ original: E, tailored: { name: 'S', sections: [], skills: [
+    { group: 'Engineering', items: ['SolidWorks', 'Ansys', 'CAD'] }, { group: 'Technical', items: ['C', 'Embedded C', 'Python', 'STM32', 'ESP32'] }] } },
+    'S Programming: C, Embedded C, Python Hardware: STM32, ESP32 Wrote STM32 firmware.');
+  check('a lead group of skills the resume never shows is gone, and the reader\'s groups stand', fake.tailored.skills.map((g) => g.group), ['Programming', 'Hardware']);
+  check('the umbrella name a resume does support stays', supportsSkill(hayOf('Built with MongoDB, Express, React and Node. Deployed with GitHub Actions.'), 'MERN Stack')
+    && supportsSkill(hayOf('Deployed with GitHub Actions.'), 'CI/CD'), true);
+  check('and one it does not, does not', supportsSkill(hayOf('Built with React and Node.'), 'MERN Stack') || supportsSkill(hayOf('React'), 'Kafka'), false);
+  const same = reconcileTailored({ original: O, tailored: { name: 'R', sections: [], skills: [{ group: 'Languages', items: ['JavaScript', 'Java'] }] } }, text);
+  check('with no lead group, the reader\'s groups take the model\'s order', same.tailored.skills[0].items.map((x) => x.text), ['JavaScript', 'Java', 'Python', 'SQL']);
+}
+
+console.log('\n== THE SUMMARY LOSES A CLAIM, NOT A SENTENCE (15 Oct 2026) ==');
+{
+  check('a list loses the term and reads', withoutTerm('Application Engineer with experience in Node.js, MongoDB, and AWS.', 'AWS'), 'Application Engineer with experience in Node.js and MongoDB.');
+  check('from the front of a list', withoutTerm('Skilled in AWS, Node.js and MongoDB.', 'AWS'), 'Skilled in Node.js and MongoDB.');
+  check('from a pair', withoutTerm('Uses Kafka and Redis daily.', 'Kafka'), 'Uses Redis daily.');
+  check('a sentence that would not read is dropped', withoutTerm('Skilled in C#.', 'C#'), '');
+  const job = { title: 'Backend Intern', keySkills: ['Node.js', 'AWS', 'Kafka'] };
+  const t = reconcileTailored({ original: { name: 'K', summary: 'Builds apps.', sections: [], skills: [] }, tailored: { name: 'K', sections: [], skills: [],
+    summary: 'Graduate Engineer. Backend Developer with experience in Node.js, MongoDB, and AWS. Built Kafka pipelines. Cut load time by 35%.' } },
+    'K Built apps with Node.js and MongoDB. Cut load time by 35%.', { job });
+  check('the role stays, the claim goes, a fragment goes', t.tailored.summary, 'Backend Developer with experience in Node.js and MongoDB. Cut load time by 35%.');
+}
+
+console.log('\n== HEADINGS IN CAPITALS ARE SET IN TITLE CASE (15 Oct 2026) ==');
+{
+  check('capitals become title case', ['EDUCATION', 'WORK EXPERIENCE', 'ACHIEVEMENTS AND AWARDS', 'IT SKILLS', 'CO-CURRICULAR'].map(headingCase),
+    ['Education', 'Work Experience', 'Achievements and Awards', 'IT Skills', 'Co-Curricular']);
+  check('a heading the reader wrote in mixed case is left alone', headingCase('Projects & Open Source'), 'Projects & Open Source');
+  const t = reconcileTailored({ original: { name: 'K', sections: [{ heading: 'EDUCATION', items: [{ title: 'B.Tech' }] }], skills: [] },
+    tailored: { name: 'K', sections: [{ heading: 'EDUCATION', items: [{ title: 'B.Tech' }] }], skills: [] } }, 'K EDUCATION B.Tech');
+  check('in the rewrite only; the original keeps the reader\'s capitals', [t.tailored.sections[0].heading, t.original.sections[0].heading], ['Education', 'EDUCATION']);
+}
+
+console.log('\n== THE CONTACT LINE GETS ITS SEPARATORS BACK (15 Oct 2026) ==');
+{
+  // A real tailor's line: the separator between the email and LinkedIn was
+  // lost in the PDF's text layer.
+  check('a lost separator between two addresses comes back',
+    tidyContact('Delhi, India • +91 98107 80422 • riya@example.com linkedin.com/in/riya • github.com/riya'),
+    'Delhi, India • +91 98107 80422 • riya@example.com • linkedin.com/in/riya • github.com/riya');
+  check('a line with none at all gets them, the place and the phone kept whole',
+    tidyContact('Pune, India +91 98107 80422 riya@example.com https://riya.dev'),
+    'Pune, India • +91 98107 80422 • riya@example.com • https://riya.dev');
+  check('the reader\'s own separator is kept', tidyContact('riya@example.com | linkedin.com/in/riya | +1 (555) 123-4567'),
+    'riya@example.com | linkedin.com/in/riya | +1 (555) 123-4567');
+  check('and a middle dot too', tidyContact('Pune · riya@example.com riya.dev'), 'Pune · riya@example.com · riya.dev');
+  check('a label stays with what it labels', tidyContact('Email: riya@example.com Phone: +91-9810780422 Bengaluru'),
+    'Email: riya@example.com • Phone: +91-9810780422 • Bengaluru');
+  check('commas between addresses become separators', tidyContact('riya@example.com, linkedin.com/in/riya, github.com/riya'),
+    'riya@example.com • linkedin.com/in/riya • github.com/riya');
+  check('a PIN code is not a phone number', tidyContact('Pune, Maharashtra 411001 • riya@example.com'), 'Pune, Maharashtra 411001 • riya@example.com');
+  check('a plain place is left alone', tidyContact('Pune, India'), 'Pune, India');
+  check('nothing in, nothing out', tidyContact(''), '');
+  const t = reconcileTailored({ original: { name: 'K', contact: 'k@example.com linkedin.com/in/k', sections: [], skills: [] },
+    tailored: { name: 'K', contact: 'k@example.com linkedin.com/in/k', sections: [], skills: [] } }, 'K k@example.com linkedin.com/in/k');
+  check('both resumes carry the tidied line', [t.original.contact, t.tailored.contact], ['k@example.com • linkedin.com/in/k', 'k@example.com • linkedin.com/in/k']);
+}
+
+console.log('\n== A SKILLS TABLE\'S LEFT COLUMN IS NOT A SKILL (15 Oct 2026) ==');
+{
+  // A real tailor printed "Languages, Core CS, Backend, Tools" as a skills line
+  // under groups with those very names.
+  const skills = [
+    { group: '', items: ['Languages', 'Core CS', 'Backend', 'Tools'] },
+    { group: 'Languages', items: ['Java', 'Python'] },
+    { group: 'Core CS', items: ['OOP', 'DBMS'] },
+    { group: 'Backend', items: ['Express.js'] },
+    { group: 'Tools', items: ['Git', 'Docker'] },
+  ];
+  const t = reconcileTailored({ original: { name: 'K', sections: [], skills }, tailored: { name: 'K', sections: [], skills } },
+    'K Languages Core CS Backend Tools Java Python OOP DBMS Express.js Git Docker');
+  check('the line of group names is gone from both', [t.original.skills.map((g) => g.group), t.tailored.skills.map((g) => g.group)],
+    [['Languages', 'Core CS', 'Backend', 'Tools'], ['Languages', 'Core CS', 'Backend', 'Tools']]);
+  check('and every real skill stays', t.tailored.skills.flatMap((g) => g.items.map((x) => x.text)), ['Java', 'Python', 'OOP', 'DBMS', 'Express.js', 'Git', 'Docker']);
+  const one = reconcileTailored({ original: { name: 'K', sections: [], skills: [{ group: '', items: ['Backend', 'Go'] }, { group: 'Backend', items: ['Express.js'] }] },
+    tailored: { name: 'K', sections: [], skills: [{ group: '', items: ['Backend', 'Go'] }, { group: 'Backend', items: ['Express.js'] }] } }, 'K Backend Go Express.js');
+  check('one word that happens to be a group\'s name is a skill, and stays', one.tailored.skills[0].items.map((x) => x.text), ['Backend', 'Go']);
 }
 
 console.log('\n== A REWRITE MAY NOT CLAIM WHAT THE RESUME NEVER SAYS (12 Oct 2026) ==');
@@ -824,7 +1008,7 @@ console.log('\n== A REWRITE MAY NOT CLAIM WHAT THE RESUME NEVER SAYS (12 Oct 202
   check('and it is listed', t.added.some((a) => a.kind === 'line' && a.text === 'Built internal tools in C#'), true);
   check('a summary sentence with an unsupported claim is dropped, the rest kept', t.tailored.summary, 'Developer with a Flask REST API in production. Comfortable with SQL.');
   check('it counts what it put back', t.grounded, 3);
-  check('an added skill stays, flagged', t.added.some((a) => a.kind === 'skill' && a.text === 'C#'), true);
+  check('an added skill the resume never shows is not written in (15 Oct 2026)', t.tailored.skills.some((g) => g.items.some((x) => x.text === 'C#')), false);
 
   const allBad = reconcileTailored({ original: { ...original, summary: 'Backend developer.' }, tailored: { ...tailored, summary: 'Skilled in C#. Agile expert.' } }, RES + ' Backend developer.', { job: JOB });
   check('a summary that is all claims falls back to the reader\'s own', allBad.tailored.summary, 'Backend developer.');

@@ -9,7 +9,8 @@
  *
  * Until 11 Oct 2026 the AI ran in the browser on a key each reader had to
  * create for themselves (23 Sep, "bring your own key"). That stopped nearly
- * every student, so the site pays now: FREE_PER_DAY uses a day per browser,
+ * every student, so the site pays now: FREE_PER_DAY uses a day per browser
+ * for each feature,
  * counted by /api/ai, with a per-network and a whole-site cap behind it. The
  * resume passes through our function for that one request and is never
  * stored or logged.
@@ -23,13 +24,16 @@
 /** Same origin, so connect-src 'self' covers it and no third party sees the call. */
 export const AI_ENDPOINT = '/api/ai';
 
-/* THE FREE ALLOWANCE. One pool for both features: an AI rank and a tailored
-   resume each use one. The server enforces it; the browser only remembers the
-   last number the server told it, to say it on screen and grey a button. At
-   the prices read on 11 Oct 2026 a tailor costs about a rupee and an AI rank a
-   fraction of one, so five a day per browser is affordable and still worth
-   inviting a friend for when credits arrive. */
-export const FREE_PER_DAY = 5;
+/* THE FREE ALLOWANCE, per browser per India day, ONE COUNT PER FEATURE since
+   17 Oct 2026 (his call: "limit tailor my resume to twice per user every day
+   ... we want most number of users to use it and we are low on budget"). A
+   tailor costs about 40-70 paise and an AI rank about 3, so they are counted
+   apart and ranking can never use up somebody's tailors. Until then it was
+   one pool of five for both. The server enforces it; the browser only
+   remembers the last number the server told it, to say it on screen and grey
+   a button. */
+export const FREE_PER_DAY = { tailor: 2, rank: 5 };
+const limitFor = (task) => FREE_PER_DAY[task] ?? FREE_PER_DAY.tailor;
 
 /* Below this a resume is not a resume, and the server refuses it — the same
    line app.js draws before it will let anyone continue. */
@@ -103,21 +107,26 @@ function ownerPass() {
 
 export function isAIOwner() { return ownerPass() !== null; }
 
-export function allowanceLeft(now = Date.now()) {
+/* One record per feature: the tailor keeps the old key, ranking has its own.
+   A number kept under the old key from before 17 Oct counted both features
+   against five, so a value over the tailor's limit reads as unknown. */
+const allowanceKey = (task) => (task === 'rank' ? `${ALLOWANCE_STORE}:rank` : ALLOWANCE_STORE);
+
+export function allowanceLeft(now = Date.now(), task = 'tailor') {
   if (isAIOwner()) return null;   // no count to show: the owner has no limit
   try {
-    const kept = JSON.parse(localStorage.getItem(ALLOWANCE_STORE) || 'null');
+    const kept = JSON.parse(localStorage.getItem(allowanceKey(task)) || 'null');
     if (!kept || kept.day !== istDay(now)) return null;
     const left = Number(kept.left);
-    return Number.isInteger(left) && left >= 0 && left <= FREE_PER_DAY ? left : null;
+    return Number.isInteger(left) && left >= 0 && left <= limitFor(task) ? left : null;
   } catch { return null; }
 }
 
-export function rememberAllowance(left, now = Date.now()) {
+export function rememberAllowance(left, now = Date.now(), task = 'tailor') {
   const n = Number(left);
   if (!Number.isInteger(n) || n < 0) return false;
   try {
-    localStorage.setItem(ALLOWANCE_STORE, JSON.stringify({ day: istDay(now), left: Math.min(n, FREE_PER_DAY) }));
+    localStorage.setItem(allowanceKey(task), JSON.stringify({ day: istDay(now), left: Math.min(n, limitFor(task)) }));
     return true;
   } catch { return false; }
 }
@@ -421,6 +430,53 @@ function sameItem(o, t) {
   return sameTitle(o, t) && orgOk;
 }
 
+/* ---------------- the contact line ----------------
+ * A resume's contact line comes back however the PDF's text layer read it,
+ * and a separator drawn as an icon or a symbol in its own font is lost on the
+ * way: "akshat@example.com linkedin.com/in/akshat" with nothing between the two
+ * (seen on a real tailor, 15 Oct 2026). So the line is rebuilt from its parts:
+ * every email, web address and phone number is its own part, the words around
+ * them stay together ("Delhi, India"), a label stays with what it labels
+ * ("Email: a@b.com"), and the parts are joined with the separator the reader
+ * used, or " • ". Nothing is added or dropped, only spaced. */
+const EMAIL_TOKEN = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+const URL_TOKEN = /^(?:https?:\/\/)?(?:www\.)?[a-z0-9][a-z0-9-]*(?:\.[a-z0-9-]+)*\.[a-z]{2,}(?:[/?#]\S*)?$/i;
+const DIGITISH = /^\+?\(?\d[\d().-]*\)?$/;
+
+function contactParts(piece) {
+  const toks = piece.split(/\s+/).filter(Boolean);
+  const parts = [];
+  let run = [];
+  const flush = () => { if (run.length) parts.push(run.join(' ')); run = []; };
+  for (let i = 0; i < toks.length;) {
+    const bare = toks[i].replace(/[,;]+$/, '');
+    let atom = null;
+    let next = i + 1;
+    if (EMAIL_TOKEN.test(bare) || URL_TOKEN.test(bare)) atom = bare;
+    else if (DIGITISH.test(bare)) {
+      let j = i + 1;
+      while (j < toks.length && DIGITISH.test(toks[j].replace(/[,;]+$/, ''))) j += 1;
+      const phone = toks.slice(i, j).join(' ').replace(/[,;]+$/, '');
+      if (phone.replace(/\D/g, '').length >= 7) { atom = phone; next = j; }
+    }
+    if (atom === null) { run.push(toks[i]); i += 1; continue; }
+    const label = run.length && /:$/.test(run[run.length - 1]) ? run.pop() : '';
+    flush();
+    parts.push(label ? `${label} ${atom}` : atom);
+    i = next;
+  }
+  flush();
+  return parts.map((x) => x.replace(/[,;]+$/, '').trim()).filter(Boolean);
+}
+
+export function tidyContact(raw) {
+  const s = str(raw, 400);
+  if (!s) return '';
+  const used = s.match(/[•·|]/)?.[0];
+  const sep = used ? ` ${used} ` : ' • ';
+  return s.split(/\s*[•·|]\s*/).filter(Boolean).flatMap(contactParts).join(sep);
+}
+
 /** Shape whatever came back into one resume structure. Nothing here invents.
  *
  *  The model is told to put skills in `skills` and the summary in `summary`,
@@ -504,6 +560,16 @@ function normResume(raw) {
     sections.push(sec);
   }
 
+  /* A skills table read as text can bring its own left column back as a line
+     of skills: "Languages, Core CS, Backend, Tools" beside groups with those
+     very names (a real tailor, 15 Oct 2026). Those are the groups' names, not
+     skills, so a line naming two or more of the other groups loses them. */
+  const groupNames = new Set(groups.filter((g) => g.group).map((g) => keyOf(g.group)));
+  for (const g of groups) {
+    const isName = (x) => groupNames.has(keyOf(String(x).replace(/:$/, ''))) && keyOf(x) !== keyOf(g.group);
+    if (g.items.filter(isName).length >= 2) g.items = g.items.filter((x) => !isName(x));
+  }
+
   // A skill listed twice in one resume is one skill.
   for (const g of groups) {
     const seen = new Set();
@@ -517,7 +583,7 @@ function normResume(raw) {
 
   return {
     name: str(r.name, 120),
-    contact: str(r.contact, 400),
+    contact: tidyContact(r.contact),
     summary,
     sections,
     skills: groups.filter((g) => g.items.length),
@@ -543,6 +609,93 @@ export function resumePlainText(R) {
     out.push([g.group, ...g.items.map((x) => (typeof x === 'string' ? x : x.text))].filter(Boolean).join(', '));
   }
   return out.filter(Boolean).join('\n');
+}
+
+/* ---------------- what a resume supports ----------------
+ * AN ADDED SKILL MUST BE ONE THE RESUME SUPPORTS (15 Oct 2026). Readers
+ * reported "wrong texts", and measured on fictional resumes the reader's model
+ * added Kafka, AWS and TypeScript to a resume with none of them, and SolidWorks,
+ * Ansys, CAD, FEA and CFD to an embedded-ECE one. Each was listed with a Remove
+ * button, and each was still false. The prompt already forbids it; code now
+ * holds it: a skill the resume never names stays only when it is the plain
+ * umbrella name for something the resume shows ("MERN Stack" from MongoDB,
+ * Express, React and Node; "CI/CD" from GitHub Actions). Anything else is not
+ * written in; the role's keyword list still shows it as missing. */
+const SUPPORTED_BY = [
+  [/^mern( stack)?$/, (h) => ['mongodb', 'express', 'react', 'node'].every((w) => h.includes(` ${w}`))],
+  [/^mean( stack)?$/, (h) => ['mongodb', 'express', 'angular', 'node'].every((w) => h.includes(` ${w}`))],
+  [/^(ci ?\/ ?cd|ci cd|cicd|continuous (integration|delivery|deployment))$/, (h) => /( github actions | jenkins | gitlab ci | circleci | travis | azure devops | argo ?cd | pipeline)/.test(h)],
+  [/^(rest(ful)?( apis?)?|apis?|api development|api integration)$/, (h) => /( rest | restful | api | apis )/.test(h)],
+  [/^sql$/, (h) => /( mysql | postgresql | postgres | sqlite | oracle | sql server | mariadb )/.test(h)],
+  [/^(nosql|no sql)$/, (h) => /( mongodb | mongo | redis | cassandra | dynamodb | firestore | couchdb )/.test(h)],
+  [/^(oop|object oriented programming|object oriented design)$/, (h) => /( java | c\+\+ | c# | python | oop )/.test(h)],
+  [/^version control$/, (h) => /( git | github | gitlab | bitbucket )/.test(h)],
+  [/^(data structures( and algorithms)?|algorithms|dsa|problem solving)$/, (h) => /( leetcode | codeforces | codechef | hackerrank | dsa | competitive programming | data structures | algorithms )/.test(h)],
+  [/^(unit testing|testing|test automation|integration testing)$/, (h) => /( jest | pytest | junit | mocha | testng | selenium | unit tests? | integration tests? | testing )/.test(h)],
+  [/^(cloud|cloud computing)$/, (h) => /( aws | gcp | azure | google cloud | cloud )/.test(h)],
+  [/^(containerization|containerisation|containers)$/, (h) => /( docker | kubernetes | podman )/.test(h)],
+  [/^embedded( systems)?$/, (h) => /( stm32 | arduino | esp32 | microcontrollers? | firmware | embedded | raspberry pi )/.test(h)],
+  [/^(iot|internet of things)$/, (h) => /( esp32 | mqtt | arduino | raspberry pi | iot | sensors? )/.test(h)],
+  [/^(machine learning|ml)$/, (h) => /( scikit learn | sklearn | tensorflow | pytorch | keras | xgboost | machine learning | regression | classification )/.test(h)],
+  [/^(deep learning)$/, (h) => /( tensorflow | pytorch | keras | cnn | lstm | transformers? | deep learning )/.test(h)],
+  [/^(agile|scrum)$/, (h) => /( agile | scrum | sprints? | jira | kanban )/.test(h)],
+  [/^(web development)$/, (h) => /( react | html | next.js | django | flask | express | web )/.test(h)],
+  [/^(backend( development)?|back end( development)?)$/, (h) => /( node | express | django | flask | spring | fastapi | rest | api | backend )/.test(h)],
+  [/^(frontend( development)?|front end( development)?)$/, (h) => /( react | vue | angular | html | next.js | frontend )/.test(h)],
+  [/^(full stack( development)?)$/, (h) => /( react | vue | angular | next.js )/.test(h) && /( node | express | django | flask | spring | fastapi )/.test(h)],
+  [/^(debugging)$/, (h) => /( debug| fixed | bugs? )/.test(h)],
+];
+export function supportsSkill(hay, skill) {
+  const k = normSkill(skill).replace(/\s+/g, ' ').trim();
+  if (!k) return false;
+  if (mentions(hay, skill)) return true;
+  return SUPPORTED_BY.some(([name, test]) => name.test(k) && test(hay));
+}
+
+/* ---------------- the summary keeps what it can ----------------
+ * A sentence naming a skill the resume does not show loses THAT SKILL, not the
+ * whole sentence: "Application Engineer with experience in Node.js, MongoDB,
+ * and AWS" (no AWS in the resume) keeps "... in Node.js and MongoDB". Dropping
+ * the whole sentence took the role with it, and once left "Graduate Engineer."
+ * standing alone as a sentence. A sentence that no longer reads is dropped. */
+function termPattern(term) {
+  const alts = [...new Set([normSkill(term), ...spellingsOf(term)])].filter(Boolean)
+    .sort((a, b) => b.length - a.length)
+    .map((x) => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '[\\s-]+'));
+  return `(?<![A-Za-z0-9+#.])(?:${alts.join('|')})s?(?![A-Za-z0-9+#])`;
+}
+export function withoutTerm(sentence, term) {
+  const T = termPattern(term);
+  let out = sentence;
+  const steps = [
+    [new RegExp(`,\\s*([^,;]+?),?\\s+(and|or)\\s+${T}`, 'i'), ' $2 $1'],
+    [new RegExp(`,\\s*(?:and\\s+|or\\s+)?${T}`, 'i'), ''],
+    [new RegExp(`${T}\\s*,\\s*`, 'i'), ''],
+    [new RegExp(`\\s+(?:and|or|&)\\s+${T}`, 'i'), ''],
+    [new RegExp(`${T}\\s+(?:and|or|&)\\s+`, 'i'), ''],
+  ];
+  for (const [re, by] of steps) {
+    if (re.test(out)) { out = out.replace(re, by); break; }
+  }
+  if (out === sentence) return '';
+  out = out.replace(/\s+([,.;!?])/g, '$1').replace(/\s{2,}/g, ' ').trim();
+  // "with experience in and MongoDB" or "in ." does not read.
+  if (/\b(in|with|of|using|and|or|including|like|on|as)\s*[.!?]?$/i.test(out) || /\b(in|with|of|using)\s+(and|or)\b/i.test(out)) return '';
+  return out;
+}
+const sentencesOf = (text) => String(text ?? '').split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean);
+/* A heading written in capitals is set in title case in the rewrite, so a
+   section the model renamed ("Experience") does not sit under one it left
+   ("EDUCATION"). Short words stay as written ("IT Skills", "POR"). */
+const SMALL_HEAD = /^(and|or|of|in|for|the|to|at|with|on|&)$/i;
+export function headingCase(h) {
+  const s = String(h ?? '');
+  if (!/[A-Z]/.test(s) || /[a-z]/.test(s)) return s;
+  return s.split(' ').map((w, k) => {
+    if (SMALL_HEAD.test(w) && k) return w.toLowerCase();
+    if (w.replace(/[^A-Z]/g, '').length <= 3) return w;
+    return w.toLowerCase().replace(/(^|[-/(])([a-z])/g, (m, a, c) => a + c.toUpperCase());
+  }).join(' ');
 }
 
 /**
@@ -651,9 +804,21 @@ export function reconcileTailored(data, resumeText, { job = null } = {}) {
     }
   }
   if (T.summary && claims(T.summary)) {
-    const kept = T.summary.split(/(?<=[.!?])\s+/).filter((x) => !claims(x)).join(' ').trim();
-    T.summary = kept;   // empty falls back to the reader's own below (T.summary || O.summary)
+    const kept = [];
+    for (const sentence of sentencesOf(T.summary)) {
+      let x = sentence;
+      for (const kw of terms) {
+        if (!x || !mentions(hayOf(x), kw) || mentions(hay, kw)) continue;
+        x = withoutTerm(x, kw);
+      }
+      if (x && !claims(x)) kept.push(x);
+    }
+    T.summary = kept.join(' ');   // empty falls back to the reader's own below (T.summary || O.summary)
     grounded += 1;
+  }
+  // A sentence of one or two words ("Graduate Engineer.") is not a sentence.
+  if (T.summary && T.summary !== O.summary) {
+    T.summary = sentencesOf(T.summary).filter((x) => x.split(/\s+/).length > 2).join(' ');
   }
 
   // Capitals back on tool names in what the model wrote; the reader's own
@@ -701,20 +866,52 @@ export function reconcileTailored(data, resumeText, { job = null } = {}) {
     restored += 1;
   }
 
-  // Skills: every original one stays, in its own group where that survives.
-  const tHay = () => hayOf(T.skills.flatMap((g) => g.items).join(' , '));
+  /* SKILLS KEEP THE READER'S OWN GROUPS (15 Oct 2026). The model is asked to
+     lead with one group of the job's skills, and it also merged the reader's
+     own groups into ones it named itself ("Technical Skills", "Additional
+     Skills"), leaving a lone "Databases: MySQL" where the rest of a group had
+     been taken. So code builds the list: the model's lead group first (when it
+     made one, under a name the reader's resume does not use), then every one of
+     the reader's groups under its own name and in its own order, less what the
+     lead already lists. The reader's skills keep the model's spelling where it
+     is the same skill ("Javascript" -> "JavaScript"). An added skill stays only
+     where the resume supports it (supportsSkill). */
+  const isReaders = (x) => mentions(hayOf(O.skills.flatMap((g) => g.items).join(' , ')), x) || mentions(hay, x);
+  const tHayBefore = hayOf(T.skills.flatMap((g) => g.items).join(' , '));
+  for (const g of O.skills) for (const x of g.items) if (!keptIn(tHayBefore, x)) restored += 1;
+  const oNames = new Set(O.skills.map((g) => keyOf(g.group)).filter(Boolean));
+  const lead = O.skills.length && T.skills[0]?.group && !oNames.has(keyOf(T.skills[0].group)) ? T.skills[0] : null;
+  const placed = [];
+  const place = (x) => {
+    if (!x || keptIn(hayOf(placed.join(' , ')), x)) return false;
+    placed.push(x);
+    return true;
+  };
+  const allowed = (x) => isReaders(x) || supportsSkill(hay, x);
+  const tSpelling = (x) => T.skills.flatMap((g) => g.items).find((t) => keyOf(t) === keyOf(x)) ?? x;
+  const built = [];
+  if (lead) built.push({ group: lead.group, items: lead.items.filter(allowed).filter(place) });
   for (const g of O.skills) {
-    for (const s of g.items) {
-      if (keptIn(tHay(), s)) continue;
-      // Back under its own heading: a reader's "Tools" group comes back as
-      // "Tools", not folded into whatever group the rewrite kept first.
-      let home = T.skills.find((x) => x.group.toLowerCase() === g.group.toLowerCase())
-        || (g.group ? null : T.skills[0]);
-      if (!home) { home = { group: g.group, items: [] }; T.skills.push(home); }
-      home.items.push(s);
-      restored += 1;
-    }
+    const same = T.skills.find((t) => t !== lead && g.group && keyOf(t.group) === keyOf(g.group));
+    const items = [...(same ? same.items.filter(allowed) : []), ...g.items.map(tSpelling)].filter(place);
+    built.push({ group: g.group, items });
   }
+  // Anything left in a group the model named itself (a supported addition, or
+  // a skill of the reader's that sat in a bullet) goes with the lead.
+  const extra = T.skills.filter((t) => t !== lead && !oNames.has(keyOf(t.group)))
+    .flatMap((t) => t.items).filter(allowed).filter(place);
+  if (extra.length) {
+    if (built[0]) built[0].items.push(...extra);
+    else built.push({ group: '', items: extra });
+  }
+  // A resume with no skills of its own keeps what the model listed, if supported.
+  if (!O.skills.length) {
+    for (const t of T.skills) built.push({ group: t.group, items: t.items.filter(allowed).filter(place) });
+  }
+  T.skills = built.filter((g) => g.items.length);
+  // Never needed by construction (every reader's group is walked above), kept
+  // because losing a reader's skill is the one thing this must never do.
+  for (const g of O.skills) for (const x of g.items) if (!keptIn(hayOf(placed.join(' , ')), x)) T.skills.push({ group: g.group, items: [x] });
   const oSkills = hayOf(O.skills.flatMap((g) => g.items).join(' , '));
   const skillOut = (R, isTailored) => R.skills.map((g) => ({
     group: g.group,
@@ -736,6 +933,7 @@ export function reconcileTailored(data, resumeText, { job = null } = {}) {
   };
   const tailored = {
     ...T,
+    sections: T.sections.map((sec) => ({ ...sec, heading: headingCase(sec.heading) })),
     name: O.name || T.name,
     contact: O.contact || T.contact,
     summary: T.summary || O.summary,
@@ -880,10 +1078,18 @@ export function rankDigest(job) {
   };
 }
 
+/** What a reader is told when a feature's free uses for the day are gone.
+ *  The server sends the same words (web/api/ai.js imports this). */
+export function limitMessage(task = 'tailor') {
+  return task === 'rank'
+    ? `You have used today's ${FREE_PER_DAY.rank} free AI reads. They come back at midnight. Ranking by skills still works.`
+    : `You have used today's ${FREE_PER_DAY.tailor} free resume tailors. They come back at midnight.`;
+}
+
 /** When the answer carries no words of its own — a platform timeout or a
  *  gateway page rather than our endpoint — say something a student can act on. */
-export function failureFor(status) {
-  if (status === 429) return `You have used today's ${FREE_PER_DAY} free AI uses. They come back at midnight. Ranking by skills still works.`;
+export function failureFor(status, task = 'tailor') {
+  if (status === 429) return limitMessage(task);
   if (status === 504) return 'That took too long. Please try again.';
   return 'The AI is not available right now. Please try again in a moment. Ranking by skills still works.';
 }
@@ -908,10 +1114,10 @@ async function callAI(task, fields, { signal, region } = {}) {
 
   let body = null;
   try { body = await res.json(); } catch { body = null; }
-  if (Number.isInteger(body?.remaining)) rememberAllowance(body.remaining);
+  if (Number.isInteger(body?.remaining)) rememberAllowance(body.remaining, Date.now(), task);
 
   if (!res.ok || !body || typeof body.result !== 'object' || body.result === null) {
-    const err = new Error(typeof body?.error === 'string' && body.error ? body.error : failureFor(res.status));
+    const err = new Error(typeof body?.error === 'string' && body.error ? body.error : failureFor(res.status, task));
     err.code = typeof body?.code === 'string' ? body.code : null;
     throw err;
   }
@@ -943,25 +1149,161 @@ export async function rankWithAI({ resumeText, jobs, signal, region }) {
   return out;
 }
 
+/* ---------------- the headline is the role ----------------
+ * His call, 15 Oct 2026: the headline names the ROLE, never the posting's
+ * title. "Software Engineering Intern" goes on a resume as "Software
+ * Engineer", "Application Engineering Intern" as "Application Engineer",
+ * "SDE-1" as "Software Development Engineer". So the programme words go
+ * (intern, trainee, a season, a year, a level), short forms are spelled out,
+ * and a discipline becomes the person who does it. A title that names no role
+ * ("Summer Internship", "Technology Intern") gives no headline at all:
+ * a resume with none is better than one that reads "Technology". */
+const ROLE_NOUN = new Set(['engineer', 'developer', 'scientist', 'analyst', 'designer', 'manager', 'architect',
+  'consultant', 'researcher', 'programmer', 'administrator', 'specialist', 'associate', 'technician', 'tester',
+  'strategist', 'writer', 'officer', 'executive', 'coordinator', 'representative', 'advisor', 'adviser',
+  'accountant', 'economist', 'statistician', 'modeler', 'modeller', 'trader', 'editor', 'producer', 'artist',
+  'animator', 'operator', 'planner', 'auditor', 'assistant', 'staff', 'lead', 'mathematician', 'physicist',
+  'chemist', 'biologist', 'instructor', 'quant']);
+/** A discipline as the person who does it, for the last word of a role. */
+const PERSON_OF = {
+  engineering: 'Engineer', development: 'Developer', science: 'Scientist', sciences: 'Scientist',
+  analytics: 'Analyst', analysis: 'Analyst', management: 'Manager', research: 'Researcher',
+  consulting: 'Consultant', testing: 'Tester', programming: 'Programmer', architecture: 'Architect',
+  administration: 'Administrator', engg: 'Engineer', engr: 'Engineer', eng: 'Engineer',
+};
+/* Design is a Designer only in the design trades; "VLSI Design" is a
+   Design Engineer, as hardware writes it. */
+const DESIGNER_FIELDS = /^(ui|ux|ui\/ux|ux\/ui|product|graphic|graphics|visual|web|interaction|experience|game|motion|brand|fashion|interior|user|communication)$/i;
+/* A field with no person in it takes the person the trade uses. */
+const DEVELOPER_FIELDS = /^(frontend|backend|fullstack|stack|web|android|ios|mobile|app|flutter|react|angular|vue|vue\.js|node|node\.js|nodejs|java|python|php|\.net|javascript|typescript|golang|kotlin|swift|ruby|rails|django|laravel|boot|mern|mean|salesforce|abap|wordpress|shopify|unity)$/i;
+const ENGINEER_FIELDS = /^(ai|ml|ai\/ml|ml\/ai|genai|llm|nlp|learning|vision|data|cloud|devops|devsecops|mlops|embedded|firmware|security|cybersecurity|network|networking|platform|infrastructure|software|hardware|vlsi|robotics|qa|assurance|automation|reliability|systems|system|electronics|electrical|mechanical|civil|chemical|blockchain|iot|rtl|asic|fpga|verification|validation|test|analog|digital|rf|power|semiconductor|application|applications|solutions|support|integration|simulation|controls|manufacturing|process|sre|computing)$/i;
+const PROGRAMME_WORDS = /^(intern|interns|internship|internships|trainee|trainees|apprentice|apprentices|apprenticeship|co-op|coop|co-ops|batch|program|programme|fresher|freshers|student|students|undergraduate|phd|ph\.d|masters|campus|off-campus|hiring|drive|opening|openings|opportunity|position|role|temporary|paid|unpaid|remote|hybrid|onsite|on-site|virtual|wfh|month|months|immediate|joiner|joiners|level|grade)$/i;
+const SEASON = /^(summer|winter|fall|autumn|spring)$/i;
+const LEVEL = /^(i{1,3}|iv|[1-4]|[a-z]\d{1,2}|jr\.?|sr\.?)$/i;
+/* A requisition code ("IRC281591", "20221132") is not part of any role. */
+const CODE = /^(?=(?:\D*\d){4})[A-Za-z0-9-]{5,}$/;
+/* Grade words some employers write after the role ("Systems Engineer
+   Specialist", "Software Engineer, Associate"). */
+const GRADE_TAIL = /^(associate|specialist|advisor|adviser|intermediate|professional|practitioner)$/i;
+/* One word alone says nothing a recruiter searches for. */
+const TOO_BARE = /^(engineer|developer|analyst|specialist|associate|manager|administrator|consultant|designer|scientist|researcher|technician|tester|assistant|staff|lead|executive|officer|programmer)$/i;
+const SMALL = /^(of|in|and|for|the|to|at|with|on|&|\/)$/i;
+
+function roleOfSegment(segment) {
+  let t = ` ${segment} `
+    .replace(/\bco[\s-]?op\b/gi, ' co-op ')
+    .replace(/\bfull[\s-]*stack\b/gi, 'Full Stack')
+    .replace(/\b(front|back)[\s-]+end\b/gi, (m, a) => `${a}end`.replace(/^./, (c) => c.toUpperCase()))
+    .replace(/\bresearch\s*(?:and|&)\s*development\b/gi, 'R&D Engineer')
+    .replace(/\bSDET\b/gi, 'Software Development Engineer in Test')
+    .replace(/\bSDE\b/gi, 'Software Development Engineer')
+    .replace(/\bSWE\b/gi, 'Software Engineer')
+    .replace(/\bMLE\b/gi, 'Machine Learning Engineer')
+    .replace(/\bSRE\b(?!\s+engineer)/gi, 'Site Reliability Engineer')
+    .replace(/\bDev\b(?=\s+Engineer)/gi, 'Development')
+    .replace(/\bDev\b/gi, 'Developer')
+    .replace(/\bMgr\b/gi, 'Manager')
+    .replace(/\b20\d\d(?:\s*[-–/]\s*(?:20)?\d\d)?\b/g, ' ')
+    .replace(/([A-Za-z])-(i{1,3}|iv|[1-4])\b/gi, '$1 $2');
+  const words = t.split(/\s+/).filter(Boolean)
+    .filter((w, k, all) => !PROGRAMME_WORDS.test(w) && !/^returnships?$/i.test(w) && !CODE.test(w)
+      && !(SEASON.test(w) && !/^boot$/i.test(all[k + 1] ?? '')));
+  // "New Grad" is a programme, not a role.
+  for (let k = 0; k < words.length - 1; k += 1) {
+    if (/^new$/i.test(words[k]) && /^grad(uate)?s?$/i.test(words[k + 1])) words.splice(k, 2);
+  }
+  // Levels go after a role ("Engineer II", "Developer 1", "Analyst L4").
+  const kept = [];
+  for (const w of words) {
+    const prev = kept[kept.length - 1] ?? '';
+    if (LEVEL.test(w) && (ROLE_NOUN.has(prev.toLowerCase()) || LEVEL.test(prev) || !kept.length)) continue;
+    kept.push(w);
+  }
+  const trim = () => {
+    while (kept.length && (SMALL.test(kept[kept.length - 1]) || /^graduates?$/i.test(kept[kept.length - 1]))) kept.pop();
+    while (kept.length && SMALL.test(kept[0])) kept.shift();
+  };
+  trim();
+  if (!kept.length) return { role: '', person: false };
+  // A grade written after the role goes ("Systems Engineer Specialist").
+  const isPerson = (w) => ROLE_NOUN.has(w.split('/').pop().toLowerCase()) || Boolean(PERSON_OF[w.toLowerCase()]);
+  if (kept.length > 1 && GRADE_TAIL.test(kept[kept.length - 1]) && kept.slice(0, -1).some(isPerson)) {
+    kept.pop();
+    while (kept.length && !isPerson(kept[kept.length - 1])) kept.pop();
+  }
+  // Two disciplines joined ("Software Engineering & Development") name the first.
+  if (kept.length >= 3 && /^(&|and)$/i.test(kept[kept.length - 2]) && PERSON_OF[kept[kept.length - 3].toLowerCase()]) {
+    kept.splice(kept.length - 2, 2);
+  }
+  trim();
+  if (!kept.length) return { role: '', person: false };
+  // A person followed by what they work on: "Member of Technical Staff",
+  // "Software Development Engineer in Test".
+  if (kept.some((w, k) => ROLE_NOUN.has(w.toLowerCase()) && /^(of|in|for)$/i.test(kept[k + 1] ?? ''))) {
+    return { role: kept.join(' '), person: true };
+  }
+  const last = kept[kept.length - 1];
+  const lastWord = last.split('/').pop().toLowerCase();
+  if (ROLE_NOUN.has(lastWord)) return { role: kept.join(' '), person: true };
+  if (lastWord === 'design') {
+    const prev = kept[kept.length - 2] ?? '';
+    if (DESIGNER_FIELDS.test(prev)) kept[kept.length - 1] = 'Designer';
+    else kept.push('Engineer');
+    return { role: kept.join(' '), person: true };
+  }
+  if (PERSON_OF[lastWord]) {
+    kept[kept.length - 1] = PERSON_OF[lastWord];
+    return { role: kept.join(' '), person: true };
+  }
+  if (DEVELOPER_FIELDS.test(last)) return { role: `${kept.join(' ')} Developer`, person: false };
+  if (ENGINEER_FIELDS.test(last)) return { role: `${kept.join(' ')} Engineer`, person: false };
+  return { role: '', person: false };
+}
+
+/** The role a resume should name for this posting's title, or '' when the
+ *  title names none. */
+export function roleHeadline(title) {
+  const raw = String(title ?? '').replace(/\s+/g, ' ').trim().slice(0, 160);
+  if (!raw) return '';
+  const segments = raw
+    .replace(/[([{]/g, ' | ').replace(/[)\]}]/g, ' | ')
+    .split(/\s+[-–—]\s+|\s*[|,:;_–—]\s*|\s+-(?=\S)|(?<=\S)-\s+/)
+    .map((x) => x.trim()).filter(Boolean);
+  const found = segments.map(roleOfSegment).filter((r) => r.role);
+  const best = found.find((r) => r.person) ?? found[0];
+  if (!best || TOO_BARE.test(best.role)) return '';
+  // Words the poster wrote in lower case get a capital; acronyms and the
+  // poster's own capitals stay as written.
+  return best.role.split(' ')
+    .map((w, k) => (/^[a-z]/.test(w) && !(k && SMALL.test(w)) ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(' ');
+}
+
 /** Rewrite one resume against one job. Nothing of the reader's is ever
  *  removed: reconcileTailored puts back anything the rewrite dropped, and
  *  marks everything it added. */
 /**
- * The posting's exact title as the resume's headline, the first thing a
- * recruiter's search matches (a senior recruiter, 11 Oct 2026: "If I search
- * 'Senior Project Manager' and your resume says 'Project Coordinator', you
- * won't show up"). Set here, from the role, never by the model, so it is the
- * title word for word. It is an addition like any other: listed, highlighted,
- * and one click removes it.
+ * The ROLE as the resume's headline, the first thing a recruiter's search
+ * matches (a senior recruiter, 11 Oct 2026: "If I search 'Senior Project
+ * Manager' and your resume says 'Project Coordinator', you won't show up").
+ * Set here, never by the model, from roleHeadline. It is an addition like any
+ * other: listed, and one click removes it. A summary that opens with the
+ * posting's own title ("Application Engineering Intern with ...") names the
+ * role instead, so the two never disagree.
  */
 export function addHeadline(t, job) {
-  const title = str(job?.title, 120);
-  if (!t?.tailored || !title) return t;
-  t.tailored.headline = title;
+  const role = roleHeadline(job?.title);
+  if (!t?.tailored || !role) return t;
+  t.tailored.headline = role;
   t.added = [{
-    key: 'headline', kind: 'headline', text: title,
-    why: "The posting's exact title. Recruiters search by title first.",
+    key: 'headline', kind: 'headline', text: role,
+    why: 'The role, the way recruiters search for it.',
   }, ...(t.added ?? []).filter((a) => a.key !== 'headline')];
+  const title = str(job?.title, 160);
+  if (title && t.tailored.summary) {
+    const esc = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    t.tailored.summary = t.tailored.summary.replace(new RegExp(esc, 'gi'), role);
+  }
   return t;
 }
 

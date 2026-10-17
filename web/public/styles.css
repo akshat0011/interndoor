@@ -1616,11 +1616,10 @@ html[data-boot] .boot-part {
 .sheet .r-item ul { list-style: disc; padding-left: 20px; margin: 5px 0 0; }
 .sheet .r-item li + li { margin-top: 3px; }
 .sheet .r-skills { margin: 0 0 4px; }
-/* What the tailor added: a highlighter stroke under the words. Never printed. */
-.sheet .r-add {
-  background: linear-gradient(transparent 58%, rgba(200, 255, 0, .55) 58%);
-  -webkit-box-decoration-break: clone; box-decoration-break: clone;
-}
+/* What the tailor added carries no mark in the sheet (his call, 15 Oct 2026:
+   readers took the highlighter for a formatting fault, and it is not part of
+   the resume they download). The "Added for this role" list names each one,
+   and choosing one there flashes it here. */
 .sheet .r-flash { animation: r-flash 1.2s var(--ease-out); }
 @keyframes r-flash { 0%, 35% { box-shadow: 0 0 0 4px rgba(200, 255, 0, .6); } 100% { box-shadow: 0 0 0 4px rgba(200, 255, 0, 0); } }
 .sheet.is-editing { outline: 2px dashed color-mix(in oklab, var(--accent) 60%, transparent); outline-offset: 6px; caret-color: #16160f; cursor: text; }
@@ -2179,7 +2178,6 @@ html.nudge-open { overflow: hidden; }
   #step-result:not([hidden]), .rs-grid { display: block; }
   .rs-doc { overflow: visible; padding: 0; background: none; }
   .rs-doc .sheet { box-shadow: none; max-width: none; margin: 0; }
-  .sheet .r-add { background: none; }
   .sheet .r-flash { animation: none; box-shadow: none; }
   .sheet.is-editing { outline: none; }
   .sheet { border-radius: 0; padding: 0; font-size: 10.5pt; line-height: 1.42; color: #000; }

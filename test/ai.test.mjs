@@ -47,8 +47,7 @@ const RESUME = 'Priya Sharma, priya@example.com. B.Tech CSE 2027. Built a Flask 
 const NOW = Date.UTC(2026, 9, 11, 6, 0, 0);
 
 /** A fake world: an in-memory Upstash and a scripted Gemini. */
-function world({ gemini = [], redisDown = false } = {}) {
-  const kv = new Map();
+function world({ gemini = [], redisDown = false, kv = new Map() } = {}) {
   const calls = { redis: [], gemini: [] };
   const answers = [...gemini];
   const fetchImpl = async (url, init) => {
@@ -159,7 +158,10 @@ console.log('\n== the tailor\'s contract (11 Oct 2026) ==');
   check('and who the role is for', prompt.includes('Open to: PG') && prompt.includes('Experience asked: 0-1 years'), true);
   // The recruiter's three rules (11 Oct 2026): title, keyword placement, exact wording.
   check('the prompt names the exact job title', prompt.includes('Exact job title: LLM Research Intern'), true);
-  check('the summary must carry the exact title', /the job's exact title, word for word/.test(TAILOR_SYSTEM), true);
+  // His call, 15 Oct 2026: the role, never the intern title ("LLM Research Intern" is an LLM Researcher).
+  check('the prompt names the role', prompt.includes('Role: LLM Researcher'), true);
+  check('the summary names the role, word for word', /the role, word for word as THE JOB's "Role" line gives it/.test(TAILOR_SYSTEM), true);
+  check('and never calls the candidate an intern', /Never call the candidate an intern or a trainee/.test(TAILOR_SYSTEM), true);
   check('the job\'s skills lead the skills list', /The first group holds the job's skills that the candidate has/.test(TAILOR_SYSTEM), true);
   check('the posting\'s own words replace a synonym', /EXACT WORDING\./.test(TAILOR_SYSTEM) && /use the posting's words/.test(TAILOR_SYSTEM), true);
   check('no words about character in the summary', /passionate, hardworking, motivated, aspiring/.test(TAILOR_SYSTEM), true);
@@ -195,8 +197,9 @@ console.log('\n== a tailor that works ==');
   const out = await run(w, post(tailorBody()));
   check('200', out.status, 200);
   check('the model answer comes back as result', out.body.result.name, 'P');
-  check(`and says ${FREE_PER_DAY - 1} free uses are left`, out.body.remaining, FREE_PER_DAY - 1);
-  check('and the limit', out.body.limit, FREE_PER_DAY);
+  check(`and says ${FREE_PER_DAY.tailor - 1} free tailors are left`, out.body.remaining, FREE_PER_DAY.tailor - 1);
+  check('and the limit', out.body.limit, FREE_PER_DAY.tailor);
+  check('and which feature the count is for', out.body.task, 'tailor');
   const g = w.calls.gemini[0];
   check('one call to Google', w.calls.gemini.length, 1);
   check('to Google', new URL(g.url).origin, 'https://generativelanguage.googleapis.com');
@@ -216,26 +219,46 @@ console.log('\n== the allowance per browser ==');
 {
   const w = world({ gemini: Array(10).fill({ status: 200, text: '{"scores":[]}' }) });
   const seen = [];
-  for (let i = 0; i < FREE_PER_DAY; i++) seen.push((await run(w, post(rankBody()))).body.remaining);
-  check(`${FREE_PER_DAY} uses count down to zero`, seen, Array.from({ length: FREE_PER_DAY }, (_, i) => FREE_PER_DAY - 1 - i));
+  const N = FREE_PER_DAY.rank;
+  for (let i = 0; i < N; i++) seen.push((await run(w, post(rankBody()))).body.remaining);
+  check(`${N} AI reads count down to zero`, seen, Array.from({ length: N }, (_, i) => N - 1 - i));
   const over = await run(w, post(rankBody()));
   check('the next one is 429', over.status, 429);
   check('says it is the browser limit', over.body.code, 'limit');
   check('with nothing left', over.body.remaining, 0);
-  check('and Google was not asked for it', w.calls.gemini.length, FREE_PER_DAY);
-  const dev = [...w.kv.entries()].find(([k]) => k.includes(':d:'));
-  check('a refused request gives its count back', dev[1], FREE_PER_DAY);
+  check('and Google was not asked for it', w.calls.gemini.length, N);
+  check('the message is about AI reads', /free AI reads/.test(over.body.error), true);
+  const dev = [...w.kv.entries()].find(([k]) => k.includes(':r:'));
+  check('a refused request gives its count back', dev[1], N);
   const all = w.kv.get(`ai:${istDay(NOW)}:all`);
-  check('and the site budget too (what was spent, not what was refused)', all, FREE_PER_DAY * COST_PAISE.rank);
+  check('and the site budget too (what was spent, not what was refused)', all, N * COST_PAISE.rank);
   check('a refusal is counted', [...w.kv.keys()].some((k) => /:ai-limit:IN$/.test(k)), true);
   const other = await run(w, post(rankBody({ device: 'b'.repeat(32) })));
   check('another browser on the same network still works', other.status, 200);
+  const tailor = await run(world({ gemini: [{ status: 200, text: TAILORED }], kv: w.kv }), post(tailorBody()));
+  check('spent AI reads leave the tailors alone', tailor.status, 200);
+}
+
+console.log('\n== two tailors a day per browser (17 Oct 2026) ==');
+{
+  check('the tailor allows two a day', FREE_PER_DAY.tailor, 2);
+  const w = world({ gemini: Array(5).fill({ status: 200, text: TAILORED }) });
+  const seen = [];
+  for (let i = 0; i < FREE_PER_DAY.tailor; i++) seen.push((await run(w, post(tailorBody()))).body.remaining);
+  check('two tailors count down to zero', seen, [1, 0]);
+  const over = await run(w, post(tailorBody()));
+  check('the third is 429', over.status, 429);
+  check('says it is the tailor limit', [over.body.code, over.body.task, over.body.limit], ['limit', 'tailor', 2]);
+  check('in words about tailors', /2 free resume tailors/.test(over.body.error), true);
+  check('and Google was asked only twice', w.calls.gemini.length, 2);
+  const rank = await run(world({ gemini: [{ status: 200, text: '{"scores":[]}' }], kv: w.kv }), post(rankBody()));
+  check('an AI read still works after the tailors are spent', rank.status, 200);
 }
 
 console.log('\n== the day resets it ==');
 {
   const w = world({ gemini: Array(10).fill({ status: 200, text: '{"scores":[]}' }) });
-  for (let i = 0; i < FREE_PER_DAY; i++) await run(w, post(rankBody()));
+  for (let i = 0; i < FREE_PER_DAY.rank; i++) await run(w, post(rankBody()));
   const tomorrow = await respond(post(rankBody()), { env: ENV, fetchImpl: w.fetchImpl, now: () => NOW + 86_400_000, sleep: async () => {} });
   check('the next India day starts over', tomorrow.status, 200);
   // 18:30 UTC is midnight in India; 18:29 is still the same India day.
@@ -308,15 +331,16 @@ console.log('\n== each call is charged what it really cost ==');
   await run(ownRank, post(rankBody(), { 'x-real-ip': '203.0.113.7', 'x-ai-owner': aiOwnerToken(ENV) }));
   check('the owner\'s rank stays on the rank model', ownRank.calls.gemini[0].url.includes(`/${RANK_MODEL}:`), true);
 }
-check('the default is his Rs 2,000 a month (12 Oct 2026)', MONTHLY_BUDGET_INR, 2000);
-check('spread over 31 days, so no month reaches the cap', siteCap({}), Math.floor(200000 / 31));
+check('the default is his Rs 3,000 a month (17 Oct 2026)', MONTHLY_BUDGET_INR, 3000);
+check('spread over 31 days, so no month reaches the cap', siteCap({}), Math.floor(300000 / 31));
 check('AI_MONTHLY_BUDGET_INR moves it', siteCap({ AI_MONTHLY_BUDGET_INR: '2000' }), Math.floor(200000 / 31));
 check('a nonsense budget falls back to the default', [siteCap({ AI_MONTHLY_BUDGET_INR: 'lots' }), siteCap({ AI_MONTHLY_BUDGET_INR: '-3' })], [siteCap({}), siteCap({})]);
 check('the old count-based setting is gone', /AI_DAILY_CAP/.test(readFileSync(new URL('../web/api/ai.js', import.meta.url), 'utf8')), false);
-check('the browser limit is reported first', overLimit({ dev: FREE_PER_DAY + 1, ip: 999, all: 999 }, 10), 'device');
+check('the browser limit is reported first', overLimit({ dev: FREE_PER_DAY.tailor + 1, ip: 999, all: 999 }, 10), 'device');
+check('a rank is held to its own limit', [overLimit({ dev: FREE_PER_DAY.tailor + 1, ip: 1, all: 1 }, 10, 'rank'), overLimit({ dev: FREE_PER_DAY.rank + 1, ip: 1, all: 1 }, 10, 'rank')], [null, 'device']);
 check('then the network', overLimit({ dev: 1, ip: PER_IP_PER_DAY + 1, all: 999 }, 10), 'ip');
 check('then the site', overLimit({ dev: 1, ip: 1, all: 11 }, 10), 'site');
-check('at the limit is still allowed', overLimit({ dev: FREE_PER_DAY, ip: PER_IP_PER_DAY, all: 10 }, 10), null);
+check('at the limit is still allowed', overLimit({ dev: FREE_PER_DAY.tailor, ip: PER_IP_PER_DAY, all: 10 }, 10), null);
 
 console.log('\n== keys name no one ==');
 {
@@ -330,6 +354,8 @@ console.log('\n== keys name no one ==');
   check('a different secret is a different key', a.dev === c.dev, false);
   check('the same day, id and secret is the same key', limitKeys('2026-10-11', DEVICE, '203.0.113.7', 's1').dev, a.dev);
   check('the address is not readable in its key', a.ip.includes('203.0.113'), false);
+  const r = limitKeys('2026-10-11', DEVICE, '203.0.113.7', 's1', 'rank');
+  check('an AI read counts under its own browser key', [r.dev === a.dev, r.dev.includes(':r:'), r.ip === a.ip, r.all === a.all], [false, true, true, true]);
 }
 
 console.log('\n== failures give the browser its use back ==');
@@ -339,7 +365,7 @@ console.log('\n== failures give the browser its use back ==');
   check('a key Google refuses is a 503 to the reader', out.status, 503);
   check('a 400 is not retried', w.calls.gemini.length, 1);
   check('the reader is told it is unavailable, not about keys', /not available/.test(out.body.error) && !/key/i.test(out.body.error), true);
-  check('and keeps all five uses', out.body.remaining, FREE_PER_DAY);
+  check('and keeps both tailors', out.body.remaining, FREE_PER_DAY.tailor);
   const dev = [...w.kv.entries()].find(([k]) => k.includes(':d:'));
   check('the browser count is given back', dev[1], 0);
   check('the site budget keeps it — the call was made', w.kv.get(`ai:${istDay(NOW)}:all`), COST_PAISE.tailor);
@@ -411,7 +437,7 @@ console.log('\n== a reader never sees the provider\'s name ==');
 }
 {
   const w = world({ gemini: Array(10).fill({ status: 200, text: '{"scores":[]}' }) });
-  for (let i = 0; i < FREE_PER_DAY; i++) await run(w, post(rankBody()));
+  for (let i = 0; i < FREE_PER_DAY.rank; i++) await run(w, post(rankBody()));
   const limit = await run(w, post(rankBody()));
   check('nor does the limit message', /google|gemini/i.test(limit.body.error), false);
 }
@@ -464,14 +490,14 @@ console.log('\n== the owner has no daily limit ==');
 
   // Past every limit at once: the browser, the network and the whole site.
   const env = { ...ENV, AI_MONTHLY_BUDGET_INR: '20' };   // 64 paise a day: two ranks
-  const w = world({ gemini: Array.from({ length: FREE_PER_DAY + 3 }, () => ({ status: 200, text: '{"scores":[]}' })) });
+  const w = world({ gemini: Array.from({ length: FREE_PER_DAY.rank + 3 }, () => ({ status: 200, text: '{"scores":[]}' })) });
   const outs = [];
-  for (let i = 0; i < FREE_PER_DAY + 3; i += 1) outs.push(await run(w, owner(rankBody()), env));
+  for (let i = 0; i < FREE_PER_DAY.rank + 3; i += 1) outs.push(await run(w, owner(rankBody()), env));
   check('every owner call is answered', outs.every((o) => o.status === 200), true);
   check('and says it was the owner', outs.every((o) => o.body.owner === true), true);
   check('no browser count is handed back', outs.some((o) => 'remaining' in o.body), false);
   const day = istDay(NOW);
-  check('each one is charged to the site budget', w.kv.get(`ai:${day}:all`), (FREE_PER_DAY + 3) * 25);
+  check('each one is charged to the site budget', w.kv.get(`ai:${day}:all`), (FREE_PER_DAY.rank + 3) * 25);
   check('and none to a browser or network count', [...w.kv.keys()].some((k) => /:d:|:i:/.test(k)), false);
   const reader = await run(w, post(rankBody({ device: 'b'.repeat(32) })), env);
   check('a reader is still refused once the budget is spent', [reader.status, reader.body.code], [503, 'site-limit']);

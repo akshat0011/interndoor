@@ -6,7 +6,7 @@
  * the words sent to the model are written in ONE place and a browser can
  * never choose them.
  */
-import { clampJob } from '../public/resumeai.js';
+import { clampJob, roleHeadline } from '../public/resumeai.js';
 
 /* TWO MODELS, AND THE REASON WAS THE QUOTA, NOT THE TASTE.
  *
@@ -135,7 +135,7 @@ Score every posting above. Return one entry per posting, using the [index] shown
  * (an invented duty, then an invented skill). Each of those has a rule below. */
 export const TAILOR_SYSTEM = `You tailor a candidate's resume to one job. It is a real person's resume, which they will send to a real employer.
 
-HOW AN ATS IS USED, which is what you are writing for. An applicant tracking system is a search engine for recruiters. The recruiter types the job title and a few skills ("Software Engineering Intern" + "Node.js" + "MongoDB") and sees only the resumes that contain those exact words. It does not understand concepts and it does not grade style: it matches strings. So the resume must contain the posting's exact words for everything the candidate genuinely has, where a recruiter looks first: the summary, the skills, then the bullets.
+HOW AN ATS IS USED, which is what you are writing for. An applicant tracking system is a search engine for recruiters. The recruiter types the role and a few skills ("Software Engineer" + "Node.js" + "MongoDB") and sees only the resumes that contain those exact words. It does not understand concepts and it does not grade style: it matches strings. So the resume must contain the posting's exact words for everything the candidate genuinely has, where a recruiter looks first: the summary, the skills, then the bullets.
 
 Return two resumes.
 
@@ -146,7 +146,7 @@ Return two resumes.
 NEVER REMOVE ANYTHING. Every item, bullet, skill, tool, project, job, school and claim in the original must still be in the tailored resume. Each tailored item gives the id of the original item it came from in "from". Each tailored bullet lists, in "from", the ids of the original bullets it came from.
 
 THE SUMMARY. Two or three sentences, at most 55 words, that a recruiter takes in at a glance:
-- the job's exact title, word for word as THE JOB gives it (the page also prints that title as a headline above the summary; do not write a headline yourself);
+- the role, word for word as THE JOB's "Role" line gives it: the job title without intern, trainee, season, year or level words (the page prints that role as a headline above the summary; do not write a headline yourself). Never call the candidate an intern or a trainee. If there is no "Role" line, name no title;
 - three or four of the job's key skills that the resume shows the candidate has actually used, spelled as the posting spells them;
 - the strongest concrete result in the resume, with its number exactly as written.
 No words about character (passionate, hardworking, motivated, aspiring, eager, dynamic, results-driven, team player, proven track record), no first person, no "looking to grow".
@@ -268,6 +268,7 @@ export function buildTailorPrompt(resumeText, rawJob) {
   const job = clampJob(rawJob);
   const facts = [
     `Exact job title: ${job.title ?? 'Unknown'}`,
+    roleHeadline(job.title) ? `Role: ${roleHeadline(job.title)}` : null,
     `Company: ${job.company ?? 'Unknown'}`,
     job.roleLabel ? `Kind of work: ${job.roleLabel}` : null,
     job.location ? `Location: ${job.location}` : null,
@@ -287,5 +288,5 @@ ${duties}${about ? `\nAbout the role:\n${about}\n` : ''}
 THE CANDIDATE'S RESUME
 ${resumeText}
 
-Parse the resume into "original" exactly as it is, then write "tailored" for this job: the exact job title and the job's key skills in the summary, the job's skills first in the skills, the job's words in the bullets. Keep everything; add only what you list in "added".`;
+Parse the resume into "original" exactly as it is, then write "tailored" for this job: the role and the job's key skills in the summary, the job's skills first in the skills, the job's words in the bullets. Keep everything; add only what you list in "added".`;
 }

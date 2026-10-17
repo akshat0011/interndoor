@@ -9,7 +9,8 @@
    gets out of it is a score list or a resume.
 
    WHAT IT COUNTS, in Upstash Redis (the counter's store), per India day:
-     - FREE_PER_DAY uses per browser (a random id the browser keeps),
+     - FREE_PER_DAY uses per browser (a random id the browser keeps), counted
+       apart for each feature since 17 Oct 2026: 2 tailors and 5 AI reads,
      - PER_IP_PER_DAY per network, so clearing site data over and over is
        bounded — wide enough for a college wifi or a mobile carrier's shared
        address,
@@ -41,7 +42,7 @@ import {
   buildRankPrompt, buildTailorPrompt,
 } from './_prompts.js';
 import {
-  FREE_PER_DAY, MIN_RESUME_CHARS, MAX_RESUME_CHARS, RANK_BATCH, DEVICE_SHAPE, istDay,
+  FREE_PER_DAY, MIN_RESUME_CHARS, MAX_RESUME_CHARS, RANK_BATCH, DEVICE_SHAPE, istDay, limitMessage,
 } from '../public/resumeai.js';
 import { REGIONS, keyFor as countKey, utcDay, TTL_SECONDS as COUNT_TTL } from './count.js';
 
@@ -73,9 +74,11 @@ export function actualPaise(model, usage) {
   return Math.ceil(cents * INR_PER_USD);   // cents of a dollar x rupees per dollar = paise
 }
 /* His ceiling: Rs 1,100 a month on 11 Oct 2026, raised to Rs 2,000 on 12 Oct
-   ("at least 200 tailors a day with 2k budget"). AI Studio's own monthly
-   spend cap must be at least this, or it stops every call first. */
-export const MONTHLY_BUDGET_INR = 2000;
+   ("at least 200 tailors a day with 2k budget"), and to Rs 3,000 on 17 Oct,
+   the day after the site first ran out (Rs 67 spent against Rs 64.5; he raised
+   AI Studio's cap to match). AI Studio's own monthly spend cap must be at
+   least this, or it stops every call first. */
+export const MONTHLY_BUDGET_INR = 3000;
 const LIMIT_TTL_SECONDS = 2 * 24 * 60 * 60;
 /* A full tailor request is a resume (18k) and one clamped posting (two 12k
    fields) plus small change. Anything much past that is not this page. */
@@ -189,26 +192,25 @@ export function geminiRequest(req, { owner = false } = {}) {
 /** Redis keys for one request's allowance. Nothing raw goes in: the browser id
  *  and the address are hashed with the day and a secret, so a key names no
  *  one and tomorrow's keys cannot be joined to today's. */
-export function limitKeys(day, device, ip, salt) {
+export function limitKeys(day, device, ip, salt, task = 'tailor') {
   const h = (v) => createHash('sha256').update(`${salt}|${day}|${v}`).digest('hex').slice(0, 32);
-  return { dev: `ai:${day}:d:${h(`d:${device}`)}`, ip: `ai:${day}:i:${h(`i:${ip}`)}`, all: `ai:${day}:all` };
+  // The tailor keeps the browser key it always had; an AI read counts under its own.
+  const dev = task === 'rank' ? `ai:${day}:r:${h(`r:${device}`)}` : `ai:${day}:d:${h(`d:${device}`)}`;
+  return { dev, ip: `ai:${day}:i:${h(`i:${ip}`)}`, all: `ai:${day}:all` };
 }
 
 /** Which limit a request is over, most specific first, or null. */
-export function overLimit(used, cap) {
-  if (used.dev > FREE_PER_DAY) return 'device';
+export function overLimit(used, cap, task = 'tailor') {
+  if (used.dev > (FREE_PER_DAY[task] ?? FREE_PER_DAY.tailor)) return 'device';
   if (used.ip > PER_IP_PER_DAY) return 'ip';
   if (used.all > cap) return 'site';
   return null;
 }
 
 const LIMITS = {
-  device: () => ({
+  device: (task) => ({
     status: 429,
-    body: {
-      code: 'limit', remaining: 0, limit: FREE_PER_DAY,
-      error: `You have used today's ${FREE_PER_DAY} free AI uses. They come back at midnight. Ranking by skills still works.`,
-    },
+    body: { code: 'limit', task, remaining: 0, limit: FREE_PER_DAY[task], error: limitMessage(task) },
   }),
   ip: () => ({
     status: 429,
@@ -369,7 +371,8 @@ export async function respond(req, { env = process.env, fetchImpl = fetch, now =
   if (ask.error) return { status: 400, body: { error: ask.error } };
 
   const t = now();
-  const keys = limitKeys(istDay(t), ask.device, clientIp(req), saltFrom(env));
+  const keys = limitKeys(istDay(t), ask.device, clientIp(req), saltFrom(env), ask.task);
+  const limit = FREE_PER_DAY[ask.task];
   const cost = COST_PAISE[ask.task];
 
   if (isOwnerCall(req, env)) {
@@ -397,30 +400,30 @@ export async function respond(req, { env = process.env, fetchImpl = fetch, now =
   }
   const used = { dev: Number(counts[0]), ip: Number(counts[2]), all: Number(counts[4]) };
 
-  const over = overLimit(used, siteCap(env));
+  const over = overLimit(used, siteCap(env), ask.task);
   if (over) {
     // Refused before anything was spent, so all three counts go back.
     await pipeline([
       ['DECR', keys.dev], ['DECR', keys.ip], ['DECRBY', keys.all, cost],
       ...countCommands('ai-limit', ask.region, t),
     ], target, fetchImpl);
-    return LIMITS[over]();
+    return LIMITS[over](ask.task);
   }
 
   const { model, body } = geminiRequest(ask);
   const out = await askGemini({ key, model, body, fetchImpl, now, sleep });
-  const remaining = Math.max(0, FREE_PER_DAY - used.dev);
+  const remaining = Math.max(0, limit - used.dev);
 
   if (!out.ok) {
     if (out.status) console.warn(`ai: Google answered ${out.status}`);
     await pipeline([['DECR', keys.dev]], target, fetchImpl);
     const fail = FAILURES[out.reason] ?? FAILURES.trouble;
-    return { status: fail.status, body: { code: out.reason, error: fail.error, remaining: Math.min(FREE_PER_DAY, remaining + 1) } };
+    return { status: fail.status, body: { code: out.reason, error: fail.error, task: ask.task, remaining: Math.min(limit, remaining + 1) } };
   }
 
   await settle(keys.all, cost, actualPaise(model, out.usage), target, fetchImpl);
   await pipeline(countCommands(ask.task === 'rank' ? 'ai-rank' : 'ai-tailor', ask.region, t), target, fetchImpl);
-  return { status: 200, body: { result: out.data, remaining, limit: FREE_PER_DAY } };
+  return { status: 200, body: { result: out.data, task: ask.task, remaining, limit } };
 }
 
 export default async function handler(req, res) {

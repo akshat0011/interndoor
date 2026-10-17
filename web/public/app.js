@@ -73,7 +73,7 @@ const REGION_PATH = DATA_URL.replace(/\/data\/jobs\.json$/, '');
 import {
   resumeNames, shortlist, rankWithAI, tailorWithAI, RANK_BATCH,
   FREE_PER_DAY, allowanceLeft, isAIOwner, forgetOldKey, roleKeywords, keywordMatch,
-} from './resumeai.js?v=7';
+} from './resumeai.js?v=8';
 // Same reason as above: the PDF builder and its caller ship together.
 import { sheetModel, resumePdf, pdfFileName } from './resumepdf.js?v=2';
 
@@ -1859,7 +1859,7 @@ function renderList() {
     if (!aiScores.size) {
       // Greyed once the server has said today's free uses are gone, so the
       // button does not promise something one press will refuse.
-      const spent = allowanceLeft() === 0;
+      const spent = allowanceLeft(Date.now(), 'rank') === 0;
       const go = el('button', 'rank-ai', spent ? 'Free AI reads are back tomorrow' : `Read the top ${RANK_BATCH} with AI →`);
       go.type = 'button';
       go.disabled = spent;
@@ -2346,7 +2346,7 @@ function syncReview() {
   const res = $('sum-resume');
   if (res) res.textContent = state.resumeLabel || 'Pasted text';
   const left = $('ai-left');
-  if (left) left.textContent = allowanceText(allowanceLeft());
+  if (left) left.textContent = allowanceText(allowanceLeft(Date.now(), 'tailor'));
 }
 
 /* What the review screen says about the free allowance. The number is the last
@@ -2354,9 +2354,10 @@ function syncReview() {
    and the line says the rule instead of guessing a count. */
 function allowanceText(left) {
   if (isAIOwner()) return 'Owner: no daily limit in this browser.';
-  if (left === 0) return `You have used today's ${FREE_PER_DAY} free AI uses. More at midnight.`;
-  if (left === null) return `${FREE_PER_DAY} free AI uses a day.`;
-  return `${left} of ${FREE_PER_DAY} free AI uses left today.`;
+  const n = FREE_PER_DAY.tailor;
+  if (left === 0) return `You have used today's ${n} free tailors. More at midnight.`;
+  if (left === null) return `${n} free tailors a day.`;
+  return `${left} of ${n} free tailors left today.`;
 }
 
 /**
@@ -2634,7 +2635,7 @@ async function startAiRank() {
   } catch (err) {
     if (ctl.signal.aborted) return;
     toast(err.message || 'That did not work.');
-    if (allowanceLeft() === 0 && btn) {
+    if (allowanceLeft(Date.now(), 'rank') === 0 && btn) {
       btn.disabled = true;
       btn.textContent = 'Free AI reads are back tomorrow';
     } else {
@@ -2655,7 +2656,7 @@ async function startAiRank() {
  */
 function syncPrimary() {
   const haveResume = resumeReady();
-  const spent = allowanceLeft() === 0;
+  const spent = allowanceLeft(Date.now(), 'tailor') === 0;
 
   const next = $('resume-next');
   if (next) {
@@ -2711,7 +2712,7 @@ let editing = false;
  *  with its place or link on the right. Skills come right after the summary,
  *  or after Education when Education leads, because the skills list is the
  *  first place a recruiter looks. Anything added for the role carries data-add
- *  and a highlight that never prints. */
+ *  (for Remove and for the flash that finds it) and no visible mark. */
 function renderSheet(box, R) {
   box.replaceChildren();
   const mark = (node, x) => {
@@ -2723,7 +2724,7 @@ function renderSheet(box, R) {
   };
   if (R.name) box.append(el('div', 'r-name', R.name));
   if (R.headline) {
-    // The highlight on the words, the key on the line, as with a bullet.
+    // The mark on the words, the key on the line, as with a bullet.
     const h = el('div', 'r-headline');
     h.dataset.add = 'headline';
     h.append(mark(el('span', null, R.headline), { added: true }));
@@ -2779,8 +2780,8 @@ function renderSheet(box, R) {
       if (item.bullets?.length) {
         const ul = el('ul');
         for (const b of item.bullets) {
-          // The highlight goes on the words, so it follows every line of a
-          // wrapped bullet; the line itself carries the key for removal.
+          // The words carry the mark; the line itself carries the key for
+          // removal.
           const li = el('li');
           if (b.added) {
             li.dataset.add = b.key;
