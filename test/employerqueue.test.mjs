@@ -8,7 +8,7 @@
  * happened, so every rounding here is DOWN, and the word is "Apply clicks".
  */
 import { readFileSync } from 'node:fs';
-import { checksFor, renderEmployerQueue, renderEmployerList, groupSubmissions, ago, fetchSubmissions, readDecisions, outreachNote } from '../src/employerqueue.js';
+import { checksFor, renderEmployerQueue, renderEmployerList, groupSubmissions, ago, fetchSubmissions, readDecisions, outreachNote, employerEmail } from '../src/employerqueue.js';
 import { pitchNumbers, roundedText, floorTo, lastDays } from '../src/employerpitch.js';
 import { loadConfig } from '../src/config.js';
 
@@ -95,7 +95,38 @@ console.log('\n== organized ==');
   ok('and again when the tab comes back', /visibilitychange[\s\S]{0,60}refresh\(\)/.test(page));
   ok('the tab is kept in the address', /history\.replaceState\(null, '', '#' \+ state\.tab\)/.test(page));
   const qs = read('bin/queue-server.js');
-  ok('the helper answers the refresh with the list alone', /searchParams\.get\('fragment'\) === '1'/.test(qs) && /renderEmployerList\(\{ submissions, decisions: readDecisions\(store\)/.test(qs));
+  ok('the helper answers the refresh with the list alone', /searchParams\.get\('fragment'\) === '1'/.test(qs) && /renderEmployerList\(\{ submissions, decisions, watchlist: loadConfig\(\)\.watchlist, live:/.test(qs));
+}
+
+console.log('\n== telling the employer ==');
+{
+  const live = { title: 'Robotics Prototyping Intern', page: 'https://interndoor.com/jobs/nestack-robotics-prototyping-intern-123', firstSeenAt: Date.parse('2026-10-17T10:00:00Z'), clicks: 142 };
+  const e = sub({ id: 'r1', company: 'Nestack Technologies Pvt Ltd' });
+  const a = employerEmail('live', e, live);
+  ok('the live email names the role and links its page', a.subject === 'Your role is live on InternDoor' && /Your internship "Robotics Prototyping Intern" is live here:\nhttps:\/\/interndoor\.com\/jobs\/nestack-robotics-prototyping-intern-123/.test(a.body));
+  ok('greets the company and promises the results', /^Hi Nestack Technologies Pvt Ltd team,/.test(a.body) && /after its first week/.test(a.body));
+  const r = employerEmail('results', e, live);
+  ok('the results email carries the role\'s own Apply clicks', r.subject === '142 Apply clicks on your InternDoor listing' && /pressed Apply 142 times since it went live on 17 Oct/.test(r.body));
+  ok('one click is singular', employerEmail('results', e, { ...live, clicks: 1 }).subject === '1 Apply click on your InternDoor listing');
+  ok('neither says applicants or carries an em dash', ![a.body, a.subject, r.body, r.subject].some((t) => /applicant/i.test(t) || /[\u2013\u2014]/.test(t)));
+  ok('an entry-level role is called one', /Your entry-level role "/.test(employerEmail('live', sub({ kind: 'fulltime' }), live).body));
+  const decided = { r1: { status: 'approved', role: 'stored', jobId: '123' } };
+  const html = renderEmployerList({ submissions: [e], decisions: decided, watchlist: cfg.watchlist, live: { r1: live } }).html;
+  ok('an approved live role shows its page and clicks', /Live on the board: <a href="https:\/\/interndoor\.com\/jobs\/nestack-robotics-prototyping-intern-123"/.test(html) && /142 Apply clicks so far\./.test(html));
+  ok('with a ready email to their address', /<a class="alt mail" href="mailto:contact@nestack\.com\?subject=Your%20role%20is%20live%20on%20InternDoor&amp;body=Hi%20Nestack/.test(html));
+  ok('and a results email once there are clicks', /Email them: the results/.test(html));
+  ok('each with a Copy button carrying the text', /data-copy="Your role is live on InternDoor/.test(html));
+  const noClicks = renderEmployerList({ submissions: [e], decisions: decided, watchlist: cfg.watchlist, live: { r1: { ...live, clicks: 0 } } }).html;
+  ok('no results email before there is a result', /Email them: it's live/.test(noClicks) && !/Email them: the results/.test(noClicks));
+  const notLive = renderEmployerList({ submissions: [e], decisions: decided, watchlist: cfg.watchlist, live: {} }).html;
+  ok('a role not on the board yet gets no email, only what happens next', !/mailto:/.test(notLive) && /goes live with the next scan/.test(notLive));
+  const badMail = renderEmployerList({ submissions: [sub({ id: 'r1', email: 'not an email' })], decisions: decided, watchlist: cfg.watchlist, live: { r1: live } }).html;
+  ok('no mailto for an address that is not one', !/mailto:/.test(badMail));
+  ok('a waiting submission never offers these', !/mailto:/.test(renderEmployerList({ submissions: [e], decisions: {}, watchlist: cfg.watchlist, live: { r1: live } }).html));
+  const qs = read('bin/queue-server.js');
+  ok('the helper works out what each approval became', /async function liveForSubmissions\(submissions, decisions\)/.test(qs) && (qs.match(/live: await liveForSubmissions\(submissions, decisions\)/g) ?? []).length === 2);
+  ok('matched by the stored job id, else the link they sent', /d\.jobId && String\(x\.id\) === String\(d\.jobId\)\) \|\| \(e\.link && \(x\.applyUrl === e\.link \|\| x\.url === e\.link\)\)/.test(qs));
+  ok('nothing on the page sends mail itself', !/sendmail|nodemailer|smtp|\/api\/send/i.test(read('src/employerqueue.js')));
 }
 
 console.log('\n== reading the store ==');

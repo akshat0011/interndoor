@@ -117,7 +117,54 @@ export function groupSubmissions(subs = []) {
   return out.sort((a, b) => at(b.items[0]) - at(a.items[0]));
 }
 
-function card(e, checks, decision, now) {
+/* THE TWO EMAILS THAT MAKE AN EMPLOYER COME BACK (17 Oct 2026, his ask:
+   "how would they know that we posted it so in the future they come back to
+   us and become a regular client"). Nothing told an employer anything after
+   the form's own confirmation. The page hands him two drafts for every
+   approved role that is live: "it's live", with the link, and later the
+   results, with the role's own Apply clicks. He sends them, from his own
+   mail: nothing here sends mail (§2). "Apply clicks", never "applicants". */
+const SIGNATURE = 'Akshat\nInternDoor · interndoor.com';
+export function employerEmail(kind, e, live) {
+  const team = `Hi ${String(e.company ?? '').trim()} team,`;
+  const what = `${e.kind === 'fulltime' ? 'entry-level role' : 'internship'}${live?.title ? ` "${live.title}"` : ''}`;
+  if (kind === 'results') {
+    const n = Number(live?.clicks) || 0;
+    const since = live?.firstSeenAt ? new Date(live.firstSeenAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'Asia/Kolkata' }) : null;
+    return {
+      subject: `${n.toLocaleString('en-IN')} Apply click${n === 1 ? '' : 's'} on your InternDoor listing`,
+      body: [team, '',
+        `A quick update on your ${what} on InternDoor: candidates have pressed Apply ${n.toLocaleString('en-IN')} time${n === 1 ? '' : 's'}${since ? ` since it went live on ${since}` : ''}. Each one is a click from InternDoor through to your own application page.`,
+        live?.page ?? '', '',
+        'If you are hiring for anything else, interns or freshers, reply with the links or post them at interndoor.com/post-a-job. It stays free.', '',
+        SIGNATURE].join('\n'),
+    };
+  }
+  return {
+    subject: 'Your role is live on InternDoor',
+    body: [team, '',
+      `Thanks for posting on InternDoor. Your ${what} is live here:`,
+      live?.page ?? '', '',
+      'Students apply on your own posting, and listing on InternDoor is free. I will send you how many Apply clicks it gets after its first week.', '',
+      'If you have more roles, post them at interndoor.com/post-a-job, or just reply to this email with the links.', '',
+      SIGNATURE].join('\n'),
+  };
+}
+const EMAIL_SHAPE = /^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i;
+function mailLink(kind, e, live, label) {
+  if (!EMAIL_SHAPE.test(String(e.email ?? ''))) return '';
+  const m = employerEmail(kind, e, live);
+  const href = `mailto:${encodeURIComponent(e.email).replace(/%40/g, '@')}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body)}`;
+  return `<a class="alt mail" href="${esc(href)}">${label}</a><button type="button" class="alt copy" data-copy="${esc(`${m.subject}\n\n${m.body}`)}">Copy</button>`;
+}
+function liveBlock(e, live) {
+  if (!live) return '';
+  const clicks = live.clicks == null ? '' : ` ${Number(live.clicks).toLocaleString('en-IN')} Apply click${live.clicks === 1 ? '' : 's'} so far.`;
+  return `<p class="why">Live on the board: ${link(live.page)}.${clicks}</p>
+      <div class="act">${mailLink('live', e, live, 'Email them: it\'s live')}${live.clicks > 0 ? mailLink('results', e, live, 'Email them: the results') : ''}</div>`;
+}
+
+function card(e, checks, decision, now, live = null) {
   const status = statusOf(decision);
   const stop = checks.some((c) => c.level === 'stop');
   const find = [e.company, e.email, e.website, e.link, siteHost(e.link)].join(' ').toLowerCase();
@@ -125,7 +172,7 @@ function card(e, checks, decision, now) {
     ? `<span class="st st-waiting">Waiting ${esc(ago(e.at, now))}</span>`
     : `<span class="st st-${status}">${status === 'approved' ? 'Approved' : 'Rejected'}${decision.at ? ` ${esc(istTime(decision.at))}` : ''}</span>`;
   const after = decision
-    ? `${decision.reason ? `<p class="why">Reason: ${esc(decision.reason)}</p>` : ''}${roleNote(decision) ? `<p class="why">${esc(roleNote(decision))}</p>` : ''}`
+    ? `${decision.reason ? `<p class="why">Reason: ${esc(decision.reason)}</p>` : ''}${live ? liveBlock(e, live) : (roleNote(decision) ? `<p class="why">${esc(roleNote(decision))}</p>` : '')}`
     : `
       <div class="act">
         <button type="button" class="go" data-act="approve" data-id="${esc(e.id)}"${stop ? ' disabled data-stop' : ''}>Approve</button>
@@ -153,7 +200,7 @@ function card(e, checks, decision, now) {
  * The list on its own, so the page can swap it in every minute without a
  * reload. Counts are per status, for the tabs and the tab title.
  */
-export function renderEmployerList({ submissions = [], decisions = {}, watchlist = [], now = Date.now() } = {}) {
+export function renderEmployerList({ submissions = [], decisions = {}, watchlist = [], live = {}, now = Date.now() } = {}) {
   const counts = { waiting: 0, approved: 0, rejected: 0, all: submissions.length };
   for (const e of submissions) counts[statusOf(decisions[e.id])] += 1;
   const groups = groupSubmissions(submissions);
@@ -164,7 +211,7 @@ export function renderEmployerList({ submissions = [], decisions = {}, watchlist
       <h2>${esc(g.company)}</h2>
       <span class="grp-m">${g.host ? `${link(`https://${g.host}`).replace(`>https://${esc(g.host)}<`, `>${esc(g.host)}<`)} · ` : ''}${g.items.length} role${g.items.length === 1 ? '' : 's'}</span>
     </header>
-    ${g.items.map((e) => card(e, checksFor(e, watchlist), decisions[e.id], now)).join('')}
+    ${g.items.map((e) => card(e, checksFor(e, watchlist), decisions[e.id], now, live[e.id] ?? null)).join('')}
   </section>`;
   }).join('');
   return { html, counts };
@@ -193,8 +240,8 @@ const EMPTY = {
  * so a tab left open is always current, and the tab title carries the
  * waiting count.
  */
-export function renderEmployerQueue({ submissions = [], decisions = {}, watchlist = [], pitch = null, error = null, now = Date.now() } = {}) {
-  const { html, counts } = renderEmployerList({ submissions, decisions, watchlist, now });
+export function renderEmployerQueue({ submissions = [], decisions = {}, watchlist = [], pitch = null, error = null, live = {}, now = Date.now() } = {}) {
+  const { html, counts } = renderEmployerList({ submissions, decisions, watchlist, live, now });
   const note = outreachNote(pitch);
   const tab = (key, label) => `<button type="button" class="tab" role="tab" data-tab="${key}" aria-selected="${key === 'waiting'}">${label} <b data-count="${key}">${counts[key]}</b></button>`;
   const stat = (value, label) => (value ? `<div class="stat"><b>${esc(value)}</b><span>${label}</span></div>` : '');
@@ -264,6 +311,10 @@ button:focus-visible,.reason:focus-visible,#q:focus-visible,.tab:focus-visible{o
 .st-approved{color:var(--live);border-color:color-mix(in oklab,var(--live) 40%,transparent)}
 .st-rejected{color:var(--ink2)}
 .why{margin:4px 0 0;color:var(--ink2);font-size:14px}
+.sub .act + .act,.why + .act{margin-top:10px}
+a.mail{display:inline-block;text-decoration:none;font-weight:600;border-radius:999px;padding:8px 16px;border:1px solid var(--line2);color:var(--ink)}
+a.mail:hover{border-color:var(--ink2)}
+button.copy{padding:8px 12px}
 .empty{color:var(--ink2);border:1px dashed var(--line2);border-radius:16px;padding:22px 18px}
 .err{color:var(--stop)}
 @media (max-width:560px){.stats{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.stat:first-child{grid-column:1/-1}.tabs{width:100%;justify-content:space-between}.tab{padding:6px 10px}}
@@ -343,6 +394,12 @@ setInterval(refresh, 60000);
 setInterval(tick, 15000);
 document.addEventListener('visibilitychange', function () { if (!document.hidden) refresh(); });
 document.getElementById('list').addEventListener('click', async function (ev) {
+  var cp = ev.target.closest('button[data-copy]');
+  if (cp) {
+    try { await navigator.clipboard.writeText(cp.dataset.copy); cp.textContent = 'Copied'; } catch (e) { cp.textContent = 'Copy failed'; }
+    setTimeout(function () { cp.textContent = 'Copy'; }, 1500);
+    return;
+  }
   var b = ev.target.closest('button[data-act]');
   if (!b) return;
   var id = b.dataset.id, act = b.dataset.act;

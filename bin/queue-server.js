@@ -1108,6 +1108,30 @@ async function ownerClicks() {
   return data;
 }
 
+/* What each approved employer submission became on the board (17 Oct 2026):
+   its live page and its Apply clicks, so /employers can hand him a "your
+   role is live" email and, once it has clicks, a results email. Matched by
+   the job id the approval stored, else by the link the employer sent. A role
+   no longer on the board is left out: there is nothing live to write about. */
+async function liveForSubmissions(submissions, decisions) {
+  const approved = submissions.filter((e) => decisions[e.id]?.status === 'approved');
+  if (!approved.length) return {};
+  const jobs = publishedJobs();
+  let clicks = null;
+  try { clicks = await ownerClicks(); } catch { clicks = null; }
+  const out = {};
+  for (const e of approved) {
+    const d = decisions[e.id];
+    const j = jobs.find((x) => (d.jobId && String(x.id) === String(d.jobId)) || (e.link && (x.applyUrl === e.link || x.url === e.link)));
+    if (!j) continue;
+    let slug;
+    try { slug = jobSlug(j); } catch { continue; }
+    const c = clicks?.jobs.find((x) => x.slug === slug);
+    out[e.id] = { title: j.title, page: `${SITE_ORIGIN}${regionPath(j.__region)}/jobs/${slug}`, firstSeenAt: j.firstSeenAt ?? null, clicks: clicks ? (c?.total ?? 0) : null };
+  }
+  return out;
+}
+
 /** The stored row an owner request names, by job id or by the page's own slug. */
 function ownerRow(body) {
   let id = body?.jobId ? String(body.jobId) : null;
@@ -1315,12 +1339,14 @@ const server = createServer(async (req, res) => {
        and costs one Redis read, not the pitch's as well. */
     if (url.searchParams.get('fragment') === '1') {
       if (error) return json(res, 502, { error });
-      return json(res, 200, { ...renderEmployerList({ submissions, decisions: readDecisions(store), watchlist: loadConfig().watchlist }), updatedAt: Date.now() });
+      const decisions = readDecisions(store);
+      return json(res, 200, { ...renderEmployerList({ submissions, decisions, watchlist: loadConfig().watchlist, live: await liveForSubmissions(submissions, decisions) }), updatedAt: Date.now() });
     }
     let liveRoles = 0;
     try { liveRoles = (JSON.parse(readFileSync(regionJobsFile('IN'), 'utf8')).jobs ?? []).length; } catch { /* no board file */ }
     const pitch = await pitchNumbers({ ...kv, region: 'IN', liveRoles });
-    return html(res, 200, renderEmployerQueue({ submissions, decisions: readDecisions(store), watchlist: loadConfig().watchlist, pitch, error }));
+    const decisions = readDecisions(store);
+    return html(res, 200, renderEmployerQueue({ submissions, decisions, watchlist: loadConfig().watchlist, pitch, error, live: await liveForSubmissions(submissions, decisions) }));
   }
 
   if (path === '/api/employers/decide' && req.method === 'POST') {
