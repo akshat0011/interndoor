@@ -1,6 +1,17 @@
 {
  "jobs": [
   {
+   "id": "4480574246",
+   "company": "Synopsys Inc",
+   "title": "Digital Design Engineer Apprentice",
+   "slugTitle": "Digital Design Engineer Apprenticeship",
+   "location": "Noida, Uttar Pradesh, India",
+   "postedAt": 1792196035091,
+   "firstSeenAt": 1792199635107,
+   "logo": "/logos/synopsys-inc.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477736314",
    "company": "Amazon Science",
    "title": "Applied Scientist",
@@ -432,17 +443,6 @@
    "postedAt": 1792145429873,
    "firstSeenAt": 1792146449876,
    "logo": "/logos/volody.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479345509",
-   "company": "Arctic Wolf",
-   "title": "Developer 1",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792144126087,
-   "firstSeenAt": 1792145386126,
-   "logo": "/logos/arctic-wolf.png",
    "bulletCount": 3
   }
  ]

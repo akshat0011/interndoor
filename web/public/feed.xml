@@ -6,7 +6,17 @@
   <atom:link href="https://interndoor.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>New engineering internships and entry-level jobs in India, listed within minutes of going live.</description>
   <language>en-in</language>
-  <lastBuildDate>Fri, 16 Oct 2026 22:31:51 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 17 Oct 2026 00:13:55 GMT</lastBuildDate>
+  <item>
+    <title>Digital Design Engineer Apprentice — Synopsys Inc</title>
+    <link>https://interndoor.com/jobs/synopsys-inc-digital-design-engineer-apprenticeship-4480574246</link>
+    <guid isPermaLink="true">https://interndoor.com/jobs/synopsys-inc-digital-design-engineer-apprenticeship-4480574246</guid>
+    <pubDate>Sat, 17 Oct 2026 00:13:55 GMT</pubDate>
+    <description>Company: Synopsys Inc · Location: Noida, Uttar Pradesh, India · Duration: 12 months
+• Develop and maintain uvm-based testbenches for serdes phy verification
+• Write verilog/systemverilog code for rtl testing and protocol compliance
+• Debug test failures and collaborate with design engineers on fixes</description>
+  </item>
   <item>
     <title>Applied Scientist — Amazon Science</title>
     <link>https://interndoor.com/jobs/amazon-science-applied-scientist-alexa-sensitive-content-intelligence-asci-4477736314</link>
@@ -499,16 +509,6 @@
 • Optimize LLM and Agentic AI workloads across software and hardware stack
 • Work with vLLM, SGLang, TGI, and tools like VTune and perf
 • Collaborate with open-source communities and Intel platform teams</description>
-  </item>
-  <item>
-    <title>Information Technology Administrator — Snapmint</title>
-    <link>https://interndoor.com/jobs/snapmint-information-technology-administrator-4468375854</link>
-    <guid isPermaLink="true">https://interndoor.com/jobs/snapmint-information-technology-administrator-4468375854</guid>
-    <pubDate>Fri, 16 Oct 2026 07:23:28 GMT</pubDate>
-    <description>Company: Snapmint · Location: Jaipur, Rajasthan, India
-• Manage IT assets, security, and user access across Windows, macOS, and Linux
-• Use JumpCloud, Kaspersky, and Safetica for device management and compliance
-• Provide desktop support and coordinate with vendors and finance teams</description>
   </item>
 </channel>
 </rss>
