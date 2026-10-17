@@ -6,6 +6,18 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/cargill-associate-data-engineer-4477773259",
+      "url": "https://interndoor.com/jobs/cargill-associate-data-engineer-4477773259",
+      "title": "Data Engineer — Cargill",
+      "content_text": "Company: Cargill · Location: Bengaluru, Karnataka, India\n• Builds and maintains software applications with clean, efficient code\n• Automates deployment processes using internal tools and platforms\n• Collaborates with product managers and designers to deliver business solutions",
+      "date_published": "2026-10-17T08:49:17.816Z",
+      "authors": [
+        {
+          "name": "Cargill"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/thermo-fisher-scientific-oracle-cloud-erp-administrator-4477758698",
       "url": "https://interndoor.com/jobs/thermo-fisher-scientific-oracle-cloud-erp-administrator-4477758698",
       "title": "Oracle Cloud ERP Administrator — Thermo Fisher Scientific",
@@ -590,18 +602,6 @@
       "authors": [
         {
           "name": "Cisco"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-only-4477354757",
-      "url": "https://interndoor.com/jobs/volody-cloud-monitoring-intern-mumbai-based-only-4477354757",
-      "title": "Cloud Monitoring intern — Volody",
-      "content_text": "Company: Volody · Location: Mumbai, Maharashtra, India\n• Monitor cloud systems, logs, and security alerts\n• Use siem tools to detect threats and analyze logs\n• Support incident reporting and compliance checks",
-      "date_published": "2026-10-16T10:10:29.873Z",
-      "authors": [
-        {
-          "name": "Volody"
         }
       ]
     }

@@ -1,6 +1,17 @@
 {
  "jobs": [
   {
+   "id": "4477773259",
+   "company": "Cargill",
+   "title": "Data Engineer",
+   "slugTitle": "Associate Data Engineer",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792226957816,
+   "firstSeenAt": 1792228157819,
+   "logo": "/logos/cargill.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4477758698",
    "company": "Thermo Fisher Scientific",
    "title": "Oracle Cloud ERP Administrator",
@@ -438,18 +449,6 @@
    "postedAt": 1792151994353,
    "firstSeenAt": 1792152714366,
    "logo": "/logos/american-express.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479352446",
-   "company": "Birlasoft",
-   "title": "App Development Technical Specialist",
-   "slugTitle": "Technical Specialist-App Development",
-   "location": "Greater Hyderabad Area",
-   "workplaceType": "On-site",
-   "postedAt": 1792149835305,
-   "firstSeenAt": 1792150195309,
-   "logo": "/logos/birlasoft.jpg",
    "bulletCount": 3
   }
  ]
