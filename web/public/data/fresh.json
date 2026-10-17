@@ -1,6 +1,27 @@
 {
  "jobs": [
   {
+   "id": "4477780427",
+   "company": "Eaton",
+   "title": "Apprentice. IT. Development Program",
+   "location": "Pune Division, Maharashtra, India",
+   "workplaceType": "Hybrid",
+   "postedAt": 1792241187119,
+   "firstSeenAt": 1792241787132,
+   "logo": "/logos/eaton.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479689181",
+   "company": "Qualcomm",
+   "title": "QNX BSP Platform Engineer_Customer Engineering",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792240615973,
+   "firstSeenAt": 1792242115977,
+   "logo": "/logos/qualcomm.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479683215",
    "company": "Accenture services Pvt Ltd",
    "title": "Strategy Analyst",
@@ -202,18 +223,6 @@
    "postedAt": 1792189615003,
    "firstSeenAt": 1792193215018,
    "logo": "/logos/synchrony.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477740111",
-   "company": "Eaton",
-   "title": "IT Apprentice",
-   "slugTitle": "Apprentice. IT. Development Program",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792188707687,
-   "firstSeenAt": 1792189307703,
-   "logo": "/logos/eaton.jpg",
    "bulletCount": 3
   },
   {
@@ -438,17 +447,6 @@
    "postedAt": 1792159807935,
    "firstSeenAt": 1792163407943,
    "logo": "/logos/larsen-and-toubro.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480364557",
-   "company": "Deutsche Bank",
-   "title": "Site Reliability Engineer",
-   "location": "Bengaluru, Karnataka, India",
-   "workplaceType": "Hybrid",
-   "postedAt": 1792156660598,
-   "firstSeenAt": 1792163860603,
-   "logo": "/logos/deutsche-bank.jpg",
    "bulletCount": 3
   }
  ]
