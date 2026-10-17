@@ -1,24 +1,34 @@
 {
  "jobs": [
   {
+   "id": "4479683215",
+   "company": "Accenture services Pvt Ltd",
+   "title": "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792230846882,
+   "firstSeenAt": 1792234446887,
+   "logo": "/logos/accenture-services-pvt-ltd.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4479665882",
+   "company": "Accenture services Pvt Ltd",
+   "title": "S&C Global Network - AI - Resources - Data Science Analyst",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792230630254,
+   "firstSeenAt": 1792234230275,
+   "logo": "/logos/accenture-services-pvt-ltd.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479668844",
    "company": "Accenture services Pvt Ltd",
    "title": "S&C Global Network - AI - Resources -Analyst",
    "location": "Gurugram, Haryana, India",
    "postedAt": 1792230548861,
    "firstSeenAt": 1792232108864,
-   "logo": "/logos/accenture-services-pvt-ltd.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479687060",
-   "company": "Accenture services Pvt Ltd",
-   "title": "Strategy Analyst",
-   "slugTitle": "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS",
-   "location": "Gurugram, Haryana, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792230341153,
-   "firstSeenAt": 1792232441161,
    "logo": "/logos/accenture-services-pvt-ltd.jpg",
    "bulletCount": 3
   },
@@ -436,17 +446,6 @@
    "postedAt": 1792156660598,
    "firstSeenAt": 1792163860603,
    "logo": "/logos/deutsche-bank.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4479360386",
-   "company": "Kapiva",
-   "title": "Data Analyst",
-   "slugTitle": "Data Analyst - Central Analytics",
-   "location": "Bengaluru, Karnataka, India",
-   "postedAt": 1792154111545,
-   "firstSeenAt": 1792157471547,
-   "logo": "/logos/kapiva.jpg",
    "bulletCount": 3
   }
  ]
