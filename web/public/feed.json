@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/wipro-developer-l2-4480564877",
+      "url": "https://interndoor.com/jobs/wipro-developer-l2-4480564877",
+      "title": "Developer L2 — Wipro",
+      "content_text": "Company: Wipro · Location: Chennai, Tamil Nadu, India\n• Develop and maintain software solutions using netoxygen technology\n• Work on digital transformation projects for enterprise clients\n• Collaborate with cross-functional teams in a fast-paced environment",
+      "date_published": "2026-10-17T00:32:32.453Z",
+      "authors": [
+        {
+          "name": "Wipro"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/citi-application-development-programmer-analyst-4479635513",
+      "url": "https://interndoor.com/jobs/citi-application-development-programmer-analyst-4479635513",
+      "title": "Application Development Programmer Analyst — Citi",
+      "content_text": "Company: Citi · Location: Chennai, Tamil Nadu, India\n• Analyze business processes and implement system solutions\n• Write sql and unix scripts for application development\n• Work with technology team on client server and database systems",
+      "date_published": "2026-10-17T00:27:35.283Z",
+      "authors": [
+        {
+          "name": "Citi"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/citi-java-j2ee-developer-4479639323",
+      "url": "https://interndoor.com/jobs/citi-java-j2ee-developer-4479639323",
+      "title": "Java/J2EE developer — Citi",
+      "content_text": "Company: Citi · Location: Pune Division, Maharashtra, India\n• Analyze business processes and implement system solutions\n• Write code and debug applications using Java/J2EE\n• Work with Citi's technology stack and information systems",
+      "date_published": "2026-10-17T00:27:25.855Z",
+      "authors": [
+        {
+          "name": "Citi"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/synopsys-inc-digital-design-engineer-apprenticeship-4480574246",
       "url": "https://interndoor.com/jobs/synopsys-inc-digital-design-engineer-apprenticeship-4480574246",
       "title": "Digital Design Engineer Apprentice — Synopsys Inc",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Dun & Bradstreet India"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/bitespeed-ai-video-creator-intern-4480332583",
-      "url": "https://interndoor.com/jobs/bitespeed-ai-video-creator-intern-4480332583",
-      "title": "AI Video Creator Intern — BiteSpeed",
-      "content_text": "Company: BiteSpeed · Location: Bengaluru, Karnataka, India\n• Create ai-generated ugc videos for e-commerce brands\n• Experiment with prompts and video styles to improve engagement\n• Collaborate with team to meet brand expectations",
-      "date_published": "2026-10-16T07:44:30.597Z",
-      "authors": [
-        {
-          "name": "BiteSpeed"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/tata-consultancy-services-java-developer-4479331548",
-      "url": "https://interndoor.com/jobs/tata-consultancy-services-java-developer-4479331548",
-      "title": "Java Developer — Tata Consultancy Services",
-      "content_text": "Company: Tata Consultancy Services · Location: Chennai, Tamil Nadu, India\n• Develop and maintain scalable enterprise applications using Java and Spring Boot\n• Design RESTful APIs and integrate with third-party systems\n• Collaborate on architecture and contribute to application design decisions",
-      "date_published": "2026-10-16T07:32:36.121Z",
-      "authors": [
-        {
-          "name": "Tata Consultancy Services"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/intel-llm-and-agentic-ai-performance-engineer-4479321965",
-      "url": "https://interndoor.com/jobs/intel-llm-and-agentic-ai-performance-engineer-4479321965",
-      "title": "AI Performance Engineer — Intel",
-      "content_text": "Company: Intel · Location: Bengaluru, Karnataka, India\n• Optimize LLM and Agentic AI workloads across software and hardware stack\n• Work with vLLM, SGLang, TGI, and tools like VTune and perf\n• Collaborate with open-source communities and Intel platform teams",
-      "date_published": "2026-10-16T07:29:03.722Z",
-      "authors": [
-        {
-          "name": "Intel"
         }
       ]
     }
