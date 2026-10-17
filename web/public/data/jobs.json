@@ -1,9 +1,9 @@
 {
- "generatedAt": 1792231144656,
+ "generatedAt": 1792232876132,
  "region": "IN",
  "regionName": "India",
- "count": 1408,
- "techCount": 1408,
+ "count": 1411,
+ "techCount": 1411,
  "otherCount": 0,
  "companies": [
   "A.P. Moller - Maersk",
@@ -516,6 +516,153 @@
  ],
  "jobs": [
   {
+   "id": "4479668844",
+   "title": "S&C Global Network - AI - Resources -Analyst",
+   "company": "Accenture services Pvt Ltd",
+   "matchedWatchlist": "Accenture",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/accenture-services-pvt-ltd.jpg",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [],
+   "summary": "This role involves analyzing data to uncover trends and build models that help clients improve efficiency. It suits students with strong analytical and coding skills looking to work on real-world data challenges in a global team.",
+   "bullets": [
+    "Analyze datasets to find patterns and trends for efficiency gains",
+    "Build and deploy analytics models for client problems",
+    "Code to solve complex issues and extract business insights"
+   ],
+   "roleLabel": "Data Science Analyst",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "statistical techniques",
+    "data mining",
+    "coding",
+    "analytics models"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "26 minutes ago",
+   "postedAt": 1792230548861,
+   "firstSeenAt": 1792232108864,
+   "lastSeenAt": 1792232108864,
+   "url": "https://www.linkedin.com/jobs/view/4479668844/",
+   "applyUrl": "https://www.linkedin.com/jobs/view/4479668844/",
+   "description": null,
+   "roleFingerprint": "eda963d3ee",
+   "cardFacts": [
+    "Gurugram"
+   ],
+   "category": "misc",
+   "family": "business",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4479687060",
+   "title": "Strategy Analyst",
+   "slugTitle": "I&P GN - SC&E – Analyst - Enterprise AI Value Strategy-EVS",
+   "company": "Accenture services Pvt Ltd",
+   "matchedWatchlist": "Accenture",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/accenture-services-pvt-ltd.jpg",
+   "location": "Gurugram, Haryana, India",
+   "workplaceType": "On-site",
+   "stipend": null,
+   "duration": null,
+   "applicants": "Be among the first 25 applicants",
+   "easyApply": false,
+   "skills": [
+    "rag"
+   ],
+   "summary": "This role involves developing AI strategies for supply chain operations, identifying use cases across domains like demand planning and procurement. You'll create business requirements and value cases, working closely with clients to design AI solutions that improve efficiency and outcomes. Ideal for students with a background in supply chain and a growing interest in enterprise AI.",
+   "bullets": [
+    "Map supply chain processes to AI-enabled future states",
+    "Develop business and functional requirements for AI use cases",
+    "Create AI value cases with ROI and transformation timelines"
+   ],
+   "roleLabel": "Supply Chain AI Strategy",
+   "degreeLevel": null,
+   "degreeText": null,
+   "keySkills": [
+    "ai tools",
+    "prompt engineering"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "35 minutes ago",
+   "postedAt": 1792230341153,
+   "firstSeenAt": 1792232441161,
+   "lastSeenAt": 1792232441161,
+   "url": "https://www.linkedin.com/jobs/view/4479687060/",
+   "applyUrl": "https://www.accenture.com/in-en/careers/jobdetails?id=R00358201_en&title=I%26P+GN+-+SC%26E+%E2%80%93+Analyst+-+Enterprise+AI+Value+Strategy-EVS",
+   "description": null,
+   "roleFingerprint": "0eeb9bd6cd",
+   "cardFacts": [
+    "Gurugram",
+    "On-site"
+   ],
+   "category": "misc",
+   "family": "ai_ml",
+   "region": "IN",
+   "verified": true
+  },
+  {
+   "id": "4470313607",
+   "title": "Design Verification Engr",
+   "company": "Texas Instruments India",
+   "matchedWatchlist": "Texas Instruments",
+   "isTech": true,
+   "roleSource": "model-enrich",
+   "employmentType": "fulltime",
+   "logo": "/logos/texas-instruments-india.jpg",
+   "location": "Bengaluru, Karnataka, India",
+   "workplaceType": null,
+   "stipend": null,
+   "duration": null,
+   "applicants": "Over 200 applicants",
+   "easyApply": false,
+   "skills": [
+    "rtl",
+    "design verification"
+   ],
+   "summary": "As a Design Verification Engineer, you will work on developing and validating semiconductor designs, ensuring they meet performance and reliability standards. This role is ideal for students with a strong interest in electronics and a passion for solving complex technical challenges. You will gain hands-on experience in verification processes and contribute to cutting-edge semiconductor development.",
+   "bullets": [
+    "Develop verification plans and test benches for silicon success",
+    "Use regression tools and scripts for analysis and coverage goals",
+    "Collaborate with design teams and contribute to DV process improvements"
+   ],
+   "roleLabel": "Design Verification",
+   "degreeLevel": "UG",
+   "degreeText": null,
+   "keySkills": [
+    "rtl",
+    "regression tools"
+   ],
+   "stipendStatus": "unknown",
+   "postedText": "44 minutes ago",
+   "postedAt": 1792229308774,
+   "firstSeenAt": 1792231948786,
+   "lastSeenAt": 1792231948786,
+   "url": "https://www.linkedin.com/jobs/view/4470313607/",
+   "applyUrl": "https://edbz.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/job/25018238/?utm_medium=jobboard&utm_source=linkedin",
+   "description": null,
+   "roleFingerprint": "325be35ae9",
+   "cardFacts": [
+    "Bengaluru"
+   ],
+   "category": "hardware",
+   "family": "hardware",
+   "region": "IN",
+   "verified": true
+  },
+  {
    "id": "4477773259",
    "title": "Data Engineer",
    "slugTitle": "Associate Data Engineer",
@@ -559,7 +706,7 @@
    "postedText": "20 minutes ago",
    "postedAt": 1792226957816,
    "firstSeenAt": 1792228157819,
-   "lastSeenAt": 1792228157819,
+   "lastSeenAt": 1792231565722,
    "url": "https://www.linkedin.com/jobs/view/4477773259/",
    "applyUrl": "https://careers.cargill.com/en/job/-/-/23251/102025554048",
    "description": null,
@@ -24008,7 +24155,7 @@
    "category": "software",
    "family": "qa",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4477649477",
@@ -34528,7 +34675,7 @@
    "category": "software",
    "family": "other",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474975280",
@@ -34760,7 +34907,7 @@
    "category": "software",
    "family": "backend",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4476323227",
@@ -34830,7 +34977,7 @@
    "category": "software",
    "family": "generic",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474977119",
@@ -45490,7 +45637,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4446734156",
@@ -45969,7 +46116,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4446727273",
@@ -46292,7 +46439,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4446732201",
@@ -46509,7 +46656,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4446570859",
@@ -47142,7 +47289,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472838012",
@@ -47197,7 +47344,7 @@
    "category": "misc",
    "family": "analytics",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472957890",
@@ -47315,7 +47462,7 @@
    "category": "misc",
    "family": "product",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4455935268",
@@ -47374,7 +47521,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474363551",
@@ -47435,7 +47582,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474363543",
@@ -47499,7 +47646,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4465397815",
@@ -47776,7 +47923,7 @@
    "category": "misc",
    "family": "enterprise",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472802030",
@@ -48582,7 +48729,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4455921376",
@@ -48638,7 +48785,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4464523403",
@@ -48805,7 +48952,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474330231",
@@ -48930,7 +49077,7 @@
    "category": "software",
    "family": "other",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472560914",
@@ -49393,7 +49540,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4456718319",
@@ -49441,7 +49588,7 @@
    "category": "misc",
    "family": "research",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4455927387",
@@ -49500,7 +49647,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4463893653",
@@ -49550,7 +49697,7 @@
    "category": "misc",
    "family": "enterprise",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4248973275",
@@ -50015,7 +50162,7 @@
    "category": "misc",
    "family": "business",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474315323",
@@ -50068,7 +50215,7 @@
    "category": "misc",
    "family": "finance",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4248973318",
@@ -50350,7 +50497,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4248974279",
@@ -50461,7 +50608,7 @@
    "category": "misc",
    "family": "core_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4463871101",
@@ -50625,7 +50772,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4461609317",
@@ -50974,7 +51121,7 @@
    "category": "misc",
    "family": "analytics",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4460973117",
@@ -51186,7 +51333,7 @@
    "category": "misc",
    "family": "analytics",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4463889519",
@@ -51308,7 +51455,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4454242680",
@@ -52012,7 +52159,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474183258",
@@ -52087,7 +52234,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4461602396",
@@ -52273,7 +52420,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "3631867155",
@@ -52429,7 +52576,7 @@
    "category": "misc",
    "family": "business",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4474140561",
@@ -52670,7 +52817,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472903614",
@@ -52783,7 +52930,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472906300",
@@ -53013,7 +53160,7 @@
    "category": "misc",
    "family": "enterprise",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472657639",
@@ -53376,7 +53523,7 @@
    "category": "misc",
    "family": "product",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472628634",
@@ -53562,7 +53709,7 @@
    "category": "misc",
    "family": "ai_training",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4464637843",
@@ -53619,7 +53766,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472339005",
@@ -53668,7 +53815,7 @@
    "category": "software",
    "family": "qa",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4473930092",
@@ -53890,7 +54037,7 @@
    "category": "misc",
    "family": "it_support",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4453428209",
@@ -54113,7 +54260,7 @@
    "category": "misc",
    "family": "core_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4369779424",
@@ -54223,7 +54370,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4473783931",
@@ -54282,7 +54429,7 @@
    "category": "software",
    "family": "data_eng",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472193340",
@@ -54665,7 +54812,7 @@
    "category": "software",
    "family": "generic",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4473781616",
@@ -62312,7 +62459,7 @@
    "category": "software",
    "family": "backend",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472738132",
@@ -62374,7 +62521,7 @@
    "category": "software",
    "family": "backend",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472733328",
@@ -62436,7 +62583,7 @@
    "category": "software",
    "family": "backend",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472739077",
@@ -63414,7 +63561,7 @@
    "category": "software",
    "family": "generic",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4471353256",
@@ -64476,7 +64623,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4472475415",
@@ -68296,7 +68443,7 @@
    "category": "software",
    "family": "ai_ml",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4463365435",
@@ -68520,7 +68667,7 @@
    "postedText": "16 minutes ago",
    "postedAt": 1790356263061,
    "firstSeenAt": 1790357223068,
-   "lastSeenAt": 1790364227577,
+   "lastSeenAt": 1792231770762,
    "checkedAt": 1792160956001,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4472063075/",
@@ -68912,7 +69059,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4417020867",
@@ -69144,7 +69291,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4470174359",
@@ -69204,7 +69351,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4470164617",
@@ -69667,7 +69814,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4470166579",
@@ -69727,7 +69874,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4423630845",
@@ -70526,7 +70673,7 @@
    "category": "misc",
    "family": "enterprise",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4470098271",
@@ -70638,7 +70785,7 @@
    "category": "software",
    "family": "swe",
    "region": "IN",
-   "verified": true
+   "verified": false
   },
   {
    "id": "4468126308",
@@ -70926,7 +71073,7 @@
    "postedText": "2 hours ago",
    "postedAt": 1790328179651,
    "firstSeenAt": 1790335379657,
-   "lastSeenAt": 1792228290587,
+   "lastSeenAt": 1792231596590,
    "checkedAt": 1792161899247,
    "checkedVia": "link",
    "url": "https://www.linkedin.com/jobs/view/4462814209/",
