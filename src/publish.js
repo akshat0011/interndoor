@@ -12,6 +12,7 @@ import { writeSite, cardFacts, jobSlug, deadlinePassed, asksExperience, notAJob,
 import { isUnsure } from './jobstatus.js';
 import { queueForIndexing, runIndexingSweep, indexingConfigured } from './indexing.js';
 import { mineStats, DEFAULT_DAYS } from './statsmine.js';
+import { pitchNumbers } from './employerpitch.js';
 import { submitUrls, indexNowConfigured } from './indexnow.js';
 import { channelsFor } from './channels.js';
 import { publishedRegions, resolveRowRegion, ALL_REGIONS, regionOf } from './regions.js';
@@ -552,6 +553,38 @@ function dailyStats(store, regions, now = Date.now()) {
 }
 
 /**
+ * The Apply-click figures /post-a-job quotes to employers (src/employerpitch.js,
+ * 17 Oct 2026). Asked of the counter store once a day per board, like
+ * dailyStats, so the page moves at most daily. A failed read keeps the last
+ * good figure for up to PITCH_KEEP_MS, then the page shows none: a stale
+ * number told to an employer is worse than no number. Only boards written at
+ * the root carry the page, so only they are asked.
+ */
+const PITCH_KEEP_MS = 3 * 86_400_000;
+async function dailyPitch(store, regions, now = Date.now()) {
+  const out = new Map();
+  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+  for (const region of regions) {
+    if (region.slug) continue;
+    const key = `employerPitch:${region.code}`;
+    const today = new Date(now).toLocaleDateString('en-CA', { timeZone: region.timeZone });
+    let cached = null;
+    try { cached = JSON.parse(store.getSetting(key) ?? 'null'); } catch { cached = null; }
+    if (cached?.day === today && cached.pitch) { out.set(region.code, cached.pitch); continue; }
+    let pitch = null;
+    try { pitch = await pitchNumbers({ url, token, region: region.code, now }); } catch { pitch = null; }
+    if (pitch) {
+      store.setSetting(key, JSON.stringify({ day: today, at: now, pitch }));
+      out.set(region.code, pitch);
+    } else if (cached?.pitch && now - Number(cached.at ?? 0) < PITCH_KEEP_MS) {
+      out.set(region.code, cached.pitch);
+    }
+  }
+  return out;
+}
+
+/**
  * A corrected TITLE is a new slug, because the title is part of it.
  *
  * The old URL is a page Google and the channels already hold, so it becomes the
@@ -975,7 +1008,8 @@ export async function writeJobsFile(store, cfg) {
   const channelsByRegion = new Map(regions.map((r) => [r.code, channelsFor(r.code, cfg)]));
   const pages = writeSite(jobsByRegion, PUBLIC_DIR, historyByRegion, regions,
     { validDays: maxAgeDays, channelsByRegion, statsByRegion: dailyStats(store, regions),
-      insightsByRegion: monthlyInsights(store, cfg, regions), redirectsByRegion, closableByRegion });
+      insightsByRegion: monthlyInsights(store, cfg, regions), redirectsByRegion,
+      pitchByRegion: await dailyPitch(store, regions), closableByRegion });
 
   const withLogo = publicJobs.filter((j) => j.logo).length;
   const techCount = publicJobs.filter((j) => j.isTech).length;

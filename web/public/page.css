@@ -1972,6 +1972,20 @@ a.trk-t:hover { text-decoration: underline; text-underline-offset: 3px; }
   transform: rotate(-45deg);
 }
 
+/* The employer pitch (pitchBlock in src/pages.js): three figures, number over
+   label (the dd is first on screen through column-reverse, so the dl stays
+   dt-then-dd as HTML requires). */
+.pj-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 24px 0 0; max-width: 520px; }
+.pj-nums div { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 2px; padding: 12px 14px; border: 1px solid var(--rule-2); border-radius: 14px; background: var(--bg-2); }
+.pj-nums dd { margin: 0; font-family: var(--display); font-size: 26px; font-weight: 600; letter-spacing: -.02em; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.pj-nums div:first-child dd { color: var(--accent); }
+.pj-nums dt { font-size: 13px; color: var(--ink-2); }
+.pj-nums-note { margin: 10px 0 0; max-width: 60ch; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+@media (max-width: 420px) {
+  .pj-nums { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pj-nums div:first-child { grid-column: 1 / -1; }
+}
+
 .pj-card {
   max-width: 760px; padding: 28px; box-sizing: border-box;
   border: 1px solid var(--rule); border-radius: var(--r-2); background: var(--bg-2);
@@ -2158,3 +2172,11 @@ main.page .wrap > .summary, main.page .wrap > .hub-answer-line { animation: fx-i
 /* Three more measures the 9 Oct audit found too wide: the tracker's privacy
    note, the closed-role notice and the report's figures. */
 .trk-data-in p, .cr-alert p, .rp-stat { max-width: 70ch; }
+
+/* "Hiring at X? Post a role on InternDoor, free" on job pages and company
+   pages (hireLine in src/pages.js). Quiet: it is for the one reader in many
+   who is the employer. */
+.jp-hire, .hire-line { margin: 12px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.hire-line { margin-top: 16px; }
+.jp-hire a, .hire-line a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule-2); text-underline-offset: 3px; }
+.jp-hire a:hover, .hire-line a:hover { text-decoration-color: var(--accent); }

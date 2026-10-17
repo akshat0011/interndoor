@@ -24,6 +24,10 @@ export const EVENTS = new Set([
   // Bumped by /api/ai on the server, never by a beacon: a rank and a tailor
   // the AI answered, and a request refused for being over an allowance.
   'ai-rank', 'ai-tailor', 'ai-limit',
+  // The board's tailor promo and how often the tailor dialog is opened at all
+  // (app.js tailorPromo, openTailor; 17 Oct 2026), so the promo is judged on
+  // tlp-click / tlp-shown and tailor-open against ai-tailor.
+  'tailor-open', 'tlp-shown', 'tlp-click', 'tlp-dismiss',
 ]);
 export const REGIONS = new Set(['IN', 'US', 'GB', 'CA']);
 

@@ -20,12 +20,12 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { LIST_KEY, KEEP, sameOrg, siteHost } from '../web/api/post-job.js';
-import { loadConfig, matchCompany, isBlockedCompany } from '../src/config.js';
+import { KEEP } from '../web/api/post-job.js';
+import { loadConfig, isBlockedCompany } from '../src/config.js';
 import { Store } from '../src/store.js';
-import { parseAtsLink } from '../src/ats.js';
 import { ROOT } from '../src/paths.js';
-import { approveSubmission, linkedinJobId } from '../src/employerjobs.js';
+import { approveSubmission } from '../src/employerjobs.js';
+import { fetchSubmissions, checksFor, DECIDED_KEY, NOTIFIED_KEY } from '../src/employerqueue.js';
 import { forceExitSoon } from '../src/forceexit.js';
 
 process.chdir(ROOT);
@@ -38,8 +38,6 @@ if (existsSync('.env')) {
 
 const ARGS = process.argv.slice(2);
 const arg = (name) => (ARGS.includes(name) ? ARGS[ARGS.indexOf(name) + 1] : null);
-const DECIDED_KEY = 'jobSubmissions:decided';
-const NOTIFIED_KEY = 'jobSubmissions:notified';
 
 const url = (process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || '').replace(/\/+$/, '');
 const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
@@ -48,12 +46,8 @@ if (!url || !token) {
   process.exit(2);
 }
 
-const res = await fetch(`${url}/lrange/${encodeURIComponent(LIST_KEY)}/0/${KEEP - 1}`, {
-  headers: { authorization: `Bearer ${token}` },
-});
-if (!res.ok) { console.error(`Could not read the submissions: HTTP ${res.status}.`); process.exit(1); }
-const all = ((await res.json()).result ?? []).map((raw) => { try { return JSON.parse(raw); } catch { return null; } })
-  .filter((e) => e && typeof e.id === 'string');
+let all;
+try { all = await fetchSubmissions({ url, token }); } catch (err) { console.error(err.message); process.exit(1); }
 
 const store = new Store();
 const readJson = (key, fallback) => { try { return JSON.parse(store.getSetting(key) ?? '') ?? fallback; } catch { return fallback; } };
@@ -67,7 +61,7 @@ if (ARGS.includes('--notify')) {
     const { notify, pushToPhone } = await import('../src/notify.js');
     const names = fresh.map((e) => e.company).slice(0, 3).join(', ');
     const title = `${fresh.length} new employer submission${fresh.length === 1 ? '' : 's'}`;
-    const body = `${names}${fresh.length > 3 ? '…' : ''} — run: npm run submissions`;
+    const body = `${names}${fresh.length > 3 ? '…' : ''}. Review: 127.0.0.1:4322/employers`;
     await notify(title, body, {}).catch(() => {});
     await pushToPhone(title, body, { tags: 'briefcase' }).catch(() => {});
     for (const e of fresh) notified.add(e.id);
@@ -81,15 +75,7 @@ const cfg = loadConfig();
 const ist = (iso) => new Date(iso).toLocaleString('en-GB', { timeZone: 'Asia/Kolkata', hour12: false });
 
 function describe(e) {
-  const onList = matchCompany(e.company, cfg.watchlist);
-  const ats = parseAtsLink(e.link);
-  const li = linkedinJobId(e.link);
-  const checks = [
-    onList ? `already on the watchlist as ${onList}` : 'new employer — approval adds it to the watchlist',
-    isBlockedCompany(e.company) ? 'BLOCKLISTED — do not approve' : null,
-    ats ? `job board: ${ats.provider}/${ats.token} (every future role is collected)` : li ? `LinkedIn posting ${li}` : 'link is not a board we read — the role may need adding by hand',
-    sameOrg(siteHost(e.link), siteHost(e.website)) || ats || li ? null : `the link is on ${siteHost(e.link)}, not ${siteHost(e.website)}`,
-  ].filter(Boolean);
+  const checks = checksFor(e, cfg.watchlist).map((c) => (c.level === 'stop' ? c.text.toUpperCase() : c.text));
   const status = decided[e.id] ? `  [${decided[e.id].status}${decided[e.id].reason ? `: ${decided[e.id].reason}` : ''}]` : '';
   return [
     '─'.repeat(72),
@@ -163,7 +149,8 @@ if (!shown.length) {
 console.log(`\n${shown.length} submission${shown.length === 1 ? '' : 's'}${ARGS.includes('--all') ? '' : ' waiting'}, newest first:\n`);
 for (const e of shown) console.log(describe(e));
 console.log('─'.repeat(72));
-console.log('\nApprove: npm run submissions -- --approve <id>     Reject: npm run submissions -- --reject <id> --reason "…"\n');
+console.log('\nApprove: npm run submissions -- --approve <id>     Reject: npm run submissions -- --reject <id> --reason "…"');
+console.log('Or open http://127.0.0.1:4322/employers (npm run queue must be running).\n');
 
 // Done: end even if something is still open (src/forceexit.js).
 forceExitSoon();

@@ -107,6 +107,7 @@ const ICONS = {
   share: '<path d="M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1"/><path d="M12 14v-11"/><path d="M9 6l3 -3l3 3"/>',
   open: '<path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"/><path d="M11 13l9 -9"/><path d="M15 4h5v5"/>',
   wand: '<path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M12.2 11.8l-1.4 1.4M3 21l9-9"/><circle cx="15" cy="9" r="3"/>',
+  x: '<path d="M18 6l-12 12"/><path d="M6 6l12 12"/>',
 };
 const icon = (name, size = 16) => `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" `
   + 'stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
@@ -1867,6 +1868,8 @@ function renderList() {
       bar.append(go);
     }
     frag.append(bar);
+  } else if (tailorPromoDue() && split.ordered[0]?.[0]) {
+    frag.append(tailorPromo(split.ordered[0][0]));
   }
 
   /* THE LIST IS WINDOWED. Every group used to get a card on first paint, which
@@ -1881,6 +1884,62 @@ function renderList() {
      new-first split and every filter still run over the WHOLE set — a reader must
      never be told there are 60 roles because 60 are drawn. */
   renderWindow(list, frag, split.ordered, seen);
+}
+
+/* THE TAILOR PROMO (17 Oct 2026, his ask: "currently most people dont know
+   it exists, suggest them to use tailor my resume"). Every card has carried a
+   Tailor resume button since 11 Oct, quiet beside Apply on purpose, and 60-80
+   readers a day found it out of ~900 visits. This says what it does, once, at
+   the top of the list, to a reader who has never tailored and has no resume
+   on the board. Its button tailors to the first role below it, so one press
+   shows the whole thing working on a real posting.
+   Gone for good after a first tailor (TAILORED_STORE), and for TLP_QUIET_DAYS
+   after the cross. Counted (tlp-shown, tlp-click, tlp-dismiss, tailor-open)
+   so whether it works is measured, not guessed. */
+const TAILORED_STORE = 'interndoor-tailored';
+const TLP_OFF_STORE = 'interndoor-tlp-off';
+const TLP_QUIET_DAYS = 14;
+
+function tailorPromoDue(now = Date.now()) {
+  try {
+    if (localStorage.getItem(TAILORED_STORE)) return false;
+    const off = Number(localStorage.getItem(TLP_OFF_STORE));
+    if (off && now - off < TLP_QUIET_DAYS * 86_400_000) return false;
+  } catch { /* blocked storage: show it, it is one block and has a cross */ }
+  return true;
+}
+
+/* engage.js is loaded after the first paint, so a count made during it waits
+   for the script rather than being lost. */
+function countEvent(name, tries = 0) {
+  if (window.IDEngage?.count) { window.IDEngage.count(name); return; }
+  if (tries < 20) setTimeout(() => countEvent(name, tries + 1), 500);
+}
+
+function tailorPromo(job) {
+  const li = el('li', 'tl-promo');
+  const ico = el('span', 'tlp-ico');
+  ico.insertAdjacentHTML('afterbegin', icon('wand', 20));
+  const txt = el('div', 'tlp-txt');
+  txt.append(el('b', null, 'Tailor your resume to any role, free'));
+  txt.append(el('span', null,
+    `Recruiters search resumes for a role's exact words. We add them to yours in seconds, keep everything you wrote, and you download a PDF. ${FREE_PER_DAY.tailor} a day.`));
+  const go = el('button', 'tlp-go', 'Tailor my resume');
+  go.type = 'button';
+  go.setAttribute('aria-label', `Tailor your resume to ${job.title} at ${job.company}`);
+  go.addEventListener('click', () => { countEvent('tlp-click'); openTailor(job); });
+  const x = el('button', 'tlp-x');
+  x.type = 'button';
+  x.setAttribute('aria-label', 'Hide this suggestion');
+  x.insertAdjacentHTML('afterbegin', icon('x', 16));
+  x.addEventListener('click', () => {
+    try { localStorage.setItem(TLP_OFF_STORE, String(Date.now())); } catch { /* still hidden for this page */ }
+    countEvent('tlp-dismiss');
+    li.remove();
+  });
+  li.append(ico, txt, go, x);
+  if (!tailorPromo.counted) { tailorPromo.counted = true; countEvent('tlp-shown'); }
+  return li;
 }
 
 /** How many cards are drawn before the reader has to scroll for more. Well over
@@ -2250,6 +2309,7 @@ const resumeReady = () => resumeTextNow().length >= 200;
 function openTailor(job) {
   activeJob = job;
   tailorMode = job ? 'tailor' : 'rank';
+  if (job) countEvent('tailor-open');
 
   // [title, subtitle, resume screen lede]
   const copy = {
@@ -2557,6 +2617,7 @@ async function runTailor() {
     renderTailored(tailored, resumeText);
     showStep('result');
     toast('Resume tailored');
+    try { localStorage.setItem(TAILORED_STORE, String(Date.now())); } catch { /* the promo may show again: harmless */ }
   } catch (err) {
     /* A daily limit comes back at midnight, so "Try again" would only refuse
        again: say when instead, and offer no retry. */

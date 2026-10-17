@@ -28,6 +28,7 @@ import { ENTRY_MAX_YEARS, POSTDOC_TITLE, schemaEmploymentType, FULL_TIME, entryW
 import { facetGroups, facetSlug, canonicalCity, foldCity } from './facets.js';
 import { roleGroups, rolePageOf, stableRank, roleCitySlug } from './rolepages.js';
 import { isUnsure } from './jobstatus.js';
+import { roundedText } from './employerpitch.js';
 
 export const SITE = 'https://interndoor.com';
 
@@ -1422,7 +1423,7 @@ function imageMeta(image) {
 /* page.css is cached a day (max-age=600 plus stale-while-revalidate), so a
    change to it that the markup depends on ships with a new version here. The
    closed page, /post-a-job and /skills carry their own on top of this one. */
-const PAGE_CSS_VERSION = 'r2';
+const PAGE_CSS_VERSION = 'r3';
 
 function head({ title, description, canonical, indexable, extraLd = '', region = DEFAULT_REGION, alternates = null, alternatePath = '/', image = `${SITE}/og.jpg?v=6`, scripts = '', section = '', sectionExact = false }) {
   /* `page` ONLY WHEN THE LINK IS THE PAGE YOU ARE ON. A company hub is inside
@@ -2401,6 +2402,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
             <span class="apply-glow">${applyBtn}</span>
             ${tailorBtn}
             <p class="jp-card-note">Opens ${where} in a new tab. Free. We never ask for a fee.</p>
+            ${hireLine(job.company, 'jp-hire')}
           </div>` : ''}
           <!-- The tracker mount. EMPTY IN THE HTML and filled by page.js from
                these attributes, because what belongs here depends entirely on
@@ -3623,6 +3625,7 @@ export function renderCompanyPage(company, jobs, past = [], logo = '', { region 
              <b>Nothing open today</b>
              <p>${esc(company)} is on our watchlist, so a new posting appears here within minutes of going live. The Telegram channel will tell you the moment it does.</p>
            </div>`}
+      ${hireLine(company, 'hire-line')}
     </section>
 
     ${qaBlock(company, live, profile, region)}
@@ -4524,9 +4527,39 @@ ${foot({
  * publish never rewrites it. Its own page.css version, because the form's
  * rules are new and page.css is cached for a day.
  */
-export const POST_JOB_VERSION = 'pj3';
+export const POST_JOB_VERSION = 'pj4';
 
-export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null } = {}) {
+/* The employer's way in from the pages they are likeliest to find: their own
+   company page and their own role (17 Oct 2026, "make employers notice
+   interndoor"). Root-relative, never regionHref: /post-a-job is one page for
+   every board, like /contact. No figure here, so the line never changes and
+   never rewrites a page. */
+function hireLine(company, cls) {
+  return `<p class="${cls}">Hiring at ${esc(company)}? <a href="/post-a-job">Post a role on InternDoor, free</a></p>`;
+}
+
+/** The board's size for the employer pitch on /post-a-job. */
+export function boardCounts(jobs = []) {
+  return { roles: jobs.length, employers: new Set(jobs.map((j) => companySlug(j.company))).size };
+}
+
+/* WHAT /post-a-job TELLS AN EMPLOYER (17 Oct 2026, his ask: "advertise heavily
+   the 2500 apply clicks"). Every figure is rounded DOWN (roundedText), so the
+   page never claims more than happened, and the clicks are called Apply
+   clicks, never applicants: they are presses of our Apply button. The window
+   is named, so the figure says when it was true. No figure, no block: a
+   publish that could not read the counter shows the page as it was. */
+function pitchBlock(pitch, board) {
+  if (!pitch?.applyPerDayText || !pitch?.applyWeekText) return '';
+  const through = pitch.days?.[0] ? new Date(`${pitch.days[0]}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' }) : null;
+  const cell = (value, label) => (value ? `<div><dt>${label}</dt><dd>${esc(value)}</dd></div>` : '');
+  return `
+          <dl class="pj-nums">${cell(pitch.applyPerDayText, 'Apply clicks a day')}${cell(roundedText(board?.roles), 'Live roles')}${cell(roundedText(board?.employers), 'Employers listed')}
+          </dl>
+          <p class="pj-nums-note">Candidates pressed Apply ${esc(pitch.applyWeekText)} times on InternDoor listings in the 7 days${through ? ` to ${esc(through)}` : ''}. Your role is listed beside them, free.</p>`;
+}
+
+export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null, pitch = null, board = null } = {}) {
   const url = `${SITE}/post-a-job`;
   const mail = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('A role for InternDoor')}`;
   /* One field: a label above, the control, an optional hint and an error line
@@ -4561,7 +4594,7 @@ export function renderPostJobPage({ region = DEFAULT_REGION, alternates = null }
       <div class="pj-side">
         <header class="pj-intro">
           <h1>Have an engineering role to fill?</h1>
-          <p class="pj-lede">List a paid engineering internship or entry-level job at your company, in front of early-career engineers across India.</p>
+          <p class="pj-lede">List a paid engineering internship or entry-level job at your company, in front of early-career engineers across India.</p>${pitchBlock(pitch, board)}
           <ul class="pj-trust">
             <li>Free to post</li>
             <li>No account required</li>
@@ -6218,7 +6251,7 @@ function groupByCanonicalCompany(rows, display) {
   return out;
 }
 
-export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [], closable = [], insights = [] } = {}) {
+export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REGION, alternates = null, foreign = new Map(), validDays = DEFAULT_VALID_DAYS, channels = [], stats = {}, redirects = [], closable = [], insights = [], pitch = null } = {}) {
   // Before any renderer runs: foot(), the job page and the board fills read
   // the region's channels from here (followLink / whatsappUrl).
   registerChannels(region.code, channels);
@@ -6485,7 +6518,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
   if (!region.slug) {
     track(writeIfChanged(join(root, 'contact.html'), renderContactPage({ region, alternates })), '/contact');
     track(writeIfChanged(join(root, 'about.html'), renderAboutPage({ region, alternates })), '/about');
-    track(writeIfChanged(join(root, 'post-a-job.html'), renderPostJobPage({ region, alternates })), '/post-a-job');
+    track(writeIfChanged(join(root, 'post-a-job.html'), renderPostJobPage({ region, alternates, pitch, board: boardCounts(jobs) })), '/post-a-job');
   }
 
   let removed = 0;
@@ -6658,7 +6691,7 @@ export function writePages(jobs, publicDir, history = [], { region = DEFAULT_REG
  * @param {Map<string, object[]>} historyByRegion region code -> past postings
  * @param {object[]} regions                      published regions, in order
  */
-export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map(), redirectsByRegion = new Map(), closableByRegion = new Map(), insightsByRegion = new Map() } = {}) {
+export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { validDays = DEFAULT_VALID_DAYS, channelsByRegion = new Map(), statsByRegion = new Map(), redirectsByRegion = new Map(), closableByRegion = new Map(), insightsByRegion = new Map(), pitchByRegion = new Map() } = {}) {
   const alternates = regions.length > 1 ? regions : null;
   const totals = { jobPages: 0, companyPages: 0, indexable: 0, removed: 0, feedItems: 0, homeLinks: 0 };
   const perRegion = [];
@@ -6697,7 +6730,8 @@ export function writeSite(jobsByRegion, publicDir, historyByRegion, regions, { v
         stats: statsByRegion.get(region.code) ?? {},
         redirects: redirectsByRegion.get(region.code) ?? [],
         closable: closableByRegion.get(region.code) ?? [],
-        insights: insightsByRegion.get(region.code) ?? [] },
+        insights: insightsByRegion.get(region.code) ?? [],
+        pitch: pitchByRegion.get(region.code) ?? null },
     );
     for (const k of Object.keys(totals)) totals[k] += result[k];
     indexUrls.push(...result.indexUrls);

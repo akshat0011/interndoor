@@ -68,6 +68,8 @@ import { tmpdir } from 'node:os';
 import { watchJob, postWatchTick } from '../src/postwatch.js';
 import { clickWindows, fetchDayHashes, TRACKED_SINCE } from '../src/jobclicks.js';
 import { jobKeyFor, utcDay } from '../web/api/count.js';
+import { fetchSubmissions, readDecisions, renderEmployerQueue } from '../src/employerqueue.js';
+import { pitchNumbers } from '../src/employerpitch.js';
 
 const cfg = loadConfig();
 const PORT = queuePort(cfg);
@@ -1298,6 +1300,38 @@ const server = createServer(async (req, res) => {
   }
 
   if (req.method === 'POST' && !sameOrigin(req)) return json(res, 403, { error: 'cross-origin requests are refused' });
+
+  /* THE EMPLOYER QUEUE (src/employerqueue.js): what came in through
+     /post-a-job, with Approve and Reject. Both run bin/job-submissions.js,
+     the one implementation of each, so the terminal and this page cannot
+     disagree. Same-origin and JSON-only like every other POST here. */
+  if (path === '/employers' || path === '/employers/') {
+    const kv = { url: process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL, token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN };
+    if (!kv.url || !kv.token) return html(res, 200, renderEmployerQueue({ error: 'No submission store configured: KV_REST_API_URL and KV_REST_API_TOKEN are missing from .env.' }));
+    let submissions = [];
+    let error = null;
+    try { submissions = await fetchSubmissions(kv); } catch (err) { error = err.message; }
+    let liveRoles = 0;
+    try { liveRoles = (JSON.parse(readFileSync(regionJobsFile('IN'), 'utf8')).jobs ?? []).length; } catch { /* no board file */ }
+    const pitch = await pitchNumbers({ ...kv, region: 'IN', liveRoles });
+    return html(res, 200, renderEmployerQueue({ submissions, decisions: readDecisions(store), watchlist: loadConfig().watchlist, pitch, error }));
+  }
+
+  if (path === '/api/employers/decide' && req.method === 'POST') {
+    const body = await readJson(req, res);
+    if (!body) return undefined;
+    const id = String(body.id ?? '');
+    if (!/^[a-z0-9]{4,16}$/i.test(id)) return json(res, 400, { error: 'That submission id is not one this list uses.' });
+    const reason = String(body.reason ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, 200);
+    const args = body.action === 'approve' ? ['bin/job-submissions.js', '--approve', id]
+      : body.action === 'reject' ? ['bin/job-submissions.js', '--reject', id, ...(reason ? ['--reason', reason] : [])]
+        : null;
+    if (!args) return json(res, 400, { error: 'action must be approve or reject' });
+    const r = await runScript(args);
+    const output = r.out.split('\n').filter((l) => l && !/ExperimentalWarning|--trace-warnings/.test(l)).join('\n').trim();
+    log.info(`Employer queue: ${body.action} ${id} → exit ${r.code}`);
+    return json(res, r.code === 0 ? 200 : 409, { ok: r.code === 0, output: output || (r.code === 0 ? 'Done.' : 'That did not work.') });
+  }
 
   /* The scan view's "Save what was found so far and stop" (src/scanstop.js).
      Refused when no scan holds the lock, so a press on an old page is honest. */
