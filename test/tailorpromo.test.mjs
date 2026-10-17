@@ -72,6 +72,24 @@ console.log('\n== where it goes ==');
   ok('a count waits for engage.js instead of being lost', /if \(tries < 20\) setTimeout\(\(\) => countEvent\(name, tries \+ 1\), 500\);/.test(ce));
 }
 
+console.log('\n== the mark ==');
+{
+  const markApp = app.match(/const TAILOR_MARK = '([^']+)';/)?.[1];
+  const pages = read('src/pages.js');
+  const markPages = pages.match(/export const TAILOR_MARK = '([^']+)';/)?.[1];
+  ok('the board and the job pages draw the same mark', !!markApp && markApp.length > 400 && markApp === markPages);
+  ok('a white sheet with a dark pen, in its own colours', /fill="#fafafa"/.test(markApp) && /fill="#1e1e22"/.test(markApp) && !/currentColor/.test(markApp));
+  ok('never the accent or lime', !/c8ff00|--accent|--cta/i.test(markApp) && !/c8ff00|--accent/i.test(app.match(/const TAILOR_ART = '([^']+)';/)?.[1] ?? 'x'));
+  ok('outlined, so a white sheet holds on a light button', /stroke="#8f8f99"/.test(markApp));
+  ok('the small mark repeats no id (sixty cards)', !/\bid=/.test(markApp));
+  ok('every tailor button on the board uses it', (app.match(/tailorMark\(16\)/g) ?? []).length === 2);
+  ok('the promo shows the full drawing', /ico\.insertAdjacentHTML\('afterbegin', TAILOR_ART\);/.test(lift('tailorPromo')));
+  ok('whose gradients are namespaced', /id="tlA-paper"/.test(app) && /url\(#tlA-pen\)/.test(app));
+  const btn = pages.match(/const tailorBtn = `[^`]*`/)?.[0] ?? '';
+  ok('the job page button draws the mark', /<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">\$\{TAILOR_MARK\}<\/svg>/.test(btn));
+  ok('the wand and the line glyphs are gone', !/M15 4V2M15 16v-2/.test(app + pages) && !/icon\('(wand|resume)'/.test(app) && !/M10 18l5 -5a1\.414/.test(app + pages));
+}
+
 console.log('\n== the counter knows the events ==');
 for (const e of ['tailor-open', 'tlp-shown', 'tlp-click', 'tlp-dismiss']) ok(`${e} is counted`, EVENTS.has(e));
 

@@ -106,9 +106,24 @@ const ICONS = {
   clock: '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/><path d="M12 7v5l3 3"/>',
   share: '<path d="M8 9h-1a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-8a2 2 0 0 0 -2 -2h-1"/><path d="M12 14v-11"/><path d="M9 6l3 -3l3 3"/>',
   open: '<path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6"/><path d="M11 13l9 -9"/><path d="M15 4h5v5"/>',
-  wand: '<path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M12.2 11.8l-1.4 1.4M3 21l9-9"/><circle cx="15" cy="9" r="3"/>',
   x: '<path d="M18 6l-12 12"/><path d="M6 6l12 12"/>',
 };
+/* THE TAILOR'S MARK (17 Oct 2026, his pick of three: "A"). A white resume
+   sheet and a fountain pen, drawn as a picture rather than a line glyph:
+   the magic wand read as the stock AI gimmick, and a one-colour outline in
+   the accent read as cheap. TWO DRAWINGS OF ONE PICTURE: TAILOR_ART is the
+   full one (gradients, a shadow) for the board's promo, which appears once a
+   page, so its gradient ids stay unique; TAILOR_MARK is the same sheet and pen
+   in flat fills with an outline, for the 16px buttons, where sixty cards
+   would repeat an id and a half-pixel line would vanish. Its own colours,
+   never currentColor and never the accent: a document is white in both
+   themes, and the outline keeps it visible on a light button. src/pages.js
+   carries the same TAILOR_MARK for the job page's button; a test holds them
+   equal. */
+const TAILOR_MARK = '<path d="M6.2 2.6h7.9l4.3 4.3V19.4a2 2 0 0 1-2 2H6.2a2 2 0 0 1-2-2V4.6a2 2 0 0 1 2-2z" fill="#fafafa" stroke="#8f8f99" stroke-width="1.1" stroke-linejoin="round"/><path d="M14.1 2.6v3.3a1 1 0 0 0 1 1h3.3" fill="#d4d4d8" stroke="#8f8f99" stroke-width="1.1" stroke-linejoin="round"/><circle cx="7.9" cy="7.6" r="1.5" fill="#8f8f99"/><rect x="10.3" y="6.9" width="3.3" height="1.3" rx=".65" fill="#3f3f46"/><rect x="6.5" y="11" width="8" height="1.2" rx=".6" fill="#a1a1aa"/><rect x="6.5" y="13.9" width="5.6" height="1.2" rx=".6" fill="#a1a1aa"/><g transform="rotate(40 18.6 15.4)"><rect x="17" y="7.4" width="3.2" height="9.4" rx="1.6" fill="#1e1e22" stroke="#fafafa" stroke-width=".9"/><path d="M17.2 17h2.8l-1.4 3.9z" fill="#c8c8ce" stroke="#fafafa" stroke-width=".6" stroke-linejoin="round"/></g>';
+const tailorMark = (size = 16) => `<svg viewBox="0 0 24 24" width="${size}" height="${size}" aria-hidden="true">${TAILOR_MARK}</svg>`;
+const TAILOR_ART = '<svg viewBox="0 0 44 44" width="44" height="44" aria-hidden="true"><defs><linearGradient id="tlA-paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e7e7ea"/></linearGradient><linearGradient id="tlA-pen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a4a52"/><stop offset=".45" stop-color="#232327"/><stop offset="1" stop-color="#0f0f11"/></linearGradient><linearGradient id="tlA-nib" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f4f4f5"/><stop offset="1" stop-color="#9f9fa8"/></linearGradient></defs><path d="M11 5.8h13.3l7.4 7.4V36a3.2 3.2 0 0 1-3.2 3.2H11A3.2 3.2 0 0 1 7.8 36V9A3.2 3.2 0 0 1 11 5.8z" fill="#000" opacity=".3"/><path d="M11 4.4h13.3l7.4 7.4V34.6a3.2 3.2 0 0 1-3.2 3.2H11a3.2 3.2 0 0 1-3.2-3.2V7.6A3.2 3.2 0 0 1 11 4.4z" fill="url(#tlA-paper)" stroke="#a1a1aa" stroke-opacity=".5" stroke-width=".6"/><path d="M24.3 4.4v4.8a2.6 2.6 0 0 0 2.6 2.6h4.8z" fill="#d4d4d8"/><circle cx="13.6" cy="12.6" r="2.8" fill="#9f9fa8"/><rect x="17.9" y="10.5" width="5.6" height="1.8" rx=".9" fill="#3f3f46"/><rect x="17.9" y="13.6" width="4" height="1.3" rx=".65" fill="#a1a1aa"/><rect x="11" y="19.4" width="16.6" height="1.5" rx=".75" fill="#c8c8ce"/><rect x="11" y="23.2" width="13.8" height="1.5" rx=".75" fill="#c8c8ce"/><rect x="11" y="27" width="9" height="1.5" rx=".75" fill="#c8c8ce"/><g transform="rotate(40 31.5 27)"><rect x="29" y="13.2" width="5" height="15.2" rx="2.5" fill="url(#tlA-pen)" stroke="#fff" stroke-opacity=".28" stroke-width=".8"/><rect x="29" y="24.4" width="5" height="1.7" fill="#b4b4bc"/><path d="M29.3 28.4h4.4l-2.2 6.2z" fill="url(#tlA-nib)"/><path d="M31.5 30.2v3.2" stroke="#52525b" stroke-width=".6"/></g></svg>';
+
 const icon = (name, size = 16) => `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" `
   + 'stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
   + `${ICONS[name]}</svg>`;
@@ -1602,7 +1617,7 @@ function jobCard(job, index, group = [job], seen = false) {
      It took the Track button's place. */
   const tl = el('button', 'tl-b');
   tl.type = 'button';
-  tl.insertAdjacentHTML('afterbegin', icon('wand', 14));
+  tl.insertAdjacentHTML('afterbegin', tailorMark(16));
   tl.append(document.createTextNode('Tailor resume'));
   tl.setAttribute('aria-label', `Tailor your resume to ${job.title} at ${job.company}`);
   tl.addEventListener('click', (e) => { e.stopPropagation(); openTailor(job); });
@@ -1919,7 +1934,7 @@ function countEvent(name, tries = 0) {
 function tailorPromo(job) {
   const li = el('li', 'tl-promo');
   const ico = el('span', 'tlp-ico');
-  ico.insertAdjacentHTML('afterbegin', icon('wand', 20));
+  ico.insertAdjacentHTML('afterbegin', TAILOR_ART);
   const txt = el('div', 'tlp-txt');
   txt.append(el('b', null, 'Tailor your resume to any role, free'));
   txt.append(el('span', null,
@@ -2223,7 +2238,7 @@ function renderDetail(job) {
   const cta = el('div', 'p-cta');
   const tailorBtn = el('button', 'alt');
   tailorBtn.type = 'button';
-  tailorBtn.insertAdjacentHTML('afterbegin', icon('wand', 15));
+  tailorBtn.insertAdjacentHTML('afterbegin', tailorMark(16));
   tailorBtn.append(document.createTextNode('Tailor my resume'));
   tailorBtn.addEventListener('click', () => openTailor(job));
   cta.append(tailorBtn);

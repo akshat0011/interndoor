@@ -1786,19 +1786,16 @@ html[data-boot] .boot-part {
    block's only action. */
 .tl-promo {
   list-style: none; position: relative;
-  display: grid; grid-template-columns: 40px minmax(0, 1fr) auto;
+  display: grid; grid-template-columns: 44px minmax(0, 1fr) auto;
   gap: 16px; align-items: center;
   padding: 18px 52px 18px 20px;
   background: var(--card-2);
   border: 1px solid var(--rule-2);
   border-radius: var(--r-2);
 }
-.tlp-ico {
-  width: 40px; height: 40px; border-radius: 12px;
-  display: grid; place-items: center;
-  background: color-mix(in oklab, var(--accent) 14%, transparent);
-  color: var(--accent);
-}
+/* The mark is a full drawing (TAILOR_ART in app.js), so it needs no tile. */
+.tlp-ico { width: 44px; height: 44px; display: block; }
+.tlp-ico svg { display: block; width: 100%; height: 100%; }
 .tlp-txt { display: grid; gap: 3px; min-width: 0; }
 .tlp-txt b { font-family: var(--ui); font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.3; }
 .tlp-txt span { font-family: var(--ui); font-size: 14px; color: var(--ink-2); line-height: 1.45; max-width: 62ch; }
@@ -1821,8 +1818,8 @@ html[data-boot] .boot-part {
   .tlp-x:hover { color: var(--ink); background: var(--card); }
 }
 @media (max-width: 640px) {
-  .tl-promo { grid-template-columns: 36px minmax(0, 1fr); gap: 12px 14px; padding: 16px 44px 16px 16px; }
-  .tlp-ico { width: 36px; height: 36px; }
+  .tl-promo { grid-template-columns: 40px minmax(0, 1fr); gap: 12px 14px; padding: 16px 44px 16px 16px; }
+  .tlp-ico { width: 40px; height: 40px; }
   .tlp-go { grid-column: 1 / -1; width: 100%; }
 }
 /* Edge to edge on a phone, like the cards around it (.row under 600px). */
@@ -2581,7 +2578,7 @@ html.fb-open-modal, html.fb-open-modal body { overflow: hidden; }
    most readers had never noticed it. Still outlined, never lime: Apply is the
    one filled control on a card. */
 .tl-b { color: var(--ink); border-color: var(--rule-2); font-weight: 600; }
-.tl-b svg { color: var(--accent); flex: none; }
+.tl-b svg { flex: none; }
 .tl-b:active { transform: scale(.96); }
 
 @media (hover: hover) and (pointer: fine) {

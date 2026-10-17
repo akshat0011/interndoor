@@ -2230,7 +2230,7 @@ export function renderJobPage(job, siblings = [], { region = DEFAULT_REGION, alt
      id is encoded (a careers-board id can carry spaces and commas) and app.js
      decodes it. Same label and icon as the board pane's button. */
   const tailorHref = `${regionHref('/', region)}#tailor-${encodeURIComponent(String(job.id))}`;
-  const tailorBtn = `<a class="btn-tailor" href="${esc(tailorHref)}"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8l1.4 1.4M17.8 6.2l1.4-1.4M12.2 11.8l-1.4 1.4M3 21l9-9"/><circle cx="15" cy="9" r="3"/></svg><span>Tailor my resume</span></a>`;
+  const tailorBtn = `<a class="btn-tailor" href="${esc(tailorHref)}"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">${TAILOR_MARK}</svg><span>Tailor my resume</span></a>`;
 
   // One tile per ROLE, not per posting.
   //
@@ -4537,6 +4537,12 @@ export const POST_JOB_VERSION = 'pj4';
 function hireLine(company, cls) {
   return `<p class="${cls}">Hiring at ${esc(company)}? <a href="/post-a-job">Post a role on InternDoor, free</a></p>`;
 }
+
+/* The resume tailor's mark, the same flat drawing the board's buttons use
+   (TAILOR_MARK in web/public/app.js, which cannot import this file; a test
+   holds the two equal). A white sheet and a fountain pen in their own
+   colours, his pick on 17 Oct 2026. */
+export const TAILOR_MARK = '<path d="M6.2 2.6h7.9l4.3 4.3V19.4a2 2 0 0 1-2 2H6.2a2 2 0 0 1-2-2V4.6a2 2 0 0 1 2-2z" fill="#fafafa" stroke="#8f8f99" stroke-width="1.1" stroke-linejoin="round"/><path d="M14.1 2.6v3.3a1 1 0 0 0 1 1h3.3" fill="#d4d4d8" stroke="#8f8f99" stroke-width="1.1" stroke-linejoin="round"/><circle cx="7.9" cy="7.6" r="1.5" fill="#8f8f99"/><rect x="10.3" y="6.9" width="3.3" height="1.3" rx=".65" fill="#3f3f46"/><rect x="6.5" y="11" width="8" height="1.2" rx=".6" fill="#a1a1aa"/><rect x="6.5" y="13.9" width="5.6" height="1.2" rx=".6" fill="#a1a1aa"/><g transform="rotate(40 18.6 15.4)"><rect x="17" y="7.4" width="3.2" height="9.4" rx="1.6" fill="#1e1e22" stroke="#fafafa" stroke-width=".9"/><path d="M17.2 17h2.8l-1.4 3.9z" fill="#c8c8ce" stroke="#fafafa" stroke-width=".6" stroke-linejoin="round"/></g>';
 
 /** The board's size for the employer pitch on /post-a-job. */
 export function boardCounts(jobs = []) {
