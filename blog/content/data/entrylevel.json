@@ -1,0 +1,143 @@
+{
+  "id": "entrylevel",
+  "window": {
+    "from": "2026-09-25",
+    "to": "2026-10-13",
+    "runs": 439
+  },
+  "returned": 59479,
+  "offList": 37470,
+  "notEngineering": 1882,
+  "unchecked": 9,
+  "onList": 20118,
+  "counts": {
+    "kept": 2054,
+    "offList": 37470,
+    "senior": 8825,
+    "other": 739,
+    "asks3": 1282,
+    "asks2": 713,
+    "asks5": 1280,
+    "notEngineering": 1882,
+    "asks4": 385,
+    "manager": 1122,
+    "consultant": 1117,
+    "level": 1425,
+    "midSenior": 1176,
+    "unchecked": 9,
+    "titles": 12489,
+    "asks": 3660
+  },
+  "otherWhy": {
+    "opened, then refused: entry-level: LinkedIn tags it Contract": 132,
+    "refused when opened earlier (title lacks intern and LinkedIn tags it Full-time)": 128,
+    "opened, then refused: entry-level: LinkedIn says Associate": 425,
+    "opened, then refused: entry-level: LinkedIn tags it Other": 3,
+    "opened, then refused: entry-level: LinkedIn tags it Part-time": 22,
+    "opened, then refused: entry-level: LinkedIn tags it Temporary": 9,
+    "opened, but could not be read": 6,
+    "opened, then refused: entry-level: LinkedIn says Executive": 4,
+    "refused when opened earlier (title lacks intern and LinkedIn tags it Volunteer)": 1,
+    "opened, then refused: entry-level: LinkedIn tags it Volunteer": 2,
+    "refused when opened earlier (title lacks intern and LinkedIn tags it Contract)": 3,
+    "opened, then refused: entry-level: LinkedIn says Director": 3,
+    "entry-level: postdoc title": 1
+  },
+  "source": {
+    "label": "InternDoor collection records, 25 September to 13 October 2026 (see How we count)",
+    "url": "https://blog.interndoor.com/methodology"
+  },
+  "charts": {
+    "verdict": {
+      "title": "What \"Entry level\" engineering postings turned out to be",
+      "subtitle": "The 20,118 India engineering postings from employers on InternDoor's list that public job boards tagged Entry level, 25 September to 13 October 2026",
+      "unit": "percent",
+      "max": 50,
+      "label": "What the posting was",
+      "valueLabel": "Share of postings",
+      "highlight": [
+        "Open to a fresher"
+      ],
+      "rows": [
+        {
+          "label": "Senior, lead, principal or staff title",
+          "value": 43.9,
+          "display": "44%",
+          "note": "(8,825)"
+        },
+        {
+          "label": "Asked for two or more years",
+          "value": 18.2,
+          "display": "18%",
+          "note": "(3,660)"
+        },
+        {
+          "label": "Open to a fresher",
+          "value": 10.2,
+          "display": "10%",
+          "note": "(2,054)"
+        },
+        {
+          "label": "Level II or higher in the title",
+          "value": 7.1,
+          "display": "7%",
+          "note": "(1,425)"
+        },
+        {
+          "label": "The posting said Mid-Senior level",
+          "value": 5.8,
+          "display": "6%",
+          "note": "(1,176)"
+        },
+        {
+          "label": "Manager title",
+          "value": 5.6,
+          "display": "6%",
+          "note": "(1,122)"
+        },
+        {
+          "label": "Consultant or architect title",
+          "value": 5.6,
+          "display": "6%",
+          "note": "(1,117)"
+        },
+        {
+          "label": "Other reasons",
+          "value": 3.7,
+          "display": "4%",
+          "note": "(739)"
+        }
+      ],
+      "note": "Each posting is counted once, in the first check it failed. Titles are checked first, then the posting itself is read."
+    },
+    "years": {
+      "title": "How much experience the \"entry-level\" postings asked for",
+      "subtitle": "The 3,660 postings among them whose own text asked for two or more years, by the smallest figure stated",
+      "unit": "count",
+      "label": "Experience asked for",
+      "valueLabel": "Postings",
+      "highlight": [
+        "5 years or more"
+      ],
+      "rows": [
+        {
+          "label": "2 years or more",
+          "value": 713
+        },
+        {
+          "label": "3 years or more",
+          "value": 1282
+        },
+        {
+          "label": "4 years or more",
+          "value": 385
+        },
+        {
+          "label": "5 years or more",
+          "value": 1280
+        }
+      ],
+      "note": "Where a posting gave a range, such as 3 to 5 years, the smallest figure is the one counted."
+    }
+  }
+}
