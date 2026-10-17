@@ -6,6 +6,42 @@
   "description": "New engineering internships and entry-level jobs in India, listed within minutes of going live.",
   "items": [
     {
+      "id": "https://interndoor.com/jobs/thermo-fisher-scientific-oracle-cloud-erp-administrator-4477758698",
+      "url": "https://interndoor.com/jobs/thermo-fisher-scientific-oracle-cloud-erp-administrator-4477758698",
+      "title": "Oracle Cloud ERP Administrator — Thermo Fisher Scientific",
+      "content_text": "Company: Thermo Fisher Scientific · Location: Bengaluru East, Karnataka, India\n• Manage user roles, security policies, and access controls in Oracle ERP Cloud\n• Deploy and maintain CI/CD pipelines for cloud and on-premises systems\n• Support disaster recovery, compliance audits, and system performance monitoring",
+      "date_published": "2026-10-17T06:33:14.262Z",
+      "authors": [
+        {
+          "name": "Thermo Fisher Scientific"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/whatsapp-whatsapp-software-engineer-technical-leadership-product-generalist-4477762461",
+      "url": "https://interndoor.com/jobs/whatsapp-whatsapp-software-engineer-technical-leadership-product-generalist-4477762461",
+      "title": "WhatsApp - Software Engineer (Technical Leadership) - Product Generalist — WhatsApp",
+      "content_text": "Company: WhatsApp · Location: Bengaluru, Karnataka, India\n• Build end-to-end product features from concept to launch across client and server\n• Work with C, C++, Java, Swift, Kotlin, Python, JavaScript and Hack\n• Lead technical direction and own major product architecture\n• Collaborate with payments, legal, and compliance teams in India",
+      "date_published": "2026-10-17T06:07:36.192Z",
+      "authors": [
+        {
+          "name": "WhatsApp"
+        }
+      ]
+    },
+    {
+      "id": "https://interndoor.com/jobs/whatsapp-whatsapp-software-engineer-product-generalist-4477766355",
+      "url": "https://interndoor.com/jobs/whatsapp-whatsapp-software-engineer-product-generalist-4477766355",
+      "title": "WhatsApp - Software Engineer - Product Generalist — WhatsApp",
+      "content_text": "Company: WhatsApp · Location: Bengaluru, Karnataka, India\n• Build features from concept to launch across client and server\n• Work with C, Java, Python, and APIs for payments and integrations\n• Lead initiatives and own significant systems with technical depth",
+      "date_published": "2026-10-17T06:07:13.277Z",
+      "authors": [
+        {
+          "name": "WhatsApp"
+        }
+      ]
+    },
+    {
       "id": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4480587708",
       "url": "https://interndoor.com/jobs/bajaj-finserv-trainee-technology-4480587708",
       "title": "Trainee Technology — Bajaj Finserv",
@@ -566,42 +602,6 @@
       "authors": [
         {
           "name": "Volody"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/arctic-wolf-developer-1-4479345509",
-      "url": "https://interndoor.com/jobs/arctic-wolf-developer-1-4479345509",
-      "title": "Backend Developer 1 — Arctic Wolf",
-      "content_text": "Company: Arctic Wolf · Location: Bengaluru, Karnataka, India\n• Build backend features for real-time threat analysis services\n• Develop microservices using Golang, Docker, and AWS\n• Work on distributed systems with Kafka and PostgreSQL",
-      "date_published": "2026-10-16T09:48:46.087Z",
-      "authors": [
-        {
-          "name": "Arctic Wolf"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/clearwater-analytics-data-flow-engineer-4443151549",
-      "url": "https://interndoor.com/jobs/clearwater-analytics-data-flow-engineer-4443151549",
-      "title": "Data Flow Engineer — Clearwater Analytics",
-      "content_text": "Company: Clearwater Analytics · Location: Mumbai Metropolitan Region\n• Monitor Jenkins jobs, identify failures by client, and resolve fixable issues\n• Track tickets to closure with accurate status and comments\n• Escalate issues with evidence and steps tried to Services or Development",
-      "date_published": "2026-10-16T09:41:31.108Z",
-      "authors": [
-        {
-          "name": "Clearwater Analytics"
-        }
-      ]
-    },
-    {
-      "id": "https://interndoor.com/jobs/salesforce-ad-software-engineering-amts-4480354033",
-      "url": "https://interndoor.com/jobs/salesforce-ad-software-engineering-amts-4480354033",
-      "title": "Software Engineering AMTS — SalesForce-ad",
-      "content_text": "Company: SalesForce-ad · Location: Hyderabad, Telangana, India\n• Design, build, and test scalable cloud products used by millions\n• Work with engineers, product managers, and UX experts on real projects\n• Use AI tools like Gemini and Cursor to improve code and workflows",
-      "date_published": "2026-10-16T09:19:16.987Z",
-      "authors": [
-        {
-          "name": "SalesForce-ad"
         }
       ]
     }

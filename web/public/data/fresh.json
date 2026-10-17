@@ -1,6 +1,37 @@
 {
  "jobs": [
   {
+   "id": "4477758698",
+   "company": "Thermo Fisher Scientific",
+   "title": "Oracle Cloud ERP Administrator",
+   "location": "Bengaluru East, Karnataka, India",
+   "workplaceType": "On-site",
+   "postedAt": 1792218794262,
+   "firstSeenAt": 1792221194268,
+   "logo": "/logos/thermo-fisher-scientific.jpg",
+   "bulletCount": 3
+  },
+  {
+   "id": "4477762461",
+   "company": "WhatsApp",
+   "title": "WhatsApp - Software Engineer (Technical Leadership) - Product Generalist",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792217256192,
+   "firstSeenAt": 1792220856193,
+   "logo": "/logos/whatsapp.jpg",
+   "bulletCount": 4
+  },
+  {
+   "id": "4477766355",
+   "company": "WhatsApp",
+   "title": "WhatsApp - Software Engineer - Product Generalist",
+   "location": "Bengaluru, Karnataka, India",
+   "postedAt": 1792217233277,
+   "firstSeenAt": 1792220593291,
+   "logo": "/logos/whatsapp.jpg",
+   "bulletCount": 3
+  },
+  {
    "id": "4479636712",
    "company": "Zensar Technologies",
    "title": "Full-Stack Developer",
@@ -418,38 +449,6 @@
    "postedAt": 1792149835305,
    "firstSeenAt": 1792150195309,
    "logo": "/logos/birlasoft.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4477386320",
-   "company": "HARMAN India",
-   "title": "Software Engineering Intern",
-   "slugTitle": "Intern",
-   "location": "Pimpri Chinchwad, Maharashtra, India",
-   "postedAt": 1792148434090,
-   "firstSeenAt": 1792148674095,
-   "logo": "/logos/harman-india.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480355347",
-   "company": "United Airlines India Knowledge Center",
-   "title": "Associate Engineer - Digital Technology (SDET/QA)",
-   "location": "Gurugram, Haryana, India",
-   "postedAt": 1792148168264,
-   "firstSeenAt": 1792148708269,
-   "logo": "/logos/united-airlines-india-knowledge-center.jpg",
-   "bulletCount": 3
-  },
-  {
-   "id": "4480362128",
-   "company": "Emerson",
-   "title": "Software Engineer 1",
-   "location": "Pune Division, Maharashtra, India",
-   "workplaceType": "On-site",
-   "postedAt": 1792147322412,
-   "firstSeenAt": 1792147622417,
-   "logo": "/logos/emerson.jpg",
    "bulletCount": 3
   }
  ]
