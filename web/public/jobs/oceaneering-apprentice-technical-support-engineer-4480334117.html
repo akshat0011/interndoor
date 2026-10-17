@@ -62,11 +62,14 @@
          page you are on would give the homepage a two-item nav and every other
          page a three-item one, so the remaining links move as you navigate and
          the reader loses the position they had learned. aria-current is the
-         answer to "where am I"; absence is not. -->
+         answer to "where am I"; absence is not. Blog is a separate host
+         (blog.interndoor.com, 17 Oct 2026, his ask), so it is an absolute URL,
+         never regionHref'd, never current; measured to fit 760-1440px. -->
     <nav class="bar-nav" aria-label="Sections">
       <a href="/">Jobs</a>
       <a href="/companies">Companies</a>
       <a href="/skills">Skills</a>
+      <a href="https://blog.interndoor.com/">Blog</a>
     </nav>
 
     <div class="bar-right">
@@ -139,10 +142,7 @@
           <p class="jp-open is-likely"><span class="jp-open-b"><i aria-hidden="true"></i>Likely open</span><span class="jp-open-d">We list a role only while we believe it is still open. Confirm on the posting before you apply.</span></p>
         </header>
 
-        <section class="jp-why">
-          <h2>What stands out</h2>
-          <ul class="why-list"><li><strong>Posted in the last 24 hours.</strong></li></ul>
-        </section>
+        
 
         <section>
           <h2>The gist</h2>
